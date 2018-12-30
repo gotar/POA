@@ -1,0 +1,19 @@
+body {
+  min-height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr 1fr;
+  grid-template-rows: 1fr 100px;
+  grid-template-areas:  ".    main    main    ."
+                        ".    footer  footer  .";
+
+  align-content: space-between;
+}
+
+main {
+  grid-area: main;
+}
+
+footer {
+  grid-area: footer;
+  align-self: center;
+}

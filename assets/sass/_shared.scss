@@ -1,44 +1,22 @@
-body {
-  font-family: 'Lato', sans-serif;
-  color: $color-dark;
+body, html {
+  height: 100%;
+  background: url('/assets/images/sakura.png') top right no-repeat;
 }
 
-h2,
-h4 {
-  font-weight: 600;
+.right {
+  text-align: right;
 }
 
-h2 {
-  font-size: 2.5rem;
-}
+main {
+  /* The image used */
+  background-image: url("/assets/images/toyoda.svg");
+  fill: #94d31b;
 
-a {
-  color: $color-brand;
-}
+  /* Full height */
+  height: 100%;
 
-input[type="email"],
-input[type="text"] {
-  padding: .375em 1em;
-}
-
-.link-brand {
-  color: $color-brand;
-  text-decoration: none;
-
-  &:hover {
-    color: $color-brand-dark;
-  }
-}
-
-.link-light {
-  color: $color-light;
-  text-decoration: none;
-
-  &:hover {
-    color: $color-brand-muted;
-  }
-}
-
-.color-brand-muted {
-  color: $color-brand-muted;
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
 }

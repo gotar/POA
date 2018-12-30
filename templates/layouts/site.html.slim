@@ -1,21 +1,41 @@
-doctype html
-html
+doctype 5
+html lang="pl-PL"
   head
     title = page_title
 
     meta charset="utf-8"
     meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport"
-    meta name="description" content="Spotkanie przeważnie odbywają się w przedostanią środę każdego miesiąca. Zapraszamy wszystkich zainteresowanych językiem programowania Ruby oraz technologiami pokrewnymi. Po prezentacjach rozmawiamy oraz gramy w gry planszowe."
+    meta name="keywords" content="POA, Polska Organizacja Aikido, Polish Aikido Organization, 3city, Trójmiasto, Gdynia, Racibórz, Toyoda, Germanov, Aikido, ju-jitsu, treningi, sztuki walki, zajęcia, samoobrona"
+    meta name="description" content="POA - Polska Organizacja Aikido"
+    meta name="author" content="Gotar Oskar Szrajer - http://gotar.info"
 
     meta property="og:title" content=page_title
     meta property="og:description" content="Strona informacyjna Polskiej Organizacji Aikido"
     meta property="og:type" content="website"
 
     link rel="dns-prefetch" href="//fonts.googleapis.com"
-    link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet"
+    link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet"
     link rel="stylesheet" type="text/css" href=asset_path("site.css")
     script src=asset_path("site.js")
+
+    javascript:
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-11414566-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
   body
+    main
+      == yield
 
-    == yield
-
+    footer
+      div
+        | Polska Organizacja Aikido - 2018r.
+      div.right
+        a href="http://gotar.info"
+          | Gotar Oskar Szrajer

@@ -1,4 +1,4 @@
-# Sesshin Kan Dojo Gdynia - Polska Organizacja Aikido
+# Polska Organizacja Aikido
 
 This site use static generator built upon [dry-system][dry-system], [rom-rb][rom-rb], and [dry-view][dry-view].
 

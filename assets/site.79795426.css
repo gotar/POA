@@ -81,11 +81,8 @@ main {
   .content div.half {
     display: flex; }
     .content div.half div {
-      flex: 1; }
-    .content div.half div:first-child {
-      margin-right: 0.5rem; }
-    .content div.half div:last-child {
-      margin-left: 0.5rem; }
+      flex: 1;
+      margin-bottom: 1rem; }
 
 @media only screen and (max-width: 760px) {
   body {
@@ -137,14 +134,10 @@ html {
   scroll-behavior: smooth; }
 
 body {
-  background: url("/assets/images/bg.jpg") left no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
   line-height: 1.5rem; }
 
 .content {
-  background-color: rgba(255, 255, 255, 0.8);
-  box-shadow: 0 0 16px 6px rgba(0, 0, 0, 0.2);
+  background-color: rgba(255, 255, 255, 0.9);
   padding: 2rem 1.5rem;
   height: 100%; }
   .content p {
@@ -153,7 +146,8 @@ body {
     max-width: 100%; }
 
 address {
-  font-style: normal; }
+  font-style: normal;
+  margin: 0; }
 
 a {
   color: #333; }

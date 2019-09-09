@@ -1,19 +1,128 @@
 body {
   min-height: 100%;
   display: grid;
-  grid-template-columns: 1fr 2fr 2fr 1fr;
-  grid-template-rows: 1fr 100px;
-  grid-template-areas:  ".    main    main    ."
-                        ".    footer  footer  .";
+  grid-template-columns: 1fr 4fr 1fr;
+  grid-template-rows: $nav-height 1fr;
+  grid-template-areas:  "nav  nav    nav"
+                        ".    main   .";
 
   align-content: space-between;
+}
+
+nav {
+  grid-area: nav;
+  display: grid;
+  align-items: center;
+
+  grid-template-columns: 1fr 2fr 2fr 1fr;
+  grid-template-areas: ". title menu .";
+
+  .logo, .title {
+    grid-area: title;
+  }
+
+  ul {
+    grid-area: menu;
+    justify-self: end;
+  }
 }
 
 main {
   grid-area: main;
 }
 
-footer {
-  grid-area: footer;
-  align-self: center;
+.content {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+
+  div.half {
+    display: flex;
+
+    div {
+      flex: 1;
+    }
+    
+    div:first-child {
+      margin-right: 0.5rem;
+    }
+
+    div:last-child {
+      margin-left: 0.5rem;
+    }
+  }
+}
+
+@media only screen and (max-width: 760px) {
+  body {
+    min-height: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: $nav-height 1fr;
+    grid-template-areas:  "nav   "
+                          "main  ";
+
+    align-content: space-between;
+    min-width: 450px;
+    background-position-x: -220px!important;
+  }
+
+  nav {
+    grid-area: nav;
+    display: grid;
+    align-items: center;
+
+    grid-template-columns: 1fr;
+    grid-template-areas: "menu";
+
+    ul {
+      grid-area: menu;
+    }
+
+    .logo {
+      grid-area: menu;
+    }
+
+    .title {
+      display: none;
+    }
+  }
+
+  div.half {
+    display: block!important;
+  }
+
+  div.article {
+    column-count: 1!important;
+  }
+}
+
+@media only screen and (max-width: 1200px) and (min-width: 760px) {
+  body {
+    min-height: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: $nav-height 1fr;
+    grid-template-areas:  "nav   "
+                          "main  ";
+
+    align-content: space-between;
+  }
+
+  nav {
+    grid-area: nav;
+    display: grid;
+    align-items: center;
+
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "title menu";
+
+    .logo, .title {
+      grid-area: title;
+    }
+
+    ul {
+      grid-area: menu;
+    }
+  }
 }

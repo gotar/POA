@@ -3,9 +3,9 @@ require "site/import"
 
 module Site
   module Views
-    class Home < View::Controller
+    class Benefits < View::Controller
       configure do |config|
-        config.template = "home"
+        config.template = "korzysci"
       end
     end
   end

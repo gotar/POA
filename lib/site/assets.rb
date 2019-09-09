@@ -42,7 +42,7 @@ module Site
     class Served
       attr_reader :url
 
-      def initialize(url:)
+      def initialize(url)
         @url = url
       end
 

@@ -9,9 +9,11 @@ module Site
 
     include Import[
       "settings",
+      import_files: "importers.files"
     ]
 
     def call(root)
+      import_files.(File.join(root, settings.import_dir))
       Success(root)
     end
   end

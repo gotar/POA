@@ -1,4 +1,4 @@
-# POA - Polska Organizacja Aikido
+# Sesshin Kan Dojo Gdynia - Polska Organizacja Aikido
 
 This site use static generator built upon [dry-system][dry-system], [rom-rb][rom-rb], and [dry-view][dry-view].
 
@@ -15,6 +15,10 @@ Review `.env` and adjust the settings as required.
 ## Building the site
 
 Run `./bin/build` to build the site. This will empty the `build/` directory and then repopulate it with a new copy of the site's files.
+
+## Deploying the site
+
+After you `build` a page, add commit with this build to a repository and then run `./bin/deploy`. This will add the content of `build` directory to a `gh-pages` branch which will trigger the deploy.
 
 ## Structure
 

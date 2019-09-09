@@ -32,10 +32,6 @@ module.exports = function(env, argv) {
         filename: "[name].[hash:8].css",
         chunkFilename: "[id].css"
       }),
-     new webpack.ProvidePlugin({
-       $: 'jquery',
-       jQuery: 'jquery'
-     }),
     ],
     module: {
       rules: [

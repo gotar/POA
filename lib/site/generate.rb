@@ -16,7 +16,8 @@ module Site
       toyoda_view: "views.biographies.toyoda",
       osensei_view: "views.biographies.osensei",
       germanov_view: "views.biographies.germanov",
-      event_view: "views.event",
+      event_2019_view: "views.event2019",
+      event_2020_view: "views.event2020",
       benefits_view: "views.benefits",
       aikido_history_view: "views.aikido.history",
       aikido_about_view: "views.aikido.what_is",
@@ -37,7 +38,8 @@ module Site
       render export_dir, "biografie/toyoda.html", toyoda_view
       render export_dir, "biografie/o-sensei.html", osensei_view
       render export_dir, "biografie/germanov.html", germanov_view
-      render export_dir, "wydarzenia.html", event_view
+      render export_dir, "wydarzenia/2019.html", event_2019_view
+      render export_dir, "wydarzenia/2020.html", event_2020_view
       render export_dir, "aikido/korzysci.html", benefits_view
       render export_dir, "aikido/historia.html", aikido_history_view
       render export_dir, "aikido/czym_jest.html", aikido_about_view

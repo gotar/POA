@@ -5,10 +5,17 @@ require "fileutils"
 APP_ROOT = File.expand_path("..", __dir__)
 
 Dir.chdir(APP_ROOT) do
-  require "bundler"
-  Bundler.setup
+  puts "Installing Ruby dependencies..."
+  system("bundle check") || system("bundle install")
 
-  system "yarn"
+  unless File.exist?(".env")
+    if File.exist?(".env-example")
+      FileUtils.cp ".env-example", ".env"
+      puts "Created .env from .env-example"
+    else
+      puts "Note: No .env file found. Create one if needed."
+    end
+  end
 
-  FileUtils.cp ".env-example", ".env" unless File.exist?(".env")
+  puts "Setup complete!"
 end

@@ -2,4 +2,9 @@
 
 mkdir -p ./build
 
+# Initial build before starting watch
+echo "Building site..."
+./bin/build
+
+echo "Starting dev server with live reload..."
 foreman start -f Procfile.watch

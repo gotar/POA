@@ -6,19 +6,14 @@ require "bundler/setup"
 require_relative "../system/boot"
 
 options = {
-  assets: true,
   clean: true,
 }
 
 OptionParser.new do |opts|
-  opts.banner = "Usage: example.rb [options]"
+  opts.banner = "Usage: bin/build [options]"
 
-  opts.on("--[no-]clean", "Clean build directory") do |v|
+  opts.on("--[no-]clean", "Clean build directory (default: true)") do |v|
     options[:clean] = v
-  end
-
-  opts.on("--[no-]assets", "Build assets") do |v|
-    options[:assets] = v
   end
 end.parse!
 
@@ -26,12 +21,6 @@ if options[:clean]
   export_dir = Site::Container.config.root.join(Site::Container[:settings].export_dir)
   FileUtils.rm_rf(export_dir, secure: true)
   FileUtils.mkdir_p(export_dir)
-end
-
-if options[:assets]
-  command = "yarn run build"
-  pid = spawn(command, :in => STDIN, :out => STDOUT, :err => STDERR)
-  Process.wait pid
 end
 
 Site::Container.build

@@ -1,17 +1,20 @@
-Site::Container.boot :settings, from: :system do
-  before :init do
+Site::Container.register_provider :settings do
+  prepare do
     require "site/types"
+    require "ostruct"
   end
 
-  settings do
-    key :import_dir, Site::Types::Strict::String
-    key :export_dir, Site::Types::Strict::String
+  start do
+    settings = {
+      import_dir: ENV.fetch("IMPORT_DIR", "./import"),
+      export_dir: ENV.fetch("EXPORT_DIR", "./build"),
+      assets_precompiled: ENV.fetch("ASSETS_PRECOMPILED", "false") == "true",
+      assets_server_url: ENV["ASSETS_SERVER_URL"],
+      site_name: ENV.fetch("SITE_NAME", "Polska Organizacja Aikido"),
+      site_author: ENV.fetch("SITE_AUTHOR", "POA"),
+      site_url: ENV.fetch("SITE_URL", "https://aikido.org.pl")
+    }
 
-    key :assets_precompiled, Site::Types::Params::Bool
-    key :assets_server_url, Site::Types::Strict::String.optional
-
-    key :site_name, Site::Types::Strict::String
-    key :site_author, Site::Types::Strict::String
-    key :site_url, Site::Types::Strict::String
+    register "settings", OpenStruct.new(settings)
   end
 end

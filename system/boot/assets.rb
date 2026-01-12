@@ -1,16 +1,16 @@
-Site::Container.boot :assets do |site|
-  init do
+Site::Container.register_provider :assets do
+  prepare do
     require "site/assets"
   end
 
   start do
-    use :settings
+    settings = target[:settings]
 
     assets =
-      if site[:settings].assets_precompiled
-        Site::Assets::Precompiled.new(site[:settings].export_dir)
+      if settings.assets_precompiled
+        Site::Assets::Precompiled.new(settings.export_dir)
       else
-        Site::Assets::Served.new(site[:settings].assets_server_url)
+        Site::Assets::Served.new(settings.assets_server_url)
       end
 
     register "assets", assets

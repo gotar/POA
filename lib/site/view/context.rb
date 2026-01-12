@@ -1,11 +1,12 @@
 require "uri"
 require "dry/core/constants"
+require "dry/view/context"
 require "forwardable"
 require "site/import"
 
 module Site
   module View
-    class Context
+    class Context < Dry::View::Context
       extend Forwardable
 
       include Dry::Core::Constants
@@ -16,12 +17,21 @@ module Site
 
       attr_reader :current_path
 
-      def initialize(current_path: nil, **deps)
-        super(**deps)
+      def initialize(current_path: nil, render_env: nil, **deps)
+        super(render_env: render_env)
 
-        @deps = deps
         @current_path = current_path
         @page_title = nil
+        @_assets = deps[:assets]
+        @_settings = deps[:settings]
+      end
+
+      def assets
+        @_assets || super
+      end
+
+      def settings
+        @_settings || super
       end
 
       def page_title(new_title = Undefined)
@@ -41,7 +51,11 @@ module Site
       end
 
       def new(**new_options)
-        self.class.new(@deps.merge(current_path: current_path).merge(new_options))
+        dup.tap do |ctx|
+          new_options.each do |key, value|
+            ctx.instance_variable_set(:"@#{key}", value)
+          end
+        end
       end
     end
   end

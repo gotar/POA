@@ -1,18 +1,13 @@
 require "pathname"
-require "dry/system/container"
-require "dry/system/components"
+require "dry/system"
 
 module Site
   class Container < Dry::System::Container
-    use :env
-
-    load_paths! "lib"
-
     configure do |config|
       config.root = Pathname(__dir__).join("../..").realpath
-      config.name = :site
-      config.default_namespace = "site"
-      config.auto_register = %w[lib/site]
+      config.component_dirs.add "lib" do |dir|
+        dir.namespaces.add "site", key: nil
+      end
     end
 
     def self.build

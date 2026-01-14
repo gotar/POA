@@ -141,6 +141,20 @@ nav .logo span {
   color: #cd3333;
 }
 
+.nav-link.lang-switcher {
+  padding: 0.5rem 0.75rem;
+  margin-left: 0.5rem;
+  border: 2px solid #cd3333;
+  border-radius: 4px;
+  font-weight: 600;
+  color: #cd3333;
+}
+
+.nav-link.lang-switcher:hover {
+  background-color: #cd3333;
+  color: white;
+}
+
 .dropdown {
   position: relative;
 }

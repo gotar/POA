@@ -11,6 +11,7 @@ module Site
       "settings",
       export: "exporters.files",
       home_view: "views.home",
+      home_en_view: "views.en.home",
       contact_view: "views.contact",
       glossary_view: "views.glossary",
       requirement_kyu_view: "views.requirement_kyu",
@@ -45,6 +46,7 @@ module Site
       FileUtils.cp File.join(root, "assets/CNAME"), File.join(export_dir, "CNAME")
 
       render export_dir, "index.html", home_view
+      render export_dir, "en/index.html", home_en_view
       render export_dir, "kontakt.html", contact_view
       render export_dir, "slowniczek.html", glossary_view
       render export_dir, "wymagania_egzaminacyjne/kyu.html", requirement_kyu_view

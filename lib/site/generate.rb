@@ -14,6 +14,7 @@ module Site
       home_en_view: "views.en.home",
       contact_view: "views.contact",
       contact_en_view: "views.en.contact",
+      what_is_en_view: "views.en.what_is",
       glossary_view: "views.glossary",
       requirement_kyu_view: "views.requirement_kyu",
       requirement_dan_view: "views.requirement_dan",
@@ -50,6 +51,7 @@ module Site
       render export_dir, "en/index.html", home_en_view
       render export_dir, "kontakt.html", contact_view
       render export_dir, "en/contact.html", contact_en_view
+      render export_dir, "en/aikido/what_is.html", what_is_en_view
       render export_dir, "slowniczek.html", glossary_view
       render export_dir, "wymagania_egzaminacyjne/kyu.html", requirement_kyu_view
       render export_dir, "wymagania_egzaminacyjne/dan.html", requirement_dan_view

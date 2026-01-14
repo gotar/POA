@@ -4,14 +4,17 @@
     <meta charset="utf-8" />
     
     <meta name="viewport" content="width=device-width, initial-scale=0.8" />
-    <meta name="keywords" content="Aikido, POA, Polska Organizacja Aikido, Polish Aikido Organization, Toyoda, Germanov" />
-    <meta name="description" content="<%= page_title %>" />
+    <meta name="keywords" content="<%= page_keywords %>" />
+    <meta name="description" content="<%= page_description %>" />
     <meta name="author" content="Gotar Oskar Szrajer - http://gotar.info" />
     
+    <link rel="canonical" href="<%= canonical_url %>" />
+    
     <meta property="og:title" content="<%= page_title %>" />
-    <meta property="og:description" content="Strona domowa Polskiej Organizacji Aikido" />
+    <meta property="og:description" content="<%= page_description %>" />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="<%= asset_path('images/toyoda.svg') %>" />
+    <meta property="og:url" content="<%= canonical_url %>" />
+    <meta property="og:image" content="<%= site_url %><%= asset_path('images/toyoda.svg') %>" />
     
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />

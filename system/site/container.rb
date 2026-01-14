@@ -8,6 +8,7 @@ module Site
       config.component_dirs.add "lib" do |dir|
         dir.namespaces.add "site", key: nil
       end
+      config.provider_dirs = ["system/providers"]
     end
 
     def self.build

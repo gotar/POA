@@ -50,6 +50,12 @@ module Site
         end
       end
 
+      def asset_path_with_version(path)
+        base_path = asset_path(path)
+        version = Time.now.to_i
+        "#{base_path}?v=#{version}"
+      end
+
       def new(**new_options)
         dup.tap do |ctx|
           new_options.each do |key, value|

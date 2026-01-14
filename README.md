@@ -1,24 +1,35 @@
 # Polska Organizacja Aikido
 
-This site use static generator built upon [dry-system][dry-system], [rom-rb][rom-rb], and [dry-view][dry-view].
+Static site generator built with [dry-system][dry-system] and [dry-view][dry-view].
 
 [dry-system]: http://dry-rb.org/gems/dry-system
-[rom-rb]: http://rom-rb.org/
 [dry-view]: http://dry-rb.org/gems/dry-view
 
 ## Getting started
 
 Run `./bin/setup` to set up the application.
 
-Review `.env` and adjust the settings as required.
+Review `.env` and adjust the settings as required. You can set:
+- `SITE_NAME` - Site name (default: "Polska Organizacja Aikido")
+- `SITE_AUTHOR` - Site author (default: "POA")
+- `SITE_URL` - Site URL (default: "https://aikido-polska.eu")
 
 ## Building the site
 
 Run `./bin/build` to build the site. This will empty the `build/` directory and then repopulate it with a new copy of the site's files.
 
+### Development with auto-rebuild
+
+Run `bundle exec guard` to start automatic rebuilding when files change. The guard configuration is in `Guardfile`.
+
 ## Deploying the site
 
-After you `build` a page, add commit with this build to a repository and then run `./bin/deploy`. This will add the content of `build` directory to a `gh-pages` branch which will trigger the deploy.
+Run `./bin/deploy` to deploy the site. This will:
+1. Build the site
+2. Commit the build changes
+3. Push the `build/` directory to the `gh-pages` branch
+
+The site will be live at https://aikido-polska.eu/ within a few minutes.
 
 ## Structure
 
@@ -28,38 +39,100 @@ The application is managed by [dry-system][dry-system] (which is set up in the `
 
 In this application, the system provides two special components:
 
-- `settings`, which provides the settings defined in `system/boot/settings.rb`, loaded from either `.env` or the `ENV`
-- `database`, which creates an in-memory SQLite database and migrates it according to the schemas defined in `lib/database/relations/`
+- `settings`, which provides the settings defined in `system/providers/settings.rb`, loaded from either `.env` or the `ENV`
+- `assets`, which provides asset path helpers for the views
 
-### Persistence
+### Static Content
 
-The persystence layer is built using [rom-rb][rom-rb] and is a crucial aspect of the application. It gives us a database that we can populate from any number of sources, and then use to extract and combine data in ways that are meaningful to the types of pages we want to generate for our site.
+This application generates static HTML pages without a database. All content is managed through:
 
-The system's `database` component (see above) loads **relations** (which roughly correspond to database tables in typical use) in `lib/database/relations`.
+- **Templates** in `templates/` - ERB templates for pages and layouts
+- **Views** in `lib/site/views/` - View controllers that prepare data for templates
+- **Assets** in `assets/` - Images, CSS, and favicon files
 
-The relations also provide a place for defining low-level query logic. We can then use this logic when building **repositories** (see `lib/site/repos/`), which provide the application's own clear, central interface to the persistence layer. Repositories give us a place to define meaningful names for the data we wish to access, and then return typed, immutable structs that can be passed around the application and used as required.
+### Build process
 
-We can add extra beavior to these structs by defining our own custom struct classes in the repositories' struct namespace, `Site::Entities` (see `lib/site/entities/`, and also `lib/site/repo.rb` for where the `struct_namespace` is configured).
+The build process is managed by `lib/site/generate.rb`, which:
 
-### Build components
+1. Copies static assets (images, CSS, favicons) to the `build/` directory
+2. Renders views for each page using dry-view
+3. Exports rendered HTML files to the `build/` directory
 
-The application offers 2 key build stages, **prepare** and **generate**, which are run in sequence when building the static site.
-
-The prepare stage (see `lib/site/prepare.rb`) is intended for us to populate the database with any data we require for our site. Here we can run number of different **importers** to prepare the data we need.
-
-The generate stage (see `lib/site/generate.rb`) is intended for us to fetch data back from the database as required, render views, and save the output as static files.
+Each page is rendered with a context (see `lib/site/view/context.rb`) that provides:
+- Site settings (name, author, URL)
+- Page-specific SEO meta tags (title, description, keywords)
+- Asset helpers with cache-busting
+- Canonical URLs and Open Graph tags
 
 ### Views
 
-Views are rendered using [dry-view][dry-view]. dry-view allow us to define our own **view controllers** that work with injected dependencies (using our system's `Import` module) from across the application to prepare data and then explicitly expose it to the view template. Every value exposed to the template can be decorated in a **view part**, which gives us a place to properly encapsulte view-specific logic for the various entities in our application.
+Views are rendered using [dry-view][dry-view]. dry-view allows us to define **view controllers** that work with injected dependencies (using our system's `Import` module) from across the application to prepare data and expose it to the view template.
 
-In this particular application, views are defined in `lib/site/views/`, and view parts in `lib/site/view/parts`. See `lib/site/views/writing.rb` for a view controller that works with a repository and exposes data to the template wrapped in custom view parts.
+In this application, views are defined in `lib/site/views/`, with separate namespaces for:
+- Polish pages: `lib/site/views/` (root namespace)
+- English pages: `lib/site/views/en/`
 
-Views also come with a **context**, which establishes a baseline rendering environment and provides logic to both the templates and view parts. In this application, the context is defined in `lib/site/view/context.rb`. It currently exposes site-specific settings, like the title, author, and URL, allows us to manage a page title (for setting a page title from within each template) and a current path (for determining which item in the site nav to style as "active").
+Views use a **context** (defined in `lib/site/view/context.rb`) that provides:
+- Site settings (name, author, URL)
+- Page title management
+- SEO meta tags with per-page defaults (description, keywords)
+- Canonical URLs and Open Graph tags
+- Asset path helpers with automatic cache-busting
+- Current path for navigation state
 
-## Extending the application
+## Adding new pages
 
-Since each application layer serves a clear purpose and their various components are general purpose and etensible, adding new behaviour becomes simple: add your own relations, entities, views, or view parts; build another loader; decorate the immutable data that is passed around; add your own components and use the `Import` mixin to express complex behaviour from many simple parts.
+To add a new page:
 
-Extending the application doesn't require any special framework plugins or monkey patching. This is a plain-and-simple Ruby application that will work with whatever code and whatever gems you like.
+1. **Create a view controller** in `lib/site/views/` (or `lib/site/views/en/` for English):
+   ```ruby
+   module Site
+     module Views
+       class NewPage < View::Controller
+         configure do |config|
+           config.template = "new_page"
+         end
+       end
+     end
+   end
+   ```
+
+2. **Create a template** in `templates/` (use existing templates as reference):
+   ```erb
+   <% page_title "New Page Title" %>
+   <h1>New Page</h1>
+   ```
+
+3. **Add to generate.rb** to render during build:
+   ```ruby
+   render export_dir, "new-page.html", new_page_view
+   ```
+
+4. **Add SEO metadata** (optional) in `lib/site/view/context.rb`:
+   - Update `default_description_for_path()` method
+   - Update `default_keywords_for_path()` method
+
+## SEO Features
+
+The site includes comprehensive SEO optimization:
+
+- **Per-page meta descriptions** - Unique descriptions for key pages
+- **Per-page meta keywords** - Targeted keywords for search engines
+- **Canonical URLs** - Prevents duplicate content issues
+- **Open Graph tags** - Optimized for social media sharing (Facebook, Twitter, LinkedIn)
+- **Cache-busting** - Automatic versioning for CSS and assets
+
+Key pages with custom SEO:
+- Polish homepage: Polish-language SEO focused on Gdynia/Trójmiasto
+- English homepage: English-language SEO for international audience
+- What is Aikido: Detailed description of Aikido principles
+
+## Technology Stack
+
+- **Ruby** - Core language
+- **dry-rb ecosystem** - Application architecture
+  - [dry-system][dry-system] - Dependency injection and component management
+  - [dry-view][dry-view] - View rendering with contexts
+- **ERB** - Template engine
+- **GitHub Pages** - Hosting (via `gh-pages` branch)
 

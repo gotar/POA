@@ -25,4 +25,4 @@ if ! git subtree push --prefix build origin gh-pages; then
 fi
 
 echo "✅ Deployment successful!"
-echo "Site will be live at https://aikido-poa.pl/ in a few minutes"
+echo "Site will be live at https://aikido-polska.eu/ in a few minutes"

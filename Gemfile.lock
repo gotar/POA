@@ -46,6 +46,8 @@ GEM
       dry-core (~> 0.9, >= 0.9)
       dry-inflector (~> 0.1)
       tilt (~> 2.0, >= 2.0.6)
+    erbse (0.1.4)
+      temple
     ffi (1.17.3-x86_64-linux-gnu)
     foreman (0.90.0)
       thor (~> 1.4)
@@ -92,9 +94,6 @@ GEM
     reline (0.6.3)
       io-console (~> 0.5)
     shellany (0.0.1)
-    slim (5.2.1)
-      temple (~> 0.10.0)
-      tilt (>= 2.1.0)
     temple (0.10.4)
     thor (1.5.0)
     tilt (2.7.0)
@@ -115,13 +114,13 @@ DEPENDENCIES
   dry-system (~> 0.27)
   dry-types (~> 1.6)
   dry-view (~> 0.8)
+  erbse
   foreman
   front_matter_parser (~> 1.0)
   guard
   guard-shell
   pry
   rackup
-  slim
   transproc
   webrick
 
@@ -142,6 +141,7 @@ CHECKSUMS
   dry-system (0.27.2) sha256=6b8da4a85dde90f398562fa8e441ab2e2567b7caddd07a8a9403eb13f6eb2c30
   dry-types (1.6.1) sha256=1e37383746b40bf487c604ea505ee207dba5e626851cde31822670780681eb76
   dry-view (0.8.0) sha256=d7c78fa07a29943ac60923dc03473e36e9e2f505453f917013cd4cf99db3f6c8
+  erbse (0.1.4) sha256=d5fafb6874fbb0720efd5b2328ae68870074ec8f7cd6176d21b70349e9dd41c4
   ffi (1.17.3-x86_64-linux-gnu) sha256=3746b01f677aae7b16dc1acb7cb3cc17b3e35bdae7676a3f568153fb0e2c887f
   foreman (0.90.0) sha256=ff675e2d47b607ac58714a6d4ac3e1ee8f06f41d8db084531c31961e2c3f117c
   formatador (1.2.3) sha256=19fa898133c2c26cdbb5d09f6998c1e137ad9427a046663e55adfe18b950d894
@@ -164,7 +164,6 @@ CHECKSUMS
   rb-inotify (0.11.1) sha256=a0a700441239b0ff18eb65e3866236cd78613d6b9f78fea1f9ac47a85e47be6e
   reline (0.6.3) sha256=1198b04973565b36ec0f11542ab3f5cfeeec34823f4e54cebde90968092b1835
   shellany (0.0.1) sha256=0e127a9132698766d7e752e82cdac8250b6adbd09e6c0a7fbbb6f61964fedee7
-  slim (5.2.1) sha256=72351dff7e2ff20e2d5c393cfc385bb9142cef5db059141628fd7163ac3c13e7
   temple (0.10.4) sha256=b7a1e94b6f09038ab0b6e4fe0126996055da2c38bec53a8a336f075748fff72c
   thor (1.5.0) sha256=e3a9e55fe857e44859ce104a84675ab6e8cd59c650a49106a05f55f136425e73
   tilt (2.7.0) sha256=0d5b9ba69f6a36490c64b0eee9f6e9aad517e20dcc848800a06eb116f08c6ab3

@@ -27,6 +27,9 @@ module Site
       benefits_view: "views.benefits",
       aikido_history_view: "views.aikido.history",
       aikido_about_view: "views.aikido.what_is",
+      aikido_aiki_taiso_view: "views.aikido.aiki_taiso",
+      aikido_reishiki_view: "views.aikido.reishiki",
+      aikido_beginners_view: "views.aikido.beginners",
       lineage_view: "views.lineage",
     ]
 
@@ -58,6 +61,9 @@ module Site
       render export_dir, "aikido/korzysci.html", benefits_view
       render export_dir, "aikido/historia.html", aikido_history_view
       render export_dir, "aikido/czym_jest.html", aikido_about_view
+      render export_dir, "aikido/aiki_taiso.html", aikido_aiki_taiso_view
+      render export_dir, "aikido/reishiki.html", aikido_reishiki_view
+      render export_dir, "aikido/dla_poczatkujacych.html", aikido_beginners_view
       render export_dir, "lineage.html", lineage_view
 
       Success(root)

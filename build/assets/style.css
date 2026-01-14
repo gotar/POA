@@ -299,6 +299,164 @@ dd {
   width: 100%;
 }
 
+/* Contact Page Styles */
+.contact-section {
+  margin: 3rem 0 2rem 0;
+  padding: 0;
+}
+
+.contact-section h2 {
+  color: #cd3333;
+  border-bottom: 2px solid #cd3333;
+  padding-bottom: 0.5rem;
+  margin-bottom: 2rem;
+  font-size: 1.75rem;
+}
+
+.contact-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.contact-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  border-left: 4px solid #cd3333;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.contact-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+
+.contact-card h3 {
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.contact-card address {
+  line-height: 1.8;
+  color: #555;
+}
+
+.contact-info-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0.75rem 0;
+  padding: 0.75rem;
+  background: #f8f8f8;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.contact-info-item:hover {
+  background: #f0f0f0;
+}
+
+.contact-info-item a {
+  color: #333;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.contact-info-item a:hover {
+  color: #cd3333;
+}
+
+.contact-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.instructor-info {
+  margin: 1.5rem 0 0.5rem 0;
+  padding: 1rem;
+  background: #f0f7ff;
+  border-radius: 4px;
+  border-left: 3px solid #4a90e2;
+}
+
+.trial-info {
+  margin: 1rem 0 0 0;
+  padding: 1rem;
+  background: #fff4e6;
+  border-radius: 4px;
+  border-left: 3px solid #ff9800;
+  color: #555;
+}
+
+.schedule-table {
+  margin: 1rem 0;
+}
+
+.schedule-table th {
+  background-color: #cd3333;
+  color: white;
+  padding: 0.75rem;
+  text-align: left;
+}
+
+.schedule-table td {
+  padding: 0.75rem;
+  border-bottom: 1px solid #eee;
+}
+
+.schedule-table tr:last-child td {
+  border-bottom: none;
+}
+
+.map-container {
+  width: 100%;
+  height: 450px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 2rem 0;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.organization-data {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.5rem 1rem;
+  margin: 1rem 0;
+}
+
+.organization-data dt {
+  font-weight: 600;
+  color: #666;
+  width: auto;
+}
+
+.organization-data dd {
+  margin: 0;
+  color: #333;
+  width: auto;
+}
+
+.half {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
 .inline_menu {
   display: flex;
   flex-wrap: wrap;
@@ -682,6 +840,24 @@ ul.inline li a:hover {
     flex-direction: column;
     align-items: center;
   }
+
+  .contact-cards {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .half {
+    grid-template-columns: 1fr;
+  }
+
+  .map-container {
+    height: 300px;
+  }
+
+  .organization-data {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
 }
 
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
@@ -707,3 +883,438 @@ ul.inline li a:hover {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+/* Principles Section - Four Principles of Aikido */
+.principles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.principle-card {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-left: 4px solid #cd3333;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.principle-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.principle-card h3 {
+  color: #cd3333;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 0.5rem;
+}
+
+.principle-card p {
+  margin: 0.75rem 0;
+  line-height: 1.6;
+}
+
+.principle-card em {
+  display: block;
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background: #f8f8f8;
+  border-radius: 4px;
+  font-style: normal;
+  font-size: 0.95rem;
+  border-left: 3px solid #cd3333;
+}
+
+@media (max-width: 768px) {
+  .principles {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .principle-card {
+    padding: 1.25rem;
+  }
+}
+
+/* Exercise Cards - Aiki Taiso Page */
+.exercises-section {
+  margin: 2rem 0;
+}
+
+.exercise-card {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.exercise-card:hover {
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.exercise-card h3 {
+  color: #cd3333;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
+}
+
+.exercise-name-jp {
+  font-style: italic;
+  color: #666;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+.exercise-card p {
+  margin: 0.75rem 0;
+  line-height: 1.7;
+}
+
+.exercise-card strong {
+  color: #333;
+}
+
+.practice-guidelines {
+  background: #f8f8f8;
+  border-left: 4px solid #cd3333;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  border-radius: 4px;
+}
+
+.practice-guidelines ul {
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+.practice-guidelines li {
+  list-style: disc;
+  margin: 0.75rem 0;
+  line-height: 1.7;
+}
+
+.next-steps {
+  background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+  padding: 2rem;
+  border-radius: 8px;
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.next-steps h2 {
+  margin-top: 0;
+  color: #cd3333;
+}
+
+.next-steps .btn {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  background: #cd3333;
+  color: #fff;
+  border-radius: 4px;
+  text-decoration: none;
+  margin-top: 1rem;
+  transition: background 0.2s ease;
+}
+
+.next-steps .btn:hover {
+  background: #a82828;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .exercise-card {
+    padding: 1.25rem;
+  }
+  
+  .practice-guidelines {
+    padding: 1.25rem;
+  }
+  
+  .next-steps {
+    padding: 1.5rem;
+  }
+}
+
+/* Beginner Guide Page Styles */
+.beginner-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.beginner-card {
+  background: #f8f8f8;
+  border-left: 4px solid #cd3333;
+  padding: 1.5rem;
+  border-radius: 4px;
+}
+
+.beginner-card h3 {
+  margin-top: 0;
+  color: #cd3333;
+  font-size: 1.3rem;
+}
+
+.beginner-card ul,
+.beginner-card ol {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.beginner-card li {
+  margin: 0.75rem 0;
+  line-height: 1.6;
+}
+
+.beginner-card .note {
+  background: #fff3cd;
+  border-left: 3px solid #ffc107;
+  padding: 0.75rem;
+  margin-top: 1rem;
+  font-size: 0.95rem;
+}
+
+.training-structure {
+  margin: 2rem 0;
+}
+
+.structure-phase {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  overflow: hidden;
+}
+
+.structure-phase h3 {
+  background: linear-gradient(135deg, #cd3333 0%, #a82828 100%);
+  color: #fff;
+  padding: 1rem 1.5rem;
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.phase-content {
+  padding: 1.5rem;
+}
+
+.phase-section {
+  margin-bottom: 2rem;
+}
+
+.phase-section:last-child {
+  margin-bottom: 0;
+}
+
+.phase-section h4 {
+  color: #333;
+  border-bottom: 2px solid #cd3333;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.phase-section ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.phase-section li {
+  padding-left: 1.5rem;
+  position: relative;
+  margin: 0.75rem 0;
+  line-height: 1.6;
+}
+
+.phase-section li::before {
+  content: "▸";
+  color: #cd3333;
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+}
+
+.learn-more {
+  margin-top: 1rem;
+  font-style: italic;
+}
+
+.learn-more a {
+  color: #cd3333;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.learn-more a:hover {
+  text-decoration: underline;
+}
+
+.rank-system {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.rank-card {
+  background: linear-gradient(135deg, #f8f8f8 0%, #efefef 100%);
+  border: 2px solid #cd3333;
+  border-radius: 8px;
+  padding: 2rem;
+}
+
+.rank-card h3 {
+  margin-top: 0;
+  color: #cd3333;
+  font-size: 1.5rem;
+  border-bottom: 2px solid #cd3333;
+  padding-bottom: 0.75rem;
+}
+
+.rank-card ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.rank-card li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.rank-card li:last-child {
+  border-bottom: none;
+}
+
+.faq-section {
+  margin: 2rem 0;
+}
+
+.faq-item {
+  background: #f8f8f8;
+  border-left: 4px solid #4a90e2;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 4px;
+}
+
+.faq-item h3 {
+  margin-top: 0;
+  color: #333;
+  font-size: 1.2rem;
+}
+
+.faq-item p {
+  margin-bottom: 0;
+  line-height: 1.7;
+}
+
+.mistakes-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.mistake-card {
+  background: #fff3cd;
+  border-left: 4px solid #ffc107;
+  padding: 1.5rem;
+  border-radius: 4px;
+}
+
+.mistake-card h3 {
+  margin-top: 0;
+  color: #856404;
+  font-size: 1.2rem;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin: 2rem 0;
+  flex-wrap: wrap;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 1rem 2rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.cta-button.primary {
+  background: #cd3333;
+  color: #fff;
+}
+
+.cta-button.primary:hover {
+  background: #a82828;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.cta-button:not(.primary) {
+  background: #f8f8f8;
+  color: #333;
+  border: 2px solid #cd3333;
+}
+
+.cta-button:not(.primary):hover {
+  background: #cd3333;
+  color: #fff;
+}
+
+.intro-section {
+  background: linear-gradient(135deg, #f8f8f8 0%, #e8e8e8 100%);
+  padding: 1.5rem;
+  border-radius: 8px;
+  border-left: 4px solid #cd3333;
+  margin-bottom: 2rem;
+}
+
+.intro-section p {
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+  .beginner-cards {
+    grid-template-columns: 1fr;
+  }
+  
+  .rank-system {
+    grid-template-columns: 1fr;
+  }
+  
+  .mistakes-section {
+    grid-template-columns: 1fr;
+  }
+  
+  .cta-buttons {
+    flex-direction: column;
+  }
+  
+  .cta-button {
+    width: 100%;
+    text-align: center;
+  }
+}
+

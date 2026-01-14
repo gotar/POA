@@ -2,7 +2,6 @@
 
 require "builder"
 require "dry/view"
-require "slim"
 require "site/container"
 
 module Site

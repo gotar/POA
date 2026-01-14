@@ -170,6 +170,7 @@ nav .logo span {
   color: #333;
   font-weight: 500;
   transition: color 0.2s;
+  pointer-events: none;
 }
 
 .dropdown-label:hover {
@@ -780,6 +781,7 @@ ul.inline li a:hover {
   .dropdown-label {
     width: 100%;
     padding: 0.75rem 0;
+    pointer-events: auto;
   }
 
   .dropdown {

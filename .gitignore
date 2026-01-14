@@ -1,2 +1,7 @@
 .env
 /node_modules
+
+# OpenCode local configuration
+.opencode/.env
+.opencode/__pycache__/
+.opencode/*.log

@@ -761,8 +761,15 @@ ul.inline li a:hover {
     display: none;
   }
 
+  .nav-link.lang-switcher {
+    order: -1;
+    margin-left: auto;
+    padding: 0.5rem 0.75rem;
+  }
+
   .nav-toggle-label {
     display: block;
+    order: 0;
   }
 
   .nav-menu {
@@ -771,6 +778,7 @@ ul.inline li a:hover {
     width: 100%;
     padding: 0 0 1rem 0;
     align-items: flex-start;
+    order: 1;
   }
 
   #nav-toggle:checked ~ .nav-menu {
@@ -1062,6 +1070,76 @@ ul.inline li a:hover {
   
   .next-steps {
     padding: 1.5rem;
+  }
+}
+
+/* Yudansha (Black Belt) Page Styles */
+.yudansha-note {
+  background: #f0f7ff;
+  border-left: 4px solid #4a90e2;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  border-radius: 4px;
+}
+
+.yudansha-note p {
+  margin: 0 0 0.75rem 0;
+  line-height: 1.7;
+}
+
+.yudansha-note p:last-child {
+  margin-bottom: 0;
+}
+
+.yudansha-group {
+  margin: 2.5rem 0;
+}
+
+.yudansha-group h3 {
+  color: #cd3333;
+  font-size: 1.4rem;
+  border-bottom: 2px solid #cd3333;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.yudansha-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 1rem 0;
+}
+
+.yudansha-list li {
+  padding: 0.75rem 1rem;
+  margin: 0.5rem 0;
+  background: #f8f8f8;
+  border-left: 4px solid #cd3333;
+  border-radius: 4px;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.yudansha-list li:hover {
+  background: #f0f0f0;
+  transform: translateX(4px);
+}
+
+.memorial {
+  color: #666;
+  font-style: italic;
+  margin-left: 0.25rem;
+}
+
+@media (max-width: 768px) {
+  .yudansha-note {
+    padding: 1.25rem;
+  }
+  
+  .yudansha-group h3 {
+    font-size: 1.2rem;
+  }
+  
+  .yudansha-list li {
+    padding: 0.6rem 0.85rem;
   }
 }
 

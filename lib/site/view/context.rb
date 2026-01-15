@@ -124,6 +124,10 @@ module Site
           "Aikido lineage from O-Sensei Morihei Ueshiba through the Ueshiba family, Shihan Toyoda, Shihan Germanov to Polish Aikido Organization."
         when "en/events/2026.html"
           "Aikido events and training seminars in 2026. Schedule of workshops, examinations, and special training sessions organized by POA."
+        when "yudansha.html"
+          "Lista 24 czarnych pasów (yudansha) Polskiej Organizacji Aikido - instruktorzy z rangą od Shodan (1 Dan) do Godan (5 Dan). Wszyscy wyegzaminowani w linii Shihan Fumio Toyoda."
+        when "en/yudansha.html"
+          "List of 24 black belts (yudansha) from Polish Aikido Organization - instructors ranked from Shodan (1st Dan) to Godan (5th Dan). All examined in Shihan Fumio Toyoda's lineage."
         else
           page_title
         end
@@ -173,6 +177,10 @@ module Site
           "Aikido lineage, martial arts lineage, Ueshiba family, Toyoda lineage, Germanov lineage, POA lineage, traditional succession"
         when "en/events/2026.html"
           "Aikido events 2026, seminars, workshops, training schedule, martial arts events, POA calendar, Aikido gatherings"
+        when "yudansha.html"
+          "yudansha, czarne pasy POA, Aikido instruktorzy, Shodan, Nidan, Sandan, Yondan, Godan, Dan Aikido, instruktorzy Aikido Polska, stopnie mistrzowskie, Jacek Ostrowski, Oskar Szrajer, Wojciech Korwin-Piotrowski"
+        when "en/yudansha.html"
+          "yudansha, POA black belts, Aikido instructors, Shodan, Nidan, Sandan, Yondan, Godan, Dan ranks, Aikido instructors Poland, black belt instructors, Jacek Ostrowski, Oskar Szrajer, Wojciech Korwin-Piotrowski"
         else
           "Aikido, POA, Polska Organizacja Aikido, Polish Aikido Organization, Toyoda, Germanov"
         end

@@ -761,15 +761,8 @@ ul.inline li a:hover {
     display: none;
   }
 
-  .nav-link.lang-switcher {
-    order: -1;
-    margin-left: auto;
-    padding: 0.5rem 0.75rem;
-  }
-
   .nav-toggle-label {
     display: block;
-    order: 0;
   }
 
   .nav-menu {
@@ -778,7 +771,6 @@ ul.inline li a:hover {
     width: 100%;
     padding: 0 0 1rem 0;
     align-items: flex-start;
-    order: 1;
   }
 
   #nav-toggle:checked ~ .nav-menu {

@@ -52,6 +52,8 @@ module Site
       aikido_benefits_en_view: "views.en.aikido.benefits",
       lineage_view: "views.lineage",
       lineage_en_view: "views.en.lineage",
+      yudansha_view: "views.yudansha",
+      yudansha_en_view: "views.en.yudansha",
     ]
 
     def call(root)
@@ -61,6 +63,7 @@ module Site
       FileUtils.cp_r File.join(root, "assets/images"), File.join(export_dir, "assets/images")
       FileUtils.cp_r File.join(root, "assets/favicons/."), File.join(export_dir)
       FileUtils.cp File.join(root, "assets/style.css"), File.join(export_dir, "assets/style.css")
+      FileUtils.cp File.join(root, "assets/manifest.json"), File.join(export_dir, "assets/manifest.json")
 
       FileUtils.cp File.join(root, "assets/.nojekyll"), File.join(export_dir, ".nojekyll")
       FileUtils.cp File.join(root, "assets/CNAME"), File.join(export_dir, "CNAME")
@@ -107,6 +110,8 @@ module Site
       render export_dir, "en/aikido/beginners.html", aikido_beginners_en_view
       render export_dir, "lineage.html", lineage_view
       render export_dir, "en/lineage.html", lineage_en_view
+      render export_dir, "yudansha.html", yudansha_view
+      render export_dir, "en/yudansha.html", yudansha_en_view
 
       Success(root)
     end

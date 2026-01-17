@@ -2,7 +2,8 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   width: 100%;
   height: 100%;
   margin: 0;
@@ -23,14 +24,32 @@ body {
   line-height: 1.5;
 }
 
-h1, h2, h3, h4, h5, h6, strong, b {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong,
+b {
   font-weight: 600;
 }
 
-h1 { font-size: 2em; }
-h2 { font-size: 1.5em; }
-h3 { font-size: 1.17em; }
-h4 { font-size: 1em; }
+h1 {
+  font-size: 2em;
+}
+
+h2 {
+  font-size: 1.5em;
+}
+
+h3 {
+  font-size: 1.17em;
+}
+
+h4 {
+  font-size: 1em;
+}
 
 a {
   color: #333;
@@ -69,6 +88,8 @@ nav {
 
 nav .logo {
   display: flex;
+  flex: 1;
+
   align-items: center;
   gap: 1rem;
   text-decoration: none;
@@ -148,6 +169,7 @@ nav .logo span {
   border-radius: 4px;
   font-weight: 600;
   color: #cd3333;
+  max-width: fit-content;
 }
 
 .nav-link.lang-switcher:hover {
@@ -205,7 +227,7 @@ nav .logo span {
 }
 
 .dropdown:hover .dropdown-content,
-.dropdown-toggle:checked ~ .dropdown-content {
+.dropdown-toggle:checked~.dropdown-content {
   display: block;
 }
 
@@ -339,14 +361,14 @@ dd {
   background: white;
   padding: 2rem;
   border-radius: 8px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
   border-left: 4px solid #cd3333;
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .contact-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
 .contact-card h3 {
@@ -437,7 +459,7 @@ dd {
   border-radius: 8px;
   overflow: hidden;
   margin: 2rem 0;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
 .map-container iframe {
@@ -513,7 +535,7 @@ dd {
 .hero-title {
   font-size: 3rem;
   margin-bottom: 0.5rem;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .hero-description {
@@ -540,7 +562,7 @@ dd {
 
 .hero-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .hero-btn.primary {
@@ -567,14 +589,14 @@ dd {
   border-radius: 8px;
   text-decoration: none;
   color: #333;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   border-left: 4px solid #cd3333;
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .quick-nav-item:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
   color: #333;
 }
 
@@ -773,7 +795,7 @@ ul.inline li a:hover {
     align-items: flex-start;
   }
 
-  #nav-toggle:checked ~ .nav-menu {
+  #nav-toggle:checked~.nav-menu {
     display: flex;
   }
 
@@ -844,7 +866,8 @@ ul.inline li a:hover {
     flex-direction: column;
   }
 
-  dt, dd {
+  dt,
+  dd {
     width: 100%;
   }
 
@@ -953,7 +976,7 @@ ul.inline li a:hover {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
-  
+
   .principle-card {
     padding: 1.25rem;
   }
@@ -1055,13 +1078,83 @@ ul.inline li a:hover {
   .exercise-card {
     padding: 1.25rem;
   }
-  
+
   .practice-guidelines {
     padding: 1.25rem;
   }
-  
+
   .next-steps {
     padding: 1.5rem;
+  }
+}
+
+/* Yudansha (Black Belt) Page Styles */
+.yudansha-note {
+  background: #f0f7ff;
+  border-left: 4px solid #4a90e2;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  border-radius: 4px;
+}
+
+.yudansha-note p {
+  margin: 0 0 0.75rem 0;
+  line-height: 1.7;
+}
+
+.yudansha-note p:last-child {
+  margin-bottom: 0;
+}
+
+.yudansha-group {
+  margin: 2.5rem 0;
+}
+
+.yudansha-group h3 {
+  color: #cd3333;
+  font-size: 1.4rem;
+  border-bottom: 2px solid #cd3333;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.yudansha-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 1rem 0;
+}
+
+.yudansha-list li {
+  padding: 0.75rem 1rem;
+  margin: 0.5rem 0;
+  background: #f8f8f8;
+  border-left: 4px solid #cd3333;
+  border-radius: 4px;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.yudansha-list li:hover {
+  background: #f0f0f0;
+  transform: translateX(4px);
+}
+
+.memorial {
+  color: #666;
+  font-style: italic;
+  margin-left: 0.25rem;
+}
+
+@media (max-width: 768px) {
+  .yudansha-note {
+    padding: 1.25rem;
+  }
+
+  .yudansha-group h3 {
+    font-size: 1.2rem;
+  }
+
+  .yudansha-list li {
+    padding: 0.6rem 0.85rem;
   }
 }
 
@@ -1283,7 +1376,7 @@ ul.inline li a:hover {
 .cta-button.primary:hover {
   background: #a82828;
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .cta-button:not(.primary) {
@@ -1315,22 +1408,21 @@ ul.inline li a:hover {
   .beginner-cards {
     grid-template-columns: 1fr;
   }
-  
+
   .rank-system {
     grid-template-columns: 1fr;
   }
-  
+
   .mistakes-section {
     grid-template-columns: 1fr;
   }
-  
+
   .cta-buttons {
     flex-direction: column;
   }
-  
+
   .cta-button {
     width: 100%;
     text-align: center;
   }
 }
-

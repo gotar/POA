@@ -785,6 +785,14 @@ ul.inline li a:hover {
 
   .nav-toggle-label {
     display: block;
+    order: 2;
+  }
+
+  .nav-link.lang-switcher {
+    order: 1;
+    width: auto;
+    margin-right: 1rem;
+    padding: 0.5rem 0.75rem;
   }
 
   .nav-menu {
@@ -793,6 +801,7 @@ ul.inline li a:hover {
     width: 100%;
     padding: 0 0 1rem 0;
     align-items: flex-start;
+    order: 10;
   }
 
   #nav-toggle:checked~.nav-menu {

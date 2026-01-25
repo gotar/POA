@@ -64,6 +64,8 @@ module Site
       FileUtils.cp_r File.join(root, "assets/favicons/."), File.join(export_dir)
       FileUtils.cp File.join(root, "assets/style.css"), File.join(export_dir, "assets/style.css")
       FileUtils.cp File.join(root, "assets/manifest.json"), File.join(export_dir, "assets/manifest.json")
+      FileUtils.cp File.join(root, "assets/robots.txt"), File.join(export_dir, "robots.txt")
+      FileUtils.cp File.join(root, "assets/sitemap.xml"), File.join(export_dir, "sitemap.xml")
 
       FileUtils.cp File.join(root, "assets/.nojekyll"), File.join(export_dir, ".nojekyll")
       FileUtils.cp File.join(root, "assets/CNAME"), File.join(export_dir, "CNAME")
@@ -120,7 +122,7 @@ module Site
 
     def render(export_dir, path, view, **input)
       base_context = Site::Container["view.context"]
-      processed_path = path.sub(%r{/index.html$}, "")
+      processed_path = path.sub(%r{(?:^|/)index.html$}, "")
       context = base_context.new(current_path: processed_path)
 
       export.(export_dir, path, view.(context: context, **input))

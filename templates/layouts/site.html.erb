@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     
-    <meta name="viewport" content="width=device-width, initial-scale=0.8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="keywords" content="<%= page_keywords %>" />
     <meta name="description" content="<%= page_description %>" />
     <meta name="author" content="Gotar Oskar Szrajer - http://gotar.info" />
@@ -15,6 +15,36 @@
     <meta property="og:type" content="website" />
     <meta property="og:url" content="<%= canonical_url %>" />
     <meta property="og:image" content="<%= site_url %><%= asset_path('images/toyoda.svg') %>" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "<%= site_name %>",
+        "url": "<%= site_url %>",
+        "logo": "<%= site_url %><%= asset_path('images/toyoda.svg') %>",
+        "sameAs": [
+          "https://www.facebook.com/aikidoorganization/",
+          "https://www.facebook.com/dojogdynia/",
+          "https://www.instagram.com/sesshinkan_aikido/"
+        ],
+        "contactPoint": [
+          {
+            "@type": "ContactPoint",
+            "telephone": "+48 608-019-078",
+            "contactType": "general inquiries",
+            "areaServed": "PL",
+            "availableLanguage": ["pl", "en"]
+          }
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "ul. Slowackiego 50/22",
+          "addressLocality": "Raciborz",
+          "postalCode": "47-400",
+          "addressCountry": "PL"
+        }
+      }
+    </script>
     
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />

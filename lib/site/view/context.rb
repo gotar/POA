@@ -178,9 +178,9 @@ module Site
       def default_keywords_for_path(path)
         case path
         when "index.html", "", nil
-          "Aikido Gdynia, Aikido Trójmiasto, POA, Polska Organizacja Aikido, Sesshinkan Dojo, Toyoda, Germanov, Oskar Szrajer, sztuki walki Gdynia, samoobrona Gdynia, treningi Aikido"
+          "Aikido Polska, Aikido Gdynia, Aikido Trójmiasto, POA, Polska Organizacja Aikido, Sesshinkan Dojo, Toyoda, Germanov, Oskar Szrajer, sztuki walki Gdynia, samoobrona Gdynia, treningi Aikido, dojo Gdynia"
         when "en", "en/"
-          "Aikido Gdynia, Aikido Poland, POA, Polish Aikido Organization, Sesshinkan Dojo, Toyoda, Germanov, Oskar Szrajer, martial arts Gdynia, self-defense training, Aikido classes"
+          "Aikido Poland, Aikido Gdynia, Aikido Polish, POA, Polish Aikido Organization, Sesshinkan Dojo, Toyoda, Germanov, Oskar Szrajer, martial arts Gdynia, self-defense training, Aikido classes, dojo Gdynia"
         when "kontakt.html"
           "kontakt aikido, POA, Sesshinkan Dojo Gdynia, treningi Aikido Gdynia, telefon, adres, plan zajec"
         when "aikido/czym_jest.html"

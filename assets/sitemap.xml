@@ -2,134 +2,278 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://aikido-polska.eu/</loc>
-  </url>
-  <url>
-    <loc>https://aikido-polska.eu/kontakt.html</loc>
-  </url>
-  <url>
-    <loc>https://aikido-polska.eu/aikido/czym_jest.html</loc>
-  </url>
-  <url>
-    <loc>https://aikido-polska.eu/aikido/historia.html</loc>
-  </url>
-  <url>
-    <loc>https://aikido-polska.eu/aikido/korzysci.html</loc>
-  </url>
-  <url>
-    <loc>https://aikido-polska.eu/aikido/dla_poczatkujacych.html</loc>
-  </url>
-  <url>
-    <loc>https://aikido-polska.eu/aikido/aiki_taiso.html</loc>
-  </url>
-  <url>
-    <loc>https://aikido-polska.eu/aikido/reishiki.html</loc>
-  </url>
-  <url>
-    <loc>https://aikido-polska.eu/slowniczek.html</loc>
-  </url>
-  <url>
-    <loc>https://aikido-polska.eu/wymagania_egzaminacyjne/kyu.html</loc>
-  </url>
-  <url>
-    <loc>https://aikido-polska.eu/wymagania_egzaminacyjne/dan.html</loc>
-  </url>
-  <url>
-    <loc>https://aikido-polska.eu/lineage.html</loc>
-  </url>
-  <url>
-    <loc>https://aikido-polska.eu/yudansha.html</loc>
-  </url>
-  <url>
-    <loc>https://aikido-polska.eu/biografie/o-sensei.html</loc>
-  </url>
-  <url>
-    <loc>https://aikido-polska.eu/biografie/kisshomaru.html</loc>
-  </url>
-  <url>
-    <loc>https://aikido-polska.eu/biografie/moriteru.html</loc>
-  </url>
-  <url>
-    <loc>https://aikido-polska.eu/biografie/mitsuteru.html</loc>
-  </url>
-  <url>
-    <loc>https://aikido-polska.eu/biografie/toyoda.html</loc>
-  </url>
-  <url>
-    <loc>https://aikido-polska.eu/biografie/germanov.html</loc>
-  </url>
-  <url>
-    <loc>https://aikido-polska.eu/biografie/ostrowski.html</loc>
-  </url>
-  <url>
-    <loc>https://aikido-polska.eu/biografie/szrajer.html</loc>
-  </url>
-  <url>
-    <loc>https://aikido-polska.eu/wydarzenia/2026.html</loc>
+    <priority>1.0</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-01-30</lastmod>
   </url>
   <url>
     <loc>https://aikido-polska.eu/en</loc>
+    <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-01-30</lastmod>
+  </url>
+  <url>
+    <loc>https://aikido-polska.eu/gdynia.html</loc>
+    <priority>1.0</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-01-30</lastmod>
+  </url>
+  <url>
+    <loc>https://aikido-polska.eu/en/gdynia.html</loc>
+    <priority>0.9</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-01-30</lastmod>
+  </url>
+  <url>
+    <loc>https://aikido-polska.eu/kontakt.html</loc>
+    <priority>0.9</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-01-30</lastmod>
   </url>
   <url>
     <loc>https://aikido-polska.eu/en/contact.html</loc>
+    <priority>0.9</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-01-30</lastmod>
+  </url>
+  <url>
+    <loc>https://aikido-polska.eu/aikido/czym_jest.html</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-01-30</lastmod>
   </url>
   <url>
     <loc>https://aikido-polska.eu/en/aikido/what_is.html</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-01-30</lastmod>
   </url>
   <url>
-    <loc>https://aikido-polska.eu/en/aikido/history.html</loc>
-  </url>
-  <url>
-    <loc>https://aikido-polska.eu/en/aikido/benefits.html</loc>
+    <loc>https://aikido-polska.eu/aikido/dla_poczatkujacych.html</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-01-30</lastmod>
   </url>
   <url>
     <loc>https://aikido-polska.eu/en/aikido/beginners.html</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-01-30</lastmod>
+  </url>
+  <url>
+    <loc>https://aikido-polska.eu/aikido/historia.html</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-01-30</lastmod>
+  </url>
+  <url>
+    <loc>https://aikido-polska.eu/en/aikido/history.html</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-01-30</lastmod>
+  </url>
+  <url>
+    <loc>https://aikido-polska.eu/aikido/korzysci.html</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-01-30</lastmod>
+  </url>
+  <url>
+    <loc>https://aikido-polska.eu/en/aikido/benefits.html</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-01-30</lastmod>
+  </url>
+  <url>
+    <loc>https://aikido-polska.eu/aikido/aiki_taiso.html</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-01-30</lastmod>
   </url>
   <url>
     <loc>https://aikido-polska.eu/en/aikido/aiki_taiso.html</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-01-30</lastmod>
+  </url>
+  <url>
+    <loc>https://aikido-polska.eu/aikido/reishiki.html</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-01-30</lastmod>
   </url>
   <url>
     <loc>https://aikido-polska.eu/en/aikido/reishiki.html</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-01-30</lastmod>
   </url>
   <url>
-    <loc>https://aikido-polska.eu/en/glossary.html</loc>
-  </url>
-  <url>
-    <loc>https://aikido-polska.eu/en/requirements/kyu.html</loc>
-  </url>
-  <url>
-    <loc>https://aikido-polska.eu/en/requirements/dan.html</loc>
+    <loc>https://aikido-polska.eu/lineage.html</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-01-30</lastmod>
   </url>
   <url>
     <loc>https://aikido-polska.eu/en/lineage.html</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-01-30</lastmod>
+  </url>
+  <url>
+    <loc>https://aikido-polska.eu/yudansha.html</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-01-30</lastmod>
   </url>
   <url>
     <loc>https://aikido-polska.eu/en/yudansha.html</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-01-30</lastmod>
   </url>
   <url>
-    <loc>https://aikido-polska.eu/en/biographies/o-sensei.html</loc>
+    <loc>https://aikido-polska.eu/wymagania_egzaminacyjne/kyu.html</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-01-30</lastmod>
   </url>
   <url>
-    <loc>https://aikido-polska.eu/en/biographies/kisshomaru.html</loc>
+    <loc>https://aikido-polska.eu/en/requirements/kyu.html</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-01-30</lastmod>
   </url>
   <url>
-    <loc>https://aikido-polska.eu/en/biographies/moriteru.html</loc>
+    <loc>https://aikido-polska.eu/wymagania_egzaminacyjne/dan.html</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-01-30</lastmod>
   </url>
   <url>
-    <loc>https://aikido-polska.eu/en/biographies/mitsuteru.html</loc>
+    <loc>https://aikido-polska.eu/en/requirements/dan.html</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-01-30</lastmod>
   </url>
   <url>
-    <loc>https://aikido-polska.eu/en/biographies/toyoda.html</loc>
+    <loc>https://aikido-polska.eu/slowniczek.html</loc>
+    <priority>0.5</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-01-30</lastmod>
   </url>
   <url>
-    <loc>https://aikido-polska.eu/en/biographies/germanov.html</loc>
+    <loc>https://aikido-polska.eu/en/glossary.html</loc>
+    <priority>0.5</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-01-30</lastmod>
   </url>
   <url>
-    <loc>https://aikido-polska.eu/en/biographies/ostrowski.html</loc>
-  </url>
-  <url>
-    <loc>https://aikido-polska.eu/en/biographies/szrajer.html</loc>
+    <loc>https://aikido-polska.eu/wydarzenia/2026.html</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-01-30</lastmod>
   </url>
   <url>
     <loc>https://aikido-polska.eu/en/events/2026.html</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-01-30</lastmod>
+  </url>
+  <url>
+    <loc>https://aikido-polska.eu/biografie/toyoda.html</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-01-30</lastmod>
+  </url>
+  <url>
+    <loc>https://aikido-polska.eu/en/biographies/toyoda.html</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-01-30</lastmod>
+  </url>
+  <url>
+    <loc>https://aikido-polska.eu/biografie/o-sensei.html</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-01-30</lastmod>
+  </url>
+  <url>
+    <loc>https://aikido-polska.eu/en/biographies/o-sensei.html</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-01-30</lastmod>
+  </url>
+  <url>
+    <loc>https://aikido-polska.eu/biografie/germanov.html</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-01-30</lastmod>
+  </url>
+  <url>
+    <loc>https://aikido-polska.eu/en/biographies/germanov.html</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-01-30</lastmod>
+  </url>
+  <url>
+    <loc>https://aikido-polska.eu/biografie/szrajer.html</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-01-30</lastmod>
+  </url>
+  <url>
+    <loc>https://aikido-polska.eu/en/biographies/szrajer.html</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-01-30</lastmod>
+  </url>
+  <url>
+    <loc>https://aikido-polska.eu/biografie/ostrowski.html</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-01-30</lastmod>
+  </url>
+  <url>
+    <loc>https://aikido-polska.eu/en/biographies/ostrowski.html</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-01-30</lastmod>
+  </url>
+  <url>
+    <loc>https://aikido-polska.eu/biografie/kisshomaru.html</loc>
+    <priority>0.5</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-01-30</lastmod>
+  </url>
+  <url>
+    <loc>https://aikido-polska.eu/en/biographies/kisshomaru.html</loc>
+    <priority>0.5</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-01-30</lastmod>
+  </url>
+  <url>
+    <loc>https://aikido-polska.eu/biografie/moriteru.html</loc>
+    <priority>0.5</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-01-30</lastmod>
+  </url>
+  <url>
+    <loc>https://aikido-polska.eu/en/biographies/moriteru.html</loc>
+    <priority>0.5</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-01-30</lastmod>
+  </url>
+  <url>
+    <loc>https://aikido-polska.eu/biografie/mitsuteru.html</loc>
+    <priority>0.5</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-01-30</lastmod>
+  </url>
+  <url>
+    <loc>https://aikido-polska.eu/en/biographies/mitsuteru.html</loc>
+    <priority>0.5</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-01-30</lastmod>
   </url>
 </urlset>

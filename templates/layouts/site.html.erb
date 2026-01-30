@@ -10,6 +10,11 @@
     
     <link rel="canonical" href="<%= canonical_url %>" />
     
+    <!-- Hreflang tags for bilingual SEO -->
+    <link rel="alternate" hreflang="pl" href="<%= site_url %>" />
+    <link rel="alternate" hreflang="en" href="<%= site_url %>/en" />
+    <link rel="alternate" hreflang="x-default" href="<%= site_url %>" />
+    
     <meta property="og:title" content="<%= page_title %>" />
     <meta property="og:description" content="<%= page_description %>" />
     <meta property="og:type" content="website" />
@@ -42,6 +47,44 @@
           "addressLocality": "Raciborz",
           "postalCode": "47-400",
           "addressCountry": "PL"
+        }
+      }
+    </script>
+    
+    <!-- LocalBusiness Schema for Gdynia Dojo - SEO for "Aikido Gdynia" -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SportsActivityLocation",
+        "name": "Sesshinkan Dojo Gdynia",
+        "alternateName": "Aikido Gdynia - Sesshinkan Dojo",
+        "description": "Dojo Aikido w Gdyni - treningi Aikido Polska w linii Shihan Fumio Toyody. Zapraszamy na pierwszy trening w Gdyni!",
+        "url": "<%= site_url %>/kontakt.html",
+        "telephone": "+48 608-019-078",
+        "email": "aikido@o-sensei.pl",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "ul. Komandora Podporucznika Jana Grudzińskiego 1",
+          "addressLocality": "Gdynia",
+          "postalCode": "81-103",
+          "addressCountry": "PL",
+          "addressRegion": "Pomorskie"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "54.5441767",
+          "longitude": "18.5432137"
+        },
+        "openingHours": [
+          "Mo 20:00-21:30",
+          "Fr 20:00-21:30"
+        ],
+        "priceRange": "0",
+        "image": "<%= site_url %><%= asset_path('images/toyoda.svg') %>",
+        "parentOrganization": {
+          "@type": "Organization",
+          "name": "Polska Organizacja Aikido",
+          "url": "<%= site_url %>"
         }
       }
     </script>

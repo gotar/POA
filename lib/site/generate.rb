@@ -54,6 +54,10 @@ module Site
       lineage_en_view: "views.en.lineage",
       yudansha_view: "views.yudansha",
       yudansha_en_view: "views.en.yudansha",
+      gdynia_view: "views.gdynia",
+      gdynia_en_view: "views.en.gdynia",
+      faq_view: "views.faq",
+      faq_en_view: "views.en.faq",
     ]
 
     def call(root)
@@ -114,6 +118,10 @@ module Site
       render export_dir, "en/lineage.html", lineage_en_view
       render export_dir, "yudansha.html", yudansha_view
       render export_dir, "en/yudansha.html", yudansha_en_view
+      render export_dir, "gdynia.html", gdynia_view
+      render export_dir, "en/gdynia.html", gdynia_en_view
+      render export_dir, "faq.html", faq_view
+      render export_dir, "en/faq.html", faq_en_view
 
       Success(root)
     end

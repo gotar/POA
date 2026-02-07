@@ -4,6 +4,11 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["chatsPanel", "todosPanel", "notesPanel", "knowledgePanel", "scheduledPanel", "chatsTab", "todosTab", "notesTab", "knowledgeTab", "scheduledTab"]
 
+  connect() {
+    // On mobile, all panels start hidden. Default to showing chats.
+    this.showChats()
+  }
+
   showChats() {
     this.hideAll()
     if (this.hasChatsPanelTarget) {

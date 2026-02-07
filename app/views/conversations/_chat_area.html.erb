@@ -5,23 +5,52 @@
   <%= render "conversations/conversation", project: @project, conversation: @new_conversation %>
 <% else %>
   <!-- Welcome / New Chat Screen -->
-  <div class="flex-1 flex flex-col items-center justify-center p-8">
-    <div class="text-center max-w-md">
+  <div class="flex-1 flex flex-col items-stretch justify-start p-6 sm:p-8 overflow-y-auto">
+    <div class="text-center max-w-md mx-auto">
       <div class="w-20 h-20 rounded-2xl flex items-center justify-center text-4xl mx-auto mb-6" style="background-color: <%= @project.color %>20; border: 3px solid <%= @project.color %>">
         <%= @project.icon || '🤖' %>
       </div>
 
       <h2 class="text-2xl font-bold text-gray-100 mb-2">Start a Conversation</h2>
-      <p class="text-gray-400 mb-8">Chat with AI about your project. Your TODOs and context notes will be included automatically.</p>
+      <p class="text-gray-400 mb-6">Chat with AI about your project. Your TODOs and context notes will be included automatically.</p>
 
-      <%= link_to "New Chat",
-          project_conversations_path(@project),
-          data: { turbo_method: :post },
-          class: "bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-xl font-medium transition-colors inline-flex items-center gap-2" %>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <%= link_to "New Chat",
+            project_conversations_path(@project),
+            data: { turbo_method: :post },
+            class: "bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-xl font-medium transition-colors inline-flex items-center justify-center gap-2" %>
+
+        <% if @conversations.any? %>
+          <%= link_to "Open Latest",
+              [@project, @conversations.first],
+              class: "bg-gray-700 hover:bg-gray-600 text-gray-100 px-6 py-3 rounded-xl font-medium transition-colors inline-flex items-center justify-center gap-2" %>
+        <% end %>
+      </div>
     </div>
 
+    <% if @conversations.any? %>
+      <div class="max-w-md mx-auto w-full mt-8">
+        <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-3">Recent Chats</h3>
+        <div class="space-y-2">
+          <% @conversations.each do |conv| %>
+            <%= link_to [@project, conv], class: "block bg-gray-800 hover:bg-gray-750 border border-gray-700 hover:border-gray-600 rounded-xl px-4 py-3" do %>
+              <div class="flex items-center justify-between gap-3">
+                <div class="min-w-0">
+                  <div class="font-medium text-gray-100 truncate"><%= conv.title %></div>
+                  <div class="text-xs text-gray-500"><%= time_ago_in_words(conv.updated_at) %> ago</div>
+                </div>
+                <svg class="w-5 h-5 text-gray-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+
     <!-- Quick Stats -->
-    <div class="mt-12 grid grid-cols-3 gap-6 text-center">
+    <div class="mt-10 grid grid-cols-3 gap-4 text-center">
       <div class="bg-gray-800 rounded-xl p-4 border border-gray-700">
         <div class="text-2xl font-bold text-purple-400"><%= @project.conversations.count %></div>
         <div class="text-sm text-gray-400">Chats</div>

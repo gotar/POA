@@ -1,11 +1,15 @@
 // Service Worker for Gotar Bot PWA
-const CACHE_NAME = 'gotar-bot-v2';
+const CACHE_NAME = 'gotar-bot-v3';
 const urlsToCache = [
   '/',
   '/manifest.json',
   '/icon-192.png',
   '/icon-512.png',
   '/apple-touch-icon.png',
+  '/apple-touch-icon-180x180.png',
+  '/apple-touch-icon-167x167.png',
+  '/apple-touch-icon-152x152.png',
+  '/apple-touch-icon-120x120.png',
   '/favicon-32.png',
   '/favicon-16.png'
 ];

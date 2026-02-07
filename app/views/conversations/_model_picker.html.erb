@@ -4,8 +4,9 @@
                 data: { turbo_frame: "model_picker" },
                 class: "flex items-center gap-2" do |f| %>
 
-    <% provider = conversation.pi_provider.presence || ENV.fetch("PI_PROVIDER", "opencode") %>
-    <% model = conversation.pi_model.presence || ENV.fetch("PI_MODEL", "minimax-m2.1-free") %>
+    <% defaults = PiModelsService.default_provider_model %>
+    <% provider = conversation.pi_provider.presence || defaults[:provider] %>
+    <% model = conversation.pi_model.presence || defaults[:model] %>
     <% selected = "#{provider}:#{model}" %>
 
     <label class="text-xs text-gray-400" for="conversation_model_select">Model</label>
@@ -14,7 +15,7 @@
             name="conversation[selected_model]"
             class="bg-gray-700 border border-gray-600 rounded-lg px-2 py-1 text-xs text-gray-100 focus:outline-none focus:ring-1 focus:ring-purple-500"
             onchange="this.form.requestSubmit()">
-      <% Rails.configuration.pi_models.each do |m| %>
+      <% PiModelsService.models.each do |m| %>
         <% value = "#{m['provider']}:#{m['model']}" %>
         <option value="<%= value %>" <%= "selected" if value == selected %>>
           <%= m['label'] %>

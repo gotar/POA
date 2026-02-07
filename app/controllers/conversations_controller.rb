@@ -17,10 +17,8 @@ class ConversationsController < ApplicationController
 
     # Defaults for model picker (persist on first view so subsequent jobs use it)
     if @conversation.pi_provider.blank? || @conversation.pi_model.blank?
-      @conversation.update_columns(
-        pi_provider: ENV.fetch("PI_PROVIDER", "opencode"),
-        pi_model: ENV.fetch("PI_MODEL", "minimax-m2.1-free")
-      )
+      defaults = PiModelsService.default_provider_model
+      @conversation.update_columns(pi_provider: defaults[:provider], pi_model: defaults[:model])
     end
 
     # Load project context for sidebar

@@ -63,7 +63,7 @@ class MessagesController < ApplicationController
 
   def process_with_pi
     # Start streaming response with placeholder content
-    @assistant_message = @conversation.messages.create!(role: "assistant", content: "...")
+    @assistant_message = @conversation.messages.create!(role: "assistant", content: "")
 
     # Render the user message immediately
     render turbo_stream: [

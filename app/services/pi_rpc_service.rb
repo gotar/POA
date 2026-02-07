@@ -35,13 +35,17 @@ class PiRpcService
 
       Rails.logger.info "Starting pi RPC subprocess..."
 
-      provider = @provider.presence || ENV.fetch("PI_PROVIDER", "opencode")
-      model = @model.presence || ENV.fetch("PI_MODEL", "minimax-m2.1-free")
+      provider = @provider.presence || ENV["PI_PROVIDER"].presence
+      model = @model.presence || ENV["PI_MODEL"].presence
 
-      # Start pi in RPC mode (explicit provider/model to avoid picking up wrong defaults)
-      @stdin, @stdout, @stderr, @wait_thread = Open3.popen3(
-        "pi", "--provider", provider, "--model", model, "--mode", "rpc", "--no-session"
-      )
+      # Start pi in RPC mode.
+      # If provider/model are not explicitly provided, we let pi use its own settings.json defaults.
+      cmd = ["pi"]
+      cmd += ["--provider", provider] if provider.present?
+      cmd += ["--model", model] if model.present?
+      cmd += ["--mode", "rpc", "--no-session"]
+
+      @stdin, @stdout, @stderr, @wait_thread = Open3.popen3(*cmd)
 
       @pid = @wait_thread.pid
       Rails.logger.info "Pi RPC started with PID #{@pid}"
@@ -148,14 +152,41 @@ class PiRpcService
   # Read a single response (blocking)
   def read_response
     Timeout.timeout(RPC_TIMEOUT) do
-      line = @stdout.gets
-      return nil unless line
+      loop do
+        line = @stdout.gets
+        return nil unless line
 
-      line = line.strip
-      return nil if line.empty?
+        # Clean noisy terminal output and try to extract JSON.
+        line = line.gsub(/\x07/, "")
+        json_start = line.index("{")
+        next unless json_start
 
-      Rails.logger.debug "Received from pi: #{line}"
-      JSON.parse(line)
+        candidate = line[json_start..].to_s.strip
+        next if candidate.empty?
+
+        Rails.logger.debug "Received from pi: #{candidate}"
+
+        begin
+          parsed = JSON.parse(candidate)
+        rescue JSON::ParserError
+          cleaned = candidate.gsub(/\x1b\]777;[^,]*,/, "")
+                             .gsub(/\e\]777;[^,]*,/, "")
+                             .gsub(/\x1b\[[0-9;]*[mGKF]/, "")
+                             .gsub(/\e\[[0-9;]*[mGKF]/, "")
+                             .strip
+          begin
+            parsed = JSON.parse(cleaned)
+          rescue JSON::ParserError
+            Rails.logger.debug "Pi RPC: skipping non-JSON output"
+            next
+          end
+        end
+
+        # For non-stream RPC commands we only want the command response.
+        next unless parsed.is_a?(Hash) && parsed["type"].to_s == "response"
+
+        return parsed
+      end
     end
   rescue Timeout::Error
     raise TimeoutError, "RPC response timeout"

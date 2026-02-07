@@ -8,6 +8,9 @@ class ScheduledJob < ApplicationRecord
   validates :prompt_template, presence: true
   validates :status, inclusion: { in: %w[pending running completed failed paused] }, allow_nil: true
 
+  validates :pi_provider, length: { maximum: 100 }, allow_blank: true
+  validates :pi_model, length: { maximum: 200 }, allow_blank: true
+
   before_save :update_next_run_at
 
   # Scopes

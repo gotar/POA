@@ -160,7 +160,10 @@ class ModelPickerController extends Controller {
     if (this.hasInputTarget) this.inputTarget.value = label
 
     this.close()
-    this.element.requestSubmit()
+
+    if (this.autoSubmitValue) {
+      this.element.requestSubmit()
+    }
   }
 
   _score(tokens, hay) {
@@ -205,6 +208,7 @@ ModelPickerController.values = {
   selected: String,
   selectedLabel: String,
   limit: { type: Number, default: 30 },
+  autoSubmit: { type: Boolean, default: true },
 }
 
 export default ModelPickerController

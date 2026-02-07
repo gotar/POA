@@ -90,6 +90,27 @@ class ProjectsController < ApplicationController
     }
   end
 
+  # GET /projects/:id/available_models
+  def available_models
+    @project = Project.find(params[:id])
+
+    q = params[:q].to_s.strip.downcase
+    limit = params[:limit].to_i
+    limit = 50 if limit <= 0
+    limit = 200 if limit > 200
+
+    models = PiModelsService.models
+
+    if q.present?
+      models = models.select do |m|
+        s = "#{m['label']} #{m['provider']} #{m['model']}".downcase
+        s.include?(q)
+      end
+    end
+
+    render json: { ok: true, models: models.first(limit) }
+  end
+
   private
 
   def project_params

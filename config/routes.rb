@@ -72,6 +72,9 @@ Rails.application.routes.draw do
 
     # Project context for AI
     get :context, on: :member
+
+    # Models from pi (for pickers)
+    get :available_models, on: :member
   end
 
   # PWA routes (using custom manifest and service worker)

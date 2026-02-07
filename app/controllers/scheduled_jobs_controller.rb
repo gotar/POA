@@ -17,6 +17,10 @@ class ScheduledJobsController < ApplicationController
   # GET /projects/:project_id/scheduled_jobs/new
   def new
     @scheduled_job = @project.scheduled_jobs.build
+
+    defaults = PiModelsService.default_provider_model
+    @scheduled_job.pi_provider ||= defaults[:provider]
+    @scheduled_job.pi_model ||= defaults[:model]
   end
 
   # GET /projects/:project_id/scheduled_jobs/:id/edit
@@ -96,6 +100,15 @@ class ScheduledJobsController < ApplicationController
   end
 
   def scheduled_job_params
-    params.expect(scheduled_job: %i[name cron_expression prompt_template active])
+    permitted = params.expect(scheduled_job: %i[name cron_expression prompt_template active selected_model pi_provider pi_model])
+
+    # Prefer combined selected_model from the UI combobox
+    if permitted[:selected_model].present?
+      provider, model = permitted[:selected_model].to_s.split(":", 2)
+      permitted[:pi_provider] = provider
+      permitted[:pi_model] = model
+    end
+
+    permitted.except(:selected_model)
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_02_07_204000) do
+ActiveRecord::Schema[8.1].define(version: 2026_02_07_213000) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
@@ -126,11 +126,15 @@ ActiveRecord::Schema[8.1].define(version: 2026_02_07_204000) do
     t.datetime "last_run_at"
     t.string "name"
     t.datetime "next_run_at"
+    t.string "pi_model"
+    t.string "pi_provider"
     t.integer "project_id", null: false
     t.text "prompt_template"
     t.string "status"
     t.datetime "updated_at", null: false
     t.index ["next_run_at"], name: "index_scheduled_jobs_on_next_run_at"
+    t.index ["pi_model"], name: "index_scheduled_jobs_on_pi_model"
+    t.index ["pi_provider"], name: "index_scheduled_jobs_on_pi_provider"
     t.index ["project_id", "active"], name: "index_scheduled_jobs_on_project_id_and_active"
     t.index ["project_id"], name: "index_scheduled_jobs_on_project_id"
     t.index ["status"], name: "index_scheduled_jobs_on_status"

@@ -57,21 +57,21 @@
       <div class="bg-gray-800 border border-gray-700 rounded-xl p-4">
         <div class="flex items-center justify-between gap-3 flex-wrap">
           <h2 class="text-sm font-semibold text-gray-200">Search (QMD)</h2>
-          <div class="text-xs text-gray-500">Hybrid search with reranking: <code class="text-gray-300">query</code></div>
+          <div class="text-xs text-gray-500">Default is fast lexical search: <code class="text-gray-300">search</code> (BM25)</div>
         </div>
 
         <%= form_with url: knowledge_search_path, method: :get, data: { turbo_frame: "kb_search" }, class: "mt-3 flex flex-col sm:flex-row gap-2" do %>
           <input name="q" value="" placeholder="Search your knowledge…" class="flex-1 bg-gray-700 border border-gray-600 rounded-lg px-3 py-2 text-sm text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-purple-500" />
           <select name="mode" class="bg-gray-700 border border-gray-600 rounded-lg px-3 py-2 text-sm text-gray-100">
-            <option value="query">query (hybrid)</option>
-            <option value="search">search (BM25)</option>
+            <option value="search" selected>search (BM25, fast)</option>
             <option value="vsearch">vsearch (vector)</option>
+            <option value="query">query (hybrid + rerank, slow)</option>
           </select>
           <button class="bg-gray-700 hover:bg-gray-600 text-gray-100 px-4 py-2 rounded-lg text-sm">Search</button>
         <% end %>
 
         <%= turbo_frame_tag "kb_search" do %>
-          <div class="mt-3 text-sm text-gray-500">Type a query and hit Search.</div>
+          <div class="mt-3 text-sm text-gray-500">Type a query and hit Search. (Tip: <code class="text-gray-300">query</code> can take ~30-90s on a Pi 5.)</div>
         <% end %>
       </div>
 

@@ -2,6 +2,7 @@
 
 require "open3"
 require "json"
+require "timeout"
 
 class QmdCliService
   class Error < StandardError; end
@@ -79,17 +80,72 @@ class QmdCliService
           else "query"
           end
 
-    json = run!(cmd, query.to_s, "--json", "-n", limit.to_i.to_s, "-c", collection.to_s)
+    timeout = case mode.to_sym
+              when :query then ENV.fetch("QMD_QUERY_TIMEOUT_SECONDS", "90").to_i
+              else ENV.fetch("QMD_TIMEOUT_SECONDS", "20").to_i
+              end
+
+    json = run!(cmd, query.to_s, "--json", "-n", limit.to_i.to_s, "-c", collection.to_s, timeout: timeout)
     JSON.parse(json)
   rescue JSON::ParserError
     []
   end
 
-  def self.run!(*args)
-    stdout, stderr, status = Open3.capture3(qmd_bin, *args.map(&:to_s))
+  def self.run!(*args, timeout: ENV.fetch("QMD_TIMEOUT_SECONDS", "20").to_i)
+    stdout_str = +""
+    stderr_str = +""
+    status = nil
 
-    return stdout if status.success?
+    # Use a process group so we can kill child processes (node-llama-cpp) on timeout.
+    Open3.popen3(qmd_bin, *args.map(&:to_s), pgroup: true) do |stdin, stdout, stderr, wait_thr|
+      stdin.close
 
-    raise Error, "qmd #{args.join(' ')} failed: #{stderr.presence || stdout.presence || status.to_s}"
+      out_t = Thread.new do
+        begin
+          stdout_str << stdout.read
+        rescue IOError
+          # stream may be closed on timeout/termination
+        end
+      end
+
+      err_t = Thread.new do
+        begin
+          stderr_str << stderr.read
+        rescue IOError
+          # stream may be closed on timeout/termination
+        end
+      end
+
+      begin
+        Timeout.timeout(timeout) do
+          out_t.join
+          err_t.join
+          status = wait_thr.value
+        end
+      rescue Timeout::Error
+        pid = wait_thr.pid
+        begin
+          Process.kill("-TERM", pid)
+        rescue StandardError
+          nil
+        end
+        sleep 0.2
+        begin
+          Process.kill("-KILL", pid)
+        rescue StandardError
+          nil
+        end
+
+        # Ensure reader threads don't keep reporting exceptions.
+        out_t.kill
+        err_t.kill
+
+        raise Error, "qmd #{args.join(' ')} timed out after #{timeout}s"
+      end
+    end
+
+    return stdout_str if status&.success?
+
+    raise Error, "qmd #{args.join(' ')} failed: #{stderr_str.presence || stdout_str.presence || status.to_s}"
   end
 end

@@ -20,7 +20,7 @@ class KnowledgeController < ApplicationController
   # GET /knowledge/search?q=...
   def search
     q = params[:q].to_s.strip
-    mode = params[:mode].to_s.presence || "query"
+    mode = params[:mode].to_s.presence || "search"
 
     @q = q
     @mode = mode

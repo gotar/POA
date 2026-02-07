@@ -1,5 +1,5 @@
 // Service Worker for Gotar Bot PWA
-const CACHE_NAME = 'gotar-bot-v3';
+const CACHE_NAME = 'gotar-bot-v4';
 const urlsToCache = [
   '/',
   '/manifest.json',

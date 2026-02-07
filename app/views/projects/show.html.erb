@@ -124,6 +124,10 @@
           </div>
         </div>
 
+        <div class="mt-2">
+          <%= link_to "Personal Knowledge (QMD)", project_personal_knowledge_path(@project), class: "text-xs text-gray-400 hover:text-gray-200" %>
+        </div>
+
         <div class="space-y-2">
           <% @project.knowledge_bases.recent(3).each do |kb| %>
             <%= link_to [@project, kb], class: "block bg-gray-700 hover:bg-gray-650 rounded-lg p-2 text-sm" do %>

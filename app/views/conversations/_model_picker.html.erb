@@ -13,15 +13,7 @@
 
   <%= form_with url: set_model_project_conversation_path(project, conversation),
                 method: :patch,
-                data: {
-                  turbo_frame: "model_picker",
-                  controller: "model-picker",
-                  "model-picker-endpoint-value": available_models_project_conversation_path(project, conversation),
-                  "model-picker-favorites-value": favorite_values.to_json,
-                  "model-picker-selected-value": selected,
-                  "model-picker-selected-label-value": selected_label,
-                  "model-picker-limit-value": 30
-                },
+                data: { turbo_frame: "model_picker" },
                 class: "w-full" do |f| %>
 
     <div class="relative w-full">

@@ -1,0 +1,29 @@
+<% content_for :title, "Edit - Personal Knowledge" %>
+
+<div class="min-h-screen flex flex-col">
+  <header class="bg-gray-800 border-b border-gray-700 px-4 py-3 flex items-center gap-3 sticky top-0 z-10">
+    <%= link_to project_personal_knowledge_note_path(@project, path: @path), class: "text-gray-400 hover:text-gray-200" do %>
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+      </svg>
+    <% end %>
+    <h1 class="text-xl font-bold text-gray-100 truncate">Edit note</h1>
+    <div class="ml-auto text-xs text-gray-500 truncate"><%= @path %></div>
+  </header>
+
+  <main class="flex-1 overflow-y-auto p-4">
+    <div class="max-w-3xl mx-auto">
+      <div class="bg-gray-800 border border-gray-700 rounded-xl p-4">
+        <%= form_with url: project_personal_knowledge_update_note_path(@project), method: :patch, class: "space-y-3" do %>
+          <%= hidden_field_tag :path, @path %>
+          <textarea name="content" rows="18" class="w-full bg-gray-900 border border-gray-700 rounded-lg p-3 text-sm text-gray-100 font-mono"><%= @content %></textarea>
+          <div class="flex items-center gap-2">
+            <button class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg text-sm">Save</button>
+            <%= link_to "Cancel", project_personal_knowledge_note_path(@project, path: @path), class: "bg-gray-700 hover:bg-gray-600 text-gray-100 px-4 py-2 rounded-lg text-sm" %>
+          </div>
+          <p class="text-xs text-gray-500">Notes are living docs. Keep them compact; update existing notes when knowledge changes.</p>
+        <% end %>
+      </div>
+    </div>
+  </main>
+</div>

@@ -72,13 +72,28 @@ class QmdCliService
 
   # mode: :query (hybrid), :search (bm25), :vsearch (vector)
   def self.search(query, mode: :query, limit: 10, collection: DEFAULT_COLLECTION)
-    ensure_pi_knowledge_collection!
-
     cmd = case mode.to_sym
           when :search then "search"
           when :vsearch then "vsearch"
           else "query"
           end
+
+    # Prefer MCP for interactive web search (keeps models warm, avoids process startup cost).
+    if ENV.fetch("QMD_USE_MCP", "true") == "true"
+      begin
+        ensure_pi_knowledge_collection!
+        res = QmdMcpService.call_tool(cmd, { query: query.to_s, limit: limit.to_i, collection: collection.to_s })
+        structured = res["structuredContent"] || res[:structuredContent]
+        results = structured && (structured["results"] || structured[:results])
+        return results if results.is_a?(Array)
+
+        return []
+      rescue StandardError => e
+        Rails.logger.debug("QMD MCP failed, falling back to CLI: #{e.message}") if defined?(Rails)
+      end
+    end
+
+    ensure_pi_knowledge_collection!
 
     timeout = case mode.to_sym
               when :query then ENV.fetch("QMD_QUERY_TIMEOUT_SECONDS", "90").to_i

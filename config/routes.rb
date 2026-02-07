@@ -74,6 +74,7 @@ Rails.application.routes.draw do
     get :personal_knowledge, to: "personal_knowledge#index"
     get "personal_knowledge/search", to: "personal_knowledge#search", as: :personal_knowledge_search
     post "personal_knowledge/reindex", to: "personal_knowledge#reindex", as: :personal_knowledge_reindex
+    post "personal_knowledge/remember", to: "personal_knowledge#remember", as: :personal_knowledge_remember
     post "personal_knowledge/topics", to: "personal_knowledge#create_topic", as: :personal_knowledge_topics
     get "personal_knowledge/note", to: "personal_knowledge#show", as: :personal_knowledge_note
     get "personal_knowledge/note/edit", to: "personal_knowledge#edit", as: :personal_knowledge_edit_note

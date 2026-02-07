@@ -194,6 +194,26 @@ class PersonalKnowledgeService
   # - Add a dated bullet under "## Important patterns / gotchas" when possible.
   # - Update frontmatter tags/source/version when missing.
   # - Touch updated date.
+  def self.append_to_user!(text, label: nil)
+    ensure_setup!
+    abs = File.join(base_dir, "USER.md")
+    raise Error, "USER.md missing" unless File.exist?(abs)
+
+    append_to_section!(abs, "## Preferences", format_bullet(text, label: label))
+    touch_updated_frontmatter!(abs)
+    "USER.md"
+  end
+
+  def self.append_to_memory!(text, label: nil)
+    ensure_setup!
+    abs = File.join(base_dir, "MEMORY.md")
+    raise Error, "MEMORY.md missing" unless File.exist?(abs)
+
+    insert_after_heading!(abs, "# MEMORY.md - Curated Long-Term Memory", format_bullet(text, label: label))
+    touch_updated_frontmatter!(abs)
+    "MEMORY.md"
+  end
+
   def self.merge_into!(rel_path, update_text:, tags: [], source: nil, version: nil)
     abs = resolve_rel!(rel_path)
 
@@ -348,6 +368,50 @@ class PersonalKnowledgeService
     end
 
     out.join("\n")
+  end
+
+  def self.format_bullet(text, label: nil)
+    clean = text.to_s.strip
+    clean = clean.gsub(/\s+/, " ")
+    return "- (empty)" if clean.blank?
+
+    if label.present?
+      "- **#{label.strip}**: #{clean}"
+    else
+      "- #{clean}"
+    end
+  end
+
+  def self.append_to_section!(abs, heading, bullet)
+    content = File.read(abs)
+
+    if content.include?(heading)
+      start = content.index(heading)
+      after_heading = content.index("\n", start) || content.length
+      section_end = content.index("\n## ", after_heading) || content.length
+
+      before = content[0...section_end].rstrip
+      after = content[section_end..]
+
+      updated = before + "\n" + bullet + "\n\n" + after.to_s.lstrip
+      File.write(abs, updated)
+    else
+      File.write(abs, content.rstrip + "\n\n" + heading + "\n\n" + bullet + "\n")
+    end
+  end
+
+  def self.insert_after_heading!(abs, heading_line, bullet)
+    content = File.read(abs)
+    idx = content.index(heading_line)
+
+    if idx
+      line_end = content.index("\n", idx) || content.length
+      insert_at = line_end + 1
+      updated = content[0...insert_at] + "\n" + bullet + "\n" + content[insert_at..]
+      File.write(abs, updated)
+    else
+      File.write(abs, bullet + "\n\n" + content)
+    end
   end
 
   def self.merge_frontmatter(text, tags: [], source: nil, version: nil)

@@ -1,4 +1,4 @@
-<div id="<%= dom_id(message) %>" class="flex <%= message.role == 'user' ? 'justify-end' : 'justify-start' %>">
+<div id="<%= dom_id(message) %>" data-message-role="<%= message.role %>" class="flex <%= message.role == 'user' ? 'justify-end' : 'justify-start' %>">
   <div class="max-w-[85%] sm:max-w-[75%]">
     <% if message.role == 'user' %>
       <!-- User Message -->
@@ -41,8 +41,9 @@
           </div>
         <% end %>
       </div>
-      <div class="text-xs text-gray-500 mt-1 text-right">
-        <%= message.created_at.strftime('%H:%M') %>
+      <div class="text-xs text-gray-500 mt-1 text-right flex items-center justify-end gap-2">
+        <button type="button" data-action="remember#open" class="text-xs text-purple-200/90 hover:text-white underline underline-offset-2">Remember</button>
+        <span><%= message.created_at.strftime('%H:%M') %></span>
       </div>
     <% else %>
       <!-- Assistant Message -->
@@ -83,6 +84,7 @@
         <div id="<%= dom_id(message) %>_tools" class="mt-2"></div>
       </div>
       <div class="text-xs text-gray-500 mt-1 flex items-center gap-2 flex-wrap">
+        <button type="button" data-action="remember#open" class="text-xs text-gray-400 hover:text-gray-200 underline underline-offset-2">Remember</button>
         <span><%= message.created_at.strftime('%H:%M') %></span>
 
         <% if message.metadata.present? %>

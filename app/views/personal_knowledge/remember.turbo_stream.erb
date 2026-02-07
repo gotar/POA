@@ -1,0 +1,7 @@
+<%= turbo_stream.replace "remember_modal" do %>
+  <%= render "personal_knowledge/remember_modal", project: @project %>
+<% end %>
+
+<%= turbo_stream.append "toast-container" do %>
+  <%= render "shared/toast", message: "Saved to knowledge", type: :success %>
+<% end %>

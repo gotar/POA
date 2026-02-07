@@ -114,6 +114,52 @@ class PersonalKnowledgeController < ApplicationController
     redirect_to project_personal_knowledge_note_path(@project, path: rel), notice: "Topic created"
   end
 
+  # POST /projects/:project_id/personal_knowledge/remember
+  def remember
+    destination = params[:destination].to_s
+    title = params[:title].to_s
+    content = params[:content].to_s
+    tags = params[:tags].to_s.split(/[,\s]+/).reject(&:blank?)
+    source = params[:source].to_s.presence
+    version = params[:version].to_s.presence
+
+    if content.blank?
+      respond_to do |format|
+        format.html { redirect_back fallback_location: project_personal_knowledge_path(@project), alert: "Nothing to remember" }
+        format.turbo_stream { render turbo_stream: turbo_stream.append("toast-container", partial: "shared/toast", locals: { message: "Nothing to remember", type: :error }) }
+      end
+      return
+    end
+
+    case destination
+    when "user"
+      PersonalKnowledgeService.append_to_user!(content, label: title.presence)
+    when "memory"
+      PersonalKnowledgeService.append_to_memory!(content, label: title.presence)
+    when "topic"
+      topic_title = title.presence || content.lines.first.to_s.strip.truncate(80)
+      PersonalKnowledgeService.create_topic!(title: topic_title, body: content, tags: tags, source: source, version: version)
+    else
+      respond_to do |format|
+        format.html { redirect_back fallback_location: project_personal_knowledge_path(@project), alert: "Invalid destination" }
+        format.turbo_stream { render turbo_stream: turbo_stream.append("toast-container", partial: "shared/toast", locals: { message: "Invalid destination", type: :error }) }
+      end
+      return
+    end
+
+    PersonalKnowledgeReindexJob.perform_later
+
+    respond_to do |format|
+      format.html { redirect_back fallback_location: project_personal_knowledge_path(@project), notice: "Saved to knowledge" }
+      format.turbo_stream
+    end
+  rescue PersonalKnowledgeService::Error => e
+    respond_to do |format|
+      format.html { redirect_back fallback_location: project_personal_knowledge_path(@project), alert: e.message }
+      format.turbo_stream { render turbo_stream: turbo_stream.append("toast-container", partial: "shared/toast", locals: { message: e.message, type: :error }) }
+    end
+  end
+
   # POST /projects/:project_id/personal_knowledge/reindex
   def reindex
     PersonalKnowledgeReindexJob.perform_later

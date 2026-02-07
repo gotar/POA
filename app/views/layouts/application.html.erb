@@ -66,26 +66,14 @@
     <% current_path = request.path.to_s %>
 
     <!-- Global navigation
-         - Mobile: bottom tab bar (more iOS-like, doesn't collide with page headers)
-         - Desktop: small top-right pill links -->
+         - Mobile: bottom icon bar + floating + for new chat in project context
+         - Desktop: no global nav (page headers provide navigation) -->
 
-    <div class="hidden sm:flex fixed top-3 right-3 z-40 bg-gray-800/80 border border-gray-700 rounded-xl overflow-hidden shadow-lg">
-      <% projects_active = current_path.start_with?("/projects") %>
-      <% knowledge_active = current_path.start_with?("/knowledge") %>
-      <% monitoring_active = current_path.start_with?("/monitoring") %>
-
-      <%= link_to "Projects", projects_path,
-            class: "px-4 py-2 text-sm #{projects_active ? 'bg-gray-700 text-white' : 'text-gray-200 hover:bg-gray-700'}" %>
-      <%= link_to "Knowledge", knowledge_path,
-            class: "px-4 py-2 text-sm #{knowledge_active ? 'bg-gray-700 text-white' : 'text-gray-200 hover:bg-gray-700'}" %>
-      <%= link_to "Monitoring", monitoring_path,
-            class: "px-4 py-2 text-sm #{monitoring_active ? 'bg-gray-700 text-white' : 'text-gray-200 hover:bg-gray-700'}" %>
-    </div>
-
-    <div id="main-content" class="pb-24 sm:pb-0">
+    <div id="main-content" class="pb-20 sm:pb-0">
       <%= yield %>
     </div>
 
+    <%# Mobile: minimal bottom icon bar + optional floating + button when in a project context %>
     <nav class="fixed bottom-0 inset-x-0 z-40 sm:hidden bg-gray-900/95 border-t border-gray-800 backdrop-blur">
       <div class="mx-auto max-w-md px-4 py-2 pb-[calc(env(safe-area-inset-bottom)+0.5rem)] pl-[calc(env(safe-area-inset-left)+1rem)] pr-[calc(env(safe-area-inset-right)+1rem)]">
         <% projects_active = current_path.start_with?("/projects") %>
@@ -94,31 +82,47 @@
 
         <div class="grid grid-cols-3 gap-2">
           <%= link_to projects_path,
-                class: "flex flex-col items-center justify-center gap-1 rounded-xl py-2 #{projects_active ? 'bg-gray-800 text-white' : 'text-gray-300 hover:bg-gray-800'}" do %>
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                aria: { label: "Projects" },
+                class: "flex items-center justify-center rounded-xl p-3 #{projects_active ? 'bg-gray-800 text-white' : 'text-gray-300 hover:bg-gray-800'}" do %>
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7a2 2 0 012-2h6a2 2 0 012 2v1H5a2 2 0 01-2-2zm0 4h18v8a2 2 0 01-2 2H5a2 2 0 01-2-2v-8zm10-5h6a2 2 0 012 2v1H13V6z" />
             </svg>
-            <span class="text-[11px]">Projects</span>
+            <span class="sr-only">Projects</span>
           <% end %>
 
           <%= link_to knowledge_path,
-                class: "flex flex-col items-center justify-center gap-1 rounded-xl py-2 #{knowledge_active ? 'bg-gray-800 text-white' : 'text-gray-300 hover:bg-gray-800'}" do %>
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                aria: { label: "Knowledge" },
+                class: "flex items-center justify-center rounded-xl p-3 #{knowledge_active ? 'bg-gray-800 text-white' : 'text-gray-300 hover:bg-gray-800'}" do %>
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
             </svg>
-            <span class="text-[11px]">Knowledge</span>
+            <span class="sr-only">Knowledge</span>
           <% end %>
 
           <%= link_to monitoring_path,
-                class: "flex flex-col items-center justify-center gap-1 rounded-xl py-2 #{monitoring_active ? 'bg-gray-800 text-white' : 'text-gray-300 hover:bg-gray-800'}" do %>
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                aria: { label: "Monitoring" },
+                class: "flex items-center justify-center rounded-xl p-3 #{monitoring_active ? 'bg-gray-800 text-white' : 'text-gray-300 hover:bg-gray-800'}" do %>
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-6m4 6V7m4 10v-4M5 21h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2z" />
             </svg>
-            <span class="text-[11px]">Monitor</span>
+            <span class="sr-only">Monitoring</span>
           <% end %>
         </div>
       </div>
     </nav>
+
+    <% if defined?(@project) && @project.present? %>
+      <div class="fixed bottom-[calc(env(safe-area-inset-bottom)+4.75rem)] right-4 z-40 sm:hidden">
+        <%= button_to project_conversations_path(@project), method: :post,
+              form: { data: { turbo: true } },
+              class: "w-14 h-14 rounded-full bg-purple-600 hover:bg-purple-700 text-white shadow-xl flex items-center justify-center border border-purple-400/30",
+              aria: { label: "New chat" } do %>
+          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+          </svg>
+        <% end %>
+      </div>
+    <% end %>
 
     <!-- Loading overlay -->
     <div data-ui-target="loading" class="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-50 hidden opacity-0 transition-opacity duration-200">

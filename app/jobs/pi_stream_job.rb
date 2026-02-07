@@ -38,20 +38,10 @@ class PiStreamJob < ApplicationJob
 
   private
 
-  WEB_SEARCH_INSTRUCTIONS = <<~TEXT
-    ## Web browsing
-    If you need information from the internet, you MUST use the `bash` tool to run the `agent-browser` CLI.
-    Do not use curl/wget.
-
-    Quick recipe:
-    - Search: `agent-browser open "https://duckduckgo.com/?q=<query>"`
-    - Inspect: `agent-browser snapshot`
-    - Extract: `agent-browser get text @ref` / `agent-browser get url` / `agent-browser get title`
-  TEXT
-
   def build_prompt(user_content)
-    # Always include web browsing instruction block so the agent consistently uses agent-browser.
-    prefixed_user = "#{WEB_SEARCH_INSTRUCTIONS}\n\n---\n\n#{user_content}"
+    # Always include the browser-agent rules so web searches go through agent-browser.
+    instructions = BrowserAgentInstructions.text
+    prefixed_user = "#{instructions}\n\n---\n\n#{user_content}"
 
     return prefixed_user unless @project
 

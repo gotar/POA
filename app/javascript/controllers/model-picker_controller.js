@@ -59,6 +59,9 @@ class ModelPickerController extends Controller {
   filter() {
     if (this.hasPanelTarget) this.panelTarget.classList.remove("hidden")
 
+    // Once the user starts typing, drop the initial "show default list" override.
+    this._queryOverride = null
+
     if (this._debounced) clearTimeout(this._debounced)
     this._debounced = setTimeout(() => {
       this.ensureModels().then(() => this.renderList())
@@ -162,8 +165,27 @@ class ModelPickerController extends Controller {
     this.close()
 
     if (this.autoSubmitValue) {
-      this.element.requestSubmit()
+      this.requestSubmit()
     }
+  }
+
+  requestSubmit() {
+    const el = this.element
+
+    // requestSubmit exists only on <form>
+    if (el && typeof el.requestSubmit === "function") {
+      el.requestSubmit()
+      return
+    }
+
+    const form = el?.closest?.("form")
+    if (form && typeof form.requestSubmit === "function") {
+      form.requestSubmit()
+      return
+    }
+
+    // last resort
+    if (form) form.submit()
   }
 
   _score(tokens, hay) {

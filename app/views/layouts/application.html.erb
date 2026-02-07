@@ -111,7 +111,7 @@
       </div>
     </nav>
 
-    <% if defined?(@project) && @project.present? %>
+    <% if defined?(@project) && @project&.persisted? %>
       <div class="fixed bottom-[calc(env(safe-area-inset-bottom)+4.75rem)] right-4 z-40 sm:hidden">
         <%= button_to project_conversations_path(@project), method: :post,
               form: { data: { turbo: true } },

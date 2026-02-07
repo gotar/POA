@@ -13,6 +13,9 @@ class ModelPickerController extends Controller {
     this._models = null
     this._loading = false
     this._queryOverride = null
+    this._results = []
+    this._activeIndex = -1
+    this._buttons = []
 
     if (this.hasInputTarget && this.selectedLabelValue) {
       this.inputTarget.value = this.selectedLabelValue
@@ -36,6 +39,9 @@ class ModelPickerController extends Controller {
     if (!this.hasPanelTarget) return
     this.panelTarget.classList.remove("hidden")
 
+    // Reset highlight when opening.
+    this._activeIndex = -1
+
     const v = (this.inputTarget.value || "").trim()
     this._queryOverride = v === (this.selectedLabelValue || "").trim() ? "" : null
 
@@ -50,10 +56,51 @@ class ModelPickerController extends Controller {
     if (!this.hasPanelTarget) return
     this.panelTarget.classList.add("hidden")
     this._queryOverride = null
+    this._activeIndex = -1
+    this._results = []
+    this._buttons = []
   }
 
-  preventEnter(event) {
+  keydown(event) {
+    // Handle keyboard navigation robustly (don’t rely solely on Stimulus key modifiers,
+    // as some mobile/desktop browsers can be inconsistent for arrow keys).
+    switch (event.key) {
+      case "ArrowDown":
+        return this.down(event)
+      case "ArrowUp":
+        return this.up(event)
+      case "Enter":
+        return this.enter(event)
+      case "Escape":
+        event.preventDefault()
+        this.close()
+        return
+      default:
+        return
+    }
+  }
+
+  enter(event) {
+    // Enter selects the currently highlighted item (or the first match).
     event.preventDefault()
+
+    if (!this.hasPanelTarget || this.panelTarget.classList.contains("hidden")) return
+
+    if (Array.isArray(this._results) && this._results.length > 0) {
+      const idx = this._activeIndex >= 0 ? this._activeIndex : 0
+      const o = this._results[idx]
+      if (o) this.choose(o.value, o.label)
+    }
+  }
+
+  down(event) {
+    event.preventDefault()
+    this._moveActive(1)
+  }
+
+  up(event) {
+    event.preventDefault()
+    this._moveActive(-1)
   }
 
   filter() {
@@ -138,21 +185,50 @@ class ModelPickerController extends Controller {
 
     results = results.slice(0, this.limitValue)
 
+    this._results = results
+    this._buttons = []
+
     this.listTarget.innerHTML = ""
 
     if (results.length === 0) {
+      this._activeIndex = -1
       this.listTarget.innerHTML = '<div class="px-3 py-4 text-sm text-gray-400">No models found</div>'
       return
     }
 
-    results.forEach((o) => {
+    // Auto-highlight the first match when searching.
+    if (term.length > 0) {
+      this._activeIndex = 0
+    } else if (this._activeIndex < 0 || this._activeIndex >= results.length) {
+      this._activeIndex = 0
+    }
+
+    results.forEach((o, idx) => {
       const btn = document.createElement("button")
       btn.type = "button"
-      btn.className = `w-full text-left px-3 py-2 text-sm hover:bg-gray-700 ${o.value === this.selectedValue ? "bg-gray-700" : ""}`
+
+      const isSelected = o.value === this.selectedValue
+      const isActive = idx === this._activeIndex
+
+      btn.className = [
+        "w-full text-left px-3 py-2 text-sm",
+        "hover:bg-gray-700",
+        isSelected ? "bg-gray-700" : "",
+        isActive ? "ring-1 ring-inset ring-purple-500" : "",
+      ]
+        .filter(Boolean)
+        .join(" ")
+
       btn.textContent = o.label
+      btn.addEventListener("mouseenter", () => this._setActive(idx))
       btn.addEventListener("click", () => this.choose(o.value, o.label))
+
+      this._buttons.push(btn)
       this.listTarget.appendChild(btn)
     })
+
+    this._applyActiveStyles()
+    this._scrollActiveIntoView()
   }
 
   choose(value, label) {
@@ -166,6 +242,56 @@ class ModelPickerController extends Controller {
 
     if (this.autoSubmitValue) {
       this.requestSubmit()
+    }
+  }
+
+  _moveActive(delta) {
+    if (!this.hasPanelTarget) return
+
+    if (this.panelTarget.classList.contains("hidden")) {
+      this.open()
+      return
+    }
+
+    // If the list isn't rendered yet, render it first.
+    if (!Array.isArray(this._results) || this._results.length === 0) {
+      this.ensureModels().then(() => this.renderList())
+      return
+    }
+
+    const next = Math.max(0, Math.min(this._results.length - 1, (this._activeIndex >= 0 ? this._activeIndex : 0) + delta))
+    this._setActive(next)
+  }
+
+  _setActive(idx) {
+    if (!Array.isArray(this._results) || this._results.length === 0) return
+    const clamped = Math.max(0, Math.min(this._results.length - 1, idx))
+    this._activeIndex = clamped
+    this._applyActiveStyles()
+    this._scrollActiveIntoView()
+  }
+
+  _applyActiveStyles() {
+    if (!Array.isArray(this._buttons) || this._buttons.length === 0) return
+
+    for (let i = 0; i < this._buttons.length; i++) {
+      const btn = this._buttons[i]
+      if (!btn) continue
+
+      const isActive = i === this._activeIndex
+      if (isActive) {
+        btn.classList.add("ring-1", "ring-inset", "ring-purple-500")
+      } else {
+        btn.classList.remove("ring-1", "ring-inset", "ring-purple-500")
+      }
+    }
+  }
+
+  _scrollActiveIntoView() {
+    if (!Array.isArray(this._buttons) || this._buttons.length === 0) return
+    const btn = this._buttons[this._activeIndex]
+    if (btn && typeof btn.scrollIntoView === "function") {
+      btn.scrollIntoView({ block: "nearest" })
     }
   }
 

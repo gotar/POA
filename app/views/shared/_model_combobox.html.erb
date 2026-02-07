@@ -35,7 +35,7 @@
          autocomplete="off"
          inputmode="search"
          data-model-picker-target="input"
-         data-action="focus->model-picker#open click->model-picker#open input->model-picker#filter keydown.esc->model-picker#close keydown.enter->model-picker#preventEnter"
+         data-action="focus->model-picker#open click->model-picker#open input->model-picker#filter keydown->model-picker#keydown"
          class="<%= input_class.presence || 'w-full bg-gray-700 border border-gray-600 rounded-lg px-3 py-2 text-sm text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-purple-500' %>"
          value="<%= selected_label %>" />
 

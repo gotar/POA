@@ -9,6 +9,8 @@ WorkingDirectory=/home/gotar/pi-web-ui
 Environment=RAILS_ENV=production
 Environment=SECRET_KEY_BASE=0eaf3546adcfb14e8ccdc2a5f707cd6347e1b192b94dc898db2dc4a7a7bda100843519204707c24e31f1377311bc7c7ce94387e368d104e3ed0dc34330cf352f
 Environment=ANTHROPIC_API_KEY=dummy_key_for_testing
+# Needed so the web process can spawn `pi` (for dynamic model list)
+Environment=PATH=/home/gotar/.pi/agent/bin:/home/gotar/.bun/bin:/home/gotar/.npm-global/bin:/home/gotar/.rbenv/bin:/home/gotar/.rbenv/shims:/usr/local/bin:/usr/bin:/bin
 
 # PI model/provider defaults for RPC subprocess (jobs service actually spawns PI)
 Environment=PI_PROVIDER=openai

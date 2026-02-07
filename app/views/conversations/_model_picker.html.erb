@@ -1,32 +1,65 @@
 <%= turbo_frame_tag "model_picker" do %>
+  <% defaults = PiModelsService.default_provider_model %>
+  <% provider = conversation.pi_provider.presence || defaults[:provider] %>
+  <% model = conversation.pi_model.presence || defaults[:model] %>
+  <% selected = "#{provider}:#{model}" %>
+
+  <% all_models = PiModelsService.models %>
+  <% favorites = Rails.configuration.pi_models || [] %>
+  <% favorite_values = favorites.map { |m| "#{m['provider']}:#{m['model']}" } %>
+
+  <% initial_models = favorites.dup %>
+  <% unless favorite_values.include?(selected) %>
+    <% selected_model = all_models.find { |m| "#{m['provider']}:#{m['model']}" == selected } %>
+    <% initial_models << selected_model if selected_model.present? %>
+  <% end %>
+  <% initial_models = initial_models.compact.uniq { |m| "#{m['provider']}:#{m['model']}" } %>
+
   <%= form_with url: set_model_project_conversation_path(project, conversation),
                 method: :patch,
-                data: { turbo_frame: "model_picker" },
-                class: "flex items-center gap-2" do |f| %>
+                data: {
+                  turbo_frame: "model_picker",
+                  controller: "model-picker",
+                  "model-picker-models-value": all_models.to_json,
+                  "model-picker-favorites-value": favorite_values.to_json
+                },
+                class: "w-full" do |f| %>
 
-    <% defaults = PiModelsService.default_provider_model %>
-    <% provider = conversation.pi_provider.presence || defaults[:provider] %>
-    <% model = conversation.pi_model.presence || defaults[:model] %>
-    <% selected = "#{provider}:#{model}" %>
+    <div class="flex flex-col gap-2 w-full">
+      <div class="flex items-center justify-between gap-3">
+        <label class="text-xs text-gray-400" for="conversation_model_select">Model</label>
 
-    <label class="text-xs text-gray-400" for="conversation_model_select">Model</label>
+        <label class="text-xs text-gray-400 flex items-center gap-2 select-none">
+          <input type="checkbox"
+                 data-model-picker-target="toggleAll"
+                 data-action="change->model-picker#toggleAll"
+                 class="rounded border-gray-600 bg-gray-700 text-purple-600 focus:ring-purple-500">
+          <span>All models</span>
+        </label>
+      </div>
 
-    <select id="conversation_model_select"
-            name="conversation[selected_model]"
-            class="bg-gray-700 border border-gray-600 rounded-lg px-2 py-1 text-xs text-gray-100 focus:outline-none focus:ring-1 focus:ring-purple-500"
-            onchange="this.form.requestSubmit()">
-      <% PiModelsService.models.each do |m| %>
-        <% value = "#{m['provider']}:#{m['model']}" %>
-        <option value="<%= value %>" <%= "selected" if value == selected %>>
-          <%= m['label'] %>
-        </option>
-      <% end %>
-    </select>
+      <input type="text"
+             placeholder="Search models (type to filter)…"
+             data-model-picker-target="search"
+             data-action="input->model-picker#filter"
+             class="w-full bg-gray-700 border border-gray-600 rounded-lg px-3 py-2 text-sm text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-purple-500" />
 
-    <% if conversation.pi_provider.present? && conversation.pi_model.present? %>
-      <span class="text-xs text-gray-500 hidden sm:inline">
-        <%= conversation.pi_provider %> / <%= conversation.pi_model %>
-      </span>
-    <% end %>
+      <select id="conversation_model_select"
+              name="conversation[selected_model]"
+              data-model-picker-target="select"
+              data-action="change->model-picker#submit"
+              class="w-full min-w-0 bg-gray-700 border border-gray-600 rounded-lg px-2 py-2 text-sm text-gray-100 focus:outline-none focus:ring-1 focus:ring-purple-500">
+        <% initial_models.each do |m| %>
+          <% value = "#{m['provider']}:#{m['model']}" %>
+          <option value="<%= value %>" <%= "selected" if value == selected %>>
+            <%= m['label'] %>
+          </option>
+        <% end %>
+      </select>
+
+      <div class="text-xs text-gray-500">
+        Selected: <span class="text-gray-300"><%= provider %> / <%= model %></span>
+      </div>
+    </div>
   <% end %>
 <% end %>

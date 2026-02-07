@@ -63,6 +63,18 @@
   </head>
 
   <body class="bg-gray-900 text-gray-100 min-h-screen" data-controller="ui">
+    <!-- Global menu (available on every page without changing each header) -->
+    <details class="fixed top-3 right-3 z-50">
+      <summary class="list-none cursor-pointer select-none bg-gray-800/90 border border-gray-700 text-gray-200 rounded-xl px-3 py-2 text-sm shadow-lg">
+        Menu
+      </summary>
+      <div class="mt-2 bg-gray-800 border border-gray-700 rounded-xl shadow-lg overflow-hidden">
+        <%= link_to "Projects", projects_path, class: "block px-4 py-2 text-sm text-gray-200 hover:bg-gray-700" %>
+        <%= link_to "Knowledge", knowledge_path, class: "block px-4 py-2 text-sm text-gray-200 hover:bg-gray-700" %>
+        <%= link_to "Monitoring", monitoring_path, class: "block px-4 py-2 text-sm text-gray-200 hover:bg-gray-700" %>
+      </div>
+    </details>
+
     <div id="main-content">
       <%= yield %>
     </div>
@@ -76,6 +88,6 @@
     </div>
 
     <!-- Toast notifications container -->
-    <div id="toast-container" class="fixed top-4 right-4 z-50 space-y-2"></div>
+    <div id="toast-container" class="fixed top-16 right-4 z-50 space-y-2"></div>
   </body>
 </html>

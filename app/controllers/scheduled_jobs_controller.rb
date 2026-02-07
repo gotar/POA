@@ -8,6 +8,16 @@ class ScheduledJobsController < ApplicationController
   def index
     @scheduled_jobs = @project.scheduled_jobs.order(created_at: :desc)
     @scheduled_job = @project.scheduled_jobs.build
+
+    begin
+      @scheduler_last_tick_at = RuntimeMetric.time("scheduled_jobs.last_tick_at")
+      @scheduler_last_enqueue_at = RuntimeMetric.time("scheduled_jobs.last_enqueue_at")
+      @scheduler_enqueued_count = RuntimeMetric.get("scheduled_jobs.enqueued_count").to_i
+    rescue ActiveRecord::StatementInvalid
+      @scheduler_last_tick_at = nil
+      @scheduler_last_enqueue_at = nil
+      @scheduler_enqueued_count = 0
+    end
   end
 
   # GET /projects/:project_id/scheduled_jobs/:id

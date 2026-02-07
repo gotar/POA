@@ -62,6 +62,14 @@
               <p class="text-xs text-gray-500"><%= time_ago_in_words(@scheduled_job.last_run_at) %> ago</p>
             </div>
           <% end %>
+
+          <% if @scheduled_job.last_enqueued_at %>
+            <div>
+              <h3 class="text-sm font-medium text-gray-400 mb-1">Last Enqueued</h3>
+              <p class="text-gray-200"><%= @scheduled_job.last_enqueued_at.strftime("%B %d, %Y at %I:%M %p") %></p>
+              <p class="text-xs text-gray-500"><%= time_ago_in_words(@scheduled_job.last_enqueued_at) %> ago</p>
+            </div>
+          <% end %>
         </div>
       </div>
 

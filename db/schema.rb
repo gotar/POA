@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_02_07_213000) do
+ActiveRecord::Schema[8.1].define(version: 2026_02_07_222002) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
@@ -119,10 +119,19 @@ ActiveRecord::Schema[8.1].define(version: 2026_02_07_213000) do
     t.index ["project_id"], name: "index_push_subscriptions_on_project_id"
   end
 
+  create_table "runtime_metrics", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "key", null: false
+    t.datetime "updated_at", null: false
+    t.text "value"
+    t.index ["key"], name: "index_runtime_metrics_on_key", unique: true
+  end
+
   create_table "scheduled_jobs", force: :cascade do |t|
     t.boolean "active"
     t.datetime "created_at", null: false
     t.string "cron_expression"
+    t.datetime "last_enqueued_at"
     t.datetime "last_run_at"
     t.string "name"
     t.datetime "next_run_at"

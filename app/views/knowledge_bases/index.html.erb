@@ -1,0 +1,105 @@
+<% content_for :title, "Knowledge Base - #{@project.name}" %>
+
+<div class="min-h-screen flex flex-col">
+  <header class="bg-gray-800 border-b border-gray-700 px-4 py-3 flex items-center gap-3">
+    <%= link_to @project, class: "text-gray-400 hover:text-gray-200" do %>
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+      </svg>
+    <% end %>
+    <h1 class="text-xl font-bold text-gray-100">Knowledge Base</h1>
+    <div class="ml-auto">
+      <%= link_to "New Item", new_project_knowledge_basis_path(@project), class: "bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg" %>
+    </div>
+  </header>
+
+  <main class="flex-1 overflow-y-auto p-4">
+    <!-- Search and Filters -->
+    <div class="mb-6 bg-gray-800 rounded-xl p-4 border border-gray-700">
+      <%= form_with url: project_knowledge_bases_path(@project), method: :get, class: "space-y-4" do |f| %>
+        <div class="flex gap-4">
+          <div class="flex-1">
+            <%= f.text_field :q, placeholder: "Search knowledge base...", value: params[:q], class: "w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-2 text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500" %>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-sm text-gray-400">Search mode:</span>
+            <%= f.radio_button :semantic, "false", id: "search_basic", checked: params[:semantic] != "true" %>
+            <%= f.label "search_basic", "Basic", class: "px-3 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg cursor-pointer text-sm" %>
+            <%= f.radio_button :semantic, "true", id: "search_semantic", checked: params[:semantic] == "true" %>
+            <%= f.label "search_semantic", "Semantic", class: "px-3 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg cursor-pointer text-sm" %>
+          </div>
+          <div class="flex gap-2">
+            <% %w[all context reference code example].each do |category| %>
+              <%= f.radio_button :category, category == 'all' ? nil : category, id: "category_#{category}", checked: (params[:category].blank? && category == 'all') || params[:category] == category %>
+              <%= f.label "category_#{category}", category.titleize, class: "px-3 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg cursor-pointer text-sm" %>
+            <% end %>
+          </div>
+          <div>
+            <%= f.submit "Search", class: "bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <!-- Knowledge Base Items -->
+    <div class="space-y-4">
+      <% @knowledge_bases.each do |kb| %>
+        <div class="bg-gray-800 rounded-xl p-4 border border-gray-700 hover:border-gray-600">
+          <div class="flex items-start justify-between">
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center gap-2 mb-2">
+                <h3 class="font-medium text-gray-100 truncate">
+                  <%= link_to [kb.project, kb], class: "hover:text-purple-400" do %>
+                    <%= kb.title %>
+                  <% end %>
+                </h3>
+                <span class="px-2 py-1 text-xs rounded-full <%= category_badge_class(kb.category) %>">
+                  <%= kb.category.titleize %>
+                </span>
+              </div>
+
+              <div class="text-sm text-gray-400 mb-2">
+                <%= time_ago_in_words(kb.created_at) %> ago
+                <% if kb.tags.present? && kb.tags.any? %>
+                  · <%= kb.tags.join(", ") %>
+                <% end %>
+              </div>
+
+              <div class="text-gray-300 line-clamp-3">
+                <%= kb.content.truncate(200) %>
+              </div>
+
+              <% if kb.has_code? %>
+                <div class="mt-2 text-xs text-purple-400">
+                  Contains code examples
+                </div>
+              <% end %>
+            </div>
+
+            <div class="flex gap-2 ml-4">
+              <%= link_to edit_project_knowledge_basis_path(kb.project, kb), class: "text-gray-400 hover:text-gray-200" do %>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                </svg>
+              <% end %>
+              <%= button_to project_knowledge_basis_path(kb.project, kb), method: :delete, class: "text-gray-400 hover:text-red-400", form: { data: { turbo_confirm: "Delete this knowledge base item?" } } do %>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                </svg>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+
+      <% if @knowledge_bases.empty? %>
+        <div class="text-center py-12">
+          <div class="text-5xl mb-4">📚</div>
+          <h2 class="text-lg font-medium text-gray-300 mb-1">No knowledge base items</h2>
+          <p class="text-gray-500 mb-4">Add documents, code examples, and reference materials to help the AI understand your project better.</p>
+          <%= link_to "Add First Item", new_project_knowledge_basis_path(@project), class: "bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg" %>
+        </div>
+      <% end %>
+    </div>
+  </main>
+</div>

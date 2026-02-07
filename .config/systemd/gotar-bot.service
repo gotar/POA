@@ -1,0 +1,26 @@
+[Unit]
+Description=Gotar Bot - AI Chat Interface
+After=network.target
+
+[Service]
+Type=simple
+User=gotar
+WorkingDirectory=/home/gotar/pi-web-ui
+Environment=RAILS_ENV=production
+Environment=SECRET_KEY_BASE=CHANGE_ME_GENERATE_WITH_rails_secret
+Environment=ANTHROPIC_API_KEY=YOUR_KEY_HERE
+
+# Start both Puma (web) and Solid Queue (jobs)
+ExecStart=/home/gotar/.rbenv/shims/bundle exec puma -C config/puma.rb -p 3090
+ExecStartPost=/home/gotar/.rbenv/shims/bundle exec rails solid_queue:start
+
+Restart=always
+RestartSec=5
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=gotar-bot
+
+[Install]
+WantedBy=multi-user.target

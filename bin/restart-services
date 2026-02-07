@@ -1,0 +1,17 @@
+#!/bin/bash
+# Quick restart script for gotar-bot services (no password required)
+
+cd "$(dirname "$0")/.."
+
+echo "Restarting gotar-bot services..."
+
+# Recompile assets
+RAILS_ENV=production bundle exec rails assets:precompile --quiet 2>/dev/null
+
+# Restart services
+sudo systemctl restart gotar-bot-web gotar-bot-jobs
+
+echo "Services restarted!"
+echo ""
+echo "Testing..."
+curl -s -I http://localhost:3090 | head -1

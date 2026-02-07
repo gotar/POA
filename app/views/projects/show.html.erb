@@ -1,0 +1,302 @@
+<div class="min-h-screen flex flex-col lg:flex-row" data-controller="project">
+  <!-- Mobile Project Header -->
+  <header class="lg:hidden bg-gray-800 border-b border-gray-700 px-3 py-2 flex flex-col gap-2 sticky top-0 z-20">
+    <div class="flex items-center gap-2 min-w-0">
+      <%= link_to projects_path, class: "text-gray-400 hover:text-gray-200 flex-shrink-0" do %>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+        </svg>
+      <% end %>
+
+      <div class="w-7 h-7 rounded-lg flex items-center justify-center text-sm flex-shrink-0" style="background-color: <%= @project.color %>20">
+        <%= @project.icon || '📁' %>
+      </div>
+      <h1 class="font-medium text-gray-100 text-sm truncate"><%= @project.name %></h1>
+    </div>
+
+    <!-- Mobile Tab Switcher - Horizontal Scroll -->
+    <div class="flex items-center gap-1 overflow-x-auto pb-1 scrollbar-hide">
+      <button data-action="project#showChats" data-project-target="chatsTab" class="px-2 py-1 rounded text-xs font-medium whitespace-nowrap bg-gray-600 text-white flex-shrink-0">💬 Chat</button>
+      <button data-action="project#showTodos" data-project-target="todosTab" class="px-2 py-1 rounded text-xs font-medium whitespace-nowrap text-gray-400 hover:bg-gray-700 flex-shrink-0">☑️ Todos</button>
+      <button data-action="project#showNotes" data-project-target="notesTab" class="px-2 py-1 rounded text-xs font-medium whitespace-nowrap text-gray-400 hover:bg-gray-700 flex-shrink-0">📝 Notes</button>
+      <button data-action="project#showKnowledge" data-project-target="knowledgeTab" class="px-2 py-1 rounded text-xs font-medium whitespace-nowrap text-gray-400 hover:bg-gray-700 flex-shrink-0">📚 KB</button>
+      <button data-action="project#showScheduled" data-project-target="scheduledTab" class="px-2 py-1 rounded text-xs font-medium whitespace-nowrap text-gray-400 hover:bg-gray-700 flex-shrink-0">⏰ Jobs</button>
+    </div>
+  </header>
+
+  <!-- Desktop Sidebar -->
+  <aside class="hidden lg:flex flex-col w-72 bg-gray-800 border-r border-gray-700">
+    <!-- Project Header -->
+    <div class="p-4 border-b border-gray-700">
+      <%= link_to projects_path, class: "text-gray-400 hover:text-gray-200 mb-3 flex items-center gap-2 text-sm" do %>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+        </svg>
+        All Projects
+      <% end %>
+
+      <div class="flex items-center gap-3">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl" style="background-color: <%= @project.color %>20; border: 2px solid <%= @project.color %>">
+          <%= @project.icon || '📁' %>
+        </div>
+        <div>
+          <h1 class="font-semibold text-gray-100"><%= @project.name %></h1>
+          <p class="text-xs text-gray-500"><%= pluralize(@conversations.count, 'conversation') %></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Conversations List -->
+    <div class="flex-1 overflow-y-auto">
+      <div class="p-3">
+        <div class="flex items-center justify-between mb-2">
+          <h2 class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Conversations</h2>
+          <%= link_to "+", "#", data: { turbo_frame: "new_conversation" }, class: "text-gray-400 hover:text-white text-sm" %>
+        </div>
+
+        <div class="space-y-1">
+          <% @conversations.each do |conv| %>
+            <%= link_to [@project, conv], class: "block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-gray-700 truncate #{'bg-gray-700' if conv == @new_conversation}" do %>
+              <%= conv.title %>
+            <% end %>
+          <% end %>
+
+          <% if @conversations.empty? %>
+            <p class="text-gray-500 text-sm px-3 py-2">No conversations yet</p>
+          <% end %>
+        </div>
+      </div>
+
+      <!-- TODOs Section -->
+      <div class="p-3 border-t border-gray-700">
+        <button data-action="project#showTodos" class="w-full flex items-center justify-between mb-2 hover:bg-gray-700 rounded-lg p-1 -mx-1 transition-colors">
+          <h2 class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Active TODOs</h2>
+          <span class="bg-purple-600 text-white text-xs px-2 py-0.5 rounded-full"><%= @todos.count %></span>
+        </button>
+
+        <div id="project_todos" class="space-y-2">
+          <%= render partial: "todos/todo", collection: @todos, locals: { project: @project } %>
+
+          <% if @todos.empty? %>
+            <p class="text-gray-500 text-sm">No active todos</p>
+          <% end %>
+        </div>
+
+        <!-- Quick Add TODO -->
+        <%= form_with model: [@project, @project.todos.build], class: "mt-2 flex gap-2", data: { turbo_frame: "todo_form" } do |f| %>
+          <%= f.text_field :content, placeholder: "Add todo...", class: "flex-1 bg-gray-700 border border-gray-600 rounded-lg px-3 py-1.5 text-sm text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-purple-500" %>
+          <%= f.submit "+", class: "bg-purple-600 hover:bg-purple-700 text-white px-3 py-1.5 rounded-lg text-sm" %>
+        <% end %>
+      </div>
+
+      <!-- Notes Section -->
+      <div class="p-3 border-t border-gray-700">
+        <button data-action="project#showNotes" class="w-full flex items-center justify-between mb-2 hover:bg-gray-700 rounded-lg p-1 -mx-1 transition-colors">
+          <h2 class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Context Notes</h2>
+          <span class="bg-blue-600 text-white text-xs px-2 py-0.5 rounded-full"><%= @notes.count %></span>
+        </button>
+
+        <div id="project_notes" class="space-y-2">
+          <% @notes.each do |note| %>
+            <div class="bg-gray-700 rounded-lg p-2 text-sm">
+              <h4 class="font-medium text-gray-200 truncate"><%= note.title %></h4>
+              <p class="text-gray-400 text-xs truncate"><%= note.content %></p>
+            </div>
+          <% end %>
+
+          <% if @notes.empty? %>
+            <p class="text-gray-500 text-sm">No context notes</p>
+          <% end %>
+        </div>
+      </div>
+
+      <!-- Knowledge Base Section -->
+      <div class="p-3 border-t border-gray-700">
+        <button data-action="project#showKnowledge" class="w-full flex items-center justify-between mb-2 hover:bg-gray-700 rounded-lg p-1 -mx-1 transition-colors">
+          <h2 class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Knowledge Base</h2>
+          <span class="bg-purple-600/50 text-purple-300 text-xs px-2 py-0.5 rounded-full"><%= @project.knowledge_bases.count %></span>
+        </button>
+
+        <div class="space-y-2">
+          <% @project.knowledge_bases.recent(3).each do |kb| %>
+            <div class="bg-gray-700 rounded-lg p-2 text-sm">
+              <h4 class="font-medium text-gray-200 truncate"><%= kb.title %></h4>
+              <p class="text-gray-400 text-xs"><%= kb.category.titleize %></p>
+            </div>
+          <% end %>
+
+          <% if @project.knowledge_bases.empty? %>
+            <p class="text-gray-500 text-sm">No knowledge base items</p>
+          <% end %>
+        </div>
+      </div>
+
+      <!-- Scheduled Jobs Section -->
+      <div class="p-3 border-t border-gray-700">
+        <button data-action="project#showScheduled" class="w-full flex items-center justify-between mb-2 hover:bg-gray-700 rounded-lg p-1 -mx-1 transition-colors">
+          <h2 class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Scheduled Jobs</h2>
+          <span class="bg-orange-600/50 text-orange-300 text-xs px-2 py-0.5 rounded-full"><%= @project.scheduled_jobs.active.count %></span>
+        </button>
+
+        <div class="space-y-2">
+          <% @project.scheduled_jobs.active.limit(3).each do |job| %>
+            <div class="bg-gray-700 rounded-lg p-2 text-sm">
+              <h4 class="font-medium text-gray-200 truncate"><%= job.name %></h4>
+              <p class="text-gray-400 text-xs">
+                <%= job.cron_expression %>
+                <% if job.next_run_at %>
+                  · <%= time_ago_in_words(job.next_run_at) %>
+                <% end %>
+              </p>
+            </div>
+          <% end %>
+
+          <% if @project.scheduled_jobs.active.empty? %>
+            <p class="text-gray-500 text-sm">No active scheduled jobs</p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Chat Area - Hidden on mobile by default, shown when Chat tab clicked -->
+  <main data-project-target="chatsPanel" class="hidden lg:flex flex-1 flex-col min-h-screen lg:min-h-0">
+    <%= render "conversations/chat_area", project: @project, conversations: @conversations, new_conversation: @new_conversation %>
+  </main>
+
+  <!-- Mobile Panels -->
+  <div data-project-target="todosPanel" class="hidden fixed inset-0 bg-gray-900 z-30 lg:hidden">
+    <div class="flex items-center justify-between p-4 border-b border-gray-700">
+      <h2 class="text-lg font-semibold text-gray-100">TODOs</h2>
+      <button data-action="project#showChats" class="flex items-center gap-2 text-purple-400 hover:text-purple-300 px-2 py-1 rounded-lg hover:bg-gray-800">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+        </svg>
+        Chat
+      </button>
+    </div>
+    <div class="p-4 overflow-y-auto" id="mobile_todos">
+      <%= render partial: "todos/todo", collection: @todos, locals: { project: @project } %>
+
+      <!-- Mobile Add TODO Form -->
+      <div class="mt-4 pt-4 border-t border-gray-700">
+        <%= form_with model: [@project, @project.todos.build], class: "flex gap-2" do |f| %>
+          <%= f.text_field :content, placeholder: "Add new todo...", class: "flex-1 bg-gray-700 border border-gray-600 rounded-lg px-3 py-2 text-sm text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-purple-500" %>
+          <%= f.submit "+", class: "bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg text-sm font-medium" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div data-project-target="notesPanel" class="hidden fixed inset-0 bg-gray-900 z-30 lg:hidden">
+    <div class="flex items-center justify-between p-4 border-b border-gray-700">
+      <h2 class="text-lg font-semibold text-gray-100">Notes</h2>
+      <button data-action="project#showChats" class="flex items-center gap-2 text-purple-400 hover:text-purple-300 px-2 py-1 rounded-lg hover:bg-gray-800">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+        </svg>
+        Chat
+      </button>
+    </div>
+    <div class="p-4 overflow-y-auto" id="mobile_notes">
+      <% if @notes.any? %>
+        <div class="space-y-3">
+          <% @notes.each do |note| %>
+            <div class="bg-gray-800 rounded-lg p-3 border border-gray-700">
+              <h4 class="font-medium text-gray-200"><%= note.title %></h4>
+              <p class="text-sm text-gray-400 mt-1"><%= note.content %></p>
+            </div>
+          <% end %>
+        </div>
+      <% else %>
+        <p class="text-gray-500 text-center py-8">No notes yet</p>
+      <% end %>
+    </div>
+  </div>
+
+  <div data-project-target="knowledgePanel" class="hidden fixed inset-0 bg-gray-900 z-30 lg:hidden">
+    <div class="flex items-center justify-between p-4 border-b border-gray-700">
+      <h2 class="text-lg font-semibold text-gray-100">Knowledge</h2>
+      <button data-action="project#showChats" class="flex items-center gap-2 text-purple-400 hover:text-purple-300 px-2 py-1 rounded-lg hover:bg-gray-800">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+        </svg>
+        Chat
+      </button>
+    </div>
+    <div class="p-4 overflow-y-auto">
+      <div class="space-y-3">
+        <% @project.knowledge_bases.recent(5).each do |kb| %>
+          <%= link_to [kb.project, kb], class: "block bg-gray-800 hover:bg-gray-750 rounded-lg p-3 border border-gray-700" do %>
+            <div class="flex items-center justify-between">
+              <div>
+                <h3 class="font-medium text-gray-100"><%= kb.title %></h3>
+                <p class="text-xs text-gray-400"><%= kb.category.titleize %> · <%= time_ago_in_words(kb.created_at) %> ago</p>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+
+        <% if @project.knowledge_bases.empty? %>
+          <div class="text-center py-8">
+            <p class="text-gray-400">No knowledge base items yet.</p>
+            <%= link_to "Add First Item", new_project_knowledge_basis_path(@project), class: "text-purple-400 hover:text-purple-300 mt-2 inline-block" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div data-project-target="scheduledPanel" class="hidden fixed inset-0 bg-gray-900 z-30 lg:hidden">
+    <div class="flex items-center justify-between p-4 border-b border-gray-700">
+      <h2 class="text-lg font-semibold text-gray-100">Jobs</h2>
+      <button data-action="project#showChats" class="flex items-center gap-2 text-purple-400 hover:text-purple-300 px-2 py-1 rounded-lg hover:bg-gray-800">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+        </svg>
+        Chat
+      </button>
+    </div>
+    <div class="p-4 overflow-y-auto">
+      <div class="space-y-3">
+        <% @project.scheduled_jobs.order(created_at: :desc).limit(5).each do |job| %>
+          <div class="bg-gray-800 rounded-xl p-4 border border-gray-700">
+            <div class="flex items-start justify-between">
+              <div class="flex-1 min-w-0">
+                <h3 class="font-medium text-gray-100"><%= job.name %></h3>
+                <p class="text-sm text-gray-400">
+                  <%= job.cron_expression %>
+                  <% if job.next_run_at %>
+                    · Next: <%= time_ago_in_words(job.next_run_at) %>
+                  <% end %>
+                </p>
+                <div class="flex items-center gap-2 mt-2">
+                  <span class="<%= job.active? ? 'bg-green-900 text-green-200' : 'bg-gray-900 text-gray-400' %> px-2 py-1 text-xs rounded-full">
+                    <%= job.active? ? 'Active' : 'Inactive' %>
+                  </span>
+                  <% if job.status.present? && job.status != 'pending' %>
+                    <span class="<%= status_badge_class(job.status) %> px-2 py-1 text-xs rounded-full">
+                      <%= job.status.titleize %>
+                    </span>
+                  <% end %>
+                </div>
+              </div>
+              <div class="ml-4">
+                <%= button_to run_now_project_scheduled_job_path(@project, job), method: :post, class: "text-blue-400 hover:text-blue-300 text-sm" do %>
+                  Run Now
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+
+        <% if @project.scheduled_jobs.empty? %>
+          <div class="text-center py-8">
+            <p class="text-gray-400">No scheduled jobs yet.</p>
+            <%= link_to "Create First Job", new_project_scheduled_job_path(@project), class: "text-orange-400 hover:text-orange-300" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

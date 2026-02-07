@@ -1,0 +1,25 @@
+[Unit]
+Description=Gotar Bot Background Jobs (Solid Queue)
+After=network.target
+
+[Service]
+Type=simple
+User=gotar
+WorkingDirectory=/home/gotar/pi-web-ui
+Environment=RAILS_ENV=production
+Environment=SECRET_KEY_BASE=0eaf3546adcfb14e8ccdc2a5f707cd6347e1b192b94dc898db2dc4a7a7bda100843519204707c24e31f1377311bc7c7ce94387e368d104e3ed0dc34330cf352f
+Environment=ANTHROPIC_API_KEY=dummy_key_for_testing
+Environment=PATH=/home/gotar/.pi/agent/bin:/home/gotar/.bun/bin:/home/gotar/.npm-global/bin:/home/gotar/.rbenv/bin:/home/gotar/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/bin:/home/gotar/.rbenv/versions/3.4.3/bin:/usr/lib/rbenv/libexec:/home/gotar/.rbenv/shims:/home/gotar/.rbenv/bin:/home/gotar/.bin:/home/gotar/.yarn/bin:/home/gotar/.config/yarn/global/node_modules/.bin:/home/gotar/.nvm/versions/node/v18.18.2/bin:/home/gotar/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl
+
+ExecStart=/home/gotar/.rbenv/shims/bundle exec rails solid_queue:start
+
+Restart=always
+RestartSec=3
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=gotar-bot-jobs
+
+[Install]
+WantedBy=multi-user.target

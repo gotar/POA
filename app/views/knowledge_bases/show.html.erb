@@ -1,0 +1,52 @@
+<% content_for :title, "#{@knowledge_base.title} - Knowledge Base" %>
+
+<div class="min-h-screen flex flex-col">
+  <header class="bg-gray-800 border-b border-gray-700 px-4 py-3 flex items-center gap-3">
+    <%= link_to project_knowledge_bases_path(@project), class: "text-gray-400 hover:text-gray-200" do %>
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+      </svg>
+    <% end %>
+    <div class="flex-1 min-w-0">
+      <h1 class="font-medium text-gray-100 truncate"><%= @knowledge_base.title %></h1>
+      <p class="text-xs text-gray-500">
+        <%= @project.name %> · Knowledge Base · <%= @knowledge_base.category.titleize %>
+      </p>
+    </div>
+
+    <div class="flex gap-2">
+      <%= link_to "Edit", edit_project_knowledge_basis_path(@project, @knowledge_base), class: "bg-gray-700 hover:bg-gray-600 text-gray-200 px-3 py-1 rounded text-sm" %>
+      <%= button_to "Delete", project_knowledge_basis_path(@project, @knowledge_base), method: :delete, class: "bg-red-700 hover:bg-red-600 text-red-200 px-3 py-1 rounded text-sm", form: { data: { turbo_confirm: "Delete this knowledge base item?" } } %>
+    </div>
+  </header>
+
+  <main class="flex-1 overflow-y-auto p-4">
+    <div class="max-w-4xl mx-auto">
+      <!-- Tags -->
+      <% if @knowledge_base.tags.present? && @knowledge_base.tags.any? %>
+        <div class="mb-4 flex flex-wrap gap-2">
+          <% @knowledge_base.tags.each do |tag| %>
+            <span class="px-2 py-1 text-xs bg-purple-900 text-purple-200 rounded-full">
+              #<%= tag %>
+            </span>
+          <% end %>
+        </div>
+      <% end %>
+
+      <!-- Content -->
+      <div class="bg-gray-800 rounded-xl p-6 border border-gray-700">
+        <div class="prose prose-invert max-w-none">
+          <%= markdown(@knowledge_base.content) %>
+        </div>
+      </div>
+
+      <!-- Metadata -->
+      <div class="mt-6 text-sm text-gray-500">
+        Created <%= time_ago_in_words(@knowledge_base.created_at) %> ago
+        <% if @knowledge_base.updated_at != @knowledge_base.created_at %>
+          · Updated <%= time_ago_in_words(@knowledge_base.updated_at) %> ago
+        <% end %>
+      </div>
+    </div>
+  </main>
+</div>

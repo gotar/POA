@@ -1,0 +1,52 @@
+<div id="<%= dom_id(todo) %>" class="flex items-start gap-2 group">
+  <!-- Status Checkbox -->
+  <% if todo.completed? %>
+    <%= button_to complete_project_todo_path(project, todo), method: :post, class: "mt-0.5 text-green-400 hover:text-green-300 flex-shrink-0" do %>
+      <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+      </svg>
+    <% end %>
+  <% elsif todo.in_progress? %>
+    <%= button_to complete_project_todo_path(project, todo), method: :post, class: "mt-0.5 text-yellow-400 hover:text-yellow-300 flex-shrink-0" do %>
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+      </svg>
+    <% end %>
+  <% else %>
+    <%= button_to start_project_todo_path(project, todo), method: :post, class: "mt-0.5 text-gray-500 hover:text-purple-400 flex-shrink-0" do %>
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="9" stroke-width="2"></circle>
+      </svg>
+    <% end %>
+  <% end %>
+
+  <!-- Content -->
+  <div class="flex-1 min-w-0">
+    <p class="text-sm <%= todo.completed? ? 'text-gray-500 line-through' : 'text-gray-200' %> truncate">
+      <%= todo.content %>
+    </p>
+  </div>
+
+  <!-- Actions - Always visible on mobile, hover on desktop -->
+  <div class="flex items-center gap-1 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
+    <% if todo.in_progress? %>
+      <%= button_to complete_project_todo_path(project, todo), method: :post, class: "text-green-400 hover:text-green-300 p-1", title: "Complete" do %>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+        </svg>
+      <% end %>
+    <% elsif todo.completed? %>
+      <%= button_to reopen_project_todo_path(project, todo), method: :post, class: "text-gray-400 hover:text-yellow-400 p-1", title: "Reopen" do %>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+        </svg>
+      <% end %>
+    <% end %>
+
+    <%= button_to project_todo_path(project, todo), method: :delete, class: "text-gray-500 hover:text-red-400 p-1", title: "Delete", form: { data: { turbo_confirm: "Delete this todo?" } } do %>
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    <% end %>
+  </div>
+</div>

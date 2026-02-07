@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+default:
+  name: Default Project
+  description: MyText
+  color: "#8B5CF6"
+  icon: "🚀"
+
+work:
+  name: Work Project
+  description: Work related
+  color: "#10B981"
+  icon: "💼"

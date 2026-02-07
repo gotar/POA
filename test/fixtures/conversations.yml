@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  project: default
+  title: First Chat
+  system_prompt: MyText
+
+two:
+  project: default
+  title: Second Chat
+  system_prompt: MyText

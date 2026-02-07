@@ -1,0 +1,282 @@
+<% content_for :title, "#{@conversation.title} - #{@project.name}" %>
+
+<div class="min-h-screen flex flex-col" data-controller="chat">
+  <!-- Header -->
+  <header class="bg-gray-800 border-b border-gray-700 px-4 py-3 flex items-center gap-3 sticky top-0 z-10">
+    <%= link_to project_path(@project), class: "text-gray-400 hover:text-gray-200" do %>
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+      </svg>
+    <% end %>
+
+    <div class="flex-1 min-w-0">
+      <h1 class="font-medium text-gray-100 truncate"><%= @conversation.title %></h1>
+      <p class="text-xs text-gray-500">
+        <%= @project.name %> · <%= pluralize(@messages.count, 'message') %>
+      </p>
+    </div>
+
+    <!-- Menu -->
+    <div class="relative" data-controller="dropdown">
+      <button type="button" data-action="dropdown#toggle" class="text-gray-400 hover:text-gray-200 p-2">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"></path>
+        </svg>
+      </button>
+
+      <div data-dropdown-target="menu" class="hidden absolute right-0 mt-2 w-48 bg-gray-800 rounded-lg shadow-lg border border-gray-700 py-1 z-20">
+        <%= link_to export_project_conversation_path(@project, @conversation, format: :md), class: "w-full text-left px-4 py-2 text-gray-300 hover:bg-gray-700 flex items-center gap-2" do %>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+          </svg>
+          Export to Markdown
+        <% end %>
+        <%= button_to clear_messages_project_conversation_path(@project, @conversation), method: :post, class: "w-full text-left px-4 py-2 text-gray-300 hover:bg-gray-700 flex items-center gap-2", form: { data: { turbo_confirm: "Clear all messages?" } } do %>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+          </svg>
+          Clear messages
+        <% end %>
+        <%= button_to project_conversation_path(@project, @conversation), method: :delete, class: "w-full text-left px-4 py-2 text-red-400 hover:bg-gray-700 flex items-center gap-2", form: { data: { turbo_confirm: "Delete this conversation?" } } do %>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+          </svg>
+          Delete chat
+        <% end %>
+      </div>
+    </div>
+  </header>
+
+  <!-- Messages Container -->
+  <main id="messages" class="flex-1 overflow-y-auto p-4 space-y-4" data-chat-target="messages">
+    <% @messages.each do |message| %>
+      <%= render "messages/message", message: message %>
+    <% end %>
+
+    <% if @messages.empty? %>
+      <div class="text-center py-16">
+        <div class="text-5xl mb-4">👋</div>
+        <h2 class="text-lg font-medium text-gray-300 mb-1">Start a conversation</h2>
+        <p class="text-gray-500">Send a message below to begin</p>
+      </div>
+    <% end %>
+  </main>
+
+  <!-- Input Area -->
+  <footer class="bg-gray-800 border-t border-gray-700 p-4 sticky bottom-0 relative">
+    <%= turbo_frame_tag "message_form" do %>
+      <%= form_with model: [@project, @conversation, @new_message], data: { turbo: true, controller: "message-form", action: "turbo:submit-end->message-form#reset" }, class: "space-y-3" do |f| %>
+        <!-- Attachments -->
+        <div id="attachments_container">
+          <div class="flex items-center gap-2">
+            <label for="attachment_file_input" class="flex items-center gap-2 px-3 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg cursor-pointer text-sm text-gray-300 transition-colors">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13"></path>
+              </svg>
+              Attach File
+            </label>
+            <input type="file" id="attachment_file_input" name="message[attachments][][file]" class="hidden" multiple>
+          </div>
+
+          <!-- Preview area for selected files -->
+          <div id="selected_files" class="mt-2 space-y-2"></div>
+        </div>
+
+        <!-- Message Input -->
+        <div class="flex items-end gap-3">
+          <div class="flex-1 relative">
+            <%= f.text_area :content,
+                placeholder: "Type a message...",
+                rows: 1,
+                data: { message_form_target: "input", action: "keydown.enter->message-form#submitExceptShift input->message-form#autoResize" },
+                class: "w-full bg-gray-700 border border-gray-600 rounded-xl px-4 py-3 text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none max-h-32 pr-12" %>
+
+            <!-- Action Buttons -->
+            <div class="absolute right-2 top-2 flex gap-1">
+              <button type="button"
+                      data-action="click->message-form#toggleQuestions"
+                      class="text-gray-400 hover:text-gray-200 p-1 rounded transition-colors"
+                      title="Ask questions">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </button>
+
+              <% if @project.todos.active.any? %>
+                <button type="button"
+                        data-action="click->message-form#toggleTodoPanel"
+                        class="bg-yellow-500/20 text-yellow-400 text-xs px-2 py-1 rounded-full hover:bg-yellow-500/30 transition-colors">
+                  <%= @project.todos.active.count %>
+                </button>
+              <% end %>
+            </div>
+          </div>
+
+          <%= f.submit "Send",
+              data: { message_form_target: "submit" },
+              class: "bg-purple-600 hover:bg-purple-700 disabled:bg-gray-600 disabled:cursor-not-allowed text-white px-4 py-3 rounded-xl font-medium transition-colors flex items-center justify-center" %>
+        </div>
+
+        <!-- Quick Questions Panel -->
+        <div data-message-form-target="questionsPanel" class="hidden absolute bottom-full right-0 mb-2 w-80 bg-gray-800 border border-gray-700 rounded-xl shadow-xl z-50">
+          <div class="p-3 border-b border-gray-700">
+            <h4 class="font-medium text-gray-100">Quick Questions</h4>
+            <p class="text-xs text-gray-400">Common questions to ask for requirements</p>
+          </div>
+          <div class="p-2 space-y-2">
+            <button data-action="click->message-form#askQuestion"
+                    data-message-form-question-param="What are the main goals and objectives?"
+                    class="w-full text-left p-3 bg-gray-750 hover:bg-gray-700 rounded-lg transition-colors">
+              <div class="font-medium text-gray-200">Goals & Objectives</div>
+              <div class="text-xs text-gray-400">What are the main goals?</div>
+            </button>
+
+            <button data-action="click->message-form#askQuestion"
+                    data-message-form-question-param="What are the key features and functionality?"
+                    class="w-full text-left p-3 bg-gray-750 hover:bg-gray-700 rounded-lg transition-colors">
+              <div class="font-medium text-gray-200">Key Features</div>
+              <div class="text-xs text-gray-400">What functionality is needed?</div>
+            </button>
+
+            <button data-action="click->message-form#askQuestion"
+                    data-message-form-question-param="Who are the target users and what are their needs?"
+                    class="w-full text-left p-3 bg-gray-750 hover:bg-gray-700 rounded-lg transition-colors">
+              <div class="font-medium text-gray-200">Target Users</div>
+              <div class="text-xs text-gray-400">Who will use this?</div>
+            </button>
+
+            <button data-action="click->message-form#askQuestion"
+                    data-message-form-question-param="What are the constraints and limitations?"
+                    class="w-full text-left p-3 bg-gray-750 hover:bg-gray-700 rounded-lg transition-colors">
+              <div class="font-medium text-gray-200">Constraints</div>
+              <div class="text-xs text-gray-400">What are the limitations?</div>
+            </button>
+
+            <button data-action="click->message-form#askQuestion"
+                    data-message-form-question-param="What is the timeline and priority?"
+                    class="w-full text-left p-3 bg-gray-750 hover:bg-gray-700 rounded-lg transition-colors">
+              <div class="font-medium text-gray-200">Timeline & Priority</div>
+              <div class="text-xs text-gray-400">When is this needed?</div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Quick TODO Panel -->
+        <% if @project.todos.active.any? %>
+          <div data-message-form-target="todoPanel" class="hidden absolute bottom-full right-0 mb-2 w-80 bg-gray-800 border border-gray-700 rounded-xl shadow-xl z-50">
+            <div class="p-3 border-b border-gray-700">
+              <h4 class="font-medium text-gray-100">Active TODOs</h4>
+              <p class="text-xs text-gray-400">Click to complete or modify</p>
+            </div>
+            <div class="max-h-64 overflow-y-auto p-2 space-y-2">
+              <% @project.todos.active.order(:position, :priority).each do |todo| %>
+                <div class="flex items-center gap-3 p-2 bg-gray-750 rounded-lg hover:bg-gray-700 transition-colors group">
+                  <input type="checkbox"
+                         id="todo_<%= todo.id %>"
+                         data-action="change->message-form#completeTodo"
+                         data-message-form-todo-id-param="<%= todo.id %>"
+                         class="w-4 h-4 text-purple-600 bg-gray-700 border-gray-600 rounded focus:ring-purple-500 focus:ring-2">
+                  <div class="flex-1 min-w-0">
+                    <p class="text-sm text-gray-200 truncate"><%= todo.content %></p>
+                    <% if todo.priority.present? %>
+                      <span class="text-xs text-purple-400">Priority: <%= todo.priority %></span>
+                    <% end %>
+                  </div>
+                  <button data-action="click->message-form#editTodo"
+                          data-message-form-todo-id-param="<%= todo.id %>"
+                          class="opacity-0 group-hover:opacity-100 text-gray-400 hover:text-gray-200 transition-opacity">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                    </svg>
+                  </button>
+                </div>
+              <% end %>
+            </div>
+            <div class="p-3 border-t border-gray-700">
+              <form data-action="submit->message-form#addTodo" class="flex gap-2">
+                <input type="text"
+                       placeholder="Add new todo..."
+                       class="flex-1 bg-gray-700 border border-gray-600 rounded px-3 py-2 text-sm text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-purple-500">
+                <button type="submit" class="bg-purple-600 hover:bg-purple-700 text-white px-3 py-2 rounded text-sm font-medium transition-colors">
+                  Add
+                </button>
+              </form>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  </footer>
+</div>
+
+<script>
+// Handle file selection and preview
+document.getElementById('attachment_file_input').addEventListener('change', function(e) {
+  const files = e.target.files;
+  const previewContainer = document.getElementById('selected_files');
+
+  // Clear previous previews
+  previewContainer.innerHTML = '';
+
+  Array.from(files).forEach((file, index) => {
+    const fileItem = document.createElement('div');
+    fileItem.className = 'flex items-center gap-3 p-2 bg-gray-700 rounded-lg';
+
+    // File icon based on type
+    let iconHtml = '';
+    if (file.type.startsWith('image/')) {
+      iconHtml = '<div class="w-8 h-8 bg-green-600 rounded flex items-center justify-center"><svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg></div>';
+    } else if (file.type.startsWith('video/')) {
+      iconHtml = '<div class="w-8 h-8 bg-blue-600 rounded flex items-center justify-center"><svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg></div>';
+    } else {
+      iconHtml = '<div class="w-8 h-8 bg-gray-600 rounded flex items-center justify-center"><svg class="w-4 h-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg></div>';
+    }
+
+    // Hidden input for filename
+    const nameInput = document.createElement('input');
+    nameInput.type = 'hidden';
+    nameInput.name = `message[attachments][][name]`;
+    nameInput.value = file.name;
+
+    fileItem.innerHTML = `
+      ${iconHtml}
+      <div class="flex-1 min-w-0">
+        <div class="text-sm text-gray-200 truncate">${file.name}</div>
+        <div class="text-xs text-gray-500">${formatFileSize(file.size)} • ${file.type || 'Unknown type'}</div>
+      </div>
+      <button type="button" onclick="removeFile(${index})" class="text-gray-400 hover:text-red-400 p-1">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    `;
+
+    fileItem.appendChild(nameInput);
+    previewContainer.appendChild(fileItem);
+  });
+});
+
+function removeFile(index) {
+  // This is a simplified removal - in a real implementation,
+  // you'd need to properly manage the file input and preview list
+  const input = document.getElementById('attachment_file_input');
+  const files = Array.from(input.files);
+  files.splice(index, 1);
+
+  // Recreate file list (simplified)
+  const dt = new DataTransfer();
+  files.forEach(file => dt.items.add(file));
+  input.files = dt.files;
+
+  // Trigger change event to refresh preview
+  input.dispatchEvent(new Event('change'));
+}
+
+function formatFileSize(bytes) {
+  if (bytes === 0) return '0 Bytes';
+  const k = 1024;
+  const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+  const i = Math.floor(Math.log(bytes) / Math.log(k));
+  return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+}
+</script>

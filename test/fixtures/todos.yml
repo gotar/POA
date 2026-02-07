@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+pending:
+  project: default
+  content: Pending task
+  status: pending
+  priority: 1
+
+completed:
+  project: default
+  content: Done task
+  status: completed
+  priority: 1

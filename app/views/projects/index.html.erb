@@ -1,0 +1,217 @@
+<div class="min-h-screen flex flex-col">
+  <header class="bg-gray-800 border-b border-gray-700 px-4 py-4 sticky top-0 z-10">
+    <div class="flex items-center justify-between">
+      <h1 class="text-2xl font-bold text-purple-400">🤖 Gotar Bot</h1>
+      <div class="flex items-center gap-3">
+        <%= button_to projects_path, method: :post, params: { project: { name: "New Project" } }, class: "bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg flex items-center gap-2 transition-colors" do %>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+          </svg>
+          <span class="hidden sm:inline">New Project</span>
+        <% end %>
+      </div>
+    </div>
+    <p class="text-gray-400 text-sm mt-1">Select a project to start chatting</p>
+  </header>
+
+  <!-- Projects Grid -->
+  <main class="flex-1 overflow-y-auto p-4">
+    <!-- Active Projects -->
+    <% if @projects.any? %>
+      <div class="mb-8">
+        <h2 class="text-lg font-semibold text-gray-200 mb-4">Active Projects</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <% @projects.each do |project| %>
+            <%= link_to project, class: "block bg-gray-800 hover:bg-gray-750 rounded-xl p-5 border border-gray-700 transition-all hover:border-gray-600 hover:shadow-lg group" do %>
+              <div class="flex items-start justify-between mb-3">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-lg flex items-center justify-center text-xl" style="background-color: <%= project.color || '#8B5CF6' %>20; border: 2px solid <%= project.color || '#8B5CF6' %>">
+                    <%= project.icon || '📁' %>
+                  </div>
+                  <div>
+                    <h3 class="font-semibold text-gray-100"><%= project.name %></h3>
+                    <p class="text-xs text-gray-500"><%= time_ago_in_words(project.updated_at) %> ago</p>
+                  </div>
+                </div>
+                <%= button_to project, method: :delete, class: "text-gray-600 hover:text-red-400 p-1 opacity-0 group-hover:opacity-100 transition-opacity", form: { data: { turbo_confirm: "Delete '#{project.name}'? This cannot be undone." } } do %>
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                  </svg>
+                <% end %>
+              </div>
+
+              <% if project.description.present? %>
+                <p class="text-sm text-gray-400 mb-3 line-clamp-2"><%= project.description %></p>
+              <% end %>
+
+              <div class="flex items-center gap-4 text-xs text-gray-500">
+                <span class="flex items-center gap-1">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                  </svg>
+                  <%= pluralize(project.conversations.count, 'chat') %>
+                </span>
+                <span class="flex items-center gap-1">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
+                  </svg>
+                  <%= pluralize(project.todos.active.count, 'todo') %>
+                </span>
+                <span class="flex items-center gap-1">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                  </svg>
+                  <%= pluralize(project.notes.count, 'note') %>
+                </span>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+
+    <!-- Empty Projects Section -->
+    <% if @empty_projects.any? %>
+      <div class="mb-8">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="text-lg font-semibold text-yellow-400">Empty Projects</h2>
+          <%= button_to bulk_delete_projects_path, method: :delete, class: "text-sm bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded transition-colors", form: { data: { turbo_confirm: "Delete all empty projects?" } }, params: { project_ids: @empty_projects.pluck(:id) } do %>
+            Delete All Empty
+          <% end %>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <% @empty_projects.each do |project| %>
+            <div class="bg-gray-800/50 rounded-xl p-5 border border-gray-700 opacity-75">
+              <div class="flex items-start justify-between mb-3">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-lg flex items-center justify-center text-xl" style="background-color: <%= project.color || '#8B5CF6' %>20; border: 2px solid <%= project.color || '#8B5CF6' %>">
+                    <%= project.icon || '📁' %>
+                  </div>
+                  <div>
+                    <h3 class="font-semibold text-gray-300"><%= project.name %></h3>
+                    <p class="text-xs text-gray-500">No content yet</p>
+                  </div>
+                </div>
+                <%= button_to project, method: :delete, class: "text-gray-600 hover:text-red-400 p-1", form: { data: { turbo_confirm: "Delete '#{project.name}'?" } } do %>
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                  </svg>
+                <% end %>
+              </div>
+              <p class="text-sm text-gray-400">This project has no conversations, todos, notes, or knowledge bases.</p>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+
+    <!-- Old Projects Section -->
+    <% if @old_projects.any? %>
+      <div class="mb-8">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="text-lg font-semibold text-orange-400">Old Projects</h2>
+          <%= button_to bulk_archive_projects_path, method: :post, class: "text-sm bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded transition-colors", form: { data: { turbo_confirm: "Archive all old projects?" } }, params: { project_ids: @old_projects.pluck(:id) } do %>
+            Archive All Old
+          <% end %>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <% @old_projects.each do |project| %>
+            <div class="bg-gray-800/50 rounded-xl p-5 border border-gray-700 opacity-75">
+              <div class="flex items-start justify-between mb-3">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-lg flex items-center justify-center text-xl" style="background-color: <%= project.color || '#8B5CF6' %>20; border: 2px solid <%= project.color || '#8B5CF6' %>">
+                    <%= project.icon || '📁' %>
+                  </div>
+                  <div>
+                    <h3 class="font-semibold text-gray-300"><%= project.name %></h3>
+                    <p class="text-xs text-gray-500"><%= time_ago_in_words(project.updated_at) %> ago</p>
+                  </div>
+                </div>
+                <div class="flex gap-1">
+                  <%= button_to archive_project_path(project), method: :post, class: "text-gray-600 hover:text-blue-400 p-1", form: { data: { turbo_confirm: "Archive '#{project.name}'?" } } do %>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path>
+                    </svg>
+                  <% end %>
+                  <%= button_to project, method: :delete, class: "text-gray-600 hover:text-red-400 p-1", form: { data: { turbo_confirm: "Delete '#{project.name}'?" } } do %>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                  <% end %>
+                </div>
+              </div>
+
+              <% if project.description.present? %>
+                <p class="text-sm text-gray-400 mb-3 line-clamp-2"><%= project.description %></p>
+              <% end %>
+
+              <div class="flex items-center gap-4 text-xs text-gray-500">
+                <span class="flex items-center gap-1">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                  </svg>
+                  <%= pluralize(project.conversations.count, 'chat') %>
+                </span>
+                <span class="flex items-center gap-1">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+                  </svg>
+                  <%= pluralize(project.todos.active.count, 'todo') %>
+                </span>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+
+    <!-- Archived Projects Section -->
+    <% if @archived_projects.any? %>
+      <div class="mb-8">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="text-lg font-semibold text-gray-400">Archived Projects</h2>
+          <%= button_to bulk_unarchive_projects_path, method: :post, class: "text-sm bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded transition-colors", form: { data: { turbo_confirm: "Restore all archived projects?" } }, params: { project_ids: @archived_projects.pluck(:id) } do %>
+            Restore All
+          <% end %>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 opacity-50">
+          <% @archived_projects.each do |project| %>
+            <div class="bg-gray-800/30 rounded-xl p-5 border border-gray-700">
+              <div class="flex items-start justify-between mb-3">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-lg flex items-center justify-center text-xl opacity-50" style="background-color: <%= project.color || '#8B5CF6' %>20; border: 2px solid <%= project.color || '#8B5CF6' %>">
+                    <%= project.icon || '📁' %>
+                  </div>
+                  <div>
+                    <h3 class="font-semibold text-gray-400"><%= project.name %></h3>
+                    <p class="text-xs text-gray-600">Archived</p>
+                  </div>
+                </div>
+                <%= button_to unarchive_project_path(project), method: :post, class: "text-gray-600 hover:text-green-400 p-1", form: { data: { turbo_confirm: "Restore '#{project.name}'?" } } do %>
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                  </svg>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+
+    <!-- Empty State -->
+    <% if @projects.empty? && @empty_projects.empty? && @old_projects.empty? && @archived_projects.empty? %>
+      <div class="text-center py-20">
+        <div class="text-7xl mb-6">🚀</div>
+        <h2 class="text-2xl font-semibold text-gray-200 mb-2">Welcome to Gotar Bot!</h2>
+        <p class="text-gray-400 mb-8 max-w-md mx-auto">Create your first project to start organizing your AI conversations, todos, and notes.</p>
+        <%= button_to projects_path, method: :post, params: { project: { name: "My First Project", icon: "🚀" } }, class: "inline-flex items-center gap-2 bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-medium transition-colors" do %>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+          </svg>
+          Create First Project
+        <% end %>
+      </div>
+    <% end %>
+  </main>
+</div>

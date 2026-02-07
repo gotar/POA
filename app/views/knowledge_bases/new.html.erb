@@ -1,0 +1,67 @@
+<% content_for :title, "New Knowledge Base Item - #{@project.name}" %>
+
+<div class="min-h-screen flex flex-col">
+  <header class="bg-gray-800 border-b border-gray-700 px-4 py-3 flex items-center gap-3">
+    <%= link_to project_knowledge_bases_path(@project), class: "text-gray-400 hover:text-gray-200" do %>
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+      </svg>
+    <% end %>
+    <h1 class="text-xl font-bold text-gray-100">New Knowledge Base Item</h1>
+  </header>
+
+  <main class="flex-1 overflow-y-auto p-4">
+    <div class="max-w-4xl mx-auto">
+      <%= form_with model: [@project, @knowledge_base], class: "space-y-6" do |f| %>
+        <div class="bg-gray-800 rounded-xl p-6 border border-gray-700">
+          <!-- Title -->
+          <div>
+            <%= f.label :title, class: "block text-sm font-medium text-gray-300 mb-2" %>
+            <%= f.text_field :title, placeholder: "Enter a descriptive title...", class: "w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500" %>
+            <% if @knowledge_base.errors[:title].any? %>
+              <p class="mt-1 text-sm text-red-400"><%= @knowledge_base.errors[:title].first %></p>
+            <% end %>
+          </div>
+
+          <!-- Category -->
+          <div>
+            <%= f.label :category, class: "block text-sm font-medium text-gray-300 mb-2" %>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+              <% %w[context reference code example].each do |category| %>
+                <label class="flex items-center p-3 bg-gray-700 hover:bg-gray-600 rounded-lg cursor-pointer border border-gray-600">
+                  <%= f.radio_button :category, category, class: "text-purple-500 focus:ring-purple-500" %>
+                  <span class="ml-2 text-sm text-gray-200"><%= category.titleize %></span>
+                </label>
+              <% end %>
+            </div>
+            <% if @knowledge_base.errors[:category].any? %>
+              <p class="mt-1 text-sm text-red-400"><%= @knowledge_base.errors[:category].first %></p>
+            <% end %>
+          </div>
+
+          <!-- Tags -->
+          <div>
+            <%= f.label :tags, "Tags (comma-separated)", class: "block text-sm font-medium text-gray-300 mb-2" %>
+            <%= f.text_field :tags, placeholder: "ai, machine-learning, python, api", class: "w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500" %>
+            <p class="mt-1 text-xs text-gray-500">Optional tags to help organize and search your knowledge base</p>
+          </div>
+
+          <!-- Content -->
+          <div>
+            <%= f.label :content, class: "block text-sm font-medium text-gray-300 mb-2" %>
+            <%= f.text_area :content, rows: 20, placeholder: "# Title\n\nWrite your knowledge base content here...\n\nUse **markdown** for formatting.\n\n```python\n# Code examples\nprint('Hello, World!')\n```", class: "w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 font-mono text-sm resize-none" %>
+            <% if @knowledge_base.errors[:content].any? %>
+              <p class="mt-1 text-sm text-red-400"><%= @knowledge_base.errors[:content].first %></p>
+            <% end %>
+          </div>
+
+          <!-- Actions -->
+          <div class="flex gap-3 pt-4">
+            <%= f.submit "Create Item", class: "bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-medium" %>
+            <%= link_to "Cancel", project_knowledge_bases_path(@project), class: "bg-gray-700 hover:bg-gray-600 text-gray-200 px-6 py-3 rounded-lg" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </main>
+</div>

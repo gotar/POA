@@ -1,0 +1,29 @@
+# frozen_string_literal: true
+
+class Conversation < ApplicationRecord
+  belongs_to :project
+  has_many :messages, dependent: :destroy
+
+  validates :title, presence: true, length: { maximum: 255 }
+
+  # Generate a title from the first user message
+  def generate_title_from_first_message!
+    return if title.present?
+
+    first_user_message = messages.where(role: "user").first
+    return unless first_user_message
+
+    # Use first 50 chars of message as title
+    self.title = first_user_message.content.to_s.truncate(50)
+    save!
+  end
+
+  # Scopes
+  scope :recent, -> { order(updated_at: :desc) }
+  scope :for_project, ->(project) { where(project: project) }
+
+  # Get recent conversations for a project
+  def self.recent_for_project(project, limit = 20)
+    for_project(project).recent.limit(limit)
+  end
+end

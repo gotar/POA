@@ -1,0 +1,24 @@
+[Unit]
+Description=Gotar Bot Web Server (Puma)
+After=network.target
+
+[Service]
+Type=simple
+User=gotar
+WorkingDirectory=/home/gotar/pi-web-ui
+Environment=RAILS_ENV=production
+Environment=SECRET_KEY_BASE=0eaf3546adcfb14e8ccdc2a5f707cd6347e1b192b94dc898db2dc4a7a7bda100843519204707c24e31f1377311bc7c7ce94387e368d104e3ed0dc34330cf352f
+Environment=ANTHROPIC_API_KEY=dummy_key_for_testing
+
+ExecStart=/home/gotar/.rbenv/shims/bundle exec puma -C config/puma.rb -p 3090
+
+Restart=always
+RestartSec=3
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=gotar-bot-web
+
+[Install]
+WantedBy=multi-user.target

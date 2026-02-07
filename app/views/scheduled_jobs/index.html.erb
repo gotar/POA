@@ -1,0 +1,98 @@
+<% content_for :title, "Scheduled Jobs - #{@project.name}" %>
+
+<div class="min-h-screen flex flex-col">
+  <header class="bg-gray-800 border-b border-gray-700 px-4 py-3 flex items-center gap-3">
+    <%= link_to @project, class: "text-gray-400 hover:text-gray-200" do %>
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+      </svg>
+    <% end %>
+    <h1 class="text-xl font-bold text-gray-100">Scheduled Jobs</h1>
+    <div class="ml-auto">
+      <%= link_to "New Job", new_project_scheduled_job_path(@project), class: "bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg" %>
+    </div>
+  </header>
+
+  <main class="flex-1 overflow-y-auto p-4">
+    <div class="space-y-4">
+      <% @scheduled_jobs.each do |job| %>
+        <div class="bg-gray-800 rounded-xl p-4 border border-gray-700">
+          <div class="flex items-start justify-between">
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center gap-2 mb-2">
+                <h3 class="font-medium text-gray-100">
+                  <%= link_to [job.project, job], class: "hover:text-purple-400" do %>
+                    <%= job.name %>
+                  <% end %>
+                </h3>
+                <span class="<%= job.active? ? 'bg-green-900 text-green-200' : 'bg-gray-900 text-gray-400' %> px-2 py-1 text-xs rounded-full">
+                  <%= job.active? ? 'Active' : 'Inactive' %>
+                </span>
+                <% if job.status.present? %>
+                  <span class="<%= status_badge_class(job.status) %> px-2 py-1 text-xs rounded-full">
+                    <%= job.status.titleize %>
+                  </span>
+                <% end %>
+              </div>
+
+              <div class="text-sm text-gray-400 mb-2">
+                Cron: <code class="bg-gray-700 px-1 rounded text-xs"><%= job.cron_expression %></code>
+                <% if job.next_run_at %>
+                  · Next run: <%= time_ago_in_words(job.next_run_at) %>
+                <% end %>
+                <% if job.last_run_at %>
+                  · Last run: <%= time_ago_in_words(job.last_run_at) %> ago
+                <% end %>
+              </div>
+
+              <div class="text-gray-300 line-clamp-2">
+                <%= job.prompt_template.truncate(100) %>
+              </div>
+            </div>
+
+            <div class="flex gap-2 ml-4">
+              <%= button_to toggle_project_scheduled_job_path(@project, job), method: :post, class: "text-gray-400 hover:text-green-400", title: job.active? ? "Pause job" : "Activate job" do %>
+                <% if job.active? %>
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                <% else %>
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1.586a1 1 0 01.707.293l.707.707A1 1 0 0012.414 11H13m-4 4h1.586a1 1 0 01.707.293l.707.707A1 1 0 0012.414 15H13m0-10a9 9 0 105.636 5.636M12 2v10"></path>
+                  </svg>
+                <% end %>
+              <% end %>
+
+              <%= button_to run_now_project_scheduled_job_path(@project, job), method: :post, class: "text-gray-400 hover:text-blue-400", title: "Run now" do %>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                </svg>
+              <% end %>
+
+              <%= link_to edit_project_scheduled_job_path(@project, job), class: "text-gray-400 hover:text-gray-200" do %>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                </svg>
+              <% end %>
+
+              <%= button_to project_scheduled_job_path(@project, job), method: :delete, class: "text-gray-400 hover:text-red-400", form: { data: { turbo_confirm: "Delete this scheduled job?" } } do %>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                </svg>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+
+      <% if @scheduled_jobs.empty? %>
+        <div class="text-center py-12">
+          <div class="text-5xl mb-4">⏰</div>
+          <h2 class="text-lg font-medium text-gray-300 mb-1">No scheduled jobs</h2>
+          <p class="text-gray-500 mb-4">Create automated tasks that run on a schedule</p>
+          <%= link_to "Create First Job", new_project_scheduled_job_path(@project), class: "bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg" %>
+        </div>
+      <% end %>
+    </div>
+  </main>
+</div>

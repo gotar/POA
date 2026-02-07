@@ -1,0 +1,39 @@
+<%# Chat area for project - shows welcome or active conversation %>
+
+<% if @new_conversation&.persisted? %>
+  <!-- Active Conversation -->
+  <%= render "conversations/conversation", project: @project, conversation: @new_conversation %>
+<% else %>
+  <!-- Welcome / New Chat Screen -->
+  <div class="flex-1 flex flex-col items-center justify-center p-8">
+    <div class="text-center max-w-md">
+      <div class="w-20 h-20 rounded-2xl flex items-center justify-center text-4xl mx-auto mb-6" style="background-color: <%= @project.color %>20; border: 3px solid <%= @project.color %>">
+        <%= @project.icon || '🤖' %>
+      </div>
+
+      <h2 class="text-2xl font-bold text-gray-100 mb-2">Start a Conversation</h2>
+      <p class="text-gray-400 mb-8">Chat with AI about your project. Your TODOs and context notes will be included automatically.</p>
+
+      <%= link_to "New Chat",
+          project_conversations_path(@project),
+          data: { turbo_method: :post },
+          class: "bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-xl font-medium transition-colors inline-flex items-center gap-2" %>
+    </div>
+
+    <!-- Quick Stats -->
+    <div class="mt-12 grid grid-cols-3 gap-6 text-center">
+      <div class="bg-gray-800 rounded-xl p-4 border border-gray-700">
+        <div class="text-2xl font-bold text-purple-400"><%= @project.conversations.count %></div>
+        <div class="text-sm text-gray-400">Chats</div>
+      </div>
+      <div class="bg-gray-800 rounded-xl p-4 border border-gray-700">
+        <div class="text-2xl font-bold text-green-400"><%= @project.todos.completed.count %></div>
+        <div class="text-sm text-gray-400">Completed</div>
+      </div>
+      <div class="bg-gray-800 rounded-xl p-4 border border-gray-700">
+        <div class="text-2xl font-bold text-yellow-400"><%= @project.todos.active.count %></div>
+        <div class="text-sm text-gray-400">Active TODOs</div>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,38 @@
+<%# Conversations list for a project - redirects to project show %>
+<% content_for :title, "Conversations - #{@project.name}" %>
+
+<div class="min-h-screen flex flex-col">
+  <header class="bg-gray-800 border-b border-gray-700 px-4 py-3 flex items-center gap-3">
+    <%= link_to projects_path, class: "text-gray-400 hover:text-gray-200" do %>
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+      </svg>
+    <% end %>
+    <h1 class="text-xl font-bold text-gray-100"><%= @project.name %> - Chats</h1>
+    <div class="ml-auto">
+      <%= link_to "New Chat", project_conversations_path(@project), data: { turbo_method: :post }, class: "bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg" %>
+    </div>
+  </header>
+
+  <main class="flex-1 overflow-y-auto p-4">
+    <div class="space-y-2">
+      <% @conversations.each do |conv| %>
+        <%= link_to [@project, conv], class: "block bg-gray-800 hover:bg-gray-750 rounded-xl p-4 border border-gray-700" do %>
+          <div class="flex items-center justify-between">
+            <div>
+              <h3 class="font-medium text-gray-100"><%= conv.title %></h3>
+              <p class="text-sm text-gray-400"><%= pluralize(conv.messages.count, 'message') %> · <%= time_ago_in_words(conv.updated_at) %> ago</p>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+
+      <% if @conversations.empty? %>
+        <div class="text-center py-12">
+          <p class="text-gray-400">No conversations yet.</p>
+          <%= link_to "Start a chat", project_conversations_path(@project), data: { turbo_method: :post }, class: "text-purple-400 hover:text-purple-300" %>
+        </div>
+      <% end %>
+    </div>
+  </main>
+</div>

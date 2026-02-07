@@ -60,7 +60,7 @@ class MessagesControllerTest < ActionDispatch::IntegrationTest
 
     assistant_message = Message.last
     assert_equal "assistant", assistant_message.role
-    assert_equal "...", assistant_message.content  # Placeholder
+    assert_equal "", assistant_message.content  # Placeholder (blank while streaming)
   end
 
   # Error handling

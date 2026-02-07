@@ -197,15 +197,18 @@
                 </div>
               <% end %>
             </div>
-            <div class="p-3 border-t border-gray-700">
-              <form data-action="submit->message-form#addTodo" class="flex gap-2">
+            <div class="p-3 border-t border-gray-700" data-message-form-todo-add-container>
+              <div class="flex gap-2">
                 <input type="text"
                        placeholder="Add new todo..."
+                       data-action="keydown.enter->message-form#addTodo"
                        class="flex-1 bg-gray-700 border border-gray-600 rounded px-3 py-2 text-sm text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-purple-500">
-                <button type="submit" class="bg-purple-600 hover:bg-purple-700 text-white px-3 py-2 rounded text-sm font-medium transition-colors">
+                <button type="button"
+                        data-action="click->message-form#addTodo"
+                        class="bg-purple-600 hover:bg-purple-700 text-white px-3 py-2 rounded text-sm font-medium transition-colors">
                   Add
                 </button>
-              </form>
+              </div>
             </div>
           </div>
         <% end %>

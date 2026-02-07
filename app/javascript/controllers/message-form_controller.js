@@ -83,37 +83,42 @@ export default class extends Controller {
     alert(`Edit TODO ${todoId} - Feature coming soon!`)
   }
 
-  // Add new todo
+  // Add new todo (from the quick TODO panel)
   addTodo(event) {
-    event.preventDefault()
-    const form = event.target
-    const input = form.querySelector('input[type="text"]')
-    const content = input.value.trim()
+    // Can be triggered by submit, click, or keydown.enter
+    if (event) event.preventDefault()
 
-    if (content) {
-      // Submit to create new todo
-      const createForm = document.createElement("form")
-      createForm.method = "POST"
-      createForm.action = `/projects/${this.getProjectId()}/todos`
+    const container = event?.target?.closest?.("[data-message-form-todo-add-container]") || event?.target
+    const input = container?.querySelector?.('input[type="text"]')
 
-      const contentInput = document.createElement("input")
-      contentInput.type = "hidden"
-      contentInput.name = "todo[content]"
-      contentInput.value = content
+    const content = (input?.value || "").trim()
+    if (!content) return
 
-      const csrfToken = document.querySelector('meta[name="csrf-token"]')?.content
-      if (csrfToken) {
-        const csrfInput = document.createElement("input")
-        csrfInput.type = "hidden"
-        csrfInput.name = "authenticity_token"
-        csrfInput.value = csrfToken
-        createForm.appendChild(csrfInput)
-      }
+    // Submit to create new todo
+    const createForm = document.createElement("form")
+    createForm.method = "POST"
+    createForm.action = `/projects/${this.getProjectId()}/todos`
 
-      createForm.appendChild(contentInput)
-      document.body.appendChild(createForm)
-      createForm.submit()
+    const contentInput = document.createElement("input")
+    contentInput.type = "hidden"
+    contentInput.name = "todo[content]"
+    contentInput.value = content
+
+    const csrfToken = document.querySelector('meta[name="csrf-token"]')?.content
+    if (csrfToken) {
+      const csrfInput = document.createElement("input")
+      csrfInput.type = "hidden"
+      csrfInput.name = "authenticity_token"
+      csrfInput.value = csrfToken
+      createForm.appendChild(csrfInput)
     }
+
+    createForm.appendChild(contentInput)
+    document.body.appendChild(createForm)
+    createForm.submit()
+
+    // Optimistic UI reset
+    if (input) input.value = ""
   }
 
   // Ask a predefined question

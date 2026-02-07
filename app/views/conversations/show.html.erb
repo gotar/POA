@@ -1,5 +1,7 @@
 <% content_for :title, "#{@conversation.title} - #{@project.name}" %>
 
+<%= turbo_stream_from @conversation %>
+
 <div class="min-h-screen flex flex-col" data-controller="chat">
   <!-- Header -->
   <header class="bg-gray-800 border-b border-gray-700 px-4 py-3 flex items-center gap-3 sticky top-0 z-10">

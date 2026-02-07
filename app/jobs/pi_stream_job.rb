@@ -26,14 +26,14 @@ class PiStreamJob < ApplicationJob
     error_message = format_error_message(e)
     @assistant_message.update(content: error_message)
     broadcast_error("Failed to communicate with AI assistant: #{error_message}")
-    broadcast_complete # Re-enable the form
+    broadcast_complete
   rescue StandardError => e
     Rails.logger.error "Unexpected error in PiStreamJob: #{e.message}"
-    Rails.logger.error e.backtrace.join("\n")
+    Rails.logger.error e.backtrace.first(5).join("\n")
     error_message = "An unexpected error occurred. Please try again."
     @assistant_message.update(content: error_message)
     broadcast_error(error_message)
-    broadcast_complete # Re-enable the form
+    broadcast_complete
   end
 
   private
@@ -67,65 +67,64 @@ class PiStreamJob < ApplicationJob
     pi = PiRpcService.new
     pi.start
 
-    full_content = ""
+    full_text = ""
+    full_thinking = ""
     metadata = {}
 
     begin
       pi.prompt(prompt) do |event|
-        case event["type"]
+        event_type = event["type"]
+
+        # Skip UI requests
+        next if event_type == "extension_ui_request"
+
+        case event_type
         when "message_update"
-          # Capture metadata from assistant message events
-          if event["assistantMessageEvent"] && event["assistantMessageEvent"]["type"] == "done"
-            assistant_event = event["assistantMessageEvent"]
+          assistant_event = event["assistantMessageEvent"]
+          if assistant_event
+            inner_type = assistant_event["type"]
+
+            # Handle text content (visible to user)
+            if inner_type == "text_delta"
+              delta = assistant_event["delta"]
+              if delta && delta.present?
+                full_text += delta
+                @assistant_message.update(content: full_text)
+                broadcast_update
+              end
+            end
+
+            # Extract metadata from partial message
             if assistant_event["partial"]
-              metadata = extract_metadata_from_message(assistant_event["partial"])
+              extracted = extract_metadata(assistant_event["partial"])
+              metadata.merge!(extracted) if extracted.present?
             end
           end
-
-          # Handle text deltas
-          assistant_event = event["assistantMessageEvent"]
-          if assistant_event && assistant_event["type"] == "text_delta"
-            full_content += assistant_event["delta"]
-            @assistant_message.update(content: full_content)
-            broadcast_update
-          end
         when "message_end"
-          # Extract metadata from completed message
           if event["message"]
-            metadata = extract_metadata_from_message(event["message"])
+            metadata = extract_metadata(event["message"])
           end
-          @assistant_message.update(content: full_content)
+          @assistant_message.update(content: full_text)
           broadcast_complete(metadata)
         when "agent_end"
-          # Final update with metadata
-          @assistant_message.update(content: full_content)
+          @assistant_message.update(content: full_text)
           broadcast_complete(metadata)
         end
       end
     ensure
-      pi.stop
+      pi.stop rescue nil
     end
   end
 
-  def extract_metadata_from_message(message)
-    return {} unless message
+  def extract_metadata(message)
+    return {} unless message.is_a?(Hash)
 
     metadata = {}
 
-    # Extract model information
-    if message["model"]
-      metadata[:model] = message["model"]
-    end
+    metadata[:model] = message["model"] if message["model"]
+    metadata[:provider] = message["provider"] if message["provider"]
+    metadata[:api] = message["api"] if message["api"]
 
-    if message["provider"]
-      metadata[:provider] = message["provider"]
-    end
-
-    if message["api"]
-      metadata[:api] = message["api"]
-    end
-
-    # Extract usage information
     if message["usage"]
       usage = message["usage"]
       metadata[:usage] = {
@@ -138,10 +137,7 @@ class PiStreamJob < ApplicationJob
       }
     end
 
-    # Extract stop reason
-    if message["stopReason"]
-      metadata[:stop_reason] = message["stopReason"]
-    end
+    metadata[:stop_reason] = message["stopReason"] if message["stopReason"]
 
     metadata
   end
@@ -156,12 +152,9 @@ class PiStreamJob < ApplicationJob
   end
 
   def broadcast_complete(metadata = {})
-    # Save metadata to the message
     @assistant_message.update(metadata: metadata) if metadata.present?
-
     broadcast_update
 
-    # Re-enable input
     Turbo::StreamsChannel.broadcast_replace_to(
       @conversation,
       target: "message_form",
@@ -179,14 +172,13 @@ class PiStreamJob < ApplicationJob
     when PiRpcService::TimeoutError
       "⏰ The AI assistant took too long to respond. Please try again."
     when PiRpcService::ProcessError
-      "🔧 AI assistant service is currently unavailable. Please try again in a moment."
+      "🔧 AI assistant service is currently unavailable. Please try again."
     else
       "❌ Unable to connect to AI assistant: #{error.message}"
     end
   end
 
   def broadcast_error(error_message)
-    # Update the assistant message to show error state
     Turbo::StreamsChannel.broadcast_replace_to(
       @conversation,
       target: "message_#{@assistant_message.id}",
@@ -194,7 +186,6 @@ class PiStreamJob < ApplicationJob
       locals: { message: @assistant_message.reload }
     )
 
-    # Also append an error notification
     Turbo::StreamsChannel.broadcast_append_to(
       @conversation,
       target: "messages",

@@ -120,6 +120,42 @@ class PersonalKnowledgeService
     touch_updated_frontmatter!(abs)
   end
 
+  # Merge new information into an existing note (preferred over creating duplicates).
+  #
+  # Strategy (keep notes compact):
+  # - Add a dated bullet under "## Important patterns / gotchas" when possible.
+  # - Update frontmatter tags/source/version when missing.
+  # - Touch updated date.
+  def self.merge_into!(rel_path, update_text:, tags: [], source: nil, version: nil)
+    abs = resolve_rel!(rel_path)
+
+    text = File.read(abs)
+
+    update = build_update_block(update_text)
+
+    marker = "## Important patterns / gotchas"
+    if text.include?(marker)
+      start = text.index(marker)
+      # find end of section (next h2)
+      after_marker = start + marker.length
+      section_end = text.index("\n## ", after_marker) || text.length
+
+      before = text[0...section_end].rstrip
+      after = text[section_end..]
+
+      text = before + "\n\n" + update + "\n\n" + after.to_s.lstrip
+    else
+      text = text.rstrip + "\n\n" + marker + "\n\n" + update + "\n"
+    end
+
+    text = merge_frontmatter(text, tags: tags, source: source, version: version)
+
+    File.write(abs, text)
+    touch_updated_frontmatter!(abs)
+
+    relative_path(abs)
+  end
+
   def self.create_topic!(title:, body:, tags: [], source: nil, version: nil)
     ensure_setup!
 
@@ -223,6 +259,57 @@ class PersonalKnowledgeService
   rescue StandardError
     # best effort
     nil
+  end
+
+  def self.build_update_block(update_text)
+    clean = update_text.to_s.strip
+    date = Date.current.to_s
+
+    return "- **Update #{date}**: (no details)" if clean.blank?
+
+    lines = clean.lines.map { |l| l.strip }.reject(&:blank?)
+
+    if lines.length == 1 && !lines.first.start_with?("-", "*")
+      return "- **Update #{date}**: #{lines.first}"
+    end
+
+    out = ["- **Update #{date}**:"]
+    lines.each do |l|
+      l = l.sub(/\A[-*]\s+/, "")
+      out << "  - #{l}"
+    end
+
+    out.join("\n")
+  end
+
+  def self.merge_frontmatter(text, tags: [], source: nil, version: nil)
+    return text unless text.start_with?("---\n")
+
+    idx = text.index("\n---\n", 4)
+    return text unless idx
+
+    yaml = text[4...idx]
+    rest = text[(idx + 5)..]
+
+    fm = YAML.safe_load(yaml, permitted_classes: [Date], aliases: true) || {}
+
+    incoming_tags = Array(tags).map(&:to_s).reject(&:blank?)
+    if incoming_tags.any?
+      merged = (parse_tags(fm["tags"]) + incoming_tags).map(&:to_s).reject(&:blank?).uniq
+      fm["tags"] = merged
+    end
+
+    if source.to_s.strip.present? && fm["source"].to_s.strip.blank?
+      fm["source"] = source.to_s.strip
+    end
+
+    if version.to_s.strip.present? && fm["version"].to_s.strip.blank?
+      fm["version"] = version.to_s.strip
+    end
+
+    "---\n" + fm.to_yaml.sub(/\A---\s*\n?/, "") + "---\n" + rest
+  rescue StandardError
+    text
   end
 
   def self.guess_title(content, abs_path)

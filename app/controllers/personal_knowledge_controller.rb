@@ -5,15 +5,10 @@ class PersonalKnowledgeController < ApplicationController
 
   # GET /projects/:project_id/personal_knowledge
   def index
-    @stats = PersonalKnowledgeService.stats
-    @topics = PersonalKnowledgeService.list(kind: :topics, limit: 30)
-    @daily = PersonalKnowledgeService.list(kind: :daily, limit: 14)
+    load_index_data
 
-    @qmd_status = begin
-      QmdCliService.status
-    rescue StandardError => e
-      "QMD status unavailable: #{e.message}"
-    end
+    @suggestions = []
+    @prefill = {}
   end
 
   # GET /projects/:project_id/personal_knowledge/search?q=...
@@ -74,9 +69,42 @@ class PersonalKnowledgeController < ApplicationController
     source = params[:source].to_s.presence
     version = params[:version].to_s.presence
 
+    existing_path = params[:existing_path].to_s.presence
+    force = params[:force].to_s == "1"
+
     if title.blank?
       redirect_to project_personal_knowledge_path(@project), alert: "Title is required"
       return
+    end
+
+    # If user chose an existing note, update it instead of creating a new one.
+    if existing_path.present?
+      rel = PersonalKnowledgeService.merge_into!(existing_path, update_text: body, tags: tags, source: source, version: version)
+      PersonalKnowledgeReindexJob.perform_later
+      redirect_to project_personal_knowledge_note_path(@project, path: rel), notice: "Updated existing topic"
+      return
+    end
+
+    # De-dupe: suggest possible existing topics before creating a new one.
+    unless force
+      @suggestions = suggest_duplicates(title)
+
+      if @suggestions.any?
+        load_index_data
+        @prefill = {
+          title: title,
+          body: body,
+          tags: params[:tags].to_s,
+          source: source,
+          version: version
+        }
+
+        respond_to do |format|
+          format.turbo_stream { render :create_topic, status: :unprocessable_entity }
+          format.html { render :index, status: :unprocessable_entity }
+        end
+        return
+      end
     end
 
     rel = PersonalKnowledgeService.create_topic!(title: title, body: body, tags: tags, source: source, version: version)
@@ -100,5 +128,29 @@ class PersonalKnowledgeController < ApplicationController
 
   def set_project
     @project = Project.find(params[:project_id])
+  end
+
+  def load_index_data
+    @stats = PersonalKnowledgeService.stats
+    @topics = PersonalKnowledgeService.list(kind: :topics, limit: 30)
+    @daily = PersonalKnowledgeService.list(kind: :daily, limit: 14)
+
+    @qmd_status = begin
+      QmdCliService.status
+    rescue StandardError => e
+      "QMD status unavailable: #{e.message}"
+    end
+  end
+
+  def suggest_duplicates(title)
+    # Use QMD hybrid query; show suggestions only for existing TOPIC notes.
+    results = QmdCliService.search(title, mode: :query, limit: 6)
+
+    results.select do |r|
+      rel = r["file"].to_s.sub(%r{\Aqmd://[^/]+/}i, "")
+      rel.start_with?("topics/")
+    end
+  rescue StandardError
+    []
   end
 end

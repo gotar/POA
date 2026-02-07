@@ -63,18 +63,14 @@
 
       <div class="bg-gray-800 border border-gray-700 rounded-xl p-4">
         <h2 class="text-sm font-semibold text-gray-200">Create topic</h2>
-        <p class="text-xs text-gray-500 mt-1">Keep it compact. If a note already exists, search first and update it.</p>
+        <p class="text-xs text-gray-500 mt-1">Keep it compact. If a note already exists, the app will suggest updating it.</p>
 
-        <%= form_with url: project_personal_knowledge_topics_path(@project), method: :post, class: "mt-3 space-y-2" do %>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
-            <input name="title" placeholder="Title" class="w-full bg-gray-700 border border-gray-600 rounded-lg px-3 py-2 text-sm text-gray-100 placeholder-gray-400" />
-            <input name="tags" placeholder="tags (comma or space)" class="w-full bg-gray-700 border border-gray-600 rounded-lg px-3 py-2 text-sm text-gray-100 placeholder-gray-400" />
-            <input name="version" placeholder="version (optional)" class="w-full bg-gray-700 border border-gray-600 rounded-lg px-3 py-2 text-sm text-gray-100 placeholder-gray-400" />
-            <input name="source" placeholder="source URL (optional)" class="w-full bg-gray-700 border border-gray-600 rounded-lg px-3 py-2 text-sm text-gray-100 placeholder-gray-400" />
-          </div>
-          <textarea name="body" rows="4" placeholder="Optional initial content / examples…" class="w-full bg-gray-700 border border-gray-600 rounded-lg px-3 py-2 text-sm text-gray-100 placeholder-gray-400"></textarea>
-          <button class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg text-sm">Create</button>
-        <% end %>
+        <div class="mt-3">
+          <%= render "personal_knowledge/create_topic_frame",
+                project: @project,
+                suggestions: (@suggestions || []),
+                prefill: (@prefill || {}) %>
+        </div>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">

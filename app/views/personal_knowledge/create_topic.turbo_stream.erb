@@ -1,0 +1,6 @@
+<%= turbo_stream.replace "pk_create_topic" do %>
+  <%= render "personal_knowledge/create_topic_frame",
+        project: @project,
+        suggestions: (@suggestions || []),
+        prefill: (@prefill || {}) %>
+<% end %>

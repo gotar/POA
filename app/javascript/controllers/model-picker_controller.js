@@ -28,6 +28,8 @@ class ModelPickerController extends Controller {
     document.addEventListener("touchstart", this._outsideClick)
 
     this._debounced = null
+
+    this._setupAria()
   }
 
   disconnect() {
@@ -38,6 +40,7 @@ class ModelPickerController extends Controller {
   open() {
     if (!this.hasPanelTarget) return
     this.panelTarget.classList.remove("hidden")
+    this._updateAriaExpanded()
 
     // Reset highlight when opening.
     this._activeIndex = -1
@@ -55,10 +58,12 @@ class ModelPickerController extends Controller {
   close() {
     if (!this.hasPanelTarget) return
     this.panelTarget.classList.add("hidden")
+    this._updateAriaExpanded()
     this._queryOverride = null
     this._activeIndex = -1
     this._results = []
     this._buttons = []
+    this._updateAriaActiveDescendant()
   }
 
   keydown(event) {
@@ -82,9 +87,23 @@ class ModelPickerController extends Controller {
 
   enter(event) {
     // Enter selects the currently highlighted item (or the first match).
+    // If the panel is closed, open + select the first match (common combobox behavior).
     event.preventDefault()
 
-    if (!this.hasPanelTarget || this.panelTarget.classList.contains("hidden")) return
+    if (!this.hasPanelTarget) return
+
+    if (this.panelTarget.classList.contains("hidden")) {
+      this.open()
+      this.ensureModels().then(() => {
+        this.renderList()
+        if (Array.isArray(this._results) && this._results.length > 0) {
+          const idx = this._activeIndex >= 0 ? this._activeIndex : 0
+          const o = this._results[idx]
+          if (o) this.choose(o.value, o.label)
+        }
+      })
+      return
+    }
 
     if (Array.isArray(this._results) && this._results.length > 0) {
       const idx = this._activeIndex >= 0 ? this._activeIndex : 0
@@ -104,7 +123,10 @@ class ModelPickerController extends Controller {
   }
 
   filter() {
-    if (this.hasPanelTarget) this.panelTarget.classList.remove("hidden")
+    if (this.hasPanelTarget) {
+      this.panelTarget.classList.remove("hidden")
+      this._updateAriaExpanded()
+    }
 
     // Once the user starts typing, drop the initial "show default list" override.
     this._queryOverride = null
@@ -193,6 +215,7 @@ class ModelPickerController extends Controller {
     if (results.length === 0) {
       this._activeIndex = -1
       this.listTarget.innerHTML = '<div class="px-3 py-4 text-sm text-gray-400">No models found</div>'
+      this._updateAriaActiveDescendant()
       return
     }
 
@@ -206,9 +229,17 @@ class ModelPickerController extends Controller {
     results.forEach((o, idx) => {
       const btn = document.createElement("button")
       btn.type = "button"
+      btn.setAttribute("tabindex", "-1")
+
+      if (this._listboxId) {
+        btn.id = `${this._listboxId}_opt_${idx}`
+      }
+      btn.setAttribute("role", "option")
 
       const isSelected = o.value === this.selectedValue
       const isActive = idx === this._activeIndex
+
+      btn.setAttribute("aria-selected", isSelected ? "true" : "false")
 
       btn.className = [
         "w-full text-left px-3 py-2 text-sm",
@@ -229,6 +260,7 @@ class ModelPickerController extends Controller {
 
     this._applyActiveStyles()
     this._scrollActiveIntoView()
+    this._updateAriaActiveDescendant()
   }
 
   choose(value, label) {
@@ -259,7 +291,14 @@ class ModelPickerController extends Controller {
       return
     }
 
-    const next = Math.max(0, Math.min(this._results.length - 1, (this._activeIndex >= 0 ? this._activeIndex : 0) + delta))
+    const len = this._results.length
+    const current = this._activeIndex >= 0 ? this._activeIndex : 0
+    let next = current + delta
+
+    // Wrap around.
+    if (next < 0) next = len - 1
+    if (next >= len) next = 0
+
     this._setActive(next)
   }
 
@@ -285,6 +324,8 @@ class ModelPickerController extends Controller {
         btn.classList.remove("ring-1", "ring-inset", "ring-purple-500")
       }
     }
+
+    this._updateAriaActiveDescendant()
   }
 
   _scrollActiveIntoView() {
@@ -293,6 +334,48 @@ class ModelPickerController extends Controller {
     if (btn && typeof btn.scrollIntoView === "function") {
       btn.scrollIntoView({ block: "nearest" })
     }
+  }
+
+  _setupAria() {
+    if (!this.hasInputTarget || !this.hasListTarget) return
+
+    // Generate a stable, unique-ish id per controller instance.
+    const existing = this.listTarget.id
+    this._listboxId = existing && existing.length > 0 ? existing : `model_picker_list_${Math.random().toString(36).slice(2, 10)}`
+
+    this.listTarget.id = this._listboxId
+    this.listTarget.setAttribute("role", "listbox")
+    this.listTarget.setAttribute("aria-label", "Models")
+
+    if (this.hasPanelTarget) {
+      this.panelTarget.setAttribute("role", "presentation")
+    }
+
+    this.inputTarget.setAttribute("role", "combobox")
+    this.inputTarget.setAttribute("aria-autocomplete", "list")
+    this.inputTarget.setAttribute("aria-controls", this._listboxId)
+    this.inputTarget.setAttribute("aria-haspopup", "listbox")
+
+    this._updateAriaExpanded()
+    this._updateAriaActiveDescendant()
+  }
+
+  _updateAriaExpanded() {
+    if (!this.hasInputTarget || !this.hasPanelTarget) return
+    const expanded = !this.panelTarget.classList.contains("hidden")
+    this.inputTarget.setAttribute("aria-expanded", expanded ? "true" : "false")
+    this.panelTarget.setAttribute("aria-hidden", expanded ? "false" : "true")
+  }
+
+  _updateAriaActiveDescendant() {
+    if (!this.hasInputTarget || !this._listboxId) return
+
+    if (!Array.isArray(this._results) || this._results.length === 0 || this._activeIndex < 0) {
+      this.inputTarget.removeAttribute("aria-activedescendant")
+      return
+    }
+
+    this.inputTarget.setAttribute("aria-activedescendant", `${this._listboxId}_opt_${this._activeIndex}`)
   }
 
   requestSubmit() {

@@ -16,7 +16,7 @@
                 data: {
                   turbo_frame: "model_picker",
                   controller: "model-picker",
-                  "model-picker-models-value": all_models.to_json,
+                  "model-picker-endpoint-value": available_models_project_conversation_path(project, conversation),
                   "model-picker-favorites-value": favorite_values.to_json,
                   "model-picker-selected-value": selected,
                   "model-picker-selected-label-value": selected_label,
@@ -53,14 +53,8 @@
         <div data-model-picker-target="list" class="max-h-72 overflow-y-auto"></div>
 
         <div class="px-3 py-2 border-t border-gray-700 flex items-center justify-between">
-          <label class="text-xs text-gray-400 flex items-center gap-2 select-none">
-            <input type="checkbox"
-                   data-model-picker-target="toggleAll"
-                   data-action="change->model-picker#toggleAll"
-                   class="rounded border-gray-600 bg-gray-700 text-purple-600 focus:ring-purple-500">
-            <span>All models</span>
-          </label>
           <div class="text-[11px] text-gray-500 truncate">Selected: <span class="text-gray-300"><%= provider %> / <%= model %></span></div>
+          <div class="text-[11px] text-gray-500">Type to search</div>
         </div>
       </div>
     </div>

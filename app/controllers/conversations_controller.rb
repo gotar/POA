@@ -39,6 +39,35 @@ class ConversationsController < ApplicationController
     end
   end
 
+  # GET /projects/:project_id/conversations/:id/available_models
+  def available_models
+    conversation = @project.conversations.find(params[:id])
+
+    # Optional query filter (simple contains on label/provider/model)
+    q = params[:q].to_s.strip.downcase
+    limit = params[:limit].to_i
+    limit = 50 if limit <= 0
+    limit = 200 if limit > 200
+
+    models = PiModelsService.models
+
+    if q.present?
+      models = models.select do |m|
+        s = "#{m['label']} #{m['provider']} #{m['model']}".downcase
+        s.include?(q)
+      end
+    end
+
+    # Keep selected model near the front if present
+    selected = "#{conversation.pi_provider}:#{conversation.pi_model}"
+    models.sort_by! do |m|
+      v = "#{m['provider']}:#{m['model']}"
+      v == selected ? "0" : "1#{m['provider']}:#{m['label']}"
+    end
+
+    render json: { ok: true, models: models.first(limit) }
+  end
+
   # PATCH /projects/:project_id/conversations/:id/set_model
   def set_model
     @conversation = @project.conversations.find(params[:id])

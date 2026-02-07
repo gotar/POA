@@ -3,14 +3,15 @@ import { Controller } from "@hotwired/stimulus"
 // Model picker combobox:
 // - click to open
 // - shows first N models by default
-// - typing filters (fuzzy)
-// - optional favorites-only mode (default) with "All models" toggle
+// - typing filters (fuzzy) across ALL models
+//
+// We DO NOT embed the full model list in HTML attributes (too large/fragile on mobile Safari).
+// Instead we fetch it from the server endpoint.
 export default class extends Controller {
-  static targets = ["input", "hidden", "panel", "list", "toggleAll"]
+  static targets = ["input", "hidden", "panel", "list"]
   static values = {
-    models: Array,
+    endpoint: String,
     favorites: Array,
-    showAll: { type: Boolean, default: false },
     selected: String,
     selectedLabel: String,
     limit: { type: Number, default: 30 }
@@ -18,8 +19,10 @@ export default class extends Controller {
 
   connect() {
     this._favoriteSet = new Set((this.favoritesValue || []).map((v) => v.toString()))
+    this._models = null
+    this._loading = false
+    this._queryOverride = null
 
-    // If user hasn't typed yet, keep the selected label in the input.
     if (this.hasInputTarget && this.selectedLabelValue) {
       this.inputTarget.value = this.selectedLabelValue
     }
@@ -30,8 +33,7 @@ export default class extends Controller {
     document.addEventListener("mousedown", this._outsideClick)
     document.addEventListener("touchstart", this._outsideClick)
 
-    // Initial render (not visible until open)
-    this.renderList()
+    this._debounced = null
   }
 
   disconnect() {
@@ -43,18 +45,15 @@ export default class extends Controller {
     if (!this.hasPanelTarget) return
     this.panelTarget.classList.remove("hidden")
 
-    // If input currently equals selected label, treat as empty query (so you see first N models)
     const v = (this.inputTarget.value || "").trim()
-    if (v === (this.selectedLabelValue || "").trim()) {
-      // keep text but render default list
-      this._queryOverride = ""
-    } else {
-      this._queryOverride = null
-    }
+    this._queryOverride = v === (this.selectedLabelValue || "").trim() ? "" : null
 
-    this.renderList()
+    this.ensureModels().then(() => this.renderList())
+
     // Select all text to make typing easy
-    this.inputTarget.setSelectionRange(0, this.inputTarget.value.length)
+    try {
+      this.inputTarget.setSelectionRange(0, this.inputTarget.value.length)
+    } catch (_) {}
   }
 
   close() {
@@ -64,17 +63,50 @@ export default class extends Controller {
   }
 
   preventEnter(event) {
-    // Prevent form submit when typing in combobox
     event.preventDefault()
   }
 
-  toggleAll() {
-    this.showAllValue = !!this.toggleAllTarget?.checked
-    this.renderList()
+  filter() {
+    // Ensure panel open while typing
+    if (this.hasPanelTarget) this.panelTarget.classList.remove("hidden")
+
+    // debounce filtering while models load
+    if (this._debounced) clearTimeout(this._debounced)
+    this._debounced = setTimeout(async () => {
+      await this.ensureModels()
+      this.renderList()
+    }, 80)
   }
 
-  filter() {
-    this.renderList()
+  async ensureModels() {
+    if (this._models) return this._models
+    if (this._loading) return null
+    if (!this.endpointValue) return null
+
+    this._loading = true
+    this.showLoading()
+
+    try {
+      const resp = await fetch(this.endpointValue, { headers: { "Accept": "application/json" }, credentials: "same-origin" })
+      const json = await resp.json()
+      this._models = Array.isArray(json.models) ? json.models : (Array.isArray(json?.data?.models) ? json.data.models : [])
+      return this._models
+    } catch (e) {
+      this.showError("Failed to load models")
+      return null
+    } finally {
+      this._loading = false
+    }
+  }
+
+  showLoading() {
+    if (!this.hasListTarget) return
+    this.listTarget.innerHTML = `<div class="px-3 py-4 text-sm text-gray-400">Loading models…</div>`
+  }
+
+  showError(msg) {
+    if (!this.hasListTarget) return
+    this.listTarget.innerHTML = `<div class="px-3 py-4 text-sm text-red-300">${msg}</div>`
   }
 
   renderList() {
@@ -83,13 +115,18 @@ export default class extends Controller {
     const raw = (this.inputTarget?.value || "").trim().toLowerCase()
     const term = (this._queryOverride !== null && this._queryOverride !== undefined) ? this._queryOverride : raw
 
-    let pool = (this.modelsValue || []).map((m) => ({
+    const models = Array.isArray(this._models) ? this._models : []
+
+    let pool = models.map((m) => ({
       value: `${m.provider}:${m.model}`,
       label: m.label || `${m.model} (${m.provider})`
     }))
 
-    if (!this.showAllValue) {
-      pool = pool.filter((o) => this._favoriteSet.has(o.value) || o.value === this.selectedValue)
+    // Default view (empty search): favorites first, then the rest
+    if (term.length === 0) {
+      const favs = pool.filter((o) => this._favoriteSet.has(o.value))
+      const rest = pool.filter((o) => !this._favoriteSet.has(o.value))
+      pool = [...favs, ...rest]
     }
 
     let results = pool
@@ -99,9 +136,6 @@ export default class extends Controller {
         .map((o) => ({ ...o, score: this._score(tokens, `${o.label} ${o.value}`.toLowerCase()) }))
         .filter((o) => o.score !== null)
         .sort((a, b) => a.score - b.score)
-    } else {
-      // Stable ordering when empty term
-      results = pool.sort((a, b) => a.label.localeCompare(b.label))
     }
 
     results = results.slice(0, this.limitValue)
@@ -131,7 +165,6 @@ export default class extends Controller {
     if (this.hasInputTarget) this.inputTarget.value = label
 
     this.close()
-    // Submit only on explicit selection
     this.element.requestSubmit()
   }
 

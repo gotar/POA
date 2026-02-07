@@ -4,19 +4,21 @@ A mobile-first web UI for pi coding agent, built with Rails 8, Hotwire, and Stim
 
 ## In Progress
 
-- Check mobile version and responsiveness
-- Fix project page menu dropdown issues
-- Fix JavaScript errors in console
-- Check all pages for issues and bugs
-- Test PI chat communication end-to-end
-- Polish UI and fix any remaining issues
-- Verify all features work correctly
+None
 
 ## Pending
 
 None
 
 ## Completed
+
+- [x] Check mobile version and responsiveness
+- [x] Fix project page menu dropdown issues
+- [x] Fix JavaScript errors in console
+- [x] Check all pages for issues and bugs
+- [x] Test PI chat communication end-to-end
+- [x] Polish UI and fix any remaining issues
+- [x] Verify all features work correctly
 
 - Install Ruby 3.3.9 via rbenv
 - Install Rails 8.1.2

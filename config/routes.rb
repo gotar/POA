@@ -21,9 +21,10 @@ Rails.application.routes.draw do
     end
     # Conversations within a project
     resources :conversations, only: %i[index show create destroy] do
-    member do
-      patch :set_model
-    end
+      member do
+        patch :set_model
+        get :available_models
+      end
       member do
         post :clear_messages
         get :export

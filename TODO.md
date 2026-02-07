@@ -4,11 +4,33 @@ A mobile-first web UI for pi coding agent, built with Rails 8, Hotwire, and Stim
 
 ## In Progress
 
-None
+- [ ] Make Personal Knowledge a first-class, global area (not nested under a project)
 
 ## Pending
 
-None
+### Must-fix / correctness
+
+- [ ] Scheduled Jobs: actually run automatically on schedule (enqueue due jobs periodically)
+- [ ] Scheduled Jobs: replace the simplified cron parser with a real cron library (e.g. fugit)
+- [ ] Add routes + navigation for Monitoring pages (MonitoringController exists but is not reachable)
+
+### UX / product
+
+- [ ] Replace Tailwind CDN (`cdn.tailwindcss.com`) with a proper production build pipeline
+- [ ] Mobile UX: add an explicit way to open the conversations list / recent chats on mobile project page
+- [ ] Personal Knowledge: add "Remember" on more places (notes, KB items, scheduled job output) and make toasts more visible on mobile
+
+### Operational
+
+- [ ] Document/install prerequisites for QMD (`bun`, `qmd` CLI) in README + production setup
+- [ ] Add health checks/diagnostics for QMD availability (show friendly warning when qmd missing)
+
+## Nice to have
+
+- [ ] Cache/optimize QMD recall (avoid running qmd query on every message if unchanged)
+- [ ] Add "Save to Personal Knowledge" from assistant tool output automatically (opt-in)
+- [ ] Add export/backup for ~/.pi/knowledge from the UI
+- [ ] Knowledge governance: "review stale notes" UI (find old topics, suggest pruning/merging)
 
 ## Completed
 

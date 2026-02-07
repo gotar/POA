@@ -87,6 +87,20 @@ Rails.application.routes.draw do
     get :available_models, on: :member
   end
 
+  # Global Personal Knowledge (shared across projects)
+  get "/knowledge", to: "knowledge#index", as: :knowledge
+  get "/knowledge/search", to: "knowledge#search", as: :knowledge_search
+  post "/knowledge/reindex", to: "knowledge#reindex", as: :knowledge_reindex
+  post "/knowledge/topics", to: "knowledge#create_topic", as: :knowledge_topics
+  post "/knowledge/remember", to: "knowledge#remember", as: :knowledge_remember
+  get "/knowledge/note", to: "knowledge#show", as: :knowledge_note
+  get "/knowledge/note/edit", to: "knowledge#edit", as: :knowledge_edit_note
+  patch "/knowledge/note", to: "knowledge#update", as: :knowledge_update_note
+
+  # Monitoring
+  get "/monitoring", to: "monitoring#index", as: :monitoring
+  get "/monitoring/jobs", to: "monitoring#jobs", as: :monitoring_jobs
+
   # PWA routes (using custom manifest and service worker)
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker

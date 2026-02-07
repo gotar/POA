@@ -1,0 +1,3 @@
+<%= turbo_stream.replace "kb_create_topic" do %>
+  <%= render "knowledge/create_topic_frame", suggestions: (@suggestions || []), prefill: (@prefill || {}) %>
+<% end %>

@@ -1,0 +1,138 @@
+<% content_for :title, "Knowledge" %>
+
+<div class="min-h-screen flex flex-col">
+  <header class="bg-gray-800 border-b border-gray-700 px-4 py-3 flex items-center gap-3 sticky top-0 z-10">
+    <%= link_to projects_path, class: "text-gray-400 hover:text-gray-200" do %>
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+      </svg>
+    <% end %>
+    <h1 class="text-xl font-bold text-gray-100">Knowledge</h1>
+    <div class="ml-auto text-xs text-gray-400 truncate"><%= @stats[:base_dir] %></div>
+  </header>
+
+  <main class="flex-1 overflow-y-auto p-4">
+    <div class="max-w-5xl mx-auto space-y-4">
+      <% if notice.present? %>
+        <div class="bg-green-900/30 border border-green-800 text-green-200 rounded-xl p-3 text-sm"><%= notice %></div>
+      <% end %>
+      <% if alert.present? %>
+        <div class="bg-red-900/30 border border-red-800 text-red-200 rounded-xl p-3 text-sm"><%= alert %></div>
+      <% end %>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+        <div class="bg-gray-800 border border-gray-700 rounded-xl p-4">
+          <div class="text-xs text-gray-500">Topics</div>
+          <div class="text-2xl font-semibold text-gray-100"><%= @stats[:topics_count] %></div>
+        </div>
+        <div class="bg-gray-800 border border-gray-700 rounded-xl p-4">
+          <div class="text-xs text-gray-500">Daily notes</div>
+          <div class="text-2xl font-semibold text-gray-100"><%= @stats[:daily_count] %></div>
+        </div>
+        <div class="bg-gray-800 border border-gray-700 rounded-xl p-4">
+          <div class="text-xs text-gray-500">Last updated</div>
+          <div class="text-sm text-gray-200"><%= @stats[:updated_at] ? time_ago_in_words(@stats[:updated_at]) + " ago" : "—" %></div>
+          <div class="mt-2">
+            <%= button_to "Reindex (QMD)", knowledge_reindex_path, method: :post,
+                  class: "bg-purple-600 hover:bg-purple-700 text-white px-3 py-2 rounded-lg text-sm",
+                  form: { data: { turbo: true } } %>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-gray-800 border border-gray-700 rounded-xl p-4">
+        <h2 class="text-sm font-semibold text-gray-200">Core (identity + user)</h2>
+        <p class="text-xs text-gray-500 mt-1">These files shape assistant personality and how it addresses you. Keep them short.</p>
+
+        <div class="mt-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
+          <% ["SOUL.md", "IDENTITY.md", "USER.md", "TOOLS.md", "MEMORY.md"].each do |f| %>
+            <%= link_to knowledge_note_path(path: f), class: "block bg-gray-750 hover:bg-gray-700 border border-gray-700 rounded-xl p-3" do %>
+              <div class="font-medium text-gray-100"><%= f %></div>
+              <div class="text-xs text-gray-500 mt-1">Open / edit</div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="bg-gray-800 border border-gray-700 rounded-xl p-4">
+        <div class="flex items-center justify-between gap-3 flex-wrap">
+          <h2 class="text-sm font-semibold text-gray-200">Search (QMD)</h2>
+          <div class="text-xs text-gray-500">Hybrid search with reranking: <code class="text-gray-300">query</code></div>
+        </div>
+
+        <%= form_with url: knowledge_search_path, method: :get, data: { turbo_frame: "kb_search" }, class: "mt-3 flex flex-col sm:flex-row gap-2" do %>
+          <input name="q" value="" placeholder="Search your knowledge…" class="flex-1 bg-gray-700 border border-gray-600 rounded-lg px-3 py-2 text-sm text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-purple-500" />
+          <select name="mode" class="bg-gray-700 border border-gray-600 rounded-lg px-3 py-2 text-sm text-gray-100">
+            <option value="query">query (hybrid)</option>
+            <option value="search">search (BM25)</option>
+            <option value="vsearch">vsearch (vector)</option>
+          </select>
+          <button class="bg-gray-700 hover:bg-gray-600 text-gray-100 px-4 py-2 rounded-lg text-sm">Search</button>
+        <% end %>
+
+        <%= turbo_frame_tag "kb_search" do %>
+          <div class="mt-3 text-sm text-gray-500">Type a query and hit Search.</div>
+        <% end %>
+      </div>
+
+      <div class="bg-gray-800 border border-gray-700 rounded-xl p-4">
+        <h2 class="text-sm font-semibold text-gray-200">Create topic</h2>
+        <p class="text-xs text-gray-500 mt-1">Keep it compact. If a note already exists, the app will suggest updating it.</p>
+
+        <div class="mt-3">
+          <%= render "knowledge/create_topic_frame", suggestions: (@suggestions || []), prefill: (@prefill || {}) %>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        <div class="bg-gray-800 border border-gray-700 rounded-xl p-4">
+          <div class="flex items-center justify-between">
+            <h2 class="text-sm font-semibold text-gray-200">Recent topics</h2>
+            <div class="text-xs text-gray-500"><%= @topics.size %></div>
+          </div>
+          <div class="mt-3 space-y-2">
+            <% @topics.each do |t| %>
+              <%= link_to knowledge_note_path(path: t[:path]), class: "block bg-gray-750 hover:bg-gray-700 border border-gray-700 rounded-xl p-3" do %>
+                <div class="flex items-start justify-between gap-3">
+                  <div class="min-w-0">
+                    <div class="font-medium text-gray-100 truncate"><%= t[:title] %></div>
+                    <div class="text-xs text-gray-500 mt-1 truncate"><%= t[:path] %> · updated <%= time_ago_in_words(t[:updated_at]) %> ago</div>
+                  </div>
+                  <svg class="w-5 h-5 text-gray-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </div>
+              <% end %>
+            <% end %>
+            <% if @topics.empty? %>
+              <p class="text-sm text-gray-500">No topic notes yet.</p>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="bg-gray-800 border border-gray-700 rounded-xl p-4">
+          <div class="flex items-center justify-between">
+            <h2 class="text-sm font-semibold text-gray-200">Recent daily notes</h2>
+            <div class="text-xs text-gray-500"><%= @daily.size %></div>
+          </div>
+          <div class="mt-3 space-y-2">
+            <% @daily.each do |d| %>
+              <%= link_to knowledge_note_path(path: d[:path]), class: "block bg-gray-750 hover:bg-gray-700 border border-gray-700 rounded-xl p-3" do %>
+                <div class="font-medium text-gray-100 truncate"><%= d[:title] %></div>
+                <div class="text-xs text-gray-500 mt-1 truncate"><%= d[:path] %> · updated <%= time_ago_in_words(d[:updated_at]) %> ago</div>
+              <% end %>
+            <% end %>
+            <% if @daily.empty? %>
+              <p class="text-sm text-gray-500">No daily notes yet.</p>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-gray-800 border border-gray-700 rounded-xl p-4">
+        <h2 class="text-sm font-semibold text-gray-200">QMD status</h2>
+        <pre class="mt-3 text-xs text-gray-300 whitespace-pre-wrap bg-gray-900 border border-gray-700 rounded-lg p-3 overflow-x-auto"><%= @qmd_status %></pre>
+      </div>
+    </div>
+  </main>
+</div>

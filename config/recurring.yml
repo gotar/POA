@@ -22,3 +22,8 @@ production:
     class: PersonalKnowledgeEmbedJob
     args: [ { force: false } ]
     schedule: at 3:30am every sunday
+
+  scheduled_jobs_tick:
+    class: ScheduledJobTickJob
+    args: [ { limit: 20 } ]
+    schedule: every minute

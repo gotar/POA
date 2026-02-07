@@ -21,9 +21,9 @@ class ScheduledJobRunnerJob < ApplicationJob
       # Execute the prompt template
       result = execute_prompt_template(scheduled_job)
 
-      # Mark job as completed
-      scheduled_job.update!(status: "completed")
-      scheduled_job.update_next_run_at
+      # Mark job as completed + set next run
+      next_run_at = scheduled_job.calculate_next_run_at(Time.current)
+      scheduled_job.update!(status: "completed", next_run_at: next_run_at)
 
       # Notify (optional)
       PushNotificationService.notify_project(

@@ -9,8 +9,8 @@ A mobile-first web UI for pi coding agent, built with Rails 8, Hotwire, and Stim
 - ⚡ **Real-time Streaming** - See AI responses as they're generated
 - 💾 **Persistent Conversations** - All chats saved in SQLite database
 - 🔄 **Background Jobs** - Solid Queue for async processing
-- 🧠 **Knowledge Base** - QMD integration for RAG (planned)
-- ⏰ **Scheduled Tasks** - Cron jobs for automation (planned)
+- 🧠 **Knowledge (QMD)** - personal knowledge vault + QMD semantic search / recall
+- ⏰ **Scheduled Tasks** - cron-like scheduled jobs (Solid Queue recurring tick)
 
 ## Tech Stack
 
@@ -45,13 +45,20 @@ Visit http://localhost:3000
 - Ruby 3.3+
 - Node.js 18+ (for pi)
 - pi coding agent installed (`npm install -g @mariozechner/pi-coding-agent`)
-- API key for Anthropic or OpenAI
+- Bun + QMD (for knowledge search):
+  ```bash
+  bun install -g https://github.com/tobi/qmd
+  ```
+- API key for Anthropic/OpenAI/etc depending on selected provider
 
 ## Development
 
 ```bash
 # Run tests
 bin/rails test
+
+# Tailwind build (manual)
+bin/rails tailwindcss:build
 
 # Run specific test file
 bin/rails test test/models/conversation_test.rb

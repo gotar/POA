@@ -1,2 +1,3 @@
 web: bundle exec rails server -p 3090
 jobs: bundle exec rails solid_queue:start
+css: bin/rails tailwindcss:watch

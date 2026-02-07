@@ -13,6 +13,9 @@ class ScheduledJob < ApplicationRecord
 
   before_save :update_next_run_at
 
+  # Ensure Fugit is loaded in production boot.
+  require "fugit"
+
   # Scopes
   scope :active, -> { where(active: true) }
   scope :due, -> { where("next_run_at <= ?", Time.current) }
@@ -27,14 +30,22 @@ class ScheduledJob < ApplicationRecord
   def calculate_next_run_at(from_time = Time.current)
     return nil unless cron_expression.present?
 
-    # Simple cron parsing (for demo - in production use a proper cron gem)
-    begin
-      # This is a simplified implementation
-      # In production, use something like 'rufus-scheduler' or 'fugit'
-      parse_cron_expression(from_time)
-    rescue
-      nil
-    end
+    offset = from_time.to_time.utc_offset
+    tz = format_utc_offset(offset)
+
+    expr = cron_expression.to_s.strip
+    expr = "#{expr} #{tz}" if expr.split.size < 6
+
+    cron = Fugit::Cron.parse(expr)
+    return nil unless cron
+
+    nt = cron.next_time(from_time)
+    return nil unless nt
+
+    # EtOrbi::EoTime -> preserve the caller's UTC offset
+    Time.at(nt.to_f).getlocal(offset)
+  rescue StandardError
+    nil
   end
 
   # Update the next run time
@@ -42,47 +53,26 @@ class ScheduledJob < ApplicationRecord
     self.next_run_at = calculate_next_run_at(last_run_at || Time.current)
   end
 
+  def format_utc_offset(offset_seconds)
+    sign = offset_seconds.negative? ? "-" : "+"
+    abs = offset_seconds.abs
+    hours = abs / 3600
+    mins = (abs % 3600) / 60
+    format("%s%02d:%02d", sign, hours, mins)
+  end
+
   # Mark as run
   def mark_as_run!
-    update!(last_run_at: Time.current, next_run_at: calculate_next_run_at)
+    now = Time.current
+
+    # Treat this as "we executed the job", so advance the schedule by at least one occurrence.
+    base = next_run_at.presence || now
+
+    next_time = calculate_next_run_at(base + 1.second)
+
+    # Use update_columns to avoid before_save callback overriding next_run_at.
+    update_columns(last_run_at: now, next_run_at: next_time, updated_at: now)
   end
 
-  # Simple cron parser (very basic implementation)
   private
-
-  def parse_cron_expression(from_time)
-    # This is a very simplified cron parser
-    # Format: "MIN HOUR DAY MONTH DAYOFWEEK"
-    # Examples: "0 9 * * *" (daily at 9am), "*/30 * * * *" (every 30 minutes)
-
-    parts = cron_expression.split
-    return nil unless parts.length == 5
-
-    min, hour, day, month, dow = parts
-
-    time = from_time.dup
-
-    # Handle minutes
-    if min == "*"
-      # Every minute - just add 1 minute
-      time += 1.minute
-    elsif min.start_with?("*/")
-      # Every N minutes
-      interval = min[2..].to_i
-      minutes_to_add = interval - (time.min % interval)
-      time += minutes_to_add.minutes
-    else
-      # Specific minute
-      target_min = min.to_i
-      if time.min < target_min
-        time = time.change(min: target_min)
-      else
-        time = time.change(min: target_min) + 1.hour
-      end
-    end
-
-    # For simplicity, we'll just support basic patterns
-    # In production, use a proper cron library
-    time
-  end
 end

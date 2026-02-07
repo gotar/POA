@@ -73,7 +73,13 @@ class MessagesController < ApplicationController
     ]
 
     # Process in background job for streaming
-    PiStreamJob.perform_later(@conversation.id, @assistant_message.id, @project.id)
+    PiStreamJob.perform_later(
+      @conversation.id,
+      @assistant_message.id,
+      @project.id,
+      @conversation.pi_provider,
+      @conversation.pi_model
+    )
   end
 
   def process_conversation_stream

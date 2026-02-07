@@ -107,9 +107,10 @@
 
             <!-- Cost -->
             <% if usage["cost"].present? %>
+              <% cost_value = usage["cost"].is_a?(Hash) ? usage["cost"]["total"] : usage["cost"] %>
               <span class="text-gray-600">•</span>
-              <span class="text-green-400" title="Cost: $<%= usage["cost"] %>">
-                $<%= sprintf('%.4f', usage["cost"]) %>
+              <span class="text-green-400" title="Cost: $<%= cost_value %>">
+                $<%= sprintf('%.4f', cost_value.to_f) %>
               </span>
             <% end %>
           <% end %>

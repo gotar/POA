@@ -6,6 +6,10 @@ class Conversation < ApplicationRecord
 
   validates :title, presence: true, length: { maximum: 255 }
 
+  # Optional PI model overrides for this conversation
+  validates :pi_provider, length: { maximum: 100 }, allow_nil: true
+  validates :pi_model, length: { maximum: 200 }, allow_nil: true
+
   # Generate a title from the first user message
   def generate_title_from_first_message!
     return if title.present?

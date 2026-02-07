@@ -7,7 +7,7 @@ class PiStreamJob < ApplicationJob
   retry_on PiRpcService::TimeoutError, wait: 5.seconds, attempts: 3
   discard_on ActiveRecord::RecordNotFound
 
-  def perform(conversation_id, assistant_message_id, project_id = nil)
+  def perform(conversation_id, assistant_message_id, project_id = nil, pi_provider = nil, pi_model = nil)
     @conversation = Conversation.find(conversation_id)
     @assistant_message = Message.find(assistant_message_id)
     @project = project_id ? Project.find(project_id) : @conversation.project
@@ -20,7 +20,7 @@ class PiStreamJob < ApplicationJob
     prompt = build_prompt(user_message.content)
 
     # Process with pi and stream response
-    stream_response(prompt)
+    stream_response(prompt, pi_provider: pi_provider, pi_model: pi_model)
   rescue PiRpcService::Error => e
     Rails.logger.error "Pi RPC error: #{e.message}"
     error_message = format_error_message(e)
@@ -63,57 +63,91 @@ class PiStreamJob < ApplicationJob
     end
   end
 
-  def stream_response(prompt)
-    pi = PiRpcService.new
+  def stream_response(prompt, pi_provider:, pi_model:)
+    pi = PiRpcService.new(provider: pi_provider, model: pi_model)
     pi.start
 
-    full_text = ""
-    full_thinking = ""
+    full_text = +""
     metadata = {}
+    completed = false
 
     begin
       pi.prompt(prompt) do |event|
-        event_type = event["type"]
-
-        # Skip UI requests
-        next if event_type == "extension_ui_request"
-
-        case event_type
+        case event["type"]
+        when "extension_ui_request"
+          next
         when "message_update"
           assistant_event = event["assistantMessageEvent"]
-          if assistant_event
-            inner_type = assistant_event["type"]
+          next unless assistant_event.is_a?(Hash)
 
-            # Handle text content (visible to user)
-            if inner_type == "text_delta"
-              delta = assistant_event["delta"]
-              if delta && delta.present?
-                full_text += delta
-                @assistant_message.update(content: full_text)
-                broadcast_update
-              end
-            end
+          if assistant_event["type"] == "text_delta"
+            delta = assistant_event["delta"].to_s
+            next if delta.empty?
 
-            # Extract metadata from partial message
-            if assistant_event["partial"]
-              extracted = extract_metadata(assistant_event["partial"])
-              metadata.merge!(extracted) if extracted.present?
-            end
+            full_text << delta
+            @assistant_message.update(content: full_text)
+            broadcast_update
+          end
+
+          partial = assistant_event["partial"]
+          if partial.is_a?(Hash)
+            extracted = extract_metadata(partial)
+            metadata.merge!(extracted) if extracted.present?
           end
         when "message_end"
-          if event["message"]
-            metadata = extract_metadata(event["message"])
+          msg = event["message"]
+          next unless msg.is_a?(Hash) && msg["role"] == "assistant"
+
+          # Non-streaming fallback: extract text from the final message blocks
+          if full_text.empty? && msg["content"].is_a?(Array)
+            extracted_text = extract_text_from_content(msg["content"])
+            full_text = extracted_text if extracted_text.present?
           end
-          @assistant_message.update(content: full_text)
-          broadcast_complete(metadata)
+
+          metadata.merge!(extract_metadata(msg))
         when "agent_end"
-          @assistant_message.update(content: full_text)
+          completed = true
+
+          # Final safety fallback: agent_end includes all messages
+          if full_text.blank? && event["messages"].is_a?(Array)
+            last_assistant = event["messages"].reverse.find { |m| m.is_a?(Hash) && m["role"] == "assistant" }
+            if last_assistant&.dig("content").is_a?(Array)
+              extracted_text = extract_text_from_content(last_assistant["content"])
+              full_text = extracted_text if extracted_text.present?
+              metadata.merge!(extract_metadata(last_assistant))
+            end
+          end
+
+          @assistant_message.update(content: full_text, metadata: metadata)
           broadcast_complete(metadata)
         end
       end
     ensure
+      unless completed
+        @assistant_message.update(content: full_text, metadata: metadata)
+        broadcast_complete(metadata)
+      end
+
+      # Small delay to allow any last buffered events to be processed
+      sleep 0.1
       pi.stop rescue nil
     end
+  end
+
+  def extract_text_from_content(content)
+    return "" unless content.is_a?(Array)
+
+    text_parts = content.filter_map do |block|
+      next unless block.is_a?(Hash)
+      next if block["type"].to_s == "thinking"
+
+      if block["type"].to_s == "text"
+        txt = block["text"].to_s
+        txt.presence
+      end
+    end
+
+    text_parts.join("\n").strip
   end
 
   def extract_metadata(message)

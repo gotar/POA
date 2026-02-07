@@ -10,6 +10,10 @@ Environment=RAILS_ENV=production
 Environment=SECRET_KEY_BASE=0eaf3546adcfb14e8ccdc2a5f707cd6347e1b192b94dc898db2dc4a7a7bda100843519204707c24e31f1377311bc7c7ce94387e368d104e3ed0dc34330cf352f
 Environment=ANTHROPIC_API_KEY=dummy_key_for_testing
 
+# PI model/provider defaults for RPC subprocess (jobs service actually spawns PI)
+Environment=PI_PROVIDER=openai
+Environment=PI_MODEL=gpt-4o-mini
+
 ExecStart=/home/gotar/.rbenv/shims/bundle exec puma -C config/puma.rb -p 3090
 
 Restart=always

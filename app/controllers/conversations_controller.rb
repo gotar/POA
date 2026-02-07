@@ -15,6 +15,14 @@ class ConversationsController < ApplicationController
     @messages = @conversation.messages.order(:created_at)
     @new_message = @conversation.messages.build(role: "user")
 
+    # Defaults for model picker (persist on first view so subsequent jobs use it)
+    if @conversation.pi_provider.blank? || @conversation.pi_model.blank?
+      @conversation.update_columns(
+        pi_provider: ENV.fetch("PI_PROVIDER", "opencode"),
+        pi_model: ENV.fetch("PI_MODEL", "minimax-m2.1-free")
+      )
+    end
+
     # Load project context for sidebar
     @todos = @project.todos.active.by_position
     @notes = @project.notes.context.recent.limit(5)
@@ -30,6 +38,27 @@ class ConversationsController < ApplicationController
     else
       @conversations = @project.conversations.recent
       render :index, status: :unprocessable_entity
+    end
+  end
+
+  # PATCH /projects/:project_id/conversations/:id/set_model
+  def set_model
+    @conversation = @project.conversations.find(params[:id])
+
+    selected = params.expect(conversation: %i[selected_model]).fetch(:selected_model)
+    provider, model = selected.to_s.split(":", 2)
+
+    @conversation.update!(pi_provider: provider, pi_model: model)
+
+    respond_to do |format|
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.replace(
+          "model_picker",
+          partial: "conversations/model_picker",
+          locals: { project: @project, conversation: @conversation }
+        )
+      end
+      format.html { redirect_to [@project, @conversation] }
     end
   end
 

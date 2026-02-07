@@ -1,0 +1,31 @@
+<%= turbo_frame_tag "model_picker" do %>
+  <%= form_with url: set_model_project_conversation_path(project, conversation),
+                method: :patch,
+                data: { turbo_frame: "model_picker" },
+                class: "flex items-center gap-2" do |f| %>
+
+    <% provider = conversation.pi_provider.presence || ENV.fetch("PI_PROVIDER", "opencode") %>
+    <% model = conversation.pi_model.presence || ENV.fetch("PI_MODEL", "minimax-m2.1-free") %>
+    <% selected = "#{provider}:#{model}" %>
+
+    <label class="text-xs text-gray-400" for="conversation_model_select">Model</label>
+
+    <select id="conversation_model_select"
+            name="conversation[selected_model]"
+            class="bg-gray-700 border border-gray-600 rounded-lg px-2 py-1 text-xs text-gray-100 focus:outline-none focus:ring-1 focus:ring-purple-500"
+            onchange="this.form.requestSubmit()">
+      <% Rails.configuration.pi_models.each do |m| %>
+        <% value = "#{m['provider']}:#{m['model']}" %>
+        <option value="<%= value %>" <%= "selected" if value == selected %>>
+          <%= m['label'] %>
+        </option>
+      <% end %>
+    </select>
+
+    <% if conversation.pi_provider.present? && conversation.pi_model.present? %>
+      <span class="text-xs text-gray-500 hidden sm:inline">
+        <%= conversation.pi_provider %> / <%= conversation.pi_model %>
+      </span>
+    <% end %>
+  <% end %>
+<% end %>

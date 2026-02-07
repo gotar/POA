@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_02_07_134717) do
+ActiveRecord::Schema[8.1].define(version: 2026_02_07_191000) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
@@ -50,10 +50,14 @@ ActiveRecord::Schema[8.1].define(version: 2026_02_07_134717) do
 
   create_table "conversations", force: :cascade do |t|
     t.datetime "created_at", null: false
+    t.string "pi_model"
+    t.string "pi_provider"
     t.integer "project_id", null: false
     t.text "system_prompt"
     t.string "title"
     t.datetime "updated_at", null: false
+    t.index ["pi_model"], name: "index_conversations_on_pi_model"
+    t.index ["pi_provider"], name: "index_conversations_on_pi_provider"
     t.index ["project_id"], name: "index_conversations_on_project_id"
     t.index ["updated_at"], name: "index_conversations_on_updated_at"
   end
@@ -75,6 +79,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_02_07_134717) do
     t.text "content", null: false
     t.integer "conversation_id", null: false
     t.datetime "created_at", null: false
+    t.json "metadata"
     t.string "role", null: false
     t.datetime "updated_at", null: false
     t.index ["conversation_id"], name: "index_messages_on_conversation_id"

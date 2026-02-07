@@ -17,7 +17,10 @@ class PiRpcService
 
   attr_reader :pid
 
-  def initialize
+  def initialize(provider: nil, model: nil)
+    @provider = provider
+    @model = model
+
     @stdin = nil
     @stdout = nil
     @stderr = nil
@@ -32,9 +35,12 @@ class PiRpcService
 
       Rails.logger.info "Starting pi RPC subprocess..."
 
-      # Start pi in RPC mode
+      provider = @provider.presence || ENV.fetch("PI_PROVIDER", "opencode")
+      model = @model.presence || ENV.fetch("PI_MODEL", "minimax-m2.1-free")
+
+      # Start pi in RPC mode (explicit provider/model to avoid picking up wrong defaults)
       @stdin, @stdout, @stderr, @wait_thread = Open3.popen3(
-        "pi --mode rpc --no-session"
+        "pi", "--provider", provider, "--model", model, "--mode", "rpc", "--no-session"
       )
 
       @pid = @wait_thread.pid
@@ -157,33 +163,90 @@ class PiRpcService
 
   # Read response stream, yielding events
   def read_response_stream
+    events_count = 0
+    start_time = Time.now
+    events_queue = Queue.new
+
+    # Thread to read from stdout
+    reader_thread = Thread.new do
+      begin
+        loop do
+          line = @stdout.gets
+          break unless line
+
+          # Clean the line - remove BEL and find JSON
+          line = line.gsub(/\x07/, '')
+          json_start = line.index('{')
+          if json_start
+            line = line[json_start..-1]
+          else
+            next
+          end
+
+          begin
+            event = JSON.parse(line)
+            # no-op: reader thread pushes events to queue
+            events_queue << event
+          rescue JSON::ParserError
+            # Try more cleaning
+            cleaned = line.gsub(/\x1b\]777;[^,]*,/, '')
+                          .gsub(/\e\]777;[^,]*,/, '')
+                          .gsub(/\x1b\[[0-9;]*[mGKF]/, '')
+                          .gsub(/\e\[[0-9;]*[mGKF]/, '')
+                          .strip
+            begin
+              event = JSON.parse(cleaned)
+              # no-op: reader thread pushes cleaned events to queue
+              events_queue << event
+            rescue JSON::ParserError
+              Rails.logger.debug "Pi RPC: skipping non-JSON output"
+            end
+          end
+        end
+      rescue => e
+        Rails.logger.error "Reader thread error: #{e.message}"
+      end
+    end
+
     Timeout.timeout(RPC_TIMEOUT) do
       loop do
-        line = @stdout.gets
-        break unless line
-
-        line = line.strip
-        next if line.empty?
-
-        # Skip non-JSON lines (like blob data)
-        begin
-          event = JSON.parse(line)
-        rescue JSON::ParserError => e
-          Rails.logger.warn "Skipping non-JSON line from PI: #{line[0..100]}..."
-          next
+        # Check if reader thread is still alive
+        unless reader_thread.alive?
+          Rails.logger.debug "Pi RPC: reader thread ended"
+          break
         end
 
-        Rails.logger.debug "Received event: #{event['type']}"
+        # Wait for events (without blocking forever)
+        if events_queue.empty?
+          sleep 0.02
+          next
+        end
+        event = events_queue.pop(true) rescue nil
+        next unless event
+
+        elapsed = Time.now - start_time
+        if elapsed > RPC_TIMEOUT
+          raise TimeoutError, "RPC response timeout after #{RPC_TIMEOUT} seconds"
+        end
+
+        events_count += 1
+        Rails.logger.debug "PI Event #{events_count}: #{event['type']}"
 
         yield event if block_given?
 
-        # Break only on agent_end event (final completion)
+        # Check for completion
         if event["type"] == "agent_end"
+          Rails.logger.info "Pi RPC: agent_end after #{elapsed.round(1)}s"
           break
         end
       end
     end
+
+    # Clean up reader thread
+    reader_thread.kill rescue nil
+    reader_thread.join(1) rescue nil
   rescue Timeout::Error
-    raise TimeoutError, "RPC response timeout"
+    reader_thread.kill rescue nil
+    raise TimeoutError, "RPC response timeout after #{RPC_TIMEOUT} seconds"
   end
 end

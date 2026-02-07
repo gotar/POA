@@ -66,6 +66,9 @@
 
   <!-- Input Area -->
   <footer class="bg-gray-800 border-t border-gray-700 p-4 sticky bottom-0 relative">
+    <div class="mb-2">
+      <%= render "conversations/model_picker", project: @project, conversation: @conversation %>
+    </div>
     <%= turbo_frame_tag "message_form" do %>
       <%= form_with model: [@project, @conversation, @new_message], data: { turbo: true, controller: "message-form", action: "turbo:submit-end->message-form#reset" }, class: "space-y-3" do |f| %>
         <!-- Attachments -->

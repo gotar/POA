@@ -63,21 +63,62 @@
   </head>
 
   <body class="bg-gray-900 text-gray-100 min-h-screen" data-controller="ui">
-    <!-- Global menu (available on every page without changing each header) -->
-    <details class="fixed top-3 right-3 z-50">
-      <summary class="list-none cursor-pointer select-none bg-gray-800/90 border border-gray-700 text-gray-200 rounded-xl px-3 py-2 text-sm shadow-lg">
-        Menu
-      </summary>
-      <div class="mt-2 bg-gray-800 border border-gray-700 rounded-xl shadow-lg overflow-hidden">
-        <%= link_to "Projects", projects_path, class: "block px-4 py-2 text-sm text-gray-200 hover:bg-gray-700" %>
-        <%= link_to "Knowledge", knowledge_path, class: "block px-4 py-2 text-sm text-gray-200 hover:bg-gray-700" %>
-        <%= link_to "Monitoring", monitoring_path, class: "block px-4 py-2 text-sm text-gray-200 hover:bg-gray-700" %>
-      </div>
-    </details>
+    <% current_path = request.path.to_s %>
 
-    <div id="main-content">
+    <!-- Global navigation
+         - Mobile: bottom tab bar (more iOS-like, doesn't collide with page headers)
+         - Desktop: small top-right pill links -->
+
+    <div class="hidden sm:flex fixed top-3 right-3 z-40 bg-gray-800/80 border border-gray-700 rounded-xl overflow-hidden shadow-lg">
+      <% projects_active = current_path.start_with?("/projects") %>
+      <% knowledge_active = current_path.start_with?("/knowledge") %>
+      <% monitoring_active = current_path.start_with?("/monitoring") %>
+
+      <%= link_to "Projects", projects_path,
+            class: "px-4 py-2 text-sm #{projects_active ? 'bg-gray-700 text-white' : 'text-gray-200 hover:bg-gray-700'}" %>
+      <%= link_to "Knowledge", knowledge_path,
+            class: "px-4 py-2 text-sm #{knowledge_active ? 'bg-gray-700 text-white' : 'text-gray-200 hover:bg-gray-700'}" %>
+      <%= link_to "Monitoring", monitoring_path,
+            class: "px-4 py-2 text-sm #{monitoring_active ? 'bg-gray-700 text-white' : 'text-gray-200 hover:bg-gray-700'}" %>
+    </div>
+
+    <div id="main-content" class="pb-24 sm:pb-0">
       <%= yield %>
     </div>
+
+    <nav class="fixed bottom-0 inset-x-0 z-40 sm:hidden bg-gray-900/95 border-t border-gray-800 backdrop-blur">
+      <div class="mx-auto max-w-md px-4 py-2 pb-[calc(env(safe-area-inset-bottom)+0.5rem)]">
+        <% projects_active = current_path.start_with?("/projects") %>
+        <% knowledge_active = current_path.start_with?("/knowledge") %>
+        <% monitoring_active = current_path.start_with?("/monitoring") %>
+
+        <div class="grid grid-cols-3 gap-2">
+          <%= link_to projects_path,
+                class: "flex flex-col items-center justify-center gap-1 rounded-xl py-2 #{projects_active ? 'bg-gray-800 text-white' : 'text-gray-300 hover:bg-gray-800'}" do %>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7a2 2 0 012-2h6a2 2 0 012 2v1H5a2 2 0 01-2-2zm0 4h18v8a2 2 0 01-2 2H5a2 2 0 01-2-2v-8zm10-5h6a2 2 0 012 2v1H13V6z" />
+            </svg>
+            <span class="text-[11px]">Projects</span>
+          <% end %>
+
+          <%= link_to knowledge_path,
+                class: "flex flex-col items-center justify-center gap-1 rounded-xl py-2 #{knowledge_active ? 'bg-gray-800 text-white' : 'text-gray-300 hover:bg-gray-800'}" do %>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+            </svg>
+            <span class="text-[11px]">Knowledge</span>
+          <% end %>
+
+          <%= link_to monitoring_path,
+                class: "flex flex-col items-center justify-center gap-1 rounded-xl py-2 #{monitoring_active ? 'bg-gray-800 text-white' : 'text-gray-300 hover:bg-gray-800'}" do %>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-6m4 6V7m4 10v-4M5 21h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2z" />
+            </svg>
+            <span class="text-[11px]">Monitor</span>
+          <% end %>
+        </div>
+      </div>
+    </nav>
 
     <!-- Loading overlay -->
     <div data-ui-target="loading" class="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-50 hidden opacity-0 transition-opacity duration-200">
@@ -88,6 +129,6 @@
     </div>
 
     <!-- Toast notifications container -->
-    <div id="toast-container" class="fixed top-16 right-4 z-50 space-y-2"></div>
+    <div id="toast-container" class="fixed top-4 right-4 z-50 space-y-2"></div>
   </body>
 </html>

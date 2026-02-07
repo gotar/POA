@@ -1,0 +1,35 @@
+<%= form_with model: [project, note], class: "space-y-3", data: { turbo: true } do |f| %>
+  <div>
+    <%= f.label :title, class: "block text-xs font-medium text-gray-400 mb-1" %>
+    <%= f.text_field :title,
+        placeholder: "Short title",
+        class: "w-full bg-gray-700 border border-gray-600 rounded-lg px-3 py-2 text-sm text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-purple-500" %>
+  </div>
+
+  <div>
+    <%= f.label :category, class: "block text-xs font-medium text-gray-400 mb-1" %>
+    <%= f.select :category,
+        options_for_select(Note::CATEGORIES.map { |k,v| [v, k] }, note.category.presence || "context"),
+        {},
+        class: "w-full bg-gray-700 border border-gray-600 rounded-lg px-3 py-2 text-sm text-gray-100 focus:outline-none focus:ring-1 focus:ring-purple-500" %>
+  </div>
+
+  <div>
+    <%= f.label :content, class: "block text-xs font-medium text-gray-400 mb-1" %>
+    <%= f.text_area :content,
+        rows: 5,
+        placeholder: "Write your note…",
+        class: "w-full bg-gray-700 border border-gray-600 rounded-lg px-3 py-2 text-sm text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-purple-500" %>
+  </div>
+
+  <div class="flex gap-2">
+    <%= f.submit (note.persisted? ? "Update" : "Add"), class: "bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg text-sm font-medium" %>
+    <% if note.persisted? %>
+      <%= link_to "Cancel", project_notes_path(project), class: "bg-gray-700 hover:bg-gray-600 text-gray-200 px-4 py-2 rounded-lg text-sm" %>
+    <% end %>
+  </div>
+
+  <% if note.errors.any? %>
+    <div class="text-sm text-red-400"><%= note.errors.full_messages.first %></div>
+  <% end %>
+<% end %>

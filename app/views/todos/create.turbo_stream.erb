@@ -1,0 +1,4 @@
+<%= turbo_stream.append "todos_list", partial: "todos/todo", locals: { project: @project, todo: @todo } %>
+<%= turbo_stream.append "project_todos", partial: "todos/todo", locals: { project: @project, todo: @todo } %>
+
+<%= turbo_stream.replace "todo_form", partial: "todos/form", locals: { project: @project, todo: @project.todos.build } %>

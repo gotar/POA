@@ -1,0 +1,52 @@
+<% content_for :title, "Notes - #{@project.name}" %>
+
+<div class="min-h-screen flex flex-col">
+  <header class="bg-gray-800 border-b border-gray-700 px-4 py-3 flex items-center gap-3 sticky top-0 z-10">
+    <%= link_to @project, class: "text-gray-400 hover:text-gray-200" do %>
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+      </svg>
+    <% end %>
+    <h1 class="text-xl font-bold text-gray-100">Notes</h1>
+    <div class="ml-auto text-xs text-gray-400"><%= @project.name %></div>
+  </header>
+
+  <main class="flex-1 overflow-y-auto p-4">
+    <div class="max-w-4xl mx-auto space-y-4">
+      <div class="bg-gray-800 rounded-xl p-4 border border-gray-700">
+        <h2 class="text-sm font-semibold text-gray-300 mb-3">Add Note</h2>
+        <%= turbo_frame_tag "note_form" do %>
+          <%= render "notes/form", project: @project, note: @note %>
+        <% end %>
+      </div>
+
+      <div class="bg-gray-800 rounded-xl p-4 border border-gray-700">
+        <div class="flex items-center justify-between mb-3">
+          <h2 class="text-sm font-semibold text-gray-300">All Notes</h2>
+          <div class="text-xs text-gray-500"><%= pluralize(@notes.count, "note") %></div>
+        </div>
+
+        <div id="notes_list" class="space-y-3">
+          <% @notes.each do |note| %>
+            <%= link_to [@project, note], class: "block bg-gray-750 hover:bg-gray-700 border border-gray-700 rounded-xl p-4" do %>
+              <div class="flex items-start justify-between gap-4">
+                <div class="min-w-0">
+                  <div class="font-medium text-gray-100 truncate"><%= note.title %></div>
+                  <div class="text-xs text-gray-500 mt-1"><%= note.category.to_s.titleize %> · updated <%= time_ago_in_words(note.updated_at) %> ago</div>
+                  <div class="text-sm text-gray-300 mt-2 line-clamp-2"><%= note.content %></div>
+                </div>
+                <svg class="w-5 h-5 text-gray-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </div>
+            <% end %>
+          <% end %>
+
+          <% if @notes.empty? %>
+            <p class="text-gray-500 text-sm">No notes yet</p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

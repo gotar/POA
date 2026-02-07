@@ -1,0 +1,19 @@
+<%= form_with model: [project, todo], class: "flex gap-2", data: { turbo: true } do |f| %>
+  <%= f.text_field :content,
+      placeholder: "What needs to be done?",
+      class: "flex-1 bg-gray-700 border border-gray-600 rounded-lg px-3 py-2 text-sm text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-purple-500" %>
+
+  <%= f.select :status,
+      options_for_select([["Pending", "pending"], ["In Progress", "in_progress"], ["Completed", "completed"], ["Cancelled", "cancelled"]], todo.status.presence || "pending"),
+      {},
+      class: "bg-gray-700 border border-gray-600 rounded-lg px-2 py-2 text-sm text-gray-100 focus:outline-none focus:ring-1 focus:ring-purple-500" %>
+
+  <%= f.submit "Add",
+      class: "bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg text-sm font-medium" %>
+<% end %>
+
+<% if todo.errors.any? %>
+  <div class="mt-2 text-sm text-red-400">
+    <%= todo.errors.full_messages.first %>
+  </div>
+<% end %>

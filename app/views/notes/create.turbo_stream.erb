@@ -1,0 +1,2 @@
+<%= turbo_stream.prepend "notes_list", partial: "notes/note", locals: { project: @project, note: @note } %>
+<%= turbo_stream.replace "note_form", partial: "notes/form", locals: { project: @project, note: @project.notes.build(category: "context") } %>

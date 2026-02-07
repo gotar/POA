@@ -30,6 +30,34 @@ class QmdCliService
     run!("update")
   end
 
+  def self.update_and_embed_if_needed!
+    out = update!
+    embed_if_needed!
+    out
+  end
+
+  def self.embed_if_needed!
+    return false if ENV.fetch("QMD_AUTO_EMBED", "true") != "true"
+
+    st = status
+    if embed_needed?(st)
+      embed!
+      return true
+    end
+
+    false
+  end
+
+  def self.embed_needed?(status_text)
+    t = status_text.to_s
+    return true if t.match?(/need embedding/i)
+    return true if t.match?(/need embeddings/i)
+    return true if t.match?(/need vectors/i)
+    return true if t.match?(/pending:\s*\d+\s*need/i)
+
+    false
+  end
+
   def self.embed!(force: false)
     ensure_pi_knowledge_collection!
     args = ["embed"]

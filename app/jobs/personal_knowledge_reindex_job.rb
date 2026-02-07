@@ -5,6 +5,6 @@ class PersonalKnowledgeReindexJob < ApplicationJob
 
   def perform
     PersonalKnowledgeService.ensure_setup!
-    QmdCliService.update!
+    QmdCliService.update_and_embed_if_needed!
   end
 end

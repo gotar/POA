@@ -1,0 +1,48 @@
+<%#
+  Reusable model combobox based on the model-picker Stimulus controller.
+
+  Required locals:
+    - endpoint: String (URL returning {ok:true, models:[{label,provider,model},...]})
+    - field_name: String (name for hidden input, e.g. "conversation[selected_model]")
+    - selected: String ("provider:model")
+    - selected_label: String (human label)
+
+  Optional locals:
+    - favorites: Array<String> ("provider:model" values)
+    - limit: Integer
+    - auto_submit: Boolean (default true)
+    - input_id: String
+    - input_class: String
+    - panel_class: String
+    - list_class: String
+%>
+
+<% favorites ||= [] %>
+<% limit ||= 30 %>
+<% auto_submit = true if auto_submit.nil? %>
+<% input_id ||= nil %>
+
+<div data-controller="model-picker"
+     data-model-picker-endpoint-value="<%= endpoint %>"
+     data-model-picker-favorites-value="<%= favorites.to_json %>"
+     data-model-picker-selected-value="<%= selected %>"
+     data-model-picker-selected-label-value="<%= selected_label %>"
+     data-model-picker-limit-value="<%= limit %>"
+     data-model-picker-auto-submit-value="<%= auto_submit ? 'true' : 'false' %>">
+
+  <input <%= "id=\"#{input_id}\"".html_safe if input_id.present? %>
+         type="text"
+         autocomplete="off"
+         inputmode="search"
+         data-model-picker-target="input"
+         data-action="focus->model-picker#open click->model-picker#open input->model-picker#filter keydown.esc->model-picker#close keydown.enter->model-picker#preventEnter"
+         class="<%= input_class.presence || 'w-full bg-gray-700 border border-gray-600 rounded-lg px-3 py-2 text-sm text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-purple-500' %>"
+         value="<%= selected_label %>" />
+
+  <input type="hidden" name="<%= field_name %>" value="<%= selected %>" data-model-picker-target="hidden" />
+
+  <div data-model-picker-target="panel"
+       class="<%= panel_class.presence || 'hidden mt-2 bg-gray-800 border border-gray-700 rounded-xl shadow-xl overflow-hidden' %>">
+    <div data-model-picker-target="list" class="<%= list_class.presence || 'max-h-72 overflow-y-auto' %>"></div>
+  </div>
+</div>

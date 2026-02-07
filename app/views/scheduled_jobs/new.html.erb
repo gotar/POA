@@ -56,27 +56,17 @@
             <% selected_model = PiModelsService.models.find { |m| "#{m['provider']}:#{m['model']}" == selected } %>
             <% selected_label = selected_model&.fetch('label', nil) || selected %>
 
-            <div data-controller="model-picker"
-                 data-model-picker-endpoint-value="<%= available_models_project_path(@project) %>"
-                 data-model-picker-favorites-value="<%= (Rails.configuration.pi_models || []).map { |m| "#{m['provider']}:#{m['model']}" }.to_json %>"
-                 data-model-picker-selected-value="<%= selected %>"
-                 data-model-picker-selected-label-value="<%= selected_label %>"
-                 data-model-picker-auto-submit-value="false"
-                 class="w-full">
-              <input type="text"
-                     autocomplete="off"
-                     inputmode="search"
-                     data-model-picker-target="input"
-                     data-action="focus->model-picker#open click->model-picker#open input->model-picker#filter keydown.esc->model-picker#close keydown.enter->model-picker#preventEnter"
-                     class="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500"
-                     value="<%= selected_label %>" />
-              <input type="hidden" name="scheduled_job[selected_model]" value="<%= selected %>" data-model-picker-target="hidden" />
-
-              <div data-model-picker-target="panel"
-                   class="hidden mt-2 bg-gray-800 border border-gray-700 rounded-xl shadow-xl overflow-hidden">
-                <div data-model-picker-target="list" class="max-h-72 overflow-y-auto"></div>
-              </div>
-            </div>
+            <%= render "shared/model_combobox",
+                endpoint: available_models_project_path(@project),
+                field_name: "scheduled_job[selected_model]",
+                selected: selected,
+                selected_label: selected_label,
+                favorites: (Rails.configuration.pi_models || []).map { |m| "#{m['provider']}:#{m['model']}" },
+                limit: 30,
+                auto_submit: false,
+                input_class: "w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500",
+                panel_class: "hidden mt-2 bg-gray-800 border border-gray-700 rounded-xl shadow-xl overflow-hidden",
+                list_class: "max-h-72 overflow-y-auto" %>
 
             <p class="mt-1 text-xs text-gray-500">This model will be used when the job runs</p>
           </div>

@@ -27,35 +27,22 @@
     <div class="relative w-full">
       <label class="block text-xs text-gray-400 mb-1" for="conversation_model_combobox">Model</label>
 
-      <!-- Combobox input: click to open, type to filter -->
-      <input id="conversation_model_combobox"
-             type="text"
-             autocomplete="off"
-             inputmode="search"
-             data-model-picker-target="input"
-             data-action="focus->model-picker#open click->model-picker#open input->model-picker#filter keydown.esc->model-picker#close keydown.enter->model-picker#preventEnter"
-             class="w-full bg-gray-700 border border-gray-600 rounded-lg px-3 py-2 text-sm text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-purple-500"
-             value="<%= selected_label %>" />
+      <%= render "shared/model_combobox",
+          endpoint: available_models_project_conversation_path(project, conversation),
+          field_name: "conversation[selected_model]",
+          selected: selected,
+          selected_label: selected_label,
+          favorites: favorite_values,
+          limit: 30,
+          auto_submit: true,
+          input_id: "conversation_model_combobox",
+          input_class: "w-full bg-gray-700 border border-gray-600 rounded-lg px-3 py-2 text-sm text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-purple-500",
+          panel_class: "hidden absolute left-0 right-0 mt-2 bg-gray-800 border border-gray-700 rounded-xl shadow-xl z-50 overflow-hidden",
+          list_class: "max-h-72 overflow-y-auto" %>
 
-      <input type="hidden" name="conversation[selected_model]" value="<%= selected %>" data-model-picker-target="hidden" />
-
-      <!-- Dropdown panel -->
-      <div data-model-picker-target="panel"
-           class="hidden absolute left-0 right-0 mt-2 bg-gray-800 border border-gray-700 rounded-xl shadow-xl z-50 overflow-hidden">
-
-        <div class="flex items-center justify-between px-3 py-2 border-b border-gray-700">
-          <div class="text-xs text-gray-400">Pick a model</div>
-          <button type="button"
-                  data-action="model-picker#close"
-                  class="text-gray-400 hover:text-gray-200 px-2 py-1 rounded">✕</button>
-        </div>
-
-        <div data-model-picker-target="list" class="max-h-72 overflow-y-auto"></div>
-
-        <div class="px-3 py-2 border-t border-gray-700 flex items-center justify-between">
-          <div class="text-[11px] text-gray-500 truncate">Selected: <span class="text-gray-300"><%= provider %> / <%= model %></span></div>
-          <div class="text-[11px] text-gray-500">Type to search</div>
-        </div>
+      <div class="px-3 py-2 border-t border-gray-700 flex items-center justify-between text-[11px] text-gray-500">
+        <div class="truncate">Selected: <span class="text-gray-300"><%= provider %> / <%= model %></span></div>
+        <div>Type to search</div>
       </div>
     </div>
   <% end %>

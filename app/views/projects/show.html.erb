@@ -163,8 +163,8 @@
     </div>
   </aside>
 
-  <!-- Main Chat Area - Hidden on mobile by default, shown when Chat tab clicked -->
-  <main data-project-target="chatsPanel" class="hidden lg:flex flex-1 flex-col min-h-screen lg:min-h-0">
+  <!-- Main Chat Area (visible by default; tabs will hide/show panels via Stimulus) -->
+  <main data-project-target="chatsPanel" class="flex flex-1 flex-col min-h-screen lg:min-h-0">
     <%= render "conversations/chat_area", project: @project, conversations: @conversations, new_conversation: @new_conversation %>
   </main>
 

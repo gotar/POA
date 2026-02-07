@@ -118,7 +118,8 @@ export default class extends Controller {
 
   // Ask a predefined question
   askQuestion(event) {
-    const question = event.target.dataset.messageFormQuestionParam
+    // Use currentTarget (the <button>) because clicks can originate from nested <div>s
+    const question = event.currentTarget?.dataset?.messageFormQuestionParam
     if (question) {
       this.inputTarget.value = question
       this.inputTarget.focus()

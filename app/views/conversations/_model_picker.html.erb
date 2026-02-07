@@ -8,12 +8,8 @@
   <% favorites = Rails.configuration.pi_models || [] %>
   <% favorite_values = favorites.map { |m| "#{m['provider']}:#{m['model']}" } %>
 
-  <% initial_models = favorites.dup %>
-  <% unless favorite_values.include?(selected) %>
-    <% selected_model = all_models.find { |m| "#{m['provider']}:#{m['model']}" == selected } %>
-    <% initial_models << selected_model if selected_model.present? %>
-  <% end %>
-  <% initial_models = initial_models.compact.uniq { |m| "#{m['provider']}:#{m['model']}" } %>
+  <% selected_model = all_models.find { |m| "#{m['provider']}:#{m['model']}" == selected } %>
+  <% selected_label = selected_model&.fetch('label', nil) || "#{model} (#{provider})" %>
 
   <%= form_with url: set_model_project_conversation_path(project, conversation),
                 method: :patch,
@@ -21,44 +17,51 @@
                   turbo_frame: "model_picker",
                   controller: "model-picker",
                   "model-picker-models-value": all_models.to_json,
-                  "model-picker-favorites-value": favorite_values.to_json
+                  "model-picker-favorites-value": favorite_values.to_json,
+                  "model-picker-selected-value": selected,
+                  "model-picker-selected-label-value": selected_label,
+                  "model-picker-limit-value": 30
                 },
                 class: "w-full" do |f| %>
 
-    <div class="flex flex-col gap-2 w-full">
-      <div class="flex items-center justify-between gap-3">
-        <label class="text-xs text-gray-400" for="conversation_model_select">Model</label>
+    <div class="relative w-full">
+      <label class="block text-xs text-gray-400 mb-1" for="conversation_model_combobox">Model</label>
 
-        <label class="text-xs text-gray-400 flex items-center gap-2 select-none">
-          <input type="checkbox"
-                 data-model-picker-target="toggleAll"
-                 data-action="change->model-picker#toggleAll"
-                 class="rounded border-gray-600 bg-gray-700 text-purple-600 focus:ring-purple-500">
-          <span>All models</span>
-        </label>
-      </div>
+      <!-- Combobox input: click to open, type to filter -->
+      <input id="conversation_model_combobox"
+             type="text"
+             autocomplete="off"
+             inputmode="search"
+             data-model-picker-target="input"
+             data-action="focus->model-picker#open click->model-picker#open input->model-picker#filter keydown.esc->model-picker#close keydown.enter->model-picker#preventEnter"
+             class="w-full bg-gray-700 border border-gray-600 rounded-lg px-3 py-2 text-sm text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-purple-500"
+             value="<%= selected_label %>" />
 
-      <input type="text"
-             placeholder="Search models (type to filter)…"
-             data-model-picker-target="search"
-             data-action="input->model-picker#filter"
-             class="w-full bg-gray-700 border border-gray-600 rounded-lg px-3 py-2 text-sm text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-purple-500" />
+      <input type="hidden" name="conversation[selected_model]" value="<%= selected %>" data-model-picker-target="hidden" />
 
-      <select id="conversation_model_select"
-              name="conversation[selected_model]"
-              data-model-picker-target="select"
-              data-action="change->model-picker#submit"
-              class="w-full min-w-0 bg-gray-700 border border-gray-600 rounded-lg px-2 py-2 text-sm text-gray-100 focus:outline-none focus:ring-1 focus:ring-purple-500">
-        <% initial_models.each do |m| %>
-          <% value = "#{m['provider']}:#{m['model']}" %>
-          <option value="<%= value %>" <%= "selected" if value == selected %>>
-            <%= m['label'] %>
-          </option>
-        <% end %>
-      </select>
+      <!-- Dropdown panel -->
+      <div data-model-picker-target="panel"
+           class="hidden absolute left-0 right-0 mt-2 bg-gray-800 border border-gray-700 rounded-xl shadow-xl z-50 overflow-hidden">
 
-      <div class="text-xs text-gray-500">
-        Selected: <span class="text-gray-300"><%= provider %> / <%= model %></span>
+        <div class="flex items-center justify-between px-3 py-2 border-b border-gray-700">
+          <div class="text-xs text-gray-400">Pick a model</div>
+          <button type="button"
+                  data-action="model-picker#close"
+                  class="text-gray-400 hover:text-gray-200 px-2 py-1 rounded">✕</button>
+        </div>
+
+        <div data-model-picker-target="list" class="max-h-72 overflow-y-auto"></div>
+
+        <div class="px-3 py-2 border-t border-gray-700 flex items-center justify-between">
+          <label class="text-xs text-gray-400 flex items-center gap-2 select-none">
+            <input type="checkbox"
+                   data-model-picker-target="toggleAll"
+                   data-action="change->model-picker#toggleAll"
+                   class="rounded border-gray-600 bg-gray-700 text-purple-600 focus:ring-purple-500">
+            <span>All models</span>
+          </label>
+          <div class="text-[11px] text-gray-500 truncate">Selected: <span class="text-gray-300"><%= provider %> / <%= model %></span></div>
+        </div>
       </div>
     </div>
   <% end %>

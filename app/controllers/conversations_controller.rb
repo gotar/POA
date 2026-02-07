@@ -43,8 +43,15 @@ class ConversationsController < ApplicationController
   def set_model
     @conversation = @project.conversations.find(params[:id])
 
-    selected = params.expect(conversation: %i[selected_model]).fetch(:selected_model)
-    provider, model = selected.to_s.split(":", 2)
+    selected = params.dig(:conversation, :selected_model).to_s
+    if selected.blank?
+      return render json: { ok: false, error: "missing_selected_model" }, status: :unprocessable_entity
+    end
+
+    provider, model = selected.split(":", 2)
+    if provider.blank? || model.blank?
+      return render json: { ok: false, error: "invalid_selected_model" }, status: :unprocessable_entity
+    end
 
     @conversation.update!(pi_provider: provider, pi_model: model)
 

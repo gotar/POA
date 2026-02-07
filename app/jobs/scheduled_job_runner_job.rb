@@ -25,6 +25,14 @@ class ScheduledJobRunnerJob < ApplicationJob
       scheduled_job.update!(status: "completed")
       scheduled_job.update_next_run_at
 
+      # Notify (optional)
+      PushNotificationService.notify_project(
+        project_id: scheduled_job.project_id,
+        title: "Scheduled job completed",
+        body: scheduled_job.name,
+        url: "/projects/#{scheduled_job.project_id}/scheduled_jobs/#{scheduled_job.id}"
+      )
+
       # Log success
       Rails.logger.info "Scheduled job #{scheduled_job.name} completed successfully"
 
@@ -68,6 +76,13 @@ class ScheduledJobRunnerJob < ApplicationJob
     Rails.logger.error "Pi RPC error in scheduled job #{scheduled_job.name}: #{error.message}"
     scheduled_job.update!(status: "failed")
 
+    PushNotificationService.notify_project(
+      project_id: scheduled_job.project_id,
+      title: "Scheduled job failed",
+      body: "#{scheduled_job.name}: #{error.message}",
+      url: "/projects/#{scheduled_job.project_id}/scheduled_jobs/#{scheduled_job.id}"
+    )
+
     # Re-raise for retry logic
     raise
   end
@@ -77,6 +92,13 @@ class ScheduledJobRunnerJob < ApplicationJob
     Rails.logger.error error.backtrace.join("\n") if error.backtrace
 
     scheduled_job.update!(status: "failed")
+
+    PushNotificationService.notify_project(
+      project_id: scheduled_job.project_id,
+      title: "Scheduled job failed",
+      body: "#{scheduled_job.name}: #{error.message}",
+      url: "/projects/#{scheduled_job.project_id}/scheduled_jobs/#{scheduled_job.id}"
+    )
 
     # Re-raise to let the job framework handle retries
     raise

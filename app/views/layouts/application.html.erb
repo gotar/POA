@@ -15,6 +15,8 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <meta name="vapid-public-key" content="<%= ENV['VAPID_PUBLIC_KEY'].to_s %>">
+
     <%= yield :head %>
 
     <!-- Tailwind CSS -->
@@ -47,6 +49,13 @@
     <!-- PWA Manifest -->
     <link rel="manifest" href="/manifest.json">
 
+    <!-- Favicons / PWA icons -->
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+    <link rel="icon" href="/favicon-16.png" type="image/png" sizes="16x16">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
+    <link rel="mask-icon" href="/icon.svg" color="#8B5CF6">
+
     <!-- Service Worker Registration -->
     <script>
       if ('serviceWorker' in navigator) {
@@ -62,8 +71,8 @@
       }
     </script>
 
+    <!-- legacy (kept for backwards compatibility) -->
     <link rel="icon" href="/icon-192.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/icon-192.svg">
 
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>

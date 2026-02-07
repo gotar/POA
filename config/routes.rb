@@ -58,6 +58,9 @@ Rails.application.routes.draw do
       resources :attachments, only: %i[create destroy]
     end
 
+    # Web Push subscriptions (per project)
+    resource :push_subscription, only: %i[create destroy]
+
     # Scheduled jobs within a project
     resources :scheduled_jobs, only: %i[index show new create edit update destroy] do
       member do

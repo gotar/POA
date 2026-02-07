@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_02_07_191000) do
+ActiveRecord::Schema[8.1].define(version: 2026_02_07_204000) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
@@ -107,6 +107,18 @@ ActiveRecord::Schema[8.1].define(version: 2026_02_07_191000) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "push_subscriptions", force: :cascade do |t|
+    t.string "auth", null: false
+    t.datetime "created_at", null: false
+    t.string "endpoint", null: false
+    t.string "p256dh", null: false
+    t.integer "project_id"
+    t.datetime "updated_at", null: false
+    t.string "user_agent"
+    t.index ["endpoint"], name: "index_push_subscriptions_on_endpoint", unique: true
+    t.index ["project_id"], name: "index_push_subscriptions_on_project_id"
+  end
+
   create_table "scheduled_jobs", force: :cascade do |t|
     t.boolean "active"
     t.datetime "created_at", null: false
@@ -145,6 +157,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_02_07_191000) do
   add_foreign_key "knowledge_bases", "projects"
   add_foreign_key "messages", "conversations"
   add_foreign_key "notes", "projects"
+  add_foreign_key "push_subscriptions", "projects"
   add_foreign_key "scheduled_jobs", "projects"
   add_foreign_key "todos", "projects"
 end

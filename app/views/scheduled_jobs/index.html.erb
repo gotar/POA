@@ -8,7 +8,14 @@
       </svg>
     <% end %>
     <h1 class="text-xl font-bold text-gray-100">Scheduled Jobs</h1>
-    <div class="ml-auto">
+
+    <div class="ml-auto flex items-center gap-2">
+      <button type="button"
+              data-controller="push-notifications"
+              data-action="click->push-notifications#toggle"
+              class="bg-gray-700 hover:bg-gray-600 text-gray-100 px-3 py-2 rounded-lg text-sm">
+        Enable notifications
+      </button>
       <%= link_to "New Job", new_project_scheduled_job_path(@project), class: "bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg" %>
     </div>
   </header>

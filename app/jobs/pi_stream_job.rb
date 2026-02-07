@@ -41,9 +41,11 @@ class PiStreamJob < ApplicationJob
   def build_prompt(user_content)
     # Always include the browser-agent rules so web searches go through agent-browser.
     instructions = BrowserAgentInstructions.text
-    prefixed_user = "#{instructions}\n\n---\n\n#{user_content}"
 
-    return prefixed_user unless @project
+    # OpenClaw-style: keep a small stable identity/user context as "living docs".
+    identity_context = PersonalKnowledgeRecallService.core_context
+
+    return "#{identity_context}\n\n---\n\n#{instructions}\n\n---\n\n#{user_content}" unless @project
 
     context_parts = []
 
@@ -60,11 +62,17 @@ class PiStreamJob < ApplicationJob
       context_parts += active_todos.map { |t| "- [#{t.status.upcase}] #{t.content}" }
     end
 
-    if context_parts.any?
-      "#{context_parts.join("\n\n")}\n\n---\n\nUser message: #{prefixed_user}"
-    else
-      prefixed_user
-    end
+    # Contextual recall from personal knowledge (topics + MEMORY.md) via QMD.
+    recall = PersonalKnowledgeRecallService.recall_for(user_content)
+
+    assembled = []
+    assembled << identity_context if identity_context.present?
+    assembled << instructions
+    assembled << context_parts.join("\n\n") if context_parts.any?
+    assembled << recall if recall.present?
+    assembled << "User message: #{user_content}"
+
+    assembled.compact.join("\n\n---\n\n")
   end
 
   def stream_response(prompt, pi_provider:, pi_model:)

@@ -34,10 +34,78 @@ class PersonalKnowledgeService
         - Keep notes compact (OpenCLAW-style: TL;DR → key files → patterns/gotchas → examples → sources).
         - Knowledge changes over time: update existing notes instead of adding duplicates.
         - Avoid secrets.
+
+        ## Core files
+
+        - `SOUL.md` – assistant persona + boundaries
+        - `IDENTITY.md` – assistant identity fields (name/vibe/emoji)
+        - `USER.md` – your profile + preferences
+        - `TOOLS.md` – environment-specific notes
+        - `MEMORY.md` – curated long-term memory (keep short)
       MD
     end
 
+    ensure_core_files!
+
     ensure_legacy_symlink!
+  end
+
+  CORE_FILES = {
+    "SOUL.md" => <<~MD,
+      # SOUL.md - Persona & Boundaries
+
+      Keep replies concise and direct.
+      Avoid generic filler. Have opinions when appropriate.
+
+      Update this file when you learn better ways to help.
+    MD
+    "IDENTITY.md" => <<~MD,
+      # IDENTITY.md - Agent Identity
+
+      - Name: Gotar Bot
+      - Creature: coding assistant
+      - Vibe: concise, pragmatic, honest
+      - Emoji: 🤖
+    MD
+    "USER.md" => <<~MD,
+      # USER.md - User Profile
+
+      - Name:
+      - What to call you:
+      - Timezone:
+      - Notes:
+
+      ## Preferences
+
+      - 
+
+      ## Projects / current context
+
+      - 
+    MD
+    "TOOLS.md" => <<~MD,
+      # TOOLS.md - Local Notes
+
+      Put environment-specific notes here (hosts, paths, conventions).
+
+      - 
+    MD
+    "MEMORY.md" => <<~MD,
+      # MEMORY.md - Curated Long-Term Memory
+
+      Keep this file compact. Prefer durable facts, decisions, and stable preferences.
+
+      - 
+    MD
+  }.freeze
+
+  def self.ensure_core_files!
+    CORE_FILES.each do |name, content|
+      path = File.join(base_dir, name)
+      next if File.exist?(path)
+
+      File.write(path, content)
+    end
   end
 
   def self.ensure_legacy_symlink!

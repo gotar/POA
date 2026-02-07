@@ -47,6 +47,7 @@ class ScheduledJobRunnerJob < ApplicationJob
 
   def build_prompt_for_job(scheduled_job)
     instructions = BrowserAgentInstructions.text
+    identity_context = PersonalKnowledgeRecallService.core_context
 
     context_parts = []
 
@@ -65,11 +66,16 @@ class ScheduledJobRunnerJob < ApplicationJob
 
     base = scheduled_job.prompt_template.to_s
 
-    if context_parts.any?
-      "#{instructions}\n\n---\n\n#{context_parts.join("\n\n")}\n\n---\n\n#{base}"
-    else
-      "#{instructions}\n\n---\n\n#{base}"
-    end
+    recall = PersonalKnowledgeRecallService.recall_for(base)
+
+    assembled = []
+    assembled << identity_context if identity_context.present?
+    assembled << instructions
+    assembled << context_parts.join("\n\n") if context_parts.any?
+    assembled << recall if recall.present?
+    assembled << base
+
+    assembled.compact.join("\n\n---\n\n")
   end
 
   def run_pi_stream(prompt, assistant_message, provider:, model:)

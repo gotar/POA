@@ -73,6 +73,20 @@
         </div>
       </div>
 
+      <div class="bg-gray-800 border border-gray-700 rounded-xl p-4">
+        <h2 class="text-sm font-semibold text-gray-200">Core (identity + user)</h2>
+        <p class="text-xs text-gray-500 mt-1">These files shape the assistant personality and how it addresses you. Keep them short.</p>
+
+        <div class="mt-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
+          <% ["SOUL.md", "IDENTITY.md", "USER.md", "TOOLS.md", "MEMORY.md"].each do |f| %>
+            <%= link_to project_personal_knowledge_note_path(@project, path: f), class: "block bg-gray-750 hover:bg-gray-700 border border-gray-700 rounded-xl p-3" do %>
+              <div class="font-medium text-gray-100"><%= f %></div>
+              <div class="text-xs text-gray-500 mt-1">Open / edit</div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
         <div class="bg-gray-800 border border-gray-700 rounded-xl p-4">
           <div class="flex items-center justify-between">

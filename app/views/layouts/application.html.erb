@@ -62,7 +62,7 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="bg-gray-900 text-gray-100 min-h-screen" data-controller="ui">
+  <body class="bg-gray-900 text-gray-100 min-h-screen pt-[env(safe-area-inset-top)] pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)]" data-controller="ui">
     <% current_path = request.path.to_s %>
 
     <!-- Global navigation
@@ -87,7 +87,7 @@
     </div>
 
     <nav class="fixed bottom-0 inset-x-0 z-40 sm:hidden bg-gray-900/95 border-t border-gray-800 backdrop-blur">
-      <div class="mx-auto max-w-md px-4 py-2 pb-[calc(env(safe-area-inset-bottom)+0.5rem)]">
+      <div class="mx-auto max-w-md px-4 py-2 pb-[calc(env(safe-area-inset-bottom)+0.5rem)] pl-[calc(env(safe-area-inset-left)+1rem)] pr-[calc(env(safe-area-inset-right)+1rem)]">
         <% projects_active = current_path.start_with?("/projects") %>
         <% knowledge_active = current_path.start_with?("/knowledge") %>
         <% monitoring_active = current_path.start_with?("/monitoring") %>
@@ -129,6 +129,7 @@
     </div>
 
     <!-- Toast notifications container -->
-    <div id="toast-container" class="fixed top-4 right-4 z-50 space-y-2"></div>
+    <div id="toast-container"
+         class="fixed top-[calc(env(safe-area-inset-top)+1rem)] right-[calc(env(safe-area-inset-right)+1rem)] z-50 space-y-2"></div>
   </body>
 </html>

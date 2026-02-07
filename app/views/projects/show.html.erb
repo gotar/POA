@@ -73,10 +73,10 @@
 
       <!-- TODOs Section -->
       <div class="p-3 border-t border-gray-700">
-        <button data-action="project#showTodos" class="w-full flex items-center justify-between mb-2 hover:bg-gray-700 rounded-lg p-1 -mx-1 transition-colors">
-          <h2 class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Active TODOs</h2>
+        <div class="flex items-center justify-between mb-2">
+          <%= link_to "Active TODOs", project_todos_path(@project), class: "text-xs font-semibold text-gray-500 uppercase tracking-wider hover:text-gray-300" %>
           <span class="bg-purple-600 text-white text-xs px-2 py-0.5 rounded-full"><%= @todos.count %></span>
-        </button>
+        </div>
 
         <div id="project_todos" class="space-y-2">
           <%= render partial: "todos/todo", collection: @todos, locals: { project: @project } %>
@@ -95,17 +95,17 @@
 
       <!-- Notes Section -->
       <div class="p-3 border-t border-gray-700">
-        <button data-action="project#showNotes" class="w-full flex items-center justify-between mb-2 hover:bg-gray-700 rounded-lg p-1 -mx-1 transition-colors">
-          <h2 class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Context Notes</h2>
+        <div class="flex items-center justify-between mb-2">
+          <%= link_to "Context Notes", project_notes_path(@project), class: "text-xs font-semibold text-gray-500 uppercase tracking-wider hover:text-gray-300" %>
           <span class="bg-blue-600 text-white text-xs px-2 py-0.5 rounded-full"><%= @notes.count %></span>
-        </button>
+        </div>
 
         <div id="project_notes" class="space-y-2">
           <% @notes.each do |note| %>
-            <div class="bg-gray-700 rounded-lg p-2 text-sm">
+            <%= link_to [@project, note], class: "block bg-gray-700 hover:bg-gray-650 rounded-lg p-2 text-sm" do %>
               <h4 class="font-medium text-gray-200 truncate"><%= note.title %></h4>
               <p class="text-gray-400 text-xs truncate"><%= note.content %></p>
-            </div>
+            <% end %>
           <% end %>
 
           <% if @notes.empty? %>
@@ -116,17 +116,20 @@
 
       <!-- Knowledge Base Section -->
       <div class="p-3 border-t border-gray-700">
-        <button data-action="project#showKnowledge" class="w-full flex items-center justify-between mb-2 hover:bg-gray-700 rounded-lg p-1 -mx-1 transition-colors">
-          <h2 class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Knowledge Base</h2>
-          <span class="bg-purple-600/50 text-purple-300 text-xs px-2 py-0.5 rounded-full"><%= @project.knowledge_bases.count %></span>
-        </button>
+        <div class="flex items-center justify-between mb-2">
+          <%= link_to "Knowledge Base", project_knowledge_bases_path(@project), class: "text-xs font-semibold text-gray-500 uppercase tracking-wider hover:text-gray-300" %>
+          <div class="flex items-center gap-2">
+            <span class="bg-purple-600/50 text-purple-300 text-xs px-2 py-0.5 rounded-full"><%= @project.knowledge_bases.count %></span>
+            <%= link_to "+", new_project_knowledge_basis_path(@project), class: "text-xs text-gray-400 hover:text-gray-200", title: "New KB item" %>
+          </div>
+        </div>
 
         <div class="space-y-2">
           <% @project.knowledge_bases.recent(3).each do |kb| %>
-            <div class="bg-gray-700 rounded-lg p-2 text-sm">
+            <%= link_to [@project, kb], class: "block bg-gray-700 hover:bg-gray-650 rounded-lg p-2 text-sm" do %>
               <h4 class="font-medium text-gray-200 truncate"><%= kb.title %></h4>
               <p class="text-gray-400 text-xs"><%= kb.category.titleize %></p>
-            </div>
+            <% end %>
           <% end %>
 
           <% if @project.knowledge_bases.empty? %>
@@ -137,14 +140,17 @@
 
       <!-- Scheduled Jobs Section -->
       <div class="p-3 border-t border-gray-700">
-        <button data-action="project#showScheduled" class="w-full flex items-center justify-between mb-2 hover:bg-gray-700 rounded-lg p-1 -mx-1 transition-colors">
-          <h2 class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Scheduled Jobs</h2>
-          <span class="bg-orange-600/50 text-orange-300 text-xs px-2 py-0.5 rounded-full"><%= @project.scheduled_jobs.active.count %></span>
-        </button>
+        <div class="flex items-center justify-between mb-2">
+          <%= link_to "Scheduled Jobs", project_scheduled_jobs_path(@project), class: "text-xs font-semibold text-gray-500 uppercase tracking-wider hover:text-gray-300" %>
+          <div class="flex items-center gap-2">
+            <span class="bg-orange-600/50 text-orange-300 text-xs px-2 py-0.5 rounded-full"><%= @project.scheduled_jobs.active.count %></span>
+            <%= link_to "+", new_project_scheduled_job_path(@project), class: "text-xs text-gray-400 hover:text-gray-200", title: "New scheduled job" %>
+          </div>
+        </div>
 
         <div class="space-y-2">
           <% @project.scheduled_jobs.active.limit(3).each do |job| %>
-            <div class="bg-gray-700 rounded-lg p-2 text-sm">
+            <%= link_to [@project, job], class: "block bg-gray-700 hover:bg-gray-650 rounded-lg p-2 text-sm" do %>
               <h4 class="font-medium text-gray-200 truncate"><%= job.name %></h4>
               <p class="text-gray-400 text-xs">
                 <%= job.cron_expression %>
@@ -152,7 +158,7 @@
                   · <%= time_ago_in_words(job.next_run_at) %>
                 <% end %>
               </p>
-            </div>
+            <% end %>
           <% end %>
 
           <% if @project.scheduled_jobs.active.empty? %>

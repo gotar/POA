@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "webpush"
+require "web_push"
 
 class PushNotificationService
   class << self
@@ -21,7 +21,7 @@ class PushNotificationService
     private
 
     def send_to_subscription(sub, payload)
-      Webpush.payload_send(
+      WebPush.payload_send(
         message: payload,
         endpoint: sub.endpoint,
         p256dh: sub.p256dh,
@@ -32,7 +32,7 @@ class PushNotificationService
           private_key: ENV.fetch("VAPID_PRIVATE_KEY")
         }
       )
-    rescue Webpush::InvalidSubscription, Webpush::ExpiredSubscription
+    rescue WebPush::InvalidSubscription, WebPush::ExpiredSubscription
       sub.destroy
     rescue StandardError => e
       Rails.logger.error("WebPush send failed: #{e.class}: #{e.message}")

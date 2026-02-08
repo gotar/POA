@@ -38,8 +38,6 @@ Rails.application.routes.draw do
         resources :attachments, only: %i[create destroy]
       end
 
-      # Streaming endpoint
-      post :stream, to: "messages#stream", on: :member
     end
 
     # TODOs within a project
@@ -69,6 +67,8 @@ Rails.application.routes.draw do
       member do
         post :run_now
         post :toggle
+        get :runs
+        get :status
       end
     end
 
@@ -108,6 +108,9 @@ Rails.application.routes.draw do
   # Monitoring
   get "/monitoring", to: "monitoring#index", as: :monitoring
   get "/monitoring/jobs", to: "monitoring#jobs", as: :monitoring_jobs
+  post "/monitoring/heartbeat", to: "monitoring#run_heartbeat", as: :monitoring_run_heartbeat
+  post "/monitoring/polish", to: "monitoring#run_polish", as: :monitoring_run_polish
+  post "/monitoring/heartbeat_settings", to: "monitoring#update_heartbeat_settings", as: :monitoring_heartbeat_settings
 
   # PWA routes (using custom manifest and service worker)
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest

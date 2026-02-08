@@ -1,11 +1,11 @@
 module MonitoringHelper
   def job_status_color(status)
-    case status
-    when "pending"
+    case status.to_s
+    when "pending", "ready", "scheduled", "blocked"
       "bg-yellow-500"
-    when "running"
+    when "running", "claimed"
       "bg-blue-500"
-    when "completed"
+    when "completed", "finished"
       "bg-green-500"
     when "failed"
       "bg-red-500"

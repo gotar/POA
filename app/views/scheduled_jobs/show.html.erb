@@ -15,9 +15,9 @@
     </div>
 
     <div class="flex gap-2">
-      <%= link_to "Edit", edit_project_scheduled_job_path(@project, @scheduled_job), class: "bg-gray-700 hover:bg-gray-600 text-gray-200 px-3 py-1 rounded text-sm" %>
-      <%= button_to "Run Now", run_now_project_scheduled_job_path(@project, @scheduled_job), method: :post, class: "bg-blue-600 hover:bg-blue-700 text-blue-200 px-3 py-1 rounded text-sm" %>
-      <%= button_to "Delete", project_scheduled_job_path(@project, @scheduled_job), method: :delete, class: "bg-red-700 hover:bg-red-600 text-red-200 px-3 py-1 rounded text-sm", form: { data: { turbo_confirm: "Delete this scheduled job?" } } %>
+      <%= link_to "Edit", edit_project_scheduled_job_path(@project, @scheduled_job), class: "bg-gray-700 hover:bg-gray-600 text-gray-200 px-3 py-2 rounded-lg text-sm cursor-pointer transition-colors" %>
+      <%= button_to "Run Now", run_now_project_scheduled_job_path(@project, @scheduled_job), method: :post, class: "bg-blue-600 hover:bg-blue-700 text-blue-100 px-3 py-2 rounded-lg text-sm cursor-pointer transition-colors" %>
+      <%= button_to "Delete", project_scheduled_job_path(@project, @scheduled_job), method: :delete, class: "bg-red-700 hover:bg-red-600 text-red-100 px-3 py-2 rounded-lg text-sm cursor-pointer transition-colors", form: { data: { turbo_confirm: "Delete this scheduled job?" } } %>
     </div>
   </header>
 
@@ -28,19 +28,7 @@
         <h2 class="text-lg font-semibold text-gray-100 mb-4">Job Details</h2>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-            <h3 class="text-sm font-medium text-gray-400 mb-1">Status</h3>
-            <div class="flex items-center gap-2">
-              <span class="<%= @scheduled_job.active? ? 'bg-green-900 text-green-200' : 'bg-gray-900 text-gray-400' %> px-2 py-1 text-xs rounded-full">
-                <%= @scheduled_job.active? ? 'Active' : 'Inactive' %>
-              </span>
-              <% if @scheduled_job.status.present? && @scheduled_job.status != 'pending' %>
-                <span class="<%= status_badge_class(@scheduled_job.status) %> px-2 py-1 text-xs rounded-full">
-                  <%= @scheduled_job.status.titleize %>
-                </span>
-              <% end %>
-            </div>
-          </div>
+          <%= render "scheduled_jobs/status_frame", project: @project, scheduled_job: @scheduled_job, poll: @scheduled_job.status.in?(["queued", "running"]) %>
 
           <div>
             <h3 class="text-sm font-medium text-gray-400 mb-1">Schedule</h3>
@@ -90,7 +78,7 @@
             <div class="flex items-center gap-3 p-3 bg-gray-700 rounded-lg">
               <div class="w-3 h-3 bg-green-500 rounded-full"></div>
               <div>
-                <p class="text-gray-200">Last executed successfully</p>
+                <p class="text-gray-200">Last executed</p>
                 <p class="text-xs text-gray-500"><%= time_ago_in_words(@scheduled_job.last_run_at) %> ago</p>
               </div>
             </div>
@@ -100,6 +88,18 @@
               <p class="text-xs text-gray-600 mt-1">The job will run according to its schedule</p>
             </div>
           <% end %>
+        </div>
+      </div>
+
+      <!-- Runs / Results -->
+      <div class="bg-gray-800 rounded-xl p-6 border border-gray-700">
+        <div class="flex items-center justify-between gap-3 flex-wrap">
+          <h2 class="text-lg font-semibold text-gray-100">Runs (Results)</h2>
+          <div class="text-xs text-gray-500">Auto-updates after Run Now</div>
+        </div>
+
+        <div class="mt-4">
+          <%= render "scheduled_jobs/runs_frame", project: @project, scheduled_job: @scheduled_job, poll: @scheduled_job.status.in?(["queued", "running"]) %>
         </div>
       </div>
     </div>

@@ -1,0 +1,10 @@
+<% data = {} %>
+<% if poll %>
+  <% data = { controller: "poll-frame", poll_frame_interval_value: 1500, poll_frame_max_seconds_value: 180 } %>
+<% end %>
+
+<%= turbo_frame_tag "scheduled_job_status",
+      src: status_project_scheduled_job_path(project, scheduled_job),
+      data: data do %>
+  <div class="text-xs text-gray-500">Loading…</div>
+<% end %>

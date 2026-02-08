@@ -7,6 +7,13 @@ class RuntimeMetric < ApplicationRecord
     find_by(key: key)&.value
   end
 
+  def self.get_many(keys)
+    ks = Array(keys).map(&:to_s).reject(&:blank?)
+    return {} if ks.empty?
+
+    where(key: ks).pluck(:key, :value).to_h
+  end
+
   def self.set(key, value)
     rec = find_or_initialize_by(key: key)
     rec.value = value

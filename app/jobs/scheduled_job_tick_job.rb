@@ -15,7 +15,7 @@ class ScheduledJobTickJob < ApplicationJob
     end
 
     due = ScheduledJob.active.due
-      .where.not(status: "running")
+      .where.not(status: ["running", "queued", "pending"]) # pending kept for backwards compatibility
       .order(next_run_at: :asc)
       .limit(limit)
 
@@ -24,8 +24,8 @@ class ScheduledJobTickJob < ApplicationJob
     due.each do |job|
       # Best-effort de-dupe: mark as pending only if not running.
       updated = ScheduledJob.where(id: job.id)
-        .where.not(status: "running")
-        .update_all(status: "pending", last_enqueued_at: now, updated_at: now)
+        .where.not(status: ["running", "queued", "pending"])
+        .update_all(status: "queued", last_enqueued_at: now, updated_at: now)
 
       next unless updated == 1
 

@@ -3,6 +3,8 @@ module ScheduledJobsHelper
     case status
     when "pending"
       "bg-yellow-900 text-yellow-200"
+    when "queued"
+      "bg-purple-900 text-purple-200"
     when "running"
       "bg-blue-900 text-blue-200"
     when "completed"

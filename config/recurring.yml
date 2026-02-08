@@ -16,7 +16,15 @@ production:
 
   personal_knowledge_qmd_update:
     class: PersonalKnowledgeReindexJob
+    schedule: at 3:20am every day
+
+  personal_knowledge_polish:
+    class: PersonalKnowledgePolishJob
     schedule: at 3am every day
+
+  system_heartbeat:
+    class: SystemHeartbeatJob
+    schedule: every 30 minutes
 
   personal_knowledge_qmd_embed:
     class: PersonalKnowledgeEmbedJob

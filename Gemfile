@@ -18,7 +18,8 @@ gem "stimulus-rails"
 gem "jbuilder"
 
 # Web Push notifications (PWA)
-gem "webpush"
+# NOTE: `webpush` gem is not OpenSSL 3 compatible (PKey immutability). Use `web-push` instead.
+gem "web-push"
 
 # Cron parsing for ScheduledJobs
 gem "fugit"

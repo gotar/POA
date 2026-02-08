@@ -1,0 +1,41 @@
+<%= turbo_frame_tag "scheduled_job_runs" do %>
+  <% if @scheduled_job.status.in?(["queued", "running"]) %>
+    <div class="flex items-center gap-2 text-sm text-gray-300">
+      <div class="animate-spin rounded-full h-4 w-4 border-b-2 border-purple-500"></div>
+      <div><%= @scheduled_job.status == "queued" ? "Queued…" : "Running…" %></div>
+    </div>
+    <div class="mt-2 text-xs text-gray-500">This updates automatically.</div>
+  <% else %>
+    <div data-poll-frame-done></div>
+  <% end %>
+
+  <div class="mt-4">
+    <% if @run_conversations.any? %>
+      <div class="space-y-3">
+        <% @run_conversations.each do |conv| %>
+          <% assistant = conv.messages.select { |m| m.role == "assistant" }.last %>
+          <% preview = assistant&.content.to_s.strip.presence || "(no assistant output)" %>
+
+          <%= link_to project_conversation_path(@project, conv),
+                class: "block bg-gray-750 hover:bg-gray-700 border border-gray-700 rounded-xl p-4",
+                data: { turbo_frame: "_top" } do %>
+            <div class="flex items-start justify-between gap-3">
+              <div class="min-w-0">
+                <div class="text-sm font-medium text-gray-100 truncate"><%= conv.title %></div>
+                <div class="text-xs text-gray-500 mt-1">
+                  <%= conv.created_at.strftime("%B %d, %Y %H:%M") %> · <%= time_ago_in_words(conv.created_at) %> ago
+                </div>
+                <div class="mt-2 text-sm text-gray-300 whitespace-pre-wrap"><%= preview.truncate(280) %></div>
+              </div>
+              <svg class="w-5 h-5 text-gray-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="text-sm text-gray-500">No run results yet.</div>
+    <% end %>
+  </div>
+<% end %>

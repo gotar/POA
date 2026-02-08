@@ -66,7 +66,8 @@ class ScheduledJobRunnerJob < ApplicationJob
 
     base = scheduled_job.prompt_template.to_s
 
-    recall = PersonalKnowledgeRecallService.recall_for(base)
+    # For scheduled jobs, also keep it deterministic: only curated living docs.
+    recall = PersonalKnowledgeRecallService.memory_context
 
     assembled = []
     assembled << identity_context if identity_context.present?
@@ -79,58 +80,55 @@ class ScheduledJobRunnerJob < ApplicationJob
   end
 
   def run_pi_stream(prompt, assistant_message, provider:, model:)
-    pi = PiRpcService.new(provider: provider, model: model)
-    pi.start
-
     full_text = +""
     metadata = {}
 
-    pi.prompt(prompt) do |event|
-      case event["type"]
-      when "extension_ui_request"
-        next
-      when "message_update"
-        assistant_event = event["assistantMessageEvent"]
-        next unless assistant_event.is_a?(Hash)
+    PiRpcPool.with_client(provider: provider, model: model) do |pi|
+      pi.prompt(prompt) do |event|
+        case event["type"]
+        when "extension_ui_request"
+          next
+        when "message_update"
+          assistant_event = event["assistantMessageEvent"]
+          next unless assistant_event.is_a?(Hash)
 
-        if assistant_event["type"] == "text_delta"
-          delta = assistant_event["delta"].to_s
-          next if delta.empty?
+          if assistant_event["type"] == "text_delta"
+            delta = assistant_event["delta"].to_s
+            next if delta.empty?
 
-          full_text << delta
-          assistant_message.update!(content: full_text)
-        end
-
-        partial = assistant_event["partial"]
-        if partial.is_a?(Hash)
-          extracted = extract_metadata(partial)
-          metadata.merge!(extracted) if extracted.present?
-        end
-      when "message_end"
-        msg = event["message"]
-        next unless msg.is_a?(Hash) && msg["role"] == "assistant"
-
-        if full_text.empty? && msg["content"].is_a?(Array)
-          extracted_text = extract_text_from_content(msg["content"])
-          full_text = extracted_text if extracted_text.present?
-        end
-
-        metadata.merge!(extract_metadata(msg))
-      when "agent_end"
-        if full_text.blank? && event["messages"].is_a?(Array)
-          last_assistant = event["messages"].reverse.find { |m| m.is_a?(Hash) && m["role"] == "assistant" }
-          if last_assistant&.dig("content").is_a?(Array)
-            extracted_text = extract_text_from_content(last_assistant["content"])
-            full_text = extracted_text if extracted_text.present?
-            metadata.merge!(extract_metadata(last_assistant))
+            full_text << delta
+            assistant_message.update!(content: full_text)
           end
-        end
 
-        assistant_message.update!(content: full_text, metadata: metadata)
+          partial = assistant_event["partial"]
+          if partial.is_a?(Hash)
+            extracted = extract_metadata(partial)
+            metadata.merge!(extracted) if extracted.present?
+          end
+        when "message_end"
+          msg = event["message"]
+          next unless msg.is_a?(Hash) && msg["role"] == "assistant"
+
+          if full_text.empty? && msg["content"].is_a?(Array)
+            extracted_text = extract_text_from_content(msg["content"])
+            full_text = extracted_text if extracted_text.present?
+          end
+
+          metadata.merge!(extract_metadata(msg))
+        when "agent_end"
+          if full_text.blank? && event["messages"].is_a?(Array)
+            last_assistant = event["messages"].reverse.find { |m| m.is_a?(Hash) && m["role"] == "assistant" }
+            if last_assistant&.dig("content").is_a?(Array)
+              extracted_text = extract_text_from_content(last_assistant["content"])
+              full_text = extracted_text if extracted_text.present?
+              metadata.merge!(extract_metadata(last_assistant))
+            end
+          end
+
+          assistant_message.update!(content: full_text, metadata: metadata)
+        end
       end
     end
-  ensure
-    pi.stop rescue nil
   end
 
   def extract_text_from_content(content)
@@ -187,7 +185,10 @@ class ScheduledJobRunnerJob < ApplicationJob
     # Create a conversation with the prompt result
     conversation = scheduled_job.project.conversations.create!(
       title: "Scheduled: #{scheduled_job.name}",
-      system_prompt: ""
+      system_prompt: "",
+      scheduled_job: scheduled_job,
+      pi_provider: provider,
+      pi_model: model
     )
 
     prompt = build_prompt_for_job(scheduled_job)
@@ -195,7 +196,15 @@ class ScheduledJobRunnerJob < ApplicationJob
     conversation.messages.create!(role: "user", content: prompt)
     assistant_message = conversation.messages.create!(role: "assistant", content: "")
 
-    run_pi_stream(prompt, assistant_message, provider: provider, model: model)
+    begin
+      run_pi_stream(prompt, assistant_message, provider: provider, model: model)
+    rescue PiRpcService::Error => e
+      assistant_message.update!(content: "❌ Scheduled job failed: #{e.message}", status: "error")
+      raise
+    rescue StandardError => e
+      assistant_message.update!(content: "❌ Scheduled job failed: #{e.class}: #{e.message}", status: "error")
+      raise
+    end
 
     Rails.logger.info "Created conversation #{conversation.id} for scheduled job"
     true

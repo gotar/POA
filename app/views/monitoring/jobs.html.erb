@@ -1,0 +1,99 @@
+<% content_for :title, "Job Queue - Gotar Bot" %>
+
+<div class="min-h-screen flex flex-col">
+  <header class="bg-gray-800 border-b border-gray-700 px-4 py-3">
+    <div class="flex items-center gap-3">
+      <%= link_to monitoring_path, class: "text-gray-400 hover:text-gray-200" do %>
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+        </svg>
+      <% end %>
+      <h1 class="text-xl font-bold text-gray-100">All Jobs</h1>
+    </div>
+  </header>
+
+  <main class="flex-1 overflow-y-auto p-4">
+    <div class="max-w-6xl mx-auto space-y-6">
+      <div class="bg-gray-800 rounded-xl p-6 border border-gray-700">
+        <div class="flex items-start justify-between gap-4">
+          <h2 class="text-lg font-semibold text-gray-100">Job Queue</h2>
+          <div class="text-xs text-gray-400 text-right">
+            <% if @jobs_error.present? %>
+              <div>Job tables unavailable</div>
+            <% else %>
+              <div>Showing last <%= @jobs.size %> jobs</div>
+            <% end %>
+          </div>
+        </div>
+
+        <% if @jobs_error.present? %>
+          <div class="mt-4 text-sm text-red-300">
+            Solid Queue tables are not available yet. Run the Solid Queue migrations to see job data.
+          </div>
+        <% elsif @jobs.any? %>
+          <div class="mt-4 overflow-x-auto">
+            <table class="min-w-full text-sm">
+              <thead>
+                <tr class="text-left text-gray-400">
+                  <th class="py-2 pr-4">ID</th>
+                  <th class="py-2 pr-4">Job</th>
+                  <th class="py-2 pr-4">Queue</th>
+                  <th class="py-2 pr-4">Status</th>
+                  <th class="py-2 pr-4">Created</th>
+                  <th class="py-2 pr-4">Scheduled</th>
+                  <th class="py-2 pr-4">Finished</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-700">
+                <% @jobs.each do |job| %>
+                  <% status = job.status&.to_s %>
+                  <tr>
+                    <td class="py-2 pr-4 text-xs text-gray-400 font-mono">#<%= job.id %></td>
+                    <td class="py-2 pr-4">
+                      <div class="text-sm text-gray-200"><%= job.class_name %></div>
+                      <% if job.arguments.present? %>
+                        <div class="text-xs text-gray-500"><%= job.arguments.to_s.truncate(100) %></div>
+                      <% end %>
+                    </td>
+                    <td class="py-2 pr-4 text-xs text-gray-400"><%= job.queue_name.presence || "default" %></td>
+                    <td class="py-2 pr-4">
+                      <span class="inline-flex items-center gap-2 text-xs text-gray-300">
+                        <span class="<%= job_status_color(status) %> w-2 h-2 rounded-full"></span>
+                        <%= status.present? ? status.titleize : "Unknown" %>
+                      </span>
+                    </td>
+                    <td class="py-2 pr-4 text-xs text-gray-400">
+                      <div><%= time_ago_in_words(job.created_at) %> ago</div>
+                      <div class="text-gray-500"><%= job.created_at.strftime("%Y-%m-%d %H:%M") %></div>
+                    </td>
+                    <td class="py-2 pr-4 text-xs text-gray-400">
+                      <% if job.scheduled_at %>
+                        <div>
+                          <%= time_ago_in_words(job.scheduled_at) %>
+                          <%= job.scheduled_at.future? ? "from now" : "ago" %>
+                        </div>
+                        <div class="text-gray-500"><%= job.scheduled_at.strftime("%Y-%m-%d %H:%M") %></div>
+                      <% else %>
+                        —
+                      <% end %>
+                    </td>
+                    <td class="py-2 pr-4 text-xs text-gray-400">
+                      <% if job.finished_at %>
+                        <div><%= time_ago_in_words(job.finished_at) %> ago</div>
+                        <div class="text-gray-500"><%= job.finished_at.strftime("%Y-%m-%d %H:%M") %></div>
+                      <% else %>
+                        —
+                      <% end %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        <% else %>
+          <div class="mt-4 text-sm text-gray-500">No jobs have been executed yet.</div>
+        <% end %>
+      </div>
+    </div>
+  </main>
+</div>

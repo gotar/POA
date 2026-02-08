@@ -2,11 +2,12 @@
 
 class ScheduledJob < ApplicationRecord
   belongs_to :project
+  has_many :conversations, dependent: :nullify
 
   validates :name, presence: true, length: { maximum: 255 }
   validates :cron_expression, presence: true
   validates :prompt_template, presence: true
-  validates :status, inclusion: { in: %w[pending running completed failed paused] }, allow_nil: true
+  validates :status, inclusion: { in: %w[pending queued running completed failed paused] }, allow_nil: true
 
   validates :pi_provider, length: { maximum: 100 }, allow_blank: true
   validates :pi_model, length: { maximum: 200 }, allow_blank: true
@@ -74,5 +75,21 @@ class ScheduledJob < ApplicationRecord
     update_columns(last_run_at: now, next_run_at: next_time, updated_at: now)
   end
 
-  private
+  def self.default_prompt_template
+    <<~PROMPT.strip
+      Create a concise scheduled report for Oskar Szrajer ("gotar").
+
+      Context:
+      - Timezone: Europe/Warsaw (Poland)
+      - Work: Ruby/web developer; consulting (Gotar, Ruby/Elixir) + Senior Software Developer at Impactpool (Rails/Hotwire/ViewComponents, integrations like BigQuery/APIs)
+      - Other: Aikido instructor (Sesshinkan Dojo, Gdynia)
+
+      Output (Markdown, no fluff):
+      1) Summary (max 5 bullets)
+      2) Active TODOs: list each with a suggested next action
+      3) Risks/blockers (if any)
+      4) Next priorities (top 3)
+    PROMPT
+  end
+
 end

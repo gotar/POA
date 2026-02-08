@@ -18,13 +18,13 @@ flowchart TD
     SW[Service Worker<br/>PWA cache + push handler]
   end
 
-  subgraph Web[Rails Web Process<br/>(Puma)]
+  subgraph Web["Rails Web Process (Puma)"]
     Controllers[Controllers<br/>Chat / Knowledge / Monitoring]
     Cable[Turbo Streams<br/>(Solid Cable)]
     Views[Hotwire UI<br/>Turbo Frames]
   end
 
-  subgraph Jobs[Rails Jobs Process<br/>(Solid Queue workers)]
+  subgraph Jobs["Rails Jobs Process (Solid Queue workers)"]
     SQ[Solid Queue]
     PiStream[PiStreamJob<br/>(streams assistant)]
     SchedTick[ScheduledJobTickJob<br/>(enqueue due jobs)]

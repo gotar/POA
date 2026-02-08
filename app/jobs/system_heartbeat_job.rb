@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+require "net/imap"
+require "open3"
+
 class SystemHeartbeatJob < ApplicationJob
   include ActionView::RecordIdentifier
 
@@ -25,6 +28,7 @@ class SystemHeartbeatJob < ApplicationJob
       scheduler_tick = check_scheduler_tick!(alerts: alerts, now: started_at)
       failed_jobs = check_failed_jobs!(alerts: alerts)
       check_binaries!(alerts: alerts)
+      check_gmail_unseen!(alerts: alerts)
 
       fixed = recover_stuck_conversations!(now: started_at)
       if fixed[:stuck_conversations].positive?
@@ -115,6 +119,25 @@ class SystemHeartbeatJob < ApplicationJob
     ENV.fetch("HEARTBEAT_AGENT_ACK_MAX_CHARS", "300").to_i
   end
 
+  def gmail_heartbeat_enabled?
+    override = RuntimeMetric.get("heartbeat.gmail_enabled").to_s.strip
+    return override == "true" if override.present?
+
+    ENV.fetch("HEARTBEAT_GMAIL_ENABLED", "true") == "true"
+  rescue StandardError
+    ENV.fetch("HEARTBEAT_GMAIL_ENABLED", "true") == "true"
+  end
+
+  def gmail_heartbeat_settings
+    {
+      user: ENV.fetch("HEARTBEAT_GMAIL_USER", "gotarbot@gmail.com"),
+      host: ENV.fetch("HEARTBEAT_GMAIL_IMAP_HOST", "imap.gmail.com"),
+      port: ENV.fetch("HEARTBEAT_GMAIL_IMAP_PORT", "993").to_i,
+      folder: ENV.fetch("HEARTBEAT_GMAIL_FOLDER", "INBOX"),
+      pass_cmd: ENV.fetch("HEARTBEAT_GMAIL_PASS_CMD", "pass show services/gmail/gotarbot | head -n 1")
+    }
+  end
+
   def check_scheduler_tick!(alerts:, now:)
     tick = RuntimeMetric.time("scheduled_jobs.last_tick_at")
     if tick.nil?
@@ -184,6 +207,56 @@ class SystemHeartbeatJob < ApplicationJob
     end
   rescue StandardError
     nil
+  end
+
+  def check_gmail_unseen!(alerts:)
+    return unless gmail_heartbeat_enabled?
+
+    settings = gmail_heartbeat_settings
+    now = Time.current
+    imap = nil
+
+    password = fetch_pass_password(settings[:pass_cmd])
+    if password.blank?
+      RuntimeMetric.set("gmail.last_check_at", now.iso8601) rescue nil
+      RuntimeMetric.set("gmail.last_status", "missing_password") rescue nil
+      RuntimeMetric.set("gmail.last_error", "Empty password from pass") rescue nil
+      alerts << "Gmail IMAP check failed: missing password"
+      return
+    end
+
+    imap = Net::IMAP.new(settings[:host], port: settings[:port], ssl: true)
+    imap.login(settings[:user], password)
+    imap.select(settings[:folder])
+    unseen = imap.search(["UNSEEN"]).count
+
+    RuntimeMetric.set("gmail.unseen_count", unseen.to_s)
+    RuntimeMetric.set("gmail.last_check_at", now.iso8601)
+    RuntimeMetric.set("gmail.last_status", "ok")
+    RuntimeMetric.set("gmail.last_error", "")
+
+    alerts << "Gmail: #{unseen} unread message(s) in #{settings[:folder]}" if unseen.positive?
+  rescue StandardError => e
+    RuntimeMetric.set("gmail.last_check_at", now.iso8601) rescue nil
+    RuntimeMetric.set("gmail.last_status", "error") rescue nil
+    RuntimeMetric.set("gmail.last_error", "#{e.class}: #{e.message}") rescue nil
+    alerts << "Gmail IMAP check failed: #{e.class}: #{e.message}"
+  ensure
+    begin
+      imap.logout if imap
+      imap.disconnect if imap
+    rescue StandardError
+      nil
+    end
+  end
+
+  def fetch_pass_password(cmd)
+    stdout, _stderr, status = Open3.capture3("bash", "-lc", cmd.to_s)
+    return "" unless status.success?
+
+    stdout.to_s.strip
+  rescue StandardError
+    ""
   end
 
   def recover_stuck_conversations!(now:)

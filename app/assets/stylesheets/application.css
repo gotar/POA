@@ -123,9 +123,10 @@ textarea.textarea-scroll {
   overscroll-behavior: contain;
 }
 
-/* Ensure auto-resize chat input works without scrollbars */
+/* Ensure auto-resize chat input scrolls when max height reached */
 [data-message-form-target="input"] {
-  overflow: clip !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
   resize: none !important;
 }
 

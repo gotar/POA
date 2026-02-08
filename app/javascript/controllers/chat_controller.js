@@ -5,7 +5,7 @@ export default class extends Controller {
   static targets = ["messages"]
 
   connect() {
-    this.scrollToBottom()
+    this.queueScrollToBottom()
 
     // Observe for new messages or streaming updates
     if (this.hasMessagesTarget) {

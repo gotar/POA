@@ -28,6 +28,8 @@ Rails.application.routes.draw do
       member do
         post :clear_messages
         get :export
+        post :archive
+        post :unarchive
       end
 
       # Messages within a conversation

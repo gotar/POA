@@ -6,15 +6,84 @@ export default class extends Controller {
 
   connect() {
     this.autoResize()
+    this.queueFocus()
   }
 
-  // Note: Enter does NOT submit. Use the Send button.
+  queueFocus() {
+    if (this.focusQueued) return
+    this.focusQueued = true
+
+    setTimeout(() => {
+      this.focusQueued = false
+      this.focusInput()
+    }, 150)
+  }
+
+  focusInput() {
+    if (!this.hasInputTarget) return
+
+    const input = this.inputTarget
+    const active = document.activeElement
+    const activeIsEditable =
+      active && (active.tagName === "INPUT" || active.tagName === "TEXTAREA" || active.isContentEditable)
+
+    if (activeIsEditable && active !== input) return
+
+    const rect = input.getBoundingClientRect()
+    const inView = rect.top >= 0 && rect.bottom <= window.innerHeight
+
+    if (!inView) {
+      input.scrollIntoView({ block: "center" })
+    }
+
+    if (input !== document.activeElement) {
+      try {
+        input.focus({ preventScroll: true })
+      } catch (error) {
+        input.focus()
+      }
+    }
+  }
+
+  // Enter inserts a newline.
+  // Shift+Enter submits the form.
 
   // Auto-resize textarea
   autoResize() {
     const input = this.inputTarget
     input.style.height = "auto"
     input.style.height = Math.min(input.scrollHeight, 128) + "px"
+  }
+
+  keydown(event) {
+    // Avoid sending during IME composition
+    if (event.isComposing || event.keyCode === 229) return
+
+    if (event.key !== "Enter") return
+    if (!event.shiftKey) return
+
+    event.preventDefault()
+    event.stopPropagation()
+
+    this.submit()
+  }
+
+  submit() {
+    const content = (this.inputTarget?.value || "").trim()
+    if (!content) return
+
+    // Prefer requestSubmit() so Turbo/validations behave correctly.
+    if (this.element.requestSubmit) {
+      this.element.requestSubmit()
+      return
+    }
+
+    if (this.hasSubmitTarget) {
+      this.submitTarget.click()
+      return
+    }
+
+    this.element.submit()
   }
 
   // Reset form after submit

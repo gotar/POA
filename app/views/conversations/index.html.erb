@@ -9,7 +9,14 @@
       </svg>
     <% end %>
     <h1 class="text-xl font-bold text-gray-100"><%= @project.name %> - Chats</h1>
-    <div class="ml-auto">
+    <div class="ml-auto flex items-center gap-2">
+      <% if (@archived_count || 0) > 0 %>
+        <% if @show_archived %>
+          <%= link_to "Hide archived", project_conversations_path(@project), class: "text-xs text-gray-400 hover:text-gray-200" %>
+        <% else %>
+          <%= link_to "Show archived (#{@archived_count})", project_conversations_path(@project, show_archived: 1), class: "text-xs text-gray-400 hover:text-gray-200" %>
+        <% end %>
+      <% end %>
       <%= link_to "New Chat", project_conversations_path(@project), data: { turbo_method: :post }, class: "bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg" %>
     </div>
   </header>
@@ -17,7 +24,8 @@
   <main class="flex-1 overflow-y-auto p-4">
     <div class="space-y-2">
       <% @conversations.each do |conv| %>
-        <%= link_to [@project, conv], class: "block bg-gray-800 hover:bg-gray-750 rounded-xl p-4 border border-gray-700" do %>
+        <% archived_classes = conv.archived? ? 'opacity-60' : '' %>
+        <%= link_to [@project, conv], class: "block bg-gray-800 hover:bg-gray-750 rounded-xl p-4 border border-gray-700 #{archived_classes}" do %>
           <div class="flex items-center justify-between">
             <div>
               <h3 class="font-medium text-gray-100"><%= conv.title %></h3>

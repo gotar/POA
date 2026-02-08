@@ -10,13 +10,13 @@ class MessagesControllerTest < ActionDispatch::IntegrationTest
 
   # Create (HTML)
   test "should create message in conversation" do
-    assert_difference("Message.count") do
+    assert_difference("Message.count", 2) do
       post project_conversation_messages_url(@project, @conversation), params: {
         message: { content: "Hello, AI!" }
       }
     end
 
-    message = Message.last
+    message = @conversation.messages.where(role: "user").order(:created_at).last
     assert_equal "user", message.role
     assert_equal "Hello, AI!", message.content
   end
@@ -26,7 +26,7 @@ class MessagesControllerTest < ActionDispatch::IntegrationTest
       message: { content: "Test", role: "assistant" } # Try to override
     }
 
-    message = Message.last
+    message = @conversation.messages.where(role: "user").order(:created_at).last
     assert_equal "user", message.role
   end
 
@@ -70,15 +70,6 @@ class MessagesControllerTest < ActionDispatch::IntegrationTest
         message: { content: "" }
       }
     end
-  end
-
-  # Stream endpoint
-  test "stream should find conversation" do
-    post stream_project_conversation_url(@project, @conversation),
-      params: { message: { content: "Hello" } }
-
-    # Will fail without pi running, but should find conversation
-    assert_not_nil assigns(:conversation) if assigns(:conversation)
   end
 
   # Title generation

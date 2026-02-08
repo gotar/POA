@@ -15,7 +15,9 @@ class PiStreamJobTest < ActiveJob::TestCase
 
   # Basic job execution
   test "should find conversation and message" do
-    PiStreamJob.perform_now(@conversation.id, @assistant_message.id, @project.id)
+    with_fake_pi do
+      PiStreamJob.perform_now(@conversation.id, @assistant_message.id, @project.id)
+    end
 
     # Job should complete without error
     assert true
@@ -64,12 +66,34 @@ class PiStreamJobTest < ActiveJob::TestCase
     @project.notes.create!(title: "Context", content: "Important info", category: "context")
 
     # Just verify the job runs without error
-    PiStreamJob.perform_now(@conversation.id, @assistant_message.id, @project.id)
+    with_fake_pi do
+      PiStreamJob.perform_now(@conversation.id, @assistant_message.id, @project.id)
+    end
 
     assert true
   end
 
   private
+
+  def with_fake_pi
+    fake_pi = Class.new do
+      def prompt(_message, images: nil)
+        yield({
+          "type" => "agent_end",
+          "messages" => [
+            {
+              "role" => "assistant",
+              "content" => [{ "type" => "text", "text" => "OK" }]
+            }
+          ]
+        })
+      end
+    end.new
+
+    stub = ->(*_args, **_kwargs, &block) { block.call(fake_pi) }
+
+    PiRpcPool.stub(:with_client, stub) { yield }
+  end
 
   def pi_available?
     system("which pi > /dev/null 2>&1") &&

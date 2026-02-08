@@ -27,6 +27,22 @@
           Clear messages
         <% end %>
 
+        <% if conversation.archived? %>
+          <%= button_to unarchive_project_conversation_path(project, conversation), method: :post, class: "w-full text-left px-4 py-2 text-gray-300 hover:bg-gray-700 flex items-center gap-3 transition-colors" do %>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7h16M10 11h4M6 7l1-3h10l1 3m-1 0v13a2 2 0 01-2 2H7a2 2 0 01-2-2V7"></path>
+            </svg>
+            Restore
+          <% end %>
+        <% else %>
+          <%= button_to archive_project_conversation_path(project, conversation), method: :post, class: "w-full text-left px-4 py-2 text-gray-300 hover:bg-gray-700 flex items-center gap-3 transition-colors" do %>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-1 14H5L4 7m3-3h10l1 3M10 11h4"></path>
+            </svg>
+            Archive
+          <% end %>
+        <% end %>
+
         <%= button_to project_conversation_path(project, conversation), method: :delete, class: "w-full text-left px-4 py-2 text-red-400 hover:bg-gray-700 flex items-center gap-3 transition-colors", form: { data: { turbo_confirm: "Delete this conversation?" } } do %>
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
@@ -71,7 +87,7 @@
               rows: 1,
               data: {
                 message_form_target: "input",
-                action: "input->message-form#autoResize"
+                action: "input->message-form#autoResize keydown->message-form#keydown"
               },
               class: "w-full bg-gray-700 border border-gray-600 rounded-xl px-4 py-3 text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none max-h-32 pr-12"
           %>

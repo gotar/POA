@@ -26,7 +26,10 @@ class MessagesController < ApplicationController
 
       respond_to do |format|
         format.turbo_stream { process_with_pi }
-        format.html { redirect_to [@project, @conversation] }
+        format.html do
+          enqueue_with_pi
+          redirect_to [@project, @conversation]
+        end
       end
     else
       respond_to do |format|
@@ -36,16 +39,6 @@ class MessagesController < ApplicationController
     end
   end
 
-  # POST /projects/:project_id/conversations/:id/stream
-  def stream
-    response.content_type = "text/vnd.turbo-stream.html"
-
-    process_conversation_stream do |event|
-      response.stream.write(render_event(event))
-    end
-  ensure
-    response.stream.close
-  end
 
   private
 
@@ -61,93 +54,50 @@ class MessagesController < ApplicationController
     params.expect(message: %i[content])
   end
 
-  def process_with_pi
-    # Start streaming response with placeholder content
-    @assistant_message = @conversation.messages.create!(role: "assistant", content: "")
+  def enqueue_with_pi
+    # Ensure conversation has a default model selection so subsequent jobs are deterministic.
+    if @conversation.pi_provider.blank? || @conversation.pi_model.blank?
+      defaults = PiModelsService.default_provider_model
+      @conversation.update_columns(pi_provider: defaults[:provider], pi_model: defaults[:model])
+    end
 
-    # Render the user message immediately
-    render turbo_stream: [
-      turbo_stream.append("messages", partial: "messages/message", locals: { message: @message }),
-      turbo_stream.append("messages", partial: "messages/message", locals: { message: @assistant_message }),
-      turbo_stream.update("message_form", partial: "messages/form", locals: { project: @project, conversation: @conversation, message: @conversation.messages.build(role: "user") })
-    ]
-
-    # Process in background job for streaming
-    PiStreamJob.perform_later(
-      @conversation.id,
-      @assistant_message.id,
-      @project.id,
-      @conversation.pi_provider,
-      @conversation.pi_model
+    ConversationQueueService.enqueue_user_message!(
+      conversation: @conversation,
+      user_message: @message,
+      project_id: @project.id,
+      pi_provider: @conversation.pi_provider,
+      pi_model: @conversation.pi_model
     )
   end
 
-  def process_conversation_stream
-    pi = pi_service
+  def process_with_pi
+    result = enqueue_with_pi
 
-    # Build context from project notes and todos
-    context = build_project_context
+    streams = [
+      turbo_stream.append("messages", partial: "messages/message", locals: { message: @message })
+    ]
 
-    # Build message with context
-    full_message = context.present? ? "#{context}\n\nUser: #{@message.content}" : @message.content
-
-    pi.prompt(full_message) do |event|
-      yield event
-    end
-  rescue PiRpcService::Error => e
-    Rails.logger.error "Pi RPC error: #{e.message}"
-    yield({ type: "error", message: e.message })
-  end
-
-  def build_project_context
-    return nil unless @project
-
-    parts = []
-
-    # Add context notes
-    if @project.context_notes.any?
-      parts << "## Project Context"
-      parts += @project.context_notes.map(&:to_context_string)
-    end
-
-    # Add knowledge base items (context and reference categories)
-    knowledge_context = @project.knowledge_bases.where(category: %w[context reference]).limit(5)
-    if knowledge_context.any?
-      parts << "## Knowledge Base"
-      knowledge_context.each do |kb|
-        parts << "### #{kb.title}"
-        parts << kb.content.truncate(500)
-      end
-    end
-
-    # Add active todos
-    if @project.active_todos.any?
-      parts << "## Active TODOs"
-      parts += @project.active_todos.map { |t| "- #{t.status.upcase}: #{t.content}" }
-    end
-
-    parts.join("\n\n").presence
-  end
-
-  def render_event(event)
-    case event["type"]
-    when "text_delta"
-      @assistant_message.update(content: @assistant_message.content + event["delta"])
-      turbo_stream.replace("message_#{@assistant_message.id}", partial: "messages/message", locals: { message: @assistant_message })
-    when "tool_use"
-      turbo_stream.append("message_#{@assistant_message.id}_tools", partial: "messages/tool_use", locals: { tool: event })
-    when "response"
-      turbo_stream.replace("message_#{@assistant_message.id}", partial: "messages/message", locals: { message: @assistant_message })
+    # Only append an assistant placeholder if we actually started processing now.
+    if result.queued
+      # User sent a follow-up while the agent is still working.
+      # The queued badge is rendered from message.status.
+      streams << turbo_stream.replace("message_#{@message.id}", partial: "messages/message", locals: { message: @message.reload })
     else
-      ""
+      streams << turbo_stream.append("messages", partial: "messages/message", locals: { message: result.assistant_message })
     end
+
+    streams << turbo_stream.update(
+      "message_form",
+      partial: "messages/form",
+      locals: { project: @project, conversation: @conversation, message: @conversation.messages.build(role: "user") }
+    )
+
+    render turbo_stream: streams
   end
+
 
   def render_error
     render turbo_stream: turbo_stream.append("messages", partial: "shared/error", locals: { message: "Failed to send message" })
   end
 
-  def pi_service
-    @pi_service ||= PiRpcService.new.tap(&:start)
-  end
 end

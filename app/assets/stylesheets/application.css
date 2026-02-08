@@ -108,28 +108,22 @@ pre[class*="language-"] {
   color: green;
 }
 
-/* Fix textarea overflow - hide scrollbars completely */
-textarea {
-  overflow: clip !important;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE/Edge */
-}
+/* Textareas
 
-textarea::-webkit-scrollbar {
-  display: none; /* Chrome/Safari */
-}
+  IMPORTANT (iOS Safari): forcing `overflow: clip` on all <textarea> elements can
+  break touch scrolling inside the textarea.
+
+  We only disable scrolling for the chat input (auto-resize). For all other
+  textareas, allow normal scrolling.
+*/
 
 textarea.textarea-scroll {
   overflow: auto !important;
-  scrollbar-width: auto;
-  -ms-overflow-style: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
 }
 
-textarea.textarea-scroll::-webkit-scrollbar {
-  display: initial;
-}
-
-/* Ensure auto-resize works without scrollbars */
+/* Ensure auto-resize chat input works without scrollbars */
 [data-message-form-target="input"] {
   overflow: clip !important;
   resize: none !important;
@@ -163,4 +157,24 @@ textarea.textarea-scroll::-webkit-scrollbar {
   .mobile-no-gap {
     gap: 0.25rem !important;
   }
+}
+
+/* Make clickable controls feel clickable (desktop)
+   Tailwind preflight usually does this, but we enforce it here to avoid
+   inconsistent cursor behavior across browsers/PWA contexts.
+*/
+button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+[role="button"] {
+  cursor: pointer;
+}
+
+button:disabled,
+input[type="button"]:disabled,
+input[type="submit"]:disabled,
+input[type="reset"]:disabled,
+[role="button"][aria-disabled="true"] {
+  cursor: not-allowed;
 }

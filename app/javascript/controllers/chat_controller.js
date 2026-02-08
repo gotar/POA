@@ -7,13 +7,26 @@ export default class extends Controller {
   connect() {
     this.scrollToBottom()
 
-    // Observe for new messages
+    // Observe for new messages or streaming updates
     if (this.hasMessagesTarget) {
       this.observer = new MutationObserver(() => {
-        this.scrollToBottom()
+        this.queueScrollToBottom()
       })
-      this.observer.observe(this.messagesTarget, { childList: true })
+      this.observer.observe(this.messagesTarget, {
+        childList: true,
+        subtree: true,
+        characterData: true
+      })
     }
+  }
+
+  queueScrollToBottom() {
+    if (this.scrollQueued) return
+    this.scrollQueued = true
+    requestAnimationFrame(() => {
+      this.scrollQueued = false
+      this.scrollToBottom()
+    })
   }
 
   disconnect() {

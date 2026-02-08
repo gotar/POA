@@ -5,7 +5,12 @@ class ConversationsController < ApplicationController
 
   # GET /projects/:project_id/conversations
   def index
-    @conversations = @project.conversations.recent
+    @show_archived = params[:show_archived].to_s == "1"
+    base = @project.conversations
+    base = base.unarchived unless @show_archived
+
+    @conversations = base.recent
+    @archived_count = @project.conversations.archived.count
     @conversation = @project.conversations.build
   end
 
@@ -159,6 +164,28 @@ class ConversationsController < ApplicationController
                   type: 'text/markdown',
                   disposition: 'attachment'
       end
+    end
+  end
+
+  # POST /projects/:project_id/conversations/:id/archive
+  def archive
+    @conversation = @project.conversations.find(params[:id])
+    @conversation.update!(archived: true, archived_at: Time.current)
+
+    respond_to do |format|
+      format.html { redirect_to @project, notice: "Chat archived" }
+      format.turbo_stream { redirect_to @project, notice: "Chat archived" }
+    end
+  end
+
+  # POST /projects/:project_id/conversations/:id/unarchive
+  def unarchive
+    @conversation = @project.conversations.find(params[:id])
+    @conversation.update!(archived: false, archived_at: nil)
+
+    respond_to do |format|
+      format.html { redirect_to [@project, @conversation], notice: "Chat restored" }
+      format.turbo_stream { redirect_to [@project, @conversation], notice: "Chat restored" }
     end
   end
 

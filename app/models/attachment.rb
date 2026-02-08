@@ -6,8 +6,14 @@ class Attachment < ApplicationRecord
   validates :file, presence: true
   validates :name, presence: true
 
+  # Returns a relative URL for the attached file.
+  # Using `file.url` with the Disk service requires ActiveStorage::Current.url_options
+  # (host/protocol), which is not always set in request contexts.
+  # A path helper avoids that requirement.
   def file_url
-    file.url if file.attached?
+    return nil unless file.attached?
+
+    Rails.application.routes.url_helpers.rails_blob_path(file, only_path: true)
   end
 
   def file_path

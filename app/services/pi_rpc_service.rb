@@ -17,9 +17,11 @@ class PiRpcService
 
   attr_reader :pid
 
-  def initialize(provider: nil, model: nil)
+  def initialize(provider: nil, model: nil, tools: nil, no_tools: false)
     @provider = provider
     @model = model
+    @tools = tools
+    @no_tools = no_tools
 
     @stdin = nil
     @stdout = nil
@@ -34,6 +36,7 @@ class PiRpcService
       return if @stdin # Already started
 
       Rails.logger.info "Starting pi RPC subprocess..."
+      @stderr_buffer = +""
 
       provider = @provider.presence || ENV["PI_PROVIDER"].presence
       model = @model.presence || ENV["PI_MODEL"].presence
@@ -43,9 +46,33 @@ class PiRpcService
       cmd = ["pi"]
       cmd += ["--provider", provider] if provider.present?
       cmd += ["--model", model] if model.present?
+
+      if @no_tools
+        cmd << "--no-tools"
+      elsif @tools.present?
+        cmd += ["--tools", @tools.to_s]
+      end
+
       cmd += ["--mode", "rpc", "--no-session"]
 
       @stdin, @stdout, @stderr, @wait_thread = Open3.popen3(*cmd)
+
+      # Drain stderr so the subprocess can't block if it becomes chatty.
+      @stderr_thread = Thread.new do
+        begin
+          loop do
+            chunk = @stderr.readpartial(4096)
+            break if chunk.nil? || chunk.empty?
+            @stderr_buffer << chunk
+            # keep last ~32KB
+            @stderr_buffer = @stderr_buffer.byteslice(-32_768, 32_768) if @stderr_buffer.bytesize > 32_768
+          end
+        rescue EOFError, IOError
+          nil
+        rescue StandardError
+          nil
+        end
+      end
 
       @pid = @wait_thread.pid
       Rails.logger.info "Pi RPC started with PID #{@pid}"
@@ -71,6 +98,9 @@ class PiRpcService
         Timeout.timeout(5) { @wait_thread.join }
       end
 
+      @stderr_thread&.kill rescue nil
+      @stderr_thread = nil
+
       @stdin = @stdout = @stderr = @wait_thread = nil
       @pid = nil
     end
@@ -83,13 +113,19 @@ class PiRpcService
 
   # Send a prompt and stream responses
   # Yields events as they arrive
-  def prompt(message, &block)
+  #
+  # Supports optional images per pi RPC spec:
+  # images: [{type: "image", data: "<base64>", mimeType: "image/png"}, ...]
+  def prompt(message, images: nil, &block)
     start unless running?
 
-    send_command({
+    payload = {
       type: "prompt",
       message: message
-    })
+    }
+    payload[:images] = images if images.present?
+
+    send_command(payload)
 
     # Read events until we get a complete response
     read_response_stream(&block)
@@ -197,6 +233,7 @@ class PiRpcService
     events_count = 0
     start_time = Time.now
     events_queue = Queue.new
+    agent_end_seen = false
 
     # Thread to read from stdout
     reader_thread = Thread.new do
@@ -241,10 +278,13 @@ class PiRpcService
 
     Timeout.timeout(RPC_TIMEOUT) do
       loop do
-        # Check if reader thread is still alive
+        # If the reader thread ended before we saw agent_end, treat as a hard failure.
         unless reader_thread.alive?
-          Rails.logger.debug "Pi RPC: reader thread ended"
-          break
+          # Give the queue a brief chance to drain.
+          sleep 0.05
+          if events_queue.empty? && !agent_end_seen
+            raise ProcessError, "Pi RPC stream ended unexpectedly (no agent_end). #{stderr_tail_for_error}"
+          end
         end
 
         # Wait for events (without blocking forever)
@@ -267,11 +307,15 @@ class PiRpcService
 
         # Check for completion
         if event["type"] == "agent_end"
+          agent_end_seen = true
           Rails.logger.info "Pi RPC: agent_end after #{elapsed.round(1)}s"
           break
         end
       end
     end
+
+    # If we exited without agent_end, that's also a failure.
+    raise ProcessError, "Pi RPC finished without agent_end. #{stderr_tail_for_error}" unless agent_end_seen
 
     # Clean up reader thread
     reader_thread.kill rescue nil
@@ -279,5 +323,13 @@ class PiRpcService
   rescue Timeout::Error
     reader_thread.kill rescue nil
     raise TimeoutError, "RPC response timeout after #{RPC_TIMEOUT} seconds"
+  end
+
+  def stderr_tail_for_error
+    buf = (@stderr_buffer || "").to_s
+    return "" if buf.blank?
+
+    tail = buf.split(/\r?\n/).last(20).join(" | ")
+    "(stderr: #{tail})"
   end
 end

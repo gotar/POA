@@ -11,7 +11,14 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
-    @conversations = @project.conversations.includes(:messages).recent.limit(10)
+
+    @show_archived = params[:show_archived].to_s == "1"
+    base = @project.conversations.includes(:messages)
+    base = base.unarchived unless @show_archived
+
+    @conversations = base.recent.limit(10)
+    @archived_conversations_count = @project.conversations.archived.count
+
     @todos = @project.todos.active.by_position
     @notes = @project.notes.context.recent.limit(5)
 

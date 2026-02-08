@@ -1,0 +1,37 @@
+<%# Renders tool execution progress for an assistant message %>
+<% tool_calls = message.tool_calls.oldest_first %>
+
+<% if tool_calls.any? %>
+  <div class="space-y-2">
+    <% tool_calls.each do |tc| %>
+      <details class="rounded-lg border border-gray-700 bg-gray-900/40 px-3 py-2" <%= tc.status == "running" ? "open" : "" %>>
+        <summary class="cursor-pointer select-none flex items-center gap-2 text-xs text-gray-300">
+          <% if tc.status == "running" %>
+            <span class="inline-flex items-center rounded-full bg-blue-500/20 text-blue-300 px-2 py-0.5">running</span>
+          <% elsif tc.status == "error" %>
+            <span class="inline-flex items-center rounded-full bg-red-500/20 text-red-300 px-2 py-0.5">error</span>
+          <% else %>
+            <span class="inline-flex items-center rounded-full bg-green-500/20 text-green-300 px-2 py-0.5">done</span>
+          <% end %>
+
+          <span class="font-mono text-gray-200"><%= tc.tool_name %></span>
+          <span class="text-gray-500 truncate">#<%= tc.tool_call_id %></span>
+        </summary>
+
+        <% if tc.args.present? %>
+          <div class="mt-2">
+            <div class="text-[11px] text-gray-500 mb-1">args</div>
+            <pre class="text-xs text-gray-200 overflow-x-auto whitespace-pre-wrap break-words"><%= JSON.pretty_generate(tc.args) rescue tc.args.to_json %></pre>
+          </div>
+        <% end %>
+
+        <% if tc.output_text.present? %>
+          <div class="mt-2">
+            <div class="text-[11px] text-gray-500 mb-1">output</div>
+            <pre class="text-xs text-gray-200 overflow-x-auto whitespace-pre-wrap break-words"><%= tc.output_text %></pre>
+          </div>
+        <% end %>
+      </details>
+    <% end %>
+  </div>
+<% end %>

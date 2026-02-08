@@ -2,7 +2,12 @@
 
 class Conversation < ApplicationRecord
   belongs_to :project
+  belongs_to :scheduled_job, optional: true
+
   has_many :messages, dependent: :destroy
+
+  scope :unarchived, -> { where(archived: false) }
+  scope :archived, -> { where(archived: true) }
 
   validates :title, presence: true, length: { maximum: 255 }
 

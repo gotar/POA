@@ -1781,6 +1781,73 @@ ul.inline li a:hover {
   color: #856404;
 }
 
+.glossary-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: flex-start;
+  margin: 1.5rem 0 2.5rem;
+}
+
+.glossary-table {
+  flex: 1 1 360px;
+}
+
+.glossary-table table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+.glossary-table td {
+  padding: 0.65rem 0.9rem;
+  border-bottom: 1px solid #eee;
+}
+
+.glossary-table tr:nth-child(even) td {
+  background: #fafafa;
+}
+
+.glossary-table tr:last-child td {
+  border-bottom: none;
+}
+
+.glossary-table td:first-child {
+  font-weight: 600;
+  width: 40%;
+  color: #111;
+}
+
+.glossary-table td:last-child {
+  color: #444;
+}
+
+.glossary-image {
+  flex: 0 1 320px;
+  display: flex;
+  justify-content: center;
+}
+
+.glossary-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.12);
+}
+
+@media (max-width: 800px) {
+  .glossary-section {
+    gap: 1.5rem;
+  }
+
+  .glossary-table table {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .fade-in-section,
   .fade-in-left,

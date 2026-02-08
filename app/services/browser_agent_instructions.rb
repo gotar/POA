@@ -48,6 +48,10 @@ class BrowserAgentInstructions
 
       # Wrap it in a small header to make intent explicit.
       <<~TEXT.strip
+        ## Web search (exa-search)
+        - Prefer exa-search for basic web search and summaries when you do not need to navigate pages.
+        - Use browser-agent only for interactive navigation, logins, or form submissions.
+
         ## Web browsing (browser-agent)
         #{compact}
       TEXT
@@ -55,6 +59,10 @@ class BrowserAgentInstructions
 
     def fallback_text
       <<~TEXT.strip
+        ## Web search (exa-search)
+        - Prefer exa-search for basic web search and summaries when you do not need to navigate pages.
+        - Use browser-agent only for interactive navigation, logins, or form submissions.
+
         ## Web browsing (browser-agent)
         When you need information from the internet:
         - Always use the bash tool to run agent-browser.

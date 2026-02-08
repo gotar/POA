@@ -211,7 +211,7 @@
                 </div>
               </div>
               <div class="text-xs text-gray-400">
-                <%= job.status&.titleize || "Unknown" %>
+                <%= job.status.to_s.titleize.presence || "Unknown" %>
               </div>
             </div>
           <% end %>

@@ -14,25 +14,25 @@ Key goals:
 ```mermaid
 flowchart TD
   subgraph Device[User Device]
-    Browser[Mobile Safari / Desktop Browser<br/>Turbo + Stimulus]
-    SW[Service Worker<br/>PWA cache + push handler]
+    Browser["Mobile Safari / Desktop Browser (Turbo + Stimulus)"]
+    SW["Service Worker (PWA cache + push handler)"]
   end
 
   subgraph Web["Rails Web Process (Puma)"]
-    Controllers[Controllers<br/>Chat / Knowledge / Monitoring]
-    Cable[Turbo Streams<br/>(Solid Cable)]
-    Views[Hotwire UI<br/>Turbo Frames]
+    Controllers["Controllers (Chat / Knowledge / Monitoring)"]
+    Cable["Turbo Streams (Solid Cable)"]
+    Views["Hotwire UI (Turbo Frames)"]
   end
 
   subgraph Jobs["Rails Jobs Process (Solid Queue workers)"]
-    SQ[Solid Queue]
-    PiStream[PiStreamJob<br/>(streams assistant)]
-    SchedTick[ScheduledJobTickJob<br/>(enqueue due jobs)]
-    SchedRun[ScheduledJobRunnerJob<br/>(run template)]
-    KBSearch[KnowledgeSearchJob<br/>(async heavy QMD)]
-    Heartbeat[SystemHeartbeatJob<br/>(stuck recovery + optional LLM check)]
-    Polish[PersonalKnowledgePolishJob<br/>(rewrite living docs)]
-    Reindex[PersonalKnowledgeReindexJob<br/>(import sessions + qmd update/embed)]
+    SQ["Solid Queue"]
+    PiStream["PiStreamJob (streams assistant)"]
+    SchedTick["ScheduledJobTickJob (enqueue due jobs)"]
+    SchedRun["ScheduledJobRunnerJob (run template)"]
+    KBSearch["KnowledgeSearchJob (async heavy QMD)"]
+    Heartbeat["SystemHeartbeatJob (stuck recovery + optional LLM check)"]
+    Polish["PersonalKnowledgePolishJob (rewrite living docs)"]
+    Reindex["PersonalKnowledgeReindexJob (import sessions + qmd update/embed)"]
   end
 
   subgraph DB[SQLite]
@@ -43,19 +43,19 @@ flowchart TD
   end
 
   subgraph Agent[pi Subprocesses]
-    Pool[PiRpcPool<br/>(warm RPC processes)]
-    Pi[pi --mode rpc<br/>JSON over stdin/stdout]
+    Pool["PiRpcPool (warm RPC processes)"]
+    Pi["pi --mode rpc (JSON over stdin/stdout)"]
   end
 
   subgraph Knowledge[Personal Knowledge]
-    Vault[~/.pi/knowledge<br/>SOUL/IDENTITY/USER/TOOLS/HEARTBEAT/MEMORY + topics/daily]
-    Sessions[~/.pi/agent/sessions/**/*.jsonl<br/>(pi TUI logs)]
-    QMD[qmd CLI + qmd mcp<br/>(BM25 / vector / hybrid)]
+    Vault["~/.pi/knowledge (SOUL/IDENTITY/USER/TOOLS/HEARTBEAT/MEMORY + topics/daily)"]
+    Sessions["~/.pi/agent/sessions/**/*.jsonl (pi TUI logs)"]
+    QMD["qmd CLI + qmd mcp (BM25 / vector / hybrid)"]
   end
 
   subgraph Push[Web Push]
-    VAPID[VAPID keys<br/>(public+private)]
-    Subs[PushSubscription<br/>(endpoints/keys)]
+    VAPID["VAPID keys (public+private)"]
+    Subs["PushSubscription (endpoints/keys)"]
   end
 
   Browser -->|HTTP| Controllers

@@ -83,6 +83,8 @@ module Site
           "Aiki Taiso | Cwiczenia i Rozgrzewka Aikido | POA"
         when "aikido/reishiki.html"
           "Reishiki | Etykieta Dojo Aikido | Sesshinkan Dojo"
+        when "aikido/budo_zen.html"
+          "Budo i Zen w Aikido | Mushin, Zanshin i Bushido | POA"
         when "slowniczek.html"
           "Slowniczek Aikido | Terminy Japonskie | POA"
         when "wymagania_egzaminacyjne/kyu.html"
@@ -129,6 +131,8 @@ module Site
           "Aiki Taiso | Exercises and Warm-up | Aikido POA"
         when "en/aikido/reishiki.html"
           "Reishiki | Dojo Etiquette | Sesshinkan Dojo"
+        when "en/aikido/budo_zen.html"
+          "Budo and Zen in Aikido | Mushin, Zanshin, Bushido | POA"
         when "en/glossary.html"
           "Aikido Glossary | Japanese Terms | POA"
         when "en/requirements/kyu.html"
@@ -206,6 +210,8 @@ module Site
           "Aiki Taiso - cwiczenia i rozgrzewka Aikido. Ruch, koordynacja i przygotowanie ciala do treningu."
         when "aikido/reishiki.html"
           "Reishiki - etykieta dojo Aikido: uklony, zachowanie, szacunek i tradycyjne zasady."
+        when "aikido/budo_zen.html"
+          "Budo i Zen w Aikido: Mushin, Zanshin, Fudoshin oraz cnoty wojownika. Filozofia i etyka praktyki dojo."
         when "slowniczek.html"
           "Slowniczek terminow Aikido z tlumaczeniami japonskich nazw technik i pojec."
         when "wymagania_egzaminacyjne/kyu.html"
@@ -246,6 +252,8 @@ module Site
           "Aiki Taiso - basic Aikido exercises and warm-up movements. Learn fundamental exercises that prepare body and mind for Aikido practice."
         when "en/aikido/reishiki.html"
           "Reishiki - Aikido dojo etiquette and ceremonial practices. Essential guide to respect, bowing, behavior, and traditional customs in Aikido training."
+        when "en/aikido/budo_zen.html"
+          "Budo and Zen in Aikido: Mushin, Zanshin, Fudoshin and the seven samurai virtues. Philosophy and ethics of dojo practice."
         when "en/glossary.html"
           "Complete Aikido glossary with Japanese terms, techniques, ranks, and philosophical concepts. Essential reference for practitioners."
         when "en/requirements/kyu.html"
@@ -301,6 +309,8 @@ module Site
           "aiki taiso, cwiczenia aikido, rozgrzewka, przygotowanie do treningu, koordynacja"
         when "aikido/reishiki.html"
           "reishiki, etykieta dojo, uklony, zasady dojo, aikido"
+        when "aikido/budo_zen.html"
+          "budo, zen, mushin, zanshin, fudoshin, bushido, cnoty samuraja, filozofia aikido"
         when "slowniczek.html"
           "slowniczek aikido, terminy japonskie, nazwy technik, aikido"
         when "wymagania_egzaminacyjne/kyu.html"
@@ -341,6 +351,8 @@ module Site
           "Aiki Taiso, Aikido exercises, warm-up exercises, martial arts conditioning, body movement, Aikido preparation, basic training"
         when "en/aikido/reishiki.html"
           "Reishiki, dojo etiquette, Aikido customs, martial arts respect, Japanese etiquette, bowing, dojo behavior, training protocol"
+        when "en/aikido/budo_zen.html"
+          "budo, zen, mushin, zanshin, fudoshin, bushido virtues, samurai ethics, Aikido philosophy"
         when "en/glossary.html"
           "Aikido glossary, Japanese terms, martial arts terminology, Aikido dictionary, techniques names, ranks system, Japanese martial arts"
         when "en/requirements/kyu.html"
@@ -400,6 +412,7 @@ module Site
         "aikido/dla_poczatkujacych.html" => "en/aikido/beginners.html",
         "aikido/aiki_taiso.html" => "en/aikido/aiki_taiso.html",
         "aikido/reishiki.html" => "en/aikido/reishiki.html",
+        "aikido/budo_zen.html" => "en/aikido/budo_zen.html",
         "slowniczek.html" => "en/glossary.html",
         "wymagania_egzaminacyjne/kyu.html" => "en/requirements/kyu.html",
         "wymagania_egzaminacyjne/dan.html" => "en/requirements/dan.html",
@@ -425,6 +438,7 @@ module Site
         "en/aikido/beginners.html" => "aikido/dla_poczatkujacych.html",
         "en/aikido/aiki_taiso.html" => "aikido/aiki_taiso.html",
         "en/aikido/reishiki.html" => "aikido/reishiki.html",
+        "en/aikido/budo_zen.html" => "aikido/budo_zen.html",
         "en/glossary.html" => "slowniczek.html",
         "en/requirements/kyu.html" => "wymagania_egzaminacyjne/kyu.html",
         "en/requirements/dan.html" => "wymagania_egzaminacyjne/dan.html",

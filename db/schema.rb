@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_02_07_222002) do
+ActiveRecord::Schema[8.1].define(version: 2026_02_08_170000) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
@@ -49,17 +49,48 @@ ActiveRecord::Schema[8.1].define(version: 2026_02_07_222002) do
   end
 
   create_table "conversations", force: :cascade do |t|
+    t.boolean "archived", default: false, null: false
+    t.datetime "archived_at"
+    t.datetime "compacted_at"
+    t.text "compacted_summary"
+    t.integer "compacted_until_message_id"
     t.datetime "created_at", null: false
     t.string "pi_model"
     t.string "pi_provider"
+    t.boolean "processing", default: false, null: false
+    t.datetime "processing_started_at"
     t.integer "project_id", null: false
+    t.integer "scheduled_job_id"
     t.text "system_prompt"
     t.string "title"
     t.datetime "updated_at", null: false
+    t.index ["archived"], name: "index_conversations_on_archived"
+    t.index ["compacted_until_message_id"], name: "index_conversations_on_compacted_until_message_id"
     t.index ["pi_model"], name: "index_conversations_on_pi_model"
     t.index ["pi_provider"], name: "index_conversations_on_pi_provider"
+    t.index ["project_id", "archived", "updated_at"], name: "index_conversations_on_project_id_and_archived_and_updated_at"
     t.index ["project_id"], name: "index_conversations_on_project_id"
+    t.index ["scheduled_job_id"], name: "index_conversations_on_scheduled_job_id"
     t.index ["updated_at"], name: "index_conversations_on_updated_at"
+  end
+
+  create_table "heartbeat_events", force: :cascade do |t|
+    t.text "agent_error"
+    t.text "agent_message"
+    t.string "agent_model"
+    t.string "agent_provider"
+    t.string "agent_status"
+    t.text "alerts_json"
+    t.datetime "created_at", null: false
+    t.integer "duration_ms"
+    t.datetime "started_at", null: false
+    t.string "status", null: false
+    t.integer "stuck_conversations_fixed"
+    t.integer "stuck_messages_fixed"
+    t.integer "stuck_tool_calls_fixed"
+    t.datetime "updated_at", null: false
+    t.index ["started_at"], name: "index_heartbeat_events_on_started_at"
+    t.index ["status"], name: "index_heartbeat_events_on_status"
   end
 
   create_table "knowledge_bases", force: :cascade do |t|
@@ -75,15 +106,48 @@ ActiveRecord::Schema[8.1].define(version: 2026_02_07_222002) do
     t.index ["updated_at"], name: "index_knowledge_bases_on_updated_at"
   end
 
+  create_table "knowledge_searches", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.text "error"
+    t.datetime "finished_at"
+    t.string "mode", null: false
+    t.string "query", null: false
+    t.json "results"
+    t.datetime "started_at"
+    t.string "status", default: "queued", null: false
+    t.datetime "updated_at", null: false
+    t.index ["created_at"], name: "index_knowledge_searches_on_created_at"
+    t.index ["status"], name: "index_knowledge_searches_on_status"
+  end
+
+  create_table "message_tool_calls", force: :cascade do |t|
+    t.json "args"
+    t.datetime "created_at", null: false
+    t.datetime "ended_at"
+    t.boolean "is_error", default: false, null: false
+    t.integer "message_id", null: false
+    t.text "output_text"
+    t.datetime "started_at"
+    t.string "status", default: "running", null: false
+    t.string "tool_call_id", null: false
+    t.string "tool_name", null: false
+    t.datetime "updated_at", null: false
+    t.index ["message_id", "tool_call_id"], name: "index_message_tool_calls_on_message_id_and_tool_call_id", unique: true
+    t.index ["message_id"], name: "index_message_tool_calls_on_message_id"
+    t.index ["tool_call_id"], name: "index_message_tool_calls_on_tool_call_id"
+  end
+
   create_table "messages", force: :cascade do |t|
     t.text "content", null: false
     t.integer "conversation_id", null: false
     t.datetime "created_at", null: false
     t.json "metadata"
     t.string "role", null: false
+    t.string "status", default: "done", null: false
     t.datetime "updated_at", null: false
     t.index ["conversation_id"], name: "index_messages_on_conversation_id"
     t.index ["created_at"], name: "index_messages_on_created_at"
+    t.index ["status"], name: "index_messages_on_status"
   end
 
   create_table "notes", force: :cascade do |t|
@@ -167,7 +231,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_02_07_222002) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "conversations", "projects"
+  add_foreign_key "conversations", "scheduled_jobs"
   add_foreign_key "knowledge_bases", "projects"
+  add_foreign_key "message_tool_calls", "messages"
   add_foreign_key "messages", "conversations"
   add_foreign_key "notes", "projects"
   add_foreign_key "push_subscriptions", "projects"

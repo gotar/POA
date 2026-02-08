@@ -1,89 +1,348 @@
-# Gotar Bot
+# Gotar Bot (pi-web-ui)
 
-A mobile-first web UI for pi coding agent, built with Rails 8, Hotwire, and Stimulus.
+A mobile-first Rails/Hotwire web UI for chatting with the **pi** coding agent.
 
-## Features
+Key goals:
+- fast, phone-friendly chat UX (PWA)
+- transparent agent execution (streaming + tool timeline)
+- scheduled automation (cron-like jobs)
+- shared, persistent personal knowledge (`~/.pi/knowledge`) indexed by **QMD**
 
-- 🤖 **AI Chat Interface** - Communicate with pi coding agent from your browser
-- 📱 **Mobile-First Design** - PWA support, works great on phones
-- ⚡ **Real-time Streaming** - See AI responses as they're generated
-- 💾 **Persistent Conversations** - All chats saved in SQLite database
-- 🔄 **Background Jobs** - Solid Queue for async processing
-- 🧠 **Knowledge (QMD)** - personal knowledge vault + QMD semantic search / recall
-- ⏰ **Scheduled Tasks** - cron-like scheduled jobs (Solid Queue recurring tick)
 
-## Tech Stack
+## Architecture (how it works)
 
-- **Rails 8.1** with Ruby 3.3
-- **Hotwire** (Turbo + Stimulus)
-- **SQLite** for database, cache, and queue
-- **Solid Queue** for background jobs
-- **pi RPC** for AI communication
+```mermaid
+flowchart TD
+  subgraph Device[User Device]
+    Browser[Mobile Safari / Desktop Browser]\nTurbo + Stimulus
+    SW[Service Worker]\nPWA cache + push handler
+  end
 
-## Quick Start
+  subgraph Web[Rails Web Process\n(Puma)]
+    Controllers[Controllers\nChat / Knowledge / Monitoring]
+    Cable[Turbo Streams\n(Solid Cable)]
+    Views[Hotwire UI\nTurbo Frames]
+  end
+
+  subgraph Jobs[Rails Jobs Process\n(Solid Queue workers)]
+    SQ[Solid Queue]
+    PiStream[PiStreamJob\n(streams assistant)]
+    SchedTick[ScheduledJobTickJob\n(enqueue due jobs)]
+    SchedRun[ScheduledJobRunnerJob\n(run template)]
+    KBSearch[KnowledgeSearchJob\n(async heavy QMD)]
+    Heartbeat[SystemHeartbeatJob\n(stuck recovery + optional LLM check)]
+    Polish[PersonalKnowledgePolishJob\n(rewrite living docs)]
+    Reindex[PersonalKnowledgeReindexJob\n(import sessions + qmd update/embed)]
+  end
+
+  subgraph DB[SQLite]
+    Primary[(production.sqlite3)]
+    Queue[(production_queue.sqlite3)]
+    CableDB[(production_cable.sqlite3)]
+    Cache[(production_cache.sqlite3)]
+  end
+
+  subgraph Agent[pi Subprocesses]
+    Pool[PiRpcPool\n(warm RPC processes)]
+    Pi[pi --mode rpc]\nJSON over stdin/stdout
+  end
+
+  subgraph Knowledge[Personal Knowledge]
+    Vault[~/.pi/knowledge\nSOUL/IDENTITY/USER/TOOLS/HEARTBEAT/MEMORY + topics/daily]
+    Sessions[~/.pi/agent/sessions/**/*.jsonl\n(pi TUI logs)]
+    QMD[qmd CLI + qmd mcp\n(BM25 / vector / hybrid)]
+  end
+
+  subgraph Push[Web Push]
+    VAPID[VAPID keys\n(public+private)]
+    Subs[PushSubscription\n(endpoints/keys)]
+  end
+
+  Browser -->|HTTP| Controllers
+  Controllers --> Views
+  Controllers --> Primary
+  Controllers --> Cable
+
+  Browser <-->|Turbo Streams| Cable
+  SW --> Browser
+
+  Controllers -->|enqueue jobs| SQ
+  SQ --> Queue
+
+  SQ --> PiStream
+  SQ --> SchedTick
+  SQ --> SchedRun
+  SQ --> KBSearch
+  SQ --> Heartbeat
+  SQ --> Polish
+  SQ --> Reindex
+
+  PiStream --> Primary
+  PiStream --> Cable
+  PiStream --> Pool
+
+  SchedTick --> Primary
+  SchedTick --> SQ
+
+  SchedRun --> Primary
+  SchedRun --> Pool
+
+  Heartbeat --> Primary
+  Heartbeat --> Pool
+  Heartbeat --> Subs
+
+  Reindex --> Sessions
+  Reindex --> Vault
+  Reindex --> QMD
+
+  Controllers -->|QMD search| QMD
+  QMD --> Vault
+
+  Subs --> VAPID
+  VAPID --> SW
+```
+
+
+## Data model (relations)
+
+```mermaid
+erDiagram
+  Project ||--o{ Conversation : has
+  Project ||--o{ Todo : has
+  Project ||--o{ Note : has
+  Project ||--o{ KnowledgeBase : has
+  Project ||--o{ ScheduledJob : has
+  Project ||--o{ PushSubscription : has
+
+  ScheduledJob ||--o{ Conversation : runs
+
+  Conversation ||--o{ Message : has
+  Message ||--o{ MessageToolCall : has
+
+  %% Attachments are polymorphic (Message, KnowledgeBase, ...)
+  Message ||--o{ Attachment : has
+  KnowledgeBase ||--o{ Attachment : has
+
+  %% Global / cross-cutting tables (not project-scoped)
+
+  Project {
+    int id
+    string name
+    boolean archived
+  }
+
+  Conversation {
+    int id
+    int project_id
+    int scheduled_job_id
+    boolean archived
+    boolean processing
+    string pi_provider
+    string pi_model
+  }
+
+  Message {
+    int id
+    int conversation_id
+    string role
+    string status
+    text content
+  }
+
+  MessageToolCall {
+    int id
+    int message_id
+    string tool_call_id
+    string tool_name
+    string status
+  }
+
+  ScheduledJob {
+    int id
+    int project_id
+    string cron_expression
+    boolean active
+    string status
+  }
+
+  PushSubscription {
+    int id
+    int project_id
+    string endpoint
+  }
+
+  KnowledgeSearch {
+    int id
+    string query
+    string mode
+    string status
+  }
+
+  RuntimeMetric {
+    int id
+    string key
+    text value
+  }
+
+  HeartbeatEvent {
+    int id
+    datetime started_at
+    string status
+  }
+```
+
+
+## Chat execution flow (streaming + tool timeline)
+
+```mermaid
+sequenceDiagram
+  participant U as User
+  participant B as Browser (Turbo)
+  participant W as Rails Web
+  participant DB as SQLite
+  participant Q as Solid Queue
+  participant J as PiStreamJob
+  participant P as PiRpcPool
+  participant PI as pi (RPC)
+
+  U->>B: Shift+Enter sends
+  B->>W: POST /messages
+  W->>DB: create user Message (status done/queued)
+  W->>Q: enqueue PiStreamJob (serialized per Conversation)
+  B-->>W: subscribes to Turbo Streams
+
+  Q->>J: perform
+  J->>DB: create assistant placeholder (status running)
+  J->>P: with_client(provider/model)
+  P->>PI: pi --mode rpc (warm)
+  J->>PI: prompt
+
+  loop streaming
+    PI-->>J: message_update text_delta
+    J->>DB: update assistant content
+    J-->>B: Turbo replace message bubble
+
+    PI-->>J: tool_execution_start/update/end
+    J->>DB: upsert MessageToolCall + output
+    J-->>B: Turbo replace tool timeline
+  end
+
+  PI-->>J: agent_end
+  J->>DB: finalize statuses (done/error)
+  J-->>B: Turbo final render
+```
+
+
+## Features (high level)
+
+- **Chat UI**
+  - Shift+Enter sends (Enter inserts newline)
+  - message queueing: one active agent run per conversation; new user messages queue
+  - attachments (incl. images) passed to pi RPC
+  - tool call timeline persisted (`message_tool_calls`) and streamed live
+
+- **Personal Knowledge**
+  - filesystem vault at `~/.pi/knowledge`
+  - curated “living docs” used during chat turns: `SOUL.md`, `IDENTITY.md`, `USER.md`, `TOOLS.md`, `MEMORY.md`
+  - `HEARTBEAT.md` controls optional “agent heartbeat” checks
+  - QMD for search + async heavy modes (vector/hybrid)
+  - imports **pi TUI session logs** into `snippets/pi-sessions/` so QMD learns from work done outside the web UI
+
+- **Automation**
+  - Scheduled jobs with cron expressions (Fugit)
+  - Each run is persisted as a Conversation linked to the ScheduledJob
+  - Optional push notifications for job outcomes
+
+- **Monitoring & recovery**
+  - `SystemHeartbeatJob` checks scheduler staleness, failed jobs, and recovers stuck conversations
+  - optional agent heartbeat (LLM) with **verified working model selection** (runs pi with `--no-tools`)
+  - heartbeat history persisted (`heartbeat_events`)
+  - global banner if QMD is missing/unhealthy
+
+
+## Requirements
+
+- Ruby 3.3+
+- Node.js 18+ (pi is a Node CLI)
+- pi coding agent installed:
+  ```bash
+  npm install -g @mariozechner/pi-coding-agent
+  ```
+- Bun + QMD (knowledge search/index):
+  ```bash
+  bun install -g https://github.com/tobi/qmd
+  ```
+- Provider API keys as needed by your chosen pi providers/models
+
+
+## Quick start (dev)
 
 ```bash
-# Install dependencies
 bundle install
-
-# Setup database
 bin/rails db:prepare
 
-# Start the server (with Solid Queue)
+# Web
 bin/rails server
-bin/jobs  # In another terminal
 
-# Or use Foreman
-gem install foreman
+# Jobs (Solid Queue)
+bin/jobs
+
+# Or
 foreman start -f Procfile.dev
 ```
 
 Visit http://localhost:3000
 
-## Requirements
 
-- Ruby 3.3+
-- Node.js 18+ (for pi)
-- pi coding agent installed (`npm install -g @mariozechner/pi-coding-agent`)
-- Bun + QMD (for knowledge search):
-  ```bash
-  bun install -g https://github.com/tobi/qmd
-  ```
-- API key for Anthropic/OpenAI/etc depending on selected provider
+## Optional setup
 
-## Development
+### Web Push notifications (PWA)
+
+Push requires a **VAPID** keypair (free, generate locally):
 
 ```bash
-# Run tests
-bin/rails test
-
-# Tailwind build (manual)
-bin/rails tailwindcss:build
-
-# Run specific test file
-bin/rails test test/models/conversation_test.rb
-
-# Run with verbose output
-bin/rails test TESTOPTS="--verbose"
+bundle exec ruby -r web_push -e 'k=WebPush.generate_key; puts k.public_key; puts k.private_key'
 ```
 
-## Project Structure
+Set:
+- `VAPID_PUBLIC_KEY`
+- `VAPID_PRIVATE_KEY`
+- `VAPID_SUBJECT` (e.g. `mailto:admin@example.com`)
 
+### Heartbeat agent settings
+
+Heartbeat behavior is controlled by:
+- ENV defaults: `HEARTBEAT_AGENT_ENABLED`, `HEARTBEAT_PUSH_ALERTS`, `HEARTBEAT_AGENT_SKIP_WHEN_BUSY`
+- UI overrides stored in `runtime_metrics` (Monitoring page)
+
+Agent heartbeat only runs when `~/.pi/knowledge/HEARTBEAT.md` contains actionable lines.
+
+### Persistent pi RPC pool
+
+Background jobs use `PiRpcPool` to keep `pi --mode rpc` warm.
+
+Useful env:
+- `PI_RPC_POOL_IDLE_SECONDS` (default 600)
+- `PI_RPC_POOL_RESET_TIMEOUT_SECONDS` (default 5)
+
+
+## Production
+
+This repo includes systemd unit templates in `.config/systemd/` and a helper:
+
+```bash
+bin/setup-production.sh
+./bin/restart-services
 ```
-app/
-├── controllers/
-│   ├── conversations_controller.rb  # Chat list and management
-│   └── messages_controller.rb       # Message creation and streaming
-├── jobs/
-│   └── pi_stream_job.rb            # Background AI processing
-├── models/
-│   ├── conversation.rb             # Chat session model
-│   └── message.rb                  # Individual messages
-├── services/
-│   └── pi_rpc_service.rb           # pi subprocess communication
-└── views/
-    └── conversations/              # Chat UI views
-```
+
+
+## Inspiration / learnings
+
+This project borrows patterns from OpenClaw-style agents (and projects like **nanobot**):
+- “Living docs” as the canonical memory surface (small, human-editable files)
+- `HEARTBEAT.md` as the switchboard for proactive checks
+- aggressive focus on observability (status, tool calls, run history)
+
 
 ## License
 

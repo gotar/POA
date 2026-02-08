@@ -1,92 +1,38 @@
 # TODO - Gotar Bot
 
-A mobile-first web UI for pi coding agent, built with Rails 8, Hotwire, and Stimulus.
+A mobile-first web UI for the pi coding agent (Rails 8 + Hotwire + Solid Queue).
 
-## In Progress
-
-- [ ] Make Personal Knowledge a first-class, global area (not nested under a project)
-
-## Pending
-
-### Must-fix / correctness
-
-- [ ] Scheduled Jobs: actually run automatically on schedule (enqueue due jobs periodically)
-- [ ] Scheduled Jobs: replace the simplified cron parser with a real cron library (e.g. fugit)
-- [ ] Add routes + navigation for Monitoring pages (MonitoringController exists but is not reachable)
-
-### UX / product
-
-- [ ] Replace Tailwind CDN (`cdn.tailwindcss.com`) with a proper production build pipeline
-- [ ] Mobile UX: add an explicit way to open the conversations list / recent chats on mobile project page
-- [ ] Personal Knowledge: add "Remember" on more places (notes, KB items, scheduled job output) and make toasts more visible on mobile
-
-### Operational
-
-- [ ] Document/install prerequisites for QMD (`bun`, `qmd` CLI) in README + production setup
-- [ ] Add health checks/diagnostics for QMD availability (show friendly warning when qmd missing)
-
-## Nice to have
-
-- [ ] Cache/optimize QMD recall (avoid running qmd query on every message if unchanged)
-- [ ] Add "Save to Personal Knowledge" from assistant tool output automatically (opt-in)
-- [ ] Add export/backup for ~/.pi/knowledge from the UI
-- [ ] Knowledge governance: "review stale notes" UI (find old topics, suggest pruning/merging)
+## Next
 
 ## Completed
 
-- [x] Check mobile version and responsiveness
-- [x] Fix project page menu dropdown issues
-- [x] Fix JavaScript errors in console
-- [x] Check all pages for issues and bugs
-- [x] Test PI chat communication end-to-end
-- [x] Polish UI and fix any remaining issues
-- [x] Verify all features work correctly
+- [x] Add a small UI for reviewing / pruning imported pi TUI session transcripts
 
-- Install Ruby 3.3.9 via rbenv
-- Install Rails 8.1.2
-- Create Rails project with SQLite, Hotwire, Stimulus
-- Solid Queue, Solid Cache, Solid Cable configured
-- Create Project model with validations
-- Create Todo, Note, Conversation, Message models
-- Set up routes (nested project-based structure)
-- Create all controllers
-- Create PiStreamJob and PiRpcService
-- Set up Minitest framework
-- Create all model tests (100% coverage)
-- Create all controller tests (100% coverage)
-- Build mobile-first project views
-- Build mobile-first conversation views
-- Add Stimulus controllers
-- Project named "Gotar Bot"
-- Create systemd service files
-- Create setup script for production
-- All tests passing
-- Implement QMD CLI integration
-- Add knowledge collections UI
-- Build search functionality
-- Add auto-indexing for uploaded files
-- Create cron jobs configuration UI
-- Implement scheduled prompts/templates
-- Add background knowledge indexing
-- Build job monitoring dashboard
-- Add PWA support with service worker
-- Implement file/image uploads
-- Add export conversations to Markdown
-- Add metadata to messages for PI usage info
-- Fix PATH issue for job queue
-- Add interactive TODO and questions panels
-- Implement syntax highlighting with Prism.js
-- Fix textarea overflow bars
-- Add PI footer info (model, usage, cost) to messages
-- Fix text delta handling in PiRpcService
-
-## Mobile Fixes Completed
-
-- Fixed JavaScript error in project_controller.js (undefined targets)
-- Fixed mobile tab switcher with icons and horizontal scroll
-- Fixed todo delete button visibility on mobile
-- Fixed dropdown menu accessibility (escape key, touch support)
-- Added "Go to Chat" buttons in mobile panels
-- Added mobile TODO add form
-- Created passwordless sudo configuration
-- Created restart-services script
+- [x] Scheduled Jobs run automatically (recurring tick)
+- [x] Cron parsing uses Fugit
+- [x] Monitoring routes + navigation
+- [x] Tailwind production build (tailwindcss-rails)
+- [x] Global Personal Knowledge area (`/knowledge`)
+- [x] Async QMD heavy search modes via Solid Queue + heavy lock
+- [x] Chat memory uses curated living docs only (no QMD recall during chat turns)
+- [x] Conversation archiving
+- [x] Tool execution visibility in chat (tool calls + streaming output)
+- [x] Message queueing when a run is in progress
+- [x] Heartbeat: system health check every 30 minutes + stuck recovery
+- [x] Monitoring: "Run heartbeat now" + "Run polish now" buttons
+- [x] Heartbeat: optional agent heartbeat driven by `HEARTBEAT.md` (silent by default)
+- [x] Heartbeat: prefers free model + verifies model works before using
+- [x] Heartbeat: UI toggles (agent heartbeat enable/disable, skip when busy, push alerts)
+- [x] Heartbeat: enforce `--no-tools` for agent-heartbeat pi subprocess
+- [x] Heartbeat history table + Monitoring display
+- [x] Global QMD diagnostics banner (missing/unhealthy)
+- [x] Persistent pi RPC sessions (PiRpcPool) for background jobs
+- [x] Daily living-docs polish (auto-update core files at 3am + backups)
+- [x] Staggered overnight jobs (backup moved earlier; QMD update moved after polish)
+- [x] Jobs service resource constraints (systemd override) + reduced SolidQueue threads
+- [x] Scheduled job prompt template auto-update toast
+- [x] Import pi TUI session logs into knowledge vault for QMD indexing
+- [x] Knowledge export/backup download from UI
+- [x] Knowledge governance UI (stale / untagged / large / archive)
+- [x] Shift+Enter to send (Enter inserts newline)
+- [x] Ensure buttons show pointer cursor

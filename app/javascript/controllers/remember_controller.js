@@ -20,15 +20,17 @@ class RememberController extends Controller {
     event.preventDefault()
 
     const messageEl = event.currentTarget?.closest?.('[id^="message_"]')
-    const role = messageEl?.getAttribute("data-message-role") || ""
+    const containerEl = messageEl || event.currentTarget?.closest?.("[data-remember-container]")
+
+    const role = messageEl?.getAttribute("data-message-role") || containerEl?.dataset?.rememberRole || ""
 
     // Default destination:
     // - user messages often contain user prefs -> USER.md
     // - assistant messages often contain distilled learnings -> MEMORY.md
-    const dest = role === "user" ? "user" : "memory"
+    const dest = role === "user" ? "user" : (containerEl?.dataset?.rememberDestination || "memory")
     if (this.hasDestinationTarget) this.destinationTarget.value = dest
 
-    const prose = messageEl?.querySelector?.(".prose")
+    const prose = containerEl?.querySelector?.(".prose")
     const txt = prose ? prose.innerText.trim() : ""
 
     if (this.hasContentTarget) this.contentTarget.value = txt

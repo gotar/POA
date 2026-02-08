@@ -28,7 +28,7 @@ class QmdCliService
 
   def self.update!
     ensure_pi_knowledge_collection!
-    run!("update")
+    run!("update", timeout: ENV.fetch("QMD_UPDATE_TIMEOUT_SECONDS", "120").to_i)
   end
 
   def self.update_and_embed_if_needed!
@@ -63,7 +63,7 @@ class QmdCliService
     ensure_pi_knowledge_collection!
     args = ["embed"]
     args << "-f" if force
-    run!(*args)
+    run!(*args, timeout: ENV.fetch("QMD_EMBED_TIMEOUT_SECONDS", "3600").to_i)
   end
 
   def self.status
@@ -97,6 +97,7 @@ class QmdCliService
 
     timeout = case mode.to_sym
               when :query then ENV.fetch("QMD_QUERY_TIMEOUT_SECONDS", "90").to_i
+              when :vsearch then ENV.fetch("QMD_VSEARCH_TIMEOUT_SECONDS", "45").to_i
               else ENV.fetch("QMD_TIMEOUT_SECONDS", "20").to_i
               end
 

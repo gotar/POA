@@ -1,10 +1,17 @@
 # frozen_string_literal: true
 
 class PersonalKnowledgeRecallService
-  MAX_SNIPPET_CHARS = (ENV["PI_KNOWLEDGE_RECALL_SNIPPET_CHARS"].presence || "700").to_i
-  MAX_RESULTS = (ENV["PI_KNOWLEDGE_RECALL_RESULTS"].presence || "4").to_i
+  # NOTE: Following OpenClaw's philosophy, chat sessions should only load a small
+  # set of "living docs" (plain Markdown files) as the source of truth.
+  #
+  # We do NOT run QMD retrieval during chat turns. QMD can be used in background
+  # jobs to rebuild/refresh these living docs.
 
-  CORE_FILES = %w[SOUL.md IDENTITY.md USER.md].freeze
+  CORE_FILES = %w[SOUL.md IDENTITY.md USER.md TOOLS.md].freeze
+  MEMORY_FILE = "MEMORY.md"
+
+  CORE_TRUNCATE_CHARS = (ENV["PI_KNOWLEDGE_CORE_CONTEXT_CHARS"].presence || "2200").to_i
+  MEMORY_TRUNCATE_CHARS = (ENV["PI_KNOWLEDGE_MEMORY_CONTEXT_CHARS"].presence || "3000").to_i
 
   def self.core_context
     PersonalKnowledgeService.ensure_setup!
@@ -17,60 +24,38 @@ class PersonalKnowledgeRecallService
       text = File.read(abs).to_s.strip
       next if text.blank?
 
-      parts << "## #{name}\n\n#{truncate(text, 2000)}"
+      parts << "## #{name}\n\n#{truncate(text, CORE_TRUNCATE_CHARS)}"
     end
 
     return "" if parts.empty?
 
-    "# Personal Identity & Preferences\n\n#{parts.join("\n\n---\n\n")}"
+    "# Personal Identity & Preferences\n\n#{parts.join("\n\n---\n\n")}" 
   rescue StandardError
     ""
   end
 
-  def self.recall_for(query)
-    q = query.to_s.strip
-    return "" if q.blank?
+  def self.memory_context
+    PersonalKnowledgeService.ensure_setup!
 
-    results = QmdCliService.search(q, mode: :query, limit: MAX_RESULTS + 3)
+    abs = File.join(PersonalKnowledgeService.base_dir, MEMORY_FILE)
+    return "" unless File.exist?(abs)
 
-    filtered = results.filter_map do |r|
-      file = r["file"].to_s
-      rel = file.sub(%r{\Aqmd://[^/]+/}i, "")
+    text = File.read(abs).to_s.strip
+    return "" if text.blank?
 
-      next if rel.blank?
-      next if rel.casecmp("readme.md").zero?
-      next if CORE_FILES.include?(rel)
-
-      # Prefer durable notes
-      next unless rel == "MEMORY.md" || rel.start_with?("topics/")
-
-      {
-        rel: rel,
-        title: r["title"].presence || rel,
-        score: r["score"],
-        snippet: truncate(r["snippet"].to_s, MAX_SNIPPET_CHARS)
-      }
-    end
-
-    filtered = filtered.first(MAX_RESULTS)
-    return "" if filtered.empty?
-
-    lines = []
-    lines << "## Personal Knowledge Recall (QMD)"
-    lines << "Use this as context. If it conflicts with the user, ask/verify and update the knowledge base." 
-
-    filtered.each do |r|
-      lines << "- Source: #{r[:rel]} (score #{r[:score]})"
-      lines << "  Title: #{r[:title]}" if r[:title].present?
-      if r[:snippet].present?
-        snippet = r[:snippet].lines.map { |l| "  #{l.rstrip}" }.join("\n")
-        lines << "  Snippet:\n#{snippet}"
-      end
-    end
-
-    lines.join("\n")
+    "# Long-term Memory\n\n## #{MEMORY_FILE}\n\n#{truncate(text, MEMORY_TRUNCATE_CHARS)}"
   rescue StandardError
     ""
+  end
+
+  # Backwards-compatible entry point.
+  # Previously this performed QMD recall; it now returns curated memory only.
+  def self.recall_for(_query)
+    memory_context
+  end
+
+  def self.chat_context
+    [core_context, memory_context].reject(&:blank?).join("\n\n---\n\n")
   end
 
   def self.truncate(s, max)

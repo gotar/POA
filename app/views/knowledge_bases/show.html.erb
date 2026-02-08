@@ -34,7 +34,10 @@
       <% end %>
 
       <!-- Content -->
-      <div class="bg-gray-800 rounded-xl p-6 border border-gray-700">
+      <div class="bg-gray-800 rounded-xl p-6 border border-gray-700" data-remember-container data-remember-role="assistant" data-remember-destination="memory">
+        <div class="flex items-center justify-end mb-2">
+          <button type="button" data-action="remember#open" class="text-xs text-purple-200/90 hover:text-white underline underline-offset-2">Remember</button>
+        </div>
         <div class="prose prose-invert max-w-none">
           <%= markdown(@knowledge_base.content) %>
         </div>

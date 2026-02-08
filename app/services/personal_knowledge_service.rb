@@ -41,6 +41,7 @@ class PersonalKnowledgeService
         - `IDENTITY.md` – assistant identity fields (name/vibe/emoji)
         - `USER.md` – your profile + preferences
         - `TOOLS.md` – environment-specific notes
+        - `HEARTBEAT.md` – optional heartbeat checklist (background checks)
         - `MEMORY.md` – curated long-term memory (keep short)
       MD
     end
@@ -89,6 +90,17 @@ class PersonalKnowledgeService
       Put environment-specific notes here (hosts, paths, conventions).
 
       - 
+    MD
+    "HEARTBEAT.md" => <<~MD,
+      # HEARTBEAT.md
+
+      # Keep this file empty (or only comments/headers) to disable agent heartbeat LLM calls.
+      # Add a short checklist when you want the system to check something periodically.
+
+      # Examples (uncomment / edit):
+      # - Check if any jobs failed in the last 24h
+      # - Check if the scheduler is running
+      # - If something is broken, summarize what happened
     MD
     "MEMORY.md" => <<~MD,
       # MEMORY.md - Curated Long-Term Memory
@@ -347,6 +359,39 @@ class PersonalKnowledgeService
   rescue StandardError
     # best effort
     nil
+  end
+
+  def self.update_frontmatter!(rel_path, updates = {})
+    abs = resolve_rel!(rel_path)
+    text = File.read(abs)
+
+    fm = {}
+    body = text
+
+    if text.start_with?("---\n")
+      idx = text.index("\n---\n", 4)
+      if idx
+        yaml = text[4...idx]
+        body = text[(idx + 5)..].to_s
+        fm = YAML.safe_load(yaml, permitted_classes: [Date], aliases: true) || {}
+      end
+    end
+
+    (updates || {}).each do |k, v|
+      key = k.to_s
+      if v.nil?
+        fm.delete(key)
+      else
+        fm[key] = v
+      end
+    end
+
+    fm["updated"] = Date.current.to_s
+
+    out = "---\n" + fm.to_yaml.sub(/\A---\s*\n?/, "") + "---\n" + body.to_s.lstrip
+    File.write(abs, out)
+
+    relative_path(abs)
   end
 
   def self.build_update_block(update_text)

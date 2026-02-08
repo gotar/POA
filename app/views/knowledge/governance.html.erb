@@ -1,0 +1,195 @@
+<% content_for :title, "Knowledge Governance" %>
+
+<div class="min-h-screen flex flex-col">
+  <header class="bg-gray-800 border-b border-gray-700 px-4 py-3 flex items-center gap-3 sticky top-0 z-10">
+    <%= link_to knowledge_path, class: "text-gray-400 hover:text-gray-200" do %>
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+      </svg>
+    <% end %>
+    <h1 class="text-xl font-bold text-gray-100">Knowledge Governance</h1>
+    <div class="ml-auto text-xs text-gray-400"><%= @stats[:topics_count] %> topics</div>
+  </header>
+
+  <main class="flex-1 overflow-y-auto p-4">
+    <div class="max-w-5xl mx-auto space-y-4">
+      <% if notice.present? %>
+        <div class="bg-green-900/30 border border-green-800 text-green-200 rounded-xl p-3 text-sm"><%= notice %></div>
+      <% end %>
+      <% if alert.present? %>
+        <div class="bg-red-900/30 border border-red-800 text-red-200 rounded-xl p-3 text-sm"><%= alert %></div>
+      <% end %>
+
+      <div class="bg-gray-800 border border-gray-700 rounded-xl p-4">
+        <div class="flex items-center justify-between gap-3 flex-wrap">
+          <div>
+            <div class="text-sm font-semibold text-gray-200">Stale note detection</div>
+            <div class="text-xs text-gray-500 mt-1">Helps find notes that may need updating, merging, or archiving.</div>
+          </div>
+
+          <%= form_with url: knowledge_governance_path, method: :get, class: "flex items-center gap-2" do %>
+            <label class="text-xs text-gray-400">Stale after</label>
+            <input name="stale_days" value="<%= @stale_days %>" type="number" min="7" max="3650"
+                   class="w-24 bg-gray-700 border border-gray-600 rounded-lg px-2 py-1 text-sm text-gray-100" />
+            <button class="bg-gray-700 hover:bg-gray-600 text-gray-100 px-3 py-1.5 rounded-lg text-sm">Apply</button>
+          <% end %>
+        </div>
+
+        <div class="mt-3 grid grid-cols-2 md:grid-cols-4 gap-3 text-sm">
+          <div class="bg-gray-900/30 border border-gray-700 rounded-lg p-3">
+            <div class="text-xs text-gray-500">Stale</div>
+            <div class="text-xl font-semibold text-gray-100"><%= @stale_topics.size %></div>
+          </div>
+          <div class="bg-gray-900/30 border border-gray-700 rounded-lg p-3">
+            <div class="text-xs text-gray-500">Untagged</div>
+            <div class="text-xl font-semibold text-gray-100"><%= @untagged_topics.size %></div>
+          </div>
+          <div class="bg-gray-900/30 border border-gray-700 rounded-lg p-3">
+            <div class="text-xs text-gray-500">Large (&gt;20KB)</div>
+            <div class="text-xl font-semibold text-gray-100"><%= @large_topics.size %></div>
+          </div>
+          <div class="bg-gray-900/30 border border-gray-700 rounded-lg p-3">
+            <div class="text-xs text-gray-500">Archived</div>
+            <div class="text-xl font-semibold text-gray-100"><%= @archived_topics.size %></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-gray-800 border border-gray-700 rounded-xl p-4">
+        <h2 class="text-sm font-semibold text-gray-200">Stale topics</h2>
+        <p class="text-xs text-gray-500 mt-1">Updated more than <%= @stale_days %> days ago.</p>
+
+        <div class="mt-3 space-y-2">
+          <% @stale_topics.first(80).each do |t| %>
+            <div class="bg-gray-750 border border-gray-700 rounded-xl p-3">
+              <div class="flex items-start justify-between gap-3">
+                <div class="min-w-0">
+                  <div class="font-medium text-gray-100 truncate"><%= t[:title] %></div>
+                  <div class="text-xs text-gray-500 mt-1 truncate"><%= t[:path] %> · updated <%= time_ago_in_words(t[:updated_at]) %> ago</div>
+                  <% if Array(t[:tags]).any? %>
+                    <div class="mt-2 text-xs text-gray-400">Tags: <%= Array(t[:tags]).join(", ") %></div>
+                  <% end %>
+                </div>
+                <div class="flex items-center gap-2 flex-shrink-0">
+                  <%= link_to "Open", knowledge_note_path(path: t[:path]), class: "text-purple-300 hover:text-purple-200 text-xs underline" %>
+                  <%= button_to "Archive", knowledge_archive_note_path(path: t[:path]), method: :post,
+                        class: "text-xs bg-gray-700 hover:bg-gray-600 text-gray-100 px-2 py-1 rounded" %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+          <% if @stale_topics.empty? %>
+            <div class="text-sm text-gray-500">No stale topics.</div>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        <div class="bg-gray-800 border border-gray-700 rounded-xl p-4">
+          <h2 class="text-sm font-semibold text-gray-200">Untagged topics</h2>
+          <p class="text-xs text-gray-500 mt-1">Notes with empty or missing tags.</p>
+
+          <div class="mt-3 space-y-2">
+            <% @untagged_topics.first(60).each do |t| %>
+              <div class="bg-gray-750 border border-gray-700 rounded-xl p-3">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="min-w-0">
+                    <div class="font-medium text-gray-100 truncate"><%= t[:title] %></div>
+                    <div class="text-xs text-gray-500 mt-1 truncate"><%= t[:path] %></div>
+                  </div>
+                  <%= link_to "Open", knowledge_note_path(path: t[:path]), class: "text-purple-300 hover:text-purple-200 text-xs underline flex-shrink-0" %>
+                </div>
+              </div>
+            <% end %>
+            <% if @untagged_topics.empty? %>
+              <div class="text-sm text-gray-500">No untagged topics.</div>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="bg-gray-800 border border-gray-700 rounded-xl p-4">
+          <h2 class="text-sm font-semibold text-gray-200">Large topics</h2>
+          <p class="text-xs text-gray-500 mt-1">Candidates for splitting or pruning.</p>
+
+          <div class="mt-3 space-y-2">
+            <% @large_topics.first(60).each do |t| %>
+              <div class="bg-gray-750 border border-gray-700 rounded-xl p-3">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="min-w-0">
+                    <div class="font-medium text-gray-100 truncate"><%= t[:title] %></div>
+                    <div class="text-xs text-gray-500 mt-1 truncate"><%= t[:path] %></div>
+                    <div class="text-xs text-gray-400 mt-1"><%= number_to_human_size(t[:bytes].to_i) %></div>
+                  </div>
+                  <%= link_to "Open", knowledge_note_path(path: t[:path]), class: "text-purple-300 hover:text-purple-200 text-xs underline flex-shrink-0" %>
+                </div>
+              </div>
+            <% end %>
+            <% if @large_topics.empty? %>
+              <div class="text-sm text-gray-500">No large topics.</div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-gray-800 border border-gray-700 rounded-xl p-4">
+        <h2 class="text-sm font-semibold text-gray-200">Archived topics</h2>
+        <p class="text-xs text-gray-500 mt-1">Archived notes stay in the vault (and QMD) but are hidden from active governance lists.</p>
+
+        <div class="mt-3 space-y-2">
+          <% @archived_topics.first(80).each do |t| %>
+            <div class="bg-gray-750 border border-gray-700 rounded-xl p-3">
+              <div class="flex items-start justify-between gap-3">
+                <div class="min-w-0">
+                  <div class="font-medium text-gray-100 truncate"><%= t[:title] %></div>
+                  <div class="text-xs text-gray-500 mt-1 truncate"><%= t[:path] %></div>
+                </div>
+                <div class="flex items-center gap-2 flex-shrink-0">
+                  <%= link_to "Open", knowledge_note_path(path: t[:path]), class: "text-purple-300 hover:text-purple-200 text-xs underline" %>
+                  <%= button_to "Unarchive", knowledge_unarchive_note_path(path: t[:path]), method: :post,
+                        class: "text-xs bg-gray-700 hover:bg-gray-600 text-gray-100 px-2 py-1 rounded" %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+          <% if @archived_topics.empty? %>
+            <div class="text-sm text-gray-500">No archived topics.</div>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="bg-gray-800 border border-gray-700 rounded-xl p-4">
+        <div class="flex items-center justify-between gap-3 flex-wrap">
+          <h2 class="text-sm font-semibold text-gray-200">Pi TUI session transcripts</h2>
+          <div class="text-xs text-gray-500"><%= @pi_sessions_count || 0 %> transcripts</div>
+        </div>
+        <p class="text-xs text-gray-500 mt-1">Imported into <code class="text-gray-300">snippets/pi-sessions</code>. Review and prune if needed.</p>
+
+        <div class="mt-3 space-y-2">
+          <% @pi_sessions.first(80).each do |session| %>
+            <div class="bg-gray-750 border border-gray-700 rounded-xl p-3">
+              <div class="flex items-start justify-between gap-3">
+                <div class="min-w-0">
+                  <div class="font-medium text-gray-100 truncate"><%= session[:title] %></div>
+                  <div class="text-xs text-gray-500 mt-1 truncate"><%= session[:path] %>
+                    <% if session[:updated_at] %>
+                      · updated <%= time_ago_in_words(session[:updated_at]) %> ago
+                    <% end %>
+                  </div>
+                </div>
+                <div class="flex items-center gap-2 flex-shrink-0">
+                  <%= link_to "Open", knowledge_note_path(path: session[:path]), class: "text-purple-300 hover:text-purple-200 text-xs underline" %>
+                  <%= button_to "Delete", knowledge_delete_pi_session_path(path: session[:path]), method: :delete,
+                        form: { data: { turbo_confirm: "Delete this session transcript?" } },
+                        class: "text-xs bg-gray-700 hover:bg-gray-600 text-gray-100 px-2 py-1 rounded" %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+          <% if @pi_sessions.empty? %>
+            <div class="text-sm text-gray-500">No pi session transcripts found.</div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

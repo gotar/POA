@@ -92,12 +92,18 @@ Rails.application.routes.draw do
   # Global Personal Knowledge (shared across projects)
   get "/knowledge", to: "knowledge#index", as: :knowledge
   get "/knowledge/search", to: "knowledge#search", as: :knowledge_search
+  get "/knowledge/searches/:id", to: "knowledge#search_status", as: :knowledge_search_status
   post "/knowledge/reindex", to: "knowledge#reindex", as: :knowledge_reindex
   post "/knowledge/topics", to: "knowledge#create_topic", as: :knowledge_topics
   post "/knowledge/remember", to: "knowledge#remember", as: :knowledge_remember
   get "/knowledge/note", to: "knowledge#show", as: :knowledge_note
   get "/knowledge/note/edit", to: "knowledge#edit", as: :knowledge_edit_note
   patch "/knowledge/note", to: "knowledge#update", as: :knowledge_update_note
+  get "/knowledge/export", to: "knowledge#export", as: :knowledge_export
+  get "/knowledge/governance", to: "knowledge#governance", as: :knowledge_governance
+  post "/knowledge/note/archive", to: "knowledge#archive_note", as: :knowledge_archive_note
+  post "/knowledge/note/unarchive", to: "knowledge#unarchive_note", as: :knowledge_unarchive_note
+  delete "/knowledge/pi_sessions", to: "knowledge#delete_pi_session", as: :knowledge_delete_pi_session
 
   # Monitoring
   get "/monitoring", to: "monitoring#index", as: :monitoring

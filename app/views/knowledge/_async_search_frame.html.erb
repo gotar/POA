@@ -1,0 +1,5 @@
+<%= turbo_frame_tag "kb_search",
+      src: knowledge_search_status_path(knowledge_search),
+      data: { controller: "poll-frame", poll_frame_interval_value: 1500, poll_frame_max_seconds_value: 180 } do %>
+  Searching…
+<% end %>

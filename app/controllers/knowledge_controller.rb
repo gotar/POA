@@ -25,21 +25,49 @@ class KnowledgeController < ApplicationController
     @q = q
     @mode = mode
 
-    @results = if q.blank?
-      []
-    else
-      begin
-        QmdCliService.search(q, mode: mode.to_sym, limit: 20)
-      rescue StandardError => e
-        @error = e.message
-        []
+    if q.blank?
+      @results = []
+      respond_to do |format|
+        format.turbo_stream
+        format.html { render :index }
       end
+      return
+    end
+
+    # Fast mode inline; heavy modes async via Solid Queue.
+    if %w[vsearch query].include?(mode)
+      ks = KnowledgeSearch.create!(query: q, mode: mode, status: "queued")
+      KnowledgeSearchJob.perform_later(ks.id)
+
+      respond_to do |format|
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.replace(
+            "kb_search",
+            partial: "knowledge/async_search_frame",
+            locals: { knowledge_search: ks }
+          )
+        end
+        format.html { redirect_to knowledge_path }
+      end
+      return
+    end
+
+    @results = begin
+      QmdCliService.search(q, mode: mode.to_sym, limit: 20)
+    rescue StandardError => e
+      @error = e.message
+      []
     end
 
     respond_to do |format|
       format.turbo_stream
       format.html { render :index }
     end
+  end
+
+  def search_status
+    @knowledge_search = KnowledgeSearch.find(params[:id])
+    render layout: false
   end
 
   # GET /knowledge/note?path=topics/foo.md
@@ -177,10 +205,134 @@ class KnowledgeController < ApplicationController
     end
   end
 
+  # GET /knowledge/export
+  def export
+    PersonalKnowledgeService.ensure_setup!
+
+    base = PersonalKnowledgeService.base_dir
+    ts = Time.current.strftime("%Y%m%d-%H%M%S")
+
+    require "stringio"
+    require "zlib"
+    require "rubygems/package"
+
+    io = StringIO.new(+"")
+    io.binmode
+
+    Zlib::GzipWriter.wrap(io) do |gz|
+      Gem::Package::TarWriter.new(gz) do |tar|
+        Dir.chdir(base) do
+          Dir.glob("**/*", File::FNM_DOTMATCH).each do |path|
+            next if path == "." || path == ".."
+            next if path.start_with?(".git/")
+            next if File.directory?(path)
+
+            data = File.binread(path)
+            mode = File.stat(path).mode
+            tar.add_file_simple(path, mode, data.bytesize) { |tio| tio.write(data) }
+          end
+        end
+      end
+    end
+
+    send_data io.string,
+              filename: "pi-knowledge-#{ts}.tar.gz",
+              type: "application/gzip",
+              disposition: "attachment"
+  end
+
+  # GET /knowledge/governance
+  def governance
+    PersonalKnowledgeService.ensure_setup!
+
+    @stats = PersonalKnowledgeService.stats
+
+    @stale_days = params[:stale_days].to_i
+    @stale_days = 90 if @stale_days <= 0
+    stale_before = @stale_days.days.ago
+
+    base = PersonalKnowledgeService.base_dir
+    abs_topics = Dir.glob(File.join(base, "topics", "**", "*.md"))
+
+    @topics = abs_topics.map { |abs| PersonalKnowledgeService.describe_file(abs) }
+      .sort_by { |h| -(h[:updated_at]&.to_i || 0) }
+
+    @archived_topics = @topics.select { |t| t[:status].to_s == "archived" }
+    @active_topics = @topics.reject { |t| t[:status].to_s == "archived" }
+
+    @stale_topics = @active_topics.select { |t| t[:updated_at].present? && t[:updated_at] < stale_before }
+    @untagged_topics = @active_topics.select { |t| Array(t[:tags]).empty? }
+
+    @large_topics = abs_topics.filter_map do |abs|
+      sz = File.size(abs) rescue nil
+      next unless sz
+      next unless sz > 20_000
+
+      meta = PersonalKnowledgeService.describe_file(abs)
+      meta.merge(bytes: sz)
+    end.sort_by { |h| -h[:bytes].to_i }
+
+    load_pi_sessions
+  end
+
+  # POST /knowledge/note/archive
+  def archive_note
+    rel = params[:path].to_s
+    PersonalKnowledgeService.update_frontmatter!(rel, { "status" => "archived" })
+    PersonalKnowledgeReindexJob.perform_later
+
+    redirect_back fallback_location: knowledge_governance_path, notice: "Note archived"
+  rescue PersonalKnowledgeService::Error => e
+    redirect_back fallback_location: knowledge_governance_path, alert: e.message
+  end
+
+  # POST /knowledge/note/unarchive
+  def unarchive_note
+    rel = params[:path].to_s
+    PersonalKnowledgeService.update_frontmatter!(rel, { "status" => nil })
+    PersonalKnowledgeReindexJob.perform_later
+
+    redirect_back fallback_location: knowledge_governance_path, notice: "Note restored"
+  rescue PersonalKnowledgeService::Error => e
+    redirect_back fallback_location: knowledge_governance_path, alert: e.message
+  end
+
+  # DELETE /knowledge/pi_sessions?path=snippets/pi-sessions/...
+  def delete_pi_session
+    rel = params[:path].to_s
+
+    unless rel.start_with?("snippets/pi-sessions/")
+      redirect_back fallback_location: knowledge_governance_path, alert: "Invalid pi session path"
+      return
+    end
+
+    abs = PersonalKnowledgeService.resolve_rel!(rel)
+    File.delete(abs)
+
+    PersonalKnowledgeReindexJob.perform_later
+    redirect_back fallback_location: knowledge_governance_path, notice: "Session transcript deleted"
+  rescue PersonalKnowledgeService::Error, StandardError => e
+    redirect_back fallback_location: knowledge_governance_path, alert: e.message
+  end
+
   private
 
+  def load_pi_sessions(limit: 80)
+    base = PersonalKnowledgeService.base_dir
+    abs_sessions = Dir.glob(File.join(base, "snippets", "pi-sessions", "**", "*.md"))
+
+    @pi_sessions_count = abs_sessions.count
+    @pi_sessions = abs_sessions
+      .sort_by { |path| -File.mtime(path).to_i }
+      .first(limit)
+      .map { |path| PersonalKnowledgeService.describe_file(path) }
+  rescue StandardError
+    @pi_sessions_count = 0
+    @pi_sessions = []
+  end
+
   def suggest_duplicates(title)
-    results = QmdCliService.search(title, mode: :query, limit: 6)
+    results = QmdCliService.search(title, mode: :search, limit: 6)
 
     results.select do |r|
       rel = r["file"].to_s.sub(%r{\Aqmd://[^/]+/}i, "")

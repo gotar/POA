@@ -16,7 +16,7 @@
       <div class="bg-gray-800 border border-gray-700 rounded-xl p-4">
         <%= form_with url: project_personal_knowledge_update_note_path(@project), method: :patch, class: "space-y-3" do %>
           <%= hidden_field_tag :path, @path %>
-          <textarea name="content" rows="18" class="w-full bg-gray-900 border border-gray-700 rounded-lg p-3 text-sm text-gray-100 font-mono"><%= @content %></textarea>
+          <textarea name="content" rows="18" class="w-full bg-gray-900 border border-gray-700 rounded-lg p-3 text-sm text-gray-100 font-mono textarea-scroll"><%= @content %></textarea>
           <div class="flex items-center gap-2">
             <button class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg text-sm">Save</button>
             <%= link_to "Cancel", project_personal_knowledge_note_path(@project, path: @path), class: "bg-gray-700 hover:bg-gray-600 text-gray-100 px-4 py-2 rounded-lg text-sm" %>

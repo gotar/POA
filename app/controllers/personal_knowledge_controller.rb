@@ -23,7 +23,12 @@ class PersonalKnowledgeController < ApplicationController
       []
     else
       begin
-        QmdCliService.search(q, mode: mode.to_sym, limit: 20)
+        # Project-scoped UI: keep it responsive on Pi
+        if %w[vsearch query].include?(mode)
+          QmdCliService.search(q, mode: :search, limit: 20)
+        else
+          QmdCliService.search(q, mode: mode.to_sym, limit: 20)
+        end
       rescue StandardError => e
         @error = e.message
         []
@@ -55,6 +60,7 @@ class PersonalKnowledgeController < ApplicationController
     content = params[:content].to_s
 
     PersonalKnowledgeService.write(@path, content)
+    PersonalKnowledgeReindexJob.perform_later
 
     redirect_to project_personal_knowledge_note_path(@project, path: @path), notice: "Note updated"
   rescue PersonalKnowledgeService::Error => e
@@ -190,7 +196,7 @@ class PersonalKnowledgeController < ApplicationController
 
   def suggest_duplicates(title)
     # Use QMD hybrid query; show suggestions only for existing TOPIC notes.
-    results = QmdCliService.search(title, mode: :query, limit: 6)
+    results = QmdCliService.search(title, mode: :search, limit: 6)
 
     results.select do |r|
       rel = r["file"].to_s.sub(%r{\Aqmd://[^/]+/}i, "")

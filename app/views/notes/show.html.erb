@@ -19,8 +19,11 @@
 
   <main class="flex-1 overflow-y-auto p-4">
     <div class="max-w-3xl mx-auto">
-      <div class="bg-gray-800 border border-gray-700 rounded-xl p-5">
-        <div class="text-xs text-gray-500 mb-3">Updated <%= time_ago_in_words(@note.updated_at) %> ago</div>
+      <div class="bg-gray-800 border border-gray-700 rounded-xl p-5" data-remember-container data-remember-role="assistant" data-remember-destination="memory">
+        <div class="flex items-center justify-between gap-3 mb-3">
+          <div class="text-xs text-gray-500">Updated <%= time_ago_in_words(@note.updated_at) %> ago</div>
+          <button type="button" data-action="remember#open" class="text-xs text-purple-200/90 hover:text-white underline underline-offset-2">Remember</button>
+        </div>
         <div class="prose prose-invert max-w-none">
           <%= simple_format(h(@note.content)) %>
         </div>

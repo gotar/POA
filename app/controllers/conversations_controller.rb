@@ -39,6 +39,40 @@ class ConversationsController < ApplicationController
     end
   end
 
+  # PATCH /projects/:project_id/conversations/:id
+  def update
+    @conversation = @project.conversations.find(params[:id])
+
+    if @conversation.update(conversation_params)
+      respond_to do |format|
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.replace(
+            "conversation_title",
+            partial: "conversations/inline_title",
+            locals: { project: @project, conversation: @conversation }
+          )
+        end
+        format.html { redirect_to [@project, @conversation], notice: "Chat updated" }
+      end
+    else
+      respond_to do |format|
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.replace(
+            "conversation_title",
+            partial: "conversations/inline_title",
+            locals: { project: @project, conversation: @conversation }
+          ), status: :unprocessable_entity
+        end
+
+        format.html do
+          @messages = @conversation.messages.order(:created_at)
+          @new_message = @conversation.messages.build(role: "user")
+          render :show, status: :unprocessable_entity
+        end
+      end
+    end
+  end
+
   # GET /projects/:project_id/conversations/:id/available_models
   def available_models
     conversation = @project.conversations.find(params[:id])
@@ -175,6 +209,6 @@ class ConversationsController < ApplicationController
   end
 
   def conversation_params
-    params.expect(conversation: %i[title system_prompt])
+    params.fetch(:conversation, {}).permit(:title, :system_prompt)
   end
 end

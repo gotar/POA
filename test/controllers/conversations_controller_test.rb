@@ -63,6 +63,14 @@ class ConversationsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to project_conversation_url(@project, Conversation.last)
   end
 
+  test "should create conversation without params (UI + link_to)" do
+    assert_difference("Conversation.count") do
+      post project_conversations_url(@project)
+    end
+
+    assert_redirected_to project_conversation_url(@project, Conversation.last)
+  end
+
   test "should create conversation with system prompt" do
     post project_conversations_url(@project), params: {
       conversation: { title: "Chat with Prompt", system_prompt: "You are helpful" }

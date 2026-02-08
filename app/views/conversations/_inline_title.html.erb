@@ -1,0 +1,24 @@
+<%= turbo_frame_tag "conversation_title" do %>
+  <div data-controller="inline-rename" class="min-w-0">
+    <div data-inline-rename-target="display" data-action="click->inline-rename#edit" class="min-w-0">
+      <h1 class="font-medium text-gray-100 truncate cursor-text"><%= conversation.title %></h1>
+    </div>
+
+    <div data-inline-rename-target="form" class="hidden">
+      <%= form_with model: [project, conversation], method: :patch,
+            data: { action: "turbo:submit-end->inline-rename#submitEnd" },
+            class: "flex items-center gap-2" do |f| %>
+        <%= f.text_field :title,
+              value: conversation.title,
+              data: { inline_rename_target: "input", action: "keydown->inline-rename#keydown" },
+              class: "flex-1 bg-gray-700 border border-gray-600 rounded-lg px-3 py-2 text-sm text-gray-100" %>
+        <button class="bg-purple-600 hover:bg-purple-700 text-white px-3 py-2 rounded-lg text-sm" type="submit">Save</button>
+        <button class="bg-gray-700 hover:bg-gray-600 text-gray-100 px-3 py-2 rounded-lg text-sm" type="button" data-action="inline-rename#cancel">Cancel</button>
+      <% end %>
+      <% if conversation.errors[:title].present? %>
+        <div class="mt-1 text-xs text-red-300"><%= conversation.errors[:title].first %></div>
+      <% end %>
+      <div class="mt-1 text-[11px] text-gray-500">Tip: click title to rename.</div>
+    </div>
+  </div>
+<% end %>

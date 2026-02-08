@@ -8,13 +8,7 @@ export default class extends Controller {
     this.autoResize()
   }
 
-  // Submit on Enter (without Shift)
-  submitExceptShift(event) {
-    if (event.key === "Enter" && !event.shiftKey) {
-      event.preventDefault()
-      this.element.requestSubmit()
-    }
-  }
+  // Note: Enter does NOT submit. Use the Send button.
 
   // Auto-resize textarea
   autoResize() {

@@ -20,7 +20,7 @@ Rails.application.routes.draw do
       post :bulk_unarchive
     end
     # Conversations within a project
-    resources :conversations, only: %i[index show create destroy] do
+    resources :conversations, only: %i[index show create update destroy] do
       member do
         patch :set_model
         get :available_models

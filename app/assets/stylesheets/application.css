@@ -119,6 +119,16 @@ textarea::-webkit-scrollbar {
   display: none; /* Chrome/Safari */
 }
 
+textarea.textarea-scroll {
+  overflow: auto !important;
+  scrollbar-width: auto;
+  -ms-overflow-style: auto;
+}
+
+textarea.textarea-scroll::-webkit-scrollbar {
+  display: initial;
+}
+
 /* Ensure auto-resize works without scrollbars */
 [data-message-form-target="input"] {
   overflow: clip !important;

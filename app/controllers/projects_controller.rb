@@ -34,9 +34,41 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
 
     if @project.update(project_params)
-      redirect_to @project, notice: "Project updated"
+      respond_to do |format|
+        format.turbo_stream do
+          render turbo_stream: [
+            turbo_stream.replace(
+              "project_title_mobile",
+              partial: "projects/inline_title",
+              locals: { project: @project, frame_id: "project_title_mobile", title_class: "font-medium text-gray-100 text-sm" }
+            ),
+            turbo_stream.replace(
+              "project_title_desktop",
+              partial: "projects/inline_title",
+              locals: { project: @project, frame_id: "project_title_desktop", title_class: "font-semibold text-gray-100" }
+            )
+          ]
+        end
+        format.html { redirect_to @project, notice: "Project updated" }
+      end
     else
-      handle_validation_error(:show)
+      respond_to do |format|
+        format.turbo_stream do
+          render turbo_stream: [
+            turbo_stream.replace(
+              "project_title_mobile",
+              partial: "projects/inline_title",
+              locals: { project: @project, frame_id: "project_title_mobile", title_class: "font-medium text-gray-100 text-sm" }
+            ),
+            turbo_stream.replace(
+              "project_title_desktop",
+              partial: "projects/inline_title",
+              locals: { project: @project, frame_id: "project_title_desktop", title_class: "font-semibold text-gray-100" }
+            )
+          ], status: :unprocessable_entity
+        end
+        format.html { handle_validation_error(:show) }
+      end
     end
   end
 

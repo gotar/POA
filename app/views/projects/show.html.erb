@@ -11,7 +11,9 @@
       <div class="w-7 h-7 rounded-lg flex items-center justify-center text-sm flex-shrink-0" style="background-color: <%= @project.color %>20">
         <%= @project.icon || '📁' %>
       </div>
-      <h1 class="font-medium text-gray-100 text-sm truncate"><%= @project.name %></h1>
+      <div class="flex-1 min-w-0">
+        <%= render "projects/inline_title", project: @project, frame_id: "project_title_mobile", title_class: "font-medium text-gray-100 text-sm" %>
+      </div>
     </div>
 
     <!-- Mobile Tab Switcher - Horizontal Scroll -->
@@ -40,7 +42,7 @@
           <%= @project.icon || '📁' %>
         </div>
         <div>
-          <h1 class="font-semibold text-gray-100"><%= @project.name %></h1>
+          <%= render "projects/inline_title", project: @project, frame_id: "project_title_desktop", title_class: "font-semibold text-gray-100" %>
           <p class="text-xs text-gray-500"><%= pluralize(@conversations.count, 'conversation') %></p>
         </div>
       </div>

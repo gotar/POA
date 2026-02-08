@@ -1,0 +1,24 @@
+<%# locals: project:, frame_id:, title_class: %>
+<%= turbo_frame_tag frame_id do %>
+  <div data-controller="inline-rename" class="min-w-0">
+    <div data-inline-rename-target="display" data-action="click->inline-rename#edit" class="min-w-0">
+      <div class="<%= title_class %> cursor-text truncate"><%= project.name %></div>
+    </div>
+
+    <div data-inline-rename-target="form" class="hidden">
+      <%= form_with model: project, method: :patch,
+            data: { action: "turbo:submit-end->inline-rename#submitEnd" },
+            class: "flex items-center gap-2" do |f| %>
+        <%= f.text_field :name,
+              value: project.name,
+              data: { inline_rename_target: "input", action: "keydown->inline-rename#keydown" },
+              class: "flex-1 bg-gray-700 border border-gray-600 rounded-lg px-3 py-2 text-sm text-gray-100" %>
+        <button class="bg-purple-600 hover:bg-purple-700 text-white px-3 py-2 rounded-lg text-sm" type="submit">Save</button>
+        <button class="bg-gray-700 hover:bg-gray-600 text-gray-100 px-3 py-2 rounded-lg text-sm" type="button" data-action="inline-rename#cancel">Cancel</button>
+      <% end %>
+      <% if project.errors[:name].present? %>
+        <div class="mt-1 text-xs text-red-300"><%= project.errors[:name].first %></div>
+      <% end %>
+    </div>
+  </div>
+<% end %>

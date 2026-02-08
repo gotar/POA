@@ -12,7 +12,7 @@
     <% end %>
 
     <div class="flex-1 min-w-0">
-      <%= render "conversations/inline_title", project: @project, conversation: @conversation %>
+      <%= render "conversations/inline_title", project: @project, conversation: @conversation, frame_id: "conversation_title" %>
       <p class="text-xs text-gray-500">
         <%= @project.name %> · <%= pluralize(@messages.count, 'message') %>
       </p>

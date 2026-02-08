@@ -2,7 +2,7 @@
   <!-- Chat Header -->
   <header class="bg-gray-800/80 backdrop-blur border-b border-gray-700 px-4 py-3 flex items-center gap-3">
     <div class="flex-1 min-w-0">
-      <h1 class="font-medium text-gray-100 truncate"><%= conversation.title %></h1>
+      <%= render "conversations/inline_title", project: project, conversation: conversation, frame_id: "conversation_title_#{conversation.id}" %>
       <p class="text-xs text-gray-500">
         <%= pluralize(conversation.messages.count, 'message') %>
         <% if conversation.system_prompt.present? %>

@@ -1,4 +1,5 @@
-<%= turbo_frame_tag "conversation_title" do %>
+<% frame_id = (local_assigns[:frame_id].presence || "conversation_title") %>
+<%= turbo_frame_tag frame_id do %>
   <div data-controller="inline-rename" class="min-w-0">
     <div data-inline-rename-target="display" data-action="click->inline-rename#edit" class="min-w-0">
       <h1 class="font-medium text-gray-100 truncate cursor-text"><%= conversation.title %></h1>
@@ -8,6 +9,7 @@
       <%= form_with model: [project, conversation], method: :patch,
             data: { action: "turbo:submit-end->inline-rename#submitEnd" },
             class: "flex items-center gap-2" do |f| %>
+        <%= hidden_field_tag :frame_id, frame_id %>
         <%= f.text_field :title,
               value: conversation.title,
               data: { inline_rename_target: "input", action: "keydown->inline-rename#keydown" },

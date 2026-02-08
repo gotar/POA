@@ -43,13 +43,17 @@ class ConversationsController < ApplicationController
   def update
     @conversation = @project.conversations.find(params[:id])
 
+    frame_id = params[:frame_id].to_s
+    frame_id = "conversation_title" if frame_id.blank?
+    frame_id = "conversation_title" unless frame_id.match?(/\Aconversation_title(_\d+)?\z/)
+
     if @conversation.update(conversation_params)
       respond_to do |format|
         format.turbo_stream do
           render turbo_stream: turbo_stream.replace(
-            "conversation_title",
+            frame_id,
             partial: "conversations/inline_title",
-            locals: { project: @project, conversation: @conversation }
+            locals: { project: @project, conversation: @conversation, frame_id: frame_id }
           )
         end
         format.html { redirect_to [@project, @conversation], notice: "Chat updated" }
@@ -58,9 +62,9 @@ class ConversationsController < ApplicationController
       respond_to do |format|
         format.turbo_stream do
           render turbo_stream: turbo_stream.replace(
-            "conversation_title",
+            frame_id,
             partial: "conversations/inline_title",
-            locals: { project: @project, conversation: @conversation }
+            locals: { project: @project, conversation: @conversation, frame_id: frame_id }
           ), status: :unprocessable_entity
         end
 

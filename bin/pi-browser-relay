@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+RELAY_DIR="$ROOT_DIR/tools/pi-browser-relay"
+
+PORT="${PI_BROWSER_RELAY_PORT:-18792}"
+HOST="${PI_BROWSER_RELAY_HOST:-127.0.0.1}"
+
+if [ ! -d "$RELAY_DIR" ]; then
+  echo "pi-browser-relay: missing $RELAY_DIR" >&2
+  exit 1
+fi
+
+if [ ! -d "$RELAY_DIR/node_modules" ]; then
+  echo "pi-browser-relay: installing Node deps (first run)" >&2
+  (cd "$RELAY_DIR" && npm install)
+fi
+
+exec node "$RELAY_DIR/server.mjs" --host "$HOST" --port "$PORT"

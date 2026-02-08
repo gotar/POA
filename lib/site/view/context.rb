@@ -1,4 +1,5 @@
 require "uri"
+require "json"
 require "dry/core/constants"
 require "dry/view/context"
 require "forwardable"
@@ -22,7 +23,7 @@ module Site
         super(render_env: render_env)
 
         @current_path = current_path
-        @page_title = nil
+        @page_title = deps[:page_title]
         @_assets = deps[:assets]
         @_settings = deps[:settings]
       end
@@ -32,7 +33,8 @@ module Site
           current_path: @current_path,
           render_env: render_env,
           assets: @_assets,
-          settings: @_settings
+          settings: @_settings,
+          page_title: @page_title
         )
       end
 
@@ -54,9 +56,113 @@ module Site
 
       def page_title(new_title = Undefined)
         if new_title == Undefined
-          [@page_title, site_name].compact.join(" | ")
+          title = @page_title || default_title_for_path(current_path)
+          [title, site_name].compact.join(" | ")
         else
           @page_title = new_title
+        end
+      end
+
+      def default_title_for_path(path)
+        case path
+        when "index.html", "", nil
+          "Aikido Polska | Sesshinkan Dojo Gdynia | POA - Treningi Aikido"
+        when "en", "en/"
+          "Polish Aikido Organization | Sesshinkan Dojo Gdynia - Aikido Training"
+        when "kontakt.html"
+          "Kontakt | Aikido Gdynia | Sesshinkan Dojo - Treningi Aikido"
+        when "aikido/czym_jest.html"
+          "Czym jest Aikido? | POA - Aikido Polska - Zasady i Filozofia"
+        when "aikido/historia.html"
+          "Historia Aikido | Od O-Sensei do wspolczesnosci | POA"
+        when "aikido/korzysci.html"
+          "Korzysci z Aikido | Zdrowie, Samoobrona, Rozwoj | POA"
+        when "aikido/dla_poczatkujacych.html"
+          "Aikido dla Poczatkujacych | Pierwszy Trening | Sesshinkan Dojo"
+        when "aikido/aiki_taiso.html"
+          "Aiki Taiso | Cwiczenia i Rozgrzewka Aikido | POA"
+        when "aikido/reishiki.html"
+          "Reishiki | Etykieta Dojo Aikido | Sesshinkan Dojo"
+        when "slowniczek.html"
+          "Slowniczek Aikido | Terminy Japonskie | POA"
+        when "wymagania_egzaminacyjne/kyu.html"
+          "Wymagania Kyu | Stopnie Poczatkujace Aikido | POA"
+        when "wymagania_egzaminacyjne/dan.html"
+          "Wymagania Dan | Czarne Pasy Aikido | POA"
+        when "lineage.html"
+          "Linia Przekazu Aikido | Ueshiba, Toyoda, Germanov | POA"
+        when "biografie/o-sensei.html"
+          "Morihei Ueshiba O-Sensei | Tworca Aikido | Biografia"
+        when "biografie/kisshomaru.html"
+          "Kisshomaru Ueshiba | Drugi Doshu Aikido | Biografia"
+        when "biografie/moriteru.html"
+          "Moriteru Ueshiba | Trzeci Doshu Aikido | Biografia"
+        when "biografie/mitsuteru.html"
+          "Mitsuteru Ueshiba | Waka Sensei | Przyszly Doshu"
+        when "biografie/toyoda.html"
+          "Fumio Toyoda Shihan | Kluczowa Postac POA | Biografia"
+        when "biografie/germanov.html"
+          "Edward Germanov Shihan | 7 Dan | Prezes BAA"
+        when "biografie/ostrowski.html"
+          "Jacek Ostrowski | Zalozyciel POA | Wspomnienie"
+        when "biografie/szrajer.html"
+          "Oskar Szrajer | 5 Dan | Lider POA Gdynia"
+        when "wydarzenia/2026.html"
+          "Wydarzenia Aikido 2026 | Seminaria i Szkolenia | POA"
+        when "faq.html"
+          "FAQ | Czesto Zadawane Pytania | Aikido POA"
+        when "gdynia.html"
+          "Aikido Gdynia | Sesshinkan Dojo | Treningi Trójmiasto"
+        when "yudansha.html"
+          "Yudansha | Czarne Pasy POA | Instruktorzy Aikido"
+        when "en/contact.html"
+          "Contact | Aikido Gdynia | Sesshinkan Dojo - Training Schedule"
+        when "en/aikido/what_is.html"
+          "What is Aikido? | POA - Polish Aikido Organization - Principles"
+        when "en/aikido/history.html"
+          "History of Aikido | From O-Sensei to Present | POA"
+        when "en/aikido/benefits.html"
+          "Benefits of Aikido | Health, Self-Defense, Development | POA"
+        when "en/aikido/beginners.html"
+          "Aikido for Beginners | First Class | Sesshinkan Dojo"
+        when "en/aikido/aiki_taiso.html"
+          "Aiki Taiso | Exercises and Warm-up | Aikido POA"
+        when "en/aikido/reishiki.html"
+          "Reishiki | Dojo Etiquette | Sesshinkan Dojo"
+        when "en/glossary.html"
+          "Aikido Glossary | Japanese Terms | POA"
+        when "en/requirements/kyu.html"
+          "Kyu Requirements | Beginner Ranks Aikido | POA"
+        when "en/requirements/dan.html"
+          "Dan Requirements | Black Belt Aikido | POA"
+        when "en/lineage.html"
+          "Aikido Lineage | Ueshiba, Toyoda, Germanov | POA"
+        when "en/biographies/o-sensei.html"
+          "Morihei Ueshiba O-Sensei | Founder of Aikido | Biography"
+        when "en/biographies/kisshomaru.html"
+          "Kisshomaru Ueshiba | Second Doshu Aikido | Biography"
+        when "en/biographies/moriteru.html"
+          "Moriteru Ueshiba | Third Doshu Aikido | Biography"
+        when "en/biographies/mitsuteru.html"
+          "Mitsuteru Ueshiba | Waka Sensei | Future Doshu"
+        when "en/biographies/toyoda.html"
+          "Fumio Toyoda Shihan | Key Figure POA | Biography"
+        when "en/biographies/germanov.html"
+          "Edward Germanov Shihan | 7th Dan | BAA President"
+        when "en/biographies/ostrowski.html"
+          "Jacek Ostrowski | POA Founder | Memorial"
+        when "en/biographies/szrajer.html"
+          "Oskar Szrajer | 5th Dan | POA Head Gdynia"
+        when "en/events/2026.html"
+          "Aikido Events 2026 | Seminars and Workshops | POA"
+        when "en/faq.html"
+          "FAQ | Frequently Asked Questions | Aikido POA"
+        when "en/gdynia.html"
+          "Aikido Gdynia | Sesshinkan Dojo | Tri-City Training"
+        when "en/yudansha.html"
+          "Yudansha | POA Black Belts | Aikido Instructors"
+        else
+          site_name
         end
       end
 
@@ -284,6 +390,93 @@ module Site
         "#{site_url}#{separator}#{path}"
       end
 
+      LANG_URL_MAP = {
+        "index.html" => "en/",
+        "" => "en/",
+        "kontakt.html" => "en/contact.html",
+        "aikido/czym_jest.html" => "en/aikido/what_is.html",
+        "aikido/historia.html" => "en/aikido/history.html",
+        "aikido/korzysci.html" => "en/aikido/benefits.html",
+        "aikido/dla_poczatkujacych.html" => "en/aikido/beginners.html",
+        "aikido/aiki_taiso.html" => "en/aikido/aiki_taiso.html",
+        "aikido/reishiki.html" => "en/aikido/reishiki.html",
+        "slowniczek.html" => "en/glossary.html",
+        "wymagania_egzaminacyjne/kyu.html" => "en/requirements/kyu.html",
+        "wymagania_egzaminacyjne/dan.html" => "en/requirements/dan.html",
+        "lineage.html" => "en/lineage.html",
+        "biografie/o-sensei.html" => "en/biographies/o-sensei.html",
+        "biografie/kisshomaru.html" => "en/biographies/kisshomaru.html",
+        "biografie/moriteru.html" => "en/biographies/moriteru.html",
+        "biografie/mitsuteru.html" => "en/biographies/mitsuteru.html",
+        "biografie/toyoda.html" => "en/biographies/toyoda.html",
+        "biografie/germanov.html" => "en/biographies/germanov.html",
+        "biografie/ostrowski.html" => "en/biographies/ostrowski.html",
+        "biografie/szrajer.html" => "en/biographies/szrajer.html",
+        "wydarzenia/2026.html" => "en/events/2026.html",
+        "faq.html" => "en/faq.html",
+        "gdynia.html" => "en/gdynia.html",
+        "yudansha.html" => "en/yudansha.html",
+        "en/" => "",
+        "en/index.html" => "",
+        "en/contact.html" => "kontakt.html",
+        "en/aikido/what_is.html" => "aikido/czym_jest.html",
+        "en/aikido/history.html" => "aikido/historia.html",
+        "en/aikido/benefits.html" => "aikido/korzysci.html",
+        "en/aikido/beginners.html" => "aikido/dla_poczatkujacych.html",
+        "en/aikido/aiki_taiso.html" => "aikido/aiki_taiso.html",
+        "en/aikido/reishiki.html" => "aikido/reishiki.html",
+        "en/glossary.html" => "slowniczek.html",
+        "en/requirements/kyu.html" => "wymagania_egzaminacyjne/kyu.html",
+        "en/requirements/dan.html" => "wymagania_egzaminacyjne/dan.html",
+        "en/lineage.html" => "lineage.html",
+        "en/biographies/o-sensei.html" => "biografie/o-sensei.html",
+        "en/biographies/kisshomaru.html" => "biografie/kisshomaru.html",
+        "en/biographies/moriteru.html" => "biografie/moriteru.html",
+        "en/biographies/mitsuteru.html" => "biografie/mitsuteru.html",
+        "en/biographies/toyoda.html" => "biografie/toyoda.html",
+        "en/biographies/germanov.html" => "biografie/germanov.html",
+        "en/biographies/ostrowski.html" => "biografie/ostrowski.html",
+        "en/biographies/szrajer.html" => "biografie/szrajer.html",
+        "en/events/2026.html" => "wydarzenia/2026.html",
+        "en/faq.html" => "faq.html",
+        "en/gdynia.html" => "gdynia.html",
+        "en/yudansha.html" => "yudansha.html"
+      }.freeze
+
+      def current_lang
+        path = current_path.to_s
+        path.start_with?("en/") ? "en" : "pl"
+      end
+
+      def alternate_lang
+        current_lang == "pl" ? "en" : "pl"
+      end
+
+      def alternate_url
+        mapped = LANG_URL_MAP[current_path.to_s]
+        return nil unless mapped
+        "#{site_url}/#{mapped}".gsub(%r{//}, "/").gsub(%r{/$}, "")
+      end
+
+      def page_hreflang_tags
+        alt_url = alternate_url
+        return "" unless alt_url
+
+        if current_lang == "pl"
+          <<~HTML
+            <link rel="alternate" hreflang="pl" href="#{canonical_url}" />
+            <link rel="alternate" hreflang="en" href="#{alt_url}" />
+            <link rel="alternate" hreflang="x-default" href="#{canonical_url}" />
+          HTML
+        else
+          <<~HTML
+            <link rel="alternate" hreflang="en" href="#{canonical_url}" />
+            <link rel="alternate" hreflang="pl" href="#{alt_url}" />
+            <link rel="alternate" hreflang="x-default" href="#{alt_url}" />
+          HTML
+        end
+      end
+
       def asset_path(path)
         if URI(path).absolute?
           path
@@ -304,6 +497,121 @@ module Site
             ctx.instance_variable_set(:"@#{key}", value)
           end
         end
+      end
+
+      def article_schema(name:, description:, image:, lang: "pl")
+        jsonld = {
+          "@context" => "https://schema.org",
+          "@type" => "Article",
+          "headline" => name,
+          "description" => description,
+          "image" => image,
+          "url" => canonical_url,
+          "inLanguage" => lang == "pl" ? "pl-PL" : "en-US",
+          "author" => {
+            "@type" => "Organization",
+            "name" => "Polska Organizacja Aikido",
+            "url" => site_url
+          },
+          "publisher" => {
+            "@type" => "Organization",
+            "name" => site_name,
+            "logo" => {
+              "@type" => "ImageObject",
+              "url" => "#{site_url}#{asset_path('images/toyoda.svg')}"
+            }
+          },
+          "datePublished" => "2024-01-01",
+          "dateModified" => "2024-01-01"
+        }.to_json
+
+        <<~HTML
+          <script type="application/ld+json">
+          #{jsonld}
+          </script>
+        HTML
+      end
+
+      def event_schema(name:, start_date:, end_date: nil, location:, description:, image:, lang: "pl")
+        end_date ||= start_date
+        jsonld = {
+          "@context" => "https://schema.org",
+          "@type" => "Event",
+          "name" => name,
+          "description" => description,
+          "image" => image,
+          "url" => canonical_url,
+          "startDate" => start_date,
+          "endDate" => end_date,
+          "inLanguage" => lang == "pl" ? "pl-PL" : "en-US",
+          "location" => {
+            "@type" => "Place",
+            "name" => location[:name],
+            "address" => {
+              "@type" => "PostalAddress",
+              "streetAddress" => location[:street],
+              "addressLocality" => location[:city],
+              "addressCountry" => location[:country] || "PL"
+            }
+          },
+          "organizer" => {
+            "@type" => "Organization",
+            "name" => site_name,
+            "url" => site_url
+          }
+        }.to_json
+
+        <<~HTML
+          <script type="application/ld+json">
+          #{jsonld}
+          </script>
+        HTML
+      end
+
+      def faq_schema(questions)
+        jsonld = {
+          "@context" => "https://schema.org",
+          "@type" => "FAQPage",
+          "mainEntity" => questions.map do |q|
+            {
+              "@type" => "Question",
+              "name" => q[:question],
+              "acceptedAnswer" => {
+                "@type" => "Answer",
+                "text" => q[:answer]
+              }
+            }
+          end
+        }.to_json
+
+        <<~HTML
+          <script type="application/ld+json">
+          #{jsonld}
+          </script>
+        HTML
+      end
+
+      def breadcrumb_schema(items)
+        item_list = items.map.with_index do |item, index|
+          {
+            "@type" => "ListItem",
+            "position" => index + 1,
+            "name" => item[:name],
+            "item" => item[:url]
+          }
+        end
+
+        jsonld = {
+          "@context" => "https://schema.org",
+          "@type" => "BreadcrumbList",
+          "itemListElement" => item_list
+        }.to_json
+
+        <<~HTML
+          <script type="application/ld+json">
+          #{jsonld}
+          </script>
+        HTML
       end
     end
   end

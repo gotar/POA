@@ -1,0 +1,14 @@
+{
+  "name": "pi-browser-relay",
+  "private": true,
+  "type": "module",
+  "version": "0.1.0",
+  "description": "Local Chrome extension relay that exposes an attachable tab as a CDP endpoint (for agent-browser / Playwright)",
+  "scripts": {
+    "start": "node server.mjs --port 18792",
+    "start:dev": "node server.mjs --port 18792 --verbose"
+  },
+  "dependencies": {
+    "ws": "^8.18.3"
+  }
+}

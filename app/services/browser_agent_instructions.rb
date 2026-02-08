@@ -7,7 +7,7 @@
 # use bash + agent-browser, never curl/wget, never paid web-search plugins.
 class BrowserAgentInstructions
   DEFAULT_SKILL_PATH = File.expand_path("~/.pi/agent/skills/browser-agent/SKILL.md").freeze
-  CACHE_KEY = "browser_agent_instructions/v1".freeze
+  CACHE_KEY = "browser_agent_instructions/v2".freeze
 
   class << self
     def text
@@ -54,6 +54,9 @@ class BrowserAgentInstructions
 
         ## Web browsing (browser-agent)
         #{compact}
+
+        ## Optional: reuse an existing Chrome tab (logged-in)
+        - If you need the user's already-logged-in session, ask them to start `bin/pi-browser-relay`, load the unpacked extension from `tools/pi-browser-relay/extension`, click the toolbar icon on the tab (badge ON), then run: `agent-browser connect http://127.0.0.1:18792`.
       TEXT
     end
 

@@ -46,7 +46,9 @@ module Site
       aikido_reishiki_view: "views.aikido.reishiki",
       aikido_beginners_view: "views.aikido.beginners",
       aikido_budo_zen_view: "views.aikido.budo_zen",
+      aikido_ki_kokyu_view: "views.aikido.ki_kokyu",
       aikido_history_en_view: "views.en.aikido.history",
+      aikido_ki_kokyu_en_view: "views.en.aikido.ki_kokyu",
       aikido_aiki_taiso_en_view: "views.en.aikido.aiki_taiso",
       aikido_reishiki_en_view: "views.en.aikido.reishiki",
       aikido_beginners_en_view: "views.en.aikido.beginners",
@@ -111,12 +113,14 @@ module Site
       render export_dir, "aikido/aiki_taiso.html", aikido_aiki_taiso_view
       render export_dir, "aikido/reishiki.html", aikido_reishiki_view
       render export_dir, "aikido/budo_zen.html", aikido_budo_zen_view
+      render export_dir, "aikido/ki_kokyu.html", aikido_ki_kokyu_view
       render export_dir, "aikido/dla_poczatkujacych.html", aikido_beginners_view
       render export_dir, "en/aikido/history.html", aikido_history_en_view
       render export_dir, "en/aikido/benefits.html", aikido_benefits_en_view
       render export_dir, "en/aikido/aiki_taiso.html", aikido_aiki_taiso_en_view
       render export_dir, "en/aikido/reishiki.html", aikido_reishiki_en_view
       render export_dir, "en/aikido/budo_zen.html", aikido_budo_zen_en_view
+      render export_dir, "en/aikido/ki_kokyu.html", aikido_ki_kokyu_en_view
       render export_dir, "en/aikido/beginners.html", aikido_beginners_en_view
       render export_dir, "lineage.html", lineage_view
       render export_dir, "en/lineage.html", lineage_en_view

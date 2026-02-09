@@ -85,6 +85,8 @@ module Site
           "Reishiki | Etykieta Dojo Aikido | Sesshinkan Dojo"
         when "aikido/budo_zen.html"
           "Budo i Zen w Aikido | Mushin, Zanshin i Bushido | POA"
+        when "aikido/ki_kokyu.html"
+          "Ki i Kokyu w Aikido | Energia i Siła Oddechu | POA"
         when "slowniczek.html"
           "Slowniczek Aikido | Terminy Japonskie | POA"
         when "wymagania_egzaminacyjne/kyu.html"
@@ -133,6 +135,8 @@ module Site
           "Reishiki | Dojo Etiquette | Sesshinkan Dojo"
         when "en/aikido/budo_zen.html"
           "Budo and Zen in Aikido | Mushin, Zanshin, Bushido | POA"
+        when "en/aikido/ki_kokyu.html"
+          "Ki and Kokyu in Aikido | Energy and Breath Power | POA"
         when "en/glossary.html"
           "Aikido Glossary | Japanese Terms | POA"
         when "en/requirements/kyu.html"
@@ -212,6 +216,8 @@ module Site
           "Reishiki - etykieta dojo Aikido: uklony, zachowanie, szacunek i tradycyjne zasady."
         when "aikido/budo_zen.html"
           "Budo i Zen w Aikido: Mushin, Zanshin, Fudoshin oraz cnoty wojownika. Filozofia i etyka praktyki dojo."
+        when "aikido/ki_kokyu.html"
+          "Ki i Kokyu w Aikido: energia życiowa, siła oddechu i praca z centrum. Poznaj pojęcia Ki, Kokyu-ryoku oraz praktykę oddechu."
         when "slowniczek.html"
           "Slowniczek terminow Aikido z tlumaczeniami japonskich nazw technik i pojec."
         when "wymagania_egzaminacyjne/kyu.html"
@@ -254,6 +260,8 @@ module Site
           "Reishiki - Aikido dojo etiquette and ceremonial practices. Essential guide to respect, bowing, behavior, and traditional customs in Aikido training."
         when "en/aikido/budo_zen.html"
           "Budo and Zen in Aikido: Mushin, Zanshin, Fudoshin and the seven samurai virtues. Philosophy and ethics of dojo practice."
+        when "en/aikido/ki_kokyu.html"
+          "Ki and Kokyu in Aikido: life energy, breath power, and working from the center. Learn about Ki, Kokyu-ryoku, and breath training."
         when "en/glossary.html"
           "Complete Aikido glossary with Japanese terms, techniques, ranks, and philosophical concepts. Essential reference for practitioners."
         when "en/requirements/kyu.html"
@@ -311,6 +319,8 @@ module Site
           "reishiki, etykieta dojo, uklony, zasady dojo, aikido"
         when "aikido/budo_zen.html"
           "budo, zen, mushin, zanshin, fudoshin, bushido, cnoty samuraja, filozofia aikido"
+        when "aikido/ki_kokyu.html"
+          "ki, kokyu, kokyu-ryoku, energia życiowa, oddech w aikido, hara, seika tanden, ki no nagare"
         when "slowniczek.html"
           "slowniczek aikido, terminy japonskie, nazwy technik, aikido"
         when "wymagania_egzaminacyjne/kyu.html"
@@ -353,6 +363,8 @@ module Site
           "Reishiki, dojo etiquette, Aikido customs, martial arts respect, Japanese etiquette, bowing, dojo behavior, training protocol"
         when "en/aikido/budo_zen.html"
           "budo, zen, mushin, zanshin, fudoshin, bushido virtues, samurai ethics, Aikido philosophy"
+        when "en/aikido/ki_kokyu.html"
+          "Ki, Kokyu, Kokyu-ryoku, life energy, breath power, Aikido breathing, hara, seika tanden"
         when "en/glossary.html"
           "Aikido glossary, Japanese terms, martial arts terminology, Aikido dictionary, techniques names, ranks system, Japanese martial arts"
         when "en/requirements/kyu.html"
@@ -413,6 +425,7 @@ module Site
         "aikido/aiki_taiso.html" => "en/aikido/aiki_taiso.html",
         "aikido/reishiki.html" => "en/aikido/reishiki.html",
         "aikido/budo_zen.html" => "en/aikido/budo_zen.html",
+        "aikido/ki_kokyu.html" => "en/aikido/ki_kokyu.html",
         "slowniczek.html" => "en/glossary.html",
         "wymagania_egzaminacyjne/kyu.html" => "en/requirements/kyu.html",
         "wymagania_egzaminacyjne/dan.html" => "en/requirements/dan.html",
@@ -439,6 +452,7 @@ module Site
         "en/aikido/aiki_taiso.html" => "aikido/aiki_taiso.html",
         "en/aikido/reishiki.html" => "aikido/reishiki.html",
         "en/aikido/budo_zen.html" => "aikido/budo_zen.html",
+        "en/aikido/ki_kokyu.html" => "aikido/ki_kokyu.html",
         "en/glossary.html" => "slowniczek.html",
         "en/requirements/kyu.html" => "wymagania_egzaminacyjne/kyu.html",
         "en/requirements/dan.html" => "wymagania_egzaminacyjne/dan.html",

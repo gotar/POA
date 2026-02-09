@@ -136,3 +136,58 @@ Key pages with custom SEO:
 - **ERB** - Template engine
 - **GitHub Pages** - Hosting (via `gh-pages` branch)
 
+## How the project works (high-level)
+
+- **Rendering entry point:** `lib/site/generate.rb` is the build orchestrator. Every page that should appear in the build must be rendered there.
+- **View controllers:** `lib/site/views/**` define controllers that select templates and (optionally) layouts. They are auto-registered by `dry-system` via `system/site/container.rb`.
+- **Templates:** `templates/**` hold ERB templates. English templates typically use the `_en` suffix and a `site_en` layout in the view config.
+- **SEO context:** `lib/site/view/context.rb` provides titles, descriptions, keywords, canonical URLs, and hreflang alternates per path.
+- **Static assets:** copied from `assets/` into `build/` during `./bin/build`. The `assets/sitemap.xml` file is copied as-is.
+
+## Adding a new page (checklist)
+
+1. **Create templates**
+   - Polish: `templates/.../page.html.erb`
+   - English: `templates/.../page_en.html.erb`
+
+2. **Create view controllers**
+   - Polish: `lib/site/views/.../page.rb`
+   - English: `lib/site/views/en/.../page.rb` with `config.layout = "site_en"`
+
+3. **Register in the build**
+   - Add `render export_dir, "path/to/page.html", view_instance` in `lib/site/generate.rb`.
+
+4. **Update navigation (if needed)**
+   - Polish menu: `templates/layouts/_nav.html.erb`
+   - English menu: `templates/layouts/_nav_en.html.erb`
+
+5. **Add SEO defaults**
+   - `default_title_for_path`, `default_description_for_path`, `default_keywords_for_path` in `lib/site/view/context.rb`.
+
+6. **Add hreflang mapping**
+   - Update `LANG_URL_MAP` in `lib/site/view/context.rb` for the new PL/EN URL pair.
+
+7. **Update the sitemap**
+   - Add URLs to `assets/sitemap.xml` (copied verbatim into the build).
+
+8. **Build locally**
+   - Run `./bin/build` and verify `build/` contains the new HTML files.
+
+## Deploy
+
+- Run `./bin/deploy` to build and publish the `build/` directory to the `gh-pages` branch.
+- The script performs: **build → commit build output → push gh-pages**.
+- After pushing, the site is available at `https://aikido-polska.eu/` within a few minutes.
+
+## Common SEO features
+
+- **Titles, descriptions, keywords:** defined by path in `lib/site/view/context.rb`.
+- **Canonical URLs:** `Context#canonical_url` uses `SITE_URL` + current path.
+- **Hreflang alternates:** generated from `LANG_URL_MAP` in `Context#page_hreflang_tags`.
+- **Open Graph tags:** provided by the shared layout templates.
+
+## Notes on English pages
+
+- English pages use separate views under `lib/site/views/en/**` and typically point to `templates/..._en.html.erb`.
+- Ensure both the PL and EN versions are rendered and mapped for hreflang and sitemap.
+

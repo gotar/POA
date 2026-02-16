@@ -483,7 +483,10 @@ module Site
       def alternate_url
         mapped = LANG_URL_MAP[current_path.to_s]
         return nil unless mapped
-        "#{site_url}/#{mapped}".gsub(%r{//}, "/").gsub(%r{/$}, "")
+
+        url = "#{site_url}/#{mapped}"
+        url = url.gsub(%r{(?<!:)/+}, "/")
+        url.chomp("/")
       end
 
       def page_hreflang_tags

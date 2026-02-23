@@ -62,6 +62,34 @@ module Site
       gdynia_en_view: "views.en.gdynia",
       faq_view: "views.faq",
       faq_en_view: "views.en.faq",
+      news_view: "views.news",
+      news_en_view: "views.en.news",
+      news_open_mat_feb_2026_view: "views.news.open_mat_feb_2026",
+      news_winter_seminar_2026_view: "views.news.winter_seminar_2026",
+      news_beginners_cycle_2026_view: "views.news.beginners_cycle_2026",
+      news_bushido_view: "views.news.bushido",
+      news_kaizen_view: "views.news.kaizen",
+      news_gaman_view: "views.news.gaman",
+      news_kintsugi_view: "views.news.kintsugi",
+      news_wabi_sabi_view: "views.news.wabi_sabi",
+      news_mushin_view: "views.news.mushin",
+      news_zenshin_view: "views.news.zenshin",
+      news_omoiyari_view: "views.news.omoiyari",
+      news_jiko_sekinin_view: "views.news.jiko_sekinin",
+      news_kuzushi_view: "views.news.kuzushi",
+      news_open_mat_feb_2026_en_view: "views.en.news.open_mat_feb_2026",
+      news_winter_seminar_2026_en_view: "views.en.news.winter_seminar_2026",
+      news_beginners_cycle_2026_en_view: "views.en.news.beginners_cycle_2026",
+      news_bushido_en_view: "views.en.news.bushido",
+      news_kaizen_en_view: "views.en.news.kaizen",
+      news_gaman_en_view: "views.en.news.gaman",
+      news_kintsugi_en_view: "views.en.news.kintsugi",
+      news_wabi_sabi_en_view: "views.en.news.wabi_sabi",
+      news_mushin_en_view: "views.en.news.mushin",
+      news_zenshin_en_view: "views.en.news.zenshin",
+      news_omoiyari_en_view: "views.en.news.omoiyari",
+      news_jiko_sekinin_en_view: "views.en.news.jiko_sekinin",
+      news_kuzushi_en_view: "views.en.news.kuzushi",
     ]
 
     def call(root)
@@ -130,6 +158,34 @@ module Site
       render export_dir, "en/gdynia.html", gdynia_en_view
       render export_dir, "faq.html", faq_view
       render export_dir, "en/faq.html", faq_en_view
+      render export_dir, "aktualnosci.html", news_view
+      render export_dir, "en/news.html", news_en_view
+      render export_dir, "aktualnosci/bushido-droga-wojownika.html", news_bushido_view
+      render export_dir, "aktualnosci/kaizen-ciagle-doskonalenie.html", news_kaizen_view
+      render export_dir, "aktualnosci/gaman-wytrwalosc.html", news_gaman_view
+      render export_dir, "aktualnosci/kintsugi-zlota-naprawa.html", news_kintsugi_view
+      render export_dir, "aktualnosci/wabi-sabi-piekno-niedoskonalosci.html", news_wabi_sabi_view
+      render export_dir, "aktualnosci/mushin-umysl-bez-umyslu.html", news_mushin_view
+      render export_dir, "aktualnosci/zenshin-pelne-zaangazowanie.html", news_zenshin_view
+      render export_dir, "aktualnosci/omoiyari-uwazna-troska.html", news_omoiyari_view
+      render export_dir, "aktualnosci/jiko-sekinin-odpowiedzialnosc-osobista.html", news_jiko_sekinin_view
+      render export_dir, "aktualnosci/kuzushi-kontrolowana-nierownowaga.html", news_kuzushi_view
+      render export_dir, "aktualnosci/open-mata-luty-2026.html", news_open_mat_feb_2026_view
+      render export_dir, "aktualnosci/zimowy-staz-2026.html", news_winter_seminar_2026_view
+      render export_dir, "aktualnosci/nowy-cykl-dla-poczatkujacych.html", news_beginners_cycle_2026_view
+      render export_dir, "en/news/bushido-way-of-the-warrior.html", news_bushido_en_view
+      render export_dir, "en/news/kaizen-continuous-improvement.html", news_kaizen_en_view
+      render export_dir, "en/news/gaman-endurance-and-composure.html", news_gaman_en_view
+      render export_dir, "en/news/kintsugi-golden-repair.html", news_kintsugi_en_view
+      render export_dir, "en/news/wabi-sabi-beauty-of-imperfection.html", news_wabi_sabi_en_view
+      render export_dir, "en/news/mushin-no-mind.html", news_mushin_en_view
+      render export_dir, "en/news/zenshin-full-commitment.html", news_zenshin_en_view
+      render export_dir, "en/news/omoiyari-considerate-compassion.html", news_omoiyari_en_view
+      render export_dir, "en/news/jiko-sekinin-personal-responsibility.html", news_jiko_sekinin_en_view
+      render export_dir, "en/news/kuzushi-controlled-imbalance.html", news_kuzushi_en_view
+      render export_dir, "en/news/open-mat-feb-2026.html", news_open_mat_feb_2026_en_view
+      render export_dir, "en/news/winter-seminar-2026.html", news_winter_seminar_2026_en_view
+      render export_dir, "en/news/new-beginners-cycle-2026.html", news_beginners_cycle_2026_en_view
 
       Success(root)
     end

@@ -1,10 +1,34 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
-set -e
+set -euo pipefail
 
-echo "Building site..."
-export PATH="$HOME/.local/share/gem/ruby/3.4.0/bin:$PATH"
-bundle exec ./bin/build
+PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+MISE_BIN="${HOME}/.local/bin/mise"
+
+run_build() {
+  if [[ -x "$MISE_BIN" && -f "$PROJECT_ROOT/.mise.toml" ]]; then
+    local ruby_root ruby_bin
+    ruby_root="$($MISE_BIN where ruby@3.4)"
+    ruby_bin="$ruby_root/bin"
+
+    echo "Building site (clean env, ruby from mise: $ruby_root)..."
+
+    if ! env -i HOME="$HOME" PATH="$ruby_bin:/usr/local/bin:/usr/bin:/bin" BUNDLE_GEMFILE="$PROJECT_ROOT/Gemfile" \
+      "$ruby_bin/bundle" check >/dev/null 2>&1; then
+      env -i HOME="$HOME" PATH="$ruby_bin:/usr/local/bin:/usr/bin:/bin" BUNDLE_GEMFILE="$PROJECT_ROOT/Gemfile" \
+        "$ruby_bin/bundle" install
+    fi
+
+    env -i HOME="$HOME" PATH="$ruby_bin:/usr/local/bin:/usr/bin:/bin" BUNDLE_GEMFILE="$PROJECT_ROOT/Gemfile" \
+      "$ruby_bin/bundle" exec ./bin/build
+  else
+    echo "Building site..."
+    bundle exec ./bin/build
+  fi
+}
+
+cd "$PROJECT_ROOT"
+run_build
 
 echo "Committing build changes..."
 git add build

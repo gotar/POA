@@ -1,0 +1,70 @@
+#!/usr/bin/env bash
+# Script to unset all project-specific environment variables
+# Use when switching between projects with different Ruby, Node, Gem, etc.
+
+# Core runtime managers
+unset RUBYLIB RUBYOPT RUBY_VERSION RUBY_ROOT
+unset JRUBY_HOME
+
+# Bundler
+unset BUNDLE_BIN_PATH BUNDLE_GEMFILE BUNDLE_PATH BUNDLE_CACHE_PATH
+unset BUNDLE_APP_CONFIG BUNDLE_USER_HOME BUNDLE_VENDOR
+unset BUNDLER_VERSION BUNDLE_SETUP
+unset BUNDLER_ORIG_BUNDLE_BIN_PATH BUNDLER_ORIG_BUNDLE_GEMFILE
+unset BUNDLER_ORIG_BUNDLER_SETUP BUNDLER_ORIG_BUNDLER_VERSION
+unset BUNDLER_ORIG_GEM_HOME BUNDLER_ORIG_GEM_PATH
+unset BUNDLER_ORIG_MANPATH BUNDLER_ORIG_PATH
+unset BUNDLER_ORIG_RB_USER_INSTALL BUNDLER_ORIG_RUBYLIB
+unset BUNDLER_ORIG_RUBYOPT
+
+# Gem
+unset GEM_HOME GEM_PATH GEM_CACHE GEM_SPEC_CACHE
+unset GEM_ROOT GEM_BIN
+
+# Node/npm/yarn
+unset NODE_ENV NODE_PATH NPM_CONFIG_PREFIX YARN_CACHE_FOLDER
+unset YARN_VERSION npm_config_prefix
+unset COREPACK_ENABLE_AUTO_PIN COREPACK_DEFAULT_TO_DISABLED
+unset NODE_LLAMA_CPP_GPU
+
+# rbenv
+unset RBENV_VERSION RBENV_ROOT RBENV_DIR
+
+# rvm
+unset rvm_path rvm_prefix rvm_user_install rvm_loaded_flag
+unset MY_RUBY_HOME rvm_version rvm_ruby_string rvm_gemset_name
+
+# asdf
+unset ASDF_DIR ASDF_DATA_DIR ASDF_RUBY_VERSION ASDF_NODE_VERSION
+
+# chruby
+unset CHRUBY_VERSION CHRUBY_ROOT
+
+# mise (project activation)
+unset MISE_SHELL_ROOT MISE_TRUSTED_DIRS
+
+# Go
+unset GOPATH GOROOT GO111MODULE GOBIN GOARCH GOOS
+
+# Python (venv/pip)
+unset VIRTUAL_ENV CONDA_DEFAULT_ENV CONDA_PREFIX
+unset PYTHONPATH PYTHONDONTWRITEBYTECODE PYTHONSTARTUP
+
+# Java
+unset JAVA_HOME JDK_JAVA_OPTIONS CLASSPATH
+
+# Rust
+unset CARGO_HOME RUSTUP_HOME RUSTC_BOOTSTRAP RUSTC
+
+# Docker
+unset DOCKER_HOST DOCKER_TLS_VERIFY DOCKER_CERT_PATH
+
+# General cleanup
+unset BASH_ENV ENV CDPATH GLOBIGNORE
+
+# Re-add system PATH (remove project-specific bin directories)
+# Keep only system paths
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin
+
+echo "Environment cleaned. All project-specific vars unset."
+echo "Current PATH: $PATH"

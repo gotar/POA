@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# Activate project-specific environment using mise
+# Run this after cd'ing into the project directory
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+MISE_BIN="${HOME}/.local/bin/mise"
+
+if [[ ! -x "$MISE_BIN" ]]; then
+    echo "Error: mise not found at $MISE_BIN"
+    exit 1
+fi
+
+# Check if mise is activated in current shell
+if [[ -z "$MISE_SHELL_ROOT" ]]; then
+    echo "Warning: mise not activated in shell."
+    echo "Add to your ~/.bashrc: eval \"\$($MISE_BIN activate bash)\""
+    echo ""
+fi
+
+# Activate mise shell for this project's Ruby
+cd "$SCRIPT_DIR/.."
+exec "$MISE_BIN" shell

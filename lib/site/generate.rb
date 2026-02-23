@@ -64,9 +64,6 @@ module Site
       faq_en_view: "views.en.faq",
       news_view: "views.news",
       news_en_view: "views.en.news",
-      news_open_mat_feb_2026_view: "views.news.open_mat_feb_2026",
-      news_winter_seminar_2026_view: "views.news.winter_seminar_2026",
-      news_beginners_cycle_2026_view: "views.news.beginners_cycle_2026",
       news_bushido_view: "views.news.bushido",
       news_kaizen_view: "views.news.kaizen",
       news_gaman_view: "views.news.gaman",
@@ -77,9 +74,6 @@ module Site
       news_omoiyari_view: "views.news.omoiyari",
       news_jiko_sekinin_view: "views.news.jiko_sekinin",
       news_kuzushi_view: "views.news.kuzushi",
-      news_open_mat_feb_2026_en_view: "views.en.news.open_mat_feb_2026",
-      news_winter_seminar_2026_en_view: "views.en.news.winter_seminar_2026",
-      news_beginners_cycle_2026_en_view: "views.en.news.beginners_cycle_2026",
       news_bushido_en_view: "views.en.news.bushido",
       news_kaizen_en_view: "views.en.news.kaizen",
       news_gaman_en_view: "views.en.news.gaman",
@@ -170,9 +164,6 @@ module Site
       render export_dir, "aktualnosci/omoiyari-uwazna-troska.html", news_omoiyari_view
       render export_dir, "aktualnosci/jiko-sekinin-odpowiedzialnosc-osobista.html", news_jiko_sekinin_view
       render export_dir, "aktualnosci/kuzushi-kontrolowana-nierownowaga.html", news_kuzushi_view
-      render export_dir, "aktualnosci/open-mata-luty-2026.html", news_open_mat_feb_2026_view
-      render export_dir, "aktualnosci/zimowy-staz-2026.html", news_winter_seminar_2026_view
-      render export_dir, "aktualnosci/nowy-cykl-dla-poczatkujacych.html", news_beginners_cycle_2026_view
       render export_dir, "en/news/bushido-way-of-the-warrior.html", news_bushido_en_view
       render export_dir, "en/news/kaizen-continuous-improvement.html", news_kaizen_en_view
       render export_dir, "en/news/gaman-endurance-and-composure.html", news_gaman_en_view
@@ -183,9 +174,6 @@ module Site
       render export_dir, "en/news/omoiyari-considerate-compassion.html", news_omoiyari_en_view
       render export_dir, "en/news/jiko-sekinin-personal-responsibility.html", news_jiko_sekinin_en_view
       render export_dir, "en/news/kuzushi-controlled-imbalance.html", news_kuzushi_en_view
-      render export_dir, "en/news/open-mat-feb-2026.html", news_open_mat_feb_2026_en_view
-      render export_dir, "en/news/winter-seminar-2026.html", news_winter_seminar_2026_en_view
-      render export_dir, "en/news/new-beginners-cycle-2026.html", news_beginners_cycle_2026_en_view
 
       Success(root)
     end

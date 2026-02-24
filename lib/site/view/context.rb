@@ -183,6 +183,8 @@ module Site
           "Wabi-sabi — piękno niedoskonałości w treningu | Aktualności"
         when "aktualnosci/mushin-umysl-bez-umyslu.html"
           "Mushin — umysł bez umysłu w Aikido | Aktualności"
+        when "aktualnosci/sesshin-gleboka-praktyka.html"
+          "Sesshin — głęboka praktyka i tożsamość Sesshinkan Dojo | Aktualności"
         when "aktualnosci/zenshin-pelne-zaangazowanie.html"
           "Zenshin — pełne zaangażowanie w każdym ruchu | Aktualności"
         when "aktualnosci/omoiyari-uwazna-troska.html"
@@ -211,6 +213,8 @@ module Site
           "Wabi-sabi — beauty of imperfection in practice | News"
         when "en/news/mushin-no-mind.html"
           "Mushin — no-mind state in Aikido practice | News"
+        when "en/news/sesshin-deep-practice.html"
+          "Sesshin — deep practice and Sesshinkan Dojo identity | News"
         when "en/news/zenshin-full-commitment.html"
           "Zenshin — full commitment in every movement | News"
         when "en/news/omoiyari-considerate-compassion.html"
@@ -362,6 +366,8 @@ module Site
           "Wabi-sabi w Aikido: akceptacja niedoskonałości, praca nad detalem i dojrzewanie techniki przez regularny trening."
         when "aktualnosci/mushin-umysl-bez-umyslu.html"
           "Mushin w praktyce: jak budować swobodną, nieusztywnioną reakcję i utrzymywać klarowność działania w technice."
+        when "aktualnosci/sesshin-gleboka-praktyka.html"
+          "Sesshin jako głęboka praktyka Aikido: koncentracja, dyscyplina i standard pracy, który definiuje Sesshinkan Dojo."
         when "aktualnosci/zenshin-pelne-zaangazowanie.html"
           "Zenshin, czyli pełne zaangażowanie ciała i umysłu w ruchu, kontakt z partnerem i finalizację techniki."
         when "aktualnosci/omoiyari-uwazna-troska.html"
@@ -390,6 +396,8 @@ module Site
           "Wabi-sabi in Aikido practice: accepting imperfection while refining movement, timing, and technical clarity."
         when "en/news/mushin-no-mind.html"
           "Mushin in partner work: developing clear, unforced responses and preserving calm precision in motion."
+        when "en/news/sesshin-deep-practice.html"
+          "Sesshin as deep Aikido practice: concentration, discipline, and the training standard that defines Sesshinkan Dojo."
         when "en/news/zenshin-full-commitment.html"
           "Zenshin means full commitment: body-mind unity, intent continuity, and complete execution of technique."
         when "en/news/omoiyari-considerate-compassion.html"
@@ -521,6 +529,8 @@ module Site
           "wabi sabi aikido, piekno niedoskonalosci, pokora w treningu, proces doskonalenia"
         when "aktualnosci/mushin-umysl-bez-umyslu.html"
           "mushin aikido, umysl bez umyslu, reakcja spontaniczna, skupienie, zen w ruchu"
+        when "aktualnosci/sesshin-gleboka-praktyka.html"
+          "sesshin aikido, gleboka praktyka, intensywny trening, sesshinkan dojo, dyscyplina i skupienie"
         when "aktualnosci/zenshin-pelne-zaangazowanie.html"
           "zenshin aikido, pelne zaangazowanie, intencja ruchu, koncentracja, jakosc techniki"
         when "aktualnosci/omoiyari-uwazna-troska.html"
@@ -549,6 +559,8 @@ module Site
           "wabi sabi aikido, beauty of imperfection, humility, long-term training process"
         when "en/news/mushin-no-mind.html"
           "mushin aikido, no mind, spontaneous response, calm focus, zen in movement"
+        when "en/news/sesshin-deep-practice.html"
+          "sesshin aikido, deep practice, intensive training, sesshinkan dojo, discipline and focus"
         when "en/news/zenshin-full-commitment.html"
           "zenshin aikido, full commitment, intent continuity, concentration, execution quality"
         when "en/news/omoiyari-considerate-compassion.html"
@@ -617,6 +629,7 @@ module Site
         "aktualnosci/kintsugi-zlota-naprawa.html" => "en/news/kintsugi-golden-repair.html",
         "aktualnosci/wabi-sabi-piekno-niedoskonalosci.html" => "en/news/wabi-sabi-beauty-of-imperfection.html",
         "aktualnosci/mushin-umysl-bez-umyslu.html" => "en/news/mushin-no-mind.html",
+        "aktualnosci/sesshin-gleboka-praktyka.html" => "en/news/sesshin-deep-practice.html",
         "aktualnosci/zenshin-pelne-zaangazowanie.html" => "en/news/zenshin-full-commitment.html",
         "aktualnosci/omoiyari-uwazna-troska.html" => "en/news/omoiyari-considerate-compassion.html",
         "aktualnosci/jiko-sekinin-odpowiedzialnosc-osobista.html" => "en/news/jiko-sekinin-personal-responsibility.html",
@@ -658,6 +671,7 @@ module Site
         "en/news/kintsugi-golden-repair.html" => "aktualnosci/kintsugi-zlota-naprawa.html",
         "en/news/wabi-sabi-beauty-of-imperfection.html" => "aktualnosci/wabi-sabi-piekno-niedoskonalosci.html",
         "en/news/mushin-no-mind.html" => "aktualnosci/mushin-umysl-bez-umyslu.html",
+        "en/news/sesshin-deep-practice.html" => "aktualnosci/sesshin-gleboka-praktyka.html",
         "en/news/zenshin-full-commitment.html" => "aktualnosci/zenshin-pelne-zaangazowanie.html",
         "en/news/omoiyari-considerate-compassion.html" => "aktualnosci/omoiyari-uwazna-troska.html",
         "en/news/jiko-sekinin-personal-responsibility.html" => "aktualnosci/jiko-sekinin-odpowiedzialnosc-osobista.html",

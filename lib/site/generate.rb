@@ -70,6 +70,7 @@ module Site
       news_kintsugi_view: "views.news.kintsugi",
       news_wabi_sabi_view: "views.news.wabi_sabi",
       news_mushin_view: "views.news.mushin",
+      news_sesshin_view: "views.news.sesshin",
       news_zenshin_view: "views.news.zenshin",
       news_omoiyari_view: "views.news.omoiyari",
       news_jiko_sekinin_view: "views.news.jiko_sekinin",
@@ -80,6 +81,7 @@ module Site
       news_kintsugi_en_view: "views.en.news.kintsugi",
       news_wabi_sabi_en_view: "views.en.news.wabi_sabi",
       news_mushin_en_view: "views.en.news.mushin",
+      news_sesshin_en_view: "views.en.news.sesshin",
       news_zenshin_en_view: "views.en.news.zenshin",
       news_omoiyari_en_view: "views.en.news.omoiyari",
       news_jiko_sekinin_en_view: "views.en.news.jiko_sekinin",
@@ -160,6 +162,7 @@ module Site
       render export_dir, "aktualnosci/kintsugi-zlota-naprawa.html", news_kintsugi_view
       render export_dir, "aktualnosci/wabi-sabi-piekno-niedoskonalosci.html", news_wabi_sabi_view
       render export_dir, "aktualnosci/mushin-umysl-bez-umyslu.html", news_mushin_view
+      render export_dir, "aktualnosci/sesshin-gleboka-praktyka.html", news_sesshin_view
       render export_dir, "aktualnosci/zenshin-pelne-zaangazowanie.html", news_zenshin_view
       render export_dir, "aktualnosci/omoiyari-uwazna-troska.html", news_omoiyari_view
       render export_dir, "aktualnosci/jiko-sekinin-odpowiedzialnosc-osobista.html", news_jiko_sekinin_view
@@ -170,6 +173,7 @@ module Site
       render export_dir, "en/news/kintsugi-golden-repair.html", news_kintsugi_en_view
       render export_dir, "en/news/wabi-sabi-beauty-of-imperfection.html", news_wabi_sabi_en_view
       render export_dir, "en/news/mushin-no-mind.html", news_mushin_en_view
+      render export_dir, "en/news/sesshin-deep-practice.html", news_sesshin_en_view
       render export_dir, "en/news/zenshin-full-commitment.html", news_zenshin_en_view
       render export_dir, "en/news/omoiyari-considerate-compassion.html", news_omoiyari_en_view
       render export_dir, "en/news/jiko-sekinin-personal-responsibility.html", news_jiko_sekinin_en_view

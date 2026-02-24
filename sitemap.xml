@@ -304,13 +304,13 @@
     <loc>https://aikido-polska.eu/aktualnosci.html</loc>
     <priority>0.8</priority>
     <changefreq>weekly</changefreq>
-    <lastmod>2026-02-23</lastmod>
+    <lastmod>2026-02-24</lastmod>
   </url>
   <url>
     <loc>https://aikido-polska.eu/en/news.html</loc>
     <priority>0.8</priority>
     <changefreq>weekly</changefreq>
-    <lastmod>2026-02-23</lastmod>
+    <lastmod>2026-02-24</lastmod>
   </url>
   <url>
     <loc>https://aikido-polska.eu/aktualnosci/bushido-droga-wojownika.html</loc>
@@ -383,6 +383,18 @@
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
     <lastmod>2026-02-23</lastmod>
+  </url>
+  <url>
+    <loc>https://aikido-polska.eu/aktualnosci/sesshin-gleboka-praktyka.html</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-02-24</lastmod>
+  </url>
+  <url>
+    <loc>https://aikido-polska.eu/en/news/sesshin-deep-practice.html</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-02-24</lastmod>
   </url>
   <url>
     <loc>https://aikido-polska.eu/aktualnosci/zenshin-pelne-zaangazowanie.html</loc>

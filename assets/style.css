@@ -700,6 +700,7 @@ dd {
 .pagination {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
   flex-wrap: wrap;
   margin-top: 1.5rem;
@@ -713,17 +714,26 @@ dd {
   color: #333;
   background: #fff;
   font-weight: 600;
+  box-shadow: none;
 }
 
 .pagination-link:hover {
   border-color: #cd3333;
   color: #cd3333;
+  box-shadow: none;
 }
 
 .pagination-link.is-active {
   border-color: #cd3333;
   background: #cd3333;
   color: #fff;
+  box-shadow: none;
+}
+
+@media (max-width: 640px) {
+  .pagination {
+    row-gap: 0.8rem;
+  }
 }
 
 .concept-hero {

@@ -169,66 +169,70 @@ module Site
           "Aikido Gdynia | Sesshinkan Dojo | Tri-City Training"
         when "en/yudansha.html"
           "Yudansha | POA Black Belts | Aikido Instructors"
-        when "aktualnosci.html"
-          "Aktualności i Blog | Polska Organizacja Aikido"
-        when "aktualnosci/bushido-droga-wojownika.html"
-          "Bushido — droga wojownika w praktyce dojo | Aktualności"
-        when "aktualnosci/kaizen-ciagle-doskonalenie.html"
-          "Kaizen — ciągłe doskonalenie w Aikido | Aktualności"
-        when "aktualnosci/gaman-wytrwalosc.html"
-          "Gaman — wytrwałość i opanowanie na macie | Aktualności"
-        when "aktualnosci/kintsugi-zlota-naprawa.html"
-          "Kintsugi — złota naprawa i odporność psychiczna | Aktualności"
-        when "aktualnosci/wabi-sabi-piekno-niedoskonalosci.html"
-          "Wabi-sabi — piękno niedoskonałości w treningu | Aktualności"
-        when "aktualnosci/mushin-umysl-bez-umyslu.html"
-          "Mushin — umysł bez umysłu w Aikido | Aktualności"
-        when "aktualnosci/sesshin-gleboka-praktyka.html"
-          "Sesshin — głęboka praktyka i tożsamość Sesshinkan Dojo | Aktualności"
-        when "aktualnosci/zenshin-pelne-zaangazowanie.html"
-          "Zenshin — pełne zaangażowanie w każdym ruchu | Aktualności"
-        when "aktualnosci/omoiyari-uwazna-troska.html"
-          "Omoiyari — uważna troska i odpowiedzialny partnering | Aktualności"
-        when "aktualnosci/jiko-sekinin-odpowiedzialnosc-osobista.html"
-          "Jiko sekinin — odpowiedzialność osobista w dojo | Aktualności"
-        when "aktualnosci/kuzushi-kontrolowana-nierownowaga.html"
-          "Kuzushi — kontrolowana nierównowaga i prowadzenie techniki | Aktualności"
-        when "aktualnosci/open-mata-luty-2026.html"
-          "Open Mata POA — luty 2026 | Aktualności"
-        when "aktualnosci/zimowy-staz-2026.html"
-          "Zimowy staż techniczny 2026 — podsumowanie | Aktualności"
-        when "aktualnosci/nowy-cykl-dla-poczatkujacych.html"
-          "Nowy cykl dla początkujących — marzec 2026 | Aktualności"
-        when "en/news.html"
-          "News & Blog | Polish Aikido Organization"
-        when "en/news/bushido-way-of-the-warrior.html"
-          "Bushido — the warrior's way in dojo practice | News"
-        when "en/news/kaizen-continuous-improvement.html"
-          "Kaizen — continuous improvement in Aikido training | News"
-        when "en/news/gaman-endurance-and-composure.html"
-          "Gaman — endurance and composure on the mat | News"
-        when "en/news/kintsugi-golden-repair.html"
-          "Kintsugi — golden repair and resilient mindset | News"
-        when "en/news/wabi-sabi-beauty-of-imperfection.html"
-          "Wabi-sabi — beauty of imperfection in practice | News"
-        when "en/news/mushin-no-mind.html"
-          "Mushin — no-mind state in Aikido practice | News"
-        when "en/news/sesshin-deep-practice.html"
-          "Sesshin — deep practice and Sesshinkan Dojo identity | News"
-        when "en/news/zenshin-full-commitment.html"
-          "Zenshin — full commitment in every movement | News"
-        when "en/news/omoiyari-considerate-compassion.html"
-          "Omoiyari — considerate compassion in partner work | News"
-        when "en/news/jiko-sekinin-personal-responsibility.html"
-          "Jiko sekinin — personal responsibility in the dojo | News"
-        when "en/news/kuzushi-controlled-imbalance.html"
-          "Kuzushi — controlled imbalance and technical guidance | News"
-        when "en/news/open-mat-feb-2026.html"
-          "POA Open Mat — February 2026 | News"
-        when "en/news/winter-seminar-2026.html"
-          "Winter Technical Seminar 2026 — recap | News"
-        when "en/news/new-beginners-cycle-2026.html"
-          "New beginners cycle — March 2026 | News"
+        when "blog.html"
+          "Blog | Polska Organizacja Aikido"
+        when "blog-2.html"
+          "Blog — strona 2 | Polska Organizacja Aikido"
+        when "blog/bushido-droga-wojownika.html"
+          "Bushido — droga wojownika w praktyce dojo | Blog"
+        when "blog/kaizen-ciagle-doskonalenie.html"
+          "Kaizen — ciągłe doskonalenie w Aikido | Blog"
+        when "blog/gaman-wytrwalosc.html"
+          "Gaman — wytrwałość i opanowanie na macie | Blog"
+        when "blog/kintsugi-zlota-naprawa.html"
+          "Kintsugi — złota naprawa i odporność psychiczna | Blog"
+        when "blog/wabi-sabi-piekno-niedoskonalosci.html"
+          "Wabi-sabi — piękno niedoskonałości w treningu | Blog"
+        when "blog/mushin-umysl-bez-umyslu.html"
+          "Mushin — umysł bez umysłu w Aikido | Blog"
+        when "blog/sesshin-gleboka-praktyka.html"
+          "Sesshin — głęboka praktyka i tożsamość Sesshinkan Dojo | Blog"
+        when "blog/zenshin-pelne-zaangazowanie.html"
+          "Zenshin — pełne zaangażowanie w każdym ruchu | Blog"
+        when "blog/omoiyari-uwazna-troska.html"
+          "Omoiyari — uważna troska i odpowiedzialny partnering | Blog"
+        when "blog/jiko-sekinin-odpowiedzialnosc-osobista.html"
+          "Jiko sekinin — odpowiedzialność osobista w dojo | Blog"
+        when "blog/kuzushi-kontrolowana-nierownowaga.html"
+          "Kuzushi — kontrolowana nierównowaga i prowadzenie techniki | Blog"
+        when "blog/open-mata-luty-2026.html"
+          "Open Mata POA — luty 2026 | Blog"
+        when "blog/zimowy-staz-2026.html"
+          "Zimowy staż techniczny 2026 — podsumowanie | Blog"
+        when "blog/nowy-cykl-dla-poczatkujacych.html"
+          "Nowy cykl dla początkujących — marzec 2026 | Blog"
+        when "en/blog.html"
+          "Blog | Polish Aikido Organization"
+        when "en/blog-2.html"
+          "Blog — page 2 | Polish Aikido Organization"
+        when "en/blog/bushido-way-of-the-warrior.html"
+          "Bushido — the warrior's way in dojo practice | Blog"
+        when "en/blog/kaizen-continuous-improvement.html"
+          "Kaizen — continuous improvement in Aikido training | Blog"
+        when "en/blog/gaman-endurance-and-composure.html"
+          "Gaman — endurance and composure on the mat | Blog"
+        when "en/blog/kintsugi-golden-repair.html"
+          "Kintsugi — golden repair and resilient mindset | Blog"
+        when "en/blog/wabi-sabi-beauty-of-imperfection.html"
+          "Wabi-sabi — beauty of imperfection in practice | Blog"
+        when "en/blog/mushin-no-mind.html"
+          "Mushin — no-mind state in Aikido practice | Blog"
+        when "en/blog/sesshin-deep-practice.html"
+          "Sesshin — deep practice and Sesshinkan Dojo identity | Blog"
+        when "en/blog/zenshin-full-commitment.html"
+          "Zenshin — full commitment in every movement | Blog"
+        when "en/blog/omoiyari-considerate-compassion.html"
+          "Omoiyari — considerate compassion in partner work | Blog"
+        when "en/blog/jiko-sekinin-personal-responsibility.html"
+          "Jiko sekinin — personal responsibility in the dojo | Blog"
+        when "en/blog/kuzushi-controlled-imbalance.html"
+          "Kuzushi — controlled imbalance and technical guidance | Blog"
+        when "en/blog/open-mat-feb-2026.html"
+          "POA Open Mat — February 2026 | Blog"
+        when "en/blog/winter-seminar-2026.html"
+          "Winter Technical Seminar 2026 — recap | Blog"
+        when "en/blog/new-beginners-cycle-2026.html"
+          "New beginners cycle — March 2026 | Blog"
         else
           site_name
         end
@@ -352,65 +356,69 @@ module Site
           "Lista 24 czarnych pasów (yudansha) Polskiej Organizacji Aikido - instruktorzy z rangą od Shodan (1 Dan) do Godan (5 Dan). Wszyscy wyegzaminowani w linii Shihan Fumio Toyoda."
         when "en/yudansha.html"
           "List of 24 black belts (yudansha) from Polish Aikido Organization - instructors ranked from Shodan (1st Dan) to Godan (5th Dan). All examined in Shihan Fumio Toyoda's lineage."
-        when "aktualnosci.html"
-          "Aktualności i blog POA: relacje ze staży, komunikaty dojo, zapowiedzi wydarzeń i informacje dla ćwiczących Aikido."
-        when "aktualnosci/bushido-droga-wojownika.html"
+        when "blog.html"
+          "Blog POA: relacje ze staży, komunikaty dojo, zapowiedzi wydarzeń i informacje dla ćwiczących Aikido."
+        when "blog-2.html"
+          "Blog POA — starsze wpisy: archiwalne artykuły, relacje i komentarze treningowe."
+        when "blog/bushido-droga-wojownika.html"
           "Bushido w praktyce Aikido: dyscyplina, odpowiedzialność i etyka pracy w dojo, które budują trwałe umiejętności."
-        when "aktualnosci/kaizen-ciagle-doskonalenie.html"
+        when "blog/kaizen-ciagle-doskonalenie.html"
           "Kaizen w treningu Aikido: małe, konsekwentne kroki, które przekładają się na realny postęp techniczny i mentalny."
-        when "aktualnosci/gaman-wytrwalosc.html"
+        when "blog/gaman-wytrwalosc.html"
           "Gaman jako fundament praktyki: wytrwałość, opanowanie i jakość decyzji pod presją na macie i poza nią."
-        when "aktualnosci/kintsugi-zlota-naprawa.html"
+        when "blog/kintsugi-zlota-naprawa.html"
           "Kintsugi jako metafora rozwoju aikidoki: jak błędy, korekta i konsekwencja wzmacniają technikę oraz charakter."
-        when "aktualnosci/wabi-sabi-piekno-niedoskonalosci.html"
+        when "blog/wabi-sabi-piekno-niedoskonalosci.html"
           "Wabi-sabi w Aikido: akceptacja niedoskonałości, praca nad detalem i dojrzewanie techniki przez regularny trening."
-        when "aktualnosci/mushin-umysl-bez-umyslu.html"
+        when "blog/mushin-umysl-bez-umyslu.html"
           "Mushin w praktyce: jak budować swobodną, nieusztywnioną reakcję i utrzymywać klarowność działania w technice."
-        when "aktualnosci/sesshin-gleboka-praktyka.html"
+        when "blog/sesshin-gleboka-praktyka.html"
           "Sesshin jako głęboka praktyka Aikido: koncentracja, dyscyplina i standard pracy, który definiuje Sesshinkan Dojo."
-        when "aktualnosci/zenshin-pelne-zaangazowanie.html"
+        when "blog/zenshin-pelne-zaangazowanie.html"
           "Zenshin, czyli pełne zaangażowanie ciała i umysłu w ruchu, kontakt z partnerem i finalizację techniki."
-        when "aktualnosci/omoiyari-uwazna-troska.html"
+        when "blog/omoiyari-uwazna-troska.html"
           "Omoiyari w dojo: uważna troska o partnera, bezpieczeństwo treningu i wysoka kultura współpracy na macie."
-        when "aktualnosci/jiko-sekinin-odpowiedzialnosc-osobista.html"
+        when "blog/jiko-sekinin-odpowiedzialnosc-osobista.html"
           "Jiko sekinin w Aikido: odpowiedzialność za własny rozwój, przygotowanie, higienę techniki i postawę na treningu."
-        when "aktualnosci/kuzushi-kontrolowana-nierownowaga.html"
+        when "blog/kuzushi-kontrolowana-nierownowaga.html"
           "Kuzushi od podstaw do zastosowania: kontrolowana nierównowaga, timing i kierunek, które otwierają skuteczną technikę."
-        when "aktualnosci/open-mata-luty-2026.html"
+        when "blog/open-mata-luty-2026.html"
           "Relacja z Open Maty POA w lutym 2026: zakres treningu, główne akcenty i plan dalszej pracy."
-        when "aktualnosci/zimowy-staz-2026.html"
+        when "blog/zimowy-staz-2026.html"
           "Podsumowanie zimowego stażu technicznego 2026 w POA: centrum, balans, timing i kontrola kierunku techniki."
-        when "aktualnosci/nowy-cykl-dla-poczatkujacych.html"
+        when "blog/nowy-cykl-dla-poczatkujacych.html"
           "Informacja o nowym cyklu dla początkujących w marcu 2026. Start bezpieczny, systematyczny i nastawiony na fundamenty."
-        when "en/news.html"
-          "POA news and blog: seminar recaps, dojo updates, event announcements, and practical notes for Aikido practitioners."
-        when "en/news/bushido-way-of-the-warrior.html"
+        when "en/blog.html"
+          "POA blog: seminar recaps, dojo updates, event announcements, and practical notes for Aikido practitioners."
+        when "en/blog-2.html"
+          "POA blog — older posts: archived articles, recaps, and practical dojo notes."
+        when "en/blog/bushido-way-of-the-warrior.html"
           "Bushido in practical Aikido training: discipline, accountability, and dojo ethics that shape durable martial skills."
-        when "en/news/kaizen-continuous-improvement.html"
+        when "en/blog/kaizen-continuous-improvement.html"
           "Kaizen applied to Aikido: steady incremental improvement that compounds into reliable technical and mental progress."
-        when "en/news/gaman-endurance-and-composure.html"
+        when "en/blog/gaman-endurance-and-composure.html"
           "Gaman as a training principle: endurance, composure, and quality decision-making under pressure on the mat."
-        when "en/news/kintsugi-golden-repair.html"
+        when "en/blog/kintsugi-golden-repair.html"
           "Kintsugi as a growth model in Aikido: learning from mistakes, repairing structure, and building resilient performance."
-        when "en/news/wabi-sabi-beauty-of-imperfection.html"
+        when "en/blog/wabi-sabi-beauty-of-imperfection.html"
           "Wabi-sabi in Aikido practice: accepting imperfection while refining movement, timing, and technical clarity."
-        when "en/news/mushin-no-mind.html"
+        when "en/blog/mushin-no-mind.html"
           "Mushin in partner work: developing clear, unforced responses and preserving calm precision in motion."
-        when "en/news/sesshin-deep-practice.html"
+        when "en/blog/sesshin-deep-practice.html"
           "Sesshin as deep Aikido practice: concentration, discipline, and the training standard that defines Sesshinkan Dojo."
-        when "en/news/zenshin-full-commitment.html"
+        when "en/blog/zenshin-full-commitment.html"
           "Zenshin means full commitment: body-mind unity, intent continuity, and complete execution of technique."
-        when "en/news/omoiyari-considerate-compassion.html"
+        when "en/blog/omoiyari-considerate-compassion.html"
           "Omoiyari in the dojo: considerate compassion, partner safety, and responsible intensity in everyday training."
-        when "en/news/jiko-sekinin-personal-responsibility.html"
+        when "en/blog/jiko-sekinin-personal-responsibility.html"
           "Jiko sekinin in Aikido: personal responsibility for preparation, attitude, and the quality of each repetition."
-        when "en/news/kuzushi-controlled-imbalance.html"
+        when "en/blog/kuzushi-controlled-imbalance.html"
           "Kuzushi explained through practice: controlled imbalance, timing, and direction to unlock effective technique."
-        when "en/news/open-mat-feb-2026.html"
+        when "en/blog/open-mat-feb-2026.html"
           "Recap of the POA Open Mat in February 2026: session scope, key focus points, and next steps."
-        when "en/news/winter-seminar-2026.html"
+        when "en/blog/winter-seminar-2026.html"
           "Winter Technical Seminar 2026 recap: center stability, timing, and precision in partner guidance."
-        when "en/news/new-beginners-cycle-2026.html"
+        when "en/blog/new-beginners-cycle-2026.html"
           "Announcement of the new beginners cycle starting in March 2026, focused on safe and durable fundamentals."
         else
           page_title
@@ -515,65 +523,69 @@ module Site
           "yudansha, czarne pasy POA, Aikido instruktorzy, Shodan, Nidan, Sandan, Yondan, Godan, Dan Aikido, instruktorzy Aikido Polska, stopnie mistrzowskie, Jacek Ostrowski, Oskar Szrajer, Wojciech Korwin-Piotrowski"
         when "en/yudansha.html"
           "yudansha, POA black belts, Aikido instructors, Shodan, Nidan, Sandan, Yondan, Godan, Dan ranks, Aikido instructors Poland, black belt instructors, Jacek Ostrowski, Oskar Szrajer, Wojciech Korwin-Piotrowski"
-        when "aktualnosci.html"
-          "aktualnosci aikido, blog aikido, poa news, seminaria aikido, dojo komunikaty, sesshinkan gdynia"
-        when "aktualnosci/bushido-droga-wojownika.html"
+        when "blog.html"
+          "blog aikido, poa blog, seminaria aikido, dojo komunikaty, sesshinkan gdynia"
+        when "blog-2.html"
+          "blog aikido archiwum, starsze wpisy poa, artykuly dojo, aikido gdynia"
+        when "blog/bushido-droga-wojownika.html"
           "bushido aikido, droga wojownika, etyka dojo, dyscyplina treningowa, zasady budo"
-        when "aktualnosci/kaizen-ciagle-doskonalenie.html"
+        when "blog/kaizen-ciagle-doskonalenie.html"
           "kaizen aikido, ciagle doskonalenie, nawyki treningowe, postep techniczny, rozwoj dojo"
-        when "aktualnosci/gaman-wytrwalosc.html"
+        when "blog/gaman-wytrwalosc.html"
           "gaman aikido, wytrwalosc, opanowanie, odpornosc psychiczna, trening pod presja"
-        when "aktualnosci/kintsugi-zlota-naprawa.html"
+        when "blog/kintsugi-zlota-naprawa.html"
           "kintsugi aikido, zlota naprawa, praca z bledem, odpornosc, rozwoj osobisty"
-        when "aktualnosci/wabi-sabi-piekno-niedoskonalosci.html"
+        when "blog/wabi-sabi-piekno-niedoskonalosci.html"
           "wabi sabi aikido, piekno niedoskonalosci, pokora w treningu, proces doskonalenia"
-        when "aktualnosci/mushin-umysl-bez-umyslu.html"
+        when "blog/mushin-umysl-bez-umyslu.html"
           "mushin aikido, umysl bez umyslu, reakcja spontaniczna, skupienie, zen w ruchu"
-        when "aktualnosci/sesshin-gleboka-praktyka.html"
+        when "blog/sesshin-gleboka-praktyka.html"
           "sesshin aikido, gleboka praktyka, intensywny trening, sesshinkan dojo, dyscyplina i skupienie"
-        when "aktualnosci/zenshin-pelne-zaangazowanie.html"
+        when "blog/zenshin-pelne-zaangazowanie.html"
           "zenshin aikido, pelne zaangazowanie, intencja ruchu, koncentracja, jakosc techniki"
-        when "aktualnosci/omoiyari-uwazna-troska.html"
+        when "blog/omoiyari-uwazna-troska.html"
           "omoiyari aikido, uwazna troska, partnering, bezpieczenstwo na macie, kultura dojo"
-        when "aktualnosci/jiko-sekinin-odpowiedzialnosc-osobista.html"
+        when "blog/jiko-sekinin-odpowiedzialnosc-osobista.html"
           "jiko sekinin aikido, odpowiedzialnosc osobista, samodyscyplina, etyka treningu"
-        when "aktualnosci/kuzushi-kontrolowana-nierownowaga.html"
+        when "blog/kuzushi-kontrolowana-nierownowaga.html"
           "kuzushi aikido, kontrolowana nierownowaga, balans, timing, prowadzenie partnera"
-        when "aktualnosci/open-mata-luty-2026.html"
+        when "blog/open-mata-luty-2026.html"
           "open mata poa, trening przekrojowy aikido, ukemi, randori zadaniowe, aikido gdynia"
-        when "aktualnosci/zimowy-staz-2026.html"
+        when "blog/zimowy-staz-2026.html"
           "zimowy staz aikido 2026, podsumowanie seminarium, timing, centrum, poa"
-        when "aktualnosci/nowy-cykl-dla-poczatkujacych.html"
+        when "blog/nowy-cykl-dla-poczatkujacych.html"
           "aikido dla poczatkujacych gdynia, nowy cykl aikido, trening startowy, poa"
-        when "en/news.html"
-          "aikido news, aikido blog, poa updates, dojo announcements, seminar recap, sesshinkan"
-        when "en/news/bushido-way-of-the-warrior.html"
+        when "en/blog.html"
+          "aikido blog, poa updates, dojo announcements, seminar recap, sesshinkan"
+        when "en/blog-2.html"
+          "aikido blog archive, older posts, dojo articles, poa updates"
+        when "en/blog/bushido-way-of-the-warrior.html"
           "bushido aikido, warrior way, dojo ethics, training discipline, budo principles"
-        when "en/news/kaizen-continuous-improvement.html"
+        when "en/blog/kaizen-continuous-improvement.html"
           "kaizen aikido, continuous improvement, training habits, technical progression, dojo growth"
-        when "en/news/gaman-endurance-and-composure.html"
+        when "en/blog/gaman-endurance-and-composure.html"
           "gaman aikido, endurance, composure, resilience, pressure training"
-        when "en/news/kintsugi-golden-repair.html"
+        when "en/blog/kintsugi-golden-repair.html"
           "kintsugi aikido, golden repair, learning from mistakes, resilience, mindset"
-        when "en/news/wabi-sabi-beauty-of-imperfection.html"
+        when "en/blog/wabi-sabi-beauty-of-imperfection.html"
           "wabi sabi aikido, beauty of imperfection, humility, long-term training process"
-        when "en/news/mushin-no-mind.html"
+        when "en/blog/mushin-no-mind.html"
           "mushin aikido, no mind, spontaneous response, calm focus, zen in movement"
-        when "en/news/sesshin-deep-practice.html"
+        when "en/blog/sesshin-deep-practice.html"
           "sesshin aikido, deep practice, intensive training, sesshinkan dojo, discipline and focus"
-        when "en/news/zenshin-full-commitment.html"
+        when "en/blog/zenshin-full-commitment.html"
           "zenshin aikido, full commitment, intent continuity, concentration, execution quality"
-        when "en/news/omoiyari-considerate-compassion.html"
+        when "en/blog/omoiyari-considerate-compassion.html"
           "omoiyari aikido, considerate compassion, partner safety, cooperative training, dojo culture"
-        when "en/news/jiko-sekinin-personal-responsibility.html"
+        when "en/blog/jiko-sekinin-personal-responsibility.html"
           "jiko sekinin aikido, personal responsibility, self-discipline, training ethics"
-        when "en/news/kuzushi-controlled-imbalance.html"
+        when "en/blog/kuzushi-controlled-imbalance.html"
           "kuzushi aikido, controlled imbalance, timing, direction, partner guidance"
-        when "en/news/open-mat-feb-2026.html"
+        when "en/blog/open-mat-feb-2026.html"
           "open mat poa, cross-level aikido training, ukemi progression, task-based randori"
-        when "en/news/winter-seminar-2026.html"
+        when "en/blog/winter-seminar-2026.html"
           "winter aikido seminar 2026, technical recap, center stability, timing, poa"
-        when "en/news/new-beginners-cycle-2026.html"
+        when "en/blog/new-beginners-cycle-2026.html"
           "aikido beginners cycle, beginners class gdynia, safe aikido start, poa"
         else
           "Aikido, POA, Polska Organizacja Aikido, Polish Aikido Organization, Toyoda, Germanov"
@@ -622,21 +634,22 @@ module Site
         "faq.html" => "en/faq.html",
         "gdynia.html" => "en/gdynia.html",
         "yudansha.html" => "en/yudansha.html",
-        "aktualnosci.html" => "en/news.html",
-        "aktualnosci/bushido-droga-wojownika.html" => "en/news/bushido-way-of-the-warrior.html",
-        "aktualnosci/kaizen-ciagle-doskonalenie.html" => "en/news/kaizen-continuous-improvement.html",
-        "aktualnosci/gaman-wytrwalosc.html" => "en/news/gaman-endurance-and-composure.html",
-        "aktualnosci/kintsugi-zlota-naprawa.html" => "en/news/kintsugi-golden-repair.html",
-        "aktualnosci/wabi-sabi-piekno-niedoskonalosci.html" => "en/news/wabi-sabi-beauty-of-imperfection.html",
-        "aktualnosci/mushin-umysl-bez-umyslu.html" => "en/news/mushin-no-mind.html",
-        "aktualnosci/sesshin-gleboka-praktyka.html" => "en/news/sesshin-deep-practice.html",
-        "aktualnosci/zenshin-pelne-zaangazowanie.html" => "en/news/zenshin-full-commitment.html",
-        "aktualnosci/omoiyari-uwazna-troska.html" => "en/news/omoiyari-considerate-compassion.html",
-        "aktualnosci/jiko-sekinin-odpowiedzialnosc-osobista.html" => "en/news/jiko-sekinin-personal-responsibility.html",
-        "aktualnosci/kuzushi-kontrolowana-nierownowaga.html" => "en/news/kuzushi-controlled-imbalance.html",
-        "aktualnosci/open-mata-luty-2026.html" => "en/news/open-mat-feb-2026.html",
-        "aktualnosci/zimowy-staz-2026.html" => "en/news/winter-seminar-2026.html",
-        "aktualnosci/nowy-cykl-dla-poczatkujacych.html" => "en/news/new-beginners-cycle-2026.html",
+        "blog.html" => "en/blog.html",
+        "blog-2.html" => "en/blog-2.html",
+        "blog/bushido-droga-wojownika.html" => "en/blog/bushido-way-of-the-warrior.html",
+        "blog/kaizen-ciagle-doskonalenie.html" => "en/blog/kaizen-continuous-improvement.html",
+        "blog/gaman-wytrwalosc.html" => "en/blog/gaman-endurance-and-composure.html",
+        "blog/kintsugi-zlota-naprawa.html" => "en/blog/kintsugi-golden-repair.html",
+        "blog/wabi-sabi-piekno-niedoskonalosci.html" => "en/blog/wabi-sabi-beauty-of-imperfection.html",
+        "blog/mushin-umysl-bez-umyslu.html" => "en/blog/mushin-no-mind.html",
+        "blog/sesshin-gleboka-praktyka.html" => "en/blog/sesshin-deep-practice.html",
+        "blog/zenshin-pelne-zaangazowanie.html" => "en/blog/zenshin-full-commitment.html",
+        "blog/omoiyari-uwazna-troska.html" => "en/blog/omoiyari-considerate-compassion.html",
+        "blog/jiko-sekinin-odpowiedzialnosc-osobista.html" => "en/blog/jiko-sekinin-personal-responsibility.html",
+        "blog/kuzushi-kontrolowana-nierownowaga.html" => "en/blog/kuzushi-controlled-imbalance.html",
+        "blog/open-mata-luty-2026.html" => "en/blog/open-mat-feb-2026.html",
+        "blog/zimowy-staz-2026.html" => "en/blog/winter-seminar-2026.html",
+        "blog/nowy-cykl-dla-poczatkujacych.html" => "en/blog/new-beginners-cycle-2026.html",
         "en/" => "",
         "en/index.html" => "",
         "en/contact.html" => "kontakt.html",
@@ -664,21 +677,22 @@ module Site
         "en/faq.html" => "faq.html",
         "en/gdynia.html" => "gdynia.html",
         "en/yudansha.html" => "yudansha.html",
-        "en/news.html" => "aktualnosci.html",
-        "en/news/bushido-way-of-the-warrior.html" => "aktualnosci/bushido-droga-wojownika.html",
-        "en/news/kaizen-continuous-improvement.html" => "aktualnosci/kaizen-ciagle-doskonalenie.html",
-        "en/news/gaman-endurance-and-composure.html" => "aktualnosci/gaman-wytrwalosc.html",
-        "en/news/kintsugi-golden-repair.html" => "aktualnosci/kintsugi-zlota-naprawa.html",
-        "en/news/wabi-sabi-beauty-of-imperfection.html" => "aktualnosci/wabi-sabi-piekno-niedoskonalosci.html",
-        "en/news/mushin-no-mind.html" => "aktualnosci/mushin-umysl-bez-umyslu.html",
-        "en/news/sesshin-deep-practice.html" => "aktualnosci/sesshin-gleboka-praktyka.html",
-        "en/news/zenshin-full-commitment.html" => "aktualnosci/zenshin-pelne-zaangazowanie.html",
-        "en/news/omoiyari-considerate-compassion.html" => "aktualnosci/omoiyari-uwazna-troska.html",
-        "en/news/jiko-sekinin-personal-responsibility.html" => "aktualnosci/jiko-sekinin-odpowiedzialnosc-osobista.html",
-        "en/news/kuzushi-controlled-imbalance.html" => "aktualnosci/kuzushi-kontrolowana-nierownowaga.html",
-        "en/news/open-mat-feb-2026.html" => "aktualnosci/open-mata-luty-2026.html",
-        "en/news/winter-seminar-2026.html" => "aktualnosci/zimowy-staz-2026.html",
-        "en/news/new-beginners-cycle-2026.html" => "aktualnosci/nowy-cykl-dla-poczatkujacych.html"
+        "en/blog.html" => "blog.html",
+        "en/blog-2.html" => "blog-2.html",
+        "en/blog/bushido-way-of-the-warrior.html" => "blog/bushido-droga-wojownika.html",
+        "en/blog/kaizen-continuous-improvement.html" => "blog/kaizen-ciagle-doskonalenie.html",
+        "en/blog/gaman-endurance-and-composure.html" => "blog/gaman-wytrwalosc.html",
+        "en/blog/kintsugi-golden-repair.html" => "blog/kintsugi-zlota-naprawa.html",
+        "en/blog/wabi-sabi-beauty-of-imperfection.html" => "blog/wabi-sabi-piekno-niedoskonalosci.html",
+        "en/blog/mushin-no-mind.html" => "blog/mushin-umysl-bez-umyslu.html",
+        "en/blog/sesshin-deep-practice.html" => "blog/sesshin-gleboka-praktyka.html",
+        "en/blog/zenshin-full-commitment.html" => "blog/zenshin-pelne-zaangazowanie.html",
+        "en/blog/omoiyari-considerate-compassion.html" => "blog/omoiyari-uwazna-troska.html",
+        "en/blog/jiko-sekinin-personal-responsibility.html" => "blog/jiko-sekinin-odpowiedzialnosc-osobista.html",
+        "en/blog/kuzushi-controlled-imbalance.html" => "blog/kuzushi-kontrolowana-nierownowaga.html",
+        "en/blog/open-mat-feb-2026.html" => "blog/open-mata-luty-2026.html",
+        "en/blog/winter-seminar-2026.html" => "blog/zimowy-staz-2026.html",
+        "en/blog/new-beginners-cycle-2026.html" => "blog/nowy-cykl-dla-poczatkujacych.html"
       }.freeze
 
       def current_lang

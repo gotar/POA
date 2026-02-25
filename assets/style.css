@@ -697,6 +697,35 @@ dd {
   text-decoration: underline;
 }
 
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+.pagination-link {
+  display: inline-block;
+  padding: 0.4rem 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  color: #333;
+  background: #fff;
+  font-weight: 600;
+}
+
+.pagination-link:hover {
+  border-color: #cd3333;
+  color: #cd3333;
+}
+
+.pagination-link.is-active {
+  border-color: #cd3333;
+  background: #cd3333;
+  color: #fff;
+}
+
 .concept-hero {
   border-radius: 12px;
   padding: 1.25rem 1.5rem;

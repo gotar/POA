@@ -301,145 +301,157 @@
     <lastmod>2026-01-30</lastmod>
   </url>
   <url>
-    <loc>https://aikido-polska.eu/aktualnosci.html</loc>
+    <loc>https://aikido-polska.eu/blog.html</loc>
     <priority>0.8</priority>
     <changefreq>weekly</changefreq>
     <lastmod>2026-02-24</lastmod>
   </url>
   <url>
-    <loc>https://aikido-polska.eu/en/news.html</loc>
+    <loc>https://aikido-polska.eu/en/blog.html</loc>
     <priority>0.8</priority>
     <changefreq>weekly</changefreq>
     <lastmod>2026-02-24</lastmod>
   </url>
   <url>
-    <loc>https://aikido-polska.eu/aktualnosci/bushido-droga-wojownika.html</loc>
+    <loc>https://aikido-polska.eu/blog-2.html</loc>
+    <priority>0.6</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-02-24</lastmod>
+  </url>
+  <url>
+    <loc>https://aikido-polska.eu/en/blog-2.html</loc>
+    <priority>0.6</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-02-24</lastmod>
+  </url>
+  <url>
+    <loc>https://aikido-polska.eu/blog/bushido-droga-wojownika.html</loc>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
     <lastmod>2026-02-23</lastmod>
   </url>
   <url>
-    <loc>https://aikido-polska.eu/en/news/bushido-way-of-the-warrior.html</loc>
+    <loc>https://aikido-polska.eu/en/blog/bushido-way-of-the-warrior.html</loc>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
     <lastmod>2026-02-23</lastmod>
   </url>
   <url>
-    <loc>https://aikido-polska.eu/aktualnosci/kaizen-ciagle-doskonalenie.html</loc>
+    <loc>https://aikido-polska.eu/blog/kaizen-ciagle-doskonalenie.html</loc>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
     <lastmod>2026-02-23</lastmod>
   </url>
   <url>
-    <loc>https://aikido-polska.eu/en/news/kaizen-continuous-improvement.html</loc>
+    <loc>https://aikido-polska.eu/en/blog/kaizen-continuous-improvement.html</loc>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
     <lastmod>2026-02-23</lastmod>
   </url>
   <url>
-    <loc>https://aikido-polska.eu/aktualnosci/gaman-wytrwalosc.html</loc>
+    <loc>https://aikido-polska.eu/blog/gaman-wytrwalosc.html</loc>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
     <lastmod>2026-02-23</lastmod>
   </url>
   <url>
-    <loc>https://aikido-polska.eu/en/news/gaman-endurance-and-composure.html</loc>
+    <loc>https://aikido-polska.eu/en/blog/gaman-endurance-and-composure.html</loc>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
     <lastmod>2026-02-23</lastmod>
   </url>
   <url>
-    <loc>https://aikido-polska.eu/aktualnosci/kintsugi-zlota-naprawa.html</loc>
+    <loc>https://aikido-polska.eu/blog/kintsugi-zlota-naprawa.html</loc>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
     <lastmod>2026-02-23</lastmod>
   </url>
   <url>
-    <loc>https://aikido-polska.eu/en/news/kintsugi-golden-repair.html</loc>
+    <loc>https://aikido-polska.eu/en/blog/kintsugi-golden-repair.html</loc>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
     <lastmod>2026-02-23</lastmod>
   </url>
   <url>
-    <loc>https://aikido-polska.eu/aktualnosci/wabi-sabi-piekno-niedoskonalosci.html</loc>
+    <loc>https://aikido-polska.eu/blog/wabi-sabi-piekno-niedoskonalosci.html</loc>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
     <lastmod>2026-02-23</lastmod>
   </url>
   <url>
-    <loc>https://aikido-polska.eu/en/news/wabi-sabi-beauty-of-imperfection.html</loc>
+    <loc>https://aikido-polska.eu/en/blog/wabi-sabi-beauty-of-imperfection.html</loc>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
     <lastmod>2026-02-23</lastmod>
   </url>
   <url>
-    <loc>https://aikido-polska.eu/aktualnosci/mushin-umysl-bez-umyslu.html</loc>
+    <loc>https://aikido-polska.eu/blog/mushin-umysl-bez-umyslu.html</loc>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
     <lastmod>2026-02-23</lastmod>
   </url>
   <url>
-    <loc>https://aikido-polska.eu/en/news/mushin-no-mind.html</loc>
+    <loc>https://aikido-polska.eu/en/blog/mushin-no-mind.html</loc>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
     <lastmod>2026-02-23</lastmod>
   </url>
   <url>
-    <loc>https://aikido-polska.eu/aktualnosci/sesshin-gleboka-praktyka.html</loc>
+    <loc>https://aikido-polska.eu/blog/sesshin-gleboka-praktyka.html</loc>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
     <lastmod>2026-02-24</lastmod>
   </url>
   <url>
-    <loc>https://aikido-polska.eu/en/news/sesshin-deep-practice.html</loc>
+    <loc>https://aikido-polska.eu/en/blog/sesshin-deep-practice.html</loc>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
     <lastmod>2026-02-24</lastmod>
   </url>
   <url>
-    <loc>https://aikido-polska.eu/aktualnosci/zenshin-pelne-zaangazowanie.html</loc>
+    <loc>https://aikido-polska.eu/blog/zenshin-pelne-zaangazowanie.html</loc>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
     <lastmod>2026-02-23</lastmod>
   </url>
   <url>
-    <loc>https://aikido-polska.eu/en/news/zenshin-full-commitment.html</loc>
+    <loc>https://aikido-polska.eu/en/blog/zenshin-full-commitment.html</loc>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
     <lastmod>2026-02-23</lastmod>
   </url>
   <url>
-    <loc>https://aikido-polska.eu/aktualnosci/omoiyari-uwazna-troska.html</loc>
+    <loc>https://aikido-polska.eu/blog/omoiyari-uwazna-troska.html</loc>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
     <lastmod>2026-02-23</lastmod>
   </url>
   <url>
-    <loc>https://aikido-polska.eu/en/news/omoiyari-considerate-compassion.html</loc>
+    <loc>https://aikido-polska.eu/en/blog/omoiyari-considerate-compassion.html</loc>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
     <lastmod>2026-02-23</lastmod>
   </url>
   <url>
-    <loc>https://aikido-polska.eu/aktualnosci/jiko-sekinin-odpowiedzialnosc-osobista.html</loc>
+    <loc>https://aikido-polska.eu/blog/jiko-sekinin-odpowiedzialnosc-osobista.html</loc>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
     <lastmod>2026-02-23</lastmod>
   </url>
   <url>
-    <loc>https://aikido-polska.eu/en/news/jiko-sekinin-personal-responsibility.html</loc>
+    <loc>https://aikido-polska.eu/en/blog/jiko-sekinin-personal-responsibility.html</loc>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
     <lastmod>2026-02-23</lastmod>
   </url>
   <url>
-    <loc>https://aikido-polska.eu/aktualnosci/kuzushi-kontrolowana-nierownowaga.html</loc>
+    <loc>https://aikido-polska.eu/blog/kuzushi-kontrolowana-nierownowaga.html</loc>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
     <lastmod>2026-02-23</lastmod>
   </url>
   <url>
-    <loc>https://aikido-polska.eu/en/news/kuzushi-controlled-imbalance.html</loc>
+    <loc>https://aikido-polska.eu/en/blog/kuzushi-controlled-imbalance.html</loc>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
     <lastmod>2026-02-23</lastmod>

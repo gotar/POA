@@ -189,6 +189,8 @@ module Site
           "Sesshin — głęboka praktyka i tożsamość Sesshinkan Dojo | Blog"
         when "blog/zenshin-pelne-zaangazowanie.html"
           "Zenshin — pełne zaangażowanie w każdym ruchu | Blog"
+        when "blog/zanshin-czujnosc-po-technice.html"
+          "Zanshin — czujność po technice i domknięcie działania | Blog"
         when "blog/omoiyari-uwazna-troska.html"
           "Omoiyari — uważna troska i odpowiedzialny partnering | Blog"
         when "blog/jiko-sekinin-odpowiedzialnosc-osobista.html"
@@ -221,6 +223,8 @@ module Site
           "Sesshin — deep practice and Sesshinkan Dojo identity | Blog"
         when "en/blog/zenshin-full-commitment.html"
           "Zenshin — full commitment in every movement | Blog"
+        when "en/blog/zanshin-awareness-after-execution.html"
+          "Zanshin — awareness after execution and process closure | Blog"
         when "en/blog/omoiyari-considerate-compassion.html"
           "Omoiyari — considerate compassion in partner work | Blog"
         when "en/blog/jiko-sekinin-personal-responsibility.html"
@@ -376,6 +380,8 @@ module Site
           "Sesshin jako głęboka praktyka Aikido: koncentracja, dyscyplina i standard pracy, który definiuje Sesshinkan Dojo."
         when "blog/zenshin-pelne-zaangazowanie.html"
           "Zenshin, czyli pełne zaangażowanie ciała i umysłu w ruchu, kontakt z partnerem i finalizację techniki."
+        when "blog/zanshin-czujnosc-po-technice.html"
+          "Zanshin jako pozostająca czujność po wykonaniu techniki: jak domykać działanie i utrzymywać jakość pod presją."
         when "blog/omoiyari-uwazna-troska.html"
           "Omoiyari w dojo: uważna troska o partnera, bezpieczeństwo treningu i wysoka kultura współpracy na macie."
         when "blog/jiko-sekinin-odpowiedzialnosc-osobista.html"
@@ -408,6 +414,8 @@ module Site
           "Sesshin as deep Aikido practice: concentration, discipline, and the training standard that defines Sesshinkan Dojo."
         when "en/blog/zenshin-full-commitment.html"
           "Zenshin means full commitment: body-mind unity, intent continuity, and complete execution of technique."
+        when "en/blog/zanshin-awareness-after-execution.html"
+          "Zanshin as remaining awareness after technique: how to close action loops and preserve quality under pressure."
         when "en/blog/omoiyari-considerate-compassion.html"
           "Omoiyari in the dojo: considerate compassion, partner safety, and responsible intensity in everyday training."
         when "en/blog/jiko-sekinin-personal-responsibility.html"
@@ -543,6 +551,8 @@ module Site
           "sesshin aikido, gleboka praktyka, intensywny trening, sesshinkan dojo, dyscyplina i skupienie"
         when "blog/zenshin-pelne-zaangazowanie.html"
           "zenshin aikido, pelne zaangazowanie, intencja ruchu, koncentracja, jakosc techniki"
+        when "blog/zanshin-czujnosc-po-technice.html"
+          "zanshin aikido, pozostajaca czujnosc, domkniecie techniki, uwaga po ruchu, jakosc decyzji"
         when "blog/omoiyari-uwazna-troska.html"
           "omoiyari aikido, uwazna troska, partnering, bezpieczenstwo na macie, kultura dojo"
         when "blog/jiko-sekinin-odpowiedzialnosc-osobista.html"
@@ -575,6 +585,8 @@ module Site
           "sesshin aikido, deep practice, intensive training, sesshinkan dojo, discipline and focus"
         when "en/blog/zenshin-full-commitment.html"
           "zenshin aikido, full commitment, intent continuity, concentration, execution quality"
+        when "en/blog/zanshin-awareness-after-execution.html"
+          "zanshin aikido, remaining awareness, follow-through, post-execution control, decision quality"
         when "en/blog/omoiyari-considerate-compassion.html"
           "omoiyari aikido, considerate compassion, partner safety, cooperative training, dojo culture"
         when "en/blog/jiko-sekinin-personal-responsibility.html"
@@ -644,6 +656,7 @@ module Site
         "blog/mushin-umysl-bez-umyslu.html" => "en/blog/mushin-no-mind.html",
         "blog/sesshin-gleboka-praktyka.html" => "en/blog/sesshin-deep-practice.html",
         "blog/zenshin-pelne-zaangazowanie.html" => "en/blog/zenshin-full-commitment.html",
+        "blog/zanshin-czujnosc-po-technice.html" => "en/blog/zanshin-awareness-after-execution.html",
         "blog/omoiyari-uwazna-troska.html" => "en/blog/omoiyari-considerate-compassion.html",
         "blog/jiko-sekinin-odpowiedzialnosc-osobista.html" => "en/blog/jiko-sekinin-personal-responsibility.html",
         "blog/kuzushi-kontrolowana-nierownowaga.html" => "en/blog/kuzushi-controlled-imbalance.html",
@@ -687,6 +700,7 @@ module Site
         "en/blog/mushin-no-mind.html" => "blog/mushin-umysl-bez-umyslu.html",
         "en/blog/sesshin-deep-practice.html" => "blog/sesshin-gleboka-praktyka.html",
         "en/blog/zenshin-full-commitment.html" => "blog/zenshin-pelne-zaangazowanie.html",
+        "en/blog/zanshin-awareness-after-execution.html" => "blog/zanshin-czujnosc-po-technice.html",
         "en/blog/omoiyari-considerate-compassion.html" => "blog/omoiyari-uwazna-troska.html",
         "en/blog/jiko-sekinin-personal-responsibility.html" => "blog/jiko-sekinin-odpowiedzialnosc-osobista.html",
         "en/blog/kuzushi-controlled-imbalance.html" => "blog/kuzushi-kontrolowana-nierownowaga.html",

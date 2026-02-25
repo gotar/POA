@@ -74,6 +74,7 @@ module Site
       blog_mushin_view: "views.blog.mushin",
       blog_sesshin_view: "views.blog.sesshin",
       blog_zenshin_view: "views.blog.zenshin",
+      blog_zanshin_view: "views.blog.zanshin",
       blog_omoiyari_view: "views.blog.omoiyari",
       blog_jiko_sekinin_view: "views.blog.jiko_sekinin",
       blog_kuzushi_view: "views.blog.kuzushi",
@@ -85,6 +86,7 @@ module Site
       blog_mushin_en_view: "views.en.blog.mushin",
       blog_sesshin_en_view: "views.en.blog.sesshin",
       blog_zenshin_en_view: "views.en.blog.zenshin",
+      blog_zanshin_en_view: "views.en.blog.zanshin",
       blog_omoiyari_en_view: "views.en.blog.omoiyari",
       blog_jiko_sekinin_en_view: "views.en.blog.jiko_sekinin",
       blog_kuzushi_en_view: "views.en.blog.kuzushi",
@@ -168,6 +170,7 @@ module Site
       render export_dir, "blog/mushin-umysl-bez-umyslu.html", blog_mushin_view
       render export_dir, "blog/sesshin-gleboka-praktyka.html", blog_sesshin_view
       render export_dir, "blog/zenshin-pelne-zaangazowanie.html", blog_zenshin_view
+      render export_dir, "blog/zanshin-czujnosc-po-technice.html", blog_zanshin_view
       render export_dir, "blog/omoiyari-uwazna-troska.html", blog_omoiyari_view
       render export_dir, "blog/jiko-sekinin-odpowiedzialnosc-osobista.html", blog_jiko_sekinin_view
       render export_dir, "blog/kuzushi-kontrolowana-nierownowaga.html", blog_kuzushi_view
@@ -179,6 +182,7 @@ module Site
       render export_dir, "en/blog/mushin-no-mind.html", blog_mushin_en_view
       render export_dir, "en/blog/sesshin-deep-practice.html", blog_sesshin_en_view
       render export_dir, "en/blog/zenshin-full-commitment.html", blog_zenshin_en_view
+      render export_dir, "en/blog/zanshin-awareness-after-execution.html", blog_zanshin_en_view
       render export_dir, "en/blog/omoiyari-considerate-compassion.html", blog_omoiyari_en_view
       render export_dir, "en/blog/jiko-sekinin-personal-responsibility.html", blog_jiko_sekinin_en_view
       render export_dir, "en/blog/kuzushi-controlled-imbalance.html", blog_kuzushi_en_view

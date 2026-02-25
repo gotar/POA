@@ -697,6 +697,10 @@ dd {
   text-decoration: underline;
 }
 
+nav.pagination {
+  box-shadow: unset;
+}
+
 .pagination {
   display: flex;
   align-items: center;

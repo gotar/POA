@@ -62,32 +62,32 @@ module Site
       gdynia_en_view: "views.en.gdynia",
       faq_view: "views.faq",
       faq_en_view: "views.en.faq",
-      news_view: "views.news",
-      news_page_2_view: "views.news_page_2",
-      news_en_view: "views.en.news",
-      news_en_page_2_view: "views.en.news_page_2",
-      news_bushido_view: "views.news.bushido",
-      news_kaizen_view: "views.news.kaizen",
-      news_gaman_view: "views.news.gaman",
-      news_kintsugi_view: "views.news.kintsugi",
-      news_wabi_sabi_view: "views.news.wabi_sabi",
-      news_mushin_view: "views.news.mushin",
-      news_sesshin_view: "views.news.sesshin",
-      news_zenshin_view: "views.news.zenshin",
-      news_omoiyari_view: "views.news.omoiyari",
-      news_jiko_sekinin_view: "views.news.jiko_sekinin",
-      news_kuzushi_view: "views.news.kuzushi",
-      news_bushido_en_view: "views.en.news.bushido",
-      news_kaizen_en_view: "views.en.news.kaizen",
-      news_gaman_en_view: "views.en.news.gaman",
-      news_kintsugi_en_view: "views.en.news.kintsugi",
-      news_wabi_sabi_en_view: "views.en.news.wabi_sabi",
-      news_mushin_en_view: "views.en.news.mushin",
-      news_sesshin_en_view: "views.en.news.sesshin",
-      news_zenshin_en_view: "views.en.news.zenshin",
-      news_omoiyari_en_view: "views.en.news.omoiyari",
-      news_jiko_sekinin_en_view: "views.en.news.jiko_sekinin",
-      news_kuzushi_en_view: "views.en.news.kuzushi",
+      blog_view: "views.blog",
+      blog_page_2_view: "views.blog_page_2",
+      blog_en_view: "views.en.blog",
+      blog_en_page_2_view: "views.en.blog_page_2",
+      blog_bushido_view: "views.blog.bushido",
+      blog_kaizen_view: "views.blog.kaizen",
+      blog_gaman_view: "views.blog.gaman",
+      blog_kintsugi_view: "views.blog.kintsugi",
+      blog_wabi_sabi_view: "views.blog.wabi_sabi",
+      blog_mushin_view: "views.blog.mushin",
+      blog_sesshin_view: "views.blog.sesshin",
+      blog_zenshin_view: "views.blog.zenshin",
+      blog_omoiyari_view: "views.blog.omoiyari",
+      blog_jiko_sekinin_view: "views.blog.jiko_sekinin",
+      blog_kuzushi_view: "views.blog.kuzushi",
+      blog_bushido_en_view: "views.en.blog.bushido",
+      blog_kaizen_en_view: "views.en.blog.kaizen",
+      blog_gaman_en_view: "views.en.blog.gaman",
+      blog_kintsugi_en_view: "views.en.blog.kintsugi",
+      blog_wabi_sabi_en_view: "views.en.blog.wabi_sabi",
+      blog_mushin_en_view: "views.en.blog.mushin",
+      blog_sesshin_en_view: "views.en.blog.sesshin",
+      blog_zenshin_en_view: "views.en.blog.zenshin",
+      blog_omoiyari_en_view: "views.en.blog.omoiyari",
+      blog_jiko_sekinin_en_view: "views.en.blog.jiko_sekinin",
+      blog_kuzushi_en_view: "views.en.blog.kuzushi",
     ]
 
     def call(root)
@@ -156,32 +156,32 @@ module Site
       render export_dir, "en/gdynia.html", gdynia_en_view
       render export_dir, "faq.html", faq_view
       render export_dir, "en/faq.html", faq_en_view
-      render export_dir, "blog.html", news_view
-      render export_dir, "blog-2.html", news_page_2_view
-      render export_dir, "en/blog.html", news_en_view
-      render export_dir, "en/blog-2.html", news_en_page_2_view
-      render export_dir, "blog/bushido-droga-wojownika.html", news_bushido_view
-      render export_dir, "blog/kaizen-ciagle-doskonalenie.html", news_kaizen_view
-      render export_dir, "blog/gaman-wytrwalosc.html", news_gaman_view
-      render export_dir, "blog/kintsugi-zlota-naprawa.html", news_kintsugi_view
-      render export_dir, "blog/wabi-sabi-piekno-niedoskonalosci.html", news_wabi_sabi_view
-      render export_dir, "blog/mushin-umysl-bez-umyslu.html", news_mushin_view
-      render export_dir, "blog/sesshin-gleboka-praktyka.html", news_sesshin_view
-      render export_dir, "blog/zenshin-pelne-zaangazowanie.html", news_zenshin_view
-      render export_dir, "blog/omoiyari-uwazna-troska.html", news_omoiyari_view
-      render export_dir, "blog/jiko-sekinin-odpowiedzialnosc-osobista.html", news_jiko_sekinin_view
-      render export_dir, "blog/kuzushi-kontrolowana-nierownowaga.html", news_kuzushi_view
-      render export_dir, "en/blog/bushido-way-of-the-warrior.html", news_bushido_en_view
-      render export_dir, "en/blog/kaizen-continuous-improvement.html", news_kaizen_en_view
-      render export_dir, "en/blog/gaman-endurance-and-composure.html", news_gaman_en_view
-      render export_dir, "en/blog/kintsugi-golden-repair.html", news_kintsugi_en_view
-      render export_dir, "en/blog/wabi-sabi-beauty-of-imperfection.html", news_wabi_sabi_en_view
-      render export_dir, "en/blog/mushin-no-mind.html", news_mushin_en_view
-      render export_dir, "en/blog/sesshin-deep-practice.html", news_sesshin_en_view
-      render export_dir, "en/blog/zenshin-full-commitment.html", news_zenshin_en_view
-      render export_dir, "en/blog/omoiyari-considerate-compassion.html", news_omoiyari_en_view
-      render export_dir, "en/blog/jiko-sekinin-personal-responsibility.html", news_jiko_sekinin_en_view
-      render export_dir, "en/blog/kuzushi-controlled-imbalance.html", news_kuzushi_en_view
+      render export_dir, "blog.html", blog_view
+      render export_dir, "blog-2.html", blog_page_2_view
+      render export_dir, "en/blog.html", blog_en_view
+      render export_dir, "en/blog-2.html", blog_en_page_2_view
+      render export_dir, "blog/bushido-droga-wojownika.html", blog_bushido_view
+      render export_dir, "blog/kaizen-ciagle-doskonalenie.html", blog_kaizen_view
+      render export_dir, "blog/gaman-wytrwalosc.html", blog_gaman_view
+      render export_dir, "blog/kintsugi-zlota-naprawa.html", blog_kintsugi_view
+      render export_dir, "blog/wabi-sabi-piekno-niedoskonalosci.html", blog_wabi_sabi_view
+      render export_dir, "blog/mushin-umysl-bez-umyslu.html", blog_mushin_view
+      render export_dir, "blog/sesshin-gleboka-praktyka.html", blog_sesshin_view
+      render export_dir, "blog/zenshin-pelne-zaangazowanie.html", blog_zenshin_view
+      render export_dir, "blog/omoiyari-uwazna-troska.html", blog_omoiyari_view
+      render export_dir, "blog/jiko-sekinin-odpowiedzialnosc-osobista.html", blog_jiko_sekinin_view
+      render export_dir, "blog/kuzushi-kontrolowana-nierownowaga.html", blog_kuzushi_view
+      render export_dir, "en/blog/bushido-way-of-the-warrior.html", blog_bushido_en_view
+      render export_dir, "en/blog/kaizen-continuous-improvement.html", blog_kaizen_en_view
+      render export_dir, "en/blog/gaman-endurance-and-composure.html", blog_gaman_en_view
+      render export_dir, "en/blog/kintsugi-golden-repair.html", blog_kintsugi_en_view
+      render export_dir, "en/blog/wabi-sabi-beauty-of-imperfection.html", blog_wabi_sabi_en_view
+      render export_dir, "en/blog/mushin-no-mind.html", blog_mushin_en_view
+      render export_dir, "en/blog/sesshin-deep-practice.html", blog_sesshin_en_view
+      render export_dir, "en/blog/zenshin-full-commitment.html", blog_zenshin_en_view
+      render export_dir, "en/blog/omoiyari-considerate-compassion.html", blog_omoiyari_en_view
+      render export_dir, "en/blog/jiko-sekinin-personal-responsibility.html", blog_jiko_sekinin_en_view
+      render export_dir, "en/blog/kuzushi-controlled-imbalance.html", blog_kuzushi_en_view
 
       Success(root)
     end

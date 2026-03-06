@@ -178,8 +178,8 @@ module Site
           "Yudansha | POA Black Belts | Aikido Instructors"
         when "blog.html"
           "Blog | Polska Organizacja Aikido"
-        when "blog-2.html"
-          "Blog — strona 2 | Polska Organizacja Aikido"
+        when /\Ablog-(\d+)\.html\z/
+          "Blog — strona #{$1} | Polska Organizacja Aikido"
         when "blog/bushido-droga-wojownika.html"
           "Bushido — droga wojownika w praktyce dojo | Blog"
         when "blog/kaizen-ciagle-doskonalenie.html"
@@ -216,8 +216,8 @@ module Site
           "Nowy cykl dla początkujących — marzec 2026 | Blog"
         when "en/blog.html"
           "Blog | Polish Aikido Organization"
-        when "en/blog-2.html"
-          "Blog — page 2 | Polish Aikido Organization"
+        when /\Aen\/blog-(\d+)\.html\z/
+          "Blog — page #{$1} | Polish Aikido Organization"
         when "en/blog/bushido-way-of-the-warrior.html"
           "Bushido — the warrior's way in dojo practice | Blog"
         when "en/blog/kaizen-continuous-improvement.html"
@@ -377,8 +377,8 @@ module Site
           "List of 24 black belts (yudansha) from Polish Aikido Organization - instructors ranked from Shodan (1st Dan) to Godan (5th Dan). All examined in Shihan Fumio Toyoda's lineage."
         when "blog.html"
           "Blog POA: relacje ze staży, komunikaty dojo, zapowiedzi wydarzeń i informacje dla ćwiczących Aikido."
-        when "blog-2.html"
-          "Blog POA — starsze wpisy: archiwalne artykuły, relacje i komentarze treningowe."
+        when /\Ablog-(\d+)\.html\z/
+          "Blog POA — starsze wpisy (strona #{$1}): archiwalne artykuły, relacje i komentarze treningowe."
         when "blog/bushido-droga-wojownika.html"
           "Bushido w praktyce Aikido: dyscyplina, odpowiedzialność i etyka pracy w dojo, które budują trwałe umiejętności."
         when "blog/kaizen-ciagle-doskonalenie.html"
@@ -415,8 +415,8 @@ module Site
           "Informacja o nowym cyklu dla początkujących w marcu 2026. Start bezpieczny, systematyczny i nastawiony na fundamenty."
         when "en/blog.html"
           "POA blog: seminar recaps, dojo updates, event announcements, and practical notes for Aikido practitioners."
-        when "en/blog-2.html"
-          "POA blog — older posts: archived articles, recaps, and practical dojo notes."
+        when /\Aen\/blog-(\d+)\.html\z/
+          "POA blog — older posts (page #{$1}): archived articles, recaps, and practical dojo notes."
         when "en/blog/bushido-way-of-the-warrior.html"
           "Bushido in practical Aikido training: discipline, accountability, and dojo ethics that shape durable martial skills."
         when "en/blog/kaizen-continuous-improvement.html"
@@ -556,7 +556,7 @@ module Site
           "yudansha, POA black belts, Aikido instructors, Shodan, Nidan, Sandan, Yondan, Godan, Dan ranks, Aikido instructors Poland, black belt instructors, Jacek Ostrowski, Oskar Szrajer, Wojciech Korwin-Piotrowski"
         when "blog.html"
           "blog aikido, poa blog, seminaria aikido, dojo komunikaty, sesshinkan gdynia"
-        when "blog-2.html"
+        when /\Ablog-(\d+)\.html\z/
           "blog aikido archiwum, starsze wpisy poa, artykuly dojo, aikido gdynia"
         when "blog/bushido-droga-wojownika.html"
           "bushido aikido, droga wojownika, etyka dojo, dyscyplina treningowa, zasady budo"
@@ -594,7 +594,7 @@ module Site
           "aikido dla poczatkujacych gdynia, nowy cykl aikido, trening startowy, poa"
         when "en/blog.html"
           "aikido blog, poa updates, dojo announcements, seminar recap, sesshinkan"
-        when "en/blog-2.html"
+        when /\Aen\/blog-(\d+)\.html\z/
           "aikido blog archive, older posts, dojo articles, poa updates"
         when "en/blog/bushido-way-of-the-warrior.html"
           "bushido aikido, warrior way, dojo ethics, training discipline, budo principles"
@@ -643,10 +643,90 @@ module Site
         default_keywords_for_path(@current_path)
       end
 
+      BLOG_POSTS_PER_PAGE = 10
+
+      BLOG_POSTS_PL = [
+        { date: "6 marca 2026", title: "Hyōshi (拍子) — rytm i timing jedności", url: "/blog/hyoshi-rytm-timing-jednosci-ruchu.html", summary: "Cięcie ruchu albo jego rozlanie natychmiast ujawnia jakość jedności ciała, oddechu i decyzji." },
+        { date: "6 marca 2026", title: "Ensō (円相) — krąg obecności", url: "/blog/enso-krag-obecnosci.html", summary: "Jeden ruch pędzla, który bezlitośnie pokazuje jakość umysłu i decyzji pod presją." },
+        { date: "25 lutego 2026", title: "Zanshin (残心) — czujność po technice", url: "/blog/zanshin-czujnosc-po-technice.html", summary: "Dlaczego najwięcej błędów pojawia się po ruchu i jak utrzymać uwagę do końca działania." },
+        { date: "24 lutego 2026", title: "Sesshin (接心) — głęboka praktyka i skupienie", url: "/blog/sesshin-gleboka-praktyka.html", summary: "Dlaczego Sesshin to fundament naszej metody pracy i kluczowy element tożsamości Sesshinkan Dojo." },
+        { date: "23 lutego 2026", title: "Bushido (武士道) — droga wojownika", url: "/blog/bushido-droga-wojownika.html", summary: "Kodeks samuraja i siedem cnót, które można stosować dziś: na macie, w pracy i w codziennych decyzjach." },
+        { date: "23 lutego 2026", title: "Kaizen (改善) — ciągłe doskonalenie", url: "/blog/kaizen-ciagle-doskonalenie.html", summary: "Małe, codzienne kroki prowadzą do trwałego postępu i mocnych fundamentów techniki." },
+        { date: "23 lutego 2026", title: "Gaman (我慢) — wytrwałość i opanowanie", url: "/blog/gaman-wytrwalosc.html", summary: "Sztuka znoszenia trudności z godnością, spokojem i dojrzałością." },
+        { date: "23 lutego 2026", title: "Kintsugi (金継ぎ) — złota naprawa", url: "/blog/kintsugi-zlota-naprawa.html", summary: "Pęknięcia nie muszą być ukrywane — mogą stać się źródłem siły i nowego znaczenia." },
+        { date: "23 lutego 2026", title: "Wabi-Sabi (侘寂) — piękno niedoskonałości", url: "/blog/wabi-sabi-piekno-niedoskonalosci.html", summary: "Akceptacja prostoty, przemijania i niedoskonałości jako części naturalnego rozwoju." },
+        { date: "23 lutego 2026", title: "Mushin (無心) — umysł bez umysłu", url: "/blog/mushin-umysl-bez-umyslu.html", summary: "Stan pełnej obecności: bez napięcia, bez przywiązania, z jasnym działaniem." },
+        { date: "23 lutego 2026", title: "Zenshin (前進) — pełne zaangażowanie", url: "/blog/zenshin-pelne-zaangazowanie.html", summary: "Konsekwentny ruch naprzód z całą uwagą i odpowiedzialnością za proces." },
+        { date: "23 lutego 2026", title: "Omoiyari (思いやり) — uważna troska", url: "/blog/omoiyari-uwazna-troska.html", summary: "Empatia w praktyce: rozumienie potrzeb drugiej osoby zanim zostaną wypowiedziane." },
+        { date: "23 lutego 2026", title: "Jiko Sekinin (自己責任) — odpowiedzialność osobista", url: "/blog/jiko-sekinin-odpowiedzialnosc-osobista.html", summary: "Branie odpowiedzialności za decyzje, błędy i konsekwencje bez szukania wymówek." },
+        { date: "23 lutego 2026", title: "Kuzushi (崩し) — kontrolowana nierównowaga", url: "/blog/kuzushi-kontrolowana-nierownowaga.html", summary: "W Aikido i poza matą: jak świadomie zmieniać układ sił, by otworzyć przestrzeń na transformację." },
+        { date: "20 lutego 2026", title: "Open Mata POA — luty 2026", url: "/blog/open-mata-luty-2026.html", summary: "Otwarta mata przekrojowa: ukemi, dystans, timing oraz zadaniowe randori w kontrolowanym tempie." },
+        { date: "10 lutego 2026", title: "Zimowy staż techniczny 2026 — podsumowanie", url: "/blog/zimowy-staz-2026.html", summary: "Stabilność centrum, precyzja kierunku i praca oddechem jako główne akcenty zimowego stażu." },
+        { date: "28 stycznia 2026", title: "Nowy cykl dla początkujących — marzec 2026", url: "/blog/nowy-cykl-dla-poczatkujacych.html", summary: "Start nowego cyklu od bezpiecznych fundamentów: poruszanie, ukemi, reishiki i pierwsze formy." }
+      ].freeze
+
+      BLOG_POSTS_EN = [
+        { date: "March 6, 2026", title: "Hyōshi (拍子) — rhythm and timing of unity", url: "/en/blog/hyoshi-timing-reveals-unity-of-movement.html", summary: "Cutting movement or letting it spill immediately reveals the quality of unity between body, breath, and intent." },
+        { date: "March 6, 2026", title: "Ensō (円相) — circle of presence", url: "/en/blog/enso-circle-of-presence.html", summary: "One brushstroke that exposes the quality of mind and decision-making under pressure." },
+        { date: "February 25, 2026", title: "Zanshin (残心) — awareness after execution", url: "/en/blog/zanshin-awareness-after-execution.html", summary: "Why many errors happen after action and how to maintain awareness until the process is truly complete." },
+        { date: "February 24, 2026", title: "Sesshin (接心) — deep practice and focused mind", url: "/en/blog/sesshin-deep-practice.html", summary: "Why Sesshin is a core training method and a central identity element of Sesshinkan Dojo." },
+        { date: "February 23, 2026", title: "Bushido (武士道) — way of the warrior", url: "/en/blog/bushido-way-of-the-warrior.html", summary: "The samurai code and seven virtues that remain practical on the mat, at work, and in daily decisions." },
+        { date: "February 23, 2026", title: "Kaizen (改善) — continuous improvement", url: "/en/blog/kaizen-continuous-improvement.html", summary: "Small daily steps that produce durable progress and stronger technical foundations." },
+        { date: "February 23, 2026", title: "Gaman (我慢) — endurance and composure", url: "/en/blog/gaman-endurance-and-composure.html", summary: "The art of carrying pressure with dignity, calm, and mature self-control." },
+        { date: "February 23, 2026", title: "Kintsugi (金継ぎ) — golden repair", url: "/en/blog/kintsugi-golden-repair.html", summary: "Cracks do not need to be hidden — they can become a source of strength and meaning." },
+        { date: "February 23, 2026", title: "Wabi-Sabi (侘寂) — beauty of imperfection", url: "/en/blog/wabi-sabi-beauty-of-imperfection.html", summary: "Accepting simplicity, impermanence, and imperfection as part of authentic growth." },
+        { date: "February 23, 2026", title: "Mushin (無心) — no mind", url: "/en/blog/mushin-no-mind.html", summary: "A state of clear presence: no fixation, no noise, and natural action under pressure." },
+        { date: "February 23, 2026", title: "Zenshin (前進) — full commitment", url: "/en/blog/zenshin-full-commitment.html", summary: "Consistent forward movement with full attention and ownership of the process." },
+        { date: "February 23, 2026", title: "Omoiyari (思いやり) — considerate compassion", url: "/en/blog/omoiyari-considerate-compassion.html", summary: "Empathy in practice: understanding your partner's needs before they are spoken." },
+        { date: "February 23, 2026", title: "Jiko Sekinin (自己責任) — personal responsibility", url: "/en/blog/jiko-sekinin-personal-responsibility.html", summary: "Owning decisions, mistakes, and consequences without excuses or blame-shifting." },
+        { date: "February 23, 2026", title: "Kuzushi (崩し) — controlled imbalance", url: "/en/blog/kuzushi-controlled-imbalance.html", summary: "On and off the mat: changing force relationships consciously to create room for transformation." },
+        { date: "February 20, 2026", title: "POA Open Mat — February 2026", url: "/en/blog/open-mat-feb-2026.html", summary: "Open mat across levels: ukemi, distance, timing, and task-based randori in a controlled tempo." },
+        { date: "February 10, 2026", title: "Winter Technical Seminar 2026 — recap", url: "/en/blog/winter-seminar-2026.html", summary: "Center stability, directional precision, and breath-driven tempo as core seminar focus points." },
+        { date: "January 28, 2026", title: "New beginners cycle — March 2026", url: "/en/blog/new-beginners-cycle-2026.html", summary: "A structured beginner cycle focused on safe fundamentals, ukemi, etiquette, and first partner forms." }
+      ].freeze
+
       def canonical_url
         path = current_path || ""
         separator = path.empty? || path.start_with?("/") ? "" : "/"
         "#{site_url}#{separator}#{path}"
+      end
+
+      def blog_current_page
+        path = current_path.to_s
+        return 1 if path == "blog.html" || path == "en/blog.html"
+
+        match = path.match(%r{\A(?:en/)?blog-(\d+)\.html\z})
+        page = match ? match[1].to_i : 1
+        page.positive? ? page : 1
+      end
+
+      def blog_posts(language: current_lang)
+        language == "en" ? BLOG_POSTS_EN : BLOG_POSTS_PL
+      end
+
+      def blog_total_pages(language: current_lang)
+        total = (blog_posts(language: language).size.to_f / BLOG_POSTS_PER_PAGE).ceil
+        total.positive? ? total : 1
+      end
+
+      def blog_posts_for_current_page
+        offset = (blog_current_page - 1) * BLOG_POSTS_PER_PAGE
+        blog_posts.slice(offset, BLOG_POSTS_PER_PAGE) || []
+      end
+
+      def blog_page_numbers(language: current_lang)
+        (1..blog_total_pages(language: language)).to_a
+      end
+
+      def blog_page_path(page, language: current_lang)
+        normalized_page = page.to_i
+        normalized_page = 1 if normalized_page < 1
+
+        if language == "en"
+          normalized_page == 1 ? "/en/blog.html" : "/en/blog-#{normalized_page}.html"
+        else
+          normalized_page == 1 ? "/blog.html" : "/blog-#{normalized_page}.html"
+        end
       end
 
       def blog_article_page?
@@ -817,7 +897,17 @@ module Site
       end
 
       def alternate_url
-        mapped = LANG_URL_MAP[current_path.to_s]
+        path = current_path.to_s
+
+        if (match = path.match(/\Ablog-(\d+)\.html\z/))
+          return "#{site_url}/en/blog-#{match[1]}.html"
+        end
+
+        if (match = path.match(%r{\Aen/blog-(\d+)\.html\z}))
+          return "#{site_url}/blog-#{match[1]}.html"
+        end
+
+        mapped = LANG_URL_MAP[path]
         return nil unless mapped
 
         url = "#{site_url}/#{mapped}"

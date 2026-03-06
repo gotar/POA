@@ -1,109 +1,45 @@
-<% page_title "Blog | Polska Organizacja Aikido" %>
+<% page_title "Blog | Polska Organizacja Aikido" if blog_current_page == 1 %>
 
 <div class="content">
   <div class="article">
     <h1>Blog</h1>
-    <p class="lead">
-      Miejsce na komunikaty dojo, relacje z wydarzeń, zapowiedzi seminariów i praktyczne wpisy dla trenujących.
-    </p>
+    <% if blog_current_page == 1 %>
+      <p class="lead">
+        Miejsce na komunikaty dojo, relacje z wydarzeń, zapowiedzi seminariów i praktyczne wpisy dla trenujących.
+      </p>
+    <% else %>
+      <p class="lead">Starsze wpisy (strona <%= blog_current_page %>).</p>
+    <% end %>
 
     <div class="news-list">
-      <article class="news-card">
-        <div class="news-meta">6 marca 2026</div>
-        <h2><a href="/blog/hyoshi-rytm-timing-jednosci-ruchu.html">Hyōshi (拍子) — rytm i timing jedności</a></h2>
-        <p>Cięcie ruchu albo jego rozlanie natychmiast ujawnia jakość jedności ciała, oddechu i decyzji.</p>
-        <a class="news-read-more" href="/blog/hyoshi-rytm-timing-jednosci-ruchu.html">Czytaj więcej →</a>
-      </article>
-
-      <article class="news-card">
-        <div class="news-meta">6 marca 2026</div>
-        <h2><a href="/blog/enso-krag-obecnosci.html">Ensō (円相) — krąg obecności</a></h2>
-        <p>Jeden ruch pędzla, który bezlitośnie pokazuje jakość umysłu i decyzji pod presją.</p>
-        <a class="news-read-more" href="/blog/enso-krag-obecnosci.html">Czytaj więcej →</a>
-      </article>
-
-      <article class="news-card">
-        <div class="news-meta">25 lutego 2026</div>
-        <h2><a href="/blog/zanshin-czujnosc-po-technice.html">Zanshin (残心) — czujność po technice</a></h2>
-        <p>Dlaczego najwięcej błędów pojawia się po ruchu i jak utrzymać uwagę do końca działania.</p>
-        <a class="news-read-more" href="/blog/zanshin-czujnosc-po-technice.html">Czytaj więcej →</a>
-      </article>
-
-      <article class="news-card">
-        <div class="news-meta">24 lutego 2026</div>
-        <h2><a href="/blog/sesshin-gleboka-praktyka.html">Sesshin (接心) — głęboka praktyka i skupienie</a></h2>
-        <p>Dlaczego Sesshin to fundament naszej metody pracy i kluczowy element tożsamości Sesshinkan Dojo.</p>
-        <a class="news-read-more" href="/blog/sesshin-gleboka-praktyka.html">Czytaj więcej →</a>
-      </article>
-
-      <article class="news-card">
-        <div class="news-meta">23 lutego 2026</div>
-        <h2><a href="/blog/bushido-droga-wojownika.html">Bushido (武士道) — droga wojownika</a></h2>
-        <p>Kodeks samuraja i siedem cnót, które można stosować dziś: na macie, w pracy i w codziennych decyzjach.</p>
-        <a class="news-read-more" href="/blog/bushido-droga-wojownika.html">Czytaj więcej →</a>
-      </article>
-
-      <article class="news-card">
-        <div class="news-meta">23 lutego 2026</div>
-        <h2><a href="/blog/kaizen-ciagle-doskonalenie.html">Kaizen (改善) — ciągłe doskonalenie</a></h2>
-        <p>Małe, codzienne kroki prowadzą do trwałego postępu i mocnych fundamentów techniki.</p>
-        <a class="news-read-more" href="/blog/kaizen-ciagle-doskonalenie.html">Czytaj więcej →</a>
-      </article>
-
-      <article class="news-card">
-        <div class="news-meta">23 lutego 2026</div>
-        <h2><a href="/blog/gaman-wytrwalosc.html">Gaman (我慢) — wytrwałość i opanowanie</a></h2>
-        <p>Sztuka znoszenia trudności z godnością, spokojem i dojrzałością.</p>
-        <a class="news-read-more" href="/blog/gaman-wytrwalosc.html">Czytaj więcej →</a>
-      </article>
-
-      <article class="news-card">
-        <div class="news-meta">23 lutego 2026</div>
-        <h2><a href="/blog/kintsugi-zlota-naprawa.html">Kintsugi (金継ぎ) — złota naprawa</a></h2>
-        <p>Pęknięcia nie muszą być ukrywane — mogą stać się źródłem siły i nowego znaczenia.</p>
-        <a class="news-read-more" href="/blog/kintsugi-zlota-naprawa.html">Czytaj więcej →</a>
-      </article>
-
-      <article class="news-card">
-        <div class="news-meta">23 lutego 2026</div>
-        <h2><a href="/blog/wabi-sabi-piekno-niedoskonalosci.html">Wabi-Sabi (侘寂) — piękno niedoskonałości</a></h2>
-        <p>Akceptacja prostoty, przemijania i niedoskonałości jako części naturalnego rozwoju.</p>
-        <a class="news-read-more" href="/blog/wabi-sabi-piekno-niedoskonalosci.html">Czytaj więcej →</a>
-      </article>
-
-      <article class="news-card">
-        <div class="news-meta">23 lutego 2026</div>
-        <h2><a href="/blog/mushin-umysl-bez-umyslu.html">Mushin (無心) — umysł bez umysłu</a></h2>
-        <p>Stan pełnej obecności: bez napięcia, bez przywiązania, z jasnym działaniem.</p>
-        <a class="news-read-more" href="/blog/mushin-umysl-bez-umyslu.html">Czytaj więcej →</a>
-      </article>
-
-      <article class="news-card">
-        <div class="news-meta">23 lutego 2026</div>
-        <h2><a href="/blog/zenshin-pelne-zaangazowanie.html">Zenshin (前進) — pełne zaangażowanie</a></h2>
-        <p>Konsekwentny ruch naprzód z całą uwagą i odpowiedzialnością za proces.</p>
-        <a class="news-read-more" href="/blog/zenshin-pelne-zaangazowanie.html">Czytaj więcej →</a>
-      </article>
-
-      <article class="news-card">
-        <div class="news-meta">23 lutego 2026</div>
-        <h2><a href="/blog/omoiyari-uwazna-troska.html">Omoiyari (思いやり) — uważna troska</a></h2>
-        <p>Empatia w praktyce: rozumienie potrzeb drugiej osoby zanim zostaną wypowiedziane.</p>
-        <a class="news-read-more" href="/blog/omoiyari-uwazna-troska.html">Czytaj więcej →</a>
-      </article>
-
-      <article class="news-card">
-        <div class="news-meta">23 lutego 2026</div>
-        <h2><a href="/blog/jiko-sekinin-odpowiedzialnosc-osobista.html">Jiko Sekinin (自己責任) — odpowiedzialność osobista</a></h2>
-        <p>Branie odpowiedzialności za decyzje, błędy i konsekwencje bez szukania wymówek.</p>
-        <a class="news-read-more" href="/blog/jiko-sekinin-odpowiedzialnosc-osobista.html">Czytaj więcej →</a>
-      </article>
+      <% blog_posts_for_current_page.each do |post| %>
+        <article class="news-card">
+          <div class="news-meta"><%= post[:date] %></div>
+          <h2><a href="<%= post[:url] %>"><%= post[:title] %></a></h2>
+          <p><%= post[:summary] %></p>
+          <a class="news-read-more" href="<%= post[:url] %>">Czytaj więcej →</a>
+        </article>
+      <% end %>
     </div>
 
-    <nav class="pagination" aria-label="Paginacja bloga">
-      <span class="pagination-link is-active" aria-current="page">1</span>
-      <a class="pagination-link" href="/blog-2.html">2</a>
-      <a class="pagination-link pagination-next" href="/blog-2.html">Następna →</a>
-    </nav>
+    <% if blog_total_pages > 1 %>
+      <nav class="pagination" aria-label="Paginacja bloga">
+        <% if blog_current_page > 1 %>
+          <a class="pagination-link pagination-prev" href="<%= blog_page_path(blog_current_page - 1) %>">← Poprzednia</a>
+        <% end %>
+
+        <% blog_page_numbers.each do |page| %>
+          <% if page == blog_current_page %>
+            <span class="pagination-link is-active" aria-current="page"><%= page %></span>
+          <% else %>
+            <a class="pagination-link" href="<%= blog_page_path(page) %>"><%= page %></a>
+          <% end %>
+        <% end %>
+
+        <% if blog_current_page < blog_total_pages %>
+          <a class="pagination-link pagination-next" href="<%= blog_page_path(blog_current_page + 1) %>">Następna →</a>
+        <% end %>
+      </nav>
+    <% end %>
   </div>
 </div>

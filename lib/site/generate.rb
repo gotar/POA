@@ -162,10 +162,7 @@ module Site
       render export_dir, "en/gdynia.html", gdynia_en_view
       render export_dir, "faq.html", faq_view
       render export_dir, "en/faq.html", faq_en_view
-      render export_dir, "blog.html", blog_view
-      render export_dir, "blog-2.html", blog_page_2_view
-      render export_dir, "en/blog.html", blog_en_view
-      render export_dir, "en/blog-2.html", blog_en_page_2_view
+      render_blog_index_pages(export_dir)
       render export_dir, "blog/bushido-droga-wojownika.html", blog_bushido_view
       render export_dir, "blog/kaizen-ciagle-doskonalenie.html", blog_kaizen_view
       render export_dir, "blog/gaman-wytrwalosc.html", blog_gaman_view
@@ -199,6 +196,26 @@ module Site
     end
 
     private
+
+    def render_blog_index_pages(export_dir)
+      pl_pages = total_blog_pages_for(Site::View::Context::BLOG_POSTS_PL)
+      en_pages = total_blog_pages_for(Site::View::Context::BLOG_POSTS_EN)
+
+      (1..pl_pages).each do |page|
+        path = page == 1 ? "blog.html" : "blog-#{page}.html"
+        render export_dir, path, blog_view
+      end
+
+      (1..en_pages).each do |page|
+        path = page == 1 ? "en/blog.html" : "en/blog-#{page}.html"
+        render export_dir, path, blog_en_view
+      end
+    end
+
+    def total_blog_pages_for(posts)
+      pages = (posts.size.to_f / Site::View::Context::BLOG_POSTS_PER_PAGE).ceil
+      pages.positive? ? pages : 1
+    end
 
     def render(export_dir, path, view, **input)
       base_context = Site::Container["view.context"]

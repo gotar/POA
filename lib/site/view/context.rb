@@ -200,6 +200,8 @@ module Site
           "Zanshin — czujność po technice i domknięcie działania | Blog"
         when "blog/enso-krag-obecnosci.html"
           "Ensō — krąg obecności i trening decyzji | Blog"
+        when "blog/hyoshi-rytm-timing-jednosci-ruchu.html"
+          "Hyōshi — rytm i timing jedności w Aikido | Blog"
         when "blog/omoiyari-uwazna-troska.html"
           "Omoiyari — uważna troska i odpowiedzialny partnering | Blog"
         when "blog/jiko-sekinin-odpowiedzialnosc-osobista.html"
@@ -236,6 +238,8 @@ module Site
           "Zanshin — awareness after execution and process closure | Blog"
         when "en/blog/enso-circle-of-presence.html"
           "Ensō — circle of presence and decision training | Blog"
+        when "en/blog/hyoshi-timing-reveals-unity-of-movement.html"
+          "Hyōshi — rhythm and timing of unity in Aikido | Blog"
         when "en/blog/omoiyari-considerate-compassion.html"
           "Omoiyari — considerate compassion in partner work | Blog"
         when "en/blog/jiko-sekinin-personal-responsibility.html"
@@ -395,6 +399,8 @@ module Site
           "Zanshin jako pozostająca czujność po wykonaniu techniki: jak domykać działanie i utrzymywać jakość pod presją."
         when "blog/enso-krag-obecnosci.html"
           "Ensō w praktyce Aikido i zen: jeden ruch, który odsłania jakość obecności, decyzji i domknięcia działania."
+        when "blog/hyoshi-rytm-timing-jednosci-ruchu.html"
+          "Hyōshi w Aikido i budō: jak timing ujawnia jedność decyzji, oddechu i ruchu oraz dlaczego spóźnienie niszczy technikę."
         when "blog/omoiyari-uwazna-troska.html"
           "Omoiyari w dojo: uważna troska o partnera, bezpieczeństwo treningu i wysoka kultura współpracy na macie."
         when "blog/jiko-sekinin-odpowiedzialnosc-osobista.html"
@@ -431,6 +437,8 @@ module Site
           "Zanshin as remaining awareness after technique: how to close action loops and preserve quality under pressure."
         when "en/blog/enso-circle-of-presence.html"
           "Ensō in Aikido and Zen practice: one stroke that reveals presence, decision quality, and clean closure."
+        when "en/blog/hyoshi-timing-reveals-unity-of-movement.html"
+          "Hyōshi in Aikido and budō: how timing reveals unity of decision, breath, and movement—and why delay breaks technique."
         when "en/blog/omoiyari-considerate-compassion.html"
           "Omoiyari in the dojo: considerate compassion, partner safety, and responsible intensity in everyday training."
         when "en/blog/jiko-sekinin-personal-responsibility.html"
@@ -570,6 +578,8 @@ module Site
           "zanshin aikido, pozostajaca czujnosc, domkniecie techniki, uwaga po ruchu, jakosc decyzji"
         when "blog/enso-krag-obecnosci.html"
           "enso aikido, enso zen, zen circle, krag zen, obecność w ruchu, decyzja pod presją"
+        when "blog/hyoshi-rytm-timing-jednosci-ruchu.html"
+          "hyoshi aikido, timing aikido, rytm ruchu, ma-ai kokyu zanshin, jedność ciała i umysłu, budo"
         when "blog/omoiyari-uwazna-troska.html"
           "omoiyari aikido, uwazna troska, partnering, bezpieczenstwo na macie, kultura dojo"
         when "blog/jiko-sekinin-odpowiedzialnosc-osobista.html"
@@ -606,6 +616,8 @@ module Site
           "zanshin aikido, remaining awareness, follow-through, post-execution control, decision quality"
         when "en/blog/enso-circle-of-presence.html"
           "enso aikido, enso zen, zen circle, presence in motion, decision under pressure, clean execution"
+        when "en/blog/hyoshi-timing-reveals-unity-of-movement.html"
+          "hyoshi aikido, aikido timing, rhythm in movement, ma-ai kokyu zanshin, body-mind unity, budo"
         when "en/blog/omoiyari-considerate-compassion.html"
           "omoiyari aikido, considerate compassion, partner safety, cooperative training, dojo culture"
         when "en/blog/jiko-sekinin-personal-responsibility.html"
@@ -677,6 +689,24 @@ module Site
             date_published: "2026-03-06",
             date_modified: "2026-03-06"
           )
+        when "blog/hyoshi-rytm-timing-jednosci-ruchu.html"
+          article_schema(
+            name: "Hyōshi — rytm i timing jedności w Aikido",
+            description: page_description,
+            image: page_social_image_url,
+            lang: "pl",
+            date_published: "2026-03-06",
+            date_modified: "2026-03-06"
+          )
+        when "en/blog/hyoshi-timing-reveals-unity-of-movement.html"
+          article_schema(
+            name: "Hyōshi — rhythm and timing of unity in Aikido",
+            description: page_description,
+            image: page_social_image_url,
+            lang: "en",
+            date_published: "2026-03-06",
+            date_modified: "2026-03-06"
+          )
         else
           ""
         end
@@ -722,6 +752,7 @@ module Site
         "blog/zenshin-pelne-zaangazowanie.html" => "en/blog/zenshin-full-commitment.html",
         "blog/zanshin-czujnosc-po-technice.html" => "en/blog/zanshin-awareness-after-execution.html",
         "blog/enso-krag-obecnosci.html" => "en/blog/enso-circle-of-presence.html",
+        "blog/hyoshi-rytm-timing-jednosci-ruchu.html" => "en/blog/hyoshi-timing-reveals-unity-of-movement.html",
         "blog/omoiyari-uwazna-troska.html" => "en/blog/omoiyari-considerate-compassion.html",
         "blog/jiko-sekinin-odpowiedzialnosc-osobista.html" => "en/blog/jiko-sekinin-personal-responsibility.html",
         "blog/kuzushi-kontrolowana-nierownowaga.html" => "en/blog/kuzushi-controlled-imbalance.html",
@@ -767,6 +798,7 @@ module Site
         "en/blog/zenshin-full-commitment.html" => "blog/zenshin-pelne-zaangazowanie.html",
         "en/blog/zanshin-awareness-after-execution.html" => "blog/zanshin-czujnosc-po-technice.html",
         "en/blog/enso-circle-of-presence.html" => "blog/enso-krag-obecnosci.html",
+        "en/blog/hyoshi-timing-reveals-unity-of-movement.html" => "blog/hyoshi-rytm-timing-jednosci-ruchu.html",
         "en/blog/omoiyari-considerate-compassion.html" => "blog/omoiyari-uwazna-troska.html",
         "en/blog/jiko-sekinin-personal-responsibility.html" => "blog/jiko-sekinin-odpowiedzialnosc-osobista.html",
         "en/blog/kuzushi-controlled-imbalance.html" => "blog/kuzushi-kontrolowana-nierownowaga.html",

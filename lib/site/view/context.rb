@@ -196,6 +196,12 @@ module Site
           "Sesshin — głęboka praktyka i tożsamość Sesshinkan Dojo | Blog"
         when "blog/zenshin-pelne-zaangazowanie.html"
           "Zenshin — pełne zaangażowanie w każdym ruchu | Blog"
+        when "blog/zanshin-czujnosc-po-technice.html"
+          "Zanshin — czujność po technice i domknięcie działania | Blog"
+        when "blog/enso-krag-obecnosci.html"
+          "Ensō — krąg obecności i trening decyzji | Blog"
+        when "blog/hyoshi-rytm-timing-jednosci-ruchu.html"
+          "Hyōshi — rytm i timing jedności w Aikido | Blog"
         when "blog/omoiyari-uwazna-troska.html"
           "Omoiyari — uważna troska i odpowiedzialny partnering | Blog"
         when "blog/jiko-sekinin-odpowiedzialnosc-osobista.html"
@@ -222,6 +228,12 @@ module Site
           "Sesshin — deep practice and Sesshinkan Dojo identity | Blog"
         when "en/blog/zenshin-full-commitment.html"
           "Zenshin — full commitment in every movement | Blog"
+        when "en/blog/zanshin-awareness-after-execution.html"
+          "Zanshin — awareness after execution and process closure | Blog"
+        when "en/blog/enso-circle-of-presence.html"
+          "Ensō — circle of presence and decision training | Blog"
+        when "en/blog/hyoshi-timing-reveals-unity-of-movement.html"
+          "Hyōshi — rhythm and timing of unity in Aikido | Blog"
         when "en/blog/omoiyari-considerate-compassion.html"
           "Omoiyari — considerate compassion in partner work | Blog"
         when "en/blog/jiko-sekinin-personal-responsibility.html"
@@ -371,6 +383,12 @@ module Site
           "Sesshin jako głęboka praktyka Aikido: koncentracja, dyscyplina i standard pracy, który definiuje Sesshinkan Dojo."
         when "blog/zenshin-pelne-zaangazowanie.html"
           "Zenshin, czyli pełne zaangażowanie ciała i umysłu w ruchu, kontakt z partnerem i finalizację techniki."
+        when "blog/zanshin-czujnosc-po-technice.html"
+          "Zanshin jako pozostająca czujność po wykonaniu techniki: jak domykać działanie i utrzymywać jakość pod presją."
+        when "blog/enso-krag-obecnosci.html"
+          "Ensō w praktyce Aikido i zen: jeden ruch, który odsłania jakość obecności, decyzji i domknięcia działania."
+        when "blog/hyoshi-rytm-timing-jednosci-ruchu.html"
+          "Hyōshi w Aikido i budō: jak timing ujawnia jedność decyzji, oddechu i ruchu oraz dlaczego spóźnienie niszczy technikę."
         when "blog/omoiyari-uwazna-troska.html"
           "Omoiyari w dojo: uważna troska o partnera, bezpieczeństwo treningu i wysoka kultura współpracy na macie."
         when "blog/jiko-sekinin-odpowiedzialnosc-osobista.html"
@@ -397,6 +415,12 @@ module Site
           "Sesshin as deep Aikido practice: concentration, discipline, and the training standard that defines Sesshinkan Dojo."
         when "en/blog/zenshin-full-commitment.html"
           "Zenshin means full commitment: body-mind unity, intent continuity, and complete execution of technique."
+        when "en/blog/zanshin-awareness-after-execution.html"
+          "Zanshin as remaining awareness after technique: how to close action loops and preserve quality under pressure."
+        when "en/blog/enso-circle-of-presence.html"
+          "Ensō in Aikido and Zen practice: one stroke that reveals presence, decision quality, and clean closure."
+        when "en/blog/hyoshi-timing-reveals-unity-of-movement.html"
+          "Hyōshi in Aikido and budō: how timing reveals unity of decision, breath, and movement—and why delay breaks technique."
         when "en/blog/omoiyari-considerate-compassion.html"
           "Omoiyari in the dojo: considerate compassion, partner safety, and responsible intensity in everyday training."
         when "en/blog/jiko-sekinin-personal-responsibility.html"
@@ -526,6 +550,12 @@ module Site
           "sesshin aikido, gleboka praktyka, intensywny trening, sesshinkan dojo, dyscyplina i skupienie"
         when "blog/zenshin-pelne-zaangazowanie.html"
           "zenshin aikido, pelne zaangazowanie, intencja ruchu, koncentracja, jakosc techniki"
+        when "blog/zanshin-czujnosc-po-technice.html"
+          "zanshin aikido, pozostajaca czujnosc, domkniecie techniki, uwaga po ruchu, jakosc decyzji"
+        when "blog/enso-krag-obecnosci.html"
+          "enso aikido, enso zen, zen circle, krag zen, obecność w ruchu, decyzja pod presją"
+        when "blog/hyoshi-rytm-timing-jednosci-ruchu.html"
+          "hyoshi aikido, timing aikido, rytm ruchu, ma-ai kokyu zanshin, jedność ciała i umysłu, budo"
         when "blog/omoiyari-uwazna-troska.html"
           "omoiyari aikido, uwazna troska, partnering, bezpieczenstwo na macie, kultura dojo"
         when "blog/jiko-sekinin-odpowiedzialnosc-osobista.html"
@@ -552,6 +582,12 @@ module Site
           "sesshin aikido, deep practice, intensive training, sesshinkan dojo, discipline and focus"
         when "en/blog/zenshin-full-commitment.html"
           "zenshin aikido, full commitment, intent continuity, concentration, execution quality"
+        when "en/blog/zanshin-awareness-after-execution.html"
+          "zanshin aikido, remaining awareness, follow-through, post-execution control, decision quality"
+        when "en/blog/enso-circle-of-presence.html"
+          "enso aikido, enso zen, zen circle, presence in motion, decision under pressure, clean execution"
+        when "en/blog/hyoshi-timing-reveals-unity-of-movement.html"
+          "hyoshi aikido, aikido timing, rhythm in movement, ma-ai kokyu zanshin, body-mind unity, budo"
         when "en/blog/omoiyari-considerate-compassion.html"
           "omoiyari aikido, considerate compassion, partner safety, cooperative training, dojo culture"
         when "en/blog/jiko-sekinin-personal-responsibility.html"
@@ -574,10 +610,9 @@ module Site
       BLOG_POSTS_PER_PAGE = 10
 
       BLOG_POSTS_PL = [
-        { date: "23 lutego 2026", title: "Kuzushi (崩し) — kontrolowana nierównowaga", url: "/blog/kuzushi-kontrolowana-nierownowaga.html", summary: "W Aikido i poza matą: jak świadomie zmieniać układ sił, by otworzyć przestrzeń na transformację." },
-        { date: "23 lutego 2026", title: "Jiko Sekinin (自己責任) — odpowiedzialność osobista", url: "/blog/jiko-sekinin-odpowiedzialnosc-osobista.html", summary: "Branie odpowiedzialności za decyzje, błędy i konsekwencje bez szukania wymówek." },
-        { date: "23 lutego 2026", title: "Omoiyari (思いやり) — uważna troska", url: "/blog/omoiyari-uwazna-troska.html", summary: "Empatia w praktyce: rozumienie potrzeb drugiej osoby zanim zostaną wypowiedziane." },
-        { date: "23 lutego 2026", title: "Zenshin (前進) — pełne zaangażowanie", url: "/blog/zenshin-pelne-zaangazowanie.html", summary: "Konsekwentny ruch naprzód z całą uwagą i odpowiedzialnością za proces." },
+        { date: "6 marca 2026", title: "Hyōshi (拍子) — rytm i timing jedności", url: "/blog/hyoshi-rytm-timing-jednosci-ruchu.html", summary: "Cięcie ruchu albo jego rozlanie natychmiast ujawnia jakość jedności ciała, oddechu i decyzji." },
+        { date: "6 marca 2026", title: "Ensō (円相) — krąg obecności", url: "/blog/enso-krag-obecnosci.html", summary: "Jeden ruch pędzla, który bezlitośnie pokazuje jakość umysłu i decyzji pod presją." },
+        { date: "25 lutego 2026", title: "Zanshin (残心) — czujność po technice", url: "/blog/zanshin-czujnosc-po-technice.html", summary: "Dlaczego najwięcej błędów pojawia się po ruchu i jak utrzymać uwagę do końca działania." },
         { date: "24 lutego 2026", title: "Sesshin (接心) — głęboka praktyka i skupienie", url: "/blog/sesshin-gleboka-praktyka.html", summary: "Dlaczego Sesshin to fundament naszej metody pracy i kluczowy element tożsamości Sesshinkan Dojo." },
         { date: "23 lutego 2026", title: "Bushido (武士道) — droga wojownika", url: "/blog/bushido-droga-wojownika.html", summary: "Kodeks samuraja i siedem cnót, które można stosować dziś: na macie, w pracy i w codziennych decyzjach." },
         { date: "23 lutego 2026", title: "Kaizen (改善) — ciągłe doskonalenie", url: "/blog/kaizen-ciagle-doskonalenie.html", summary: "Małe, codzienne kroki prowadzą do trwałego postępu i mocnych fundamentów techniki." },
@@ -585,14 +620,16 @@ module Site
         { date: "23 lutego 2026", title: "Kintsugi (金継ぎ) — złota naprawa", url: "/blog/kintsugi-zlota-naprawa.html", summary: "Pęknięcia nie muszą być ukrywane — mogą stać się źródłem siły i nowego znaczenia." },
         { date: "23 lutego 2026", title: "Wabi-Sabi (侘寂) — piękno niedoskonałości", url: "/blog/wabi-sabi-piekno-niedoskonalosci.html", summary: "Akceptacja prostoty, przemijania i niedoskonałości jako części naturalnego rozwoju." },
         { date: "23 lutego 2026", title: "Mushin (無心) — umysł bez umysłu", url: "/blog/mushin-umysl-bez-umyslu.html", summary: "Stan pełnej obecności: bez napięcia, bez przywiązania, z jasnym działaniem." },
-        
+        { date: "23 lutego 2026", title: "Zenshin (前進) — pełne zaangażowanie", url: "/blog/zenshin-pelne-zaangazowanie.html", summary: "Konsekwentny ruch naprzód z całą uwagą i odpowiedzialnością za proces." },
+        { date: "23 lutego 2026", title: "Omoiyari (思いやり) — uważna troska", url: "/blog/omoiyari-uwazna-troska.html", summary: "Empatia w praktyce: rozumienie potrzeb drugiej osoby zanim zostaną wypowiedziane." },
+        { date: "23 lutego 2026", title: "Jiko Sekinin (自己責任) — odpowiedzialność osobista", url: "/blog/jiko-sekinin-odpowiedzialnosc-osobista.html", summary: "Branie odpowiedzialności za decyzje, błędy i konsekwencje bez szukania wymówek." },
+        { date: "23 lutego 2026", title: "Kuzushi (崩し) — kontrolowana nierównowaga", url: "/blog/kuzushi-kontrolowana-nierownowaga.html", summary: "W Aikido i poza matą: jak świadomie zmieniać układ sił, by otworzyć przestrzeń na transformację." }
       ].freeze
 
       BLOG_POSTS_EN = [
-        { date: "February 23, 2026", title: "Kuzushi (崩し) — controlled imbalance", url: "/en/blog/kuzushi-controlled-imbalance.html", summary: "On and off the mat: changing force relationships consciously to create room for transformation." },
-        { date: "February 23, 2026", title: "Jiko Sekinin (自己責任) — personal responsibility", url: "/en/blog/jiko-sekinin-personal-responsibility.html", summary: "Owning decisions, mistakes, and consequences without excuses or blame-shifting." },
-        { date: "February 23, 2026", title: "Omoiyari (思いやり) — considerate compassion", url: "/en/blog/omoiyari-considerate-compassion.html", summary: "Empathy in practice: understanding your partner's needs before they are spoken." },
-        { date: "February 23, 2026", title: "Zenshin (前進) — full commitment", url: "/en/blog/zenshin-full-commitment.html", summary: "Consistent forward movement with full attention and ownership of the process." },
+        { date: "March 6, 2026", title: "Hyōshi (拍子) — rhythm and timing of unity", url: "/en/blog/hyoshi-timing-reveals-unity-of-movement.html", summary: "Cutting movement or letting it spill immediately reveals the quality of unity between body, breath, and intent." },
+        { date: "March 6, 2026", title: "Ensō (円相) — circle of presence", url: "/en/blog/enso-circle-of-presence.html", summary: "One brushstroke that exposes the quality of mind and decision-making under pressure." },
+        { date: "February 25, 2026", title: "Zanshin (残心) — awareness after execution", url: "/en/blog/zanshin-awareness-after-execution.html", summary: "Why many errors happen after action and how to maintain awareness until the process is truly complete." },
         { date: "February 24, 2026", title: "Sesshin (接心) — deep practice and focused mind", url: "/en/blog/sesshin-deep-practice.html", summary: "Why Sesshin is a core training method and a central identity element of Sesshinkan Dojo." },
         { date: "February 23, 2026", title: "Bushido (武士道) — way of the warrior", url: "/en/blog/bushido-way-of-the-warrior.html", summary: "The samurai code and seven virtues that remain practical on the mat, at work, and in daily decisions." },
         { date: "February 23, 2026", title: "Kaizen (改善) — continuous improvement", url: "/en/blog/kaizen-continuous-improvement.html", summary: "Small daily steps that produce durable progress and stronger technical foundations." },
@@ -600,7 +637,10 @@ module Site
         { date: "February 23, 2026", title: "Kintsugi (金継ぎ) — golden repair", url: "/en/blog/kintsugi-golden-repair.html", summary: "Cracks do not need to be hidden — they can become a source of strength and meaning." },
         { date: "February 23, 2026", title: "Wabi-Sabi (侘寂) — beauty of imperfection", url: "/en/blog/wabi-sabi-beauty-of-imperfection.html", summary: "Accepting simplicity, impermanence, and imperfection as part of authentic growth." },
         { date: "February 23, 2026", title: "Mushin (無心) — no mind", url: "/en/blog/mushin-no-mind.html", summary: "A state of clear presence: no fixation, no noise, and natural action under pressure." },
-        
+        { date: "February 23, 2026", title: "Zenshin (前進) — full commitment", url: "/en/blog/zenshin-full-commitment.html", summary: "Consistent forward movement with full attention and ownership of the process." },
+        { date: "February 23, 2026", title: "Omoiyari (思いやり) — considerate compassion", url: "/en/blog/omoiyari-considerate-compassion.html", summary: "Empathy in practice: understanding your partner's needs before they are spoken." },
+        { date: "February 23, 2026", title: "Jiko Sekinin (自己責任) — personal responsibility", url: "/en/blog/jiko-sekinin-personal-responsibility.html", summary: "Owning decisions, mistakes, and consequences without excuses or blame-shifting." },
+        { date: "February 23, 2026", title: "Kuzushi (崩し) — controlled imbalance", url: "/en/blog/kuzushi-controlled-imbalance.html", summary: "On and off the mat: changing force relationships consciously to create room for transformation." }
       ].freeze
 
       def canonical_url
@@ -654,8 +694,13 @@ module Site
         (path.start_with?("blog/") || path.start_with?("en/blog/")) && !path.match?(%r{\A(?:en/)?blog(?:-\d+)?\.html\z})
       end
 
-      def social_image_for_path(_path)
-        "images/toyoda.svg"
+      def social_image_for_path(path)
+        case path.to_s
+        when "blog/enso-krag-obecnosci.html", "en/blog/enso-circle-of-presence.html"
+          "images/blog/enso-featured.png"
+        else
+          "images/toyoda.svg"
+        end
       end
 
       def page_social_image_url
@@ -663,7 +708,46 @@ module Site
       end
 
       def article_schema_for_current_path
-        ""
+        case current_path.to_s
+        when "blog/enso-krag-obecnosci.html"
+          article_schema(
+            name: "Ensō — krąg obecności i trening decyzji",
+            description: page_description,
+            image: page_social_image_url,
+            lang: "pl",
+            date_published: "2026-03-06",
+            date_modified: "2026-03-06"
+          )
+        when "en/blog/enso-circle-of-presence.html"
+          article_schema(
+            name: "Ensō — circle of presence and decision training",
+            description: page_description,
+            image: page_social_image_url,
+            lang: "en",
+            date_published: "2026-03-06",
+            date_modified: "2026-03-06"
+          )
+        when "blog/hyoshi-rytm-timing-jednosci-ruchu.html"
+          article_schema(
+            name: "Hyōshi — rytm i timing jedności w Aikido",
+            description: page_description,
+            image: page_social_image_url,
+            lang: "pl",
+            date_published: "2026-03-06",
+            date_modified: "2026-03-06"
+          )
+        when "en/blog/hyoshi-timing-reveals-unity-of-movement.html"
+          article_schema(
+            name: "Hyōshi — rhythm and timing of unity in Aikido",
+            description: page_description,
+            image: page_social_image_url,
+            lang: "en",
+            date_published: "2026-03-06",
+            date_modified: "2026-03-06"
+          )
+        else
+          ""
+        end
       end
 
       LANG_URL_MAP = {
@@ -704,6 +788,9 @@ module Site
         "blog/mushin-umysl-bez-umyslu.html" => "en/blog/mushin-no-mind.html",
         "blog/sesshin-gleboka-praktyka.html" => "en/blog/sesshin-deep-practice.html",
         "blog/zenshin-pelne-zaangazowanie.html" => "en/blog/zenshin-full-commitment.html",
+        "blog/zanshin-czujnosc-po-technice.html" => "en/blog/zanshin-awareness-after-execution.html",
+        "blog/enso-krag-obecnosci.html" => "en/blog/enso-circle-of-presence.html",
+        "blog/hyoshi-rytm-timing-jednosci-ruchu.html" => "en/blog/hyoshi-timing-reveals-unity-of-movement.html",
         "blog/omoiyari-uwazna-troska.html" => "en/blog/omoiyari-considerate-compassion.html",
         "blog/jiko-sekinin-odpowiedzialnosc-osobista.html" => "en/blog/jiko-sekinin-personal-responsibility.html",
         "blog/kuzushi-kontrolowana-nierownowaga.html" => "en/blog/kuzushi-controlled-imbalance.html",
@@ -744,6 +831,9 @@ module Site
         "en/blog/mushin-no-mind.html" => "blog/mushin-umysl-bez-umyslu.html",
         "en/blog/sesshin-deep-practice.html" => "blog/sesshin-gleboka-praktyka.html",
         "en/blog/zenshin-full-commitment.html" => "blog/zenshin-pelne-zaangazowanie.html",
+        "en/blog/zanshin-awareness-after-execution.html" => "blog/zanshin-czujnosc-po-technice.html",
+        "en/blog/enso-circle-of-presence.html" => "blog/enso-krag-obecnosci.html",
+        "en/blog/hyoshi-timing-reveals-unity-of-movement.html" => "blog/hyoshi-rytm-timing-jednosci-ruchu.html",
         "en/blog/omoiyari-considerate-compassion.html" => "blog/omoiyari-uwazna-troska.html",
         "en/blog/jiko-sekinin-personal-responsibility.html" => "blog/jiko-sekinin-odpowiedzialnosc-osobista.html",
         "en/blog/kuzushi-controlled-imbalance.html" => "blog/kuzushi-kontrolowana-nierownowaga.html",

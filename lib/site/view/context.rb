@@ -57,7 +57,14 @@ module Site
       def page_title(new_title = Undefined)
         if new_title == Undefined
           title = @page_title || default_title_for_path(current_path)
-          [title, site_name].compact.join(" | ")
+          return site_name if title.nil? || title.to_s.strip.empty?
+
+          title_str = title.to_s
+          site_name_str = site_name.to_s
+
+          return title_str if title_str.downcase.include?(site_name_str.downcase)
+
+          [title_str, site_name_str].join(" | ")
         else
           @page_title = new_title
         end
@@ -630,6 +637,51 @@ module Site
         "#{site_url}#{separator}#{path}"
       end
 
+      def blog_article_page?
+        path = current_path.to_s
+        return false if path.empty?
+
+        (path.start_with?("blog/") || path.start_with?("en/blog/")) && !path.match?(%r{\A(?:en/)?blog(?:-\d+)?\.html\z})
+      end
+
+      def social_image_for_path(path)
+        case path.to_s
+        when "blog/enso-krag-obecnosci.html", "en/blog/enso-circle-of-presence.html"
+          "images/blog/enso-featured.png"
+        else
+          "images/toyoda.svg"
+        end
+      end
+
+      def page_social_image_url
+        "#{site_url}#{asset_path(social_image_for_path(current_path))}"
+      end
+
+      def article_schema_for_current_path
+        case current_path.to_s
+        when "blog/enso-krag-obecnosci.html"
+          article_schema(
+            name: "Ensō — krąg obecności i trening decyzji",
+            description: page_description,
+            image: page_social_image_url,
+            lang: "pl",
+            date_published: "2026-03-06",
+            date_modified: "2026-03-06"
+          )
+        when "en/blog/enso-circle-of-presence.html"
+          article_schema(
+            name: "Ensō — circle of presence and decision training",
+            description: page_description,
+            image: page_social_image_url,
+            lang: "en",
+            date_published: "2026-03-06",
+            date_modified: "2026-03-06"
+          )
+        else
+          ""
+        end
+      end
+
       LANG_URL_MAP = {
         "index.html" => "en/",
         "" => "en/",
@@ -782,7 +834,7 @@ module Site
         end
       end
 
-      def article_schema(name:, description:, image:, lang: "pl")
+      def article_schema(name:, description:, image:, lang: "pl", date_published: "2024-01-01", date_modified: "2024-01-01")
         jsonld = {
           "@context" => "https://schema.org",
           "@type" => "Article",
@@ -804,8 +856,8 @@ module Site
               "url" => "#{site_url}#{asset_path('images/toyoda.svg')}"
             }
           },
-          "datePublished" => "2024-01-01",
-          "dateModified" => "2024-01-01"
+          "datePublished" => date_published,
+          "dateModified" => date_modified
         }.to_json
 
         <<~HTML

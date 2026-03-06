@@ -685,6 +685,9 @@ dd {
 .news-meta {
   font-size: 0.875rem;
   color: #666;
+  text-align: right;
+  display: block;
+  width: 100%;
 }
 
 .news-read-more {

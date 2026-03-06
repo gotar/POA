@@ -202,12 +202,6 @@ module Site
           "Jiko sekinin — odpowiedzialność osobista w dojo | Blog"
         when "blog/kuzushi-kontrolowana-nierownowaga.html"
           "Kuzushi — kontrolowana nierównowaga i prowadzenie techniki | Blog"
-        when "blog/open-mata-luty-2026.html"
-          "Open Mata POA — luty 2026 | Blog"
-        when "blog/zimowy-staz-2026.html"
-          "Zimowy staż techniczny 2026 — podsumowanie | Blog"
-        when "blog/nowy-cykl-dla-poczatkujacych.html"
-          "Nowy cykl dla początkujących — marzec 2026 | Blog"
         when "en/blog.html"
           "Blog | Polish Aikido Organization"
         when /\Aen\/blog-(\d+)\.html\z/
@@ -234,12 +228,6 @@ module Site
           "Jiko sekinin — personal responsibility in the dojo | Blog"
         when "en/blog/kuzushi-controlled-imbalance.html"
           "Kuzushi — controlled imbalance and technical guidance | Blog"
-        when "en/blog/open-mat-feb-2026.html"
-          "POA Open Mat — February 2026 | Blog"
-        when "en/blog/winter-seminar-2026.html"
-          "Winter Technical Seminar 2026 — recap | Blog"
-        when "en/blog/new-beginners-cycle-2026.html"
-          "New beginners cycle — March 2026 | Blog"
         else
           site_name
         end
@@ -389,12 +377,6 @@ module Site
           "Jiko sekinin w Aikido: odpowiedzialność za własny rozwój, przygotowanie, higienę techniki i postawę na treningu."
         when "blog/kuzushi-kontrolowana-nierownowaga.html"
           "Kuzushi od podstaw do zastosowania: kontrolowana nierównowaga, timing i kierunek, które otwierają skuteczną technikę."
-        when "blog/open-mata-luty-2026.html"
-          "Relacja z Open Maty POA w lutym 2026: zakres treningu, główne akcenty i plan dalszej pracy."
-        when "blog/zimowy-staz-2026.html"
-          "Podsumowanie zimowego stażu technicznego 2026 w POA: centrum, balans, timing i kontrola kierunku techniki."
-        when "blog/nowy-cykl-dla-poczatkujacych.html"
-          "Informacja o nowym cyklu dla początkujących w marcu 2026. Start bezpieczny, systematyczny i nastawiony na fundamenty."
         when "en/blog.html"
           "POA blog: seminar recaps, dojo updates, event announcements, and practical notes for Aikido practitioners."
         when /\Aen\/blog-(\d+)\.html\z/
@@ -421,12 +403,6 @@ module Site
           "Jiko sekinin in Aikido: personal responsibility for preparation, attitude, and the quality of each repetition."
         when "en/blog/kuzushi-controlled-imbalance.html"
           "Kuzushi explained through practice: controlled imbalance, timing, and direction to unlock effective technique."
-        when "en/blog/open-mat-feb-2026.html"
-          "Recap of the POA Open Mat in February 2026: session scope, key focus points, and next steps."
-        when "en/blog/winter-seminar-2026.html"
-          "Winter Technical Seminar 2026 recap: center stability, timing, and precision in partner guidance."
-        when "en/blog/new-beginners-cycle-2026.html"
-          "Announcement of the new beginners cycle starting in March 2026, focused on safe and durable fundamentals."
         else
           page_title
         end
@@ -556,12 +532,6 @@ module Site
           "jiko sekinin aikido, odpowiedzialnosc osobista, samodyscyplina, etyka treningu"
         when "blog/kuzushi-kontrolowana-nierownowaga.html"
           "kuzushi aikido, kontrolowana nierownowaga, balans, timing, prowadzenie partnera"
-        when "blog/open-mata-luty-2026.html"
-          "open mata poa, trening przekrojowy aikido, ukemi, randori zadaniowe, aikido gdynia"
-        when "blog/zimowy-staz-2026.html"
-          "zimowy staz aikido 2026, podsumowanie seminarium, timing, centrum, poa"
-        when "blog/nowy-cykl-dla-poczatkujacych.html"
-          "aikido dla poczatkujacych gdynia, nowy cykl aikido, trening startowy, poa"
         when "en/blog.html"
           "aikido blog, poa updates, dojo announcements, seminar recap, sesshinkan"
         when /\Aen\/blog-(\d+)\.html\z/
@@ -588,12 +558,6 @@ module Site
           "jiko sekinin aikido, personal responsibility, self-discipline, training ethics"
         when "en/blog/kuzushi-controlled-imbalance.html"
           "kuzushi aikido, controlled imbalance, timing, direction, partner guidance"
-        when "en/blog/open-mat-feb-2026.html"
-          "open mat poa, cross-level aikido training, ukemi progression, task-based randori"
-        when "en/blog/winter-seminar-2026.html"
-          "winter aikido seminar 2026, technical recap, center stability, timing, poa"
-        when "en/blog/new-beginners-cycle-2026.html"
-          "aikido beginners cycle, beginners class gdynia, safe aikido start, poa"
         else
           "Aikido, POA, Polska Organizacja Aikido, Polish Aikido Organization, Toyoda, Germanov"
         end
@@ -621,9 +585,7 @@ module Site
         { date: "23 lutego 2026", title: "Kintsugi (金継ぎ) — złota naprawa", url: "/blog/kintsugi-zlota-naprawa.html", summary: "Pęknięcia nie muszą być ukrywane — mogą stać się źródłem siły i nowego znaczenia." },
         { date: "23 lutego 2026", title: "Wabi-Sabi (侘寂) — piękno niedoskonałości", url: "/blog/wabi-sabi-piekno-niedoskonalosci.html", summary: "Akceptacja prostoty, przemijania i niedoskonałości jako części naturalnego rozwoju." },
         { date: "23 lutego 2026", title: "Mushin (無心) — umysł bez umysłu", url: "/blog/mushin-umysl-bez-umyslu.html", summary: "Stan pełnej obecności: bez napięcia, bez przywiązania, z jasnym działaniem." },
-        { date: "20 lutego 2026", title: "Open Mata POA — luty 2026", url: "/blog/open-mata-luty-2026.html", summary: "Otwarta mata przekrojowa: ukemi, dystans, timing oraz zadaniowe randori w kontrolowanym tempie." },
-        { date: "10 lutego 2026", title: "Zimowy staż techniczny 2026 — podsumowanie", url: "/blog/zimowy-staz-2026.html", summary: "Stabilność centrum, precyzja kierunku i praca oddechem jako główne akcenty zimowego stażu." },
-        { date: "28 stycznia 2026", title: "Nowy cykl dla początkujących — marzec 2026", url: "/blog/nowy-cykl-dla-poczatkujacych.html", summary: "Start nowego cyklu od bezpiecznych fundamentów: poruszanie, ukemi, reishiki i pierwsze formy." }
+        
       ].freeze
 
       BLOG_POSTS_EN = [
@@ -638,9 +600,7 @@ module Site
         { date: "February 23, 2026", title: "Kintsugi (金継ぎ) — golden repair", url: "/en/blog/kintsugi-golden-repair.html", summary: "Cracks do not need to be hidden — they can become a source of strength and meaning." },
         { date: "February 23, 2026", title: "Wabi-Sabi (侘寂) — beauty of imperfection", url: "/en/blog/wabi-sabi-beauty-of-imperfection.html", summary: "Accepting simplicity, impermanence, and imperfection as part of authentic growth." },
         { date: "February 23, 2026", title: "Mushin (無心) — no mind", url: "/en/blog/mushin-no-mind.html", summary: "A state of clear presence: no fixation, no noise, and natural action under pressure." },
-        { date: "February 20, 2026", title: "POA Open Mat — February 2026", url: "/en/blog/open-mat-feb-2026.html", summary: "Open mat across levels: ukemi, distance, timing, and task-based randori in a controlled tempo." },
-        { date: "February 10, 2026", title: "Winter Technical Seminar 2026 — recap", url: "/en/blog/winter-seminar-2026.html", summary: "Center stability, directional precision, and breath-driven tempo as core seminar focus points." },
-        { date: "January 28, 2026", title: "New beginners cycle — March 2026", url: "/en/blog/new-beginners-cycle-2026.html", summary: "A structured beginner cycle focused on safe fundamentals, ukemi, etiquette, and first partner forms." }
+        
       ].freeze
 
       def canonical_url
@@ -747,9 +707,6 @@ module Site
         "blog/omoiyari-uwazna-troska.html" => "en/blog/omoiyari-considerate-compassion.html",
         "blog/jiko-sekinin-odpowiedzialnosc-osobista.html" => "en/blog/jiko-sekinin-personal-responsibility.html",
         "blog/kuzushi-kontrolowana-nierownowaga.html" => "en/blog/kuzushi-controlled-imbalance.html",
-        "blog/open-mata-luty-2026.html" => "en/blog/open-mat-feb-2026.html",
-        "blog/zimowy-staz-2026.html" => "en/blog/winter-seminar-2026.html",
-        "blog/nowy-cykl-dla-poczatkujacych.html" => "en/blog/new-beginners-cycle-2026.html",
         "en/" => "",
         "en/index.html" => "",
         "en/contact.html" => "kontakt.html",
@@ -790,9 +747,6 @@ module Site
         "en/blog/omoiyari-considerate-compassion.html" => "blog/omoiyari-uwazna-troska.html",
         "en/blog/jiko-sekinin-personal-responsibility.html" => "blog/jiko-sekinin-odpowiedzialnosc-osobista.html",
         "en/blog/kuzushi-controlled-imbalance.html" => "blog/kuzushi-kontrolowana-nierownowaga.html",
-        "en/blog/open-mat-feb-2026.html" => "blog/open-mata-luty-2026.html",
-        "en/blog/winter-seminar-2026.html" => "blog/zimowy-staz-2026.html",
-        "en/blog/new-beginners-cycle-2026.html" => "blog/nowy-cykl-dla-poczatkujacych.html"
       }.freeze
 
       def current_lang

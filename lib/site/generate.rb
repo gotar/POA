@@ -78,6 +78,7 @@ module Site
       blog_omoiyari_view: "views.blog.omoiyari",
       blog_jiko_sekinin_view: "views.blog.jiko_sekinin",
       blog_kuzushi_view: "views.blog.kuzushi",
+      blog_enso_view: "views.blog.enso",
       blog_bushido_en_view: "views.en.blog.bushido",
       blog_kaizen_en_view: "views.en.blog.kaizen",
       blog_gaman_en_view: "views.en.blog.gaman",
@@ -90,6 +91,7 @@ module Site
       blog_omoiyari_en_view: "views.en.blog.omoiyari",
       blog_jiko_sekinin_en_view: "views.en.blog.jiko_sekinin",
       blog_kuzushi_en_view: "views.en.blog.kuzushi",
+      blog_enso_en_view: "views.en.blog.enso",
     ]
 
     def call(root)
@@ -171,6 +173,7 @@ module Site
       render export_dir, "blog/sesshin-gleboka-praktyka.html", blog_sesshin_view
       render export_dir, "blog/zenshin-pelne-zaangazowanie.html", blog_zenshin_view
       render export_dir, "blog/zanshin-czujnosc-po-technice.html", blog_zanshin_view
+      render export_dir, "blog/enso-krag-obecnosci.html", blog_enso_view
       render export_dir, "blog/omoiyari-uwazna-troska.html", blog_omoiyari_view
       render export_dir, "blog/jiko-sekinin-odpowiedzialnosc-osobista.html", blog_jiko_sekinin_view
       render export_dir, "blog/kuzushi-kontrolowana-nierownowaga.html", blog_kuzushi_view
@@ -183,6 +186,7 @@ module Site
       render export_dir, "en/blog/sesshin-deep-practice.html", blog_sesshin_en_view
       render export_dir, "en/blog/zenshin-full-commitment.html", blog_zenshin_en_view
       render export_dir, "en/blog/zanshin-awareness-after-execution.html", blog_zanshin_en_view
+      render export_dir, "en/blog/enso-circle-of-presence.html", blog_enso_en_view
       render export_dir, "en/blog/omoiyari-considerate-compassion.html", blog_omoiyari_en_view
       render export_dir, "en/blog/jiko-sekinin-personal-responsibility.html", blog_jiko_sekinin_en_view
       render export_dir, "en/blog/kuzushi-controlled-imbalance.html", blog_kuzushi_en_view

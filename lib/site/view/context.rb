@@ -238,6 +238,10 @@ module Site
           "Ensō — circle of presence and decision training | Blog"
         when "en/blog/hyoshi-timing-reveals-unity-of-movement.html"
           "Hyōshi — rhythm and timing of unity in Aikido | Blog"
+        when "en/blog/toyoda-aikido-style-technique-and-zen.html"
+          "Fumio Toyoda’s Aikido style — technique and Zen as one system | Blog"
+        when "en/blog/toyoda-germanov-lineage-how-we-train.html"
+          "Toyoda–Germanov lineage — how we train and what sets our school apart | Blog"
         when "en/blog/omoiyari-considerate-compassion.html"
           "Omoiyari — considerate compassion in partner work | Blog"
         when "en/blog/jiko-sekinin-personal-responsibility.html"
@@ -429,6 +433,10 @@ module Site
           "Ensō in Aikido and Zen practice: one stroke that reveals presence, decision quality, and clean closure."
         when "en/blog/hyoshi-timing-reveals-unity-of-movement.html"
           "Hyōshi in Aikido and budō: how timing reveals unity of decision, breath, and movement—and why delay breaks technique."
+        when "en/blog/toyoda-aikido-style-technique-and-zen.html"
+          "What defines Fumio Toyoda’s Aikido style? Discover how technical precision, breath work, and Zen discipline form one coherent training system."
+        when "en/blog/toyoda-germanov-lineage-how-we-train.html"
+          "Toyoda–Germanov lineage in practice: technical precision, inner discipline, and responsible instruction compared with other Aikido streams."
         when "en/blog/omoiyari-considerate-compassion.html"
           "Omoiyari in the dojo: considerate compassion, partner safety, and responsible intensity in everyday training."
         when "en/blog/jiko-sekinin-personal-responsibility.html"
@@ -600,6 +608,10 @@ module Site
           "enso aikido, enso zen, zen circle, presence in motion, decision under pressure, clean execution"
         when "en/blog/hyoshi-timing-reveals-unity-of-movement.html"
           "hyoshi aikido, aikido timing, rhythm in movement, ma-ai kokyu zanshin, body-mind unity, budo"
+        when "en/blog/toyoda-aikido-style-technique-and-zen.html"
+          "toyoda aikido style, fumio toyoda, aikido zen, misogi, budo training, toyoda lineage"
+        when "en/blog/toyoda-germanov-lineage-how-we-train.html"
+          "toyoda germanov lineage, germanov aikido, aikido methodology, budo practice, aikido school"
         when "en/blog/omoiyari-considerate-compassion.html"
           "omoiyari aikido, considerate compassion, partner safety, cooperative training, dojo culture"
         when "en/blog/jiko-sekinin-personal-responsibility.html"
@@ -641,6 +653,8 @@ module Site
       ].freeze
 
       BLOG_POSTS_EN = [
+        { date: "March 7, 2026", title: "Fumio Toyoda’s Aikido style: technique and Zen as one system", url: "/en/blog/toyoda-aikido-style-technique-and-zen.html", summary: "How Toyoda lineage integrates technical precision, breath work, and Zen discipline into one training method." },
+        { date: "March 7, 2026", title: "Toyoda–Germanov lineage: how we train and what sets our school apart", url: "/en/blog/toyoda-germanov-lineage-how-we-train.html", summary: "Our training profile: technical precision, inner discipline, and responsible instructor-led transmission." },
         { date: "March 6, 2026", title: "Hyōshi (拍子) — rhythm and timing of unity", url: "/en/blog/hyoshi-timing-reveals-unity-of-movement.html", summary: "Cutting movement or letting it spill immediately reveals the quality of unity between body, breath, and intent." },
         { date: "March 6, 2026", title: "Ensō (円相) — circle of presence", url: "/en/blog/enso-circle-of-presence.html", summary: "One brushstroke that exposes the quality of mind and decision-making under pressure." },
         { date: "February 25, 2026", title: "Zanshin (残心) — awareness after execution", url: "/en/blog/zanshin-awareness-after-execution.html", summary: "Why many errors happen after action and how to maintain awareness until the process is truly complete." },
@@ -805,6 +819,8 @@ module Site
         "blog/zanshin-czujnosc-po-technice.html" => "en/blog/zanshin-awareness-after-execution.html",
         "blog/enso-krag-obecnosci.html" => "en/blog/enso-circle-of-presence.html",
         "blog/hyoshi-rytm-timing-jednosci-ruchu.html" => "en/blog/hyoshi-timing-reveals-unity-of-movement.html",
+        "blog/styl-aikido-fumio-toyody-technika-i-zen.html" => "en/blog/toyoda-aikido-style-technique-and-zen.html",
+        "blog/linia-toyoda-germanov-jak-cwiczymy.html" => "en/blog/toyoda-germanov-lineage-how-we-train.html",
         "blog/omoiyari-uwazna-troska.html" => "en/blog/omoiyari-considerate-compassion.html",
         "blog/jiko-sekinin-odpowiedzialnosc-osobista.html" => "en/blog/jiko-sekinin-personal-responsibility.html",
         "blog/kuzushi-kontrolowana-nierownowaga.html" => "en/blog/kuzushi-controlled-imbalance.html",
@@ -848,6 +864,8 @@ module Site
         "en/blog/zanshin-awareness-after-execution.html" => "blog/zanshin-czujnosc-po-technice.html",
         "en/blog/enso-circle-of-presence.html" => "blog/enso-krag-obecnosci.html",
         "en/blog/hyoshi-timing-reveals-unity-of-movement.html" => "blog/hyoshi-rytm-timing-jednosci-ruchu.html",
+        "en/blog/toyoda-aikido-style-technique-and-zen.html" => "blog/styl-aikido-fumio-toyody-technika-i-zen.html",
+        "en/blog/toyoda-germanov-lineage-how-we-train.html" => "blog/linia-toyoda-germanov-jak-cwiczymy.html",
         "en/blog/omoiyari-considerate-compassion.html" => "blog/omoiyari-uwazna-troska.html",
         "en/blog/jiko-sekinin-personal-responsibility.html" => "blog/jiko-sekinin-odpowiedzialnosc-osobista.html",
         "en/blog/kuzushi-controlled-imbalance.html" => "blog/kuzushi-kontrolowana-nierownowaga.html",

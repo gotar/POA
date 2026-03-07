@@ -96,6 +96,8 @@ module Site
       blog_kuzushi_en_view: "views.en.blog.kuzushi",
       blog_enso_en_view: "views.en.blog.enso",
       blog_hyoshi_en_view: "views.en.blog.hyoshi",
+      blog_styl_toyody_en_view: "views.en.blog.styl_toyody",
+      blog_linia_toyoda_germanov_en_view: "views.en.blog.linia_toyoda_germanov",
     ]
 
     def call(root)
@@ -192,6 +194,8 @@ module Site
       render export_dir, "en/blog/zanshin-awareness-after-execution.html", blog_zanshin_en_view
       render export_dir, "en/blog/enso-circle-of-presence.html", blog_enso_en_view
       render export_dir, "en/blog/hyoshi-timing-reveals-unity-of-movement.html", blog_hyoshi_en_view
+      render export_dir, "en/blog/toyoda-aikido-style-technique-and-zen.html", blog_styl_toyody_en_view
+      render export_dir, "en/blog/toyoda-germanov-lineage-how-we-train.html", blog_linia_toyoda_germanov_en_view
       render export_dir, "en/blog/omoiyari-considerate-compassion.html", blog_omoiyari_en_view
       render export_dir, "en/blog/jiko-sekinin-personal-responsibility.html", blog_jiko_sekinin_en_view
       render export_dir, "en/blog/kuzushi-controlled-imbalance.html", blog_kuzushi_en_view

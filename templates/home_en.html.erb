@@ -36,23 +36,13 @@
     <h2>Latest Posts</h2>
 
     <div class="news-list home-news-list">
-      <article class="news-card">
-        <div class="news-meta">March 6, 2026</div>
-        <h3><a href="/en/blog/hyoshi-timing-reveals-unity-of-movement.html">Hyōshi (拍子) — rhythm and timing of unity</a></h3>
-        <p>Cutting movement or letting it spill immediately shows whether decision, breath, and body are working as one.</p>
-      </article>
-
-      <article class="news-card">
-        <div class="news-meta">March 6, 2026</div>
-        <h3><a href="/en/blog/enso-circle-of-presence.html">Ensō (円相) — circle of presence</a></h3>
-        <p>One brushstroke that reveals the quality of presence, decision, and practice — on the mat and beyond the dojo.</p>
-      </article>
-
-      <article class="news-card">
-        <div class="news-meta">February 25, 2026</div>
-        <h3><a href="/en/blog/zanshin-awareness-after-execution.html">Zanshin (残心) — awareness after execution</a></h3>
-        <p>Why many errors happen after action and how to maintain awareness until the process is truly complete.</p>
-      </article>
+      <% blog_posts(language: "en").first(3).each do |post| %>
+        <article class="news-card">
+          <div class="news-meta"><%= post[:date] %></div>
+          <h3><a href="<%= post[:url] %>"><%= post[:title] %></a></h3>
+          <p><%= post[:summary] %></p>
+        </article>
+      <% end %>
     </div>
 
     <p><a class="news-read-more" href="/en/blog.html">See all posts →</a></p>

@@ -36,23 +36,13 @@
     <h2>Najnowsze wpisy</h2>
 
     <div class="news-list home-news-list">
-      <article class="news-card">
-        <div class="news-meta">6 marca 2026</div>
-        <h3><a href="/blog/hyoshi-rytm-timing-jednosci-ruchu.html">Hyōshi (拍子) — rytm i timing jedności</a></h3>
-        <p>Cięcie ruchu albo jego rozlanie pokazuje od razu, czy decyzja, oddech i ciało działają jako jedno.</p>
-      </article>
-
-      <article class="news-card">
-        <div class="news-meta">6 marca 2026</div>
-        <h3><a href="/blog/enso-krag-obecnosci.html">Ensō (円相) — krąg obecności</a></h3>
-        <p>Jeden ruch pędzla, który pokazuje jakość obecności, decyzji i praktyki — na macie i poza dojo.</p>
-      </article>
-
-      <article class="news-card">
-        <div class="news-meta">25 lutego 2026</div>
-        <h3><a href="/blog/zanshin-czujnosc-po-technice.html">Zanshin (残心) — czujność po technice</a></h3>
-        <p>Dlaczego najwięcej błędów pojawia się po ruchu i jak utrzymać uwagę do końca działania.</p>
-      </article>
+      <% blog_posts(language: "pl").first(3).each do |post| %>
+        <article class="news-card">
+          <div class="news-meta"><%= post[:date] %></div>
+          <h3><a href="<%= post[:url] %>"><%= post[:title] %></a></h3>
+          <p><%= post[:summary] %></p>
+        </article>
+      <% end %>
     </div>
 
     <p><a class="news-read-more" href="/blog.html">Zobacz wszystkie wpisy →</a></p>

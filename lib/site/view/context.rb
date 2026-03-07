@@ -202,6 +202,10 @@ module Site
           "Ensō — krąg obecności i trening decyzji | Blog"
         when "blog/hyoshi-rytm-timing-jednosci-ruchu.html"
           "Hyōshi — rytm i timing jedności w Aikido | Blog"
+        when "blog/styl-aikido-fumio-toyody-technika-i-zen.html"
+          "Styl Aikido Fumio Toyody — technika i Zen jako jeden system | Blog"
+        when "blog/linia-toyoda-germanov-jak-cwiczymy.html"
+          "Linia Toyoda–Germanov — jak ćwiczymy i czym wyróżnia się nasza szkoła | Blog"
         when "blog/omoiyari-uwazna-troska.html"
           "Omoiyari — uważna troska i odpowiedzialny partnering | Blog"
         when "blog/jiko-sekinin-odpowiedzialnosc-osobista.html"
@@ -389,6 +393,10 @@ module Site
           "Ensō w praktyce Aikido i zen: jeden ruch, który odsłania jakość obecności, decyzji i domknięcia działania."
         when "blog/hyoshi-rytm-timing-jednosci-ruchu.html"
           "Hyōshi w Aikido i budō: jak timing ujawnia jedność decyzji, oddechu i ruchu oraz dlaczego spóźnienie niszczy technikę."
+        when "blog/styl-aikido-fumio-toyody-technika-i-zen.html"
+          "Czym wyróżnia się styl Aikido Fumio Toyody? Poznaj połączenie precyzji technicznej, oddechu i dyscypliny Zen w jednym systemie treningowym."
+        when "blog/linia-toyoda-germanov-jak-cwiczymy.html"
+          "Linia Toyoda–Germanov w praktyce: precyzja techniczna, dyscyplina wewnętrzna i odpowiedzialny przekaz instruktorski na tle innych nurtów Aikido."
         when "blog/omoiyari-uwazna-troska.html"
           "Omoiyari w dojo: uważna troska o partnera, bezpieczeństwo treningu i wysoka kultura współpracy na macie."
         when "blog/jiko-sekinin-odpowiedzialnosc-osobista.html"
@@ -556,6 +564,10 @@ module Site
           "enso aikido, enso zen, zen circle, krag zen, obecność w ruchu, decyzja pod presją"
         when "blog/hyoshi-rytm-timing-jednosci-ruchu.html"
           "hyoshi aikido, timing aikido, rytm ruchu, ma-ai kokyu zanshin, jedność ciała i umysłu, budo"
+        when "blog/styl-aikido-fumio-toyody-technika-i-zen.html"
+          "styl aikido toyody, fumio toyoda, aikido zen, misogi, trening budo, linia toyoda"
+        when "blog/linia-toyoda-germanov-jak-cwiczymy.html"
+          "linia toyoda germanov, aikido germanov, metodyka aikido, budo praktyka, aikido szkoła"
         when "blog/omoiyari-uwazna-troska.html"
           "omoiyari aikido, uwazna troska, partnering, bezpieczenstwo na macie, kultura dojo"
         when "blog/jiko-sekinin-odpowiedzialnosc-osobista.html"
@@ -610,6 +622,8 @@ module Site
       BLOG_POSTS_PER_PAGE = 10
 
       BLOG_POSTS_PL = [
+        { date: "7 marca 2026", title: "Styl Aikido Fumio Toyody: technika i Zen jako jeden system", url: "/blog/styl-aikido-fumio-toyody-technika-i-zen.html", summary: "Jak w linii Toyody łączy się precyzję techniki, oddech i dyscyplinę Zen w jednej metodyce treningowej." },
+        { date: "7 marca 2026", title: "Linia Toyoda–Germanov: jak ćwiczymy i czym wyróżnia się nasza szkoła", url: "/blog/linia-toyoda-germanov-jak-cwiczymy.html", summary: "Profil naszej praktyki: precyzja techniczna, praca wewnętrzna i odpowiedzialny przekaz instruktorski." },
         { date: "6 marca 2026", title: "Hyōshi (拍子) — rytm i timing jedności", url: "/blog/hyoshi-rytm-timing-jednosci-ruchu.html", summary: "Cięcie ruchu albo jego rozlanie natychmiast ujawnia jakość jedności ciała, oddechu i decyzji." },
         { date: "6 marca 2026", title: "Ensō (円相) — krąg obecności", url: "/blog/enso-krag-obecnosci.html", summary: "Jeden ruch pędzla, który bezlitośnie pokazuje jakość umysłu i decyzji pod presją." },
         { date: "25 lutego 2026", title: "Zanshin (残心) — czujność po technice", url: "/blog/zanshin-czujnosc-po-technice.html", summary: "Dlaczego najwięcej błędów pojawia się po ruchu i jak utrzymać uwagę do końca działania." },

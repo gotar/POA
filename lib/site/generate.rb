@@ -80,6 +80,8 @@ module Site
       blog_kuzushi_view: "views.blog.kuzushi",
       blog_enso_view: "views.blog.enso",
       blog_hyoshi_view: "views.blog.hyoshi",
+      blog_styl_toyody_view: "views.blog.styl_toyody",
+      blog_linia_toyoda_germanov_view: "views.blog.linia_toyoda_germanov",
       blog_bushido_en_view: "views.en.blog.bushido",
       blog_kaizen_en_view: "views.en.blog.kaizen",
       blog_gaman_en_view: "views.en.blog.gaman",
@@ -174,6 +176,8 @@ module Site
       render export_dir, "blog/zanshin-czujnosc-po-technice.html", blog_zanshin_view
       render export_dir, "blog/enso-krag-obecnosci.html", blog_enso_view
       render export_dir, "blog/hyoshi-rytm-timing-jednosci-ruchu.html", blog_hyoshi_view
+      render export_dir, "blog/styl-aikido-fumio-toyody-technika-i-zen.html", blog_styl_toyody_view
+      render export_dir, "blog/linia-toyoda-germanov-jak-cwiczymy.html", blog_linia_toyoda_germanov_view
       render export_dir, "blog/omoiyari-uwazna-troska.html", blog_omoiyari_view
       render export_dir, "blog/jiko-sekinin-odpowiedzialnosc-osobista.html", blog_jiko_sekinin_view
       render export_dir, "blog/kuzushi-kontrolowana-nierownowaga.html", blog_kuzushi_view

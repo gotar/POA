@@ -202,6 +202,8 @@ module Site
           "Ensō — krąg obecności i trening decyzji | Blog"
         when "blog/hyoshi-rytm-timing-jednosci-ruchu.html"
           "Hyōshi — rytm i timing jedności w Aikido | Blog"
+        when "blog/fudoshin-niewzruszony-umysl.html"
+          "Fudōshin — niewzruszony umysł i stabilność pod presją | Blog"
         when "blog/styl-aikido-fumio-toyody-technika-i-zen.html"
           "Styl Aikido Fumio Toyody — technika i Zen jako jeden system | Blog"
         when "blog/linia-toyoda-germanov-jak-cwiczymy.html"
@@ -238,6 +240,8 @@ module Site
           "Ensō — circle of presence and decision training | Blog"
         when "en/blog/hyoshi-timing-reveals-unity-of-movement.html"
           "Hyōshi — rhythm and timing of unity in Aikido | Blog"
+        when "en/blog/fudoshin-immovable-mind.html"
+          "Fudōshin — immovable mind and stability under pressure | Blog"
         when "en/blog/toyoda-aikido-style-technique-and-zen.html"
           "Fumio Toyoda’s Aikido style — technique and Zen as one system | Blog"
         when "en/blog/toyoda-germanov-lineage-how-we-train.html"
@@ -397,6 +401,8 @@ module Site
           "Ensō w praktyce Aikido i zen: jeden ruch, który odsłania jakość obecności, decyzji i domknięcia działania."
         when "blog/hyoshi-rytm-timing-jednosci-ruchu.html"
           "Hyōshi w Aikido i budō: jak timing ujawnia jedność decyzji, oddechu i ruchu oraz dlaczego spóźnienie niszczy technikę."
+        when "blog/fudoshin-niewzruszony-umysl.html"
+          "Fudōshin w Aikido i budō: niewzruszony umysł jako praktyczna stabilność decyzji, oddechu i postawy pod presją."
         when "blog/styl-aikido-fumio-toyody-technika-i-zen.html"
           "Czym wyróżnia się styl Aikido Fumio Toyody? Poznaj połączenie precyzji technicznej, oddechu i dyscypliny Zen w jednym systemie treningowym."
         when "blog/linia-toyoda-germanov-jak-cwiczymy.html"
@@ -433,6 +439,8 @@ module Site
           "Ensō in Aikido and Zen practice: one stroke that reveals presence, decision quality, and clean closure."
         when "en/blog/hyoshi-timing-reveals-unity-of-movement.html"
           "Hyōshi in Aikido and budō: how timing reveals unity of decision, breath, and movement—and why delay breaks technique."
+        when "en/blog/fudoshin-immovable-mind.html"
+          "Fudōshin in Aikido and budō: immovable mind as practical stability of decision, breath, and posture under pressure."
         when "en/blog/toyoda-aikido-style-technique-and-zen.html"
           "What defines Fumio Toyoda’s Aikido style? Discover how technical precision, breath work, and Zen discipline form one coherent training system."
         when "en/blog/toyoda-germanov-lineage-how-we-train.html"
@@ -572,6 +580,8 @@ module Site
           "enso aikido, enso zen, zen circle, krag zen, obecność w ruchu, decyzja pod presją"
         when "blog/hyoshi-rytm-timing-jednosci-ruchu.html"
           "hyoshi aikido, timing aikido, rytm ruchu, ma-ai kokyu zanshin, jedność ciała i umysłu, budo"
+        when "blog/fudoshin-niewzruszony-umysl.html"
+          "fudoshin aikido, niewzruszony umysl, stabilnosc pod presja, spokoj w dzialaniu, budo, zen"
         when "blog/styl-aikido-fumio-toyody-technika-i-zen.html"
           "styl aikido toyody, fumio toyoda, aikido zen, misogi, trening budo, linia toyoda"
         when "blog/linia-toyoda-germanov-jak-cwiczymy.html"
@@ -608,6 +618,8 @@ module Site
           "enso aikido, enso zen, zen circle, presence in motion, decision under pressure, clean execution"
         when "en/blog/hyoshi-timing-reveals-unity-of-movement.html"
           "hyoshi aikido, aikido timing, rhythm in movement, ma-ai kokyu zanshin, body-mind unity, budo"
+        when "en/blog/fudoshin-immovable-mind.html"
+          "fudoshin aikido, immovable mind, stability under pressure, calm action, budo, zen"
         when "en/blog/toyoda-aikido-style-technique-and-zen.html"
           "toyoda aikido style, fumio toyoda, aikido zen, misogi, budo training, toyoda lineage"
         when "en/blog/toyoda-germanov-lineage-how-we-train.html"
@@ -634,6 +646,7 @@ module Site
       BLOG_POSTS_PER_PAGE = 10
 
       BLOG_POSTS_PL = [
+        { date: "14 marca 2026", title: "Fudōshin (不動心) — niewzruszony umysł", url: "/blog/fudoshin-niewzruszony-umysl.html", summary: "Jak zachować stabilność decyzji, oddechu i postawy wtedy, gdy presja najbardziej chce rozbić technikę." },
         { date: "7 marca 2026", title: "Styl Aikido Fumio Toyody: technika i Zen jako jeden system", url: "/blog/styl-aikido-fumio-toyody-technika-i-zen.html", summary: "Jak w linii Toyody łączy się precyzję techniki, oddech i dyscyplinę Zen w jednej metodyce treningowej." },
         { date: "7 marca 2026", title: "Linia Toyoda–Germanov: jak ćwiczymy i czym wyróżnia się nasza szkoła", url: "/blog/linia-toyoda-germanov-jak-cwiczymy.html", summary: "Profil naszej praktyki: precyzja techniczna, praca wewnętrzna i odpowiedzialny przekaz instruktorski." },
         { date: "6 marca 2026", title: "Hyōshi (拍子) — rytm i timing jedności", url: "/blog/hyoshi-rytm-timing-jednosci-ruchu.html", summary: "Cięcie ruchu albo jego rozlanie natychmiast ujawnia jakość jedności ciała, oddechu i decyzji." },
@@ -653,6 +666,7 @@ module Site
       ].freeze
 
       BLOG_POSTS_EN = [
+        { date: "March 14, 2026", title: "Fudōshin (不動心) — immovable mind", url: "/en/blog/fudoshin-immovable-mind.html", summary: "How to preserve stability of decision, breath, and posture when pressure is most likely to break technique." },
         { date: "March 7, 2026", title: "Fumio Toyoda’s Aikido style: technique and Zen as one system", url: "/en/blog/toyoda-aikido-style-technique-and-zen.html", summary: "How Toyoda lineage integrates technical precision, breath work, and Zen discipline into one training method." },
         { date: "March 7, 2026", title: "Toyoda–Germanov lineage: how we train and what sets our school apart", url: "/en/blog/toyoda-germanov-lineage-how-we-train.html", summary: "Our training profile: technical precision, inner discipline, and responsible instructor-led transmission." },
         { date: "March 6, 2026", title: "Hyōshi (拍子) — rhythm and timing of unity", url: "/en/blog/hyoshi-timing-reveals-unity-of-movement.html", summary: "Cutting movement or letting it spill immediately reveals the quality of unity between body, breath, and intent." },
@@ -773,6 +787,24 @@ module Site
             date_published: "2026-03-06",
             date_modified: "2026-03-06"
           )
+        when "blog/fudoshin-niewzruszony-umysl.html"
+          article_schema(
+            name: "Fudōshin — niewzruszony umysł i stabilność pod presją",
+            description: page_description,
+            image: page_social_image_url,
+            lang: "pl",
+            date_published: "2026-03-14",
+            date_modified: "2026-03-14"
+          )
+        when "en/blog/fudoshin-immovable-mind.html"
+          article_schema(
+            name: "Fudōshin — immovable mind and stability under pressure",
+            description: page_description,
+            image: page_social_image_url,
+            lang: "en",
+            date_published: "2026-03-14",
+            date_modified: "2026-03-14"
+          )
         else
           ""
         end
@@ -819,6 +851,7 @@ module Site
         "blog/zanshin-czujnosc-po-technice.html" => "en/blog/zanshin-awareness-after-execution.html",
         "blog/enso-krag-obecnosci.html" => "en/blog/enso-circle-of-presence.html",
         "blog/hyoshi-rytm-timing-jednosci-ruchu.html" => "en/blog/hyoshi-timing-reveals-unity-of-movement.html",
+        "blog/fudoshin-niewzruszony-umysl.html" => "en/blog/fudoshin-immovable-mind.html",
         "blog/styl-aikido-fumio-toyody-technika-i-zen.html" => "en/blog/toyoda-aikido-style-technique-and-zen.html",
         "blog/linia-toyoda-germanov-jak-cwiczymy.html" => "en/blog/toyoda-germanov-lineage-how-we-train.html",
         "blog/omoiyari-uwazna-troska.html" => "en/blog/omoiyari-considerate-compassion.html",
@@ -864,6 +897,7 @@ module Site
         "en/blog/zanshin-awareness-after-execution.html" => "blog/zanshin-czujnosc-po-technice.html",
         "en/blog/enso-circle-of-presence.html" => "blog/enso-krag-obecnosci.html",
         "en/blog/hyoshi-timing-reveals-unity-of-movement.html" => "blog/hyoshi-rytm-timing-jednosci-ruchu.html",
+        "en/blog/fudoshin-immovable-mind.html" => "blog/fudoshin-niewzruszony-umysl.html",
         "en/blog/toyoda-aikido-style-technique-and-zen.html" => "blog/styl-aikido-fumio-toyody-technika-i-zen.html",
         "en/blog/toyoda-germanov-lineage-how-we-train.html" => "blog/linia-toyoda-germanov-jak-cwiczymy.html",
         "en/blog/omoiyari-considerate-compassion.html" => "blog/omoiyari-uwazna-troska.html",

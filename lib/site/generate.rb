@@ -81,6 +81,7 @@ module Site
       blog_enso_view: "views.blog.enso",
       blog_hyoshi_view: "views.blog.hyoshi",
       blog_fudoshin_view: "views.blog.fudoshin",
+      blog_shoshin_view: "views.blog.shoshin",
       blog_styl_toyody_view: "views.blog.styl_toyody",
       blog_linia_toyoda_germanov_view: "views.blog.linia_toyoda_germanov",
       blog_bushido_en_view: "views.en.blog.bushido",
@@ -98,6 +99,7 @@ module Site
       blog_enso_en_view: "views.en.blog.enso",
       blog_hyoshi_en_view: "views.en.blog.hyoshi",
       blog_fudoshin_en_view: "views.en.blog.fudoshin",
+      blog_shoshin_en_view: "views.en.blog.shoshin",
       blog_styl_toyody_en_view: "views.en.blog.styl_toyody",
       blog_linia_toyoda_germanov_en_view: "views.en.blog.linia_toyoda_germanov",
     ]
@@ -181,6 +183,7 @@ module Site
       render export_dir, "blog/enso-krag-obecnosci.html", blog_enso_view
       render export_dir, "blog/hyoshi-rytm-timing-jednosci-ruchu.html", blog_hyoshi_view
       render export_dir, "blog/fudoshin-niewzruszony-umysl.html", blog_fudoshin_view
+      render export_dir, "blog/shoshin-umysl-poczatkujacego.html", blog_shoshin_view
       render export_dir, "blog/styl-aikido-fumio-toyody-technika-i-zen.html", blog_styl_toyody_view
       render export_dir, "blog/linia-toyoda-germanov-jak-cwiczymy.html", blog_linia_toyoda_germanov_view
       render export_dir, "blog/omoiyari-uwazna-troska.html", blog_omoiyari_view
@@ -198,6 +201,7 @@ module Site
       render export_dir, "en/blog/enso-circle-of-presence.html", blog_enso_en_view
       render export_dir, "en/blog/hyoshi-timing-reveals-unity-of-movement.html", blog_hyoshi_en_view
       render export_dir, "en/blog/fudoshin-immovable-mind.html", blog_fudoshin_en_view
+      render export_dir, "en/blog/shoshin-beginners-mind.html", blog_shoshin_en_view
       render export_dir, "en/blog/toyoda-aikido-style-technique-and-zen.html", blog_styl_toyody_en_view
       render export_dir, "en/blog/toyoda-germanov-lineage-how-we-train.html", blog_linia_toyoda_germanov_en_view
       render export_dir, "en/blog/omoiyari-considerate-compassion.html", blog_omoiyari_en_view

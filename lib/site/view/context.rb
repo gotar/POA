@@ -204,6 +204,8 @@ module Site
           "Hyōshi — rytm i timing jedności w Aikido | Blog"
         when "blog/fudoshin-niewzruszony-umysl.html"
           "Fudōshin — niewzruszony umysł i stabilność pod presją | Blog"
+        when "blog/shoshin-umysl-poczatkujacego.html"
+          "Shoshin — umysł początkującego i pokora w rozwoju | Blog"
         when "blog/styl-aikido-fumio-toyody-technika-i-zen.html"
           "Styl Aikido Fumio Toyody — technika i Zen jako jeden system | Blog"
         when "blog/linia-toyoda-germanov-jak-cwiczymy.html"
@@ -242,6 +244,8 @@ module Site
           "Hyōshi — rhythm and timing of unity in Aikido | Blog"
         when "en/blog/fudoshin-immovable-mind.html"
           "Fudōshin — immovable mind and stability under pressure | Blog"
+        when "en/blog/shoshin-beginners-mind.html"
+          "Shoshin — beginner's mind and humility in growth | Blog"
         when "en/blog/toyoda-aikido-style-technique-and-zen.html"
           "Fumio Toyoda’s Aikido style — technique and Zen as one system | Blog"
         when "en/blog/toyoda-germanov-lineage-how-we-train.html"
@@ -403,6 +407,8 @@ module Site
           "Hyōshi w Aikido i budō: jak timing ujawnia jedność decyzji, oddechu i ruchu oraz dlaczego spóźnienie niszczy technikę."
         when "blog/fudoshin-niewzruszony-umysl.html"
           "Fudōshin w Aikido i budō: niewzruszony umysł jako praktyczna stabilność decyzji, oddechu i postawy pod presją."
+        when "blog/shoshin-umysl-poczatkujacego.html"
+          "Shoshin w Aikido i budō: jak umysł początkującego chroni przed rutyną, pychą i techniczną stagnacją."
         when "blog/styl-aikido-fumio-toyody-technika-i-zen.html"
           "Czym wyróżnia się styl Aikido Fumio Toyody? Poznaj połączenie precyzji technicznej, oddechu i dyscypliny Zen w jednym systemie treningowym."
         when "blog/linia-toyoda-germanov-jak-cwiczymy.html"
@@ -441,6 +447,8 @@ module Site
           "Hyōshi in Aikido and budō: how timing reveals unity of decision, breath, and movement—and why delay breaks technique."
         when "en/blog/fudoshin-immovable-mind.html"
           "Fudōshin in Aikido and budō: immovable mind as practical stability of decision, breath, and posture under pressure."
+        when "en/blog/shoshin-beginners-mind.html"
+          "Shoshin in Aikido and budō: how beginner's mind protects training from routine, ego, and technical stagnation."
         when "en/blog/toyoda-aikido-style-technique-and-zen.html"
           "What defines Fumio Toyoda’s Aikido style? Discover how technical precision, breath work, and Zen discipline form one coherent training system."
         when "en/blog/toyoda-germanov-lineage-how-we-train.html"
@@ -582,6 +590,8 @@ module Site
           "hyoshi aikido, timing aikido, rytm ruchu, ma-ai kokyu zanshin, jedność ciała i umysłu, budo"
         when "blog/fudoshin-niewzruszony-umysl.html"
           "fudoshin aikido, niewzruszony umysl, stabilnosc pod presja, spokoj w dzialaniu, budo, zen"
+        when "blog/shoshin-umysl-poczatkujacego.html"
+          "shoshin aikido, umysl poczatkujacego, pokora w treningu, rozwoj bez pychy, podstawy aikido, zen"
         when "blog/styl-aikido-fumio-toyody-technika-i-zen.html"
           "styl aikido toyody, fumio toyoda, aikido zen, misogi, trening budo, linia toyoda"
         when "blog/linia-toyoda-germanov-jak-cwiczymy.html"
@@ -620,6 +630,8 @@ module Site
           "hyoshi aikido, aikido timing, rhythm in movement, ma-ai kokyu zanshin, body-mind unity, budo"
         when "en/blog/fudoshin-immovable-mind.html"
           "fudoshin aikido, immovable mind, stability under pressure, calm action, budo, zen"
+        when "en/blog/shoshin-beginners-mind.html"
+          "shoshin aikido, beginner's mind, humility in training, growth without ego, aikido fundamentals, zen"
         when "en/blog/toyoda-aikido-style-technique-and-zen.html"
           "toyoda aikido style, fumio toyoda, aikido zen, misogi, budo training, toyoda lineage"
         when "en/blog/toyoda-germanov-lineage-how-we-train.html"
@@ -646,6 +658,7 @@ module Site
       BLOG_POSTS_PER_PAGE = 10
 
       BLOG_POSTS_PL = [
+        { date: "15 marca 2026", title: "Shoshin (初心) — umysł początkującego", url: "/blog/shoshin-umysl-poczatkujacego.html", summary: "Dlaczego prawdziwy rozwój zaczyna się tam, gdzie doświadczenie nie zamienia się jeszcze w pychę i rutynę." },
         { date: "14 marca 2026", title: "Fudōshin (不動心) — niewzruszony umysł", url: "/blog/fudoshin-niewzruszony-umysl.html", summary: "Jak zachować stabilność decyzji, oddechu i postawy wtedy, gdy presja najbardziej chce rozbić technikę." },
         { date: "7 marca 2026", title: "Styl Aikido Fumio Toyody: technika i Zen jako jeden system", url: "/blog/styl-aikido-fumio-toyody-technika-i-zen.html", summary: "Jak w linii Toyody łączy się precyzję techniki, oddech i dyscyplinę Zen w jednej metodyce treningowej." },
         { date: "7 marca 2026", title: "Linia Toyoda–Germanov: jak ćwiczymy i czym wyróżnia się nasza szkoła", url: "/blog/linia-toyoda-germanov-jak-cwiczymy.html", summary: "Profil naszej praktyki: precyzja techniczna, praca wewnętrzna i odpowiedzialny przekaz instruktorski." },
@@ -666,6 +679,7 @@ module Site
       ].freeze
 
       BLOG_POSTS_EN = [
+        { date: "March 15, 2026", title: "Shoshin (初心) — beginner's mind", url: "/en/blog/shoshin-beginners-mind.html", summary: "Why real growth begins where experience still refuses to harden into ego, certainty, and routine." },
         { date: "March 14, 2026", title: "Fudōshin (不動心) — immovable mind", url: "/en/blog/fudoshin-immovable-mind.html", summary: "How to preserve stability of decision, breath, and posture when pressure is most likely to break technique." },
         { date: "March 7, 2026", title: "Fumio Toyoda’s Aikido style: technique and Zen as one system", url: "/en/blog/toyoda-aikido-style-technique-and-zen.html", summary: "How Toyoda lineage integrates technical precision, breath work, and Zen discipline into one training method." },
         { date: "March 7, 2026", title: "Toyoda–Germanov lineage: how we train and what sets our school apart", url: "/en/blog/toyoda-germanov-lineage-how-we-train.html", summary: "Our training profile: technical precision, inner discipline, and responsible instructor-led transmission." },
@@ -796,6 +810,15 @@ module Site
             date_published: "2026-03-14",
             date_modified: "2026-03-14"
           )
+        when "blog/shoshin-umysl-poczatkujacego.html"
+          article_schema(
+            name: "Shoshin — umysł początkującego i pokora w rozwoju",
+            description: page_description,
+            image: page_social_image_url,
+            lang: "pl",
+            date_published: "2026-03-15",
+            date_modified: "2026-03-15"
+          )
         when "en/blog/fudoshin-immovable-mind.html"
           article_schema(
             name: "Fudōshin — immovable mind and stability under pressure",
@@ -804,6 +827,15 @@ module Site
             lang: "en",
             date_published: "2026-03-14",
             date_modified: "2026-03-14"
+          )
+        when "en/blog/shoshin-beginners-mind.html"
+          article_schema(
+            name: "Shoshin — beginner's mind and humility in growth",
+            description: page_description,
+            image: page_social_image_url,
+            lang: "en",
+            date_published: "2026-03-15",
+            date_modified: "2026-03-15"
           )
         else
           ""
@@ -852,6 +884,7 @@ module Site
         "blog/enso-krag-obecnosci.html" => "en/blog/enso-circle-of-presence.html",
         "blog/hyoshi-rytm-timing-jednosci-ruchu.html" => "en/blog/hyoshi-timing-reveals-unity-of-movement.html",
         "blog/fudoshin-niewzruszony-umysl.html" => "en/blog/fudoshin-immovable-mind.html",
+        "blog/shoshin-umysl-poczatkujacego.html" => "en/blog/shoshin-beginners-mind.html",
         "blog/styl-aikido-fumio-toyody-technika-i-zen.html" => "en/blog/toyoda-aikido-style-technique-and-zen.html",
         "blog/linia-toyoda-germanov-jak-cwiczymy.html" => "en/blog/toyoda-germanov-lineage-how-we-train.html",
         "blog/omoiyari-uwazna-troska.html" => "en/blog/omoiyari-considerate-compassion.html",
@@ -898,6 +931,7 @@ module Site
         "en/blog/enso-circle-of-presence.html" => "blog/enso-krag-obecnosci.html",
         "en/blog/hyoshi-timing-reveals-unity-of-movement.html" => "blog/hyoshi-rytm-timing-jednosci-ruchu.html",
         "en/blog/fudoshin-immovable-mind.html" => "blog/fudoshin-niewzruszony-umysl.html",
+        "en/blog/shoshin-beginners-mind.html" => "blog/shoshin-umysl-poczatkujacego.html",
         "en/blog/toyoda-aikido-style-technique-and-zen.html" => "blog/styl-aikido-fumio-toyody-technika-i-zen.html",
         "en/blog/toyoda-germanov-lineage-how-we-train.html" => "blog/linia-toyoda-germanov-jak-cwiczymy.html",
         "en/blog/omoiyari-considerate-compassion.html" => "blog/omoiyari-uwazna-troska.html",

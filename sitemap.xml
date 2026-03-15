@@ -304,25 +304,25 @@
     <loc>https://aikido-polska.eu/blog.html</loc>
     <priority>0.8</priority>
     <changefreq>weekly</changefreq>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-03-15</lastmod>
   </url>
   <url>
     <loc>https://aikido-polska.eu/en/blog.html</loc>
     <priority>0.8</priority>
     <changefreq>weekly</changefreq>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-03-15</lastmod>
   </url>
   <url>
     <loc>https://aikido-polska.eu/blog-2.html</loc>
     <priority>0.6</priority>
     <changefreq>weekly</changefreq>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-03-15</lastmod>
   </url>
   <url>
     <loc>https://aikido-polska.eu/en/blog-2.html</loc>
     <priority>0.6</priority>
     <changefreq>weekly</changefreq>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-03-15</lastmod>
   </url>
   <url>
     <loc>https://aikido-polska.eu/blog/bushido-droga-wojownika.html</loc>
@@ -467,6 +467,18 @@
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
     <lastmod>2026-03-14</lastmod>
+  </url>
+  <url>
+    <loc>https://aikido-polska.eu/blog/shoshin-umysl-poczatkujacego.html</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-03-15</lastmod>
+  </url>
+  <url>
+    <loc>https://aikido-polska.eu/en/blog/shoshin-beginners-mind.html</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-03-15</lastmod>
   </url>
   <url>
     <loc>https://aikido-polska.eu/blog/styl-aikido-fumio-toyody-technika-i-zen.html</loc>

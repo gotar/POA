@@ -685,6 +685,9 @@ dd {
 .news-meta {
   font-size: 0.875rem;
   color: #666;
+  text-align: right;
+  display: block;
+  width: 100%;
 }
 
 .news-read-more {
@@ -780,6 +783,23 @@ nav.pagination {
 .concept-hero--omoiyari { background: linear-gradient(135deg, #5c2b49 0%, #9f4f80 100%); }
 .concept-hero--jiko-sekinin { background: linear-gradient(135deg, #3a3131 0%, #6a5555 100%); }
 .concept-hero--kuzushi { background: linear-gradient(135deg, #21363d 0%, #3d6976 100%); }
+.concept-hero--enso { background: linear-gradient(135deg, #1f1f1f 0%, #4b4b4b 100%); }
+
+.concept-illustration {
+  margin: 0.75rem 0 1.25rem;
+}
+
+.concept-illustration img {
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  background: #f5f5f5;
+}
+
+.concept-illustration figcaption {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #666;
+}
 
 .dojo-info {
   background: #f8f8f8;

@@ -783,7 +783,7 @@ module Site
         when "blog/enso-krag-obecnosci.html", "en/blog/enso-circle-of-presence.html"
           "images/blog/enso-featured.png"
         when "blog/jeden-nauczyciel-jeden-przekaz.html", "en/blog/one-teacher-one-transmission.html"
-          "images/blog/one-teacher-one-transmission-featured.svg"
+          "images/blog/one-teacher-one-transmission-featured.jpeg"
         else
           "images/toyoda.svg"
         end

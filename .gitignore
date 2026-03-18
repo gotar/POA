@@ -1,6 +1,7 @@
 .env
 /node_modules
 /vendor
+/build
 
 # OpenCode local configuration
 .opencode/.env

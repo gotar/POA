@@ -206,6 +206,8 @@ module Site
           "Fudōshin — niewzruszony umysł i stabilność pod presją | Blog"
         when "blog/shoshin-umysl-poczatkujacego.html"
           "Shoshin — umysł początkującego i pokora w rozwoju | Blog"
+        when "blog/shuhari-etapy-dojrzewania-w-treningu.html"
+          "Shuhari — etapy dojrzewania w treningu i droga do swobody | Blog"
         when "blog/styl-aikido-fumio-toyody-technika-i-zen.html"
           "Styl Aikido Fumio Toyody — technika i Zen jako jeden system | Blog"
         when "blog/linia-toyoda-germanov-jak-cwiczymy.html"
@@ -246,6 +248,8 @@ module Site
           "Fudōshin — immovable mind and stability under pressure | Blog"
         when "en/blog/shoshin-beginners-mind.html"
           "Shoshin — beginner's mind and humility in growth | Blog"
+        when "en/blog/shuhari-stages-of-maturation-in-training.html"
+          "Shuhari — stages of maturation in training and the path to freedom | Blog"
         when "en/blog/toyoda-aikido-style-technique-and-zen.html"
           "Fumio Toyoda’s Aikido style — technique and Zen as one system | Blog"
         when "en/blog/toyoda-germanov-lineage-how-we-train.html"
@@ -409,6 +413,8 @@ module Site
           "Fudōshin w Aikido i budō: niewzruszony umysł jako praktyczna stabilność decyzji, oddechu i postawy pod presją."
         when "blog/shoshin-umysl-poczatkujacego.html"
           "Shoshin w Aikido i budō: jak umysł początkującego chroni przed rutyną, pychą i techniczną stagnacją."
+        when "blog/shuhari-etapy-dojrzewania-w-treningu.html"
+          "Shuhari w Aikido i budō: jak wiernie przepracowana forma dojrzewa w zrozumienie i swobodę, zamiast rozpadać się w chaos lub ego."
         when "blog/styl-aikido-fumio-toyody-technika-i-zen.html"
           "Czym wyróżnia się styl Aikido Fumio Toyody? Poznaj połączenie precyzji technicznej, oddechu i dyscypliny Zen w jednym systemie treningowym."
         when "blog/linia-toyoda-germanov-jak-cwiczymy.html"
@@ -594,6 +600,8 @@ module Site
           "fudoshin aikido, niewzruszony umysl, stabilnosc pod presja, spokoj w dzialaniu, budo, zen"
         when "blog/shoshin-umysl-poczatkujacego.html"
           "shoshin aikido, umysl poczatkujacego, pokora w treningu, rozwoj bez pychy, podstawy aikido, zen"
+        when "blog/shuhari-etapy-dojrzewania-w-treningu.html"
+          "shuhari aikido, etapy uczenia, dojrzewanie w treningu, shu ha ri, forma i swoboda, budo, zen"
         when "blog/styl-aikido-fumio-toyody-technika-i-zen.html"
           "styl aikido toyody, fumio toyoda, aikido zen, misogi, trening budo, linia toyoda"
         when "blog/linia-toyoda-germanov-jak-cwiczymy.html"
@@ -634,6 +642,8 @@ module Site
           "fudoshin aikido, immovable mind, stability under pressure, calm action, budo, zen"
         when "en/blog/shoshin-beginners-mind.html"
           "shoshin aikido, beginner's mind, humility in training, growth without ego, aikido fundamentals, zen"
+        when "en/blog/shuhari-stages-of-maturation-in-training.html"
+          "shuhari aikido, stages of learning, maturation in training, shu ha ri, form and freedom, budo, zen"
         when "en/blog/toyoda-aikido-style-technique-and-zen.html"
           "toyoda aikido style, fumio toyoda, aikido zen, misogi, budo training, toyoda lineage"
         when "en/blog/toyoda-germanov-lineage-how-we-train.html"
@@ -660,6 +670,7 @@ module Site
       BLOG_POSTS_PER_PAGE = 10
 
       BLOG_POSTS_PL = [
+        { date: "18 marca 2026", title: "Shuhari (守破離) — etapy dojrzewania w treningu", url: "/blog/shuhari-etapy-dojrzewania-w-treningu.html", summary: "Jak wiernie przepracowana forma dojrzewa w zrozumienie i swobodę, zamiast rozpadać się w chaos lub ego." },
         { date: "15 marca 2026", title: "Shoshin (初心) — umysł początkującego", url: "/blog/shoshin-umysl-poczatkujacego.html", summary: "Dlaczego prawdziwy rozwój zaczyna się tam, gdzie doświadczenie nie zamienia się jeszcze w pychę i rutynę." },
         { date: "14 marca 2026", title: "Fudōshin (不動心) — niewzruszony umysł", url: "/blog/fudoshin-niewzruszony-umysl.html", summary: "Jak zachować stabilność decyzji, oddechu i postawy wtedy, gdy presja najbardziej chce rozbić technikę." },
         { date: "7 marca 2026", title: "Styl Aikido Fumio Toyody: technika i Zen jako jeden system", url: "/blog/styl-aikido-fumio-toyody-technika-i-zen.html", summary: "Jak w linii Toyody łączy się precyzję techniki, oddech i dyscyplinę Zen w jednej metodyce treningowej." },
@@ -681,6 +692,7 @@ module Site
       ].freeze
 
       BLOG_POSTS_EN = [
+        { date: "March 18, 2026", title: "Shuhari (守破離) — stages of maturation in training", url: "/en/blog/shuhari-stages-of-maturation-in-training.html", summary: "How faithfully trained form matures into understanding and freedom instead of collapsing into chaos or ego." },
         { date: "March 15, 2026", title: "Shoshin (初心) — beginner's mind", url: "/en/blog/shoshin-beginners-mind.html", summary: "Why real growth begins where experience still refuses to harden into ego, certainty, and routine." },
         { date: "March 14, 2026", title: "Fudōshin (不動心) — immovable mind", url: "/en/blog/fudoshin-immovable-mind.html", summary: "How to preserve stability of decision, breath, and posture when pressure is most likely to break technique." },
         { date: "March 7, 2026", title: "Fumio Toyoda’s Aikido style: technique and Zen as one system", url: "/en/blog/toyoda-aikido-style-technique-and-zen.html", summary: "How Toyoda lineage integrates technical precision, breath work, and Zen discipline into one training method." },
@@ -847,6 +859,15 @@ module Site
             lang: "en",
             date_published: "2026-03-15",
             date_modified: "2026-03-15"
+          )
+        when "en/blog/shuhari-stages-of-maturation-in-training.html"
+          article_schema(
+            name: "Shuhari — stages of maturation in training and the path to freedom",
+            description: page_description,
+            image: page_social_image_url,
+            lang: "en",
+            date_published: "2026-03-18",
+            date_modified: "2026-03-18"
           )
         else
           ""

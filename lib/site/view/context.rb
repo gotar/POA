@@ -449,6 +449,8 @@ module Site
           "Fudōshin in Aikido and budō: immovable mind as practical stability of decision, breath, and posture under pressure."
         when "en/blog/shoshin-beginners-mind.html"
           "Shoshin in Aikido and budō: how beginner's mind protects training from routine, ego, and technical stagnation."
+        when "en/blog/shuhari-stages-of-maturation-in-training.html"
+          "Shuhari in Aikido and budō: how faithful form matures into understanding and freedom without collapsing into chaos or ego."
         when "en/blog/toyoda-aikido-style-technique-and-zen.html"
           "What defines Fumio Toyoda’s Aikido style? Discover how technical precision, breath work, and Zen discipline form one coherent training system."
         when "en/blog/toyoda-germanov-lineage-how-we-train.html"
@@ -818,6 +820,15 @@ module Site
             lang: "pl",
             date_published: "2026-03-15",
             date_modified: "2026-03-15"
+          )
+        when "blog/shuhari-etapy-dojrzewania-w-treningu.html"
+          article_schema(
+            name: "Shuhari — etapy dojrzewania w treningu i droga do swobody",
+            description: page_description,
+            image: page_social_image_url,
+            lang: "pl",
+            date_published: "2026-03-18",
+            date_modified: "2026-03-18"
           )
         when "en/blog/fudoshin-immovable-mind.html"
           article_schema(

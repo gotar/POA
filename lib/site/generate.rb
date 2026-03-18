@@ -82,6 +82,7 @@ module Site
       blog_hyoshi_view: "views.blog.hyoshi",
       blog_fudoshin_view: "views.blog.fudoshin",
       blog_shoshin_view: "views.blog.shoshin",
+      blog_shuhari_view: "views.blog.shuhari",
       blog_styl_toyody_view: "views.blog.styl_toyody",
       blog_linia_toyoda_germanov_view: "views.blog.linia_toyoda_germanov",
       blog_bushido_en_view: "views.en.blog.bushido",

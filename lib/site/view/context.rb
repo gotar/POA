@@ -208,6 +208,8 @@ module Site
           "Shoshin — umysł początkującego i pokora w rozwoju | Blog"
         when "blog/shuhari-etapy-dojrzewania-w-treningu.html"
           "Shuhari — etapy dojrzewania w treningu i droga do swobody | Blog"
+        when "blog/jeden-nauczyciel-jeden-przekaz.html"
+          "Jeden nauczyciel, jeden przekaz — porządek nauki w dojo i na seminarium | Blog"
         when "blog/styl-aikido-fumio-toyody-technika-i-zen.html"
           "Styl Aikido Fumio Toyody — technika i Zen jako jeden system | Blog"
         when "blog/linia-toyoda-germanov-jak-cwiczymy.html"
@@ -250,6 +252,8 @@ module Site
           "Shoshin — beginner's mind and humility in growth | Blog"
         when "en/blog/shuhari-stages-of-maturation-in-training.html"
           "Shuhari — stages of maturation in training and the path to freedom | Blog"
+        when "en/blog/one-teacher-one-transmission.html"
+          "One teacher, one transmission — order in dojo and seminar learning | Blog"
         when "en/blog/toyoda-aikido-style-technique-and-zen.html"
           "Fumio Toyoda’s Aikido style — technique and Zen as one system | Blog"
         when "en/blog/toyoda-germanov-lineage-how-we-train.html"
@@ -415,6 +419,8 @@ module Site
           "Shoshin w Aikido i budō: jak umysł początkującego chroni przed rutyną, pychą i techniczną stagnacją."
         when "blog/shuhari-etapy-dojrzewania-w-treningu.html"
           "Shuhari w Aikido i budō: jak wiernie przepracowana forma dojrzewa w zrozumienie i swobodę, zamiast rozpadać się w chaos lub ego."
+        when "blog/jeden-nauczyciel-jeden-przekaz.html"
+          "Dlaczego w dojo i na seminarium jeden nauczyciel oraz jeden spójny przekaz chronią ucznia przed chaosem, a starszy uczeń najlepiej wspiera naukę jako dobry uke."
         when "blog/styl-aikido-fumio-toyody-technika-i-zen.html"
           "Czym wyróżnia się styl Aikido Fumio Toyody? Poznaj połączenie precyzji technicznej, oddechu i dyscypliny Zen w jednym systemie treningowym."
         when "blog/linia-toyoda-germanov-jak-cwiczymy.html"
@@ -457,6 +463,8 @@ module Site
           "Shoshin in Aikido and budō: how beginner's mind protects training from routine, ego, and technical stagnation."
         when "en/blog/shuhari-stages-of-maturation-in-training.html"
           "Shuhari in Aikido and budō: how faithful form matures into understanding and freedom without collapsing into chaos or ego."
+        when "en/blog/one-teacher-one-transmission.html"
+          "Why one teacher and one coherent transmission in the dojo and at seminars protect students from confusion, and why a senior student serves learning best as a good uke."
         when "en/blog/toyoda-aikido-style-technique-and-zen.html"
           "What defines Fumio Toyoda’s Aikido style? Discover how technical precision, breath work, and Zen discipline form one coherent training system."
         when "en/blog/toyoda-germanov-lineage-how-we-train.html"
@@ -602,6 +610,8 @@ module Site
           "shoshin aikido, umysl poczatkujacego, pokora w treningu, rozwoj bez pychy, podstawy aikido, zen"
         when "blog/shuhari-etapy-dojrzewania-w-treningu.html"
           "shuhari aikido, etapy uczenia, dojrzewanie w treningu, shu ha ri, forma i swoboda, budo, zen"
+        when "blog/jeden-nauczyciel-jeden-przekaz.html"
+          "jeden nauczyciel jeden przekaz, aikido nauczanie, metodyka dojo, seminarium aikido, uke, shuhari, przekaz szkoły"
         when "blog/styl-aikido-fumio-toyody-technika-i-zen.html"
           "styl aikido toyody, fumio toyoda, aikido zen, misogi, trening budo, linia toyoda"
         when "blog/linia-toyoda-germanov-jak-cwiczymy.html"
@@ -644,6 +654,8 @@ module Site
           "shoshin aikido, beginner's mind, humility in training, growth without ego, aikido fundamentals, zen"
         when "en/blog/shuhari-stages-of-maturation-in-training.html"
           "shuhari aikido, stages of learning, maturation in training, shu ha ri, form and freedom, budo, zen"
+        when "en/blog/one-teacher-one-transmission.html"
+          "one teacher one transmission, aikido teaching, dojo pedagogy, aikido seminar, uke, shuhari, school transmission"
         when "en/blog/toyoda-aikido-style-technique-and-zen.html"
           "toyoda aikido style, fumio toyoda, aikido zen, misogi, budo training, toyoda lineage"
         when "en/blog/toyoda-germanov-lineage-how-we-train.html"
@@ -670,6 +682,7 @@ module Site
       BLOG_POSTS_PER_PAGE = 10
 
       BLOG_POSTS_PL = [
+        { date: "18 marca 2026", title: "Jeden nauczyciel, jeden przekaz", url: "/blog/jeden-nauczyciel-jeden-przekaz.html", summary: "Dlaczego spójny przekaz w dojo i na seminarium przyspiesza naukę, a starszy uczeń najlepiej wspiera trening jako dobry uke." },
         { date: "18 marca 2026", title: "Shuhari (守破離) — etapy dojrzewania w treningu", url: "/blog/shuhari-etapy-dojrzewania-w-treningu.html", summary: "Jak wiernie przepracowana forma dojrzewa w zrozumienie i swobodę, zamiast rozpadać się w chaos lub ego." },
         { date: "15 marca 2026", title: "Shoshin (初心) — umysł początkującego", url: "/blog/shoshin-umysl-poczatkujacego.html", summary: "Dlaczego prawdziwy rozwój zaczyna się tam, gdzie doświadczenie nie zamienia się jeszcze w pychę i rutynę." },
         { date: "14 marca 2026", title: "Fudōshin (不動心) — niewzruszony umysł", url: "/blog/fudoshin-niewzruszony-umysl.html", summary: "Jak zachować stabilność decyzji, oddechu i postawy wtedy, gdy presja najbardziej chce rozbić technikę." },
@@ -692,6 +705,7 @@ module Site
       ].freeze
 
       BLOG_POSTS_EN = [
+        { date: "March 18, 2026", title: "One teacher, one transmission", url: "/en/blog/one-teacher-one-transmission.html", summary: "Why coherent instruction in the dojo and at seminars speeds learning up, and why senior students support training best by being good uke." },
         { date: "March 18, 2026", title: "Shuhari (守破離) — stages of maturation in training", url: "/en/blog/shuhari-stages-of-maturation-in-training.html", summary: "How faithfully trained form matures into understanding and freedom instead of collapsing into chaos or ego." },
         { date: "March 15, 2026", title: "Shoshin (初心) — beginner's mind", url: "/en/blog/shoshin-beginners-mind.html", summary: "Why real growth begins where experience still refuses to harden into ego, certainty, and routine." },
         { date: "March 14, 2026", title: "Fudōshin (不動心) — immovable mind", url: "/en/blog/fudoshin-immovable-mind.html", summary: "How to preserve stability of decision, breath, and posture when pressure is most likely to break technique." },
@@ -842,6 +856,15 @@ module Site
             date_published: "2026-03-18",
             date_modified: "2026-03-18"
           )
+        when "blog/jeden-nauczyciel-jeden-przekaz.html"
+          article_schema(
+            name: "Jeden nauczyciel, jeden przekaz — porządek nauki w dojo i na seminarium",
+            description: page_description,
+            image: page_social_image_url,
+            lang: "pl",
+            date_published: "2026-03-18",
+            date_modified: "2026-03-18"
+          )
         when "en/blog/fudoshin-immovable-mind.html"
           article_schema(
             name: "Fudōshin — immovable mind and stability under pressure",
@@ -863,6 +886,15 @@ module Site
         when "en/blog/shuhari-stages-of-maturation-in-training.html"
           article_schema(
             name: "Shuhari — stages of maturation in training and the path to freedom",
+            description: page_description,
+            image: page_social_image_url,
+            lang: "en",
+            date_published: "2026-03-18",
+            date_modified: "2026-03-18"
+          )
+        when "en/blog/one-teacher-one-transmission.html"
+          article_schema(
+            name: "One teacher, one transmission — order in dojo and seminar learning",
             description: page_description,
             image: page_social_image_url,
             lang: "en",
@@ -917,6 +949,7 @@ module Site
         "blog/hyoshi-rytm-timing-jednosci-ruchu.html" => "en/blog/hyoshi-timing-reveals-unity-of-movement.html",
         "blog/fudoshin-niewzruszony-umysl.html" => "en/blog/fudoshin-immovable-mind.html",
         "blog/shoshin-umysl-poczatkujacego.html" => "en/blog/shoshin-beginners-mind.html",
+        "blog/jeden-nauczyciel-jeden-przekaz.html" => "en/blog/one-teacher-one-transmission.html",
         "blog/styl-aikido-fumio-toyody-technika-i-zen.html" => "en/blog/toyoda-aikido-style-technique-and-zen.html",
         "blog/linia-toyoda-germanov-jak-cwiczymy.html" => "en/blog/toyoda-germanov-lineage-how-we-train.html",
         "blog/omoiyari-uwazna-troska.html" => "en/blog/omoiyari-considerate-compassion.html",
@@ -964,6 +997,7 @@ module Site
         "en/blog/hyoshi-timing-reveals-unity-of-movement.html" => "blog/hyoshi-rytm-timing-jednosci-ruchu.html",
         "en/blog/fudoshin-immovable-mind.html" => "blog/fudoshin-niewzruszony-umysl.html",
         "en/blog/shoshin-beginners-mind.html" => "blog/shoshin-umysl-poczatkujacego.html",
+        "en/blog/one-teacher-one-transmission.html" => "blog/jeden-nauczyciel-jeden-przekaz.html",
         "en/blog/toyoda-aikido-style-technique-and-zen.html" => "blog/styl-aikido-fumio-toyody-technika-i-zen.html",
         "en/blog/toyoda-germanov-lineage-how-we-train.html" => "blog/linia-toyoda-germanov-jak-cwiczymy.html",
         "en/blog/omoiyari-considerate-compassion.html" => "blog/omoiyari-uwazna-troska.html",

@@ -83,8 +83,10 @@ module Site
       blog_fudoshin_view: "views.blog.fudoshin",
       blog_shoshin_view: "views.blog.shoshin",
       blog_shuhari_view: "views.blog.shuhari",
+      blog_jeden_nauczyciel_jeden_przekaz_view: "views.blog.jeden_nauczyciel_jeden_przekaz",
       blog_styl_toyody_view: "views.blog.styl_toyody",
       blog_shuhari_en_view: "views.en.blog.shuhari",
+      blog_jeden_nauczyciel_jeden_przekaz_en_view: "views.en.blog.jeden_nauczyciel_jeden_przekaz",
       blog_linia_toyoda_germanov_view: "views.blog.linia_toyoda_germanov",
       blog_bushido_en_view: "views.en.blog.bushido",
       blog_kaizen_en_view: "views.en.blog.kaizen",
@@ -187,6 +189,7 @@ module Site
       render export_dir, "blog/fudoshin-niewzruszony-umysl.html", blog_fudoshin_view
       render export_dir, "blog/shoshin-umysl-poczatkujacego.html", blog_shoshin_view
       render export_dir, "blog/shuhari-etapy-dojrzewania-w-treningu.html", blog_shuhari_view
+      render export_dir, "blog/jeden-nauczyciel-jeden-przekaz.html", blog_jeden_nauczyciel_jeden_przekaz_view
       render export_dir, "blog/styl-aikido-fumio-toyody-technika-i-zen.html", blog_styl_toyody_view
       render export_dir, "blog/linia-toyoda-germanov-jak-cwiczymy.html", blog_linia_toyoda_germanov_view
       render export_dir, "blog/omoiyari-uwazna-troska.html", blog_omoiyari_view
@@ -206,6 +209,7 @@ module Site
       render export_dir, "en/blog/fudoshin-immovable-mind.html", blog_fudoshin_en_view
       render export_dir, "en/blog/shoshin-beginners-mind.html", blog_shoshin_en_view
       render export_dir, "en/blog/shuhari-stages-of-maturation-in-training.html", blog_shuhari_en_view
+      render export_dir, "en/blog/one-teacher-one-transmission.html", blog_jeden_nauczyciel_jeden_przekaz_en_view
       render export_dir, "en/blog/toyoda-aikido-style-technique-and-zen.html", blog_styl_toyody_en_view
       render export_dir, "en/blog/toyoda-germanov-lineage-how-we-train.html", blog_linia_toyoda_germanov_en_view
       render export_dir, "en/blog/omoiyari-considerate-compassion.html", blog_omoiyari_en_view

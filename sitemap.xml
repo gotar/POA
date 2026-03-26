@@ -304,25 +304,61 @@
     <loc>https://aikido-polska.eu/blog.html</loc>
     <priority>0.8</priority>
     <changefreq>weekly</changefreq>
-    <lastmod>2026-03-18</lastmod>
+    <lastmod>2026-03-26</lastmod>
   </url>
   <url>
     <loc>https://aikido-polska.eu/en/blog.html</loc>
     <priority>0.8</priority>
     <changefreq>weekly</changefreq>
-    <lastmod>2026-03-18</lastmod>
+    <lastmod>2026-03-26</lastmod>
   </url>
   <url>
     <loc>https://aikido-polska.eu/blog-2.html</loc>
     <priority>0.6</priority>
     <changefreq>weekly</changefreq>
-    <lastmod>2026-03-18</lastmod>
+    <lastmod>2026-03-26</lastmod>
+  </url>
+  <url>
+    <loc>https://aikido-polska.eu/blog-3.html</loc>
+    <priority>0.6</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-03-26</lastmod>
   </url>
   <url>
     <loc>https://aikido-polska.eu/en/blog-2.html</loc>
     <priority>0.6</priority>
     <changefreq>weekly</changefreq>
+    <lastmod>2026-03-26</lastmod>
+  </url>
+  <url>
+    <loc>https://aikido-polska.eu/en/blog-3.html</loc>
+    <priority>0.6</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-03-26</lastmod>
+  </url>
+  <url>
+    <loc>https://aikido-polska.eu/blog/shuhari-etapy-dojrzewania-w-treningu.html</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
     <lastmod>2026-03-18</lastmod>
+  </url>
+  <url>
+    <loc>https://aikido-polska.eu/en/blog/shuhari-stages-of-maturation-in-training.html</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-03-18</lastmod>
+  </url>
+  <url>
+    <loc>https://aikido-polska.eu/blog/hansei-uczciwa-autorefleksja-bez-wymowek.html</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-03-26</lastmod>
+  </url>
+  <url>
+    <loc>https://aikido-polska.eu/en/blog/hansei-honest-self-reflection-without-excuses.html</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-03-26</lastmod>
   </url>
   <url>
     <loc>https://aikido-polska.eu/blog/jeden-nauczyciel-jeden-przekaz.html</loc>

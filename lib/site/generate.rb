@@ -189,6 +189,7 @@ module Site
       render export_dir, "blog/fudoshin-niewzruszony-umysl.html", blog_fudoshin_view
       render export_dir, "blog/shoshin-umysl-poczatkujacego.html", blog_shoshin_view
       render export_dir, "blog/shuhari-etapy-dojrzewania-w-treningu.html", blog_shuhari_view
+      render export_dir, "blog/hansei-uczciwa-autorefleksja-bez-wymowek.html", blog_hansei_view
       render export_dir, "blog/jeden-nauczyciel-jeden-przekaz.html", blog_jeden_nauczyciel_jeden_przekaz_view
       render export_dir, "blog/styl-aikido-fumio-toyody-technika-i-zen.html", blog_styl_toyody_view
       render export_dir, "blog/linia-toyoda-germanov-jak-cwiczymy.html", blog_linia_toyoda_germanov_view
@@ -248,5 +249,8 @@ module Site
 
       export.(export_dir, path, view.(context: context, **input))
     end
+  end
+end
+
   end
 end

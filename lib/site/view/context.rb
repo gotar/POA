@@ -208,6 +208,8 @@ module Site
           "Shoshin — umysł początkującego i pokora w rozwoju | Blog"
         when "blog/shuhari-etapy-dojrzewania-w-treningu.html"
           "Shuhari — etapy dojrzewania w treningu i droga do swobody | Blog"
+        when "blog/hansei-uczciwa-autorefleksja-bez-wymowek.html"
+          "Hansei — uczciwa autorefleksja bez wymówek i korekta ego | Blog"
         when "blog/jeden-nauczyciel-jeden-przekaz.html"
           "Jeden nauczyciel, jeden przekaz — porządek nauki w dojo i na seminarium | Blog"
         when "blog/styl-aikido-fumio-toyody-technika-i-zen.html"
@@ -252,6 +254,8 @@ module Site
           "Shoshin — beginner's mind and humility in growth | Blog"
         when "en/blog/shuhari-stages-of-maturation-in-training.html"
           "Shuhari — stages of maturation in training and the path to freedom | Blog"
+        when "en/blog/hansei-honest-self-reflection-without-excuses.html"
+          "Hansei — honest self-reflection without excuses and ego defense | Blog"
         when "en/blog/one-teacher-one-transmission.html"
           "One teacher, one transmission — order in dojo and seminar learning | Blog"
         when "en/blog/toyoda-aikido-style-technique-and-zen.html"
@@ -419,6 +423,8 @@ module Site
           "Shoshin w Aikido i budō: jak umysł początkującego chroni przed rutyną, pychą i techniczną stagnacją."
         when "blog/shuhari-etapy-dojrzewania-w-treningu.html"
           "Shuhari w Aikido i budō: jak wiernie przepracowana forma dojrzewa w zrozumienie i swobodę, zamiast rozpadać się w chaos lub ego."
+        when "blog/hansei-uczciwa-autorefleksja-bez-wymowek.html"
+          "Hansei w Aikido i budō: jak uczciwa autorefleksja bez wymówek pozwala zobaczyć własny błąd, przyjąć korektę i naprawdę dojrzewać w treningu."
         when "blog/jeden-nauczyciel-jeden-przekaz.html"
           "Jeden nauczyciel i jeden spójny przekaz chronią ucznia przed chaosem, a starszy uczeń najlepiej wspiera naukę jako dobry uke."
         when "blog/styl-aikido-fumio-toyody-technika-i-zen.html"
@@ -463,6 +469,8 @@ module Site
           "Shoshin in Aikido and budō: how beginner's mind protects training from routine, ego, and technical stagnation."
         when "en/blog/shuhari-stages-of-maturation-in-training.html"
           "Shuhari in Aikido and budō: how faithful form matures into understanding and freedom without collapsing into chaos or ego."
+        when "en/blog/hansei-honest-self-reflection-without-excuses.html"
+          "Hansei in Aikido and budō: how honest self-reflection without excuses helps practitioners see error clearly, accept correction, and mature in training."
         when "en/blog/one-teacher-one-transmission.html"
           "One teacher and one coherent transmission protect students from confusion, and senior students support learning best by being good uke."
         when "en/blog/toyoda-aikido-style-technique-and-zen.html"
@@ -610,6 +618,8 @@ module Site
           "shoshin aikido, umysl poczatkujacego, pokora w treningu, rozwoj bez pychy, podstawy aikido, zen"
         when "blog/shuhari-etapy-dojrzewania-w-treningu.html"
           "shuhari aikido, etapy uczenia, dojrzewanie w treningu, shu ha ri, forma i swoboda, budo, zen"
+        when "blog/hansei-uczciwa-autorefleksja-bez-wymowek.html"
+          "hansei aikido, autorefleksja bez wymowek, uczciwa korekta, praca z bledem, rozwoj w dojo, budo, zen"
         when "blog/jeden-nauczyciel-jeden-przekaz.html"
           "jeden nauczyciel jeden przekaz, aikido nauczanie, metodyka dojo, seminarium aikido, uke, shuhari, przekaz szkoły"
         when "blog/styl-aikido-fumio-toyody-technika-i-zen.html"
@@ -654,6 +664,8 @@ module Site
           "shoshin aikido, beginner's mind, humility in training, growth without ego, aikido fundamentals, zen"
         when "en/blog/shuhari-stages-of-maturation-in-training.html"
           "shuhari aikido, stages of learning, maturation in training, shu ha ri, form and freedom, budo, zen"
+        when "en/blog/hansei-honest-self-reflection-without-excuses.html"
+          "hansei aikido, honest self-reflection, training correction, working with error, dojo growth, budo, zen"
         when "en/blog/one-teacher-one-transmission.html"
           "one teacher one transmission, aikido teaching, dojo pedagogy, aikido seminar, uke, shuhari, school transmission"
         when "en/blog/toyoda-aikido-style-technique-and-zen.html"
@@ -682,6 +694,7 @@ module Site
       BLOG_POSTS_PER_PAGE = 10
 
       BLOG_POSTS_PL = [
+        { date: "26 marca 2026", title: "Hansei (反省) — uczciwa autorefleksja bez wymówek", url: "/blog/hansei-uczciwa-autorefleksja-bez-wymowek.html", summary: "Dlaczego bez uczciwego zobaczenia własnego błędu trening zamienia się w obronę ego zamiast realnej korekty." },
         { date: "18 marca 2026", title: "Jeden nauczyciel, jeden przekaz", url: "/blog/jeden-nauczyciel-jeden-przekaz.html", summary: "Dlaczego jeden spójny przekaz chroni naukę przed chaosem, a starszy uczeń najlepiej wspiera trening jako dobry uke." },
         { date: "18 marca 2026", title: "Shuhari (守破離) — etapy dojrzewania w treningu", url: "/blog/shuhari-etapy-dojrzewania-w-treningu.html", summary: "Jak wiernie przepracowana forma dojrzewa w zrozumienie i swobodę, zamiast rozpadać się w chaos lub ego." },
         { date: "15 marca 2026", title: "Shoshin (初心) — umysł początkującego", url: "/blog/shoshin-umysl-poczatkujacego.html", summary: "Dlaczego prawdziwy rozwój zaczyna się tam, gdzie doświadczenie nie zamienia się jeszcze w pychę i rutynę." },
@@ -705,6 +718,7 @@ module Site
       ].freeze
 
       BLOG_POSTS_EN = [
+        { date: "March 26, 2026", title: "Hansei (反省) — honest self-reflection without excuses", url: "/en/blog/hansei-honest-self-reflection-without-excuses.html", summary: "Why training without honest recognition of your own mistakes becomes ego defense instead of real correction." },
         { date: "March 18, 2026", title: "One teacher, one transmission", url: "/en/blog/one-teacher-one-transmission.html", summary: "Why one coherent transmission protects learning from confusion, and why senior students support training best by being good uke." },
         { date: "March 18, 2026", title: "Shuhari (守破離) — stages of maturation in training", url: "/en/blog/shuhari-stages-of-maturation-in-training.html", summary: "How faithfully trained form matures into understanding and freedom instead of collapsing into chaos or ego." },
         { date: "March 15, 2026", title: "Shoshin (初心) — beginner's mind", url: "/en/blog/shoshin-beginners-mind.html", summary: "Why real growth begins where experience still refuses to harden into ego, certainty, and routine." },
@@ -858,6 +872,15 @@ module Site
             date_published: "2026-03-18",
             date_modified: "2026-03-18"
           )
+        when "blog/hansei-uczciwa-autorefleksja-bez-wymowek.html"
+          article_schema(
+            name: "Hansei — uczciwa autorefleksja bez wymówek",
+            description: page_description,
+            image: page_social_image_url,
+            lang: "pl",
+            date_published: "2026-03-26",
+            date_modified: "2026-03-26"
+          )
         when "blog/jeden-nauczyciel-jeden-przekaz.html"
           article_schema(
             name: "Jeden nauczyciel, jeden przekaz — porządek nauki w dojo i na seminarium",
@@ -893,6 +916,15 @@ module Site
             lang: "en",
             date_published: "2026-03-18",
             date_modified: "2026-03-18"
+          )
+        when "en/blog/hansei-honest-self-reflection-without-excuses.html"
+          article_schema(
+            name: "Hansei — honest self-reflection without excuses",
+            description: page_description,
+            image: page_social_image_url,
+            lang: "en",
+            date_published: "2026-03-26",
+            date_modified: "2026-03-26"
           )
         when "en/blog/one-teacher-one-transmission.html"
           article_schema(
@@ -951,6 +983,8 @@ module Site
         "blog/hyoshi-rytm-timing-jednosci-ruchu.html" => "en/blog/hyoshi-timing-reveals-unity-of-movement.html",
         "blog/fudoshin-niewzruszony-umysl.html" => "en/blog/fudoshin-immovable-mind.html",
         "blog/shoshin-umysl-poczatkujacego.html" => "en/blog/shoshin-beginners-mind.html",
+        "blog/shuhari-etapy-dojrzewania-w-treningu.html" => "en/blog/shuhari-stages-of-maturation-in-training.html",
+        "blog/hansei-uczciwa-autorefleksja-bez-wymowek.html" => "en/blog/hansei-honest-self-reflection-without-excuses.html",
         "blog/jeden-nauczyciel-jeden-przekaz.html" => "en/blog/one-teacher-one-transmission.html",
         "blog/styl-aikido-fumio-toyody-technika-i-zen.html" => "en/blog/toyoda-aikido-style-technique-and-zen.html",
         "blog/linia-toyoda-germanov-jak-cwiczymy.html" => "en/blog/toyoda-germanov-lineage-how-we-train.html",
@@ -999,6 +1033,8 @@ module Site
         "en/blog/hyoshi-timing-reveals-unity-of-movement.html" => "blog/hyoshi-rytm-timing-jednosci-ruchu.html",
         "en/blog/fudoshin-immovable-mind.html" => "blog/fudoshin-niewzruszony-umysl.html",
         "en/blog/shoshin-beginners-mind.html" => "blog/shoshin-umysl-poczatkujacego.html",
+        "en/blog/shuhari-stages-of-maturation-in-training.html" => "blog/shuhari-etapy-dojrzewania-w-treningu.html",
+        "en/blog/hansei-honest-self-reflection-without-excuses.html" => "blog/hansei-uczciwa-autorefleksja-bez-wymowek.html",
         "en/blog/one-teacher-one-transmission.html" => "blog/jeden-nauczyciel-jeden-przekaz.html",
         "en/blog/toyoda-aikido-style-technique-and-zen.html" => "blog/styl-aikido-fumio-toyody-technika-i-zen.html",
         "en/blog/toyoda-germanov-lineage-how-we-train.html" => "blog/linia-toyoda-germanov-jak-cwiczymy.html",

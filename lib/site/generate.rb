@@ -83,6 +83,7 @@ module Site
       blog_fudoshin_view: "views.blog.fudoshin",
       blog_shoshin_view: "views.blog.shoshin",
       blog_shuhari_view: "views.blog.shuhari",
+      blog_hansei_view: "views.blog.hansei",
       blog_jeden_nauczyciel_jeden_przekaz_view: "views.blog.jeden_nauczyciel_jeden_przekaz",
       blog_styl_toyody_view: "views.blog.styl_toyody",
       blog_shuhari_en_view: "views.en.blog.shuhari",
@@ -104,6 +105,7 @@ module Site
       blog_hyoshi_en_view: "views.en.blog.hyoshi",
       blog_fudoshin_en_view: "views.en.blog.fudoshin",
       blog_shoshin_en_view: "views.en.blog.shoshin",
+      blog_hansei_en_view: "views.en.blog.hansei",
       blog_styl_toyody_en_view: "views.en.blog.styl_toyody",
       blog_linia_toyoda_germanov_en_view: "views.en.blog.linia_toyoda_germanov",
     ]
@@ -210,6 +212,7 @@ module Site
       render export_dir, "en/blog/fudoshin-immovable-mind.html", blog_fudoshin_en_view
       render export_dir, "en/blog/shoshin-beginners-mind.html", blog_shoshin_en_view
       render export_dir, "en/blog/shuhari-stages-of-maturation-in-training.html", blog_shuhari_en_view
+      render export_dir, "en/blog/hansei-honest-self-reflection-without-excuses.html", blog_hansei_en_view
       render export_dir, "en/blog/one-teacher-one-transmission.html", blog_jeden_nauczyciel_jeden_przekaz_en_view
       render export_dir, "en/blog/toyoda-aikido-style-technique-and-zen.html", blog_styl_toyody_en_view
       render export_dir, "en/blog/toyoda-germanov-lineage-how-we-train.html", blog_linia_toyoda_germanov_en_view
@@ -249,8 +252,5 @@ module Site
 
       export.(export_dir, path, view.(context: context, **input))
     end
-  end
-end
-
   end
 end

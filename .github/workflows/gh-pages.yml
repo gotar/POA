@@ -35,8 +35,31 @@ jobs:
         run: ./bin/build
 
       - name: Deploy build/ to gh-pages branch
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build
-          publish_branch: gh-pages
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          tmpdir="$(mktemp -d)"
+
+          cleanup() {
+            git worktree remove "$tmpdir" --force || true
+          }
+          trap cleanup EXIT
+
+          git fetch origin gh-pages:refs/remotes/origin/gh-pages
+          git worktree add "$tmpdir" refs/remotes/origin/gh-pages
+
+          rsync -a --delete ./build/ "$tmpdir/"
+
+          cd "$tmpdir"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+
+          if git diff --cached --quiet; then
+            echo "No changes to deploy"
+            exit 0
+          fi
+
+          git commit -m "Deploy GitHub Pages"
+          git push origin HEAD:gh-pages

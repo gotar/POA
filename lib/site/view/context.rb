@@ -210,6 +210,8 @@ module Site
           "Shuhari — etapy dojrzewania w treningu i droga do swobody | Blog"
         when "blog/hansei-uczciwa-autorefleksja-bez-wymowek.html"
           "Hansei — uczciwa autorefleksja bez wymówek i korekta ego | Blog"
+        when "blog/ichi-go-ichi-e-kazde-spotkanie-zdarza-sie-tylko-raz.html"
+          "Ichi-go ichi-e — każde spotkanie zdarza się tylko raz | Blog"
         when "blog/jeden-nauczyciel-jeden-przekaz.html"
           "Jeden nauczyciel, jeden przekaz — porządek nauki w dojo i na seminarium | Blog"
         when "blog/styl-aikido-fumio-toyody-technika-i-zen.html"
@@ -256,6 +258,8 @@ module Site
           "Shuhari — stages of maturation in training and the path to freedom | Blog"
         when "en/blog/hansei-honest-self-reflection-without-excuses.html"
           "Hansei — honest self-reflection without excuses and ego defense | Blog"
+        when "en/blog/ichi-go-ichi-e-every-encounter-happens-only-once.html"
+          "Ichi-go ichi-e — every encounter happens only once | Blog"
         when "en/blog/one-teacher-one-transmission.html"
           "One teacher, one transmission — order in dojo and seminar learning | Blog"
         when "en/blog/toyoda-aikido-style-technique-and-zen.html"
@@ -425,6 +429,8 @@ module Site
           "Shuhari w Aikido i budō: jak wiernie przepracowana forma dojrzewa w zrozumienie i swobodę, zamiast rozpadać się w chaos lub ego."
         when "blog/hansei-uczciwa-autorefleksja-bez-wymowek.html"
           "Hansei w Aikido i budō: jak uczciwa autorefleksja bez wymówek pozwala zobaczyć własny błąd, przyjąć korektę i naprawdę dojrzewać w treningu."
+        when "blog/ichi-go-ichi-e-kazde-spotkanie-zdarza-sie-tylko-raz.html"
+          "Ichi-go ichi-e w Aikido i budō: dlaczego każde spotkanie, trening i korekta zdarzają się tylko raz i wymagają pełnej obecności zamiast rutyny."
         when "blog/jeden-nauczyciel-jeden-przekaz.html"
           "Jeden nauczyciel i jeden spójny przekaz chronią ucznia przed chaosem, a starszy uczeń najlepiej wspiera naukę jako dobry uke."
         when "blog/styl-aikido-fumio-toyody-technika-i-zen.html"
@@ -471,6 +477,8 @@ module Site
           "Shuhari in Aikido and budō: how faithful form matures into understanding and freedom without collapsing into chaos or ego."
         when "en/blog/hansei-honest-self-reflection-without-excuses.html"
           "Hansei in Aikido and budō: how honest self-reflection without excuses helps practitioners see error clearly, accept correction, and mature in training."
+        when "en/blog/ichi-go-ichi-e-every-encounter-happens-only-once.html"
+          "Ichi-go ichi-e in Aikido and budō: why every encounter, training session, and correction happens only once and deserves full presence instead of routine."
         when "en/blog/one-teacher-one-transmission.html"
           "One teacher and one coherent transmission protect students from confusion, and senior students support learning best by being good uke."
         when "en/blog/toyoda-aikido-style-technique-and-zen.html"
@@ -620,6 +628,8 @@ module Site
           "shuhari aikido, etapy uczenia, dojrzewanie w treningu, shu ha ri, forma i swoboda, budo, zen"
         when "blog/hansei-uczciwa-autorefleksja-bez-wymowek.html"
           "hansei aikido, autorefleksja bez wymowek, uczciwa korekta, praca z bledem, rozwoj w dojo, budo, zen"
+        when "blog/ichi-go-ichi-e-kazde-spotkanie-zdarza-sie-tylko-raz.html"
+          "ichi go ichi e aikido, kazde spotkanie zdarza sie tylko raz, obecnosc w treningu, uwaga w dojo, seminaria aikido, budo, zen"
         when "blog/jeden-nauczyciel-jeden-przekaz.html"
           "jeden nauczyciel jeden przekaz, aikido nauczanie, metodyka dojo, seminarium aikido, uke, shuhari, przekaz szkoły"
         when "blog/styl-aikido-fumio-toyody-technika-i-zen.html"
@@ -666,6 +676,8 @@ module Site
           "shuhari aikido, stages of learning, maturation in training, shu ha ri, form and freedom, budo, zen"
         when "en/blog/hansei-honest-self-reflection-without-excuses.html"
           "hansei aikido, honest self-reflection, training correction, working with error, dojo growth, budo, zen"
+        when "en/blog/ichi-go-ichi-e-every-encounter-happens-only-once.html"
+          "ichi go ichi e aikido, every encounter happens only once, presence in training, dojo attention, aikido seminars, budo, zen"
         when "en/blog/one-teacher-one-transmission.html"
           "one teacher one transmission, aikido teaching, dojo pedagogy, aikido seminar, uke, shuhari, school transmission"
         when "en/blog/toyoda-aikido-style-technique-and-zen.html"
@@ -694,6 +706,7 @@ module Site
       BLOG_POSTS_PER_PAGE = 10
 
       BLOG_POSTS_PL = [
+        { date: "26 marca 2026", title: "Ichi-go ichi-e (一期一会) — każde spotkanie zdarza się tylko raz", url: "/blog/ichi-go-ichi-e-kazde-spotkanie-zdarza-sie-tylko-raz.html", summary: "Dlaczego każda chwila treningu, korekta i spotkanie z partnerem są niepowtarzalne i wymagają pełnej obecności zamiast rutyny." },
         { date: "26 marca 2026", title: "Hansei (反省) — uczciwa autorefleksja bez wymówek", url: "/blog/hansei-uczciwa-autorefleksja-bez-wymowek.html", summary: "Dlaczego bez uczciwego zobaczenia własnego błędu trening zamienia się w obronę ego zamiast realnej korekty." },
         { date: "18 marca 2026", title: "Jeden nauczyciel, jeden przekaz", url: "/blog/jeden-nauczyciel-jeden-przekaz.html", summary: "Dlaczego jeden spójny przekaz chroni naukę przed chaosem, a starszy uczeń najlepiej wspiera trening jako dobry uke." },
         { date: "18 marca 2026", title: "Shuhari (守破離) — etapy dojrzewania w treningu", url: "/blog/shuhari-etapy-dojrzewania-w-treningu.html", summary: "Jak wiernie przepracowana forma dojrzewa w zrozumienie i swobodę, zamiast rozpadać się w chaos lub ego." },
@@ -718,6 +731,7 @@ module Site
       ].freeze
 
       BLOG_POSTS_EN = [
+        { date: "March 26, 2026", title: "Ichi-go ichi-e (一期一会) — every encounter happens only once", url: "/en/blog/ichi-go-ichi-e-every-encounter-happens-only-once.html", summary: "Why every training moment, correction, and encounter with a partner is unrepeatable and deserves full presence instead of routine." },
         { date: "March 26, 2026", title: "Hansei (反省) — honest self-reflection without excuses", url: "/en/blog/hansei-honest-self-reflection-without-excuses.html", summary: "Why training without honest recognition of your own mistakes becomes ego defense instead of real correction." },
         { date: "March 18, 2026", title: "One teacher, one transmission", url: "/en/blog/one-teacher-one-transmission.html", summary: "Why one coherent transmission protects learning from confusion, and why senior students support training best by being good uke." },
         { date: "March 18, 2026", title: "Shuhari (守破離) — stages of maturation in training", url: "/en/blog/shuhari-stages-of-maturation-in-training.html", summary: "How faithfully trained form matures into understanding and freedom instead of collapsing into chaos or ego." },
@@ -881,6 +895,15 @@ module Site
             date_published: "2026-03-26",
             date_modified: "2026-03-26"
           )
+        when "blog/ichi-go-ichi-e-kazde-spotkanie-zdarza-sie-tylko-raz.html"
+          article_schema(
+            name: "Ichi-go ichi-e — każde spotkanie zdarza się tylko raz",
+            description: page_description,
+            image: page_social_image_url,
+            lang: "pl",
+            date_published: "2026-03-26",
+            date_modified: "2026-03-26"
+          )
         when "blog/jeden-nauczyciel-jeden-przekaz.html"
           article_schema(
             name: "Jeden nauczyciel, jeden przekaz — porządek nauki w dojo i na seminarium",
@@ -920,6 +943,15 @@ module Site
         when "en/blog/hansei-honest-self-reflection-without-excuses.html"
           article_schema(
             name: "Hansei — honest self-reflection without excuses",
+            description: page_description,
+            image: page_social_image_url,
+            lang: "en",
+            date_published: "2026-03-26",
+            date_modified: "2026-03-26"
+          )
+        when "en/blog/ichi-go-ichi-e-every-encounter-happens-only-once.html"
+          article_schema(
+            name: "Ichi-go ichi-e — every encounter happens only once",
             description: page_description,
             image: page_social_image_url,
             lang: "en",
@@ -985,6 +1017,7 @@ module Site
         "blog/shoshin-umysl-poczatkujacego.html" => "en/blog/shoshin-beginners-mind.html",
         "blog/shuhari-etapy-dojrzewania-w-treningu.html" => "en/blog/shuhari-stages-of-maturation-in-training.html",
         "blog/hansei-uczciwa-autorefleksja-bez-wymowek.html" => "en/blog/hansei-honest-self-reflection-without-excuses.html",
+        "blog/ichi-go-ichi-e-kazde-spotkanie-zdarza-sie-tylko-raz.html" => "en/blog/ichi-go-ichi-e-every-encounter-happens-only-once.html",
         "blog/jeden-nauczyciel-jeden-przekaz.html" => "en/blog/one-teacher-one-transmission.html",
         "blog/styl-aikido-fumio-toyody-technika-i-zen.html" => "en/blog/toyoda-aikido-style-technique-and-zen.html",
         "blog/linia-toyoda-germanov-jak-cwiczymy.html" => "en/blog/toyoda-germanov-lineage-how-we-train.html",
@@ -1035,6 +1068,7 @@ module Site
         "en/blog/shoshin-beginners-mind.html" => "blog/shoshin-umysl-poczatkujacego.html",
         "en/blog/shuhari-stages-of-maturation-in-training.html" => "blog/shuhari-etapy-dojrzewania-w-treningu.html",
         "en/blog/hansei-honest-self-reflection-without-excuses.html" => "blog/hansei-uczciwa-autorefleksja-bez-wymowek.html",
+        "en/blog/ichi-go-ichi-e-every-encounter-happens-only-once.html" => "blog/ichi-go-ichi-e-kazde-spotkanie-zdarza-sie-tylko-raz.html",
         "en/blog/one-teacher-one-transmission.html" => "blog/jeden-nauczyciel-jeden-przekaz.html",
         "en/blog/toyoda-aikido-style-technique-and-zen.html" => "blog/styl-aikido-fumio-toyody-technika-i-zen.html",
         "en/blog/toyoda-germanov-lineage-how-we-train.html" => "blog/linia-toyoda-germanov-jak-cwiczymy.html",

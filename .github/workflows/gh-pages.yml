@@ -49,7 +49,8 @@ jobs:
           git fetch origin gh-pages:refs/remotes/origin/gh-pages
           git worktree add "$tmpdir" refs/remotes/origin/gh-pages
 
-          rsync -a --delete ./build/ "$tmpdir/"
+          find "$tmpdir" -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
+          cp -a ./build/. "$tmpdir/"
 
           cd "$tmpdir"
           git config user.name "github-actions[bot]"

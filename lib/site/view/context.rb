@@ -968,6 +968,15 @@ module Site
             date_published: "2026-03-26",
             date_modified: "2026-03-26"
           )
+        when "en/blog/aiki-harmony-in-action.html"
+          article_schema(
+            name: "Aiki — harmony in action, not in slogans",
+            description: page_description,
+            image: page_social_image_url,
+            lang: "en",
+            date_published: "2026-04-02",
+            date_modified: "2026-04-02"
+          )
         when "en/blog/ichi-go-ichi-e-every-encounter-happens-only-once.html"
           article_schema(
             name: "Ichi-go ichi-e — every encounter happens only once",

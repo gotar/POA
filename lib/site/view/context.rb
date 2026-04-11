@@ -214,6 +214,8 @@ module Site
           "Aiki — harmonia w działaniu, nie w deklaracji | Blog"
         when "blog/misogi-oczyszczenie-przez-praktyke.html"
           "Misogi — oczyszczenie przez praktykę, nie przez pozę | Blog"
+        when "blog/5-zasad-kazdej-techniki.html"
+          "5 zasad każdej techniki — jak trenować skutecznie i dojrzale | Blog"
         when "blog/ichi-go-ichi-e-kazde-spotkanie-zdarza-sie-tylko-raz.html"
           "Ichi-go ichi-e — każde spotkanie zdarza się tylko raz | Blog"
         when "blog/jeden-nauczyciel-jeden-przekaz.html"
@@ -266,6 +268,8 @@ module Site
           "Aiki — harmony in action, not in slogans | Blog"
         when "en/blog/misogi-purification-through-practice.html"
           "Misogi — purification through practice, not posture | Blog"
+        when "en/blog/five-principles-behind-every-technique.html"
+          "Five principles behind every technique — how to train with durable quality | Blog"
         when "en/blog/ichi-go-ichi-e-every-encounter-happens-only-once.html"
           "Ichi-go ichi-e — every encounter happens only once | Blog"
         when "en/blog/one-teacher-one-transmission.html"
@@ -441,6 +445,8 @@ module Site
           "Aiki w Aikido: jak przejąć timing, dystans i balans ataku bez zderzania siły z siłą oraz dlaczego ta zasada zaczyna się jeszcze przed techniką."
         when "blog/misogi-oczyszczenie-przez-praktyke.html"
           "Misogi w Aikido i budō: jak praktyka oczyszczania oddechu, uwagi i intencji wzmacnia technikę w stylu Toyody oraz pozostaje żywa w linii przekazu."
+        when "blog/5-zasad-kazdej-techniki.html"
+          "5 zasad każdej techniki w Aikido: wejście, balans, kierunek, kontakt i domknięcie jako wspólny fundament skutecznego treningu."
         when "blog/ichi-go-ichi-e-kazde-spotkanie-zdarza-sie-tylko-raz.html"
           "Ichi-go ichi-e w Aikido i budō: dlaczego każde spotkanie, trening i korekta zdarzają się tylko raz i wymagają pełnej obecności zamiast rutyny."
         when "blog/jeden-nauczyciel-jeden-przekaz.html"
@@ -493,6 +499,8 @@ module Site
           "Ichi-go ichi-e in Aikido and budō: why every encounter, training session, and correction happens only once and deserves full presence instead of routine."
         when "en/blog/misogi-purification-through-practice.html"
           "Misogi in Aikido and budō: how clearing breath, attention, and intention strengthens technique in Toyoda’s style and remains alive in the transmission line."
+        when "en/blog/five-principles-behind-every-technique.html"
+          "Five principles behind every Aikido technique: entry, balance, direction, contact, and closure as one foundation of effective training."
         when "en/blog/one-teacher-one-transmission.html"
           "One teacher and one coherent transmission protect students from confusion, and senior students support learning best by being good uke."
         when "en/blog/toyoda-aikido-style-technique-and-zen.html"
@@ -646,6 +654,8 @@ module Site
           "aiki aikido, aiki w aikido, harmonia w dzialaniu, timing dystans balans, ma-ai kuzushi kokyu, prowadzenie ataku"
         when "blog/misogi-oczyszczenie-przez-praktyke.html"
           "misogi, misogi aikido, toyoda misogi, oczyszczenie w budo, zen i aikido, linia toyoda germanov"
+        when "blog/5-zasad-kazdej-techniki.html"
+          "5 zasad techniki aikido, podstawy techniki, wejscie timing ma-ai, kuzushi balans kierunek, kontakt z partnerem, zanshin domkniecie"
         when "blog/ichi-go-ichi-e-kazde-spotkanie-zdarza-sie-tylko-raz.html"
           "ichi go ichi e aikido, kazde spotkanie zdarza sie tylko raz, obecnosc w treningu, uwaga w dojo, seminaria aikido, budo, zen"
         when "blog/jeden-nauczyciel-jeden-przekaz.html"
@@ -698,6 +708,8 @@ module Site
           "ichi go ichi e aikido, every encounter happens only once, presence in training, dojo attention, aikido seminars, budo, zen"
         when "en/blog/misogi-purification-through-practice.html"
           "misogi, misogi aikido, toyoda misogi, purification in budo, zen and aikido, toyoda germanov lineage"
+        when "en/blog/five-principles-behind-every-technique.html"
+          "five principles aikido technique, aikido fundamentals, entry timing ma-ai, kuzushi balance direction, partner contact, zanshin closure"
         when "en/blog/one-teacher-one-transmission.html"
           "one teacher one transmission, aikido teaching, dojo pedagogy, aikido seminar, uke, shuhari, school transmission"
         when "en/blog/toyoda-aikido-style-technique-and-zen.html"
@@ -726,6 +738,7 @@ module Site
       BLOG_POSTS_PER_PAGE = 10
 
       BLOG_POSTS_PL = [
+        { date: "11 kwietnia 2026", title: "5 zasad każdej techniki", url: "/blog/5-zasad-kazdej-techniki.html", summary: "Pięć fundamentów każdej techniki Aikido: wejście, balans, kierunek, kontakt i domknięcie jako wspólny standard jakości treningu." },
         { date: "4 kwietnia 2026", title: "Misogi (禊) — oczyszczenie przez praktykę", url: "/blog/misogi-oczyszczenie-przez-praktyke.html", summary: "Dlaczego misogi w stylu Toyody porządkuje oddech, uwagę i intencję oraz pozostaje żywą praktyką w linii przekazu." },
         { date: "2 kwietnia 2026", title: "Aiki (合気) — harmonia w działaniu, nie w deklaracji", url: "/blog/aiki-harmonia-w-dzialaniu.html", summary: "Dlaczego Aiki w Aikido zaczyna się przed techniką i oznacza przejęcie timingu, dystansu oraz balansu bez siłowego zderzenia." },
         { date: "26 marca 2026", title: "Ichi-go ichi-e (一期一会) — każde spotkanie zdarza się tylko raz", url: "/blog/ichi-go-ichi-e-kazde-spotkanie-zdarza-sie-tylko-raz.html", summary: "Dlaczego każda chwila treningu, korekta i spotkanie z partnerem są niepowtarzalne i wymagają pełnej obecności zamiast rutyny." },
@@ -753,6 +766,7 @@ module Site
       ].freeze
 
       BLOG_POSTS_EN = [
+        { date: "April 11, 2026", title: "Five principles behind every technique", url: "/en/blog/five-principles-behind-every-technique.html", summary: "The five foundations of every Aikido technique: entry, balance, direction, contact, and closure as one durable training standard." },
         { date: "April 4, 2026", title: "Misogi (禊) — purification through practice", url: "/en/blog/misogi-purification-through-practice.html", summary: "Why misogi in Toyoda’s style orders breath, attention, and intention and remains a living practice in the transmission line." },
         { date: "April 2, 2026", title: "Aiki (合気) — harmony in action, not in slogans", url: "/en/blog/aiki-harmony-in-action.html", summary: "Why Aiki in Aikido begins before technique and means taking timing, distance, and balance without clashing force against force." },
         { date: "March 26, 2026", title: "Ichi-go ichi-e (一期一会) — every encounter happens only once", url: "/en/blog/ichi-go-ichi-e-every-encounter-happens-only-once.html", summary: "Why every training moment, correction, and encounter with a partner is unrepeatable and deserves full presence instead of routine." },
@@ -937,6 +951,15 @@ module Site
             date_published: "2026-04-04",
             date_modified: "2026-04-04"
           )
+        when "blog/5-zasad-kazdej-techniki.html"
+          article_schema(
+            name: "5 zasad każdej techniki — jak trenować skutecznie i dojrzale",
+            description: page_description,
+            image: page_social_image_url,
+            lang: "pl",
+            date_published: "2026-04-11",
+            date_modified: "2026-04-11"
+          )
         when "blog/ichi-go-ichi-e-kazde-spotkanie-zdarza-sie-tylko-raz.html"
           article_schema(
             name: "Ichi-go ichi-e — każde spotkanie zdarza się tylko raz",
@@ -1009,6 +1032,15 @@ module Site
             date_published: "2026-04-04",
             date_modified: "2026-04-04"
           )
+        when "en/blog/five-principles-behind-every-technique.html"
+          article_schema(
+            name: "Five principles behind every technique — how to train with durable quality",
+            description: page_description,
+            image: page_social_image_url,
+            lang: "en",
+            date_published: "2026-04-11",
+            date_modified: "2026-04-11"
+          )
         when "en/blog/ichi-go-ichi-e-every-encounter-happens-only-once.html"
           article_schema(
             name: "Ichi-go ichi-e — every encounter happens only once",
@@ -1079,6 +1111,7 @@ module Site
         "blog/hansei-uczciwa-autorefleksja-bez-wymowek.html" => "en/blog/hansei-honest-self-reflection-without-excuses.html",
         "blog/aiki-harmonia-w-dzialaniu.html" => "en/blog/aiki-harmony-in-action.html",
         "blog/misogi-oczyszczenie-przez-praktyke.html" => "en/blog/misogi-purification-through-practice.html",
+        "blog/5-zasad-kazdej-techniki.html" => "en/blog/five-principles-behind-every-technique.html",
         "blog/ichi-go-ichi-e-kazde-spotkanie-zdarza-sie-tylko-raz.html" => "en/blog/ichi-go-ichi-e-every-encounter-happens-only-once.html",
         "blog/jeden-nauczyciel-jeden-przekaz.html" => "en/blog/one-teacher-one-transmission.html",
         "blog/styl-aikido-fumio-toyody-technika-i-zen.html" => "en/blog/toyoda-aikido-style-technique-and-zen.html",
@@ -1132,6 +1165,7 @@ module Site
         "en/blog/hansei-honest-self-reflection-without-excuses.html" => "blog/hansei-uczciwa-autorefleksja-bez-wymowek.html",
         "en/blog/aiki-harmony-in-action.html" => "blog/aiki-harmonia-w-dzialaniu.html",
         "en/blog/misogi-purification-through-practice.html" => "blog/misogi-oczyszczenie-przez-praktyke.html",
+        "en/blog/five-principles-behind-every-technique.html" => "blog/5-zasad-kazdej-techniki.html",
         "en/blog/ichi-go-ichi-e-every-encounter-happens-only-once.html" => "blog/ichi-go-ichi-e-kazde-spotkanie-zdarza-sie-tylko-raz.html",
         "en/blog/one-teacher-one-transmission.html" => "blog/jeden-nauczyciel-jeden-przekaz.html",
         "en/blog/toyoda-aikido-style-technique-and-zen.html" => "blog/styl-aikido-fumio-toyody-technika-i-zen.html",

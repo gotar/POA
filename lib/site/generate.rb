@@ -86,6 +86,7 @@ module Site
       blog_hansei_view: "views.blog.hansei",
       blog_aiki_view: "views.blog.aiki",
       blog_misogi_view: "views.blog.misogi",
+      blog_piec_zasad_kazdej_techniki_view: "views.blog.piec_zasad_kazdej_techniki",
       blog_ichi_go_ichi_e_view: "views.blog.ichi_go_ichi_e",
       blog_jeden_nauczyciel_jeden_przekaz_view: "views.blog.jeden_nauczyciel_jeden_przekaz",
       blog_styl_toyody_view: "views.blog.styl_toyody",
@@ -111,6 +112,7 @@ module Site
       blog_hansei_en_view: "views.en.blog.hansei",
       blog_aiki_en_view: "views.en.blog.aiki",
       blog_misogi_en_view: "views.en.blog.misogi",
+      blog_piec_zasad_kazdej_techniki_en_view: "views.en.blog.piec_zasad_kazdej_techniki",
       blog_ichi_go_ichi_e_en_view: "views.en.blog.ichi_go_ichi_e",
       blog_styl_toyody_en_view: "views.en.blog.styl_toyody",
       blog_linia_toyoda_germanov_en_view: "views.en.blog.linia_toyoda_germanov",
@@ -200,6 +202,7 @@ module Site
       render export_dir, "blog/hansei-uczciwa-autorefleksja-bez-wymowek.html", blog_hansei_view
       render export_dir, "blog/aiki-harmonia-w-dzialaniu.html", blog_aiki_view
       render export_dir, "blog/misogi-oczyszczenie-przez-praktyke.html", blog_misogi_view
+      render export_dir, "blog/5-zasad-kazdej-techniki.html", blog_piec_zasad_kazdej_techniki_view
       render export_dir, "blog/ichi-go-ichi-e-kazde-spotkanie-zdarza-sie-tylko-raz.html", blog_ichi_go_ichi_e_view
       render export_dir, "blog/jeden-nauczyciel-jeden-przekaz.html", blog_jeden_nauczyciel_jeden_przekaz_view
       render export_dir, "blog/styl-aikido-fumio-toyody-technika-i-zen.html", blog_styl_toyody_view
@@ -224,6 +227,7 @@ module Site
       render export_dir, "en/blog/hansei-honest-self-reflection-without-excuses.html", blog_hansei_en_view
       render export_dir, "en/blog/aiki-harmony-in-action.html", blog_aiki_en_view
       render export_dir, "en/blog/misogi-purification-through-practice.html", blog_misogi_en_view
+      render export_dir, "en/blog/five-principles-behind-every-technique.html", blog_piec_zasad_kazdej_techniki_en_view
       render export_dir, "en/blog/ichi-go-ichi-e-every-encounter-happens-only-once.html", blog_ichi_go_ichi_e_en_view
       render export_dir, "en/blog/one-teacher-one-transmission.html", blog_jeden_nauczyciel_jeden_przekaz_en_view
       render export_dir, "en/blog/toyoda-aikido-style-technique-and-zen.html", blog_styl_toyody_en_view

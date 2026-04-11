@@ -446,7 +446,7 @@ module Site
         when "blog/misogi-oczyszczenie-przez-praktyke.html"
           "Misogi w Aikido i budō: jak praktyka oczyszczania oddechu, uwagi i intencji wzmacnia technikę w stylu Toyody oraz pozostaje żywa w linii przekazu."
         when "blog/5-zasad-kazdej-techniki.html"
-          "5 zasad każdej techniki w Aikido i budō: centrum, oś, timing, wybranie luzu i kuzushi jako jeden spójny standard skutecznego treningu."
+          "5 zasad każdej techniki w Aikido: praktyczny model pracy z centrum, osią, timingiem, wybraniem luzu i kuzushi oraz podzasadami, które porządkują ruch."
         when "blog/ichi-go-ichi-e-kazde-spotkanie-zdarza-sie-tylko-raz.html"
           "Ichi-go ichi-e w Aikido i budō: dlaczego każde spotkanie, trening i korekta zdarzają się tylko raz i wymagają pełnej obecności zamiast rutyny."
         when "blog/jeden-nauczyciel-jeden-przekaz.html"
@@ -500,7 +500,7 @@ module Site
         when "en/blog/misogi-purification-through-practice.html"
           "Misogi in Aikido and budō: how clearing breath, attention, and intention strengthens technique in Toyoda’s style and remains alive in the transmission line."
         when "en/blog/five-principles-behind-every-technique.html"
-          "Five principles behind every Aikido and budō technique: center, axis, timing, slack removal, and kuzushi as one coherent quality standard."
+          "Five principles behind Aikido technique: a practical model of center, axis, timing, taking the slack out, and kuzushi together with the sub-principles that organize movement."
         when "en/blog/one-teacher-one-transmission.html"
           "One teacher and one coherent transmission protect students from confusion, and senior students support learning best by being good uke."
         when "en/blog/toyoda-aikido-style-technique-and-zen.html"
@@ -738,7 +738,7 @@ module Site
       BLOG_POSTS_PER_PAGE = 10
 
       BLOG_POSTS_PL = [
-        { date: "11 kwietnia 2026", title: "5 zasad każdej techniki", url: "/blog/5-zasad-kazdej-techniki.html", summary: "Centrum, oś, timing, wybranie luzu i kuzushi — pięć współzależnych zasad, bez których technika Aikido traci sens." },
+        { date: "11 kwietnia 2026", title: "5 zasad każdej techniki", url: "/blog/5-zasad-kazdej-techniki.html", summary: "Praktyczny model techniki w Aikido: centrum, oś, timing, wybranie luzu i kuzushi oraz podzasady, które pozwalają im działać razem." },
         { date: "4 kwietnia 2026", title: "Misogi (禊) — oczyszczenie przez praktykę", url: "/blog/misogi-oczyszczenie-przez-praktyke.html", summary: "Dlaczego misogi w stylu Toyody porządkuje oddech, uwagę i intencję oraz pozostaje żywą praktyką w linii przekazu." },
         { date: "2 kwietnia 2026", title: "Aiki (合気) — harmonia w działaniu, nie w deklaracji", url: "/blog/aiki-harmonia-w-dzialaniu.html", summary: "Dlaczego Aiki w Aikido zaczyna się przed techniką i oznacza przejęcie timingu, dystansu oraz balansu bez siłowego zderzenia." },
         { date: "26 marca 2026", title: "Ichi-go ichi-e (一期一会) — każde spotkanie zdarza się tylko raz", url: "/blog/ichi-go-ichi-e-kazde-spotkanie-zdarza-sie-tylko-raz.html", summary: "Dlaczego każda chwila treningu, korekta i spotkanie z partnerem są niepowtarzalne i wymagają pełnej obecności zamiast rutyny." },
@@ -766,7 +766,7 @@ module Site
       ].freeze
 
       BLOG_POSTS_EN = [
-        { date: "April 11, 2026", title: "Five principles behind every technique", url: "/en/blog/five-principles-behind-every-technique.html", summary: "Center, axis, timing, slack removal, and kuzushi — five interdependent principles that make Aikido technique truly functional." },
+        { date: "April 11, 2026", title: "Five principles behind every technique", url: "/en/blog/five-principles-behind-every-technique.html", summary: "A practical Aikido model: center, axis, timing, taking the slack out, and kuzushi plus the sub-principles that let them work together." },
         { date: "April 4, 2026", title: "Misogi (禊) — purification through practice", url: "/en/blog/misogi-purification-through-practice.html", summary: "Why misogi in Toyoda’s style orders breath, attention, and intention and remains a living practice in the transmission line." },
         { date: "April 2, 2026", title: "Aiki (合気) — harmony in action, not in slogans", url: "/en/blog/aiki-harmony-in-action.html", summary: "Why Aiki in Aikido begins before technique and means taking timing, distance, and balance without clashing force against force." },
         { date: "March 26, 2026", title: "Ichi-go ichi-e (一期一会) — every encounter happens only once", url: "/en/blog/ichi-go-ichi-e-every-encounter-happens-only-once.html", summary: "Why every training moment, correction, and encounter with a partner is unrepeatable and deserves full presence instead of routine." },

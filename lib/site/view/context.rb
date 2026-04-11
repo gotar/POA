@@ -215,7 +215,7 @@ module Site
         when "blog/misogi-oczyszczenie-przez-praktyke.html"
           "Misogi — oczyszczenie przez praktykę, nie przez pozę | Blog"
         when "blog/5-zasad-kazdej-techniki.html"
-          "5 zasad każdej techniki — jak trenować skutecznie i dojrzale | Blog"
+          "5 zasad każdej techniki — centrum, oś, timing, wybranie luzu, kuzushi | Blog"
         when "blog/ichi-go-ichi-e-kazde-spotkanie-zdarza-sie-tylko-raz.html"
           "Ichi-go ichi-e — każde spotkanie zdarza się tylko raz | Blog"
         when "blog/jeden-nauczyciel-jeden-przekaz.html"
@@ -269,7 +269,7 @@ module Site
         when "en/blog/misogi-purification-through-practice.html"
           "Misogi — purification through practice, not posture | Blog"
         when "en/blog/five-principles-behind-every-technique.html"
-          "Five principles behind every technique — how to train with durable quality | Blog"
+          "Five principles behind every technique — center, axis, timing, slack removal, kuzushi | Blog"
         when "en/blog/ichi-go-ichi-e-every-encounter-happens-only-once.html"
           "Ichi-go ichi-e — every encounter happens only once | Blog"
         when "en/blog/one-teacher-one-transmission.html"
@@ -446,7 +446,7 @@ module Site
         when "blog/misogi-oczyszczenie-przez-praktyke.html"
           "Misogi w Aikido i budō: jak praktyka oczyszczania oddechu, uwagi i intencji wzmacnia technikę w stylu Toyody oraz pozostaje żywa w linii przekazu."
         when "blog/5-zasad-kazdej-techniki.html"
-          "5 zasad każdej techniki w Aikido: wejście, balans, kierunek, kontakt i domknięcie jako wspólny fundament skutecznego treningu."
+          "5 zasad każdej techniki w Aikido i budō: centrum, oś, timing, wybranie luzu i kuzushi jako jeden spójny standard skutecznego treningu."
         when "blog/ichi-go-ichi-e-kazde-spotkanie-zdarza-sie-tylko-raz.html"
           "Ichi-go ichi-e w Aikido i budō: dlaczego każde spotkanie, trening i korekta zdarzają się tylko raz i wymagają pełnej obecności zamiast rutyny."
         when "blog/jeden-nauczyciel-jeden-przekaz.html"
@@ -500,7 +500,7 @@ module Site
         when "en/blog/misogi-purification-through-practice.html"
           "Misogi in Aikido and budō: how clearing breath, attention, and intention strengthens technique in Toyoda’s style and remains alive in the transmission line."
         when "en/blog/five-principles-behind-every-technique.html"
-          "Five principles behind every Aikido technique: entry, balance, direction, contact, and closure as one foundation of effective training."
+          "Five principles behind every Aikido and budō technique: center, axis, timing, slack removal, and kuzushi as one coherent quality standard."
         when "en/blog/one-teacher-one-transmission.html"
           "One teacher and one coherent transmission protect students from confusion, and senior students support learning best by being good uke."
         when "en/blog/toyoda-aikido-style-technique-and-zen.html"
@@ -655,7 +655,7 @@ module Site
         when "blog/misogi-oczyszczenie-przez-praktyke.html"
           "misogi, misogi aikido, toyoda misogi, oczyszczenie w budo, zen i aikido, linia toyoda germanov"
         when "blog/5-zasad-kazdej-techniki.html"
-          "5 zasad techniki aikido, podstawy techniki, wejscie timing ma-ai, kuzushi balans kierunek, kontakt z partnerem, zanshin domkniecie"
+          "5 zasad techniki aikido, centrum os timing, wybranie luzu, kuzushi, budo bushido, hara, os ciala, ma-ai, hyoshi"
         when "blog/ichi-go-ichi-e-kazde-spotkanie-zdarza-sie-tylko-raz.html"
           "ichi go ichi e aikido, kazde spotkanie zdarza sie tylko raz, obecnosc w treningu, uwaga w dojo, seminaria aikido, budo, zen"
         when "blog/jeden-nauczyciel-jeden-przekaz.html"
@@ -709,7 +709,7 @@ module Site
         when "en/blog/misogi-purification-through-practice.html"
           "misogi, misogi aikido, toyoda misogi, purification in budo, zen and aikido, toyoda germanov lineage"
         when "en/blog/five-principles-behind-every-technique.html"
-          "five principles aikido technique, aikido fundamentals, entry timing ma-ai, kuzushi balance direction, partner contact, zanshin closure"
+          "five principles aikido technique, center axis timing, slack removal, kuzushi, budo bushido, hara, ma-ai, hyoshi"
         when "en/blog/one-teacher-one-transmission.html"
           "one teacher one transmission, aikido teaching, dojo pedagogy, aikido seminar, uke, shuhari, school transmission"
         when "en/blog/toyoda-aikido-style-technique-and-zen.html"
@@ -738,7 +738,7 @@ module Site
       BLOG_POSTS_PER_PAGE = 10
 
       BLOG_POSTS_PL = [
-        { date: "11 kwietnia 2026", title: "5 zasad każdej techniki", url: "/blog/5-zasad-kazdej-techniki.html", summary: "Pięć fundamentów każdej techniki Aikido: wejście, balans, kierunek, kontakt i domknięcie jako wspólny standard jakości treningu." },
+        { date: "11 kwietnia 2026", title: "5 zasad każdej techniki", url: "/blog/5-zasad-kazdej-techniki.html", summary: "Centrum, oś, timing, wybranie luzu i kuzushi — pięć współzależnych zasad, bez których technika Aikido traci sens." },
         { date: "4 kwietnia 2026", title: "Misogi (禊) — oczyszczenie przez praktykę", url: "/blog/misogi-oczyszczenie-przez-praktyke.html", summary: "Dlaczego misogi w stylu Toyody porządkuje oddech, uwagę i intencję oraz pozostaje żywą praktyką w linii przekazu." },
         { date: "2 kwietnia 2026", title: "Aiki (合気) — harmonia w działaniu, nie w deklaracji", url: "/blog/aiki-harmonia-w-dzialaniu.html", summary: "Dlaczego Aiki w Aikido zaczyna się przed techniką i oznacza przejęcie timingu, dystansu oraz balansu bez siłowego zderzenia." },
         { date: "26 marca 2026", title: "Ichi-go ichi-e (一期一会) — każde spotkanie zdarza się tylko raz", url: "/blog/ichi-go-ichi-e-kazde-spotkanie-zdarza-sie-tylko-raz.html", summary: "Dlaczego każda chwila treningu, korekta i spotkanie z partnerem są niepowtarzalne i wymagają pełnej obecności zamiast rutyny." },
@@ -766,7 +766,7 @@ module Site
       ].freeze
 
       BLOG_POSTS_EN = [
-        { date: "April 11, 2026", title: "Five principles behind every technique", url: "/en/blog/five-principles-behind-every-technique.html", summary: "The five foundations of every Aikido technique: entry, balance, direction, contact, and closure as one durable training standard." },
+        { date: "April 11, 2026", title: "Five principles behind every technique", url: "/en/blog/five-principles-behind-every-technique.html", summary: "Center, axis, timing, slack removal, and kuzushi — five interdependent principles that make Aikido technique truly functional." },
         { date: "April 4, 2026", title: "Misogi (禊) — purification through practice", url: "/en/blog/misogi-purification-through-practice.html", summary: "Why misogi in Toyoda’s style orders breath, attention, and intention and remains a living practice in the transmission line." },
         { date: "April 2, 2026", title: "Aiki (合気) — harmony in action, not in slogans", url: "/en/blog/aiki-harmony-in-action.html", summary: "Why Aiki in Aikido begins before technique and means taking timing, distance, and balance without clashing force against force." },
         { date: "March 26, 2026", title: "Ichi-go ichi-e (一期一会) — every encounter happens only once", url: "/en/blog/ichi-go-ichi-e-every-encounter-happens-only-once.html", summary: "Why every training moment, correction, and encounter with a partner is unrepeatable and deserves full presence instead of routine." },
@@ -953,7 +953,7 @@ module Site
           )
         when "blog/5-zasad-kazdej-techniki.html"
           article_schema(
-            name: "5 zasad każdej techniki — jak trenować skutecznie i dojrzale",
+            name: "5 zasad każdej techniki — centrum, oś, timing, wybranie luzu, kuzushi",
             description: page_description,
             image: page_social_image_url,
             lang: "pl",
@@ -1034,7 +1034,7 @@ module Site
           )
         when "en/blog/five-principles-behind-every-technique.html"
           article_schema(
-            name: "Five principles behind every technique — how to train with durable quality",
+            name: "Five principles behind every technique — center, axis, timing, slack removal, kuzushi",
             description: page_description,
             image: page_social_image_url,
             lang: "en",

@@ -89,6 +89,7 @@ module Site
       blog_piec_zasad_kazdej_techniki_view: "views.blog.piec_zasad_kazdej_techniki",
       blog_ichi_go_ichi_e_view: "views.blog.ichi_go_ichi_e",
       blog_jeden_nauczyciel_jeden_przekaz_view: "views.blog.jeden_nauczyciel_jeden_przekaz",
+      blog_dlaczego_w_aikido_nosi_sie_hakame_view: "views.blog.dlaczego_w_aikido_nosi_sie_hakame",
       blog_styl_toyody_view: "views.blog.styl_toyody",
       blog_shuhari_en_view: "views.en.blog.shuhari",
       blog_jeden_nauczyciel_jeden_przekaz_en_view: "views.en.blog.jeden_nauczyciel_jeden_przekaz",
@@ -114,6 +115,7 @@ module Site
       blog_misogi_en_view: "views.en.blog.misogi",
       blog_piec_zasad_kazdej_techniki_en_view: "views.en.blog.piec_zasad_kazdej_techniki",
       blog_ichi_go_ichi_e_en_view: "views.en.blog.ichi_go_ichi_e",
+      blog_dlaczego_w_aikido_nosi_sie_hakame_en_view: "views.en.blog.dlaczego_w_aikido_nosi_sie_hakame",
       blog_styl_toyody_en_view: "views.en.blog.styl_toyody",
       blog_linia_toyoda_germanov_en_view: "views.en.blog.linia_toyoda_germanov",
     ]
@@ -205,6 +207,7 @@ module Site
       render export_dir, "blog/5-zasad-kazdej-techniki.html", blog_piec_zasad_kazdej_techniki_view
       render export_dir, "blog/ichi-go-ichi-e-kazde-spotkanie-zdarza-sie-tylko-raz.html", blog_ichi_go_ichi_e_view
       render export_dir, "blog/jeden-nauczyciel-jeden-przekaz.html", blog_jeden_nauczyciel_jeden_przekaz_view
+      render export_dir, "blog/dlaczego-w-aikido-nosi-sie-hakame.html", blog_dlaczego_w_aikido_nosi_sie_hakame_view
       render export_dir, "blog/styl-aikido-fumio-toyody-technika-i-zen.html", blog_styl_toyody_view
       render export_dir, "blog/linia-toyoda-germanov-jak-cwiczymy.html", blog_linia_toyoda_germanov_view
       render export_dir, "blog/omoiyari-uwazna-troska.html", blog_omoiyari_view
@@ -230,6 +233,7 @@ module Site
       render export_dir, "en/blog/five-principles-behind-every-technique.html", blog_piec_zasad_kazdej_techniki_en_view
       render export_dir, "en/blog/ichi-go-ichi-e-every-encounter-happens-only-once.html", blog_ichi_go_ichi_e_en_view
       render export_dir, "en/blog/one-teacher-one-transmission.html", blog_jeden_nauczyciel_jeden_przekaz_en_view
+      render export_dir, "en/blog/why-aikido-practitioners-wear-hakama.html", blog_dlaczego_w_aikido_nosi_sie_hakame_en_view
       render export_dir, "en/blog/toyoda-aikido-style-technique-and-zen.html", blog_styl_toyody_en_view
       render export_dir, "en/blog/toyoda-germanov-lineage-how-we-train.html", blog_linia_toyoda_germanov_en_view
       render export_dir, "en/blog/omoiyari-considerate-compassion.html", blog_omoiyari_en_view

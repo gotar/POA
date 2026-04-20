@@ -230,6 +230,8 @@ module Site
           "Czy warto ćwiczyć aikido? Korzyści, ograniczenia i sens treningu | Blog"
         when "blog/aikido-w-kazdym-wieku.html"
           "Aikido w każdym wieku? Jak zacząć rozsądnie niezależnie od wieku | Blog"
+        when "blog/aikido-dla-nastolatkow.html"
+          "Aikido dla nastolatków? Dyscyplina, sprawność i rozwój bez sportowej presji | Blog"
         when "blog/ichi-go-ichi-e-kazde-spotkanie-zdarza-sie-tylko-raz.html"
           "Ichi-go ichi-e — każde spotkanie zdarza się tylko raz | Blog"
         when "blog/jeden-nauczyciel-jeden-przekaz.html"
@@ -292,6 +294,8 @@ module Site
           "Is Aikido worth practicing? Benefits, limits, and honest expectations | Blog"
         when "en/blog/aikido-at-every-age.html"
           "Aikido at every age? How to begin intelligently at different stages of life | Blog"
+        when "en/blog/aikido-for-teenagers.html"
+          "Aikido for teenagers? Discipline, fitness, and development without sport pressure | Blog"
         when "en/blog/ichi-go-ichi-e-every-encounter-happens-only-once.html"
           "Ichi-go ichi-e — every encounter happens only once | Blog"
         when "en/blog/one-teacher-one-transmission.html"
@@ -487,6 +491,8 @@ module Site
           "Czy warto ćwiczyć aikido? Uczciwa odpowiedź o korzyściach, ograniczeniach i tym, dla kogo ta droga ma realny sens."
         when "blog/aikido-w-kazdym-wieku.html"
           "Aikido w każdym wieku: jak zacząć trening rozsądnie mając 20, 40 albo 60 lat i od czego naprawdę zależy bezpieczny rozwój."
+        when "blog/aikido-dla-nastolatkow.html"
+          "Aikido dla nastolatków jako droga rozwoju: dyscyplina, sprawność, samokontrola, relacje i międzynarodowe doświadczenia bez obsesji wyniku sportowego."
         when "blog/ichi-go-ichi-e-kazde-spotkanie-zdarza-sie-tylko-raz.html"
           "Ichi-go ichi-e w Aikido i budō: dlaczego każde spotkanie, trening i korekta zdarzają się tylko raz i wymagają pełnej obecności zamiast rutyny."
         when "blog/jeden-nauczyciel-jeden-przekaz.html"
@@ -549,6 +555,8 @@ module Site
           "Is Aikido worth practicing? An honest answer about benefits, limits, and the kinds of goals this path serves best."
         when "en/blog/aikido-at-every-age.html"
           "Aikido at every age: how to begin intelligently in your 20s, 40s, or 60s and what really determines safe long-term progress."
+        when "en/blog/aikido-for-teenagers.html"
+          "Aikido for teenagers as a path of development: discipline, fitness, self-control, relationships, and international experience without obsession with sporting outcome."
         when "en/blog/one-teacher-one-transmission.html"
           "One teacher and one coherent transmission protect students from confusion, and senior students support learning best by being good uke."
         when "en/blog/toyoda-aikido-style-technique-and-zen.html"
@@ -722,6 +730,8 @@ module Site
           "czy warto ćwiczyć aikido, korzyści z aikido, trening aikido dla dorosłych, czy aikido ma sens, aikido gdynia"
         when "blog/aikido-w-kazdym-wieku.html"
           "aikido w każdym wieku, czy można zacząć aikido po 40, aikido po 50, aikido dla dorosłych, pierwszy trening aikido"
+        when "blog/aikido-dla-nastolatkow.html"
+          "aikido dla nastolatków, aikido młodzież, sztuki walki dla nastolatków, rozwój nastolatka sport, dyscyplina i samokontrola młodzieży, aikido gdynia"
         when "blog/ichi-go-ichi-e-kazde-spotkanie-zdarza-sie-tylko-raz.html"
           "ichi go ichi e aikido, kazde spotkanie zdarza sie tylko raz, obecnosc w treningu, uwaga w dojo, seminaria aikido, budo, zen"
         when "blog/jeden-nauczyciel-jeden-przekaz.html"
@@ -784,6 +794,8 @@ module Site
           "is aikido worth practicing, aikido benefits, aikido training for adults, is aikido useful, aikido gdynia"
         when "en/blog/aikido-at-every-age.html"
           "aikido at every age, can you start aikido after 40, aikido after 50, aikido for adults, first aikido class"
+        when "en/blog/aikido-for-teenagers.html"
+          "aikido for teenagers, teen martial arts, youth aikido, discipline for teens, self-control and confidence for teenagers, aikido gdynia"
         when "en/blog/one-teacher-one-transmission.html"
           "one teacher one transmission, aikido teaching, dojo pedagogy, aikido seminar, uke, shuhari, school transmission"
         when "en/blog/toyoda-aikido-style-technique-and-zen.html"
@@ -812,6 +824,7 @@ module Site
       BLOG_POSTS_PER_PAGE = 10
 
       BLOG_POSTS_PL = [
+        { date: "20 kwietnia 2026", title: "Aikido dla nastolatków", url: "/blog/aikido-dla-nastolatkow.html", summary: "Jak aikido może wspierać dyscyplinę, sprawność, samokontrolę, relacje i rozwój młodego człowieka bez sportowej presji wyniku." },
         { date: "20 kwietnia 2026", title: "Dla kogo jest aikido?", url: "/blog/dla-kogo-jest-aikido.html", summary: "Dla początkujących, dorosłych, osób po przerwie i tych, którzy szukają regularnej praktyki bez sportowej rywalizacji — ale nie dla każdego celu." },
         { date: "20 kwietnia 2026", title: "Czy warto ćwiczyć aikido?", url: "/blog/czy-warto-cwiczyc-aikido.html", summary: "Uczciwa odpowiedź o korzyściach, ograniczeniach i o tym, kiedy trening aikido naprawdę ma sens." },
         { date: "20 kwietnia 2026", title: "Aikido w każdym wieku", url: "/blog/aikido-w-kazdym-wieku.html", summary: "Jak zacząć rozsądnie mając 20, 40 albo 60 lat i dlaczego wiek rzadko jest największą przeszkodą sam w sobie." },
@@ -844,6 +857,7 @@ module Site
       ].freeze
 
       BLOG_POSTS_EN = [
+        { date: "April 20, 2026", title: "Aikido for teenagers", url: "/en/blog/aikido-for-teenagers.html", summary: "How Aikido can support discipline, fitness, self-control, relationships, and youth development without sport-result pressure." },
         { date: "April 20, 2026", title: "Who is Aikido for?", url: "/en/blog/who-is-aikido-for.html", summary: "For beginners, adults, people returning after a break, and anyone seeking regular practice without sport competition—but not for every goal." },
         { date: "April 20, 2026", title: "Is Aikido worth practicing?", url: "/en/blog/is-aikido-worth-practicing.html", summary: "An honest answer about benefits, limits, and when Aikido training is actually worth your time and attention." },
         { date: "April 20, 2026", title: "Aikido at every age", url: "/en/blog/aikido-at-every-age.html", summary: "How to begin intelligently in your 20s, 40s, or 60s and why age itself is rarely the biggest obstacle." },
@@ -1078,6 +1092,15 @@ module Site
             date_published: "2026-04-20",
             date_modified: "2026-04-20"
           )
+        when "blog/aikido-dla-nastolatkow.html"
+          article_schema(
+            name: "Aikido dla nastolatków",
+            description: page_description,
+            image: page_social_image_url,
+            lang: "pl",
+            date_published: "2026-04-20",
+            date_modified: "2026-04-20"
+          )
         when "blog/ichi-go-ichi-e-kazde-spotkanie-zdarza-sie-tylko-raz.html"
           article_schema(
             name: "Ichi-go ichi-e — każde spotkanie zdarza się tylko raz",
@@ -1195,6 +1218,15 @@ module Site
             date_published: "2026-04-20",
             date_modified: "2026-04-20"
           )
+        when "en/blog/aikido-for-teenagers.html"
+          article_schema(
+            name: "Aikido for teenagers",
+            description: page_description,
+            image: page_social_image_url,
+            lang: "en",
+            date_published: "2026-04-20",
+            date_modified: "2026-04-20"
+          )
         when "en/blog/ichi-go-ichi-e-every-encounter-happens-only-once.html"
           article_schema(
             name: "Ichi-go ichi-e — every encounter happens only once",
@@ -1270,6 +1302,7 @@ module Site
         "blog/dla-kogo-jest-aikido.html" => "en/blog/who-is-aikido-for.html",
         "blog/czy-warto-cwiczyc-aikido.html" => "en/blog/is-aikido-worth-practicing.html",
         "blog/aikido-w-kazdym-wieku.html" => "en/blog/aikido-at-every-age.html",
+        "blog/aikido-dla-nastolatkow.html" => "en/blog/aikido-for-teenagers.html",
         "blog/ichi-go-ichi-e-kazde-spotkanie-zdarza-sie-tylko-raz.html" => "en/blog/ichi-go-ichi-e-every-encounter-happens-only-once.html",
         "blog/jeden-nauczyciel-jeden-przekaz.html" => "en/blog/one-teacher-one-transmission.html",
         "blog/styl-aikido-fumio-toyody-technika-i-zen.html" => "en/blog/toyoda-aikido-style-technique-and-zen.html",
@@ -1328,6 +1361,7 @@ module Site
         "en/blog/who-is-aikido-for.html" => "blog/dla-kogo-jest-aikido.html",
         "en/blog/is-aikido-worth-practicing.html" => "blog/czy-warto-cwiczyc-aikido.html",
         "en/blog/aikido-at-every-age.html" => "blog/aikido-w-kazdym-wieku.html",
+        "en/blog/aikido-for-teenagers.html" => "blog/aikido-dla-nastolatkow.html",
         "en/blog/ichi-go-ichi-e-every-encounter-happens-only-once.html" => "blog/ichi-go-ichi-e-kazde-spotkanie-zdarza-sie-tylko-raz.html",
         "en/blog/one-teacher-one-transmission.html" => "blog/jeden-nauczyciel-jeden-przekaz.html",
         "en/blog/toyoda-aikido-style-technique-and-zen.html" => "blog/styl-aikido-fumio-toyody-technika-i-zen.html",

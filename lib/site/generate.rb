@@ -96,6 +96,7 @@ module Site
       blog_dla_kogo_jest_aikido_view: "views.blog.dla_kogo_jest_aikido",
       blog_czy_warto_cwiczyc_aikido_view: "views.blog.czy_warto_cwiczyc_aikido",
       blog_aikido_w_kazdym_wieku_view: "views.blog.aikido_w_kazdym_wieku",
+      blog_aikido_dla_nastolatkow_view: "views.blog.aikido_dla_nastolatkow",
       blog_styl_toyody_view: "views.blog.styl_toyody",
       blog_shuhari_en_view: "views.en.blog.shuhari",
       blog_jeden_nauczyciel_jeden_przekaz_en_view: "views.en.blog.jeden_nauczyciel_jeden_przekaz",
@@ -125,6 +126,7 @@ module Site
       blog_dla_kogo_jest_aikido_en_view: "views.en.blog.dla_kogo_jest_aikido",
       blog_czy_warto_cwiczyc_aikido_en_view: "views.en.blog.czy_warto_cwiczyc_aikido",
       blog_aikido_w_kazdym_wieku_en_view: "views.en.blog.aikido_w_kazdym_wieku",
+      blog_aikido_dla_nastolatkow_en_view: "views.en.blog.aikido_dla_nastolatkow",
       blog_styl_toyody_en_view: "views.en.blog.styl_toyody",
       blog_linia_toyoda_germanov_en_view: "views.en.blog.linia_toyoda_germanov",
     ]
@@ -223,6 +225,7 @@ module Site
       render export_dir, "blog/dla-kogo-jest-aikido.html", blog_dla_kogo_jest_aikido_view
       render export_dir, "blog/czy-warto-cwiczyc-aikido.html", blog_czy_warto_cwiczyc_aikido_view
       render export_dir, "blog/aikido-w-kazdym-wieku.html", blog_aikido_w_kazdym_wieku_view
+      render export_dir, "blog/aikido-dla-nastolatkow.html", blog_aikido_dla_nastolatkow_view
       render export_dir, "blog/styl-aikido-fumio-toyody-technika-i-zen.html", blog_styl_toyody_view
       render export_dir, "blog/linia-toyoda-germanov-jak-cwiczymy.html", blog_linia_toyoda_germanov_view
       render export_dir, "blog/omoiyari-uwazna-troska.html", blog_omoiyari_view
@@ -252,6 +255,7 @@ module Site
       render export_dir, "en/blog/who-is-aikido-for.html", blog_dla_kogo_jest_aikido_en_view
       render export_dir, "en/blog/is-aikido-worth-practicing.html", blog_czy_warto_cwiczyc_aikido_en_view
       render export_dir, "en/blog/aikido-at-every-age.html", blog_aikido_w_kazdym_wieku_en_view
+      render export_dir, "en/blog/aikido-for-teenagers.html", blog_aikido_dla_nastolatkow_en_view
       render export_dir, "en/blog/toyoda-aikido-style-technique-and-zen.html", blog_styl_toyody_en_view
       render export_dir, "en/blog/toyoda-germanov-lineage-how-we-train.html", blog_linia_toyoda_germanov_en_view
       render export_dir, "en/blog/omoiyari-considerate-compassion.html", blog_omoiyari_en_view

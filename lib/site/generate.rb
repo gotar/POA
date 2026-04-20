@@ -60,6 +60,9 @@ module Site
       yudansha_en_view: "views.en.yudansha",
       gdynia_view: "views.gdynia",
       gdynia_en_view: "views.en.gdynia",
+      training_gdynia_view: "views.training_gdynia",
+      first_training_gdynia_view: "views.first_training_gdynia",
+      adults_gdynia_view: "views.adults_gdynia",
       faq_view: "views.faq",
       faq_en_view: "views.en.faq",
       blog_view: "views.blog",
@@ -184,6 +187,9 @@ module Site
       render export_dir, "en/yudansha.html", yudansha_en_view
       render export_dir, "gdynia.html", gdynia_view
       render export_dir, "en/gdynia.html", gdynia_en_view
+      render export_dir, "treningi-aikido-gdynia.html", training_gdynia_view
+      render export_dir, "pierwszy-trening-aikido-gdynia.html", first_training_gdynia_view
+      render export_dir, "aikido-dla-doroslych-gdynia.html", adults_gdynia_view
       render export_dir, "faq.html", faq_view
       render export_dir, "en/faq.html", faq_en_view
       render_blog_index_pages(export_dir)

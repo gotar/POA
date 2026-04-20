@@ -224,6 +224,12 @@ module Site
           "5 zasad każdej techniki — centrum, oś, timing, wybranie luzu, kuzushi | Blog"
         when "blog/dlaczego-w-aikido-nosi-sie-hakame.html"
           "Dlaczego w aikido nosi się hakamę? Heifuku, ruch i sens tradycji | Blog"
+        when "blog/dla-kogo-jest-aikido.html"
+          "Dla kogo jest aikido? Początkujący, dorośli i osoby po przerwie | Blog"
+        when "blog/czy-warto-cwiczyc-aikido.html"
+          "Czy warto ćwiczyć aikido? Korzyści, ograniczenia i sens treningu | Blog"
+        when "blog/aikido-w-kazdym-wieku.html"
+          "Aikido w każdym wieku? Jak zacząć rozsądnie niezależnie od wieku | Blog"
         when "blog/ichi-go-ichi-e-kazde-spotkanie-zdarza-sie-tylko-raz.html"
           "Ichi-go ichi-e — każde spotkanie zdarza się tylko raz | Blog"
         when "blog/jeden-nauczyciel-jeden-przekaz.html"
@@ -280,6 +286,12 @@ module Site
           "Five principles behind every technique — center, axis, timing, slack removal, kuzushi | Blog"
         when "en/blog/why-aikido-practitioners-wear-hakama.html"
           "Why do Aikido practitioners wear hakama? Heifuku, movement, and tradition | Blog"
+        when "en/blog/who-is-aikido-for.html"
+          "Who is Aikido for? Beginners, adults, and returning practitioners | Blog"
+        when "en/blog/is-aikido-worth-practicing.html"
+          "Is Aikido worth practicing? Benefits, limits, and honest expectations | Blog"
+        when "en/blog/aikido-at-every-age.html"
+          "Aikido at every age? How to begin intelligently at different stages of life | Blog"
         when "en/blog/ichi-go-ichi-e-every-encounter-happens-only-once.html"
           "Ichi-go ichi-e — every encounter happens only once | Blog"
         when "en/blog/one-teacher-one-transmission.html"
@@ -469,6 +481,12 @@ module Site
           "5 zasad każdej techniki w Aikido: praktyczny model pracy z centrum, osią, timingiem, wybraniem luzu i kuzushi oraz podzasadami, które porządkują ruch."
         when "blog/dlaczego-w-aikido-nosi-sie-hakame.html"
           "Dlaczego w aikido nosi się hakamę: historyczny sens stroju, związek z heifuku, wpływ na jakość ruchu oraz symbolika siedmiu plis i siedmiu cnót."
+        when "blog/dla-kogo-jest-aikido.html"
+          "Dla kogo jest aikido naprawdę: dla początkujących, dorosłych, osób po przerwie i tych, którzy szukają regularnej praktyki bez sportowej rywalizacji."
+        when "blog/czy-warto-cwiczyc-aikido.html"
+          "Czy warto ćwiczyć aikido? Uczciwa odpowiedź o korzyściach, ograniczeniach i tym, dla kogo ta droga ma realny sens."
+        when "blog/aikido-w-kazdym-wieku.html"
+          "Aikido w każdym wieku: jak zacząć trening rozsądnie mając 20, 40 albo 60 lat i od czego naprawdę zależy bezpieczny rozwój."
         when "blog/ichi-go-ichi-e-kazde-spotkanie-zdarza-sie-tylko-raz.html"
           "Ichi-go ichi-e w Aikido i budō: dlaczego każde spotkanie, trening i korekta zdarzają się tylko raz i wymagają pełnej obecności zamiast rutyny."
         when "blog/jeden-nauczyciel-jeden-przekaz.html"
@@ -525,6 +543,12 @@ module Site
           "Five principles behind Aikido technique: a practical model of center, axis, timing, taking the slack out, and kuzushi together with the sub-principles that organize movement."
         when "en/blog/why-aikido-practitioners-wear-hakama.html"
           "Why Aikido practitioners wear hakama: the historical logic of the garment, its link to heifuku, its effect on movement, and the symbolism of the seven pleats and seven virtues."
+        when "en/blog/who-is-aikido-for.html"
+          "Who Aikido is really for: beginners, adults, returning practitioners, and people looking for regular training without sport competition."
+        when "en/blog/is-aikido-worth-practicing.html"
+          "Is Aikido worth practicing? An honest answer about benefits, limits, and the kinds of goals this path serves best."
+        when "en/blog/aikido-at-every-age.html"
+          "Aikido at every age: how to begin intelligently in your 20s, 40s, or 60s and what really determines safe long-term progress."
         when "en/blog/one-teacher-one-transmission.html"
           "One teacher and one coherent transmission protect students from confusion, and senior students support learning best by being good uke."
         when "en/blog/toyoda-aikido-style-technique-and-zen.html"
@@ -692,6 +716,12 @@ module Site
           "5 zasad techniki aikido, centrum os timing, wybranie luzu, kuzushi, budo bushido, hara, os ciala, ma-ai, hyoshi"
         when "blog/dlaczego-w-aikido-nosi-sie-hakame.html"
           "hakama aikido, dlaczego nosi się hakamę, heifuku, 7 plis hakamy, cnoty samuraja, bushido aikido, strój aikido"
+        when "blog/dla-kogo-jest-aikido.html"
+          "dla kogo jest aikido, aikido dla początkujących, aikido dla dorosłych, kto może trenować aikido, trening aikido gdynia"
+        when "blog/czy-warto-cwiczyc-aikido.html"
+          "czy warto ćwiczyć aikido, korzyści z aikido, trening aikido dla dorosłych, czy aikido ma sens, aikido gdynia"
+        when "blog/aikido-w-kazdym-wieku.html"
+          "aikido w każdym wieku, czy można zacząć aikido po 40, aikido po 50, aikido dla dorosłych, pierwszy trening aikido"
         when "blog/ichi-go-ichi-e-kazde-spotkanie-zdarza-sie-tylko-raz.html"
           "ichi go ichi e aikido, kazde spotkanie zdarza sie tylko raz, obecnosc w treningu, uwaga w dojo, seminaria aikido, budo, zen"
         when "blog/jeden-nauczyciel-jeden-przekaz.html"
@@ -748,6 +778,12 @@ module Site
           "five principles aikido technique, center axis timing, slack removal, kuzushi, budo bushido, hara, ma-ai, hyoshi"
         when "en/blog/why-aikido-practitioners-wear-hakama.html"
           "hakama aikido, why wear hakama in aikido, heifuku, seven pleats hakama, samurai virtues, bushido aikido, aikido uniform"
+        when "en/blog/who-is-aikido-for.html"
+          "who is aikido for, aikido for beginners, aikido for adults, who can train aikido, aikido training gdynia"
+        when "en/blog/is-aikido-worth-practicing.html"
+          "is aikido worth practicing, aikido benefits, aikido training for adults, is aikido useful, aikido gdynia"
+        when "en/blog/aikido-at-every-age.html"
+          "aikido at every age, can you start aikido after 40, aikido after 50, aikido for adults, first aikido class"
         when "en/blog/one-teacher-one-transmission.html"
           "one teacher one transmission, aikido teaching, dojo pedagogy, aikido seminar, uke, shuhari, school transmission"
         when "en/blog/toyoda-aikido-style-technique-and-zen.html"
@@ -776,6 +812,9 @@ module Site
       BLOG_POSTS_PER_PAGE = 10
 
       BLOG_POSTS_PL = [
+        { date: "20 kwietnia 2026", title: "Dla kogo jest aikido?", url: "/blog/dla-kogo-jest-aikido.html", summary: "Dla początkujących, dorosłych, osób po przerwie i tych, którzy szukają regularnej praktyki bez sportowej rywalizacji — ale nie dla każdego celu." },
+        { date: "20 kwietnia 2026", title: "Czy warto ćwiczyć aikido?", url: "/blog/czy-warto-cwiczyc-aikido.html", summary: "Uczciwa odpowiedź o korzyściach, ograniczeniach i o tym, kiedy trening aikido naprawdę ma sens." },
+        { date: "20 kwietnia 2026", title: "Aikido w każdym wieku", url: "/blog/aikido-w-kazdym-wieku.html", summary: "Jak zacząć rozsądnie mając 20, 40 albo 60 lat i dlaczego wiek rzadko jest największą przeszkodą sam w sobie." },
         { date: "16 kwietnia 2026", title: "Dlaczego w aikido nosi się hakamę?", url: "/blog/dlaczego-w-aikido-nosi-sie-hakame.html", summary: "Skąd w aikido bierze się hakama, co ma wspólnego z heifuku, jak wpływa na ruch i dlaczego siedem plis łączy się z siedmioma cnotami." },
         { date: "11 kwietnia 2026", title: "5 zasad każdej techniki", url: "/blog/5-zasad-kazdej-techniki.html", summary: "Praktyczny model techniki w Aikido: centrum, oś, timing, wybranie luzu i kuzushi oraz podzasady, które pozwalają im działać razem." },
         { date: "4 kwietnia 2026", title: "Misogi (禊) — oczyszczenie przez praktykę", url: "/blog/misogi-oczyszczenie-przez-praktyke.html", summary: "Dlaczego misogi w stylu Toyody porządkuje oddech, uwagę i intencję oraz pozostaje żywą praktyką w linii przekazu." },
@@ -805,6 +844,9 @@ module Site
       ].freeze
 
       BLOG_POSTS_EN = [
+        { date: "April 20, 2026", title: "Who is Aikido for?", url: "/en/blog/who-is-aikido-for.html", summary: "For beginners, adults, people returning after a break, and anyone seeking regular practice without sport competition—but not for every goal." },
+        { date: "April 20, 2026", title: "Is Aikido worth practicing?", url: "/en/blog/is-aikido-worth-practicing.html", summary: "An honest answer about benefits, limits, and when Aikido training is actually worth your time and attention." },
+        { date: "April 20, 2026", title: "Aikido at every age", url: "/en/blog/aikido-at-every-age.html", summary: "How to begin intelligently in your 20s, 40s, or 60s and why age itself is rarely the biggest obstacle." },
         { date: "April 16, 2026", title: "Why do Aikido practitioners wear hakama?", url: "/en/blog/why-aikido-practitioners-wear-hakama.html", summary: "Where hakama in Aikido comes from, what it has to do with heifuku, how it shapes movement, and why seven pleats are linked to seven virtues." },
         { date: "April 11, 2026", title: "Five principles behind every technique", url: "/en/blog/five-principles-behind-every-technique.html", summary: "A practical Aikido model: center, axis, timing, taking the slack out, and kuzushi plus the sub-principles that let them work together." },
         { date: "April 4, 2026", title: "Misogi (禊) — purification through practice", url: "/en/blog/misogi-purification-through-practice.html", summary: "Why misogi in Toyoda’s style orders breath, attention, and intention and remains a living practice in the transmission line." },
@@ -1009,6 +1051,33 @@ module Site
             date_published: "2026-04-16",
             date_modified: "2026-04-16"
           )
+        when "blog/dla-kogo-jest-aikido.html"
+          article_schema(
+            name: "Dla kogo jest aikido?",
+            description: page_description,
+            image: page_social_image_url,
+            lang: "pl",
+            date_published: "2026-04-20",
+            date_modified: "2026-04-20"
+          )
+        when "blog/czy-warto-cwiczyc-aikido.html"
+          article_schema(
+            name: "Czy warto ćwiczyć aikido?",
+            description: page_description,
+            image: page_social_image_url,
+            lang: "pl",
+            date_published: "2026-04-20",
+            date_modified: "2026-04-20"
+          )
+        when "blog/aikido-w-kazdym-wieku.html"
+          article_schema(
+            name: "Aikido w każdym wieku",
+            description: page_description,
+            image: page_social_image_url,
+            lang: "pl",
+            date_published: "2026-04-20",
+            date_modified: "2026-04-20"
+          )
         when "blog/ichi-go-ichi-e-kazde-spotkanie-zdarza-sie-tylko-raz.html"
           article_schema(
             name: "Ichi-go ichi-e — każde spotkanie zdarza się tylko raz",
@@ -1099,6 +1168,33 @@ module Site
             date_published: "2026-04-16",
             date_modified: "2026-04-16"
           )
+        when "en/blog/who-is-aikido-for.html"
+          article_schema(
+            name: "Who is Aikido for?",
+            description: page_description,
+            image: page_social_image_url,
+            lang: "en",
+            date_published: "2026-04-20",
+            date_modified: "2026-04-20"
+          )
+        when "en/blog/is-aikido-worth-practicing.html"
+          article_schema(
+            name: "Is Aikido worth practicing?",
+            description: page_description,
+            image: page_social_image_url,
+            lang: "en",
+            date_published: "2026-04-20",
+            date_modified: "2026-04-20"
+          )
+        when "en/blog/aikido-at-every-age.html"
+          article_schema(
+            name: "Aikido at every age",
+            description: page_description,
+            image: page_social_image_url,
+            lang: "en",
+            date_published: "2026-04-20",
+            date_modified: "2026-04-20"
+          )
         when "en/blog/ichi-go-ichi-e-every-encounter-happens-only-once.html"
           article_schema(
             name: "Ichi-go ichi-e — every encounter happens only once",
@@ -1171,6 +1267,9 @@ module Site
         "blog/misogi-oczyszczenie-przez-praktyke.html" => "en/blog/misogi-purification-through-practice.html",
         "blog/5-zasad-kazdej-techniki.html" => "en/blog/five-principles-behind-every-technique.html",
         "blog/dlaczego-w-aikido-nosi-sie-hakame.html" => "en/blog/why-aikido-practitioners-wear-hakama.html",
+        "blog/dla-kogo-jest-aikido.html" => "en/blog/who-is-aikido-for.html",
+        "blog/czy-warto-cwiczyc-aikido.html" => "en/blog/is-aikido-worth-practicing.html",
+        "blog/aikido-w-kazdym-wieku.html" => "en/blog/aikido-at-every-age.html",
         "blog/ichi-go-ichi-e-kazde-spotkanie-zdarza-sie-tylko-raz.html" => "en/blog/ichi-go-ichi-e-every-encounter-happens-only-once.html",
         "blog/jeden-nauczyciel-jeden-przekaz.html" => "en/blog/one-teacher-one-transmission.html",
         "blog/styl-aikido-fumio-toyody-technika-i-zen.html" => "en/blog/toyoda-aikido-style-technique-and-zen.html",
@@ -1226,6 +1325,9 @@ module Site
         "en/blog/misogi-purification-through-practice.html" => "blog/misogi-oczyszczenie-przez-praktyke.html",
         "en/blog/five-principles-behind-every-technique.html" => "blog/5-zasad-kazdej-techniki.html",
         "en/blog/why-aikido-practitioners-wear-hakama.html" => "blog/dlaczego-w-aikido-nosi-sie-hakame.html",
+        "en/blog/who-is-aikido-for.html" => "blog/dla-kogo-jest-aikido.html",
+        "en/blog/is-aikido-worth-practicing.html" => "blog/czy-warto-cwiczyc-aikido.html",
+        "en/blog/aikido-at-every-age.html" => "blog/aikido-w-kazdym-wieku.html",
         "en/blog/ichi-go-ichi-e-every-encounter-happens-only-once.html" => "blog/ichi-go-ichi-e-kazde-spotkanie-zdarza-sie-tylko-raz.html",
         "en/blog/one-teacher-one-transmission.html" => "blog/jeden-nauczyciel-jeden-przekaz.html",
         "en/blog/toyoda-aikido-style-technique-and-zen.html" => "blog/styl-aikido-fumio-toyody-technika-i-zen.html",

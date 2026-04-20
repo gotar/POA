@@ -322,37 +322,73 @@
     <loc>https://aikido-polska.eu/blog.html</loc>
     <priority>0.8</priority>
     <changefreq>weekly</changefreq>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-04-20</lastmod>
   </url>
   <url>
     <loc>https://aikido-polska.eu/en/blog.html</loc>
     <priority>0.8</priority>
     <changefreq>weekly</changefreq>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-04-20</lastmod>
   </url>
   <url>
     <loc>https://aikido-polska.eu/blog-2.html</loc>
     <priority>0.6</priority>
     <changefreq>weekly</changefreq>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-04-20</lastmod>
   </url>
   <url>
     <loc>https://aikido-polska.eu/blog-3.html</loc>
     <priority>0.6</priority>
     <changefreq>weekly</changefreq>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-04-20</lastmod>
   </url>
   <url>
     <loc>https://aikido-polska.eu/en/blog-2.html</loc>
     <priority>0.6</priority>
     <changefreq>weekly</changefreq>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-04-20</lastmod>
   </url>
   <url>
     <loc>https://aikido-polska.eu/en/blog-3.html</loc>
     <priority>0.6</priority>
     <changefreq>weekly</changefreq>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://aikido-polska.eu/blog/dla-kogo-jest-aikido.html</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://aikido-polska.eu/blog/czy-warto-cwiczyc-aikido.html</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://aikido-polska.eu/blog/aikido-w-kazdym-wieku.html</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://aikido-polska.eu/en/blog/who-is-aikido-for.html</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://aikido-polska.eu/en/blog/is-aikido-worth-practicing.html</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://aikido-polska.eu/en/blog/aikido-at-every-age.html</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-04-20</lastmod>
   </url>
   <url>
     <loc>https://aikido-polska.eu/blog/shuhari-etapy-dojrzewania-w-treningu.html</loc>

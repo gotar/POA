@@ -73,11 +73,11 @@ module Site
       def default_title_for_path(path)
         case path
         when "index.html", "", nil
-          "Aikido Polska | Sesshinkan Dojo Gdynia | POA - Treningi Aikido"
+          "Aikido Gdynia | Treningi Aikido dla początkujących | Sesshinkan Dojo | POA"
         when "en", "en/"
           "Polish Aikido Organization | Sesshinkan Dojo Gdynia - Aikido Training"
         when "kontakt.html"
-          "Kontakt | Aikido Gdynia | Sesshinkan Dojo - Treningi Aikido"
+          "Kontakt i grafik | Aikido Gdynia | Sesshinkan Dojo"
         when "aikido/czym_jest.html"
           "Czym jest Aikido? | POA - Aikido Polska - Zasady i Filozofia"
         when "aikido/historia.html"
@@ -85,7 +85,7 @@ module Site
         when "aikido/korzysci.html"
           "Korzysci z Aikido | Zdrowie, Samoobrona, Rozwoj | POA"
         when "aikido/dla_poczatkujacych.html"
-          "Aikido dla Poczatkujacych | Pierwszy Trening | Sesshinkan Dojo"
+          "Aikido dla początkujących Gdynia | Pierwszy trening | Sesshinkan Dojo"
         when "aikido/aiki_taiso.html"
           "Aiki Taiso | Cwiczenia i Rozgrzewka Aikido | POA"
         when "aikido/reishiki.html"
@@ -123,7 +123,7 @@ module Site
         when "faq.html"
           "FAQ | Czesto Zadawane Pytania | Aikido POA"
         when "gdynia.html"
-          "Aikido Gdynia | Sesshinkan Dojo | Treningi Trójmiasto"
+          "Treningi Aikido w Gdyni | Sesshinkan Dojo | Aikido dla początkujących"
         when "yudansha.html"
           "Yudansha | Czarne Pasy POA | Instruktorzy Aikido"
         when "en/contact.html"
@@ -316,11 +316,11 @@ module Site
       def default_description_for_path(path)
         case path
         when "index.html", "", nil
-          "Polska Organizacja Aikido w linii Shihan Fumio Toyody. Sesshinkan Dojo Gdynia - treningi Aikido w Trójmieście. Nowoczesne podejście do tradycyjnej sztuki walki."
+          "Treningi Aikido w Gdyni dla początkujących i zaawansowanych. Sesshinkan Dojo Gdynia: wieczorne zajęcia, pierwszy trening gratis, tradycyjna linia Shihan Fumio Toyody."
         when "en", "en/"
           "Polish Aikido Organization following Shihan Fumio Toyoda's lineage. Sesshinkan Dojo Gdynia - Aikido training in Tri-City area. Modern approach to traditional martial art."
         when "kontakt.html"
-          "Kontakt do Polskiej Organizacji Aikido (POA) i Sesshinkan Dojo Gdynia. Adres, telefon, e-mail, plan zajec i dane organizacji."
+          "Kontakt i grafik treningów Aikido w Gdyni. Sprawdź adres dojo, telefon, e-mail, godziny zajęć i dane Sesshinkan Dojo Gdynia."
         when "aikido/czym_jest.html"
           "Czym jest Aikido - japonska sztuka walki oparta na harmonii, dzwigniach i rzutach. Zasady, filozofia i rozwoj osobisty."
         when "aikido/historia.html"
@@ -328,7 +328,7 @@ module Site
         when "aikido/korzysci.html"
           "Korzysci z treningu Aikido: sprawnosc, koncentracja, redukcja stresu, samoobrona i rozwoj osobisty."
         when "aikido/dla_poczatkujacych.html"
-          "Aikido dla poczatkujacych: jak wygladaja zajecia, podstawowe techniki, etykieta dojo i wskazowki na pierwszy trening."
+          "Aikido dla początkujących w Gdyni: jak wyglądają zajęcia, co zabrać na pierwszy trening, czego się spodziewać i jak zacząć w Sesshinkan Dojo."
         when "aikido/aiki_taiso.html"
           "Aiki Taiso - cwiczenia i rozgrzewka Aikido. Ruch, koordynacja i przygotowanie ciala do treningu."
         when "aikido/reishiki.html"
@@ -529,11 +529,11 @@ module Site
       def default_keywords_for_path(path)
         case path
         when "index.html", "", nil
-          "Aikido Polska, Aikido Gdynia, Aikido Trójmiasto, POA, Polska Organizacja Aikido, Sesshinkan Dojo, Toyoda, Germanov, Oskar Szrajer, sztuki walki Gdynia, samoobrona Gdynia, treningi Aikido, dojo Gdynia"
+          "aikido gdynia, treningi aikido w gdyni, aikido dla początkujących gdynia, sztuki walki gdynia dorośli, dojo gdynia, sesshinkan dojo gdynia, poa, oskar szrajer, samoobrona gdynia"
         when "en", "en/"
           "Aikido Poland, Aikido Gdynia, Aikido Polish, POA, Polish Aikido Organization, Sesshinkan Dojo, Toyoda, Germanov, Oskar Szrajer, martial arts Gdynia, self-defense training, Aikido classes, dojo Gdynia"
         when "kontakt.html"
-          "kontakt aikido, POA, Sesshinkan Dojo Gdynia, treningi Aikido Gdynia, telefon, adres, plan zajec"
+          "kontakt aikido gdynia, grafik aikido gdynia, sesshinkan dojo gdynia, treningi aikido gdynia, telefon dojo, adres dojo gdynia"
         when "aikido/czym_jest.html"
           "czym jest aikido, aikido, sztuka walki, zasady aikido, filozofia aikido, aikikai"
         when "aikido/historia.html"
@@ -541,7 +541,7 @@ module Site
         when "aikido/korzysci.html"
           "korzysci aikido, samoobrona, rozwoj osobisty, sprawnosc, trening aikido"
         when "aikido/dla_poczatkujacych.html"
-          "aikido dla poczatkujacych, pierwszy trening, podstawy aikido, dojo, etykieta"
+          "aikido dla początkujących gdynia, pierwszy trening aikido gdynia, podstawy aikido, dojo gdynia, trening aikido dorośli gdynia"
         when "aikido/aiki_taiso.html"
           "aiki taiso, cwiczenia aikido, rozgrzewka, przygotowanie do treningu, koordynacja"
         when "aikido/reishiki.html"

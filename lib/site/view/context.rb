@@ -983,6 +983,27 @@ module Site
         "#{site_url}#{asset_path(social_image_for_path(current_path))}"
       end
 
+      def blog_article_entry
+        return nil unless blog_article_page?
+
+        path = "/#{current_path.to_s.sub(%r{\A/+}, "")}".downcase
+        blog_posts.find { |entry| entry[:url].to_s.downcase == path }
+      end
+
+      def page_social_title
+        entry = blog_article_entry
+        return entry[:title] if entry && entry[:title].to_s.strip != ""
+
+        page_title
+      end
+
+      def page_social_description
+        entry = blog_article_entry
+        return entry[:summary] if entry && entry[:summary].to_s.strip != ""
+
+        page_description
+      end
+
       def article_schema_for_current_path
         case current_path.to_s
         when "blog/enso-krag-obecnosci.html"
@@ -1344,6 +1365,8 @@ module Site
         "yudansha.html" => "en/yudansha.html",
         "blog.html" => "en/blog.html",
         "blog-2.html" => "en/blog-2.html",
+        "blog-3.html" => "en/blog-3.html",
+        "blog-4.html" => "en/blog-4.html",
         "blog/bushido-droga-wojownika.html" => "en/blog/bushido-way-of-the-warrior.html",
         "blog/kaizen-ciagle-doskonalenie.html" => "en/blog/kaizen-continuous-improvement.html",
         "blog/gaman-wytrwalosc.html" => "en/blog/gaman-endurance-and-composure.html",
@@ -1405,6 +1428,8 @@ module Site
         "en/yudansha.html" => "yudansha.html",
         "en/blog.html" => "blog.html",
         "en/blog-2.html" => "blog-2.html",
+        "en/blog-3.html" => "blog-3.html",
+        "en/blog-4.html" => "blog-4.html",
         "en/blog/bushido-way-of-the-warrior.html" => "blog/bushido-droga-wojownika.html",
         "en/blog/kaizen-continuous-improvement.html" => "blog/kaizen-ciagle-doskonalenie.html",
         "en/blog/gaman-endurance-and-composure.html" => "blog/gaman-wytrwalosc.html",

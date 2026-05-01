@@ -222,6 +222,8 @@ module Site
           "Wa — harmonia bez uległości i porządek relacji | Blog"
         when "blog/giri-obowiazek-bez-wymowek.html"
           "Giri — obowiązek bez wymówek i odpowiedzialność w dojo | Blog"
+        when "blog/ninjo-ludzkie-uczucia-bez-utraty-kierunku.html"
+          "Ninjō — ludzkie uczucia bez utraty kierunku | Blog"
         when "blog/misogi-oczyszczenie-przez-praktyke.html"
           "Misogi — oczyszczenie przez praktykę, nie przez pozę | Blog"
         when "blog/5-zasad-kazdej-techniki.html"
@@ -290,6 +292,8 @@ module Site
           "Wa — harmony without submission and ordered relationship | Blog"
         when "en/blog/giri-duty-without-excuses.html"
           "Giri — duty without excuses and responsibility in the dojo | Blog"
+        when "en/blog/ninjo-human-feeling-without-losing-direction.html"
+          "Ninjō — human feeling without losing direction | Blog"
         when "en/blog/misogi-purification-through-practice.html"
           "Misogi — purification through practice, not posture | Blog"
         when "en/blog/five-principles-behind-every-technique.html"
@@ -491,6 +495,8 @@ module Site
           "Wa w Aikido i budō: harmonia bez uległości, czyli jak utrzymać porządek relacji, korekty i wspólnej praktyki pod presją."
         when "blog/giri-obowiazek-bez-wymowek.html"
           "Giri w Aikido i budō: obowiązek bez wymówek jako odpowiedzialność za partnera, korektę, linię przekazu i wspólny porządek dojo."
+        when "blog/ninjo-ludzkie-uczucia-bez-utraty-kierunku.html"
+          "Ninjō w Aikido i budō: jak rozpoznawać ludzkie uczucia, nie wypierać emocji i nie pozwalać, by nastrój prowadził trening zamiast odpowiedzialności."
         when "blog/misogi-oczyszczenie-przez-praktyke.html"
           "Misogi w Aikido i budō: jak praktyka oczyszczania oddechu, uwagi i intencji wzmacnia technikę w stylu Toyody oraz pozostaje żywa w linii przekazu."
         when "blog/5-zasad-kazdej-techniki.html"
@@ -559,6 +565,8 @@ module Site
           "Wa in Aikido and budō: harmony without submission, and how to preserve order in relationship, correction, and shared practice under pressure."
         when "en/blog/giri-duty-without-excuses.html"
           "Giri in Aikido and budō: duty without excuses as responsibility for the partner, correction, transmission line, and shared order of the dojo."
+        when "en/blog/ninjo-human-feeling-without-losing-direction.html"
+          "Ninjō in Aikido and budō: how to recognize human feeling without repressing emotion or letting mood steer training instead of responsibility."
         when "en/blog/misogi-purification-through-practice.html"
           "Misogi in Aikido and budō: how clearing breath, attention, and intention strengthens technique in Toyoda’s style and remains alive in the transmission line."
         when "en/blog/five-principles-behind-every-technique.html"
@@ -738,6 +746,8 @@ module Site
           "wa aikido, harmonia bez uleglosci, harmonia w dojo, reishiki, tori uke, korekta, budo, kultura japonska"
         when "blog/giri-obowiazek-bez-wymowek.html"
           "giri aikido, obowiązek w dojo, odpowiedzialność w aikido, tori uke, korekta, linia przekazu, budo, kultura japonska"
+        when "blog/ninjo-ludzkie-uczucia-bez-utraty-kierunku.html"
+          "ninjo aikido, ninjō, ludzkie uczucia, emocje w treningu, giri i ninjo, odpowiedzialność w dojo, budo, kultura japonska"
         when "blog/misogi-oczyszczenie-przez-praktyke.html"
           "misogi, misogi aikido, toyoda misogi, oczyszczenie w budo, zen i aikido, linia toyoda germanov"
         when "blog/5-zasad-kazdej-techniki.html"
@@ -806,6 +816,8 @@ module Site
           "wa aikido, harmony without submission, dojo harmony, reishiki, tori uke, correction, budo, Japanese culture"
         when "en/blog/giri-duty-without-excuses.html"
           "giri aikido, duty in the dojo, responsibility in aikido, tori uke, correction, transmission line, budo, Japanese culture"
+        when "en/blog/ninjo-human-feeling-without-losing-direction.html"
+          "ninjo aikido, ninjō, human feeling, emotions in training, giri and ninjo, responsibility in dojo, budo, Japanese culture"
         when "en/blog/misogi-purification-through-practice.html"
           "misogi, misogi aikido, toyoda misogi, purification in budo, zen and aikido, toyoda germanov lineage"
         when "en/blog/five-principles-behind-every-technique.html"
@@ -848,6 +860,7 @@ module Site
       BLOG_POSTS_PER_PAGE = 10
 
       BLOG_POSTS_PL = [
+        { date: "1 maja 2026", title: "Ninjō (人情) — ludzkie uczucia bez utraty kierunku", url: "/blog/ninjo-ludzkie-uczucia-bez-utraty-kierunku.html", summary: "Jak nie wypierać emocji w dojo, ale też nie pozwalać, by nastrój, ego albo sympatia prowadziły trening zamiast odpowiedzialności." },
         { date: "28 kwietnia 2026", title: "Giri (義理) — obowiązek bez wymówek", url: "/blog/giri-obowiazek-bez-wymowek.html", summary: "Dlaczego obowiązek w dojo nie jest ślepym posłuszeństwem, lecz odpowiedzialnością za partnera, korektę, linię przekazu i własny rozwój." },
         { date: "25 kwietnia 2026", title: "Wa (和) — harmonia bez uległości", url: "/blog/wa-harmonia-bez-uleglosci.html", summary: "Dlaczego harmonia w dojo nie oznacza świętego spokoju, lecz porządek relacji, korekty i odpowiedzialności pod presją." },
         { date: "20 kwietnia 2026", title: "Aikido dla nastolatków", url: "/blog/aikido-dla-nastolatkow.html", summary: "Jak aikido może wspierać dyscyplinę, sprawność, samokontrolę, relacje i rozwój młodego człowieka bez sportowej presji wyniku." },
@@ -883,6 +896,7 @@ module Site
       ].freeze
 
       BLOG_POSTS_EN = [
+        { date: "May 1, 2026", title: "Ninjō (人情) — human feeling without losing direction", url: "/en/blog/ninjo-human-feeling-without-losing-direction.html", summary: "How not to repress emotion in the dojo, while also refusing to let mood, ego, or preference steer training instead of responsibility." },
         { date: "April 28, 2026", title: "Giri (義理) — duty without excuses", url: "/en/blog/giri-duty-without-excuses.html", summary: "Why duty in the dojo is not blind obedience, but responsibility toward the partner, correction, transmission line, and one's own development." },
         { date: "April 25, 2026", title: "Wa (和) — harmony without submission", url: "/en/blog/wa-harmony-without-submission.html", summary: "Why harmony in the dojo is not polite peace, but ordered relationship, correction, and responsibility under pressure." },
         { date: "April 20, 2026", title: "Aikido for teenagers", url: "/en/blog/aikido-for-teenagers.html", summary: "How Aikido can support discipline, fitness, self-control, relationships, and youth development without sport-result pressure." },
@@ -1105,6 +1119,15 @@ module Site
             date_published: "2026-04-28",
             date_modified: "2026-04-28"
           )
+        when "blog/ninjo-ludzkie-uczucia-bez-utraty-kierunku.html"
+          article_schema(
+            name: "Ninjō — ludzkie uczucia bez utraty kierunku",
+            description: page_description,
+            image: page_social_image_url,
+            lang: "pl",
+            date_published: "2026-05-01",
+            date_modified: "2026-05-01"
+          )
         when "blog/misogi-oczyszczenie-przez-praktyke.html"
           article_schema(
             name: "Misogi — oczyszczenie przez praktykę",
@@ -1249,6 +1272,15 @@ module Site
             date_published: "2026-04-28",
             date_modified: "2026-04-28"
           )
+        when "en/blog/ninjo-human-feeling-without-losing-direction.html"
+          article_schema(
+            name: "Ninjō — human feeling without losing direction",
+            description: page_description,
+            image: page_social_image_url,
+            lang: "en",
+            date_published: "2026-05-01",
+            date_modified: "2026-05-01"
+          )
         when "en/blog/misogi-purification-through-practice.html"
           article_schema(
             name: "Misogi — purification through practice",
@@ -1385,6 +1417,7 @@ module Site
         "blog/aiki-harmonia-w-dzialaniu.html" => "en/blog/aiki-harmony-in-action.html",
         "blog/wa-harmonia-bez-uleglosci.html" => "en/blog/wa-harmony-without-submission.html",
         "blog/giri-obowiazek-bez-wymowek.html" => "en/blog/giri-duty-without-excuses.html",
+        "blog/ninjo-ludzkie-uczucia-bez-utraty-kierunku.html" => "en/blog/ninjo-human-feeling-without-losing-direction.html",
         "blog/misogi-oczyszczenie-przez-praktyke.html" => "en/blog/misogi-purification-through-practice.html",
         "blog/5-zasad-kazdej-techniki.html" => "en/blog/five-principles-behind-every-technique.html",
         "blog/dlaczego-w-aikido-nosi-sie-hakame.html" => "en/blog/why-aikido-practitioners-wear-hakama.html",
@@ -1448,6 +1481,7 @@ module Site
         "en/blog/aiki-harmony-in-action.html" => "blog/aiki-harmonia-w-dzialaniu.html",
         "en/blog/wa-harmony-without-submission.html" => "blog/wa-harmonia-bez-uleglosci.html",
         "en/blog/giri-duty-without-excuses.html" => "blog/giri-obowiazek-bez-wymowek.html",
+        "en/blog/ninjo-human-feeling-without-losing-direction.html" => "blog/ninjo-ludzkie-uczucia-bez-utraty-kierunku.html",
         "en/blog/misogi-purification-through-practice.html" => "blog/misogi-oczyszczenie-przez-praktyke.html",
         "en/blog/five-principles-behind-every-technique.html" => "blog/5-zasad-kazdej-techniki.html",
         "en/blog/why-aikido-practitioners-wear-hakama.html" => "blog/dlaczego-w-aikido-nosi-sie-hakame.html",

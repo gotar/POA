@@ -502,7 +502,7 @@ module Site
         when "blog/ninjo-ludzkie-uczucia-bez-utraty-kierunku.html"
           "Ninjō w Aikido i budō: jak rozpoznawać ludzkie uczucia, nie wypierać emocji i nie pozwalać, by nastrój prowadził trening zamiast odpowiedzialności."
         when "blog/omotenashi-goscinnosc-ktora-buduje-dojo.html"
-          "Omotenashi w Aikido i budō: jak gościnność gospodarza dojo, uważność wobec początkujących i jakość przyjęcia na seminarium budują standard praktyki."
+          "Omotenashi w Aikido i budō: jak jakość ataku, sposób przyjmowania korekty i stosunek do mniej zaawansowanego partnera tworzą kulturę dojo od środka."
         when "blog/misogi-oczyszczenie-przez-praktyke.html"
           "Misogi w Aikido i budō: jak praktyka oczyszczania oddechu, uwagi i intencji wzmacnia technikę w stylu Toyody oraz pozostaje żywa w linii przekazu."
         when "blog/5-zasad-kazdej-techniki.html"
@@ -574,7 +574,7 @@ module Site
         when "en/blog/ninjo-human-feeling-without-losing-direction.html"
           "Ninjō in Aikido and budō: how to recognize human feeling without repressing emotion or letting mood steer training instead of responsibility."
         when "en/blog/omotenashi-hospitality-that-builds-the-dojo.html"
-          "Omotenashi in Aikido and budō: how dojo hospitality, attention toward beginners, and the quality of receiving guests at seminars build the standard of practice."
+          "Omotenashi in Aikido and budō: how the quality of your attack, your openness to correction, and your conduct with less advanced partners shape dojo culture from within."
         when "en/blog/misogi-purification-through-practice.html"
           "Misogi in Aikido and budō: how clearing breath, attention, and intention strengthens technique in Toyoda’s style and remains alive in the transmission line."
         when "en/blog/five-principles-behind-every-technique.html"
@@ -757,7 +757,7 @@ module Site
         when "blog/ninjo-ludzkie-uczucia-bez-utraty-kierunku.html"
           "ninjo aikido, ninjō, ludzkie uczucia, emocje w treningu, giri i ninjo, odpowiedzialność w dojo, budo, kultura japonska"
         when "blog/omotenashi-goscinnosc-ktora-buduje-dojo.html"
-          "omotenashi aikido, gościnność w dojo, kultura dojo, początkujący aikido, seminarium aikido, odpowiedzialność gospodarza, budo"
+          "omotenashi aikido, kultura dojo, jakość ataku uke, korekta w aikido, praca z partnerem, budo, dyscyplina na macie"
         when "blog/misogi-oczyszczenie-przez-praktyke.html"
           "misogi, misogi aikido, toyoda misogi, oczyszczenie w budo, zen i aikido, linia toyoda germanov"
         when "blog/5-zasad-kazdej-techniki.html"
@@ -829,7 +829,7 @@ module Site
         when "en/blog/ninjo-human-feeling-without-losing-direction.html"
           "ninjo aikido, ninjō, human feeling, emotions in training, giri and ninjo, responsibility in dojo, budo, Japanese culture"
         when "en/blog/omotenashi-hospitality-that-builds-the-dojo.html"
-          "omotenashi aikido, dojo hospitality, dojo culture, aikido beginners, aikido seminar, responsible hosting, budo"
+          "omotenashi aikido, dojo culture, uke attack quality, receiving correction, partner work, budo, mat discipline"
         when "en/blog/misogi-purification-through-practice.html"
           "misogi, misogi aikido, toyoda misogi, purification in budo, zen and aikido, toyoda germanov lineage"
         when "en/blog/five-principles-behind-every-technique.html"
@@ -872,7 +872,7 @@ module Site
       BLOG_POSTS_PER_PAGE = 10
 
       BLOG_POSTS_PL = [
-        { date: "9 maja 2026", title: "Omotenashi (おもてなし) — gościnność, która buduje dojo", url: "/blog/omotenashi-goscinnosc-ktora-buduje-dojo.html", summary: "Jak przyjmować początkujących i gości tak, by od pierwszej minuty czuli zarówno ludzką uważność, jak i standard praktyki." },
+        { date: "9 maja 2026", title: "Omotenashi (おもてなし) — gościnność na macie", url: "/blog/omotenashi-goscinnosc-ktora-buduje-dojo.html", summary: "Jak jakość ataku, sposób przyjmowania korekty i stosunek do mniej zaawansowanego partnera kształtują kulturę dojo od środka." },
         { date: "1 maja 2026", title: "Ninjō (人情) — ludzkie uczucia bez utraty kierunku", url: "/blog/ninjo-ludzkie-uczucia-bez-utraty-kierunku.html", summary: "Jak nie wypierać emocji w dojo, ale też nie pozwalać, by nastrój, ego albo sympatia prowadziły trening zamiast odpowiedzialności." },
         { date: "28 kwietnia 2026", title: "Giri (義理) — obowiązek bez wymówek", url: "/blog/giri-obowiazek-bez-wymowek.html", summary: "Dlaczego obowiązek w dojo nie jest ślepym posłuszeństwem, lecz odpowiedzialnością za partnera, korektę, linię przekazu i własny rozwój." },
         { date: "25 kwietnia 2026", title: "Wa (和) — harmonia bez uległości", url: "/blog/wa-harmonia-bez-uleglosci.html", summary: "Dlaczego harmonia w dojo nie oznacza świętego spokoju, lecz porządek relacji, korekty i odpowiedzialności pod presją." },
@@ -909,7 +909,7 @@ module Site
       ].freeze
 
       BLOG_POSTS_EN = [
-        { date: "May 9, 2026", title: "Omotenashi (おもてなし) — hospitality that builds the dojo", url: "/en/blog/omotenashi-hospitality-that-builds-the-dojo.html", summary: "How to receive beginners and guests so they feel both human attention and the standard of practice from the very first minute." },
+        { date: "May 9, 2026", title: "Omotenashi (おもてなし) — hospitality on the mat", url: "/en/blog/omotenashi-hospitality-that-builds-the-dojo.html", summary: "How the quality of your attack, openness to correction, and conduct with less advanced partners shape dojo culture from within." },
         { date: "May 1, 2026", title: "Ninjō (人情) — human feeling without losing direction", url: "/en/blog/ninjo-human-feeling-without-losing-direction.html", summary: "How not to repress emotion in the dojo, while also refusing to let mood, ego, or preference steer training instead of responsibility." },
         { date: "April 28, 2026", title: "Giri (義理) — duty without excuses", url: "/en/blog/giri-duty-without-excuses.html", summary: "Why duty in the dojo is not blind obedience, but responsibility toward the partner, correction, transmission line, and one's own development." },
         { date: "April 25, 2026", title: "Wa (和) — harmony without submission", url: "/en/blog/wa-harmony-without-submission.html", summary: "Why harmony in the dojo is not polite peace, but ordered relationship, correction, and responsibility under pressure." },

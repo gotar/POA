@@ -92,6 +92,7 @@ module Site
       blog_giri_view: "views.blog.giri",
       blog_ninjo_view: "views.blog.ninjo",
       blog_omotenashi_view: "views.blog.omotenashi",
+      blog_nemawashi_view: "views.blog.nemawashi",
       blog_misogi_view: "views.blog.misogi",
       blog_piec_zasad_kazdej_techniki_view: "views.blog.piec_zasad_kazdej_techniki",
       blog_ichi_go_ichi_e_view: "views.blog.ichi_go_ichi_e",
@@ -127,6 +128,7 @@ module Site
       blog_giri_en_view: "views.en.blog.giri",
       blog_ninjo_en_view: "views.en.blog.ninjo",
       blog_omotenashi_en_view: "views.en.blog.omotenashi",
+      blog_nemawashi_en_view: "views.en.blog.nemawashi",
       blog_misogi_en_view: "views.en.blog.misogi",
       blog_piec_zasad_kazdej_techniki_en_view: "views.en.blog.piec_zasad_kazdej_techniki",
       blog_ichi_go_ichi_e_en_view: "views.en.blog.ichi_go_ichi_e",
@@ -229,6 +231,7 @@ module Site
       render export_dir, "blog/giri-obowiazek-bez-wymowek.html", blog_giri_view
       render export_dir, "blog/ninjo-ludzkie-uczucia-bez-utraty-kierunku.html", blog_ninjo_view
       render export_dir, "blog/omotenashi-goscinnosc-ktora-buduje-dojo.html", blog_omotenashi_view
+      render export_dir, "blog/nemawashi-przygotowanie-gruntu-przed-dzialaniem.html", blog_nemawashi_view
       render export_dir, "blog/misogi-oczyszczenie-przez-praktyke.html", blog_misogi_view
       render export_dir, "blog/5-zasad-kazdej-techniki.html", blog_piec_zasad_kazdej_techniki_view
       render export_dir, "blog/ichi-go-ichi-e-kazde-spotkanie-zdarza-sie-tylko-raz.html", blog_ichi_go_ichi_e_view
@@ -263,6 +266,7 @@ module Site
       render export_dir, "en/blog/giri-duty-without-excuses.html", blog_giri_en_view
       render export_dir, "en/blog/ninjo-human-feeling-without-losing-direction.html", blog_ninjo_en_view
       render export_dir, "en/blog/omotenashi-hospitality-that-builds-the-dojo.html", blog_omotenashi_en_view
+      render export_dir, "en/blog/nemawashi-laying-groundwork-before-action.html", blog_nemawashi_en_view
       render export_dir, "en/blog/misogi-purification-through-practice.html", blog_misogi_en_view
       render export_dir, "en/blog/five-principles-behind-every-technique.html", blog_piec_zasad_kazdej_techniki_en_view
       render export_dir, "en/blog/ichi-go-ichi-e-every-encounter-happens-only-once.html", blog_ichi_go_ichi_e_en_view

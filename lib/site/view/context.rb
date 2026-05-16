@@ -508,7 +508,7 @@ module Site
         when "blog/omotenashi-goscinnosc-ktora-buduje-dojo.html"
           "Omotenashi w Aikido i budō: jak jakość ataku, sposób przyjmowania korekty i stosunek do mniej zaawansowanego partnera tworzą kulturę dojo od środka."
         when "blog/nemawashi-przygotowanie-gruntu-przed-dzialaniem.html"
-          "Nemawashi w Aikido i budō: dlaczego dobra technika, seminarium i rozwój dojo zaczynają się od przygotowania gruntu przed widocznym działaniem."
+          "Nemawashi w Aikido i budō: dlaczego dobra technika, korekta i rozwój dojo wymagają przygotowania gruntu przed widocznym działaniem."
         when "blog/misogi-oczyszczenie-przez-praktyke.html"
           "Misogi w Aikido i budō: jak praktyka oczyszczania oddechu, uwagi i intencji wzmacnia technikę w stylu Toyody oraz pozostaje żywa w linii przekazu."
         when "blog/5-zasad-kazdej-techniki.html"
@@ -582,7 +582,7 @@ module Site
         when "en/blog/omotenashi-hospitality-that-builds-the-dojo.html"
           "Omotenashi in Aikido and budō: how the quality of your attack, your openness to correction, and your conduct with less advanced partners shape dojo culture from within."
         when "en/blog/nemawashi-laying-groundwork-before-action.html"
-          "Nemawashi in Aikido and budō: why good technique, seminars, and dojo development begin with groundwork before visible action."
+          "Nemawashi in Aikido and budō: why good technique, correction, and dojo development require groundwork before visible action."
         when "en/blog/misogi-purification-through-practice.html"
           "Misogi in Aikido and budō: how clearing breath, attention, and intention strengthens technique in Toyoda’s style and remains alive in the transmission line."
         when "en/blog/five-principles-behind-every-technique.html"
@@ -767,7 +767,7 @@ module Site
         when "blog/omotenashi-goscinnosc-ktora-buduje-dojo.html"
           "omotenashi aikido, kultura dojo, jakość ataku uke, korekta w aikido, praca z partnerem, budo, dyscyplina na macie"
         when "blog/nemawashi-przygotowanie-gruntu-przed-dzialaniem.html"
-          "nemawashi aikido, przygotowanie gruntu, seminarium aikido, rozwój dojo, zmiana w dojo, budo, kultura japonska"
+          "nemawashi aikido, przygotowanie gruntu, korekta w aikido, rozwój dojo, zmiana w dojo, budo, kultura japonska"
         when "blog/misogi-oczyszczenie-przez-praktyke.html"
           "misogi, misogi aikido, toyoda misogi, oczyszczenie w budo, zen i aikido, linia toyoda germanov"
         when "blog/5-zasad-kazdej-techniki.html"
@@ -841,7 +841,7 @@ module Site
         when "en/blog/omotenashi-hospitality-that-builds-the-dojo.html"
           "omotenashi aikido, dojo culture, uke attack quality, receiving correction, partner work, budo, mat discipline"
         when "en/blog/nemawashi-laying-groundwork-before-action.html"
-          "nemawashi aikido, laying groundwork, aikido seminar, dojo development, change in the dojo, budo, Japanese culture"
+          "nemawashi aikido, laying groundwork, aikido correction, dojo development, change in the dojo, budo, Japanese culture"
         when "en/blog/misogi-purification-through-practice.html"
           "misogi, misogi aikido, toyoda misogi, purification in budo, zen and aikido, toyoda germanov lineage"
         when "en/blog/five-principles-behind-every-technique.html"
@@ -884,7 +884,7 @@ module Site
       BLOG_POSTS_PER_PAGE = 10
 
       BLOG_POSTS_PL = [
-        { date: "16 maja 2026", title: "Nemawashi (根回し) — przygotowanie gruntu przed działaniem", url: "/blog/nemawashi-przygotowanie-gruntu-przed-dzialaniem.html", summary: "Dlaczego dobra technika, seminarium i rozwój dojo zaczynają się od przygotowania gruntu przed widocznym ruchem." },
+        { date: "16 maja 2026", title: "Nemawashi (根回し) — przygotowanie gruntu przed działaniem", url: "/blog/nemawashi-przygotowanie-gruntu-przed-dzialaniem.html", summary: "Dlaczego dobra technika, korekta i rozwój dojo wymagają przygotowania gruntu przed widocznym ruchem." },
         { date: "9 maja 2026", title: "Omotenashi (おもてなし) — gościnność na macie", url: "/blog/omotenashi-goscinnosc-ktora-buduje-dojo.html", summary: "Jak jakość ataku, sposób przyjmowania korekty i stosunek do mniej zaawansowanego partnera kształtują kulturę dojo od środka." },
         { date: "1 maja 2026", title: "Ninjō (人情) — ludzkie uczucia bez utraty kierunku", url: "/blog/ninjo-ludzkie-uczucia-bez-utraty-kierunku.html", summary: "Jak nie wypierać emocji w dojo, ale też nie pozwalać, by nastrój, ego albo sympatia prowadziły trening zamiast odpowiedzialności." },
         { date: "28 kwietnia 2026", title: "Giri (義理) — obowiązek bez wymówek", url: "/blog/giri-obowiazek-bez-wymowek.html", summary: "Dlaczego obowiązek w dojo nie jest ślepym posłuszeństwem, lecz odpowiedzialnością za partnera, korektę, linię przekazu i własny rozwój." },
@@ -922,7 +922,7 @@ module Site
       ].freeze
 
       BLOG_POSTS_EN = [
-        { date: "May 16, 2026", title: "Nemawashi (根回し) — laying the groundwork before action", url: "/en/blog/nemawashi-laying-groundwork-before-action.html", summary: "Why good technique, seminars, and dojo development begin with groundwork before visible movement." },
+        { date: "May 16, 2026", title: "Nemawashi (根回し) — laying the groundwork before action", url: "/en/blog/nemawashi-laying-groundwork-before-action.html", summary: "Why good technique, correction, and dojo development require groundwork before visible movement." },
         { date: "May 9, 2026", title: "Omotenashi (おもてなし) — hospitality on the mat", url: "/en/blog/omotenashi-hospitality-that-builds-the-dojo.html", summary: "How the quality of your attack, openness to correction, and conduct with less advanced partners shape dojo culture from within." },
         { date: "May 1, 2026", title: "Ninjō (人情) — human feeling without losing direction", url: "/en/blog/ninjo-human-feeling-without-losing-direction.html", summary: "How not to repress emotion in the dojo, while also refusing to let mood, ego, or preference steer training instead of responsibility." },
         { date: "April 28, 2026", title: "Giri (義理) — duty without excuses", url: "/en/blog/giri-duty-without-excuses.html", summary: "Why duty in the dojo is not blind obedience, but responsibility toward the partner, correction, transmission line, and one's own development." },

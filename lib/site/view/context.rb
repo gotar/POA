@@ -508,7 +508,7 @@ module Site
         when "blog/giri-obowiazek-bez-wymowek.html"
           "Giri w Aikido i budō: obowiązek bez wymówek jako odpowiedzialność za partnera, korektę, linię przekazu i wspólny porządek dojo."
         when "blog/droga-i-mistrzostwo.html"
-          "Droga i mistrzostwo w budō: jak opanowanie technik odsłania dopiero właściwe pytania, dlaczego mistrz mówi 'nic nie wiem' i co stabilność bez zamknięcia zmienia w dojo i poza nim."
+          "Droga i mistrzostwo w budō: jak opanowanie technik odsłania właściwe pytania, dlaczego mistrz mówi 'nic nie wiem' i co zmienia stabilność bez zamykania się — w dojo i poza nim."
         when "blog/ninjo-ludzkie-uczucia-bez-utraty-kierunku.html"
           "Ninjō w Aikido i budō: jak rozpoznawać ludzkie uczucia, nie wypierać emocji i nie pozwalać, by nastrój prowadził trening zamiast odpowiedzialności."
         when "blog/omotenashi-goscinnosc-ktora-buduje-dojo.html"
@@ -584,7 +584,7 @@ module Site
         when "en/blog/giri-duty-without-excuses.html"
           "Giri in Aikido and budō: duty without excuses as responsibility for the partner, correction, transmission line, and shared order of the dojo."
         when "en/blog/the-path-and-mastery.html"
-          "The Path and Mastery in budō: how mastering techniques only opens the real questions, why a master says 'I know nothing', and what stability without closure changes in the dojo and beyond."
+          "The Path and Mastery in budō: how mastering techniques opens the real questions, why a master says 'I know nothing', and what changes when stability does not mean closing off — in the dojo and beyond."
         when "en/blog/ninjo-human-feeling-without-losing-direction.html"
           "Ninjō in Aikido and budō: how to recognize human feeling without repressing emotion or letting mood steer training instead of responsibility."
         when "en/blog/omotenashi-hospitality-that-builds-the-dojo.html"
@@ -896,7 +896,7 @@ module Site
       BLOG_POSTS_PER_PAGE = 10
 
       BLOG_POSTS_PL = [
-        { date: "18 maja 2026", title: "Droga i mistrzostwo", url: "/blog/droga-i-mistrzostwo.html", summary: "Co naprawdę zaczyna się, gdy techniki są już opanowane, i dlaczego mistrz mówi 'nic nie wiem'." },
+        { date: "18 maja 2026", title: "Droga i mistrzostwo", url: "/blog/droga-i-mistrzostwo.html", summary: "Co naprawdę zaczyna się wtedy, gdy techniki są już opanowane, i dlaczego mistrz mówi: 'nic nie wiem'." },
         { date: "16 maja 2026", title: "Nemawashi (根回し) — przygotowanie gruntu przed działaniem", url: "/blog/nemawashi-przygotowanie-gruntu-przed-dzialaniem.html", summary: "Dlaczego dobra technika, korekta i rozwój dojo wymagają przygotowania gruntu przed widocznym ruchem." },
         { date: "9 maja 2026", title: "Omotenashi (おもてなし) — gościnność na macie", url: "/blog/omotenashi-goscinnosc-ktora-buduje-dojo.html", summary: "Jak jakość ataku, sposób przyjmowania korekty i stosunek do mniej zaawansowanego partnera kształtują kulturę dojo od środka." },
         { date: "1 maja 2026", title: "Ninjō (人情) — ludzkie uczucia bez utraty kierunku", url: "/blog/ninjo-ludzkie-uczucia-bez-utraty-kierunku.html", summary: "Jak nie wypierać emocji w dojo, ale też nie pozwalać, by nastrój, ego albo sympatia prowadziły trening zamiast odpowiedzialności." },
@@ -935,7 +935,7 @@ module Site
       ].freeze
 
       BLOG_POSTS_EN = [
-        { date: "May 18, 2026", title: "The Path and Mastery", url: "/en/blog/the-path-and-mastery.html", summary: "What really begins once techniques are mastered, and why a master says 'I know nothing'." },
+        { date: "May 18, 2026", title: "The Path and Mastery", url: "/en/blog/the-path-and-mastery.html", summary: "What truly begins once techniques have been mastered, and why a master says, 'I know nothing'." },
         { date: "May 16, 2026", title: "Nemawashi (根回し) — laying the groundwork before action", url: "/en/blog/nemawashi-laying-groundwork-before-action.html", summary: "Why good technique, correction, and dojo development require groundwork before visible movement." },
         { date: "May 9, 2026", title: "Omotenashi (おもてなし) — hospitality on the mat", url: "/en/blog/omotenashi-hospitality-that-builds-the-dojo.html", summary: "How the quality of your attack, openness to correction, and conduct with less advanced partners shape dojo culture from within." },
         { date: "May 1, 2026", title: "Ninjō (人情) — human feeling without losing direction", url: "/en/blog/ninjo-human-feeling-without-losing-direction.html", summary: "How not to repress emotion in the dojo, while also refusing to let mood, ego, or preference steer training instead of responsibility." },

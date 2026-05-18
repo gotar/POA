@@ -222,6 +222,8 @@ module Site
           "Wa — harmonia bez uległości i porządek relacji | Blog"
         when "blog/giri-obowiazek-bez-wymowek.html"
           "Giri — obowiązek bez wymówek i odpowiedzialność w dojo | Blog"
+        when "blog/droga-i-mistrzostwo.html"
+          "Droga i mistrzostwo — kiedy technika przestaje wystarczać | Blog"
         when "blog/ninjo-ludzkie-uczucia-bez-utraty-kierunku.html"
           "Ninjō — ludzkie uczucia bez utraty kierunku | Blog"
         when "blog/omotenashi-goscinnosc-ktora-buduje-dojo.html"
@@ -296,6 +298,8 @@ module Site
           "Wa — harmony without submission and ordered relationship | Blog"
         when "en/blog/giri-duty-without-excuses.html"
           "Giri — duty without excuses and responsibility in the dojo | Blog"
+        when "en/blog/the-path-and-mastery.html"
+          "The Path and Mastery — when technique is no longer enough | Blog"
         when "en/blog/ninjo-human-feeling-without-losing-direction.html"
           "Ninjō — human feeling without losing direction | Blog"
         when "en/blog/omotenashi-hospitality-that-builds-the-dojo.html"
@@ -503,6 +507,8 @@ module Site
           "Wa w Aikido i budō: harmonia bez uległości, czyli jak utrzymać porządek relacji, korekty i wspólnej praktyki pod presją."
         when "blog/giri-obowiazek-bez-wymowek.html"
           "Giri w Aikido i budō: obowiązek bez wymówek jako odpowiedzialność za partnera, korektę, linię przekazu i wspólny porządek dojo."
+        when "blog/droga-i-mistrzostwo.html"
+          "Droga i mistrzostwo w budō: jak opanowanie technik odsłania dopiero właściwe pytania, dlaczego mistrz mówi 'nic nie wiem' i co stabilność bez zamknięcia zmienia w dojo i poza nim."
         when "blog/ninjo-ludzkie-uczucia-bez-utraty-kierunku.html"
           "Ninjō w Aikido i budō: jak rozpoznawać ludzkie uczucia, nie wypierać emocji i nie pozwalać, by nastrój prowadził trening zamiast odpowiedzialności."
         when "blog/omotenashi-goscinnosc-ktora-buduje-dojo.html"
@@ -577,6 +583,8 @@ module Site
           "Wa in Aikido and budō: harmony without submission, and how to preserve order in relationship, correction, and shared practice under pressure."
         when "en/blog/giri-duty-without-excuses.html"
           "Giri in Aikido and budō: duty without excuses as responsibility for the partner, correction, transmission line, and shared order of the dojo."
+        when "en/blog/the-path-and-mastery.html"
+          "The Path and Mastery in budō: how mastering techniques only opens the real questions, why a master says 'I know nothing', and what stability without closure changes in the dojo and beyond."
         when "en/blog/ninjo-human-feeling-without-losing-direction.html"
           "Ninjō in Aikido and budō: how to recognize human feeling without repressing emotion or letting mood steer training instead of responsibility."
         when "en/blog/omotenashi-hospitality-that-builds-the-dojo.html"
@@ -762,6 +770,8 @@ module Site
           "wa aikido, harmonia bez uleglosci, harmonia w dojo, reishiki, tori uke, korekta, budo, kultura japonska"
         when "blog/giri-obowiazek-bez-wymowek.html"
           "giri aikido, obowiązek w dojo, odpowiedzialność w aikido, tori uke, korekta, linia przekazu, budo, kultura japonska"
+        when "blog/droga-i-mistrzostwo.html"
+          "droga i mistrzostwo aikido, technika i zasady budo, Andre Cognard, mistrzostwo poza dojo, droga budō, shoshin, shuhari, mistrz i uczeń"
         when "blog/ninjo-ludzkie-uczucia-bez-utraty-kierunku.html"
           "ninjo aikido, ninjō, ludzkie uczucia, emocje w treningu, giri i ninjo, odpowiedzialność w dojo, budo, kultura japonska"
         when "blog/omotenashi-goscinnosc-ktora-buduje-dojo.html"
@@ -836,6 +846,8 @@ module Site
           "wa aikido, harmony without submission, dojo harmony, reishiki, tori uke, correction, budo, Japanese culture"
         when "en/blog/giri-duty-without-excuses.html"
           "giri aikido, duty in the dojo, responsibility in aikido, tori uke, correction, transmission line, budo, Japanese culture"
+        when "en/blog/the-path-and-mastery.html"
+          "path and mastery aikido, technique and principles budo, Andre Cognard, mastery beyond dojo, budo path, shoshin, shuhari, master and student"
         when "en/blog/ninjo-human-feeling-without-losing-direction.html"
           "ninjo aikido, ninjō, human feeling, emotions in training, giri and ninjo, responsibility in dojo, budo, Japanese culture"
         when "en/blog/omotenashi-hospitality-that-builds-the-dojo.html"
@@ -884,6 +896,7 @@ module Site
       BLOG_POSTS_PER_PAGE = 10
 
       BLOG_POSTS_PL = [
+        { date: "18 maja 2026", title: "Droga i mistrzostwo", url: "/blog/droga-i-mistrzostwo.html", summary: "Co naprawdę zaczyna się, gdy techniki są już opanowane, i dlaczego mistrz mówi 'nic nie wiem'." },
         { date: "16 maja 2026", title: "Nemawashi (根回し) — przygotowanie gruntu przed działaniem", url: "/blog/nemawashi-przygotowanie-gruntu-przed-dzialaniem.html", summary: "Dlaczego dobra technika, korekta i rozwój dojo wymagają przygotowania gruntu przed widocznym ruchem." },
         { date: "9 maja 2026", title: "Omotenashi (おもてなし) — gościnność na macie", url: "/blog/omotenashi-goscinnosc-ktora-buduje-dojo.html", summary: "Jak jakość ataku, sposób przyjmowania korekty i stosunek do mniej zaawansowanego partnera kształtują kulturę dojo od środka." },
         { date: "1 maja 2026", title: "Ninjō (人情) — ludzkie uczucia bez utraty kierunku", url: "/blog/ninjo-ludzkie-uczucia-bez-utraty-kierunku.html", summary: "Jak nie wypierać emocji w dojo, ale też nie pozwalać, by nastrój, ego albo sympatia prowadziły trening zamiast odpowiedzialności." },
@@ -922,6 +935,7 @@ module Site
       ].freeze
 
       BLOG_POSTS_EN = [
+        { date: "May 18, 2026", title: "The Path and Mastery", url: "/en/blog/the-path-and-mastery.html", summary: "What really begins once techniques are mastered, and why a master says 'I know nothing'." },
         { date: "May 16, 2026", title: "Nemawashi (根回し) — laying the groundwork before action", url: "/en/blog/nemawashi-laying-groundwork-before-action.html", summary: "Why good technique, correction, and dojo development require groundwork before visible movement." },
         { date: "May 9, 2026", title: "Omotenashi (おもてなし) — hospitality on the mat", url: "/en/blog/omotenashi-hospitality-that-builds-the-dojo.html", summary: "How the quality of your attack, openness to correction, and conduct with less advanced partners shape dojo culture from within." },
         { date: "May 1, 2026", title: "Ninjō (人情) — human feeling without losing direction", url: "/en/blog/ninjo-human-feeling-without-losing-direction.html", summary: "How not to repress emotion in the dojo, while also refusing to let mood, ego, or preference steer training instead of responsibility." },
@@ -1147,6 +1161,15 @@ module Site
             date_published: "2026-04-28",
             date_modified: "2026-04-28"
           )
+        when "blog/droga-i-mistrzostwo.html"
+          article_schema(
+            name: "Droga i mistrzostwo",
+            description: page_description,
+            image: page_social_image_url,
+            lang: "pl",
+            date_published: "2026-05-18",
+            date_modified: "2026-05-18"
+          )
         when "blog/ninjo-ludzkie-uczucia-bez-utraty-kierunku.html"
           article_schema(
             name: "Ninjō — ludzkie uczucia bez utraty kierunku",
@@ -1317,6 +1340,15 @@ module Site
             lang: "en",
             date_published: "2026-04-28",
             date_modified: "2026-04-28"
+          )
+        when "en/blog/the-path-and-mastery.html"
+          article_schema(
+            name: "The Path and Mastery",
+            description: page_description,
+            image: page_social_image_url,
+            lang: "en",
+            date_published: "2026-05-18",
+            date_modified: "2026-05-18"
           )
         when "en/blog/ninjo-human-feeling-without-losing-direction.html"
           article_schema(
@@ -1498,6 +1530,7 @@ module Site
         "blog/omoiyari-uwazna-troska.html" => "en/blog/omoiyari-considerate-compassion.html",
         "blog/jiko-sekinin-odpowiedzialnosc-osobista.html" => "en/blog/jiko-sekinin-personal-responsibility.html",
         "blog/kuzushi-kontrolowana-nierownowaga.html" => "en/blog/kuzushi-controlled-imbalance.html",
+        "blog/droga-i-mistrzostwo.html" => "en/blog/the-path-and-mastery.html",
         "en/" => "",
         "en/index.html" => "",
         "en/contact.html" => "kontakt.html",
@@ -1564,6 +1597,7 @@ module Site
         "en/blog/omoiyari-considerate-compassion.html" => "blog/omoiyari-uwazna-troska.html",
         "en/blog/jiko-sekinin-personal-responsibility.html" => "blog/jiko-sekinin-odpowiedzialnosc-osobista.html",
         "en/blog/kuzushi-controlled-imbalance.html" => "blog/kuzushi-kontrolowana-nierownowaga.html",
+        "en/blog/the-path-and-mastery.html" => "blog/droga-i-mistrzostwo.html",
       }.freeze
 
       def current_lang

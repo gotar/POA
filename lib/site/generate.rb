@@ -91,6 +91,7 @@ module Site
       blog_wa_view: "views.blog.wa",
       blog_giri_view: "views.blog.giri",
       blog_ninjo_view: "views.blog.ninjo",
+      blog_droga_i_mistrzostwo_view: "views.blog.droga_i_mistrzostwo",
       blog_omotenashi_view: "views.blog.omotenashi",
       blog_nemawashi_view: "views.blog.nemawashi",
       blog_misogi_view: "views.blog.misogi",
@@ -127,6 +128,7 @@ module Site
       blog_wa_en_view: "views.en.blog.wa",
       blog_giri_en_view: "views.en.blog.giri",
       blog_ninjo_en_view: "views.en.blog.ninjo",
+      blog_droga_i_mistrzostwo_en_view: "views.en.blog.droga_i_mistrzostwo",
       blog_omotenashi_en_view: "views.en.blog.omotenashi",
       blog_nemawashi_en_view: "views.en.blog.nemawashi",
       blog_misogi_en_view: "views.en.blog.misogi",
@@ -229,6 +231,7 @@ module Site
       render export_dir, "blog/aiki-harmonia-w-dzialaniu.html", blog_aiki_view
       render export_dir, "blog/wa-harmonia-bez-uleglosci.html", blog_wa_view
       render export_dir, "blog/giri-obowiazek-bez-wymowek.html", blog_giri_view
+      render export_dir, "blog/droga-i-mistrzostwo.html", blog_droga_i_mistrzostwo_view
       render export_dir, "blog/ninjo-ludzkie-uczucia-bez-utraty-kierunku.html", blog_ninjo_view
       render export_dir, "blog/omotenashi-goscinnosc-ktora-buduje-dojo.html", blog_omotenashi_view
       render export_dir, "blog/nemawashi-przygotowanie-gruntu-przed-dzialaniem.html", blog_nemawashi_view
@@ -264,6 +267,7 @@ module Site
       render export_dir, "en/blog/aiki-harmony-in-action.html", blog_aiki_en_view
       render export_dir, "en/blog/wa-harmony-without-submission.html", blog_wa_en_view
       render export_dir, "en/blog/giri-duty-without-excuses.html", blog_giri_en_view
+      render export_dir, "en/blog/the-path-and-mastery.html", blog_droga_i_mistrzostwo_en_view
       render export_dir, "en/blog/ninjo-human-feeling-without-losing-direction.html", blog_ninjo_en_view
       render export_dir, "en/blog/omotenashi-hospitality-that-builds-the-dojo.html", blog_omotenashi_en_view
       render export_dir, "en/blog/nemawashi-laying-groundwork-before-action.html", blog_nemawashi_en_view

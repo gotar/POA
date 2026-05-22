@@ -224,6 +224,8 @@ module Site
           "Giri — obowiązek bez wymówek i odpowiedzialność w dojo | Blog"
         when "blog/droga-i-mistrzostwo.html"
           "Droga i mistrzostwo — kiedy technika przestaje wystarczać | Blog"
+        when "blog/mottainai-nie-marnuj-tego-co-moze-cie-nauczyc.html"
+          "Mottainai — nie marnuj tego, co może cię nauczyć | Blog"
         when "blog/ninjo-ludzkie-uczucia-bez-utraty-kierunku.html"
           "Ninjō — ludzkie uczucia bez utraty kierunku | Blog"
         when "blog/omotenashi-goscinnosc-ktora-buduje-dojo.html"
@@ -300,6 +302,8 @@ module Site
           "Giri — duty without excuses and responsibility in the dojo | Blog"
         when "en/blog/the-path-and-mastery.html"
           "The Path and Mastery — when technique is no longer enough | Blog"
+        when "en/blog/mottainai-do-not-waste-what-can-teach-you.html"
+          "Mottainai — do not waste what can teach you | Blog"
         when "en/blog/ninjo-human-feeling-without-losing-direction.html"
           "Ninjō — human feeling without losing direction | Blog"
         when "en/blog/omotenashi-hospitality-that-builds-the-dojo.html"
@@ -509,6 +513,8 @@ module Site
           "Giri w Aikido i budō: obowiązek bez wymówek jako odpowiedzialność za partnera, korektę, linię przekazu i wspólny porządek dojo."
         when "blog/droga-i-mistrzostwo.html"
           "Droga i mistrzostwo w budō: jak opanowanie technik odsłania właściwe pytania, dlaczego mistrz mówi 'nic nie wiem' i co zmienia stabilność bez zamykania się — w dojo i poza nim."
+        when "blog/mottainai-nie-marnuj-tego-co-moze-cie-nauczyc.html"
+          "Mottainai w Aikido i budō: jak nie marnować korekty, partnera, czasu i energii na macie, tylko zamieniać je w realną naukę."
         when "blog/ninjo-ludzkie-uczucia-bez-utraty-kierunku.html"
           "Ninjō w Aikido i budō: jak rozpoznawać ludzkie uczucia, nie wypierać emocji i nie pozwalać, by nastrój prowadził trening zamiast odpowiedzialności."
         when "blog/omotenashi-goscinnosc-ktora-buduje-dojo.html"
@@ -585,6 +591,8 @@ module Site
           "Giri in Aikido and budō: duty without excuses as responsibility for the partner, correction, transmission line, and shared order of the dojo."
         when "en/blog/the-path-and-mastery.html"
           "The Path and Mastery in budō: how mastering techniques opens the real questions, why a master says 'I know nothing', and what changes when stability does not mean closing off — in the dojo and beyond."
+        when "en/blog/mottainai-do-not-waste-what-can-teach-you.html"
+          "Mottainai in Aikido and budō: how not to waste correction, partners, time, and energy on the mat, but turn them into real learning."
         when "en/blog/ninjo-human-feeling-without-losing-direction.html"
           "Ninjō in Aikido and budō: how to recognize human feeling without repressing emotion or letting mood steer training instead of responsibility."
         when "en/blog/omotenashi-hospitality-that-builds-the-dojo.html"
@@ -772,6 +780,8 @@ module Site
           "giri aikido, obowiązek w dojo, odpowiedzialność w aikido, tori uke, korekta, linia przekazu, budo, kultura japonska"
         when "blog/droga-i-mistrzostwo.html"
           "droga i mistrzostwo aikido, technika i zasady budo, Andre Cognard, mistrzostwo poza dojo, droga budō, shoshin, shuhari, mistrz i uczeń"
+        when "blog/mottainai-nie-marnuj-tego-co-moze-cie-nauczyc.html"
+          "mottainai aikido, mottainai, nie marnować korekty, uwaga w dojo, partner w aikido, energia w technice, budo, kultura japonska"
         when "blog/ninjo-ludzkie-uczucia-bez-utraty-kierunku.html"
           "ninjo aikido, ninjō, ludzkie uczucia, emocje w treningu, giri i ninjo, odpowiedzialność w dojo, budo, kultura japonska"
         when "blog/omotenashi-goscinnosc-ktora-buduje-dojo.html"
@@ -848,6 +858,8 @@ module Site
           "giri aikido, duty in the dojo, responsibility in aikido, tori uke, correction, transmission line, budo, Japanese culture"
         when "en/blog/the-path-and-mastery.html"
           "path and mastery aikido, technique and principles budo, Andre Cognard, mastery beyond dojo, budo path, shoshin, shuhari, master and student"
+        when "en/blog/mottainai-do-not-waste-what-can-teach-you.html"
+          "mottainai aikido, mottainai, do not waste correction, dojo attention, aikido partner, energy in technique, budo, Japanese culture"
         when "en/blog/ninjo-human-feeling-without-losing-direction.html"
           "ninjo aikido, ninjō, human feeling, emotions in training, giri and ninjo, responsibility in dojo, budo, Japanese culture"
         when "en/blog/omotenashi-hospitality-that-builds-the-dojo.html"
@@ -896,6 +908,7 @@ module Site
       BLOG_POSTS_PER_PAGE = 10
 
       BLOG_POSTS_PL = [
+        { date: "22 maja 2026", title: "Mottainai (もったいない) — nie marnuj tego, co może cię nauczyć", url: "/blog/mottainai-nie-marnuj-tego-co-moze-cie-nauczyc.html", summary: "Jak nie marnować korekty, partnera, czasu i energii na macie, tylko zamieniać je w realną naukę." },
         { date: "18 maja 2026", title: "Droga i mistrzostwo", url: "/blog/droga-i-mistrzostwo.html", summary: "Co naprawdę zaczyna się wtedy, gdy techniki są już opanowane, i dlaczego mistrz mówi: 'nic nie wiem'." },
         { date: "16 maja 2026", title: "Nemawashi (根回し) — przygotowanie gruntu przed działaniem", url: "/blog/nemawashi-przygotowanie-gruntu-przed-dzialaniem.html", summary: "Dlaczego dobra technika, korekta i rozwój dojo wymagają przygotowania gruntu przed widocznym ruchem." },
         { date: "9 maja 2026", title: "Omotenashi (おもてなし) — gościnność na macie", url: "/blog/omotenashi-goscinnosc-ktora-buduje-dojo.html", summary: "Jak jakość ataku, sposób przyjmowania korekty i stosunek do mniej zaawansowanego partnera kształtują kulturę dojo od środka." },
@@ -935,6 +948,7 @@ module Site
       ].freeze
 
       BLOG_POSTS_EN = [
+        { date: "May 22, 2026", title: "Mottainai (もったいない) — do not waste what can teach you", url: "/en/blog/mottainai-do-not-waste-what-can-teach-you.html", summary: "How not to waste correction, partners, time, and energy on the mat, but turn them into real learning." },
         { date: "May 18, 2026", title: "The Path and Mastery", url: "/en/blog/the-path-and-mastery.html", summary: "What truly begins once techniques have been mastered, and why a master says, 'I know nothing'." },
         { date: "May 16, 2026", title: "Nemawashi (根回し) — laying the groundwork before action", url: "/en/blog/nemawashi-laying-groundwork-before-action.html", summary: "Why good technique, correction, and dojo development require groundwork before visible movement." },
         { date: "May 9, 2026", title: "Omotenashi (おもてなし) — hospitality on the mat", url: "/en/blog/omotenashi-hospitality-that-builds-the-dojo.html", summary: "How the quality of your attack, openness to correction, and conduct with less advanced partners shape dojo culture from within." },
@@ -1170,6 +1184,15 @@ module Site
             date_published: "2026-05-18",
             date_modified: "2026-05-18"
           )
+        when "blog/mottainai-nie-marnuj-tego-co-moze-cie-nauczyc.html"
+          article_schema(
+            name: "Mottainai — nie marnuj tego, co może cię nauczyć",
+            description: page_description,
+            image: page_social_image_url,
+            lang: "pl",
+            date_published: "2026-05-22",
+            date_modified: "2026-05-22"
+          )
         when "blog/ninjo-ludzkie-uczucia-bez-utraty-kierunku.html"
           article_schema(
             name: "Ninjō — ludzkie uczucia bez utraty kierunku",
@@ -1350,6 +1373,15 @@ module Site
             date_published: "2026-05-18",
             date_modified: "2026-05-18"
           )
+        when "en/blog/mottainai-do-not-waste-what-can-teach-you.html"
+          article_schema(
+            name: "Mottainai — do not waste what can teach you",
+            description: page_description,
+            image: page_social_image_url,
+            lang: "en",
+            date_published: "2026-05-22",
+            date_modified: "2026-05-22"
+          )
         when "en/blog/ninjo-human-feeling-without-losing-direction.html"
           article_schema(
             name: "Ninjō — human feeling without losing direction",
@@ -1516,6 +1548,7 @@ module Site
         "blog/ninjo-ludzkie-uczucia-bez-utraty-kierunku.html" => "en/blog/ninjo-human-feeling-without-losing-direction.html",
         "blog/omotenashi-goscinnosc-ktora-buduje-dojo.html" => "en/blog/omotenashi-hospitality-that-builds-the-dojo.html",
         "blog/nemawashi-przygotowanie-gruntu-przed-dzialaniem.html" => "en/blog/nemawashi-laying-groundwork-before-action.html",
+        "blog/mottainai-nie-marnuj-tego-co-moze-cie-nauczyc.html" => "en/blog/mottainai-do-not-waste-what-can-teach-you.html",
         "blog/misogi-oczyszczenie-przez-praktyke.html" => "en/blog/misogi-purification-through-practice.html",
         "blog/5-zasad-kazdej-techniki.html" => "en/blog/five-principles-behind-every-technique.html",
         "blog/dlaczego-w-aikido-nosi-sie-hakame.html" => "en/blog/why-aikido-practitioners-wear-hakama.html",
@@ -1583,6 +1616,7 @@ module Site
         "en/blog/ninjo-human-feeling-without-losing-direction.html" => "blog/ninjo-ludzkie-uczucia-bez-utraty-kierunku.html",
         "en/blog/omotenashi-hospitality-that-builds-the-dojo.html" => "blog/omotenashi-goscinnosc-ktora-buduje-dojo.html",
         "en/blog/nemawashi-laying-groundwork-before-action.html" => "blog/nemawashi-przygotowanie-gruntu-przed-dzialaniem.html",
+        "en/blog/mottainai-do-not-waste-what-can-teach-you.html" => "blog/mottainai-nie-marnuj-tego-co-moze-cie-nauczyc.html",
         "en/blog/misogi-purification-through-practice.html" => "blog/misogi-oczyszczenie-przez-praktyke.html",
         "en/blog/five-principles-behind-every-technique.html" => "blog/5-zasad-kazdej-techniki.html",
         "en/blog/why-aikido-practitioners-wear-hakama.html" => "blog/dlaczego-w-aikido-nosi-sie-hakame.html",

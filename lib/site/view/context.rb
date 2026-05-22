@@ -514,7 +514,7 @@ module Site
         when "blog/droga-i-mistrzostwo.html"
           "Droga i mistrzostwo w budō: jak opanowanie technik odsłania właściwe pytania, dlaczego mistrz mówi 'nic nie wiem' i co zmienia stabilność bez zamykania się — w dojo i poza nim."
         when "blog/mottainai-nie-marnuj-tego-co-moze-cie-nauczyc.html"
-          "Mottainai w Aikido i budō: jak nie marnować korekty, partnera, czasu i energii na macie, tylko zamieniać je w realną naukę."
+          "Mottainai w Aikido i budō: jak rozpoznawać wartość korekty, błędu, partnera i powtórzenia, zanim zostaną zmarnowane, i zamieniać otrzymany sygnał w realną zmianę."
         when "blog/ninjo-ludzkie-uczucia-bez-utraty-kierunku.html"
           "Ninjō w Aikido i budō: jak rozpoznawać ludzkie uczucia, nie wypierać emocji i nie pozwalać, by nastrój prowadził trening zamiast odpowiedzialności."
         when "blog/omotenashi-goscinnosc-ktora-buduje-dojo.html"
@@ -781,7 +781,7 @@ module Site
         when "blog/droga-i-mistrzostwo.html"
           "droga i mistrzostwo aikido, technika i zasady budo, Andre Cognard, mistrzostwo poza dojo, droga budō, shoshin, shuhari, mistrz i uczeń"
         when "blog/mottainai-nie-marnuj-tego-co-moze-cie-nauczyc.html"
-          "mottainai aikido, mottainai, nie marnować korekty, uwaga w dojo, partner w aikido, energia w technice, budo, kultura japonska"
+          "mottainai aikido, mottainai, nie marnować korekty, błąd jako informacja, partner w aikido, energia w technice, uwaga w dojo, budo, kultura japonska"
         when "blog/ninjo-ludzkie-uczucia-bez-utraty-kierunku.html"
           "ninjo aikido, ninjō, ludzkie uczucia, emocje w treningu, giri i ninjo, odpowiedzialność w dojo, budo, kultura japonska"
         when "blog/omotenashi-goscinnosc-ktora-buduje-dojo.html"
@@ -908,7 +908,7 @@ module Site
       BLOG_POSTS_PER_PAGE = 10
 
       BLOG_POSTS_PL = [
-        { date: "22 maja 2026", title: "Mottainai (もったいない) — nie marnuj tego, z czego możesz się uczyć", url: "/blog/mottainai-nie-marnuj-tego-co-moze-cie-nauczyc.html", summary: "Jak nie marnować korekty, partnera, czasu i energii na macie, tylko zamieniać je w realną naukę." },
+        { date: "22 maja 2026", title: "Mottainai (もったいない) — nie marnuj tego, z czego możesz się uczyć", url: "/blog/mottainai-nie-marnuj-tego-co-moze-cie-nauczyc.html", summary: "O tym, jak nie przepuścić przez palce korekty, błędu, partnera i zwykłego powtórzenia, gdy mogą stać się realną zmianą." },
         { date: "18 maja 2026", title: "Droga i mistrzostwo", url: "/blog/droga-i-mistrzostwo.html", summary: "Co naprawdę zaczyna się wtedy, gdy techniki są już opanowane, i dlaczego mistrz mówi: 'nic nie wiem'." },
         { date: "16 maja 2026", title: "Nemawashi (根回し) — przygotowanie gruntu przed działaniem", url: "/blog/nemawashi-przygotowanie-gruntu-przed-dzialaniem.html", summary: "Dlaczego dobra technika, korekta i rozwój dojo wymagają przygotowania gruntu przed widocznym ruchem." },
         { date: "9 maja 2026", title: "Omotenashi (おもてなし) — gościnność na macie", url: "/blog/omotenashi-goscinnosc-ktora-buduje-dojo.html", summary: "Jak jakość ataku, sposób przyjmowania korekty i stosunek do mniej zaawansowanego partnera kształtują kulturę dojo od środka." },

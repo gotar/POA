@@ -520,7 +520,7 @@ module Site
         when "blog/ikigai-sens-regularnej-praktyki.html"
           "Ikigai w Aikido i budō: dlaczego sens regularnej praktyki nie musi być wielkim olśnieniem, tylko powodem, który pozwala wracać na matę tydzień po tygodniu."
         when "blog/mottainai-nie-marnuj-tego-co-moze-cie-nauczyc.html"
-          "Mottainai w Aikido i budō: jak nie marnować korekty, partnera, czasu i energii na macie, tylko zamieniać je w realną naukę."
+          "Mottainai w Aikido i budō: jak nie marnować korekty, partnera, czasu i energii na macie, lecz zamieniać je w realną naukę."
         when "blog/ninjo-ludzkie-uczucia-bez-utraty-kierunku.html"
           "Ninjō w Aikido i budō: jak rozpoznawać ludzkie uczucia, nie wypierać emocji i nie pozwalać, by nastrój prowadził trening zamiast odpowiedzialności."
         when "blog/omotenashi-goscinnosc-ktora-buduje-dojo.html"
@@ -921,7 +921,7 @@ module Site
 
       BLOG_POSTS_PL = [
         { date: "22 maja 2026", title: "Ikigai (生き甲斐) — sens regularnej praktyki", url: "/blog/ikigai-sens-regularnej-praktyki.html", summary: "Dlaczego powrót na matę tydzień po tygodniu jest ważniejszy niż chwilowa motywacja i wielkie deklaracje." },
-        { date: "22 maja 2026", title: "Mottainai (もったいない) — nie marnuj tego, co może cię nauczyć", url: "/blog/mottainai-nie-marnuj-tego-co-moze-cie-nauczyc.html", summary: "Jak nie marnować korekty, partnera, czasu i energii na macie, tylko zamieniać je w realną naukę." },
+        { date: "22 maja 2026", title: "Mottainai (もったいない) — nie marnuj tego, co może cię nauczyć", url: "/blog/mottainai-nie-marnuj-tego-co-moze-cie-nauczyc.html", summary: "Jak nie marnować korekty, partnera, czasu i energii na macie, lecz zamieniać je w realną naukę." },
         { date: "18 maja 2026", title: "Droga i mistrzostwo", url: "/blog/droga-i-mistrzostwo.html", summary: "Co naprawdę zaczyna się wtedy, gdy techniki są już opanowane, i dlaczego mistrz mówi: 'nic nie wiem'." },
         { date: "16 maja 2026", title: "Nemawashi (根回し) — przygotowanie gruntu przed działaniem", url: "/blog/nemawashi-przygotowanie-gruntu-przed-dzialaniem.html", summary: "Dlaczego dobra technika, korekta i rozwój dojo wymagają przygotowania gruntu przed widocznym ruchem." },
         { date: "9 maja 2026", title: "Omotenashi (おもてなし) — gościnność na macie", url: "/blog/omotenashi-goscinnosc-ktora-buduje-dojo.html", summary: "Jak jakość ataku, sposób przyjmowania korekty i stosunek do mniej zaawansowanego partnera kształtują kulturę dojo od środka." },

@@ -92,7 +92,6 @@ module Site
       blog_giri_view: "views.blog.giri",
       blog_ninjo_view: "views.blog.ninjo",
       blog_droga_i_mistrzostwo_view: "views.blog.droga_i_mistrzostwo",
-      blog_ikigai_view: "views.blog.ikigai",
       blog_mottainai_view: "views.blog.mottainai",
       blog_omotenashi_view: "views.blog.omotenashi",
       blog_nemawashi_view: "views.blog.nemawashi",
@@ -131,7 +130,6 @@ module Site
       blog_giri_en_view: "views.en.blog.giri",
       blog_ninjo_en_view: "views.en.blog.ninjo",
       blog_droga_i_mistrzostwo_en_view: "views.en.blog.droga_i_mistrzostwo",
-      blog_ikigai_en_view: "views.en.blog.ikigai",
       blog_mottainai_en_view: "views.en.blog.mottainai",
       blog_omotenashi_en_view: "views.en.blog.omotenashi",
       blog_nemawashi_en_view: "views.en.blog.nemawashi",
@@ -236,7 +234,6 @@ module Site
       render export_dir, "blog/wa-harmonia-bez-uleglosci.html", blog_wa_view
       render export_dir, "blog/giri-obowiazek-bez-wymowek.html", blog_giri_view
       render export_dir, "blog/droga-i-mistrzostwo.html", blog_droga_i_mistrzostwo_view
-      render export_dir, "blog/ikigai-sens-regularnej-praktyki.html", blog_ikigai_view
       render export_dir, "blog/mottainai-nie-marnuj-tego-co-moze-cie-nauczyc.html", blog_mottainai_view
       render export_dir, "blog/ninjo-ludzkie-uczucia-bez-utraty-kierunku.html", blog_ninjo_view
       render export_dir, "blog/omotenashi-goscinnosc-ktora-buduje-dojo.html", blog_omotenashi_view
@@ -274,7 +271,6 @@ module Site
       render export_dir, "en/blog/wa-harmony-without-submission.html", blog_wa_en_view
       render export_dir, "en/blog/giri-duty-without-excuses.html", blog_giri_en_view
       render export_dir, "en/blog/the-path-and-mastery.html", blog_droga_i_mistrzostwo_en_view
-      render export_dir, "en/blog/ikigai-the-reason-to-return-to-practice.html", blog_ikigai_en_view
       render export_dir, "en/blog/mottainai-do-not-waste-what-can-teach-you.html", blog_mottainai_en_view
       render export_dir, "en/blog/ninjo-human-feeling-without-losing-direction.html", blog_ninjo_en_view
       render export_dir, "en/blog/omotenashi-hospitality-that-builds-the-dojo.html", blog_omotenashi_en_view

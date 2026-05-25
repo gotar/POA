@@ -224,6 +224,8 @@ module Site
           "Giri — obowiązek bez wymówek i odpowiedzialność w dojo | Blog"
         when "blog/droga-i-mistrzostwo.html"
           "Droga i mistrzostwo — kiedy technika przestaje wystarczać | Blog"
+        when "blog/ikigai-sens-regularnej-praktyki.html"
+          "Ikigai — powód, który wytrzymuje zwykły tydzień | Blog"
         when "blog/mottainai-nie-marnuj-tego-co-moze-cie-nauczyc.html"
           "Mottainai — nie marnuj tego, z czego możesz się uczyć | Blog"
         when "blog/ninjo-ludzkie-uczucia-bez-utraty-kierunku.html"
@@ -302,6 +304,8 @@ module Site
           "Giri — duty without excuses and responsibility in the dojo | Blog"
         when "en/blog/the-path-and-mastery.html"
           "The Path and Mastery — when technique is no longer enough | Blog"
+        when "en/blog/ikigai-the-reason-to-return-to-practice.html"
+          "Ikigai — the reason that survives an ordinary week | Blog"
         when "en/blog/mottainai-do-not-waste-what-can-teach-you.html"
           "Mottainai — do not waste what can teach you | Blog"
         when "en/blog/ninjo-human-feeling-without-losing-direction.html"
@@ -513,6 +517,8 @@ module Site
           "Giri w Aikido i budō: obowiązek bez wymówek jako odpowiedzialność za partnera, korektę, linię przekazu i wspólny porządek dojo."
         when "blog/droga-i-mistrzostwo.html"
           "Droga i mistrzostwo w budō: jak opanowanie technik odsłania właściwe pytania, dlaczego mistrz mówi 'nic nie wiem' i co zmienia stabilność bez zamykania się — w dojo i poza nim."
+        when "blog/ikigai-sens-regularnej-praktyki.html"
+          "Ikigai w Aikido i budō: dlaczego sens regularnej praktyki nie jest wielkim olśnieniem, tylko powodem, który pozwala wracać na matę w zwykłym tygodniu."
         when "blog/mottainai-nie-marnuj-tego-co-moze-cie-nauczyc.html"
           "Mottainai w Aikido i budō: jak rozpoznawać wartość korekty, błędu, partnera i powtórzenia, zanim zostaną zmarnowane, i zamieniać otrzymany sygnał w realną zmianę."
         when "blog/ninjo-ludzkie-uczucia-bez-utraty-kierunku.html"
@@ -591,6 +597,8 @@ module Site
           "Giri in Aikido and budō: duty without excuses as responsibility for the partner, correction, transmission line, and shared order of the dojo."
         when "en/blog/the-path-and-mastery.html"
           "The Path and Mastery in budō: how mastering techniques opens the real questions, why a master says 'I know nothing', and what changes when stability does not mean closing off — in the dojo and beyond."
+        when "en/blog/ikigai-the-reason-to-return-to-practice.html"
+          "Ikigai in Aikido and budō: why the meaning of regular practice is not a grand revelation, but a reason that brings you back to the mat in an ordinary week."
         when "en/blog/mottainai-do-not-waste-what-can-teach-you.html"
           "Mottainai in Aikido and budō: how not to waste correction, partners, time, and energy on the mat, but turn them into real learning."
         when "en/blog/ninjo-human-feeling-without-losing-direction.html"
@@ -780,6 +788,8 @@ module Site
           "giri aikido, obowiązek w dojo, odpowiedzialność w aikido, tori uke, korekta, linia przekazu, budo, kultura japonska"
         when "blog/droga-i-mistrzostwo.html"
           "droga i mistrzostwo aikido, technika i zasady budo, Andre Cognard, mistrzostwo poza dojo, droga budō, shoshin, shuhari, mistrz i uczeń"
+        when "blog/ikigai-sens-regularnej-praktyki.html"
+          "ikigai aikido, ikigai, sens praktyki, regularny trening aikido, motywacja w dojo, powrót na matę, droga budo, shoshin, kultura japonska"
         when "blog/mottainai-nie-marnuj-tego-co-moze-cie-nauczyc.html"
           "mottainai aikido, mottainai, nie marnować korekty, błąd jako informacja, partner w aikido, energia w technice, uwaga w dojo, budo, kultura japonska"
         when "blog/ninjo-ludzkie-uczucia-bez-utraty-kierunku.html"
@@ -858,6 +868,8 @@ module Site
           "giri aikido, duty in the dojo, responsibility in aikido, tori uke, correction, transmission line, budo, Japanese culture"
         when "en/blog/the-path-and-mastery.html"
           "path and mastery aikido, technique and principles budo, Andre Cognard, mastery beyond dojo, budo path, shoshin, shuhari, master and student"
+        when "en/blog/ikigai-the-reason-to-return-to-practice.html"
+          "ikigai aikido, ikigai, meaning of practice, regular aikido training, dojo motivation, return to the mat, budo path, shoshin, Japanese culture"
         when "en/blog/mottainai-do-not-waste-what-can-teach-you.html"
           "mottainai aikido, mottainai, do not waste correction, dojo attention, aikido partner, energy in technique, budo, Japanese culture"
         when "en/blog/ninjo-human-feeling-without-losing-direction.html"
@@ -908,6 +920,7 @@ module Site
       BLOG_POSTS_PER_PAGE = 10
 
       BLOG_POSTS_PL = [
+        { date: "25 maja 2026", title: "Ikigai (生き甲斐) — powód, który wytrzymuje zwykły tydzień", url: "/blog/ikigai-sens-regularnej-praktyki.html", summary: "Dlaczego powrót na matę w zwykłym tygodniu mówi więcej o sensie praktyki niż chwilowa motywacja i wielkie deklaracje." },
         { date: "22 maja 2026", title: "Mottainai (もったいない) — nie marnuj tego, z czego możesz się uczyć", url: "/blog/mottainai-nie-marnuj-tego-co-moze-cie-nauczyc.html", summary: "O tym, jak nie przepuścić przez palce korekty, błędu, partnera i zwykłego powtórzenia, gdy mogą stać się realną zmianą." },
         { date: "18 maja 2026", title: "Droga i mistrzostwo", url: "/blog/droga-i-mistrzostwo.html", summary: "Co naprawdę zaczyna się wtedy, gdy techniki są już opanowane, i dlaczego mistrz mówi: 'nic nie wiem'." },
         { date: "16 maja 2026", title: "Nemawashi (根回し) — przygotowanie gruntu przed działaniem", url: "/blog/nemawashi-przygotowanie-gruntu-przed-dzialaniem.html", summary: "Dlaczego dobra technika, korekta i rozwój dojo wymagają przygotowania gruntu przed widocznym ruchem." },
@@ -948,6 +961,7 @@ module Site
       ].freeze
 
       BLOG_POSTS_EN = [
+        { date: "May 25, 2026", title: "Ikigai (生き甲斐) — the reason that survives an ordinary week", url: "/en/blog/ikigai-the-reason-to-return-to-practice.html", summary: "Why returning to the mat in an ordinary week says more about the meaning of practice than temporary motivation or grand declarations." },
         { date: "May 22, 2026", title: "Mottainai (もったいない) — do not waste what can teach you", url: "/en/blog/mottainai-do-not-waste-what-can-teach-you.html", summary: "How not to waste correction, partners, time, and energy on the mat, but turn them into real learning." },
         { date: "May 18, 2026", title: "The Path and Mastery", url: "/en/blog/the-path-and-mastery.html", summary: "What truly begins once techniques have been mastered, and why a master says, 'I know nothing'." },
         { date: "May 16, 2026", title: "Nemawashi (根回し) — laying the groundwork before action", url: "/en/blog/nemawashi-laying-groundwork-before-action.html", summary: "Why good technique, correction, and dojo development require groundwork before visible movement." },
@@ -1184,6 +1198,15 @@ module Site
             date_published: "2026-05-18",
             date_modified: "2026-05-18"
           )
+        when "blog/ikigai-sens-regularnej-praktyki.html"
+          article_schema(
+            name: "Ikigai — powód, który wytrzymuje zwykły tydzień",
+            description: page_description,
+            image: page_social_image_url,
+            lang: "pl",
+            date_published: "2026-05-25",
+            date_modified: "2026-05-25"
+          )
         when "blog/mottainai-nie-marnuj-tego-co-moze-cie-nauczyc.html"
           article_schema(
             name: "Mottainai — nie marnuj tego, z czego możesz się uczyć",
@@ -1373,6 +1396,15 @@ module Site
             date_published: "2026-05-18",
             date_modified: "2026-05-18"
           )
+        when "en/blog/ikigai-the-reason-to-return-to-practice.html"
+          article_schema(
+            name: "Ikigai — the reason that survives an ordinary week",
+            description: page_description,
+            image: page_social_image_url,
+            lang: "en",
+            date_published: "2026-05-25",
+            date_modified: "2026-05-25"
+          )
         when "en/blog/mottainai-do-not-waste-what-can-teach-you.html"
           article_schema(
             name: "Mottainai — do not waste what can teach you",
@@ -1549,6 +1581,7 @@ module Site
         "blog/omotenashi-goscinnosc-ktora-buduje-dojo.html" => "en/blog/omotenashi-hospitality-that-builds-the-dojo.html",
         "blog/nemawashi-przygotowanie-gruntu-przed-dzialaniem.html" => "en/blog/nemawashi-laying-groundwork-before-action.html",
         "blog/mottainai-nie-marnuj-tego-co-moze-cie-nauczyc.html" => "en/blog/mottainai-do-not-waste-what-can-teach-you.html",
+        "blog/ikigai-sens-regularnej-praktyki.html" => "en/blog/ikigai-the-reason-to-return-to-practice.html",
         "blog/misogi-oczyszczenie-przez-praktyke.html" => "en/blog/misogi-purification-through-practice.html",
         "blog/5-zasad-kazdej-techniki.html" => "en/blog/five-principles-behind-every-technique.html",
         "blog/dlaczego-w-aikido-nosi-sie-hakame.html" => "en/blog/why-aikido-practitioners-wear-hakama.html",
@@ -1617,6 +1650,7 @@ module Site
         "en/blog/omotenashi-hospitality-that-builds-the-dojo.html" => "blog/omotenashi-goscinnosc-ktora-buduje-dojo.html",
         "en/blog/nemawashi-laying-groundwork-before-action.html" => "blog/nemawashi-przygotowanie-gruntu-przed-dzialaniem.html",
         "en/blog/mottainai-do-not-waste-what-can-teach-you.html" => "blog/mottainai-nie-marnuj-tego-co-moze-cie-nauczyc.html",
+        "en/blog/ikigai-the-reason-to-return-to-practice.html" => "blog/ikigai-sens-regularnej-praktyki.html",
         "en/blog/misogi-purification-through-practice.html" => "blog/misogi-oczyszczenie-przez-praktyke.html",
         "en/blog/five-principles-behind-every-technique.html" => "blog/5-zasad-kazdej-techniki.html",
         "en/blog/why-aikido-practitioners-wear-hakama.html" => "blog/dlaczego-w-aikido-nosi-sie-hakame.html",

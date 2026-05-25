@@ -225,7 +225,7 @@ module Site
         when "blog/droga-i-mistrzostwo.html"
           "Droga i mistrzostwo — kiedy technika przestaje wystarczać | Blog"
         when "blog/ikigai-sens-regularnej-praktyki.html"
-          "Ikigai — powód, który wytrzymuje zwykły tydzień | Blog"
+          "Ikigai — sens, który wytrzymuje zwykły tydzień | Blog"
         when "blog/mottainai-nie-marnuj-tego-co-moze-cie-nauczyc.html"
           "Mottainai — nie marnuj tego, z czego możesz się uczyć | Blog"
         when "blog/ninjo-ludzkie-uczucia-bez-utraty-kierunku.html"
@@ -305,7 +305,7 @@ module Site
         when "en/blog/the-path-and-mastery.html"
           "The Path and Mastery — when technique is no longer enough | Blog"
         when "en/blog/ikigai-the-reason-to-return-to-practice.html"
-          "Ikigai — the reason that survives an ordinary week | Blog"
+          "Ikigai — meaning that survives an ordinary week | Blog"
         when "en/blog/mottainai-do-not-waste-what-can-teach-you.html"
           "Mottainai — do not waste what can teach you | Blog"
         when "en/blog/ninjo-human-feeling-without-losing-direction.html"
@@ -518,7 +518,7 @@ module Site
         when "blog/droga-i-mistrzostwo.html"
           "Droga i mistrzostwo w budō: jak opanowanie technik odsłania właściwe pytania, dlaczego mistrz mówi 'nic nie wiem' i co zmienia stabilność bez zamykania się — w dojo i poza nim."
         when "blog/ikigai-sens-regularnej-praktyki.html"
-          "Ikigai w Aikido i budō: dlaczego sens regularnej praktyki nie jest wielkim olśnieniem, tylko powodem, który pozwala wracać na matę w zwykłym tygodniu."
+          "Ikigai w Aikido i budō: dlaczego sens regularnej praktyki nie jest wielkim olśnieniem, tylko czymś, co sprawdza się w powrocie na matę w zwykłym tygodniu."
         when "blog/mottainai-nie-marnuj-tego-co-moze-cie-nauczyc.html"
           "Mottainai w Aikido i budō: jak rozpoznawać wartość korekty, błędu, partnera i powtórzenia, zanim zostaną zmarnowane, i zamieniać otrzymany sygnał w realną zmianę."
         when "blog/ninjo-ludzkie-uczucia-bez-utraty-kierunku.html"
@@ -598,7 +598,7 @@ module Site
         when "en/blog/the-path-and-mastery.html"
           "The Path and Mastery in budō: how mastering techniques opens the real questions, why a master says 'I know nothing', and what changes when stability does not mean closing off — in the dojo and beyond."
         when "en/blog/ikigai-the-reason-to-return-to-practice.html"
-          "Ikigai in Aikido and budō: why the meaning of regular practice is not a grand revelation, but a reason that brings you back to the mat in an ordinary week."
+          "Ikigai in Aikido and budō: why the meaning of regular practice is not a grand revelation, but something tested by returning to the mat in an ordinary week."
         when "en/blog/mottainai-do-not-waste-what-can-teach-you.html"
           "Mottainai in Aikido and budō: how not to waste correction, partners, time, and energy on the mat, but turn them into real learning."
         when "en/blog/ninjo-human-feeling-without-losing-direction.html"
@@ -920,7 +920,7 @@ module Site
       BLOG_POSTS_PER_PAGE = 10
 
       BLOG_POSTS_PL = [
-        { date: "25 maja 2026", title: "Ikigai (生き甲斐) — powód, który wytrzymuje zwykły tydzień", url: "/blog/ikigai-sens-regularnej-praktyki.html", summary: "Dlaczego powrót na matę w zwykłym tygodniu mówi więcej o sensie praktyki niż chwilowa motywacja i wielkie deklaracje." },
+        { date: "25 maja 2026", title: "Ikigai (生き甲斐) — sens, który wytrzymuje zwykły tydzień", url: "/blog/ikigai-sens-regularnej-praktyki.html", summary: "Dlaczego zwykły powrót na matę mówi więcej o sensie praktyki niż chwilowa motywacja i wielkie deklaracje." },
         { date: "22 maja 2026", title: "Mottainai (もったいない) — nie marnuj tego, z czego możesz się uczyć", url: "/blog/mottainai-nie-marnuj-tego-co-moze-cie-nauczyc.html", summary: "O tym, jak nie przepuścić przez palce korekty, błędu, partnera i zwykłego powtórzenia, gdy mogą stać się realną zmianą." },
         { date: "18 maja 2026", title: "Droga i mistrzostwo", url: "/blog/droga-i-mistrzostwo.html", summary: "Co naprawdę zaczyna się wtedy, gdy techniki są już opanowane, i dlaczego mistrz mówi: 'nic nie wiem'." },
         { date: "16 maja 2026", title: "Nemawashi (根回し) — przygotowanie gruntu przed działaniem", url: "/blog/nemawashi-przygotowanie-gruntu-przed-dzialaniem.html", summary: "Dlaczego dobra technika, korekta i rozwój dojo wymagają przygotowania gruntu przed widocznym ruchem." },
@@ -961,7 +961,7 @@ module Site
       ].freeze
 
       BLOG_POSTS_EN = [
-        { date: "May 25, 2026", title: "Ikigai (生き甲斐) — the reason that survives an ordinary week", url: "/en/blog/ikigai-the-reason-to-return-to-practice.html", summary: "Why returning to the mat in an ordinary week says more about the meaning of practice than temporary motivation or grand declarations." },
+        { date: "May 25, 2026", title: "Ikigai (生き甲斐) — meaning that survives an ordinary week", url: "/en/blog/ikigai-the-reason-to-return-to-practice.html", summary: "Why returning to the mat in an ordinary week says more about the meaning of practice than temporary motivation or grand declarations." },
         { date: "May 22, 2026", title: "Mottainai (もったいない) — do not waste what can teach you", url: "/en/blog/mottainai-do-not-waste-what-can-teach-you.html", summary: "How not to waste correction, partners, time, and energy on the mat, but turn them into real learning." },
         { date: "May 18, 2026", title: "The Path and Mastery", url: "/en/blog/the-path-and-mastery.html", summary: "What truly begins once techniques have been mastered, and why a master says, 'I know nothing'." },
         { date: "May 16, 2026", title: "Nemawashi (根回し) — laying the groundwork before action", url: "/en/blog/nemawashi-laying-groundwork-before-action.html", summary: "Why good technique, correction, and dojo development require groundwork before visible movement." },
@@ -1200,7 +1200,7 @@ module Site
           )
         when "blog/ikigai-sens-regularnej-praktyki.html"
           article_schema(
-            name: "Ikigai — powód, który wytrzymuje zwykły tydzień",
+            name: "Ikigai — sens, który wytrzymuje zwykły tydzień",
             description: page_description,
             image: page_social_image_url,
             lang: "pl",
@@ -1398,7 +1398,7 @@ module Site
           )
         when "en/blog/ikigai-the-reason-to-return-to-practice.html"
           article_schema(
-            name: "Ikigai — the reason that survives an ordinary week",
+            name: "Ikigai — meaning that survives an ordinary week",
             description: page_description,
             image: page_social_image_url,
             lang: "en",

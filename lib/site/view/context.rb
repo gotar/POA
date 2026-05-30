@@ -526,7 +526,7 @@ module Site
         when "blog/mottainai-nie-marnuj-tego-co-moze-cie-nauczyc.html"
           "Mottainai w Aikido i budō: jak rozpoznawać wartość korekty, błędu, partnera i powtórzenia, zanim zostaną zmarnowane, i zamieniać otrzymany sygnał w realną zmianę."
         when "blog/mono-no-aware-czulosc-wobec-przemijania.html"
-          "Mono no aware w Aikido i budō: jak świadomość przemijania podnosi jakość uwagi, partnerowania i decyzji, zamiast odkładać praktykę na później."
+          "Mono no aware w Aikido i budō: jak świadomość przemijania wyostrza uwagę, porządkuje pracę z partnerem i pomaga podejmować decyzje, zamiast odkładać praktykę na później."
         when "blog/ninjo-ludzkie-uczucia-bez-utraty-kierunku.html"
           "Ninjō w Aikido i budō: jak rozpoznawać ludzkie uczucia, nie wypierać emocji i nie pozwalać, by nastrój prowadził trening zamiast odpowiedzialności."
         when "blog/omotenashi-goscinnosc-ktora-buduje-dojo.html"
@@ -608,7 +608,7 @@ module Site
         when "en/blog/mottainai-do-not-waste-what-can-teach-you.html"
           "Mottainai in Aikido and budō: how not to waste correction, partners, time, and energy on the mat, but turn them into real learning."
         when "en/blog/mono-no-aware-sensitivity-to-impermanence.html"
-          "Mono no aware in Aikido and budō: how awareness of impermanence raises attention, partner quality, and decision-making instead of postponing practice."
+          "Mono no aware in Aikido and budō: how awareness of impermanence sharpens attention, improves partner work, and clarifies decision-making instead of postponing practice."
         when "en/blog/ninjo-human-feeling-without-losing-direction.html"
           "Ninjō in Aikido and budō: how to recognize human feeling without repressing emotion or letting mood steer training instead of responsibility."
         when "en/blog/omotenashi-hospitality-that-builds-the-dojo.html"
@@ -932,7 +932,7 @@ module Site
       BLOG_POSTS_PER_PAGE = 10
 
       BLOG_POSTS_PL = [
-        { date: "30 maja 2026", title: "Mono no aware (物の哀れ) — czułość wobec przemijania", url: "/blog/mono-no-aware-czulosc-wobec-przemijania.html", summary: "Jak świadomość przemijania podnosi jakość treningu, relacji uke–tori i decyzji podejmowanych na macie oraz poza nią." },
+        { date: "30 maja 2026", title: "Mono no aware (物の哀れ) — czułość wobec przemijania", url: "/blog/mono-no-aware-czulosc-wobec-przemijania.html", summary: "Jak świadomość przemijania wyostrza uwagę, porządkuje relację uke–tori i pomaga podejmować decyzje na macie oraz poza nią." },
         { date: "25 maja 2026", title: "Ikigai (生き甲斐) — sens, który wytrzymuje zwykły tydzień", url: "/blog/ikigai-sens-regularnej-praktyki.html", summary: "Dlaczego zwykły powrót na matę mówi więcej o sensie praktyki niż chwilowa motywacja i wielkie deklaracje." },
         { date: "22 maja 2026", title: "Mottainai (もったいない) — nie marnuj tego, z czego możesz się uczyć", url: "/blog/mottainai-nie-marnuj-tego-co-moze-cie-nauczyc.html", summary: "O tym, jak nie przepuścić przez palce korekty, błędu, partnera i zwykłego powtórzenia, gdy mogą stać się realną zmianą." },
         { date: "18 maja 2026", title: "Droga i mistrzostwo", url: "/blog/droga-i-mistrzostwo.html", summary: "Co naprawdę zaczyna się wtedy, gdy techniki są już opanowane, i dlaczego mistrz mówi: 'nic nie wiem'." },
@@ -974,7 +974,7 @@ module Site
       ].freeze
 
       BLOG_POSTS_EN = [
-        { date: "May 30, 2026", title: "Mono no aware (物の哀れ) — sensitivity to impermanence", url: "/en/blog/mono-no-aware-sensitivity-to-impermanence.html", summary: "How awareness of impermanence raises training quality, uke–tori relation, and practical decision-making on and off the mat." },
+        { date: "May 30, 2026", title: "Mono no aware (物の哀れ) — sensitivity to impermanence", url: "/en/blog/mono-no-aware-sensitivity-to-impermanence.html", summary: "How awareness of impermanence sharpens attention, improves partner work, and clarifies decisions on and off the mat." },
         { date: "May 25, 2026", title: "Ikigai (生き甲斐) — meaning that survives an ordinary week", url: "/en/blog/ikigai-the-reason-to-return-to-practice.html", summary: "Why returning to the mat in an ordinary week says more about the meaning of practice than temporary motivation or grand declarations." },
         { date: "May 22, 2026", title: "Mottainai (もったいない) — do not waste what can teach you", url: "/en/blog/mottainai-do-not-waste-what-can-teach-you.html", summary: "How not to waste correction, partners, time, and energy on the mat, but turn them into real learning." },
         { date: "May 18, 2026", title: "The Path and Mastery", url: "/en/blog/the-path-and-mastery.html", summary: "What truly begins once techniques have been mastered, and why a master says, 'I know nothing'." },

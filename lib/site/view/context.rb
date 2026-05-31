@@ -230,6 +230,8 @@ module Site
           "Mottainai — nie marnuj tego, z czego możesz się uczyć | Blog"
         when "blog/mono-no-aware-czulosc-wobec-przemijania.html"
           "Mono no aware — czułość wobec przemijania, która porządkuje praktykę | Blog"
+        when "blog/ikkyo-pierwsza-nauka-ktora-nie-konczy-sie-nigdy.html"
+          "Ikkyo — pierwsza nauka, która nie kończy się nigdy | Blog"
         when "blog/ninjo-ludzkie-uczucia-bez-utraty-kierunku.html"
           "Ninjō — ludzkie uczucia bez utraty kierunku | Blog"
         when "blog/omotenashi-goscinnosc-ktora-buduje-dojo.html"
@@ -312,6 +314,8 @@ module Site
           "Mottainai — do not waste what can teach you | Blog"
         when "en/blog/mono-no-aware-sensitivity-to-impermanence.html"
           "Mono no aware — sensitivity to impermanence that sharpens practice | Blog"
+        when "en/blog/ikkyo-the-first-teaching-that-never-ends.html"
+          "Ikkyo — the first teaching that never ends | Blog"
         when "en/blog/ninjo-human-feeling-without-losing-direction.html"
           "Ninjō — human feeling without losing direction | Blog"
         when "en/blog/omotenashi-hospitality-that-builds-the-dojo.html"
@@ -527,6 +531,8 @@ module Site
           "Mottainai w Aikido i budō: jak rozpoznawać wartość korekty, błędu, partnera i powtórzenia, zanim zostaną zmarnowane, i zamieniać otrzymany sygnał w realną zmianę."
         when "blog/mono-no-aware-czulosc-wobec-przemijania.html"
           "Mono no aware w Aikido i budō: jak świadomość przemijania wyostrza uwagę, porządkuje pracę z partnerem i pomaga podejmować decyzje, zamiast odkładać praktykę na później."
+        when "blog/ikkyo-pierwsza-nauka-ktora-nie-konczy-sie-nigdy.html"
+          "Ikkyo w Aikido i budō: dlaczego pierwsza nauka pozostaje testem postawy, centrum, oddechu, riai i prowadzenia bez siłowania się przez całe życie praktyki."
         when "blog/ninjo-ludzkie-uczucia-bez-utraty-kierunku.html"
           "Ninjō w Aikido i budō: jak rozpoznawać ludzkie uczucia, nie wypierać emocji i nie pozwalać, by nastrój prowadził trening zamiast odpowiedzialności."
         when "blog/omotenashi-goscinnosc-ktora-buduje-dojo.html"
@@ -609,6 +615,8 @@ module Site
           "Mottainai in Aikido and budō: how not to waste correction, partners, time, and energy on the mat, but turn them into real learning."
         when "en/blog/mono-no-aware-sensitivity-to-impermanence.html"
           "Mono no aware in Aikido and budō: how awareness of impermanence sharpens attention, improves partner work, and clarifies decision-making instead of postponing practice."
+        when "en/blog/ikkyo-the-first-teaching-that-never-ends.html"
+          "Ikkyo in Aikido and budō: why the first teaching remains a lifelong test of posture, center, breath, riai, and leading without force."
         when "en/blog/ninjo-human-feeling-without-losing-direction.html"
           "Ninjō in Aikido and budō: how to recognize human feeling without repressing emotion or letting mood steer training instead of responsibility."
         when "en/blog/omotenashi-hospitality-that-builds-the-dojo.html"
@@ -802,6 +810,8 @@ module Site
           "mottainai aikido, mottainai, nie marnować korekty, błąd jako informacja, partner w aikido, energia w technice, uwaga w dojo, budo, kultura japonska"
         when "blog/mono-no-aware-czulosc-wobec-przemijania.html"
           "mono no aware aikido, mono no aware, przemijanie w budo, obecność na macie, nietrwałość, uważność w treningu, relacja uke tori, japonska estetyka"
+        when "blog/ikkyo-pierwsza-nauka-ktora-nie-konczy-sie-nigdy.html"
+          "ikkyo aikido, pierwsza nauka aikido, kontrola łokcia, tai sabaki, riai, centrum w aikido, ikkyo undo, postawa aikido, uke nage, budo"
         when "blog/ninjo-ludzkie-uczucia-bez-utraty-kierunku.html"
           "ninjo aikido, ninjō, ludzkie uczucia, emocje w treningu, giri i ninjo, odpowiedzialność w dojo, budo, kultura japonska"
         when "blog/omotenashi-goscinnosc-ktora-buduje-dojo.html"
@@ -884,6 +894,8 @@ module Site
           "mottainai aikido, mottainai, do not waste correction, dojo attention, aikido partner, energy in technique, budo, Japanese culture"
         when "en/blog/mono-no-aware-sensitivity-to-impermanence.html"
           "mono no aware aikido, mono no aware, impermanence in budo, presence on the mat, transient beauty, uke tori relation, dojo awareness, Japanese aesthetics"
+        when "en/blog/ikkyo-the-first-teaching-that-never-ends.html"
+          "ikkyo aikido, first teaching aikido, elbow control, tai sabaki, riai, aikido center, ikkyo undo, aikido posture, uke nage, budo"
         when "en/blog/ninjo-human-feeling-without-losing-direction.html"
           "ninjo aikido, ninjō, human feeling, emotions in training, giri and ninjo, responsibility in dojo, budo, Japanese culture"
         when "en/blog/omotenashi-hospitality-that-builds-the-dojo.html"
@@ -932,6 +944,7 @@ module Site
       BLOG_POSTS_PER_PAGE = 10
 
       BLOG_POSTS_PL = [
+        { date: "31 maja 2026", title: "Ikkyo (一教) — pierwsza nauka, która nie kończy się nigdy", url: "/blog/ikkyo-pierwsza-nauka-ktora-nie-konczy-sie-nigdy.html", summary: "Dlaczego prosta kontrola łokcia odsłania całe aikido: postawę, centrum, oddech, riai i prowadzenie bez siłowania się." },
         { date: "30 maja 2026", title: "Mono no aware (物の哀れ) — czułość wobec przemijania", url: "/blog/mono-no-aware-czulosc-wobec-przemijania.html", summary: "Jak świadomość przemijania wyostrza uwagę, porządkuje relację uke–tori i pomaga podejmować decyzje na macie oraz poza nią." },
         { date: "25 maja 2026", title: "Ikigai (生き甲斐) — sens, który wytrzymuje zwykły tydzień", url: "/blog/ikigai-sens-regularnej-praktyki.html", summary: "Dlaczego zwykły powrót na matę mówi więcej o sensie praktyki niż chwilowa motywacja i wielkie deklaracje." },
         { date: "22 maja 2026", title: "Mottainai (もったいない) — nie marnuj tego, z czego możesz się uczyć", url: "/blog/mottainai-nie-marnuj-tego-co-moze-cie-nauczyc.html", summary: "O tym, jak nie przepuścić przez palce korekty, błędu, partnera i zwykłego powtórzenia, gdy mogą stać się realną zmianą." },
@@ -974,6 +987,7 @@ module Site
       ].freeze
 
       BLOG_POSTS_EN = [
+        { date: "May 31, 2026", title: "Ikkyo (一教) — the first teaching that never ends", url: "/en/blog/ikkyo-the-first-teaching-that-never-ends.html", summary: "Why simple elbow control reveals the whole of Aikido: posture, center, breath, riai, and leading without force." },
         { date: "May 30, 2026", title: "Mono no aware (物の哀れ) — sensitivity to impermanence", url: "/en/blog/mono-no-aware-sensitivity-to-impermanence.html", summary: "How awareness of impermanence sharpens attention, improves partner work, and clarifies decisions on and off the mat." },
         { date: "May 25, 2026", title: "Ikigai (生き甲斐) — meaning that survives an ordinary week", url: "/en/blog/ikigai-the-reason-to-return-to-practice.html", summary: "Why returning to the mat in an ordinary week says more about the meaning of practice than temporary motivation or grand declarations." },
         { date: "May 22, 2026", title: "Mottainai (もったいない) — do not waste what can teach you", url: "/en/blog/mottainai-do-not-waste-what-can-teach-you.html", summary: "How not to waste correction, partners, time, and energy on the mat, but turn them into real learning." },
@@ -1239,6 +1253,15 @@ module Site
             date_published: "2026-05-30",
             date_modified: "2026-05-30"
           )
+        when "blog/ikkyo-pierwsza-nauka-ktora-nie-konczy-sie-nigdy.html"
+          article_schema(
+            name: "Ikkyo — pierwsza nauka, która nie kończy się nigdy",
+            description: page_description,
+            image: page_social_image_url,
+            lang: "pl",
+            date_published: "2026-05-31",
+            date_modified: "2026-05-31"
+          )
         when "blog/ninjo-ludzkie-uczucia-bez-utraty-kierunku.html"
           article_schema(
             name: "Ninjō — ludzkie uczucia bez utraty kierunku",
@@ -1446,6 +1469,15 @@ module Site
             date_published: "2026-05-30",
             date_modified: "2026-05-30"
           )
+        when "en/blog/ikkyo-the-first-teaching-that-never-ends.html"
+          article_schema(
+            name: "Ikkyo — the first teaching that never ends",
+            description: page_description,
+            image: page_social_image_url,
+            lang: "en",
+            date_published: "2026-05-31",
+            date_modified: "2026-05-31"
+          )
         when "en/blog/ninjo-human-feeling-without-losing-direction.html"
           article_schema(
             name: "Ninjō — human feeling without losing direction",
@@ -1614,6 +1646,7 @@ module Site
         "blog/nemawashi-przygotowanie-gruntu-przed-dzialaniem.html" => "en/blog/nemawashi-laying-groundwork-before-action.html",
         "blog/mottainai-nie-marnuj-tego-co-moze-cie-nauczyc.html" => "en/blog/mottainai-do-not-waste-what-can-teach-you.html",
         "blog/mono-no-aware-czulosc-wobec-przemijania.html" => "en/blog/mono-no-aware-sensitivity-to-impermanence.html",
+        "blog/ikkyo-pierwsza-nauka-ktora-nie-konczy-sie-nigdy.html" => "en/blog/ikkyo-the-first-teaching-that-never-ends.html",
         "blog/ikigai-sens-regularnej-praktyki.html" => "en/blog/ikigai-the-reason-to-return-to-practice.html",
         "blog/misogi-oczyszczenie-przez-praktyke.html" => "en/blog/misogi-purification-through-practice.html",
         "blog/5-zasad-kazdej-techniki.html" => "en/blog/five-principles-behind-every-technique.html",
@@ -1684,6 +1717,7 @@ module Site
         "en/blog/nemawashi-laying-groundwork-before-action.html" => "blog/nemawashi-przygotowanie-gruntu-przed-dzialaniem.html",
         "en/blog/mottainai-do-not-waste-what-can-teach-you.html" => "blog/mottainai-nie-marnuj-tego-co-moze-cie-nauczyc.html",
         "en/blog/mono-no-aware-sensitivity-to-impermanence.html" => "blog/mono-no-aware-czulosc-wobec-przemijania.html",
+        "en/blog/ikkyo-the-first-teaching-that-never-ends.html" => "blog/ikkyo-pierwsza-nauka-ktora-nie-konczy-sie-nigdy.html",
         "en/blog/ikigai-the-reason-to-return-to-practice.html" => "blog/ikigai-sens-regularnej-praktyki.html",
         "en/blog/misogi-purification-through-practice.html" => "blog/misogi-oczyszczenie-przez-praktyke.html",
         "en/blog/five-principles-behind-every-technique.html" => "blog/5-zasad-kazdej-techniki.html",

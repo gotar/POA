@@ -96,6 +96,7 @@ module Site
       blog_mottainai_view: "views.blog.mottainai",
       blog_mono_no_aware_view: "views.blog.mono_no_aware",
       blog_ikkyo_view: "views.blog.ikkyo",
+      blog_yugen_view: "views.blog.yugen",
       blog_omotenashi_view: "views.blog.omotenashi",
       blog_nemawashi_view: "views.blog.nemawashi",
       blog_misogi_view: "views.blog.misogi",
@@ -137,6 +138,7 @@ module Site
       blog_mottainai_en_view: "views.en.blog.mottainai",
       blog_mono_no_aware_en_view: "views.en.blog.mono_no_aware",
       blog_ikkyo_en_view: "views.en.blog.ikkyo",
+      blog_yugen_en_view: "views.en.blog.yugen",
       blog_omotenashi_en_view: "views.en.blog.omotenashi",
       blog_nemawashi_en_view: "views.en.blog.nemawashi",
       blog_misogi_en_view: "views.en.blog.misogi",
@@ -244,6 +246,7 @@ module Site
       render export_dir, "blog/mottainai-nie-marnuj-tego-co-moze-cie-nauczyc.html", blog_mottainai_view
       render export_dir, "blog/mono-no-aware-czulosc-wobec-przemijania.html", blog_mono_no_aware_view
       render export_dir, "blog/ikkyo-pierwsza-nauka-ktora-nie-konczy-sie-nigdy.html", blog_ikkyo_view
+      render export_dir, "blog/yugen-glebia-ktorej-nie-da-sie-splaszczyc.html", blog_yugen_view
       render export_dir, "blog/ninjo-ludzkie-uczucia-bez-utraty-kierunku.html", blog_ninjo_view
       render export_dir, "blog/omotenashi-goscinnosc-ktora-buduje-dojo.html", blog_omotenashi_view
       render export_dir, "blog/nemawashi-przygotowanie-gruntu-przed-dzialaniem.html", blog_nemawashi_view
@@ -284,6 +287,7 @@ module Site
       render export_dir, "en/blog/mottainai-do-not-waste-what-can-teach-you.html", blog_mottainai_en_view
       render export_dir, "en/blog/mono-no-aware-sensitivity-to-impermanence.html", blog_mono_no_aware_en_view
       render export_dir, "en/blog/ikkyo-the-first-teaching-that-never-ends.html", blog_ikkyo_en_view
+      render export_dir, "en/blog/yugen-depth-that-cannot-be-flattened.html", blog_yugen_en_view
       render export_dir, "en/blog/ninjo-human-feeling-without-losing-direction.html", blog_ninjo_en_view
       render export_dir, "en/blog/omotenashi-hospitality-that-builds-the-dojo.html", blog_omotenashi_en_view
       render export_dir, "en/blog/nemawashi-laying-groundwork-before-action.html", blog_nemawashi_en_view

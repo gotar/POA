@@ -232,6 +232,8 @@ module Site
           "Mono no aware — czułość wobec przemijania, która porządkuje praktykę | Blog"
         when "blog/ikkyo-pierwsza-nauka-ktora-nie-konczy-sie-nigdy.html"
           "Ikkyo — pierwsza nauka, która nie kończy się nigdy | Blog"
+        when "blog/yugen-glebia-ktorej-nie-da-sie-splaszczyc.html"
+          "Yūgen — głębia, której nie da się spłaszczyć do instrukcji | Blog"
         when "blog/ninjo-ludzkie-uczucia-bez-utraty-kierunku.html"
           "Ninjō — ludzkie uczucia bez utraty kierunku | Blog"
         when "blog/omotenashi-goscinnosc-ktora-buduje-dojo.html"
@@ -316,6 +318,8 @@ module Site
           "Mono no aware — sensitivity to impermanence that sharpens practice | Blog"
         when "en/blog/ikkyo-the-first-teaching-that-never-ends.html"
           "Ikkyo — the first teaching that never ends | Blog"
+        when "en/blog/yugen-depth-that-cannot-be-flattened.html"
+          "Yūgen — depth that cannot be flattened into instruction | Blog"
         when "en/blog/ninjo-human-feeling-without-losing-direction.html"
           "Ninjō — human feeling without losing direction | Blog"
         when "en/blog/omotenashi-hospitality-that-builds-the-dojo.html"
@@ -533,6 +537,8 @@ module Site
           "Mono no aware w Aikido i budō: jak świadomość przemijania wyostrza uwagę, porządkuje pracę z partnerem i pomaga podejmować decyzje, zamiast odkładać praktykę na później."
         when "blog/ikkyo-pierwsza-nauka-ktora-nie-konczy-sie-nigdy.html"
           "Ikkyo w Aikido i budō: dlaczego pierwsza nauka pozostaje testem postawy, centrum, oddechu, riai i prowadzenia bez siłowania się przez całe życie praktyki."
+        when "blog/yugen-glebia-ktorej-nie-da-sie-splaszczyc.html"
+          "Yūgen w Aikido i budō: jak rozumieć głębię techniki, której nie widać w samej instrukcji — timing, dystans, intencję, ciszę i kontakt z partnerem."
         when "blog/ninjo-ludzkie-uczucia-bez-utraty-kierunku.html"
           "Ninjō w Aikido i budō: jak rozpoznawać ludzkie uczucia, nie wypierać emocji i nie pozwalać, by nastrój prowadził trening zamiast odpowiedzialności."
         when "blog/omotenashi-goscinnosc-ktora-buduje-dojo.html"
@@ -617,6 +623,8 @@ module Site
           "Mono no aware in Aikido and budō: how awareness of impermanence sharpens attention, improves partner work, and clarifies decision-making instead of postponing practice."
         when "en/blog/ikkyo-the-first-teaching-that-never-ends.html"
           "Ikkyo in Aikido and budō: why the first teaching remains a lifelong test of posture, center, breath, riai, and leading without force."
+        when "en/blog/yugen-depth-that-cannot-be-flattened.html"
+          "Yūgen in Aikido and budō: how to understand the depth of technique beyond instruction — timing, distance, intent, quiet, and contact with a partner."
         when "en/blog/ninjo-human-feeling-without-losing-direction.html"
           "Ninjō in Aikido and budō: how to recognize human feeling without repressing emotion or letting mood steer training instead of responsibility."
         when "en/blog/omotenashi-hospitality-that-builds-the-dojo.html"
@@ -812,6 +820,8 @@ module Site
           "mono no aware aikido, mono no aware, przemijanie w budo, obecność na macie, nietrwałość, uważność w treningu, relacja uke tori, japonska estetyka"
         when "blog/ikkyo-pierwsza-nauka-ktora-nie-konczy-sie-nigdy.html"
           "ikkyo aikido, pierwsza nauka aikido, kontrola łokcia, tai sabaki, riai, centrum w aikido, ikkyo undo, postawa aikido, uke nage, budo"
+        when "blog/yugen-glebia-ktorej-nie-da-sie-splaszczyc.html"
+          "yugen aikido, yūgen, głębia techniki, timing aikido, maai, intencja w aikido, kontakt z partnerem, budo, japonska estetyka"
         when "blog/ninjo-ludzkie-uczucia-bez-utraty-kierunku.html"
           "ninjo aikido, ninjō, ludzkie uczucia, emocje w treningu, giri i ninjo, odpowiedzialność w dojo, budo, kultura japonska"
         when "blog/omotenashi-goscinnosc-ktora-buduje-dojo.html"
@@ -896,6 +906,8 @@ module Site
           "mono no aware aikido, mono no aware, impermanence in budo, presence on the mat, transient beauty, uke tori relation, dojo awareness, Japanese aesthetics"
         when "en/blog/ikkyo-the-first-teaching-that-never-ends.html"
           "ikkyo aikido, first teaching aikido, elbow control, tai sabaki, riai, aikido center, ikkyo undo, aikido posture, uke nage, budo"
+        when "en/blog/yugen-depth-that-cannot-be-flattened.html"
+          "yugen aikido, yūgen, depth of technique, aikido timing, maai, intent in aikido, partner contact, budo, Japanese aesthetics"
         when "en/blog/ninjo-human-feeling-without-losing-direction.html"
           "ninjo aikido, ninjō, human feeling, emotions in training, giri and ninjo, responsibility in dojo, budo, Japanese culture"
         when "en/blog/omotenashi-hospitality-that-builds-the-dojo.html"
@@ -944,6 +956,7 @@ module Site
       BLOG_POSTS_PER_PAGE = 10
 
       BLOG_POSTS_PL = [
+        { date: "3 czerwca 2026", title: "Yūgen (幽玄) — głębia, której nie da się spłaszczyć do instrukcji", url: "/blog/yugen-glebia-ktorej-nie-da-sie-splaszczyc.html", summary: "O tym, dlaczego dobra technika ma warstwę widoczną i niewidoczną: timing, dystans, intencję, ciszę i kontakt z partnerem." },
         { date: "31 maja 2026", title: "Ikkyo (一教) — pierwsza nauka, która nie kończy się nigdy", url: "/blog/ikkyo-pierwsza-nauka-ktora-nie-konczy-sie-nigdy.html", summary: "Dlaczego prosta kontrola łokcia odsłania całe aikido: postawę, centrum, oddech, riai i prowadzenie bez siłowania się." },
         { date: "30 maja 2026", title: "Mono no aware (物の哀れ) — czułość wobec przemijania", url: "/blog/mono-no-aware-czulosc-wobec-przemijania.html", summary: "Jak świadomość przemijania wyostrza uwagę, porządkuje relację uke–tori i pomaga podejmować decyzje na macie oraz poza nią." },
         { date: "25 maja 2026", title: "Ikigai (生き甲斐) — sens, który wytrzymuje zwykły tydzień", url: "/blog/ikigai-sens-regularnej-praktyki.html", summary: "Dlaczego zwykły powrót na matę mówi więcej o sensie praktyki niż chwilowa motywacja i wielkie deklaracje." },
@@ -987,6 +1000,7 @@ module Site
       ].freeze
 
       BLOG_POSTS_EN = [
+        { date: "June 3, 2026", title: "Yūgen (幽玄) — depth that cannot be flattened into instruction", url: "/en/blog/yugen-depth-that-cannot-be-flattened.html", summary: "Why good technique has a visible and an invisible layer: timing, distance, intent, quiet, and contact with a partner." },
         { date: "May 31, 2026", title: "Ikkyo (一教) — the first teaching that never ends", url: "/en/blog/ikkyo-the-first-teaching-that-never-ends.html", summary: "Why simple elbow control reveals the whole of Aikido: posture, center, breath, riai, and leading without force." },
         { date: "May 30, 2026", title: "Mono no aware (物の哀れ) — sensitivity to impermanence", url: "/en/blog/mono-no-aware-sensitivity-to-impermanence.html", summary: "How awareness of impermanence sharpens attention, improves partner work, and clarifies decisions on and off the mat." },
         { date: "May 25, 2026", title: "Ikigai (生き甲斐) — meaning that survives an ordinary week", url: "/en/blog/ikigai-the-reason-to-return-to-practice.html", summary: "Why returning to the mat in an ordinary week says more about the meaning of practice than temporary motivation or grand declarations." },
@@ -1262,6 +1276,15 @@ module Site
             date_published: "2026-05-31",
             date_modified: "2026-05-31"
           )
+        when "blog/yugen-glebia-ktorej-nie-da-sie-splaszczyc.html"
+          article_schema(
+            name: "Yūgen — głębia, której nie da się spłaszczyć do instrukcji",
+            description: page_description,
+            image: page_social_image_url,
+            lang: "pl",
+            date_published: "2026-06-03",
+            date_modified: "2026-06-03"
+          )
         when "blog/ninjo-ludzkie-uczucia-bez-utraty-kierunku.html"
           article_schema(
             name: "Ninjō — ludzkie uczucia bez utraty kierunku",
@@ -1478,6 +1501,15 @@ module Site
             date_published: "2026-05-31",
             date_modified: "2026-05-31"
           )
+        when "en/blog/yugen-depth-that-cannot-be-flattened.html"
+          article_schema(
+            name: "Yūgen — depth that cannot be flattened into instruction",
+            description: page_description,
+            image: page_social_image_url,
+            lang: "en",
+            date_published: "2026-06-03",
+            date_modified: "2026-06-03"
+          )
         when "en/blog/ninjo-human-feeling-without-losing-direction.html"
           article_schema(
             name: "Ninjō — human feeling without losing direction",
@@ -1623,6 +1655,7 @@ module Site
         "blog-2.html" => "en/blog-2.html",
         "blog-3.html" => "en/blog-3.html",
         "blog-4.html" => "en/blog-4.html",
+        "blog-5.html" => "en/blog-5.html",
         "blog/bushido-droga-wojownika.html" => "en/blog/bushido-way-of-the-warrior.html",
         "blog/kaizen-ciagle-doskonalenie.html" => "en/blog/kaizen-continuous-improvement.html",
         "blog/gaman-wytrwalosc.html" => "en/blog/gaman-endurance-and-composure.html",
@@ -1647,6 +1680,7 @@ module Site
         "blog/mottainai-nie-marnuj-tego-co-moze-cie-nauczyc.html" => "en/blog/mottainai-do-not-waste-what-can-teach-you.html",
         "blog/mono-no-aware-czulosc-wobec-przemijania.html" => "en/blog/mono-no-aware-sensitivity-to-impermanence.html",
         "blog/ikkyo-pierwsza-nauka-ktora-nie-konczy-sie-nigdy.html" => "en/blog/ikkyo-the-first-teaching-that-never-ends.html",
+        "blog/yugen-glebia-ktorej-nie-da-sie-splaszczyc.html" => "en/blog/yugen-depth-that-cannot-be-flattened.html",
         "blog/ikigai-sens-regularnej-praktyki.html" => "en/blog/ikigai-the-reason-to-return-to-practice.html",
         "blog/misogi-oczyszczenie-przez-praktyke.html" => "en/blog/misogi-purification-through-practice.html",
         "blog/5-zasad-kazdej-techniki.html" => "en/blog/five-principles-behind-every-technique.html",
@@ -1694,6 +1728,7 @@ module Site
         "en/blog-2.html" => "blog-2.html",
         "en/blog-3.html" => "blog-3.html",
         "en/blog-4.html" => "blog-4.html",
+        "en/blog-5.html" => "blog-5.html",
         "en/blog/bushido-way-of-the-warrior.html" => "blog/bushido-droga-wojownika.html",
         "en/blog/kaizen-continuous-improvement.html" => "blog/kaizen-ciagle-doskonalenie.html",
         "en/blog/gaman-endurance-and-composure.html" => "blog/gaman-wytrwalosc.html",
@@ -1718,6 +1753,7 @@ module Site
         "en/blog/mottainai-do-not-waste-what-can-teach-you.html" => "blog/mottainai-nie-marnuj-tego-co-moze-cie-nauczyc.html",
         "en/blog/mono-no-aware-sensitivity-to-impermanence.html" => "blog/mono-no-aware-czulosc-wobec-przemijania.html",
         "en/blog/ikkyo-the-first-teaching-that-never-ends.html" => "blog/ikkyo-pierwsza-nauka-ktora-nie-konczy-sie-nigdy.html",
+        "en/blog/yugen-depth-that-cannot-be-flattened.html" => "blog/yugen-glebia-ktorej-nie-da-sie-splaszczyc.html",
         "en/blog/ikigai-the-reason-to-return-to-practice.html" => "blog/ikigai-sens-regularnej-praktyki.html",
         "en/blog/misogi-purification-through-practice.html" => "blog/misogi-oczyszczenie-przez-praktyke.html",
         "en/blog/five-principles-behind-every-technique.html" => "blog/5-zasad-kazdej-techniki.html",

@@ -538,7 +538,7 @@ module Site
         when "blog/ikkyo-pierwsza-nauka-ktora-nie-konczy-sie-nigdy.html"
           "Ikkyo w Aikido i budō: dlaczego pierwsza nauka pozostaje testem postawy, centrum, oddechu, riai i prowadzenia bez siłowania się przez całe życie praktyki."
         when "blog/yugen-glebia-ktorej-nie-da-sie-splaszczyc.html"
-          "Yūgen w Aikido i budō: jak rozumieć głębię techniki, której nie widać w samej instrukcji — timing, dystans, intencję, ciszę i kontakt z partnerem."
+          "Yūgen w Aikido i budō: jak rozumieć głębię techniki, której nie widać w samej instrukcji — wyczucie czasu, dystans, intencję, ciszę i kontakt z partnerem."
         when "blog/ninjo-ludzkie-uczucia-bez-utraty-kierunku.html"
           "Ninjō w Aikido i budō: jak rozpoznawać ludzkie uczucia, nie wypierać emocji i nie pozwalać, by nastrój prowadził trening zamiast odpowiedzialności."
         when "blog/omotenashi-goscinnosc-ktora-buduje-dojo.html"
@@ -821,7 +821,7 @@ module Site
         when "blog/ikkyo-pierwsza-nauka-ktora-nie-konczy-sie-nigdy.html"
           "ikkyo aikido, pierwsza nauka aikido, kontrola łokcia, tai sabaki, riai, centrum w aikido, ikkyo undo, postawa aikido, uke nage, budo"
         when "blog/yugen-glebia-ktorej-nie-da-sie-splaszczyc.html"
-          "yugen aikido, yūgen, głębia techniki, timing aikido, maai, intencja w aikido, kontakt z partnerem, budo, japonska estetyka"
+          "yugen aikido, yūgen, głębia techniki, wyczucie czasu aikido, maai, intencja w aikido, kontakt z partnerem, budo, japonska estetyka"
         when "blog/ninjo-ludzkie-uczucia-bez-utraty-kierunku.html"
           "ninjo aikido, ninjō, ludzkie uczucia, emocje w treningu, giri i ninjo, odpowiedzialność w dojo, budo, kultura japonska"
         when "blog/omotenashi-goscinnosc-ktora-buduje-dojo.html"
@@ -956,7 +956,7 @@ module Site
       BLOG_POSTS_PER_PAGE = 10
 
       BLOG_POSTS_PL = [
-        { date: "3 czerwca 2026", title: "Yūgen (幽玄) — głębia, której nie da się spłaszczyć do instrukcji", url: "/blog/yugen-glebia-ktorej-nie-da-sie-splaszczyc.html", summary: "O tym, dlaczego dobra technika ma warstwę widoczną i niewidoczną: timing, dystans, intencję, ciszę i kontakt z partnerem." },
+        { date: "3 czerwca 2026", title: "Yūgen (幽玄) — głębia, której nie da się spłaszczyć do instrukcji", url: "/blog/yugen-glebia-ktorej-nie-da-sie-splaszczyc.html", summary: "O tym, dlaczego dobra technika ma warstwę widoczną i niewidoczną: wyczucie czasu, dystans, intencję, ciszę i kontakt z partnerem." },
         { date: "31 maja 2026", title: "Ikkyo (一教) — pierwsza nauka, która nie kończy się nigdy", url: "/blog/ikkyo-pierwsza-nauka-ktora-nie-konczy-sie-nigdy.html", summary: "Dlaczego prosta kontrola łokcia odsłania całe aikido: postawę, centrum, oddech, riai i prowadzenie bez siłowania się." },
         { date: "30 maja 2026", title: "Mono no aware (物の哀れ) — czułość wobec przemijania", url: "/blog/mono-no-aware-czulosc-wobec-przemijania.html", summary: "Jak świadomość przemijania wyostrza uwagę, porządkuje relację uke–tori i pomaga podejmować decyzje na macie oraz poza nią." },
         { date: "25 maja 2026", title: "Ikigai (生き甲斐) — sens, który wytrzymuje zwykły tydzień", url: "/blog/ikigai-sens-regularnej-praktyki.html", summary: "Dlaczego zwykły powrót na matę mówi więcej o sensie praktyki niż chwilowa motywacja i wielkie deklaracje." },

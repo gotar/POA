@@ -1013,7 +1013,7 @@ module Site
       ].freeze
 
       BLOG_POSTS_EN = [
-        { date: "June 4, 2026", title: "Another path to the same summit", url: "/en/blog/another-path-to-the-same-summit.html", summary: "How change, injury, the loss of an old rhythm, work, and relationships can become another budō path without losing direction." },
+        { date: "June 4, 2026", title: "Another path to the same summit", url: "/en/blog/another-path-to-the-same-summit.html", summary: "How change, injury, the loss of an old rhythm, work, and relationships can become another path in budō without losing direction." },
         { date: "June 3, 2026", title: "Yūgen (幽玄) — depth that cannot be flattened into instruction", url: "/en/blog/yugen-depth-that-cannot-be-flattened.html", summary: "Why good technique has a visible and an invisible layer: timing, distance, intent, quiet, and contact with a partner." },
         { date: "May 31, 2026", title: "Ikkyo (一教) — the first teaching that never ends", url: "/en/blog/ikkyo-the-first-teaching-that-never-ends.html", summary: "Why simple elbow control reveals the whole of Aikido: posture, center, breath, riai, and leading without force." },
         { date: "May 30, 2026", title: "Mono no aware (物の哀れ) — sensitivity to impermanence", url: "/en/blog/mono-no-aware-sensitivity-to-impermanence.html", summary: "How awareness of impermanence sharpens attention, improves partner work, and clarifies decisions on and off the mat." },

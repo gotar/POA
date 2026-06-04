@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350" viewBox="0 0 1080 1350" role="img" aria-labelledby="title desc">
+  <title id="title">Inna ścieżka na ten sam szczyt — grafika promująca wpis POA</title>
+  <desc id="desc">Stylizowana górska droga o kilku ścieżkach prowadzących ku temu samemu szczytowi, z kaligraficznym znakiem Drogi i tytułem artykułu.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#182436"/>
+      <stop offset="0.52" stop-color="#243c5a"/>
+      <stop offset="1" stop-color="#3d6489"/>
+    </linearGradient>
+
+    <radialGradient id="light" cx="65%" cy="26%" r="56%">
+      <stop offset="0" stop-color="#f3dfac" stop-opacity="0.42"/>
+      <stop offset="0.33" stop-color="#e8c37c" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+
+    <linearGradient id="path" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f3dfac" stop-opacity="0.92"/>
+      <stop offset="0.55" stop-color="#d6b372" stop-opacity="0.62"/>
+      <stop offset="1" stop-color="#b98f4c" stop-opacity="0.22"/>
+    </linearGradient>
+
+    <filter id="grain" x="-20%" y="-20%" width="140%" height="140%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" seed="9"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer>
+        <feFuncA type="table" tableValues="0 0.08"/>
+      </feComponentTransfer>
+    </filter>
+
+    <filter id="soft" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur stdDeviation="1.1"/>
+    </filter>
+
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="16" stdDeviation="20" flood-color="#07101d" flood-opacity="0.35"/>
+    </filter>
+
+    <style>
+      .serif { font-family: 'DejaVu Serif', Georgia, serif; }
+      .sans { font-family: 'DejaVu Sans', Arial, sans-serif; }
+      .title { font-size: 76px; font-weight: 700; letter-spacing: -1px; fill: #f8f0df; }
+      .kicker { font-size: 25px; font-weight: 700; letter-spacing: 5px; fill: #dfc48c; }
+      .subtitle { font-size: 32px; font-weight: 400; fill: #f5ead3; opacity: 0.92; }
+      .small { font-size: 25px; font-weight: 700; fill: #ecd6a4; letter-spacing: 1px; }
+      .url { font-size: 30px; font-weight: 700; fill: #ffffff; }
+    </style>
+  </defs>
+
+  <rect width="1080" height="1350" fill="url(#sky)"/>
+  <rect width="1080" height="1350" fill="url(#light)"/>
+  <rect width="1080" height="1350" filter="url(#grain)" opacity="0.65"/>
+
+  <!-- Distant sun / summit light -->
+  <circle cx="708" cy="300" r="104" fill="#f2d59a" opacity="0.18"/>
+  <circle cx="708" cy="300" r="62" fill="#f7e4b5" opacity="0.16"/>
+
+  <!-- Ensō-like brush circle around the summit -->
+  <path d="M 445 370 C 432 292 485 225 568 197 C 670 164 806 198 862 286 C 918 375 884 493 781 552 C 675 612 532 591 471 506 C 443 466 434 425 445 370"
+        fill="none" stroke="#f4dfb1" stroke-width="34" stroke-linecap="round" stroke-linejoin="round" opacity="0.22" filter="url(#soft)"/>
+  <path d="M 458 493 C 500 570 608 612 725 585" fill="none" stroke="#f4dfb1" stroke-width="22" stroke-linecap="round" opacity="0.18"/>
+
+  <!-- Mountains -->
+  <path d="M 0 750 L 120 616 L 224 690 L 365 510 L 486 635 L 600 492 L 734 655 L 845 540 L 1080 770 L 1080 1350 L 0 1350 Z"
+        fill="#0f1c2d" opacity="0.78"/>
+  <path d="M 0 860 L 145 720 L 245 790 L 395 610 L 516 760 L 666 615 L 785 754 L 915 660 L 1080 830 L 1080 1350 L 0 1350 Z"
+        fill="#14243a" opacity="0.92"/>
+  <path d="M 0 1005 L 120 870 L 215 915 L 360 760 L 478 885 L 600 745 L 730 895 L 870 792 L 1080 990 L 1080 1350 L 0 1350 Z"
+        fill="#192d45" opacity="0.98"/>
+
+  <!-- Several paths merging toward one summit -->
+  <path d="M 540 1212 C 510 1040 560 895 625 760 C 660 688 690 620 708 520"
+        fill="none" stroke="url(#path)" stroke-width="28" stroke-linecap="round" opacity="0.72"/>
+  <path d="M 230 1286 C 330 1130 420 1004 520 884 C 602 786 666 675 708 520"
+        fill="none" stroke="url(#path)" stroke-width="18" stroke-linecap="round" opacity="0.52"/>
+  <path d="M 850 1292 C 780 1116 720 972 704 838 C 692 727 700 626 708 520"
+        fill="none" stroke="url(#path)" stroke-width="18" stroke-linecap="round" opacity="0.48"/>
+  <circle cx="708" cy="520" r="11" fill="#f4dfb1" opacity="0.8"/>
+
+  <!-- Text block -->
+  <g filter="url(#shadow)">
+    <rect x="70" y="92" width="810" height="438" rx="30" fill="#07101d" opacity="0.28"/>
+  </g>
+  <text x="94" y="155" class="sans kicker">POA BLOG • BUDŌ</text>
+  <text x="94" y="247" class="serif title">Inna ścieżka</text>
+  <text x="94" y="333" class="serif title">na ten sam</text>
+  <text x="94" y="419" class="serif title">szczyt</text>
+  <text x="94" y="485" class="sans subtitle">Zmiana nie musi być końcem Drogi.</text>
+
+  <!-- Road marker -->
+  <text x="770" y="1165" class="serif" font-size="155" fill="#f4dfb1" opacity="0.16">DŌ</text>
+
+  <!-- Footer -->
+  <g>
+    <rect x="70" y="1212" width="890" height="96" rx="24" fill="#07101d" opacity="0.38"/>
+    <text x="100" y="1252" class="sans small">NOWY WPIS: BUDŌ POZA DOJO</text>
+    <text x="100" y="1295" class="sans url">aikido-polska.eu</text>
+  </g>
+</svg>

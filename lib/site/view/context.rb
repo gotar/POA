@@ -544,7 +544,7 @@ module Site
         when "blog/yugen-glebia-ktorej-nie-da-sie-splaszczyc.html"
           "Yūgen w Aikido i budō: jak rozumieć głębię techniki, której nie widać w samej instrukcji — wyczucie czasu, dystans, intencję, ciszę i kontakt z partnerem."
         when "blog/inna-sciezka-na-ten-sam-szczyt.html"
-          "Zmiany i przeciwności w życiu nie muszą kończyć praktyki budō: mogą stać się inną ścieżką na ten sam szczyt, jeśli zachowujemy kierunek, odpowiedzialność i uczciwy kontakt z rzeczywistością."
+          "Budō wobec zmian, kontuzji, utraty dawnego rytmu, pracy, relacji i codziennych przeciwności: jak nie mylić końca jednej ścieżki z końcem Drogi."
         when "blog/ninjo-ludzkie-uczucia-bez-utraty-kierunku.html"
           "Ninjō w Aikido i budō: jak rozpoznawać ludzkie uczucia, nie wypierać emocji i nie pozwalać, by nastrój prowadził trening zamiast odpowiedzialności."
         when "blog/omotenashi-goscinnosc-ktora-buduje-dojo.html"
@@ -632,7 +632,7 @@ module Site
         when "en/blog/yugen-depth-that-cannot-be-flattened.html"
           "Yūgen in Aikido and budō: how to understand the depth of technique beyond instruction — timing, distance, intent, quiet, and contact with a partner."
         when "en/blog/another-path-to-the-same-summit.html"
-          "Change and adversity do not have to end budō practice: they can become another path to the same summit when direction, responsibility, and honest contact with reality are preserved."
+          "Budō amid change, injury, the loss of an old rhythm, work, relationships, and everyday adversity: how not to confuse the end of one path with the end of the Path."
         when "en/blog/ninjo-human-feeling-without-losing-direction.html"
           "Ninjō in Aikido and budō: how to recognize human feeling without repressing emotion or letting mood steer training instead of responsibility."
         when "en/blog/omotenashi-hospitality-that-builds-the-dojo.html"
@@ -831,7 +831,7 @@ module Site
         when "blog/yugen-glebia-ktorej-nie-da-sie-splaszczyc.html"
           "yugen aikido, yūgen, głębia techniki, wyczucie czasu aikido, maai, intencja w aikido, kontakt z partnerem, budo, japonska estetyka"
         when "blog/inna-sciezka-na-ten-sam-szczyt.html"
-          "budo zmiany i przeciwności, droga budo, zen i budo, inna ścieżka na ten sam szczyt, aikido poza dojo, praktyka codzienna, nieustraszoność, odpowiedzialność, życie codzienne"
+          "budo zmiany i przeciwności, droga budo, zen i budo, inna ścieżka na ten sam szczyt, aikido poza dojo, praktyka codzienna, bun bu, se mu i, nieustraszoność, odpowiedzialność, życie codzienne"
         when "blog/ninjo-ludzkie-uczucia-bez-utraty-kierunku.html"
           "ninjo aikido, ninjō, ludzkie uczucia, emocje w treningu, giri i ninjo, odpowiedzialność w dojo, budo, kultura japonska"
         when "blog/omotenashi-goscinnosc-ktora-buduje-dojo.html"
@@ -919,7 +919,7 @@ module Site
         when "en/blog/yugen-depth-that-cannot-be-flattened.html"
           "yugen aikido, yūgen, depth of technique, aikido timing, maai, intent in aikido, partner contact, budo, Japanese aesthetics"
         when "en/blog/another-path-to-the-same-summit.html"
-          "budo change and adversity, budo path, zen and budo, another path to the same summit, aikido beyond the dojo, daily practice, fearlessness, responsibility, everyday life"
+          "budo change and adversity, budo path, zen and budo, another path to the same summit, aikido beyond the dojo, daily practice, bun bu, se mu i, fearlessness, responsibility, everyday life"
         when "en/blog/ninjo-human-feeling-without-losing-direction.html"
           "ninjo aikido, ninjō, human feeling, emotions in training, giri and ninjo, responsibility in dojo, budo, Japanese culture"
         when "en/blog/omotenashi-hospitality-that-builds-the-dojo.html"
@@ -968,7 +968,7 @@ module Site
       BLOG_POSTS_PER_PAGE = 10
 
       BLOG_POSTS_PL = [
-        { date: "4 czerwca 2026", title: "Inna ścieżka na ten sam szczyt", url: "/blog/inna-sciezka-na-ten-sam-szczyt.html", summary: "Jak zmiany, strata, kontuzja, obowiązki i codzienne przeciwności mogą stać się inną ścieżką budō, jeśli nie tracimy kierunku i odpowiedzialności." },
+        { date: "4 czerwca 2026", title: "Inna ścieżka na ten sam szczyt", url: "/blog/inna-sciezka-na-ten-sam-szczyt.html", summary: "Jak zmiany, kontuzje, utrata dawnego rytmu, praca i relacje mogą stać się inną ścieżką budō bez utraty kierunku." },
         { date: "3 czerwca 2026", title: "Yūgen (幽玄) — głębia, której nie da się spłaszczyć do instrukcji", url: "/blog/yugen-glebia-ktorej-nie-da-sie-splaszczyc.html", summary: "O tym, dlaczego dobra technika ma warstwę widoczną i niewidoczną: wyczucie czasu, dystans, intencję, ciszę i kontakt z partnerem." },
         { date: "31 maja 2026", title: "Ikkyo (一教) — pierwsza nauka, która nie kończy się nigdy", url: "/blog/ikkyo-pierwsza-nauka-ktora-nie-konczy-sie-nigdy.html", summary: "Dlaczego prosta kontrola łokcia odsłania całe aikido: postawę, centrum, oddech, riai i prowadzenie bez siłowania się." },
         { date: "30 maja 2026", title: "Mono no aware (物の哀れ) — czułość wobec przemijania", url: "/blog/mono-no-aware-czulosc-wobec-przemijania.html", summary: "Jak świadomość przemijania wyostrza uwagę, porządkuje relację uke–tori i pomaga podejmować decyzje na macie oraz poza nią." },
@@ -1013,7 +1013,7 @@ module Site
       ].freeze
 
       BLOG_POSTS_EN = [
-        { date: "June 4, 2026", title: "Another path to the same summit", url: "/en/blog/another-path-to-the-same-summit.html", summary: "How change, loss, injury, duties, and daily adversity can become another budō path when direction and responsibility are not lost." },
+        { date: "June 4, 2026", title: "Another path to the same summit", url: "/en/blog/another-path-to-the-same-summit.html", summary: "How change, injury, the loss of an old rhythm, work, and relationships can become another budō path without losing direction." },
         { date: "June 3, 2026", title: "Yūgen (幽玄) — depth that cannot be flattened into instruction", url: "/en/blog/yugen-depth-that-cannot-be-flattened.html", summary: "Why good technique has a visible and an invisible layer: timing, distance, intent, quiet, and contact with a partner." },
         { date: "May 31, 2026", title: "Ikkyo (一教) — the first teaching that never ends", url: "/en/blog/ikkyo-the-first-teaching-that-never-ends.html", summary: "Why simple elbow control reveals the whole of Aikido: posture, center, breath, riai, and leading without force." },
         { date: "May 30, 2026", title: "Mono no aware (物の哀れ) — sensitivity to impermanence", url: "/en/blog/mono-no-aware-sensitivity-to-impermanence.html", summary: "How awareness of impermanence sharpens attention, improves partner work, and clarifies decisions on and off the mat." },

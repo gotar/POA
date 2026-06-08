@@ -234,6 +234,8 @@ module Site
           "Ikkyo — pierwsza nauka, która nie kończy się nigdy | Blog"
         when "blog/yugen-glebia-ktorej-nie-da-sie-splaszczyc.html"
           "Yūgen — głębia, której nie da się spłaszczyć do instrukcji | Blog"
+        when "blog/genkikai-cialo-ktore-wraca-na-miejsce.html"
+          "Genkikai — ciało, które wraca na miejsce | Blog"
         when "blog/inna-sciezka-na-ten-sam-szczyt.html"
           "Inna ścieżka na ten sam szczyt — budō wobec zmian i przeciwności | Blog"
         when "blog/ninjo-ludzkie-uczucia-bez-utraty-kierunku.html"
@@ -322,6 +324,8 @@ module Site
           "Ikkyo — the first teaching that never ends | Blog"
         when "en/blog/yugen-depth-that-cannot-be-flattened.html"
           "Yūgen — depth that cannot be flattened into instruction | Blog"
+        when "en/blog/genkikai-the-body-that-returns-to-order.html"
+          "Genkikai — the body that returns to order | Blog"
         when "en/blog/another-path-to-the-same-summit.html"
           "Another path to the same summit — budō amid change and adversity | Blog"
         when "en/blog/ninjo-human-feeling-without-losing-direction.html"
@@ -543,6 +547,8 @@ module Site
           "Ikkyo w Aikido i budō: dlaczego pierwsza nauka pozostaje testem postawy, centrum, oddechu, riai i prowadzenia bez siłowania się przez całe życie praktyki."
         when "blog/yugen-glebia-ktorej-nie-da-sie-splaszczyc.html"
           "Yūgen w Aikido i budō: jak rozumieć głębię techniki, której nie widać w samej instrukcji — wyczucie czasu, dystans, intencję, ciszę i kontakt z partnerem."
+        when "blog/genkikai-cialo-ktore-wraca-na-miejsce.html"
+          "Genkikai w systemie Masatomiego Ikedy: trzecia praktyka Sanshinkai, która daje ciału metodę powrotu po intensywnym treningu aikido i Hojo."
         when "blog/inna-sciezka-na-ten-sam-szczyt.html"
           "Budō wobec zmian, kontuzji, utraty dawnego rytmu, pracy, relacji i codziennych przeciwności: jak nie mylić końca jednej ścieżki z końcem Drogi."
         when "blog/ninjo-ludzkie-uczucia-bez-utraty-kierunku.html"
@@ -631,6 +637,8 @@ module Site
           "Ikkyo in Aikido and budō: why the first teaching remains a lifelong test of posture, center, breath, riai, and leading without force."
         when "en/blog/yugen-depth-that-cannot-be-flattened.html"
           "Yūgen in Aikido and budō: how to understand the depth of technique beyond instruction — timing, distance, intent, quiet, and contact with a partner."
+        when "en/blog/genkikai-the-body-that-returns-to-order.html"
+          "Genkikai in Masatomi Ikeda's system: the third practice of Sanshinkai, giving the body a method of return after intense Aikido and Hojo training."
         when "en/blog/another-path-to-the-same-summit.html"
           "Budō amid change, injury, the loss of an old rhythm, work, relationships, and everyday adversity: how not to confuse the end of one path with the end of the Path."
         when "en/blog/ninjo-human-feeling-without-losing-direction.html"
@@ -830,6 +838,8 @@ module Site
           "ikkyo aikido, pierwsza nauka aikido, kontrola łokcia, tai sabaki, riai, centrum w aikido, ikkyo undo, postawa aikido, uke nage, budo"
         when "blog/yugen-glebia-ktorej-nie-da-sie-splaszczyc.html"
           "yugen aikido, yūgen, głębia techniki, wyczucie czasu aikido, maai, intencja w aikido, kontakt z partnerem, budo, japonska estetyka"
+        when "blog/genkikai-cialo-ktore-wraca-na-miejsce.html"
+          "genkikai aikido, Masatomi Ikeda, Sanshinkai, Hojo, regeneracja w aikido, oddech w treningu, Michele Quaranta, Germanov, linia przekazu aikido"
         when "blog/inna-sciezka-na-ten-sam-szczyt.html"
           "budo zmiany i przeciwności, droga budo, zen i budo, inna ścieżka na ten sam szczyt, aikido poza dojo, praktyka codzienna, bun bu, se mu i, nieustraszoność, odpowiedzialność, życie codzienne"
         when "blog/ninjo-ludzkie-uczucia-bez-utraty-kierunku.html"
@@ -918,6 +928,8 @@ module Site
           "ikkyo aikido, first teaching aikido, elbow control, tai sabaki, riai, aikido center, ikkyo undo, aikido posture, uke nage, budo"
         when "en/blog/yugen-depth-that-cannot-be-flattened.html"
           "yugen aikido, yūgen, depth of technique, aikido timing, maai, intent in aikido, partner contact, budo, Japanese aesthetics"
+        when "en/blog/genkikai-the-body-that-returns-to-order.html"
+          "genkikai aikido, Masatomi Ikeda, Sanshinkai, Hojo, recovery in aikido, breath in training, Michele Quaranta, Germanov, aikido transmission line"
         when "en/blog/another-path-to-the-same-summit.html"
           "budo change and adversity, budo path, zen and budo, another path to the same summit, aikido beyond the dojo, daily practice, bun bu, se mu i, fearlessness, responsibility, everyday life"
         when "en/blog/ninjo-human-feeling-without-losing-direction.html"
@@ -968,6 +980,7 @@ module Site
       BLOG_POSTS_PER_PAGE = 10
 
       BLOG_POSTS_PL = [
+        { date: "8 czerwca 2026", title: "Genkikai (元気会) — ciało, które wraca na miejsce", url: "/blog/genkikai-cialo-ktore-wraca-na-miejsce.html", summary: "O trzeciej praktyce systemu Ikedy: jak Genkikai uzupełnia aikido i Hojo, dając ciału metodę powrotu po intensywnym treningu." },
         { date: "4 czerwca 2026", title: "Inna ścieżka na ten sam szczyt", url: "/blog/inna-sciezka-na-ten-sam-szczyt.html", summary: "Jak zmiany, kontuzje, utrata dawnego rytmu, praca i relacje mogą stać się inną ścieżką budō bez utraty kierunku." },
         { date: "3 czerwca 2026", title: "Yūgen (幽玄) — głębia, której nie da się spłaszczyć do instrukcji", url: "/blog/yugen-glebia-ktorej-nie-da-sie-splaszczyc.html", summary: "O tym, dlaczego dobra technika ma warstwę widoczną i niewidoczną: wyczucie czasu, dystans, intencję, ciszę i kontakt z partnerem." },
         { date: "31 maja 2026", title: "Ikkyo (一教) — pierwsza nauka, która nie kończy się nigdy", url: "/blog/ikkyo-pierwsza-nauka-ktora-nie-konczy-sie-nigdy.html", summary: "Dlaczego prosta kontrola łokcia odsłania całe aikido: postawę, centrum, oddech, riai i prowadzenie bez siłowania się." },
@@ -1013,6 +1026,7 @@ module Site
       ].freeze
 
       BLOG_POSTS_EN = [
+        { date: "June 8, 2026", title: "Genkikai (元気会) — the body that returns to order", url: "/en/blog/genkikai-the-body-that-returns-to-order.html", summary: "On the third practice in Ikeda's system: how Genkikai completes Aikido and Hojo by giving the body a method of return after intense training." },
         { date: "June 4, 2026", title: "Another path to the same summit", url: "/en/blog/another-path-to-the-same-summit.html", summary: "How change, injury, the loss of an old rhythm, work, and relationships can become another path in budō without losing direction." },
         { date: "June 3, 2026", title: "Yūgen (幽玄) — depth that cannot be flattened into instruction", url: "/en/blog/yugen-depth-that-cannot-be-flattened.html", summary: "Why good technique has a visible and an invisible layer: timing, distance, intent, quiet, and contact with a partner." },
         { date: "May 31, 2026", title: "Ikkyo (一教) — the first teaching that never ends", url: "/en/blog/ikkyo-the-first-teaching-that-never-ends.html", summary: "Why simple elbow control reveals the whole of Aikido: posture, center, breath, riai, and leading without force." },
@@ -1299,6 +1313,15 @@ module Site
             date_published: "2026-06-03",
             date_modified: "2026-06-03"
           )
+        when "blog/genkikai-cialo-ktore-wraca-na-miejsce.html"
+          article_schema(
+            name: "Genkikai — ciało, które wraca na miejsce",
+            description: page_description,
+            image: page_social_image_url,
+            lang: "pl",
+            date_published: "2026-06-08",
+            date_modified: "2026-06-08"
+          )
         when "blog/inna-sciezka-na-ten-sam-szczyt.html"
           article_schema(
             name: "Inna ścieżka na ten sam szczyt — budō wobec zmian i przeciwności",
@@ -1533,6 +1556,15 @@ module Site
             date_published: "2026-06-03",
             date_modified: "2026-06-03"
           )
+        when "en/blog/genkikai-the-body-that-returns-to-order.html"
+          article_schema(
+            name: "Genkikai — the body that returns to order",
+            description: page_description,
+            image: page_social_image_url,
+            lang: "en",
+            date_published: "2026-06-08",
+            date_modified: "2026-06-08"
+          )
         when "en/blog/another-path-to-the-same-summit.html"
           article_schema(
             name: "Another path to the same summit — budō amid change and adversity",
@@ -1713,6 +1745,7 @@ module Site
         "blog/mono-no-aware-czulosc-wobec-przemijania.html" => "en/blog/mono-no-aware-sensitivity-to-impermanence.html",
         "blog/ikkyo-pierwsza-nauka-ktora-nie-konczy-sie-nigdy.html" => "en/blog/ikkyo-the-first-teaching-that-never-ends.html",
         "blog/yugen-glebia-ktorej-nie-da-sie-splaszczyc.html" => "en/blog/yugen-depth-that-cannot-be-flattened.html",
+        "blog/genkikai-cialo-ktore-wraca-na-miejsce.html" => "en/blog/genkikai-the-body-that-returns-to-order.html",
         "blog/inna-sciezka-na-ten-sam-szczyt.html" => "en/blog/another-path-to-the-same-summit.html",
         "blog/ikigai-sens-regularnej-praktyki.html" => "en/blog/ikigai-the-reason-to-return-to-practice.html",
         "blog/misogi-oczyszczenie-przez-praktyke.html" => "en/blog/misogi-purification-through-practice.html",
@@ -1787,6 +1820,7 @@ module Site
         "en/blog/mono-no-aware-sensitivity-to-impermanence.html" => "blog/mono-no-aware-czulosc-wobec-przemijania.html",
         "en/blog/ikkyo-the-first-teaching-that-never-ends.html" => "blog/ikkyo-pierwsza-nauka-ktora-nie-konczy-sie-nigdy.html",
         "en/blog/yugen-depth-that-cannot-be-flattened.html" => "blog/yugen-glebia-ktorej-nie-da-sie-splaszczyc.html",
+        "en/blog/genkikai-the-body-that-returns-to-order.html" => "blog/genkikai-cialo-ktore-wraca-na-miejsce.html",
         "en/blog/another-path-to-the-same-summit.html" => "blog/inna-sciezka-na-ten-sam-szczyt.html",
         "en/blog/ikigai-the-reason-to-return-to-practice.html" => "blog/ikigai-sens-regularnej-praktyki.html",
         "en/blog/misogi-purification-through-practice.html" => "blog/misogi-oczyszczenie-przez-praktyke.html",

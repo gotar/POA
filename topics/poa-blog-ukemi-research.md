@@ -3,6 +3,7 @@
 Date: 2026-06-11
 Status: next-up research note
 Recommended next article: **Ukemi**
+Draft article: `/var/projects/POA/topics/poa-blog-ukemi-draft.md`
 
 ## 1. Dlaczego właśnie ten temat teraz
 

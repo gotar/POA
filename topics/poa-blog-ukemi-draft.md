@@ -1,8 +1,10 @@
 # POA blog draft — Ukemi
 
-Status: **draft only / not published**
+Status: **published on 2026-06-11**
 Date: 2026-06-11
 Last language review: 2026-06-11
+Published article files: `templates/blog/ukemi.html.erb`, `templates/blog/ukemi_en.html.erb`
+Published URLs: `/blog/ukemi-bezpiecznie-upasc-zachowac-strukture-wrocic-do-dzialania.html`, `/en/blog/ukemi-falling-safely-keeping-structure-returning-to-action.html`
 Related research: `/var/projects/POA/topics/poa-blog-ukemi-research.md`
 
 ## Editorial decision after language review
@@ -18,21 +20,21 @@ Changes made in this version:
 - kept the teacher / dojo-head perspective: safety, standards, responsibility, and honest work with uke and nage,
 - kept PL and EN as sibling originals rather than sentence-by-sentence translations.
 
-## Suggested publication metadata (draft)
+## Publication metadata
 
 ### Polish
-- Provisional title: `Ukemi (受け身) — bezpiecznie upaść, zachować strukturę, wrócić do działania`
-- Provisional public URL: `/blog/ukemi-bezpiecznie-upasc-zachowac-strukture-wrocic-do-dzialania.html`
-- Provisional summary: `Ukemi to nie popis przewrotu, lecz jedna z najważniejszych umiejętności aikido: bezpiecznie przyjąć upadek, pozostać miękkim, ale zbudowanym, i wrócić do działania.`
-- Provisional SEO description: `Ukemi w aikido to sztuka bezpiecznego padania, przyjmowania techniki i powrotu do działania. Dlaczego chroni ciało w dojo i przydaje się przez całe życie?`
-- Provisional keywords: `ukemi aikido, bezpieczne padanie, sztuka padania, aikido dla początkujących, uke i nage, jak bezpiecznie upadać, breakfall aikido, ukemi w życiu codziennym`
+- Published title: `Ukemi (受け身) — bezpiecznie upaść, zachować strukturę, wrócić do działania`
+- Published public URL: `/blog/ukemi-bezpiecznie-upasc-zachowac-strukture-wrocic-do-dzialania.html`
+- Published summary: `Ukemi to nie popis przewrotu, lecz jedna z podstaw aikido: bezpiecznie przyjąć upadek, pozostać miękkim, ale zbudowanym, i wrócić do działania.`
+- Published SEO description: `Ukemi w aikido to sztuka bezpiecznego padania, przyjmowania techniki i powrotu do działania. Dlaczego chroni ciało w dojo i przydaje się przez całe życie?`
+- Published keywords: `ukemi aikido, bezpieczne padanie, sztuka padania, aikido dla początkujących, uke i nage, jak bezpiecznie upadać, pady aikido, ukemi w życiu codziennym, budo`
 
 ### English
-- Provisional title: `Ukemi (受け身) — falling safely, keeping structure, returning to action`
-- Provisional public URL: `/en/blog/ukemi-falling-safely-keeping-structure-returning-to-action.html`
-- Provisional summary: `Ukemi is not a flashy roll. It is one of Aikido's essential skills: falling safely, staying soft but structured, and returning to action.`
-- Provisional SEO description: `Ukemi in Aikido is the art of falling safely, receiving technique, protecting the body, and returning to action with structure instead of panic.`
-- Provisional keywords: `ukemi aikido, safe falling, breakfall aikido, aikido beginners, uke and nage, martial arts falling, ukemi in daily life`
+- Published title: `Ukemi (受け身) — falling safely, keeping structure, returning to action`
+- Published public URL: `/en/blog/ukemi-falling-safely-keeping-structure-returning-to-action.html`
+- Published summary: `Ukemi is not a flashy roll. It is an essential Aikido skill: falling safely, staying soft but structured, and returning to action.`
+- Published SEO description: `Ukemi in Aikido is the art of falling safely, receiving technique, protecting the body, and returning to action with structure instead of panic.`
+- Published keywords: `ukemi aikido, safe falling, breakfall aikido, aikido beginners, uke and nage, martial arts falling, ukemi in daily life, budo`
 
 ---
 

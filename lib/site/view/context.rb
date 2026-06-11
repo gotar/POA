@@ -234,6 +234,8 @@ module Site
           "Ikkyo — pierwsza nauka, która nie kończy się nigdy | Blog"
         when "blog/yugen-glebia-ktorej-nie-da-sie-splaszczyc.html"
           "Yūgen — głębia, której nie da się spłaszczyć do instrukcji | Blog"
+        when "blog/ukemi-bezpiecznie-upasc-zachowac-strukture-wrocic-do-dzialania.html"
+          "Ukemi — bezpiecznie upaść, zachować strukturę, wrócić do działania | Blog"
         when "blog/genkikai-cialo-ktore-wraca-na-miejsce.html"
           "Genkikai — ciało, które wraca na miejsce | Blog"
         when "blog/inna-sciezka-na-ten-sam-szczyt.html"
@@ -324,6 +326,8 @@ module Site
           "Ikkyo — the first teaching that never ends | Blog"
         when "en/blog/yugen-depth-that-cannot-be-flattened.html"
           "Yūgen — depth that cannot be flattened into instruction | Blog"
+        when "en/blog/ukemi-falling-safely-keeping-structure-returning-to-action.html"
+          "Ukemi — falling safely, keeping structure, returning to action | Blog"
         when "en/blog/genkikai-the-body-that-returns-to-order.html"
           "Genkikai — the body that returns to order | Blog"
         when "en/blog/another-path-to-the-same-summit.html"
@@ -547,6 +551,8 @@ module Site
           "Ikkyo w Aikido i budō: dlaczego pierwsza nauka pozostaje testem postawy, centrum, oddechu, riai i prowadzenia bez siłowania się przez całe życie praktyki."
         when "blog/yugen-glebia-ktorej-nie-da-sie-splaszczyc.html"
           "Yūgen w Aikido i budō: jak rozumieć głębię techniki, której nie widać w samej instrukcji — wyczucie czasu, dystans, intencję, ciszę i kontakt z partnerem."
+        when "blog/ukemi-bezpiecznie-upasc-zachowac-strukture-wrocic-do-dzialania.html"
+          "Ukemi w aikido to sztuka bezpiecznego padania, przyjmowania techniki i powrotu do działania. Dlaczego chroni ciało w dojo i przydaje się przez całe życie?"
         when "blog/genkikai-cialo-ktore-wraca-na-miejsce.html"
           "Genkikai w systemie Masatomiego Ikedy: trzecia praktyka Sanshinkai, która daje ciału metodę powrotu po intensywnym treningu aikido i Hojo."
         when "blog/inna-sciezka-na-ten-sam-szczyt.html"
@@ -637,6 +643,8 @@ module Site
           "Ikkyo in Aikido and budō: why the first teaching remains a lifelong test of posture, center, breath, riai, and leading without force."
         when "en/blog/yugen-depth-that-cannot-be-flattened.html"
           "Yūgen in Aikido and budō: how to understand the depth of technique beyond instruction — timing, distance, intent, quiet, and contact with a partner."
+        when "en/blog/ukemi-falling-safely-keeping-structure-returning-to-action.html"
+          "Ukemi in Aikido is the art of falling safely, receiving technique, protecting the body, and returning to action with structure instead of panic."
         when "en/blog/genkikai-the-body-that-returns-to-order.html"
           "Genkikai in Masatomi Ikeda's system: the third practice of Sanshinkai, giving the body a method of return after intense Aikido and Hojo training."
         when "en/blog/another-path-to-the-same-summit.html"
@@ -838,6 +846,8 @@ module Site
           "ikkyo aikido, pierwsza nauka aikido, kontrola łokcia, tai sabaki, riai, centrum w aikido, ikkyo undo, postawa aikido, uke nage, budo"
         when "blog/yugen-glebia-ktorej-nie-da-sie-splaszczyc.html"
           "yugen aikido, yūgen, głębia techniki, wyczucie czasu aikido, maai, intencja w aikido, kontakt z partnerem, budo, japonska estetyka"
+        when "blog/ukemi-bezpiecznie-upasc-zachowac-strukture-wrocic-do-dzialania.html"
+          "ukemi aikido, bezpieczne padanie, sztuka padania, aikido dla początkujących, uke i nage, jak bezpiecznie upadać, pady aikido, ukemi w życiu codziennym, budo"
         when "blog/genkikai-cialo-ktore-wraca-na-miejsce.html"
           "genkikai aikido, Masatomi Ikeda, Sanshinkai, Hojo, regeneracja w aikido, oddech w treningu, Michele Quaranta, Germanov, linia przekazu aikido"
         when "blog/inna-sciezka-na-ten-sam-szczyt.html"
@@ -928,6 +938,8 @@ module Site
           "ikkyo aikido, first teaching aikido, elbow control, tai sabaki, riai, aikido center, ikkyo undo, aikido posture, uke nage, budo"
         when "en/blog/yugen-depth-that-cannot-be-flattened.html"
           "yugen aikido, yūgen, depth of technique, aikido timing, maai, intent in aikido, partner contact, budo, Japanese aesthetics"
+        when "en/blog/ukemi-falling-safely-keeping-structure-returning-to-action.html"
+          "ukemi aikido, safe falling, breakfall aikido, aikido beginners, uke and nage, martial arts falling, ukemi in daily life, budo"
         when "en/blog/genkikai-the-body-that-returns-to-order.html"
           "genkikai aikido, Masatomi Ikeda, Sanshinkai, Hojo, recovery in aikido, breath in training, Michele Quaranta, Germanov, aikido transmission line"
         when "en/blog/another-path-to-the-same-summit.html"
@@ -980,6 +992,7 @@ module Site
       BLOG_POSTS_PER_PAGE = 10
 
       BLOG_POSTS_PL = [
+        { date: "11 czerwca 2026", title: "Ukemi (受け身) — bezpiecznie upaść, zachować strukturę, wrócić do działania", url: "/blog/ukemi-bezpiecznie-upasc-zachowac-strukture-wrocic-do-dzialania.html", summary: "Ukemi to nie popis przewrotu, lecz jedna z podstaw aikido: bezpiecznie przyjąć upadek, pozostać miękkim, ale zbudowanym, i wrócić do działania." },
         { date: "8 czerwca 2026", title: "Genkikai (元気会) — ciało, które wraca na miejsce", url: "/blog/genkikai-cialo-ktore-wraca-na-miejsce.html", summary: "O trzeciej praktyce systemu Ikedy: jak Genkikai uzupełnia aikido i Hojo, dając ciału metodę powrotu po intensywnym treningu." },
         { date: "4 czerwca 2026", title: "Inna ścieżka na ten sam szczyt", url: "/blog/inna-sciezka-na-ten-sam-szczyt.html", summary: "Jak zmiany, kontuzje, utrata dawnego rytmu, praca i relacje mogą stać się inną ścieżką budō bez utraty kierunku." },
         { date: "3 czerwca 2026", title: "Yūgen (幽玄) — głębia, której nie da się spłaszczyć do instrukcji", url: "/blog/yugen-glebia-ktorej-nie-da-sie-splaszczyc.html", summary: "O tym, dlaczego dobra technika ma warstwę widoczną i niewidoczną: wyczucie czasu, dystans, intencję, ciszę i kontakt z partnerem." },
@@ -1026,6 +1039,7 @@ module Site
       ].freeze
 
       BLOG_POSTS_EN = [
+        { date: "June 11, 2026", title: "Ukemi (受け身) — falling safely, keeping structure, returning to action", url: "/en/blog/ukemi-falling-safely-keeping-structure-returning-to-action.html", summary: "Ukemi is not a flashy roll. It is an essential Aikido skill: falling safely, staying soft but structured, and returning to action." },
         { date: "June 8, 2026", title: "Genkikai (元気会) — the body that returns to order", url: "/en/blog/genkikai-the-body-that-returns-to-order.html", summary: "On the third practice in Ikeda's system: how Genkikai completes Aikido and Hojo by giving the body a method of return after intense training." },
         { date: "June 4, 2026", title: "Another path to the same summit", url: "/en/blog/another-path-to-the-same-summit.html", summary: "How change, injury, the loss of an old rhythm, work, and relationships can become another path in budō without losing direction." },
         { date: "June 3, 2026", title: "Yūgen (幽玄) — depth that cannot be flattened into instruction", url: "/en/blog/yugen-depth-that-cannot-be-flattened.html", summary: "Why good technique has a visible and an invisible layer: timing, distance, intent, quiet, and contact with a partner." },
@@ -1313,6 +1327,15 @@ module Site
             date_published: "2026-06-03",
             date_modified: "2026-06-03"
           )
+        when "blog/ukemi-bezpiecznie-upasc-zachowac-strukture-wrocic-do-dzialania.html"
+          article_schema(
+            name: "Ukemi — bezpiecznie upaść, zachować strukturę, wrócić do działania",
+            description: page_description,
+            image: page_social_image_url,
+            lang: "pl",
+            date_published: "2026-06-11",
+            date_modified: "2026-06-11"
+          )
         when "blog/genkikai-cialo-ktore-wraca-na-miejsce.html"
           article_schema(
             name: "Genkikai — ciało, które wraca na miejsce",
@@ -1556,6 +1579,15 @@ module Site
             date_published: "2026-06-03",
             date_modified: "2026-06-03"
           )
+        when "en/blog/ukemi-falling-safely-keeping-structure-returning-to-action.html"
+          article_schema(
+            name: "Ukemi — falling safely, keeping structure, returning to action",
+            description: page_description,
+            image: page_social_image_url,
+            lang: "en",
+            date_published: "2026-06-11",
+            date_modified: "2026-06-11"
+          )
         when "en/blog/genkikai-the-body-that-returns-to-order.html"
           article_schema(
             name: "Genkikai — the body that returns to order",
@@ -1745,6 +1777,7 @@ module Site
         "blog/mono-no-aware-czulosc-wobec-przemijania.html" => "en/blog/mono-no-aware-sensitivity-to-impermanence.html",
         "blog/ikkyo-pierwsza-nauka-ktora-nie-konczy-sie-nigdy.html" => "en/blog/ikkyo-the-first-teaching-that-never-ends.html",
         "blog/yugen-glebia-ktorej-nie-da-sie-splaszczyc.html" => "en/blog/yugen-depth-that-cannot-be-flattened.html",
+        "blog/ukemi-bezpiecznie-upasc-zachowac-strukture-wrocic-do-dzialania.html" => "en/blog/ukemi-falling-safely-keeping-structure-returning-to-action.html",
         "blog/genkikai-cialo-ktore-wraca-na-miejsce.html" => "en/blog/genkikai-the-body-that-returns-to-order.html",
         "blog/inna-sciezka-na-ten-sam-szczyt.html" => "en/blog/another-path-to-the-same-summit.html",
         "blog/ikigai-sens-regularnej-praktyki.html" => "en/blog/ikigai-the-reason-to-return-to-practice.html",
@@ -1820,6 +1853,7 @@ module Site
         "en/blog/mono-no-aware-sensitivity-to-impermanence.html" => "blog/mono-no-aware-czulosc-wobec-przemijania.html",
         "en/blog/ikkyo-the-first-teaching-that-never-ends.html" => "blog/ikkyo-pierwsza-nauka-ktora-nie-konczy-sie-nigdy.html",
         "en/blog/yugen-depth-that-cannot-be-flattened.html" => "blog/yugen-glebia-ktorej-nie-da-sie-splaszczyc.html",
+        "en/blog/ukemi-falling-safely-keeping-structure-returning-to-action.html" => "blog/ukemi-bezpiecznie-upasc-zachowac-strukture-wrocic-do-dzialania.html",
         "en/blog/genkikai-the-body-that-returns-to-order.html" => "blog/genkikai-cialo-ktore-wraca-na-miejsce.html",
         "en/blog/another-path-to-the-same-summit.html" => "blog/inna-sciezka-na-ten-sam-szczyt.html",
         "en/blog/ikigai-the-reason-to-return-to-practice.html" => "blog/ikigai-sens-regularnej-praktyki.html",

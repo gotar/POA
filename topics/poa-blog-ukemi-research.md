@@ -1,8 +1,10 @@
 # POA blog research — Ukemi
 
 Date: 2026-06-11
-Status: next-up research note
-Recommended next article: **Ukemi**
+Status: published on 2026-06-11
+Recommended next article at time of research: **Ukemi**
+Published article: `/var/projects/POA/templates/blog/ukemi.html.erb`, `/var/projects/POA/templates/blog/ukemi_en.html.erb`
+Published URLs: `/blog/ukemi-bezpiecznie-upasc-zachowac-strukture-wrocic-do-dzialania.html`, `/en/blog/ukemi-falling-safely-keeping-structure-returning-to-action.html`
 Draft article: `/var/projects/POA/topics/poa-blog-ukemi-draft.md`
 Last language review: 2026-06-11 — stronger emphasis on safe falling as a lifelong skill; avoid decorative or imported wording.
 
@@ -282,7 +284,7 @@ To daje od razu temat:
 
 ## 12. Final recommendation
 
-**Tak: Ukemi powinno być teraz kolejnym wpisem.**
+**Ukemi zostało opublikowane jako kolejny wpis 11 czerwca 2026.**
 
 Nie dlatego, że jest łatwe.
 Dlatego, że po obecnej serii jest **najbardziej potrzebne**:

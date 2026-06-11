@@ -4,6 +4,7 @@ Date: 2026-06-11
 Status: next-up research note
 Recommended next article: **Ukemi**
 Draft article: `/var/projects/POA/topics/poa-blog-ukemi-draft.md`
+Last language review: 2026-06-11 — stronger emphasis on safe falling as a lifelong skill; avoid decorative or imported wording.
 
 ## 1. Dlaczego właśnie ten temat teraz
 
@@ -12,7 +13,7 @@ Po serii tekstów o pojęciach, stanie wewnętrznym i dojrzewaniu praktyki blog 
 **Ukemi** jest najlepszym następnym ruchem, bo:
 - dotyczy absolutnie każdego poziomu: od pierwszego treningu po yudansha,
 - jest praktyczne, SEO-owalne i czytelne także dla ludzi spoza „języka pojęć japońskich”,
-- pozwala mówić jednocześnie o bezpieczeństwie, ego, zaufaniu, partnerstwie, rytmie nauki i jakości relacji uke–nage,
+- pozwala mówić jednocześnie o bezpieczeństwie, ego, zaufaniu, rytmie nauki i jakości relacji uke–nage,
 - naturalnie prowadzi do następnych tekstów: **Uke i nage**, **Maai**, **Kamae i shisei**, **Kokyū**,
 - daje mocny głos nauczyciela / szefa dojo: to temat, który najlepiej widać z perspektywy odpowiedzialności za ludzi na macie.
 
@@ -156,9 +157,9 @@ Szef dojo widzi w ukemi nie tylko technikę, ale też:
 - czy ktoś umie słuchać ciałem,
 - czy boi się utraty kontroli,
 - czy szanuje własne granice i granice partnera,
-- czy robi teatr pod efekt,
+- czy robi ruch dla obrazu zamiast dla prawdy sytuacji,
 - czy po błędzie wraca do pracy, czy do obrażonego ego,
-- czy nadaje się do odpowiedzialnego partneringu.
+- czy nadaje się do odpowiedzialnej pracy z drugą osobą.
 
 Dlatego artykuł powinien brzmieć mniej jak „instrukcja padów”, a bardziej jak:
 **wyjaśnienie, dlaczego sposób przyjmowania techniki jest jednym z najuczciwszych testów dojrzałości ucznia**.
@@ -167,7 +168,7 @@ Dlatego artykuł powinien brzmieć mniej jak „instrukcja padów”, a bardziej
 
 Dobre mosty poza matę:
 - przyjęcie korekty bez natychmiastowej obrony,
-- odzyskanie równowagi po błędzie zamiast dramatyzowania,
+- odzyskanie równowagi po błędzie zamiast rozpamiętywania samego upadku,
 - brak paniki, gdy plan się rwie,
 - zdolność wejścia w kontakt bez sztywności,
 - nieuszkadzanie siebie przy pierwszym mocniejszym zderzeniu z rzeczywistością.
@@ -219,7 +220,7 @@ To daje od razu temat:
 ### Możliwy układ
 1. Scena z maty: napięcie przed przyjęciem techniki
 2. Ukemi nie jest padaniem, tylko sposobem odbioru ruchu
-3. Co ukemi ujawnia o ego, zaufaniu i jakości partneringu
+3. Co ukemi ujawnia o ego, zaufaniu i jakości relacji uke–nage
 4. Jak dojrzewa ukemi od początkującego do zaawansowanego
 5. Co zostaje z ukemi poza dojo
 
@@ -232,10 +233,13 @@ To daje od razu temat:
 - bez egzotyki i bez „mistycznego” tonu.
 
 ### Akcenty PL
-- „przyjąć technikę” brzmi lepiej niż ciągłe „spaść poprawnie”,
-- pokazywać konkret ciała: barki, oddech, pośpiech, oś, kolana, wzrok,
+- pokazywać ukemi jako **sztukę bezpiecznego padania**, ale nie zamykać tematu w samym upadku,
+- mocno zaznaczyć codzienną wartość: śliski chodnik, schody, rower, praca fizyczna, zabawa z dziećmi, nagła utrata równowagi,
+- pisać, że dobre ukemi potrafi chronić życie i zdrowie, ale bez obiecywania nietykalności,
+- „miękki, ale zbudowany” to kluczowa fraza: rozluźnienie bez wiotkości, struktura bez sztywności,
+- pokazywać konkret ciała: głowa, kark, barki, oddech, oś, ręce, plecy, nogi,
 - dużo krótkich, czystych zdań,
-- unikać napuszonego heroizmu typu „sztuka upadania w życiu”.
+- unikać napuszonego heroizmu i sloganów o „upadkach w życiu”; najpierw ciało, potem szerszy sens.
 
 ### Zdanie-klucz do rozwinięcia
 **Ukemi jest jedną z pierwszych rzeczy, których uczysz się w dojo, ale jedną z ostatnich, które naprawdę dojrzewają.**
@@ -249,8 +253,11 @@ To daje od razu temat:
 - technically literate but not manual-like.
 
 ### Akcenty EN
-- avoid writing this as “falling skills only”; better: **receiving with the body** / **receiving technique without collapse**,
-- strong contrast language will work well: not acrobatics, not compliance, not fear-driven bracing,
+- present ukemi first as safe falling with lifelong value, then deepen it into receiving technique and returning to action,
+- use the phrase family **soft, but built** / **soft without becoming shapeless** / **structured without becoming rigid**,
+- make everyday examples concrete: ice, stairs, bicycle, physical work, play with children, sudden loss of balance,
+- state the safety value clearly without promising invulnerability,
+- strong contrast language will work well: not acrobatics, not premature compliance, not fear-driven bracing,
 - avoid Polish sentence order and over-explaining Japanese terms,
 - “Ukemi is one of the clearest places where character shows up physically” is a useful anchor idea.
 

@@ -235,7 +235,7 @@ module Site
         when "blog/yugen-glebia-ktorej-nie-da-sie-splaszczyc.html"
           "Yūgen — głębia, której nie da się spłaszczyć do instrukcji | Blog"
         when "blog/ukemi-bezpiecznie-upasc-zachowac-strukture-wrocic-do-dzialania.html"
-          "Ukemi — bezpiecznie upaść, zachować strukturę, wrócić do działania | Blog"
+          "Ukemi — jak bezpiecznie upadać i wracać do działania | Blog"
         when "blog/genkikai-cialo-ktore-wraca-na-miejsce.html"
           "Genkikai — ciało, które wraca na miejsce | Blog"
         when "blog/inna-sciezka-na-ten-sam-szczyt.html"
@@ -552,7 +552,7 @@ module Site
         when "blog/yugen-glebia-ktorej-nie-da-sie-splaszczyc.html"
           "Yūgen w Aikido i budō: jak rozumieć głębię techniki, której nie widać w samej instrukcji — wyczucie czasu, dystans, intencję, ciszę i kontakt z partnerem."
         when "blog/ukemi-bezpiecznie-upasc-zachowac-strukture-wrocic-do-dzialania.html"
-          "Ukemi w aikido to sztuka bezpiecznego padania, przyjmowania techniki i powrotu do działania. Dlaczego chroni ciało w dojo i przydaje się przez całe życie?"
+          "Ukemi w aikido to sztuka bezpiecznego padania: jak chronić ciało, nie tracić oddechu i wracać do działania w dojo oraz poza nim."
         when "blog/genkikai-cialo-ktore-wraca-na-miejsce.html"
           "Genkikai w systemie Masatomiego Ikedy: trzecia praktyka Sanshinkai, która daje ciału metodę powrotu po intensywnym treningu aikido i Hojo."
         when "blog/inna-sciezka-na-ten-sam-szczyt.html"
@@ -992,7 +992,7 @@ module Site
       BLOG_POSTS_PER_PAGE = 10
 
       BLOG_POSTS_PL = [
-        { date: "11 czerwca 2026", title: "Ukemi (受け身) — bezpiecznie upaść, zachować strukturę, wrócić do działania", url: "/blog/ukemi-bezpiecznie-upasc-zachowac-strukture-wrocic-do-dzialania.html", summary: "Ukemi to nie popis przewrotu, lecz jedna z podstaw aikido: bezpiecznie przyjąć upadek, pozostać miękkim, ale zbudowanym, i wrócić do działania." },
+        { date: "11 czerwca 2026", title: "Ukemi (受け身) — jak bezpiecznie upadać i wracać do działania", url: "/blog/ukemi-bezpiecznie-upasc-zachowac-strukture-wrocic-do-dzialania.html", summary: "Ukemi to sztuka bezpiecznego padania: chronić ciało, zostać miękkim, ale zbudowanym, i wrócić do działania także poza dojo." },
         { date: "8 czerwca 2026", title: "Genkikai (元気会) — ciało, które wraca na miejsce", url: "/blog/genkikai-cialo-ktore-wraca-na-miejsce.html", summary: "O trzeciej praktyce systemu Ikedy: jak Genkikai uzupełnia aikido i Hojo, dając ciału metodę powrotu po intensywnym treningu." },
         { date: "4 czerwca 2026", title: "Inna ścieżka na ten sam szczyt", url: "/blog/inna-sciezka-na-ten-sam-szczyt.html", summary: "Jak zmiany, kontuzje, utrata dawnego rytmu, praca i relacje mogą stać się inną ścieżką budō bez utraty kierunku." },
         { date: "3 czerwca 2026", title: "Yūgen (幽玄) — głębia, której nie da się spłaszczyć do instrukcji", url: "/blog/yugen-glebia-ktorej-nie-da-sie-splaszczyc.html", summary: "O tym, dlaczego dobra technika ma warstwę widoczną i niewidoczną: wyczucie czasu, dystans, intencję, ciszę i kontakt z partnerem." },
@@ -1329,7 +1329,7 @@ module Site
           )
         when "blog/ukemi-bezpiecznie-upasc-zachowac-strukture-wrocic-do-dzialania.html"
           article_schema(
-            name: "Ukemi — bezpiecznie upaść, zachować strukturę, wrócić do działania",
+            name: "Ukemi — jak bezpiecznie upadać i wracać do działania",
             description: page_description,
             image: page_social_image_url,
             lang: "pl",

@@ -31,7 +31,7 @@ Publication note: Do **not** publish or register in blog index until Oskar appro
 
 Mata po egzaminie szybko robi się cicha.
 
-Pasy są już zawiązane. Emocje zaczynają opadać. Ktoś oddycha z ulgą, ktoś jeszcze odtwarza w głowie pomyłkę, ktoś próbuje zrozumieć, dlaczego w najprostszym miejscu ciało nagle zrobiło coś obcego. Z zewnątrz można powiedzieć: egzamin się skończył.
+Pasy są już zawiązane. Emocje zaczynają opadać. Ktoś oddycha z ulgą, ktoś jeszcze odtwarza w głowie pomyłkę, ktoś próbuje zrozumieć, dlaczego w najprostszym miejscu ciało nagle zrobiło coś, czego nie robiło na treningu. Z zewnątrz można powiedzieć: egzamin się skończył.
 
 Ale najważniejsze pytanie często przychodzi dopiero wtedy.
 
@@ -54,6 +54,8 @@ Pod presją wychodzi to, co było ćwiczone naprawdę. Wychodzi też to, co był
 Dlatego przygotowanie do egzaminu nie polega tylko na przećwiczeniu listy. Lista jest potrzebna. Wymagania są potrzebne. Minimalny czas praktyki, materiał na dany stopień, kihon waza, ukemi, suwari waza, hanmi handachi, praca z różnymi atakami, broń, randori, etykieta — to wszystko buduje ramę. Bez ramy droga łatwo robi się mglista.
 
 Ale rama nie jest drogą.
+
+Gotowość nie jest tylko wewnętrznym poczuciem. Musi mieć ślady: obecność na treningach, znajomość materiału, powtarzalność pod zmęczeniem, bezpieczne ukemi, uczciwy atak, przyjęte korekty i zgodę nauczyciela, który widzi codzienną pracę. Bez tego „czuję, że jestem gotów” łatwo staje się inną nazwą ambicji.
 
 Wymagania egzaminacyjne są oknem, przez które nauczyciel może zobaczyć praktykę ucznia. Okno powinno być czyste. Techniki trzeba znać. Kolejność, strony, formy omote i ura, podstawy ataku, ukłon, wejście i zakończenie — to nie są dekoracje. Jeśli uczeń nie zna materiału, zasłania własną praktykę chaosem. Nauczyciel nie może wtedy zobaczyć, co naprawdę zostało przepracowane.
 
@@ -86,7 +88,7 @@ Hansei, uczciwa autorefleksja, nie jest nastrojem. Jest narzędziem. Egzamin bez
 
 ### Błąd nie przekreśla drogi
 
-Dobry egzamin nie musi być idealny. W budō idealność jest podejrzanie łatwym słowem. Człowiek wchodzi na matę z ciałem, oddechem, stresem, ambicją, zmęczeniem, historią przygotowań i jednym konkretnym dniem, który nie zawsze układa się pod niego.
+Dobry egzamin nie musi być idealny. W budō idealność jest podejrzanie łatwym słowem. Człowiek wchodzi na matę z ciałem, oddechem, stresem, ambicją, zmęczeniem, historią przygotowań i jednym konkretnym dniem, który nie zawsze układa się po jego myśli.
 
 Może zgubić technikę. Może wejść za płytko. Może za szybko oddychać. Może pomylić stronę. Może przez chwilę poczuć pustkę w głowie. Może zrobić coś gorzej niż na zwykłym treningu.
 
@@ -94,16 +96,18 @@ Jedna pomyłka nie przekreśla miesięcy uczciwej pracy.
 
 To trzeba powiedzieć jasno, zwłaszcza młodszym uczniom. Egzamin nie jest sądem nad wartością człowieka. Słabszy moment nie znaczy, że ktoś jest słaby. Oznacza, że w danej chwili, pod danym obciążeniem, ujawnił się konkretny stan praktyki. To materiał do pracy, nie wyrok.
 
+Tak samo niezaliczony egzamin nie musi być katastrofą. Jeśli system jest zdrowy, oznacza informację: jeszcze nie teraz; to trzeba uporządkować; tu brakuje stabilności. Taka informacja bywa trudna, ale jest uczciwsza niż stopień dany po to, żeby nikomu nie było przykro.
+
 Ale trzeba powiedzieć też drugą część, mniej wygodną.
 
 Jedna dobra demonstracja nie przykrywa braku pracy.
 
-Można mieć dobry dzień. Można trafić na wygodnego partnera. Można zrobić technikę, która akurat leży w ciele. Można wyglądać lepiej, niż wygląda codzienna praktyka. Egzamin nie powinien nagradzać przypadku. Stopień nie jest cukierkiem za stres ani medalem za jednorazową mobilizację.
+Można mieć dobry dzień. Można trafić na wygodnego partnera. Można zrobić technikę, która akurat leży w ciele. Można wyglądać lepiej, niż wygląda codzienna praktyka. Egzamin nie powinien nagradzać przypadku. Stopień nie jest nagrodą za stres ani medalem za jednorazową mobilizację.
 
 Właśnie dlatego nauczyciel patrzy szerzej niż na jeden ruch. Patrzy na postawę, kontakt, bezpieczeństwo, ukemi, kierunek, centrum, etykietę, relację z partnerem i zdolność powrotu po błędzie. Czasem najważniejszy moment egzaminu nie dzieje się w udanej technice, tylko sekundę po pomyłce.
 
 Czy uczeń się rozsypie?
-Czy zacznie tłumaczyć się ciałem?
+Czy zacznie szukać winy w partnerze, technice albo chwili?
 Czy przyspieszy, żeby ukryć wstyd?
 Czy zatrzyma oddech?
 Czy wróci do osi, ukłoni się, poprawi kontakt i zrobi następną technikę?
@@ -118,7 +122,7 @@ Na zwykłym treningu można schować się w rytmie grupy. Można ćwiczyć z ulu
 
 Nagle trzeba wyjść na środek. Ukłonić się. Oddychać. Usłyszeć nazwę techniki. Zrobić ją teraz, z tym partnerem, pod spojrzeniem nauczyciela i dojo. Bez negocjowania z chwilą.
 
-To obciążenie nie jest przeszkodą wobec egzaminu. To część egzaminu.
+To obciążenie nie stoi obok egzaminu. Jest częścią egzaminu.
 
 Budō ma uczyć działania wtedy, gdy pojawia się nacisk. Nie tylko wtedy, gdy jest wygodnie, spokojnie i nikt nie ocenia. Presja pokazuje, czy technika została w ciele, czy tylko w pamięci. Pokazuje, czy oddech jest narzędziem, czy znika przy pierwszym napięciu. Pokazuje, czy ukemi jest naprawdę bezpieczne, czy działa tylko w znanych warunkach. Pokazuje, czy etykieta jest zrozumiana, czy wykonywana automatycznie, dopóki stres jej nie zabierze.
 
@@ -216,6 +220,8 @@ This is why preparing for an exam is not only drilling the list. The list matter
 
 But the frame is not the road.
 
+Readiness is not only an inner feeling that “I want to test now.” It needs evidence: attendance, knowledge of the material, repeatability under fatigue, safe ukemi, honest attack, received corrections, and the teacher’s agreement based on daily practice. Without that, “I feel ready” can become another name for ambition.
+
 Requirements are a window through which the teacher can see the student's practice. The window should be clean. Techniques must be known. Direction, sides, omote and ura, the basic form of the attack, the bow, the entry, the finish — these are not decorations. If the student does not know the material, they cover their own practice with noise. The teacher cannot see clearly what has been worked through.
 
 But the window is not the whole house.
@@ -247,7 +253,7 @@ Hansei, honest self-reflection, is not a mood. It is a tool. An exam without han
 
 ### A mistake does not erase the road
 
-A good exam does not have to be perfect. In budō, perfection is often too convenient a word. A person steps onto the mat with a body, breath, stress, ambition, fatigue, a history of preparation, and one particular day that may not arrange itself kindly.
+A good exam does not have to be perfect. In budō, perfection is often too convenient a word. A person steps onto the mat with a body, breath, stress, ambition, fatigue, a history of preparation, and one particular day that may not go their way.
 
 They may lose a technique. They may enter too shallowly. They may breathe too quickly. They may confuse a side. They may feel a sudden blank in the mind. They may do something worse than they did in ordinary training.
 
@@ -255,16 +261,18 @@ One mistake does not erase months of honest work.
 
 This has to be said clearly, especially to younger students. An exam is not a judgment of a person's worth. A weak moment does not mean a weak human being. It means that, under this pressure, at this time, a specific condition of practice was revealed. That is material for work, not a sentence.
 
+Likewise, not passing an exam does not have to be a catastrophe. In a healthy system it is information: not yet; this needs order; this lacks stability. Difficult information is better than rank given only so that nobody feels hurt.
+
 But the other half must also be said.
 
 One good demonstration does not cover the absence of work.
 
-A person can have a good day. They can get a comfortable partner. They can perform a technique that happens to suit their body. They can look better than their daily practice deserves. A grading should not reward accident. Rank is not candy for stress, nor a medal for one-time mobilization.
+A person can have a good day. They can get a comfortable partner. They can perform a technique that happens to suit their body. They can look better than their daily practice deserves. A grading should not reward accident. Rank is not a reward for stress, nor a medal for one-time mobilization.
 
 That is why a teacher looks wider than one movement. They look at posture, contact, safety, ukemi, direction, center, etiquette, relationship with the partner, and the ability to return after a mistake. Sometimes the most important moment in an exam does not happen in a successful technique, but one second after an error.
 
 Does the student collapse?
-Do they start explaining themselves with the body?
+Do they start looking for blame in the partner, the technique, or the moment?
 Do they speed up to hide embarrassment?
 Do they hold the breath?
 Or do they return to center, bow, restore contact, and do the next technique?
@@ -279,13 +287,13 @@ In ordinary training, a student can hide inside the rhythm of the group. They ca
 
 Suddenly the student has to come to the center. Bow. Breathe. Hear the name of the technique. Do it now, with this partner, under the eyes of the teacher and the dojo. No negotiation with the moment.
 
-That pressure is not an obstacle to the examination. It is part of the examination.
+That pressure does not stand outside the examination. It is part of the examination.
 
 Budō is meant to teach action under pressure, not only when things are comfortable, quiet, and unobserved. Pressure shows whether technique is in the body or only in memory. It shows whether breath is a tool or disappears at the first tension. It shows whether ukemi is genuinely safe or only works in familiar conditions. It shows whether etiquette is understood or merely performed until stress takes it away.
 
 The point is not that the student should feel nothing. That would be unrealistic. The point is that, while feeling it, the student can return to work.
 
-Fear of judgment, ambition, tension, a blank mind — all of these may appear. The question is: what leads then? Ego or practice? Panic or breath? The desire to be seen well or the discipline of honest movement?
+Fear of judgment, ambition, tension, a blank mind — all of these may appear. The question is: what leads then? Ego or practice? Panic or breath? The wish to look good or the discipline of honest movement?
 
 An exam matters because it asks these questions in the body.
 

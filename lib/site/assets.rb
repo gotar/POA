@@ -2,6 +2,7 @@
 
 require "yaml"
 require "open-uri"
+require "uri"
 
 module Site
   module Assets
@@ -23,8 +24,8 @@ module Site
       def read(asset)
         path = self[asset]
 
-        if File.exist?("#{root}#{path}")
-          File.read("#{root}#{path}")
+        if path && File.exist?(File.join(root, path))
+          File.read(File.join(root, path))
         end
       end
 
@@ -52,7 +53,7 @@ module Site
 
       def read(asset)
         path = self[asset]
-        open(path, "r:UTF-8").read
+        URI.open(path, "r:UTF-8").read
       end
     end
   end

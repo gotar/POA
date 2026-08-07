@@ -2,6 +2,7 @@
 /node_modules
 /vendor
 /build
+/.worktrees
 
 # OpenCode local configuration
 .opencode/.env

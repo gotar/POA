@@ -350,7 +350,7 @@ module Site
     def render(export_dir, path, view, **input)
       base_context = Site::Container["view.context"]
       processed_path = path.sub(%r{(?:^|/)index.html$}, "")
-      context = base_context.new(current_path: processed_path)
+      context = base_context.new(current_path: processed_path, root: Site::Container.config.root)
 
       export.(export_dir, path, view.(context: context, **input))
     end

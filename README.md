@@ -7,7 +7,17 @@ Static site generator built with [dry-system][dry-system] and [dry-view][dry-vie
 
 ## Getting started
 
-Run `./bin/setup` to set up the application.
+The host (SteamOS) cannot compile native gems (missing system headers), so
+everything runs in the `poa-dev:local` Docker image (see `Dockerfile.dev`).
+
+```sh
+docker build -f Dockerfile.dev -t poa-dev:local .
+docker run --rm -v "$PWD:/app" -w /app poa-dev:local ./bin/build
+```
+
+On Steam Deck, prefix docker commands with `sg docker -c '…'`. On a normal
+Linux/macOS host with a working Ruby, `./bin/setup` followed by
+`bundle exec ./bin/build` works as well.
 
 Review `.env` and adjust the settings as required. You can set:
 - `SITE_NAME` - Site name (default: "Polska Organizacja Aikido")
@@ -175,9 +185,16 @@ Key pages with custom SEO:
 
 ## Deploy
 
-- Run `./bin/deploy` to build and publish the `build/` directory to the `gh-pages` branch.
-- The script performs: **build → commit build output → push gh-pages**.
-- After pushing, the site is available at `https://aikido-polska.eu/` within a few minutes.
+- `./bin/deploy` builds the site (in the `poa-dev:local` container when
+  available) and pushes `master` to GitHub. The `gh-pages.yml` workflow then
+  builds `build/` in CI and deploys it to the `gh-pages` branch.
+- The workflow runs only on pushes to `master`; `build-check.yml` verifies
+  that the site builds on pull requests.
+- After pushing, the site is available at https://aikido-polska.eu/ within a
+  few minutes.
+- The legacy flow (committing `build/` to `master` + `git subtree push` to
+  `gh-pages`) is obsolete — `build/` is gitignored and the Actions workflow
+  owns the gh-pages branch.
 
 ## Common SEO features
 

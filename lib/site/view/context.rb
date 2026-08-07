@@ -1,5 +1,6 @@
 require "uri"
 require "json"
+require "digest"
 require "dry/core/constants"
 require "dry/view/context"
 require "forwardable"
@@ -18,11 +19,13 @@ module Site
 
       attr_accessor :current_path
       attr_accessor :seo_description, :seo_keywords
+      attr_accessor :root
 
-      def initialize(current_path: nil, render_env: nil, **deps)
+      def initialize(current_path: nil, render_env: nil, root: nil, **deps)
         super(render_env: render_env)
 
         @current_path = current_path
+        @root = root
         @page_title = deps[:page_title]
         @_assets = deps[:assets]
         @_settings = deps[:settings]
@@ -32,6 +35,7 @@ module Site
         self.class.new(
           current_path: @current_path,
           render_env: render_env,
+          root: @root,
           assets: @_assets,
           settings: @_settings,
           page_title: @page_title
@@ -41,6 +45,7 @@ module Site
       def initialize_copy(source)
         super
         @current_path = source.instance_variable_get(:@current_path)
+        @root = source.instance_variable_get(:@root)
         @page_title = source.instance_variable_get(:@page_title)
         @_assets = source.instance_variable_get(:@_assets)
         @_settings = source.instance_variable_get(:@_settings)
@@ -1964,9 +1969,17 @@ module Site
       end
 
       def asset_path_with_version(path)
-        base_path = asset_path(path)
-        version = Time.now.to_i
-        "#{base_path}?v=#{version}"
+        "#{asset_path(path)}?v=#{asset_version(path)}"
+      end
+
+      # Content-derived version: stable across builds and machines, so the
+      # generated site is byte-identical between builds (a timestamp-based
+      # version made every build differ and churned gh-pages commits).
+      def asset_version(path)
+        asset_file = File.join(root || Site::Container.root, "assets", path.sub(%r{\A/}, ""))
+        return "1" unless File.file?(asset_file)
+
+        Digest::MD5.file(asset_file).hexdigest[0, 10]
       end
 
       def new(**new_options)

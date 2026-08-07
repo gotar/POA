@@ -1,0 +1,16 @@
+# POA dev/test image — host Ruby (Steam Deck) cannot build native gems
+# (missing /usr/include/stdio.h). Build: sg docker -c 'docker build -f Dockerfile.dev -t poa-dev:local .'
+# Run:   sg docker -c 'docker run --rm -v "$PWD:/app" -w /app poa-dev:local ./bin/build'
+FROM ruby:3.4
+
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends build-essential \
+ && rm -rf /var/lib/apt/lists/*
+
+ENV BUNDLE_PATH=/bundle
+WORKDIR /app
+
+COPY Gemfile Gemfile.lock ./
+RUN bundle install
+
+COPY . .

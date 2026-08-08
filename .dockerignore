@@ -1,0 +1,6 @@
+# Keep the docker build context lean: no VCS metadata, generated output,
+# secrets, or nested worktree checkouts.
+.git
+build
+.worktrees
+.env

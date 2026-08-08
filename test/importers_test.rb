@@ -54,7 +54,7 @@ class ImportersFilesTest < Minitest::Test
     data = @importer.call(@dir).first
 
     assert_equal "podstrony/o-dojo.md", data[:path]
-    assert_equal "Ciało strony.\n", data[:body]
+    assert_equal "Ciało strony.", data[:body]
     assert_equal "O dojo", data[:title]
   end
 

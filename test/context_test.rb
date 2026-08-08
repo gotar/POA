@@ -37,7 +37,8 @@ class ContextPageTitleTest < Minitest::Test
   def test_nil_page_title_uses_default_title_for_path
     ctx = make_context(page_title: nil, current_path: "kontakt.html")
 
-    assert_equal "Kontakt i grafik treningów Aikido | Gdynia | Sesshinkan Dojo", ctx.page_title
+    assert_equal "Kontakt i grafik treningów Aikido | Gdynia | Sesshinkan Dojo | Polska Organizacja Aikido", ctx.page_title
+    assert_equal "Kontakt i grafik treningów Aikido | Gdynia | Sesshinkan Dojo", ctx.default_title_for_path("kontakt.html")
   end
 
   def test_nil_default_title_falls_back_to_site_name

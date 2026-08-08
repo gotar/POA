@@ -189,6 +189,7 @@ PAGES = {
       FileUtils.cp_r File.join(root, "assets/images"), File.join(export_dir, "assets/images")
       FileUtils.cp_r File.join(root, "assets/favicons/."), File.join(export_dir)
       FileUtils.cp File.join(root, "assets/style.css"), File.join(export_dir, "assets/style.css")
+      FileUtils.cp File.join(root, "assets/app.js"), File.join(export_dir, "assets/app.js")
       FileUtils.cp File.join(root, "assets/manifest.json"), File.join(export_dir, "assets/manifest.json")
       FileUtils.cp File.join(root, "assets/robots.txt"), File.join(export_dir, "robots.txt")
 

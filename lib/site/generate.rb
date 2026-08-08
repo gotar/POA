@@ -1,5 +1,6 @@
 require "fileutils"
 require "site/import"
+require "site/sitemap"
 require "dry/monads"
 require "dry/monads/result"
 
@@ -163,6 +164,7 @@ module Site
 
     def call(root)
       export_dir = File.join(root, settings.export_dir)
+      @rendered_pages = []
 
       FileUtils.mkdir_p File.join(export_dir, "assets")
       FileUtils.cp_r File.join(root, "assets/images"), File.join(export_dir, "assets/images")
@@ -170,7 +172,6 @@ module Site
       FileUtils.cp File.join(root, "assets/style.css"), File.join(export_dir, "assets/style.css")
       FileUtils.cp File.join(root, "assets/manifest.json"), File.join(export_dir, "assets/manifest.json")
       FileUtils.cp File.join(root, "assets/robots.txt"), File.join(export_dir, "robots.txt")
-      FileUtils.cp File.join(root, "assets/sitemap.xml"), File.join(export_dir, "sitemap.xml")
 
       FileUtils.cp File.join(root, "assets/.nojekyll"), File.join(export_dir, ".nojekyll")
       FileUtils.cp File.join(root, "assets/CNAME"), File.join(export_dir, "CNAME")
@@ -322,6 +323,11 @@ module Site
       render export_dir, "en/blog/jiko-sekinin-personal-responsibility.html", blog_jiko_sekinin_en_view
       render export_dir, "en/blog/kuzushi-controlled-imbalance.html", blog_kuzushi_en_view
 
+      File.write(
+        File.join(export_dir, "sitemap.xml"),
+        Site::Sitemap.new.call(@rendered_pages, repo_root: root)
+      )
+
       Success(root)
     end
 
@@ -352,6 +358,7 @@ module Site
       processed_path = path.sub(%r{(?:^|/)index.html$}, "")
       context = base_context.new(current_path: processed_path, root: Site::Container.config.root)
 
+      @rendered_pages << [processed_path, view]
       export.(export_dir, path, view.(context: context, **input))
     end
   end

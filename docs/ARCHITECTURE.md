@@ -1299,7 +1299,8 @@ end
 ### Medium-term
 - [ ] Content management via Markdown + frontmatter
 - [ ] Multi-language routing (extract Polish/English patterns)
-- [ ] RSS/sitemap generation
+- [x] Sitemap generation (build-time, from rendered pages — see `lib/site/sitemap.rb`)
+- [ ] RSS feed generation
 - [ ] Search functionality (static JSON index + JS)
 
 ### Long-term

@@ -152,7 +152,7 @@ Key pages with custom SEO:
 - **View controllers:** `lib/site/views/**` define controllers that select templates and (optionally) layouts. They are auto-registered by `dry-system` via `system/site/container.rb`.
 - **Templates:** `templates/**` hold ERB templates. English templates typically use the `_en` suffix and a `site_en` layout in the view config.
 - **SEO context:** `lib/site/view/context.rb` provides titles, descriptions, keywords, canonical URLs, and hreflang alternates per path.
-- **Static assets:** copied from `assets/` into `build/` during `./bin/build`. The `assets/sitemap.xml` file is copied as-is.
+- **Static assets:** copied from `assets/` into `build/` during `./bin/build`. The sitemap is **generated** at build time from the pages actually rendered (see `lib/site/sitemap.rb`) — there is no hand-maintained sitemap file.
 
 ## Adding a new page (checklist)
 
@@ -177,8 +177,7 @@ Key pages with custom SEO:
 6. **Add hreflang mapping**
    - Update `LANG_URL_MAP` in `lib/site/view/context.rb` for the new PL/EN URL pair.
 
-7. **Update the sitemap**
-   - Add URLs to `assets/sitemap.xml` (copied verbatim into the build).
+7. **Sitemap** — nothing to do. `lib/site/sitemap.rb` lists every page rendered in step 3 automatically; blog post `lastmod` comes from `BLOG_POSTS_PL` / `BLOG_POSTS_EN` dates in `lib/site/view/context.rb`.
 
 8. **Build locally**
    - Run `./bin/build` and verify `build/` contains the new HTML files.

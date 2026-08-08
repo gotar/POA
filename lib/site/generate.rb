@@ -325,7 +325,7 @@ module Site
 
       File.write(
         File.join(export_dir, "sitemap.xml"),
-        Site::Sitemap.new.call(@rendered_pages, repo_root: root)
+        Site::Sitemap.new.call(@rendered_pages)
       )
 
       Success(root)

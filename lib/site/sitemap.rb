@@ -93,7 +93,7 @@ module Site
     }.freeze
 
     # pages: array of [path, view] pairs collected from Generate#render
-    def call(pages, repo_root:)
+    def call(pages)
       entries = pages.map { |path, _view| entry_for(path) }
       entries.sort_by! { |e| e[:loc] }
 

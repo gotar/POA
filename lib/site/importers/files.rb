@@ -39,9 +39,15 @@ module Site
 
       FILE_WITH_TYPE_REGEXP = %r{^(?<name>[^\.]+)\.(?<type>[^\.]+)\.(?<exts>.+)$}
 
+      # Type applied when the file name carries no explicit "name.type.exts"
+      # segment and the front matter defines no :type.
+      DEFAULT_TYPE = "page"
+
       def infer_type_from_file_name(file_name)
         if (match = FILE_WITH_TYPE_REGEXP.match(file_name))
           match[:type]
+        else
+          DEFAULT_TYPE
         end
       end
     end

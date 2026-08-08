@@ -32,6 +32,23 @@ Run `./bin/build` to build the site. This will empty the `build/` directory and 
 
 Run `bundle exec guard` to start automatic rebuilding when files change. The guard configuration is in `Guardfile`.
 
+## Running tests
+
+The suite is minitest-based (no Rails, no DB). Run it inside the dev container:
+
+```sh
+docker run --rm -v "$PWD:/app" -w /app poa-dev:local ./bin/test
+# or: docker run --rm -v "$PWD:/app" -w /app poa-dev:local bundle exec rake test
+```
+
+The SEO behavior snapshot (`test/fixtures/seo_snapshot.json`) locks every
+title/description/keywords/schema entry; after changing SEO data or adding a
+page, regenerate it:
+
+```sh
+docker run --rm -v "$PWD:/app" -w /app poa-dev:local ruby test/scripts/extract_seo.rb
+```
+
 ## Deploying the site
 
 Run `./bin/deploy` to deploy the site. This will:

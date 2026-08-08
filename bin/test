@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+# Run the POA minitest suite. Intended to run inside the dev container:
+#   sg docker -c 'docker run --rm -v "$PWD:/app" -w /app poa-dev:local bin/test'
+# Fallback: bundle exec rake test
+
+$LOAD_PATH.unshift File.expand_path("../lib", __dir__)
+$LOAD_PATH.unshift File.expand_path("../test", __dir__)
+
+require "bundler/setup"
+require "minitest/autorun"
+
+Dir[File.expand_path("../test/**/*_test.rb", __dir__)].sort.each do |test_file|
+  require test_file
+end

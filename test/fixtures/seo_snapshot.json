@@ -333,55 +333,100 @@
     "title": "Bushido — droga wojownika w praktyce dojo | Blog",
     "description": "Bushido w praktyce Aikido: dyscyplina, odpowiedzialność i etyka pracy w dojo, które budują trwałe umiejętności.",
     "keywords": "bushido aikido, droga wojownika, etyka dojo, dyscyplina treningowa, zasady budo",
-    "schema": null
+    "schema": {
+      "headline": "Bushido — droga wojownika w praktyce dojo",
+      "inLanguage": "pl-PL",
+      "datePublished": "2026-02-23",
+      "dateModified": "2026-02-23"
+    }
   },
   "blog/kaizen-ciagle-doskonalenie.html": {
     "title": "Kaizen — ciągłe doskonalenie w Aikido | Blog",
     "description": "Kaizen w treningu Aikido: małe, konsekwentne kroki, które przekładają się na realny postęp techniczny i mentalny.",
     "keywords": "kaizen aikido, ciagle doskonalenie, nawyki treningowe, postep techniczny, rozwoj dojo",
-    "schema": null
+    "schema": {
+      "headline": "Kaizen — ciągłe doskonalenie w Aikido",
+      "inLanguage": "pl-PL",
+      "datePublished": "2026-02-23",
+      "dateModified": "2026-02-23"
+    }
   },
   "blog/gaman-wytrwalosc.html": {
     "title": "Gaman — wytrwałość i opanowanie na macie | Blog",
     "description": "Gaman jako fundament praktyki: wytrwałość, opanowanie i jakość decyzji pod presją na macie i poza nią.",
     "keywords": "gaman aikido, wytrwalosc, opanowanie, odpornosc psychiczna, trening pod presja",
-    "schema": null
+    "schema": {
+      "headline": "Gaman — wytrwałość i opanowanie na macie",
+      "inLanguage": "pl-PL",
+      "datePublished": "2026-02-23",
+      "dateModified": "2026-02-23"
+    }
   },
   "blog/kintsugi-zlota-naprawa.html": {
     "title": "Kintsugi — złota naprawa i odporność psychiczna | Blog",
     "description": "Kintsugi jako metafora rozwoju aikidoki: jak błędy, korekta i konsekwencja wzmacniają technikę oraz charakter.",
     "keywords": "kintsugi aikido, zlota naprawa, praca z bledem, odpornosc, rozwoj osobisty",
-    "schema": null
+    "schema": {
+      "headline": "Kintsugi — złota naprawa i odporność psychiczna",
+      "inLanguage": "pl-PL",
+      "datePublished": "2026-02-23",
+      "dateModified": "2026-02-23"
+    }
   },
   "blog/wabi-sabi-piekno-niedoskonalosci.html": {
     "title": "Wabi-sabi — piękno niedoskonałości w treningu | Blog",
     "description": "Wabi-sabi w Aikido: akceptacja niedoskonałości, praca nad detalem i dojrzewanie techniki przez regularny trening.",
     "keywords": "wabi sabi aikido, piekno niedoskonalosci, pokora w treningu, proces doskonalenia",
-    "schema": null
+    "schema": {
+      "headline": "Wabi-sabi — piękno niedoskonałości w treningu",
+      "inLanguage": "pl-PL",
+      "datePublished": "2026-02-23",
+      "dateModified": "2026-02-23"
+    }
   },
   "blog/mushin-umysl-bez-umyslu.html": {
     "title": "Mushin — umysł bez umysłu w Aikido | Blog",
     "description": "Mushin w praktyce: jak budować swobodną, nieusztywnioną reakcję i utrzymywać klarowność działania w technice.",
     "keywords": "mushin aikido, umysl bez umyslu, reakcja spontaniczna, skupienie, zen w ruchu",
-    "schema": null
+    "schema": {
+      "headline": "Mushin — umysł bez umysłu w Aikido",
+      "inLanguage": "pl-PL",
+      "datePublished": "2026-02-23",
+      "dateModified": "2026-02-23"
+    }
   },
   "blog/sesshin-gleboka-praktyka.html": {
     "title": "Sesshin — głęboka praktyka i tożsamość Sesshinkan Dojo | Blog",
     "description": "Sesshin jako głęboka praktyka Aikido: koncentracja, dyscyplina i standard pracy, który definiuje Sesshinkan Dojo.",
     "keywords": "sesshin aikido, gleboka praktyka, intensywny trening, sesshinkan dojo, dyscyplina i skupienie",
-    "schema": null
+    "schema": {
+      "headline": "Sesshin — głęboka praktyka i tożsamość Sesshinkan Dojo",
+      "inLanguage": "pl-PL",
+      "datePublished": "2026-02-24",
+      "dateModified": "2026-02-24"
+    }
   },
   "blog/zenshin-pelne-zaangazowanie.html": {
     "title": "Zenshin — pełne zaangażowanie w każdym ruchu | Blog",
     "description": "Zenshin, czyli pełne zaangażowanie ciała i umysłu w ruchu, kontakt z partnerem i finalizację techniki.",
     "keywords": "zenshin aikido, pelne zaangazowanie, intencja ruchu, koncentracja, jakosc techniki",
-    "schema": null
+    "schema": {
+      "headline": "Zenshin — pełne zaangażowanie w każdym ruchu",
+      "inLanguage": "pl-PL",
+      "datePublished": "2026-02-23",
+      "dateModified": "2026-02-23"
+    }
   },
   "blog/zanshin-czujnosc-po-technice.html": {
     "title": "Zanshin — czujność po technice i domknięcie działania | Blog",
     "description": "Zanshin jako pozostająca czujność po wykonaniu techniki: jak domykać działanie i utrzymywać jakość pod presją.",
     "keywords": "zanshin aikido, pozostajaca czujnosc, domkniecie techniki, uwaga po ruchu, jakosc decyzji",
-    "schema": null
+    "schema": {
+      "headline": "Zanshin — czujność po technice i domknięcie działania",
+      "inLanguage": "pl-PL",
+      "datePublished": "2026-02-25",
+      "dateModified": "2026-02-25"
+    }
   },
   "blog/enso-krag-obecnosci.html": {
     "title": "Ensō — krąg obecności i trening decyzji | Blog",
@@ -728,85 +773,155 @@
     "title": "Styl Aikido Fumio Toyody — technika i Zen jako jeden system | Blog",
     "description": "Czym wyróżnia się styl Aikido Fumio Toyody? Poznaj połączenie precyzji technicznej, oddechu i dyscypliny Zen w jednym systemie treningowym.",
     "keywords": "styl aikido toyody, fumio toyoda, aikido zen, misogi, trening budo, linia toyoda",
-    "schema": null
+    "schema": {
+      "headline": "Styl Aikido Fumio Toyody — technika i Zen jako jeden system",
+      "inLanguage": "pl-PL",
+      "datePublished": "2026-03-07",
+      "dateModified": "2026-03-07"
+    }
   },
   "blog/linia-toyoda-germanov-jak-cwiczymy.html": {
     "title": "Linia Toyoda–Germanov — jak ćwiczymy i czym wyróżnia się nasza szkoła | Blog",
     "description": "Linia Toyoda–Germanov w praktyce: precyzja techniczna, dyscyplina wewnętrzna i odpowiedzialny przekaz instruktorski na tle innych nurtów Aikido.",
     "keywords": "linia toyoda germanov, aikido germanov, metodyka aikido, budo praktyka, aikido szkoła",
-    "schema": null
+    "schema": {
+      "headline": "Linia Toyoda–Germanov — jak ćwiczymy i czym wyróżnia się nasza szkoła",
+      "inLanguage": "pl-PL",
+      "datePublished": "2026-03-07",
+      "dateModified": "2026-03-07"
+    }
   },
   "blog/omoiyari-uwazna-troska.html": {
     "title": "Omoiyari — uważna troska i odpowiedzialny partnering | Blog",
     "description": "Omoiyari w dojo: uważna troska o partnera, bezpieczeństwo treningu i wysoka kultura współpracy na macie.",
     "keywords": "omoiyari aikido, uwazna troska, partnering, bezpieczenstwo na macie, kultura dojo",
-    "schema": null
+    "schema": {
+      "headline": "Omoiyari — uważna troska i odpowiedzialny partnering",
+      "inLanguage": "pl-PL",
+      "datePublished": "2026-02-23",
+      "dateModified": "2026-02-23"
+    }
   },
   "blog/jiko-sekinin-odpowiedzialnosc-osobista.html": {
     "title": "Jiko sekinin — odpowiedzialność osobista w dojo | Blog",
     "description": "Jiko sekinin w Aikido: odpowiedzialność za własny rozwój, przygotowanie, higienę techniki i postawę na treningu.",
     "keywords": "jiko sekinin aikido, odpowiedzialnosc osobista, samodyscyplina, etyka treningu",
-    "schema": null
+    "schema": {
+      "headline": "Jiko sekinin — odpowiedzialność osobista w dojo",
+      "inLanguage": "pl-PL",
+      "datePublished": "2026-02-23",
+      "dateModified": "2026-02-23"
+    }
   },
   "blog/kuzushi-kontrolowana-nierownowaga.html": {
     "title": "Kuzushi — kontrolowana nierównowaga i prowadzenie techniki | Blog",
     "description": "Kuzushi od podstaw do zastosowania: kontrolowana nierównowaga, timing i kierunek, które otwierają skuteczną technikę.",
     "keywords": "kuzushi aikido, kontrolowana nierownowaga, balans, timing, prowadzenie partnera",
-    "schema": null
+    "schema": {
+      "headline": "Kuzushi — kontrolowana nierównowaga i prowadzenie techniki",
+      "inLanguage": "pl-PL",
+      "datePublished": "2026-02-23",
+      "dateModified": "2026-02-23"
+    }
   },
   "en/blog/bushido-way-of-the-warrior.html": {
     "title": "Bushido — the warrior's way in dojo practice | Blog",
     "description": "Bushido in practical Aikido training: discipline, accountability, and dojo ethics that shape durable martial skills.",
     "keywords": "bushido aikido, warrior way, dojo ethics, training discipline, budo principles",
-    "schema": null
+    "schema": {
+      "headline": "Bushido — the warrior's way in dojo practice",
+      "inLanguage": "en-US",
+      "datePublished": "2026-02-23",
+      "dateModified": "2026-02-23"
+    }
   },
   "en/blog/kaizen-continuous-improvement.html": {
     "title": "Kaizen — continuous improvement in Aikido training | Blog",
     "description": "Kaizen applied to Aikido: steady incremental improvement that compounds into reliable technical and mental progress.",
     "keywords": "kaizen aikido, continuous improvement, training habits, technical progression, dojo growth",
-    "schema": null
+    "schema": {
+      "headline": "Kaizen — continuous improvement in Aikido training",
+      "inLanguage": "en-US",
+      "datePublished": "2026-02-23",
+      "dateModified": "2026-02-23"
+    }
   },
   "en/blog/gaman-endurance-and-composure.html": {
     "title": "Gaman — endurance and composure on the mat | Blog",
     "description": "Gaman as a training principle: endurance, composure, and quality decision-making under pressure on the mat.",
     "keywords": "gaman aikido, endurance, composure, resilience, pressure training",
-    "schema": null
+    "schema": {
+      "headline": "Gaman — endurance and composure on the mat",
+      "inLanguage": "en-US",
+      "datePublished": "2026-02-23",
+      "dateModified": "2026-02-23"
+    }
   },
   "en/blog/kintsugi-golden-repair.html": {
     "title": "Kintsugi — golden repair and resilient mindset | Blog",
     "description": "Kintsugi as a growth model in Aikido: learning from mistakes, repairing structure, and building resilient performance.",
     "keywords": "kintsugi aikido, golden repair, learning from mistakes, resilience, mindset",
-    "schema": null
+    "schema": {
+      "headline": "Kintsugi — golden repair and resilient mindset",
+      "inLanguage": "en-US",
+      "datePublished": "2026-02-23",
+      "dateModified": "2026-02-23"
+    }
   },
   "en/blog/wabi-sabi-beauty-of-imperfection.html": {
     "title": "Wabi-sabi — beauty of imperfection in practice | Blog",
     "description": "Wabi-sabi in Aikido practice: accepting imperfection while refining movement, timing, and technical clarity.",
     "keywords": "wabi sabi aikido, beauty of imperfection, humility, long-term training process",
-    "schema": null
+    "schema": {
+      "headline": "Wabi-sabi — beauty of imperfection in practice",
+      "inLanguage": "en-US",
+      "datePublished": "2026-02-23",
+      "dateModified": "2026-02-23"
+    }
   },
   "en/blog/mushin-no-mind.html": {
     "title": "Mushin — no-mind state in Aikido practice | Blog",
     "description": "Mushin in partner work: developing clear, unforced responses and preserving calm precision in motion.",
     "keywords": "mushin aikido, no mind, spontaneous response, calm focus, zen in movement",
-    "schema": null
+    "schema": {
+      "headline": "Mushin — no-mind state in Aikido practice",
+      "inLanguage": "en-US",
+      "datePublished": "2026-02-23",
+      "dateModified": "2026-02-23"
+    }
   },
   "en/blog/sesshin-deep-practice.html": {
     "title": "Sesshin — deep practice and Sesshinkan Dojo identity | Blog",
     "description": "Sesshin as deep Aikido practice: concentration, discipline, and the training standard that defines Sesshinkan Dojo.",
     "keywords": "sesshin aikido, deep practice, intensive training, sesshinkan dojo, discipline and focus",
-    "schema": null
+    "schema": {
+      "headline": "Sesshin — deep practice and Sesshinkan Dojo identity",
+      "inLanguage": "en-US",
+      "datePublished": "2026-02-24",
+      "dateModified": "2026-02-24"
+    }
   },
   "en/blog/zenshin-full-commitment.html": {
     "title": "Zenshin — full commitment in every movement | Blog",
     "description": "Zenshin means full commitment: body-mind unity, intent continuity, and complete execution of technique.",
     "keywords": "zenshin aikido, full commitment, intent continuity, concentration, execution quality",
-    "schema": null
+    "schema": {
+      "headline": "Zenshin — full commitment in every movement",
+      "inLanguage": "en-US",
+      "datePublished": "2026-02-23",
+      "dateModified": "2026-02-23"
+    }
   },
   "en/blog/zanshin-awareness-after-execution.html": {
     "title": "Zanshin — awareness after execution and process closure | Blog",
     "description": "Zanshin as remaining awareness after technique: how to close action loops and preserve quality under pressure.",
     "keywords": "zanshin aikido, remaining awareness, follow-through, post-execution control, decision quality",
-    "schema": null
+    "schema": {
+      "headline": "Zanshin — awareness after execution and process closure",
+      "inLanguage": "en-US",
+      "datePublished": "2026-02-25",
+      "dateModified": "2026-02-25"
+    }
   },
   "en/blog/enso-circle-of-presence.html": {
     "title": "Ensō — circle of presence and decision training | Blog",
@@ -1153,31 +1268,56 @@
     "title": "Fumio Toyoda’s Aikido style — technique and Zen as one system | Blog",
     "description": "What defines Fumio Toyoda’s Aikido style? Discover how technical precision, breath work, and Zen discipline form one coherent training system.",
     "keywords": "toyoda aikido style, fumio toyoda, aikido zen, misogi, budo training, toyoda lineage",
-    "schema": null
+    "schema": {
+      "headline": "Fumio Toyoda’s Aikido style — technique and Zen as one system",
+      "inLanguage": "en-US",
+      "datePublished": "2026-03-07",
+      "dateModified": "2026-03-07"
+    }
   },
   "en/blog/toyoda-germanov-lineage-how-we-train.html": {
     "title": "Toyoda–Germanov lineage — how we train and what sets our school apart | Blog",
     "description": "Toyoda–Germanov lineage in practice: technical precision, inner discipline, and responsible instruction compared with other Aikido streams.",
     "keywords": "toyoda germanov lineage, germanov aikido, aikido methodology, budo practice, aikido school",
-    "schema": null
+    "schema": {
+      "headline": "Toyoda–Germanov lineage — how we train and what sets our school apart",
+      "inLanguage": "en-US",
+      "datePublished": "2026-03-07",
+      "dateModified": "2026-03-07"
+    }
   },
   "en/blog/omoiyari-considerate-compassion.html": {
     "title": "Omoiyari — considerate compassion in partner work | Blog",
     "description": "Omoiyari in the dojo: considerate compassion, partner safety, and responsible intensity in everyday training.",
     "keywords": "omoiyari aikido, considerate compassion, partner safety, cooperative training, dojo culture",
-    "schema": null
+    "schema": {
+      "headline": "Omoiyari — considerate compassion in partner work",
+      "inLanguage": "en-US",
+      "datePublished": "2026-02-23",
+      "dateModified": "2026-02-23"
+    }
   },
   "en/blog/jiko-sekinin-personal-responsibility.html": {
     "title": "Jiko sekinin — personal responsibility in the dojo | Blog",
     "description": "Jiko sekinin in Aikido: personal responsibility for preparation, attitude, and the quality of each repetition.",
     "keywords": "jiko sekinin aikido, personal responsibility, self-discipline, training ethics",
-    "schema": null
+    "schema": {
+      "headline": "Jiko sekinin — personal responsibility in the dojo",
+      "inLanguage": "en-US",
+      "datePublished": "2026-02-23",
+      "dateModified": "2026-02-23"
+    }
   },
   "en/blog/kuzushi-controlled-imbalance.html": {
     "title": "Kuzushi — controlled imbalance and technical guidance | Blog",
     "description": "Kuzushi explained through practice: controlled imbalance, timing, and direction to unlock effective technique.",
     "keywords": "kuzushi aikido, controlled imbalance, timing, direction, partner guidance",
-    "schema": null
+    "schema": {
+      "headline": "Kuzushi — controlled imbalance and technical guidance",
+      "inLanguage": "en-US",
+      "datePublished": "2026-02-23",
+      "dateModified": "2026-02-23"
+    }
   },
   "blog.html": {
     "title": "Blog | Polska Organizacja Aikido",

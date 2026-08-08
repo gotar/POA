@@ -1,14 +1,14 @@
 #!/usr/bin/env ruby
 # Extracts the CURRENT SEO behavior of Site::View::Context into a JSON
-# snapshot (test/fixtures/seo_snapshot.json) and prints Ruby data-table
-# drafts for the case/when refactor.
+# snapshot (test/fixtures/seo_snapshot.json).
 #
 # Run inside the dev container:
 #   docker run --rm -v "$PWD:/app" -w /app poa-dev:local ruby test/scripts/extract_seo.rb
 #
 # The snapshot is the regression contract: seo_snapshot_test.rb compares
-# runtime behavior against it, so the case/when -> data-table refactor can
-# be proven byte-identical.
+# runtime behavior against it, and determinism_test.rb uses it as the
+# independent oracle for the full set of renderable pages. Regenerate it
+# whenever the page set or any SEO data changes (see README).
 
 require "bundler/setup"
 require "json"
@@ -21,9 +21,9 @@ require "site/generate"
 
 paths = []
 
-# Static pages from Generate#call's render calls.
-generate_source = File.read(File.expand_path("../../lib/site/generate.rb", __dir__))
-generate_source.scan(/render export_dir, "([^"]+)"/) { paths << Regexp.last_match(1) }
+# Static + article pages from the declarative PAGES table. The table order
+# matches the render order, so the snapshot's key order stays stable.
+paths.concat(Site::Generate::PAGES.keys)
 
 # Blog pagination pages (derived from the BLOG_POSTS counts).
 %w[pl en].each do |lang|

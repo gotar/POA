@@ -163,7 +163,7 @@ module Site
     ]
 
     def call(root)
-      export_dir = File.join(root, settings.export_dir)
+      export_dir = export_dir_for(root)
       @rendered_pages = []
 
       FileUtils.mkdir_p File.join(export_dir, "assets")
@@ -334,23 +334,21 @@ module Site
     private
 
     def render_blog_index_pages(export_dir)
-      pl_pages = total_blog_pages_for(Site::View::Context::BLOG_POSTS_PL)
-      en_pages = total_blog_pages_for(Site::View::Context::BLOG_POSTS_EN)
+      context = Site::Container["view.context"]
 
-      (1..pl_pages).each do |page|
+      (1..context.blog_total_pages(language: "pl")).each do |page|
         path = page == 1 ? "blog.html" : "blog-#{page}.html"
         render export_dir, path, blog_view
       end
 
-      (1..en_pages).each do |page|
+      (1..context.blog_total_pages(language: "en")).each do |page|
         path = page == 1 ? "en/blog.html" : "en/blog-#{page}.html"
         render export_dir, path, blog_en_view
       end
     end
 
-    def total_blog_pages_for(posts)
-      pages = (posts.size.to_f / Site::View::Context::BLOG_POSTS_PER_PAGE).ceil
-      pages.positive? ? pages : 1
+    def export_dir_for(root)
+      File.expand_path(settings.export_dir, root)
     end
 
     def render(export_dir, path, view, **input)

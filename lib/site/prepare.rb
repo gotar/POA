@@ -13,8 +13,14 @@ module Site
     ]
 
     def call(root)
-      import_files.(File.join(root, settings.import_dir))
+      import_files.(import_dir_for(root))
       Success(root)
+    end
+
+    private
+
+    def import_dir_for(root)
+      File.expand_path(settings.import_dir, root)
     end
   end
 end

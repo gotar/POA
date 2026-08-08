@@ -8,320 +8,171 @@ module Site
   class Generate
     include Dry::Monads::Result::Mixin
 
-    include Import[
-      "settings",
-      export: "exporters.files",
-      home_view: "views.home",
-      home_en_view: "views.en.home",
-      contact_view: "views.contact",
-      contact_en_view: "views.en.contact",
-      what_is_en_view: "views.en.what_is",
-      glossary_view: "views.glossary",
-      glossary_en_view: "views.en.glossary",
-      requirement_kyu_view: "views.requirement_kyu",
-      requirement_dan_view: "views.requirement_dan",
-      requirement_kyu_en_view: "views.en.requirement_kyu",
-      requirement_dan_en_view: "views.en.requirement_dan",
-      toyoda_view: "views.biographies.toyoda",
-      osensei_view: "views.biographies.osensei",
-      germanov_view: "views.biographies.germanov",
-      szrajer_view: "views.biographies.szrajer",
-      ostrowski_view: "views.biographies.ostrowski",
-      kisshomaru_view: "views.biographies.kisshomaru",
-      moriteru_view: "views.biographies.moriteru",
-      mitsuteru_view: "views.biographies.mitsuteru",
-      toyoda_en_view: "views.en.biographies.toyoda",
-      osensei_en_view: "views.en.biographies.osensei",
-      germanov_en_view: "views.en.biographies.germanov",
-      szrajer_en_view: "views.en.biographies.szrajer",
-      ostrowski_en_view: "views.en.biographies.ostrowski",
-      kisshomaru_en_view: "views.en.biographies.kisshomaru",
-      moriteru_en_view: "views.en.biographies.moriteru",
-      mitsuteru_en_view: "views.en.biographies.mitsuteru",
-      event_2026_view: "views.event2026",
-      event_2026_en_view: "views.en.event2026",
-      benefits_view: "views.benefits",
-      aikido_history_view: "views.aikido.history",
-      aikido_about_view: "views.aikido.what_is",
-      aikido_aiki_taiso_view: "views.aikido.aiki_taiso",
-      aikido_reishiki_view: "views.aikido.reishiki",
-      aikido_beginners_view: "views.aikido.beginners",
-      aikido_budo_zen_view: "views.aikido.budo_zen",
-      aikido_ki_kokyu_view: "views.aikido.ki_kokyu",
-      aikido_history_en_view: "views.en.aikido.history",
-      aikido_ki_kokyu_en_view: "views.en.aikido.ki_kokyu",
-      aikido_aiki_taiso_en_view: "views.en.aikido.aiki_taiso",
-      aikido_reishiki_en_view: "views.en.aikido.reishiki",
-      aikido_beginners_en_view: "views.en.aikido.beginners",
-      aikido_budo_zen_en_view: "views.en.aikido.budo_zen",
-      aikido_benefits_en_view: "views.en.aikido.benefits",
-      lineage_view: "views.lineage",
-      lineage_en_view: "views.en.lineage",
-      yudansha_view: "views.yudansha",
-      yudansha_en_view: "views.en.yudansha",
-      gdynia_view: "views.gdynia",
-      gdynia_en_view: "views.en.gdynia",
-      training_gdynia_view: "views.training_gdynia",
-      first_training_gdynia_view: "views.first_training_gdynia",
-      adults_gdynia_view: "views.adults_gdynia",
-      faq_view: "views.faq",
-      faq_en_view: "views.en.faq",
-      blog_view: "views.blog",
-      blog_page_2_view: "views.blog_page_2",
-      blog_en_view: "views.en.blog",
-      blog_en_page_2_view: "views.en.blog_page_2",
-      blog_bushido_view: "views.blog.bushido",
-      blog_kaizen_view: "views.blog.kaizen",
-      blog_gaman_view: "views.blog.gaman",
-      blog_kintsugi_view: "views.blog.kintsugi",
-      blog_wabi_sabi_view: "views.blog.wabi_sabi",
-      blog_mushin_view: "views.blog.mushin",
-      blog_sesshin_view: "views.blog.sesshin",
-      blog_zenshin_view: "views.blog.zenshin",
-      blog_zanshin_view: "views.blog.zanshin",
-      blog_omoiyari_view: "views.blog.omoiyari",
-      blog_jiko_sekinin_view: "views.blog.jiko_sekinin",
-      blog_kuzushi_view: "views.blog.kuzushi",
-      blog_enso_view: "views.blog.enso",
-      blog_hyoshi_view: "views.blog.hyoshi",
-      blog_fudoshin_view: "views.blog.fudoshin",
-      blog_shoshin_view: "views.blog.shoshin",
-      blog_shuhari_view: "views.blog.shuhari",
-      blog_hansei_view: "views.blog.hansei",
-      blog_aiki_view: "views.blog.aiki",
-      blog_wa_view: "views.blog.wa",
-      blog_giri_view: "views.blog.giri",
-      blog_ninjo_view: "views.blog.ninjo",
-      blog_droga_i_mistrzostwo_view: "views.blog.droga_i_mistrzostwo",
-      blog_ikigai_view: "views.blog.ikigai",
-      blog_mottainai_view: "views.blog.mottainai",
-      blog_mono_no_aware_view: "views.blog.mono_no_aware",
-      blog_ikkyo_view: "views.blog.ikkyo",
-      blog_yugen_view: "views.blog.yugen",
-      blog_egzamin_w_budo_view: "views.blog.egzamin_w_budo",
-      blog_ukemi_view: "views.blog.ukemi",
-      blog_genkikai_view: "views.blog.genkikai",
-      blog_inna_sciezka_na_ten_sam_szczyt_view: "views.blog.inna_sciezka_na_ten_sam_szczyt",
-      blog_omotenashi_view: "views.blog.omotenashi",
-      blog_nemawashi_view: "views.blog.nemawashi",
-      blog_misogi_view: "views.blog.misogi",
-      blog_piec_zasad_kazdej_techniki_view: "views.blog.piec_zasad_kazdej_techniki",
-      blog_ichi_go_ichi_e_view: "views.blog.ichi_go_ichi_e",
-      blog_jeden_nauczyciel_jeden_przekaz_view: "views.blog.jeden_nauczyciel_jeden_przekaz",
-      blog_dlaczego_w_aikido_nosi_sie_hakame_view: "views.blog.dlaczego_w_aikido_nosi_sie_hakame",
-      blog_dla_kogo_jest_aikido_view: "views.blog.dla_kogo_jest_aikido",
-      blog_czy_warto_cwiczyc_aikido_view: "views.blog.czy_warto_cwiczyc_aikido",
-      blog_aikido_w_kazdym_wieku_view: "views.blog.aikido_w_kazdym_wieku",
-      blog_aikido_dla_nastolatkow_view: "views.blog.aikido_dla_nastolatkow",
-      blog_styl_toyody_view: "views.blog.styl_toyody",
-      blog_shuhari_en_view: "views.en.blog.shuhari",
-      blog_jeden_nauczyciel_jeden_przekaz_en_view: "views.en.blog.jeden_nauczyciel_jeden_przekaz",
-      blog_linia_toyoda_germanov_view: "views.blog.linia_toyoda_germanov",
-      blog_bushido_en_view: "views.en.blog.bushido",
-      blog_kaizen_en_view: "views.en.blog.kaizen",
-      blog_gaman_en_view: "views.en.blog.gaman",
-      blog_kintsugi_en_view: "views.en.blog.kintsugi",
-      blog_wabi_sabi_en_view: "views.en.blog.wabi_sabi",
-      blog_mushin_en_view: "views.en.blog.mushin",
-      blog_sesshin_en_view: "views.en.blog.sesshin",
-      blog_zenshin_en_view: "views.en.blog.zenshin",
-      blog_zanshin_en_view: "views.en.blog.zanshin",
-      blog_omoiyari_en_view: "views.en.blog.omoiyari",
-      blog_jiko_sekinin_en_view: "views.en.blog.jiko_sekinin",
-      blog_kuzushi_en_view: "views.en.blog.kuzushi",
-      blog_enso_en_view: "views.en.blog.enso",
-      blog_hyoshi_en_view: "views.en.blog.hyoshi",
-      blog_fudoshin_en_view: "views.en.blog.fudoshin",
-      blog_shoshin_en_view: "views.en.blog.shoshin",
-      blog_hansei_en_view: "views.en.blog.hansei",
-      blog_aiki_en_view: "views.en.blog.aiki",
-      blog_wa_en_view: "views.en.blog.wa",
-      blog_giri_en_view: "views.en.blog.giri",
-      blog_ninjo_en_view: "views.en.blog.ninjo",
-      blog_droga_i_mistrzostwo_en_view: "views.en.blog.droga_i_mistrzostwo",
-      blog_ikigai_en_view: "views.en.blog.ikigai",
-      blog_mottainai_en_view: "views.en.blog.mottainai",
-      blog_mono_no_aware_en_view: "views.en.blog.mono_no_aware",
-      blog_ikkyo_en_view: "views.en.blog.ikkyo",
-      blog_yugen_en_view: "views.en.blog.yugen",
-      blog_egzamin_w_budo_en_view: "views.en.blog.egzamin_w_budo",
-      blog_ukemi_en_view: "views.en.blog.ukemi",
-      blog_genkikai_en_view: "views.en.blog.genkikai",
-      blog_inna_sciezka_na_ten_sam_szczyt_en_view: "views.en.blog.inna_sciezka_na_ten_sam_szczyt",
-      blog_omotenashi_en_view: "views.en.blog.omotenashi",
-      blog_nemawashi_en_view: "views.en.blog.nemawashi",
-      blog_misogi_en_view: "views.en.blog.misogi",
-      blog_piec_zasad_kazdej_techniki_en_view: "views.en.blog.piec_zasad_kazdej_techniki",
-      blog_ichi_go_ichi_e_en_view: "views.en.blog.ichi_go_ichi_e",
-      blog_dlaczego_w_aikido_nosi_sie_hakame_en_view: "views.en.blog.dlaczego_w_aikido_nosi_sie_hakame",
-      blog_dla_kogo_jest_aikido_en_view: "views.en.blog.dla_kogo_jest_aikido",
-      blog_czy_warto_cwiczyc_aikido_en_view: "views.en.blog.czy_warto_cwiczyc_aikido",
-      blog_aikido_w_kazdym_wieku_en_view: "views.en.blog.aikido_w_kazdym_wieku",
-      blog_aikido_dla_nastolatkow_en_view: "views.en.blog.aikido_dla_nastolatkow",
-      blog_styl_toyody_en_view: "views.en.blog.styl_toyody",
-      blog_linia_toyoda_germanov_en_view: "views.en.blog.linia_toyoda_germanov",
-    ]
+    include Import["settings", export: "exporters.files"]
 
+    # Declarative page map: output path => dry-system view key. Adding a
+    # page means adding one line here (plus the SEO data entry and the
+    # regenerated test/fixtures/seo_snapshot.json).
+PAGES = {
+  "index.html" => "views.home",
+  "en/index.html" => "views.en.home",
+  "kontakt.html" => "views.contact",
+  "en/contact.html" => "views.en.contact",
+  "en/aikido/what_is.html" => "views.en.what_is",
+  "slowniczek.html" => "views.glossary",
+  "en/glossary.html" => "views.en.glossary",
+  "wymagania_egzaminacyjne/kyu.html" => "views.requirement_kyu",
+  "wymagania_egzaminacyjne/dan.html" => "views.requirement_dan",
+  "en/requirements/kyu.html" => "views.en.requirement_kyu",
+  "en/requirements/dan.html" => "views.en.requirement_dan",
+  "biografie/toyoda.html" => "views.biographies.toyoda",
+  "biografie/o-sensei.html" => "views.biographies.osensei",
+  "biografie/germanov.html" => "views.biographies.germanov",
+  "biografie/szrajer.html" => "views.biographies.szrajer",
+  "biografie/ostrowski.html" => "views.biographies.ostrowski",
+  "biografie/kisshomaru.html" => "views.biographies.kisshomaru",
+  "biografie/moriteru.html" => "views.biographies.moriteru",
+  "biografie/mitsuteru.html" => "views.biographies.mitsuteru",
+  "en/biographies/toyoda.html" => "views.en.biographies.toyoda",
+  "en/biographies/o-sensei.html" => "views.en.biographies.osensei",
+  "en/biographies/germanov.html" => "views.en.biographies.germanov",
+  "en/biographies/szrajer.html" => "views.en.biographies.szrajer",
+  "en/biographies/ostrowski.html" => "views.en.biographies.ostrowski",
+  "en/biographies/kisshomaru.html" => "views.en.biographies.kisshomaru",
+  "en/biographies/moriteru.html" => "views.en.biographies.moriteru",
+  "en/biographies/mitsuteru.html" => "views.en.biographies.mitsuteru",
+  "wydarzenia/2026.html" => "views.event2026",
+  "en/events/2026.html" => "views.en.event2026",
+  "aikido/korzysci.html" => "views.benefits",
+  "aikido/historia.html" => "views.aikido.history",
+  "aikido/czym_jest.html" => "views.aikido.what_is",
+  "aikido/aiki_taiso.html" => "views.aikido.aiki_taiso",
+  "aikido/reishiki.html" => "views.aikido.reishiki",
+  "aikido/budo_zen.html" => "views.aikido.budo_zen",
+  "aikido/ki_kokyu.html" => "views.aikido.ki_kokyu",
+  "aikido/dla_poczatkujacych.html" => "views.aikido.beginners",
+  "en/aikido/history.html" => "views.en.aikido.history",
+  "en/aikido/benefits.html" => "views.en.aikido.benefits",
+  "en/aikido/aiki_taiso.html" => "views.en.aikido.aiki_taiso",
+  "en/aikido/reishiki.html" => "views.en.aikido.reishiki",
+  "en/aikido/budo_zen.html" => "views.en.aikido.budo_zen",
+  "en/aikido/ki_kokyu.html" => "views.en.aikido.ki_kokyu",
+  "en/aikido/beginners.html" => "views.en.aikido.beginners",
+  "lineage.html" => "views.lineage",
+  "en/lineage.html" => "views.en.lineage",
+  "yudansha.html" => "views.yudansha",
+  "en/yudansha.html" => "views.en.yudansha",
+  "gdynia.html" => "views.gdynia",
+  "en/gdynia.html" => "views.en.gdynia",
+  "treningi-aikido-gdynia.html" => "views.training_gdynia",
+  "pierwszy-trening-aikido-gdynia.html" => "views.first_training_gdynia",
+  "aikido-dla-doroslych-gdynia.html" => "views.adults_gdynia",
+  "faq.html" => "views.faq",
+  "en/faq.html" => "views.en.faq",
+  "blog/bushido-droga-wojownika.html" => "views.blog.bushido",
+  "blog/kaizen-ciagle-doskonalenie.html" => "views.blog.kaizen",
+  "blog/gaman-wytrwalosc.html" => "views.blog.gaman",
+  "blog/kintsugi-zlota-naprawa.html" => "views.blog.kintsugi",
+  "blog/wabi-sabi-piekno-niedoskonalosci.html" => "views.blog.wabi_sabi",
+  "blog/mushin-umysl-bez-umyslu.html" => "views.blog.mushin",
+  "blog/sesshin-gleboka-praktyka.html" => "views.blog.sesshin",
+  "blog/zenshin-pelne-zaangazowanie.html" => "views.blog.zenshin",
+  "blog/zanshin-czujnosc-po-technice.html" => "views.blog.zanshin",
+  "blog/enso-krag-obecnosci.html" => "views.blog.enso",
+  "blog/hyoshi-rytm-timing-jednosci-ruchu.html" => "views.blog.hyoshi",
+  "blog/fudoshin-niewzruszony-umysl.html" => "views.blog.fudoshin",
+  "blog/shoshin-umysl-poczatkujacego.html" => "views.blog.shoshin",
+  "blog/shuhari-etapy-dojrzewania-w-treningu.html" => "views.blog.shuhari",
+  "blog/hansei-uczciwa-autorefleksja-bez-wymowek.html" => "views.blog.hansei",
+  "blog/aiki-harmonia-w-dzialaniu.html" => "views.blog.aiki",
+  "blog/wa-harmonia-bez-uleglosci.html" => "views.blog.wa",
+  "blog/giri-obowiazek-bez-wymowek.html" => "views.blog.giri",
+  "blog/droga-i-mistrzostwo.html" => "views.blog.droga_i_mistrzostwo",
+  "blog/ikigai-sens-regularnej-praktyki.html" => "views.blog.ikigai",
+  "blog/mottainai-nie-marnuj-tego-co-moze-cie-nauczyc.html" => "views.blog.mottainai",
+  "blog/mono-no-aware-czulosc-wobec-przemijania.html" => "views.blog.mono_no_aware",
+  "blog/ikkyo-pierwsza-nauka-ktora-nie-konczy-sie-nigdy.html" => "views.blog.ikkyo",
+  "blog/yugen-glebia-ktorej-nie-da-sie-splaszczyc.html" => "views.blog.yugen",
+  "blog/egzamin-w-budo-pokaz-drogi-nie-wystep.html" => "views.blog.egzamin_w_budo",
+  "blog/ukemi-bezpiecznie-upasc-zachowac-strukture-wrocic-do-dzialania.html" => "views.blog.ukemi",
+  "blog/genkikai-cialo-ktore-wraca-na-miejsce.html" => "views.blog.genkikai",
+  "blog/inna-sciezka-na-ten-sam-szczyt.html" => "views.blog.inna_sciezka_na_ten_sam_szczyt",
+  "blog/ninjo-ludzkie-uczucia-bez-utraty-kierunku.html" => "views.blog.ninjo",
+  "blog/omotenashi-goscinnosc-ktora-buduje-dojo.html" => "views.blog.omotenashi",
+  "blog/nemawashi-przygotowanie-gruntu-przed-dzialaniem.html" => "views.blog.nemawashi",
+  "blog/misogi-oczyszczenie-przez-praktyke.html" => "views.blog.misogi",
+  "blog/5-zasad-kazdej-techniki.html" => "views.blog.piec_zasad_kazdej_techniki",
+  "blog/ichi-go-ichi-e-kazde-spotkanie-zdarza-sie-tylko-raz.html" => "views.blog.ichi_go_ichi_e",
+  "blog/jeden-nauczyciel-jeden-przekaz.html" => "views.blog.jeden_nauczyciel_jeden_przekaz",
+  "blog/dlaczego-w-aikido-nosi-sie-hakame.html" => "views.blog.dlaczego_w_aikido_nosi_sie_hakame",
+  "blog/dla-kogo-jest-aikido.html" => "views.blog.dla_kogo_jest_aikido",
+  "blog/czy-warto-cwiczyc-aikido.html" => "views.blog.czy_warto_cwiczyc_aikido",
+  "blog/aikido-w-kazdym-wieku.html" => "views.blog.aikido_w_kazdym_wieku",
+  "blog/aikido-dla-nastolatkow.html" => "views.blog.aikido_dla_nastolatkow",
+  "blog/styl-aikido-fumio-toyody-technika-i-zen.html" => "views.blog.styl_toyody",
+  "blog/linia-toyoda-germanov-jak-cwiczymy.html" => "views.blog.linia_toyoda_germanov",
+  "blog/omoiyari-uwazna-troska.html" => "views.blog.omoiyari",
+  "blog/jiko-sekinin-odpowiedzialnosc-osobista.html" => "views.blog.jiko_sekinin",
+  "blog/kuzushi-kontrolowana-nierownowaga.html" => "views.blog.kuzushi",
+  "en/blog/bushido-way-of-the-warrior.html" => "views.en.blog.bushido",
+  "en/blog/kaizen-continuous-improvement.html" => "views.en.blog.kaizen",
+  "en/blog/gaman-endurance-and-composure.html" => "views.en.blog.gaman",
+  "en/blog/kintsugi-golden-repair.html" => "views.en.blog.kintsugi",
+  "en/blog/wabi-sabi-beauty-of-imperfection.html" => "views.en.blog.wabi_sabi",
+  "en/blog/mushin-no-mind.html" => "views.en.blog.mushin",
+  "en/blog/sesshin-deep-practice.html" => "views.en.blog.sesshin",
+  "en/blog/zenshin-full-commitment.html" => "views.en.blog.zenshin",
+  "en/blog/zanshin-awareness-after-execution.html" => "views.en.blog.zanshin",
+  "en/blog/enso-circle-of-presence.html" => "views.en.blog.enso",
+  "en/blog/hyoshi-timing-reveals-unity-of-movement.html" => "views.en.blog.hyoshi",
+  "en/blog/fudoshin-immovable-mind.html" => "views.en.blog.fudoshin",
+  "en/blog/shoshin-beginners-mind.html" => "views.en.blog.shoshin",
+  "en/blog/shuhari-stages-of-maturation-in-training.html" => "views.en.blog.shuhari",
+  "en/blog/hansei-honest-self-reflection-without-excuses.html" => "views.en.blog.hansei",
+  "en/blog/aiki-harmony-in-action.html" => "views.en.blog.aiki",
+  "en/blog/wa-harmony-without-submission.html" => "views.en.blog.wa",
+  "en/blog/giri-duty-without-excuses.html" => "views.en.blog.giri",
+  "en/blog/the-path-and-mastery.html" => "views.en.blog.droga_i_mistrzostwo",
+  "en/blog/ikigai-the-reason-to-return-to-practice.html" => "views.en.blog.ikigai",
+  "en/blog/mottainai-do-not-waste-what-can-teach-you.html" => "views.en.blog.mottainai",
+  "en/blog/mono-no-aware-sensitivity-to-impermanence.html" => "views.en.blog.mono_no_aware",
+  "en/blog/ikkyo-the-first-teaching-that-never-ends.html" => "views.en.blog.ikkyo",
+  "en/blog/yugen-depth-that-cannot-be-flattened.html" => "views.en.blog.yugen",
+  "en/blog/exams-in-budo-showing-the-road-not-performing.html" => "views.en.blog.egzamin_w_budo",
+  "en/blog/ukemi-falling-safely-keeping-structure-returning-to-action.html" => "views.en.blog.ukemi",
+  "en/blog/genkikai-the-body-that-returns-to-order.html" => "views.en.blog.genkikai",
+  "en/blog/another-path-to-the-same-summit.html" => "views.en.blog.inna_sciezka_na_ten_sam_szczyt",
+  "en/blog/ninjo-human-feeling-without-losing-direction.html" => "views.en.blog.ninjo",
+  "en/blog/omotenashi-hospitality-that-builds-the-dojo.html" => "views.en.blog.omotenashi",
+  "en/blog/nemawashi-laying-groundwork-before-action.html" => "views.en.blog.nemawashi",
+  "en/blog/misogi-purification-through-practice.html" => "views.en.blog.misogi",
+  "en/blog/five-principles-behind-every-technique.html" => "views.en.blog.piec_zasad_kazdej_techniki",
+  "en/blog/ichi-go-ichi-e-every-encounter-happens-only-once.html" => "views.en.blog.ichi_go_ichi_e",
+  "en/blog/one-teacher-one-transmission.html" => "views.en.blog.jeden_nauczyciel_jeden_przekaz",
+  "en/blog/why-aikido-practitioners-wear-hakama.html" => "views.en.blog.dlaczego_w_aikido_nosi_sie_hakame",
+  "en/blog/who-is-aikido-for.html" => "views.en.blog.dla_kogo_jest_aikido",
+  "en/blog/is-aikido-worth-practicing.html" => "views.en.blog.czy_warto_cwiczyc_aikido",
+  "en/blog/aikido-at-every-age.html" => "views.en.blog.aikido_w_kazdym_wieku",
+  "en/blog/aikido-for-teenagers.html" => "views.en.blog.aikido_dla_nastolatkow",
+  "en/blog/toyoda-aikido-style-technique-and-zen.html" => "views.en.blog.styl_toyody",
+  "en/blog/toyoda-germanov-lineage-how-we-train.html" => "views.en.blog.linia_toyoda_germanov",
+  "en/blog/omoiyari-considerate-compassion.html" => "views.en.blog.omoiyari",
+  "en/blog/jiko-sekinin-personal-responsibility.html" => "views.en.blog.jiko_sekinin",
+  "en/blog/kuzushi-controlled-imbalance.html" => "views.en.blog.kuzushi",
+}.freeze
     def call(root)
-      export_dir = File.join(root, settings.export_dir)
+      export_dir = export_dir_for(root)
       @rendered_pages = []
 
-      FileUtils.mkdir_p File.join(export_dir, "assets")
-      FileUtils.cp_r File.join(root, "assets/images"), File.join(export_dir, "assets/images")
-      FileUtils.cp_r File.join(root, "assets/favicons/."), File.join(export_dir)
-      FileUtils.cp File.join(root, "assets/style.css"), File.join(export_dir, "assets/style.css")
-      FileUtils.cp File.join(root, "assets/manifest.json"), File.join(export_dir, "assets/manifest.json")
-      FileUtils.cp File.join(root, "assets/robots.txt"), File.join(export_dir, "robots.txt")
+      copy_static_assets(root, export_dir)
 
-      FileUtils.cp File.join(root, "assets/.nojekyll"), File.join(export_dir, ".nojekyll")
-      FileUtils.cp File.join(root, "assets/CNAME"), File.join(export_dir, "CNAME")
-
-      render export_dir, "index.html", home_view
-      render export_dir, "en/index.html", home_en_view
-      render export_dir, "kontakt.html", contact_view
-      render export_dir, "en/contact.html", contact_en_view
-      render export_dir, "en/aikido/what_is.html", what_is_en_view
-      render export_dir, "slowniczek.html", glossary_view
-      render export_dir, "en/glossary.html", glossary_en_view
-      render export_dir, "wymagania_egzaminacyjne/kyu.html", requirement_kyu_view
-      render export_dir, "wymagania_egzaminacyjne/dan.html", requirement_dan_view
-      render export_dir, "en/requirements/kyu.html", requirement_kyu_en_view
-      render export_dir, "en/requirements/dan.html", requirement_dan_en_view
-      render export_dir, "biografie/toyoda.html", toyoda_view
-      render export_dir, "biografie/o-sensei.html", osensei_view
-      render export_dir, "biografie/germanov.html", germanov_view
-      render export_dir, "biografie/szrajer.html", szrajer_view
-      render export_dir, "biografie/ostrowski.html", ostrowski_view
-      render export_dir, "biografie/kisshomaru.html", kisshomaru_view
-      render export_dir, "biografie/moriteru.html", moriteru_view
-      render export_dir, "biografie/mitsuteru.html", mitsuteru_view
-      render export_dir, "en/biographies/toyoda.html", toyoda_en_view
-      render export_dir, "en/biographies/o-sensei.html", osensei_en_view
-      render export_dir, "en/biographies/germanov.html", germanov_en_view
-      render export_dir, "en/biographies/szrajer.html", szrajer_en_view
-      render export_dir, "en/biographies/ostrowski.html", ostrowski_en_view
-      render export_dir, "en/biographies/kisshomaru.html", kisshomaru_en_view
-      render export_dir, "en/biographies/moriteru.html", moriteru_en_view
-      render export_dir, "en/biographies/mitsuteru.html", mitsuteru_en_view
-      render export_dir, "wydarzenia/2026.html", event_2026_view
-      render export_dir, "en/events/2026.html", event_2026_en_view
-      render export_dir, "aikido/korzysci.html", benefits_view
-      render export_dir, "aikido/historia.html", aikido_history_view
-      render export_dir, "aikido/czym_jest.html", aikido_about_view
-      render export_dir, "aikido/aiki_taiso.html", aikido_aiki_taiso_view
-      render export_dir, "aikido/reishiki.html", aikido_reishiki_view
-      render export_dir, "aikido/budo_zen.html", aikido_budo_zen_view
-      render export_dir, "aikido/ki_kokyu.html", aikido_ki_kokyu_view
-      render export_dir, "aikido/dla_poczatkujacych.html", aikido_beginners_view
-      render export_dir, "en/aikido/history.html", aikido_history_en_view
-      render export_dir, "en/aikido/benefits.html", aikido_benefits_en_view
-      render export_dir, "en/aikido/aiki_taiso.html", aikido_aiki_taiso_en_view
-      render export_dir, "en/aikido/reishiki.html", aikido_reishiki_en_view
-      render export_dir, "en/aikido/budo_zen.html", aikido_budo_zen_en_view
-      render export_dir, "en/aikido/ki_kokyu.html", aikido_ki_kokyu_en_view
-      render export_dir, "en/aikido/beginners.html", aikido_beginners_en_view
-      render export_dir, "lineage.html", lineage_view
-      render export_dir, "en/lineage.html", lineage_en_view
-      render export_dir, "yudansha.html", yudansha_view
-      render export_dir, "en/yudansha.html", yudansha_en_view
-      render export_dir, "gdynia.html", gdynia_view
-      render export_dir, "en/gdynia.html", gdynia_en_view
-      render export_dir, "treningi-aikido-gdynia.html", training_gdynia_view
-      render export_dir, "pierwszy-trening-aikido-gdynia.html", first_training_gdynia_view
-      render export_dir, "aikido-dla-doroslych-gdynia.html", adults_gdynia_view
-      render export_dir, "faq.html", faq_view
-      render export_dir, "en/faq.html", faq_en_view
+      # Blog index pages first: resolving the blog views defines the
+      # Site::Views::Blog namespace that article views inherit from.
       render_blog_index_pages(export_dir)
-      render export_dir, "blog/bushido-droga-wojownika.html", blog_bushido_view
-      render export_dir, "blog/kaizen-ciagle-doskonalenie.html", blog_kaizen_view
-      render export_dir, "blog/gaman-wytrwalosc.html", blog_gaman_view
-      render export_dir, "blog/kintsugi-zlota-naprawa.html", blog_kintsugi_view
-      render export_dir, "blog/wabi-sabi-piekno-niedoskonalosci.html", blog_wabi_sabi_view
-      render export_dir, "blog/mushin-umysl-bez-umyslu.html", blog_mushin_view
-      render export_dir, "blog/sesshin-gleboka-praktyka.html", blog_sesshin_view
-      render export_dir, "blog/zenshin-pelne-zaangazowanie.html", blog_zenshin_view
-      render export_dir, "blog/zanshin-czujnosc-po-technice.html", blog_zanshin_view
-      render export_dir, "blog/enso-krag-obecnosci.html", blog_enso_view
-      render export_dir, "blog/hyoshi-rytm-timing-jednosci-ruchu.html", blog_hyoshi_view
-      render export_dir, "blog/fudoshin-niewzruszony-umysl.html", blog_fudoshin_view
-      render export_dir, "blog/shoshin-umysl-poczatkujacego.html", blog_shoshin_view
-      render export_dir, "blog/shuhari-etapy-dojrzewania-w-treningu.html", blog_shuhari_view
-      render export_dir, "blog/hansei-uczciwa-autorefleksja-bez-wymowek.html", blog_hansei_view
-      render export_dir, "blog/aiki-harmonia-w-dzialaniu.html", blog_aiki_view
-      render export_dir, "blog/wa-harmonia-bez-uleglosci.html", blog_wa_view
-      render export_dir, "blog/giri-obowiazek-bez-wymowek.html", blog_giri_view
-      render export_dir, "blog/droga-i-mistrzostwo.html", blog_droga_i_mistrzostwo_view
-      render export_dir, "blog/ikigai-sens-regularnej-praktyki.html", blog_ikigai_view
-      render export_dir, "blog/mottainai-nie-marnuj-tego-co-moze-cie-nauczyc.html", blog_mottainai_view
-      render export_dir, "blog/mono-no-aware-czulosc-wobec-przemijania.html", blog_mono_no_aware_view
-      render export_dir, "blog/ikkyo-pierwsza-nauka-ktora-nie-konczy-sie-nigdy.html", blog_ikkyo_view
-      render export_dir, "blog/yugen-glebia-ktorej-nie-da-sie-splaszczyc.html", blog_yugen_view
-      render export_dir, "blog/egzamin-w-budo-pokaz-drogi-nie-wystep.html", blog_egzamin_w_budo_view
-      render export_dir, "blog/ukemi-bezpiecznie-upasc-zachowac-strukture-wrocic-do-dzialania.html", blog_ukemi_view
-      render export_dir, "blog/genkikai-cialo-ktore-wraca-na-miejsce.html", blog_genkikai_view
-      render export_dir, "blog/inna-sciezka-na-ten-sam-szczyt.html", blog_inna_sciezka_na_ten_sam_szczyt_view
-      render export_dir, "blog/ninjo-ludzkie-uczucia-bez-utraty-kierunku.html", blog_ninjo_view
-      render export_dir, "blog/omotenashi-goscinnosc-ktora-buduje-dojo.html", blog_omotenashi_view
-      render export_dir, "blog/nemawashi-przygotowanie-gruntu-przed-dzialaniem.html", blog_nemawashi_view
-      render export_dir, "blog/misogi-oczyszczenie-przez-praktyke.html", blog_misogi_view
-      render export_dir, "blog/5-zasad-kazdej-techniki.html", blog_piec_zasad_kazdej_techniki_view
-      render export_dir, "blog/ichi-go-ichi-e-kazde-spotkanie-zdarza-sie-tylko-raz.html", blog_ichi_go_ichi_e_view
-      render export_dir, "blog/jeden-nauczyciel-jeden-przekaz.html", blog_jeden_nauczyciel_jeden_przekaz_view
-      render export_dir, "blog/dlaczego-w-aikido-nosi-sie-hakame.html", blog_dlaczego_w_aikido_nosi_sie_hakame_view
-      render export_dir, "blog/dla-kogo-jest-aikido.html", blog_dla_kogo_jest_aikido_view
-      render export_dir, "blog/czy-warto-cwiczyc-aikido.html", blog_czy_warto_cwiczyc_aikido_view
-      render export_dir, "blog/aikido-w-kazdym-wieku.html", blog_aikido_w_kazdym_wieku_view
-      render export_dir, "blog/aikido-dla-nastolatkow.html", blog_aikido_dla_nastolatkow_view
-      render export_dir, "blog/styl-aikido-fumio-toyody-technika-i-zen.html", blog_styl_toyody_view
-      render export_dir, "blog/linia-toyoda-germanov-jak-cwiczymy.html", blog_linia_toyoda_germanov_view
-      render export_dir, "blog/omoiyari-uwazna-troska.html", blog_omoiyari_view
-      render export_dir, "blog/jiko-sekinin-odpowiedzialnosc-osobista.html", blog_jiko_sekinin_view
-      render export_dir, "blog/kuzushi-kontrolowana-nierownowaga.html", blog_kuzushi_view
-      render export_dir, "en/blog/bushido-way-of-the-warrior.html", blog_bushido_en_view
-      render export_dir, "en/blog/kaizen-continuous-improvement.html", blog_kaizen_en_view
-      render export_dir, "en/blog/gaman-endurance-and-composure.html", blog_gaman_en_view
-      render export_dir, "en/blog/kintsugi-golden-repair.html", blog_kintsugi_en_view
-      render export_dir, "en/blog/wabi-sabi-beauty-of-imperfection.html", blog_wabi_sabi_en_view
-      render export_dir, "en/blog/mushin-no-mind.html", blog_mushin_en_view
-      render export_dir, "en/blog/sesshin-deep-practice.html", blog_sesshin_en_view
-      render export_dir, "en/blog/zenshin-full-commitment.html", blog_zenshin_en_view
-      render export_dir, "en/blog/zanshin-awareness-after-execution.html", blog_zanshin_en_view
-      render export_dir, "en/blog/enso-circle-of-presence.html", blog_enso_en_view
-      render export_dir, "en/blog/hyoshi-timing-reveals-unity-of-movement.html", blog_hyoshi_en_view
-      render export_dir, "en/blog/fudoshin-immovable-mind.html", blog_fudoshin_en_view
-      render export_dir, "en/blog/shoshin-beginners-mind.html", blog_shoshin_en_view
-      render export_dir, "en/blog/shuhari-stages-of-maturation-in-training.html", blog_shuhari_en_view
-      render export_dir, "en/blog/hansei-honest-self-reflection-without-excuses.html", blog_hansei_en_view
-      render export_dir, "en/blog/aiki-harmony-in-action.html", blog_aiki_en_view
-      render export_dir, "en/blog/wa-harmony-without-submission.html", blog_wa_en_view
-      render export_dir, "en/blog/giri-duty-without-excuses.html", blog_giri_en_view
-      render export_dir, "en/blog/the-path-and-mastery.html", blog_droga_i_mistrzostwo_en_view
-      render export_dir, "en/blog/ikigai-the-reason-to-return-to-practice.html", blog_ikigai_en_view
-      render export_dir, "en/blog/mottainai-do-not-waste-what-can-teach-you.html", blog_mottainai_en_view
-      render export_dir, "en/blog/mono-no-aware-sensitivity-to-impermanence.html", blog_mono_no_aware_en_view
-      render export_dir, "en/blog/ikkyo-the-first-teaching-that-never-ends.html", blog_ikkyo_en_view
-      render export_dir, "en/blog/yugen-depth-that-cannot-be-flattened.html", blog_yugen_en_view
-      render export_dir, "en/blog/exams-in-budo-showing-the-road-not-performing.html", blog_egzamin_w_budo_en_view
-      render export_dir, "en/blog/ukemi-falling-safely-keeping-structure-returning-to-action.html", blog_ukemi_en_view
-      render export_dir, "en/blog/genkikai-the-body-that-returns-to-order.html", blog_genkikai_en_view
-      render export_dir, "en/blog/another-path-to-the-same-summit.html", blog_inna_sciezka_na_ten_sam_szczyt_en_view
-      render export_dir, "en/blog/ninjo-human-feeling-without-losing-direction.html", blog_ninjo_en_view
-      render export_dir, "en/blog/omotenashi-hospitality-that-builds-the-dojo.html", blog_omotenashi_en_view
-      render export_dir, "en/blog/nemawashi-laying-groundwork-before-action.html", blog_nemawashi_en_view
-      render export_dir, "en/blog/misogi-purification-through-practice.html", blog_misogi_en_view
-      render export_dir, "en/blog/five-principles-behind-every-technique.html", blog_piec_zasad_kazdej_techniki_en_view
-      render export_dir, "en/blog/ichi-go-ichi-e-every-encounter-happens-only-once.html", blog_ichi_go_ichi_e_en_view
-      render export_dir, "en/blog/one-teacher-one-transmission.html", blog_jeden_nauczyciel_jeden_przekaz_en_view
-      render export_dir, "en/blog/why-aikido-practitioners-wear-hakama.html", blog_dlaczego_w_aikido_nosi_sie_hakame_en_view
-      render export_dir, "en/blog/who-is-aikido-for.html", blog_dla_kogo_jest_aikido_en_view
-      render export_dir, "en/blog/is-aikido-worth-practicing.html", blog_czy_warto_cwiczyc_aikido_en_view
-      render export_dir, "en/blog/aikido-at-every-age.html", blog_aikido_w_kazdym_wieku_en_view
-      render export_dir, "en/blog/aikido-for-teenagers.html", blog_aikido_dla_nastolatkow_en_view
-      render export_dir, "en/blog/toyoda-aikido-style-technique-and-zen.html", blog_styl_toyody_en_view
-      render export_dir, "en/blog/toyoda-germanov-lineage-how-we-train.html", blog_linia_toyoda_germanov_en_view
-      render export_dir, "en/blog/omoiyari-considerate-compassion.html", blog_omoiyari_en_view
-      render export_dir, "en/blog/jiko-sekinin-personal-responsibility.html", blog_jiko_sekinin_en_view
-      render export_dir, "en/blog/kuzushi-controlled-imbalance.html", blog_kuzushi_en_view
+
+      PAGES.each do |path, view_key|
+        render_page(export_dir, path, view_key)
+      end
 
       File.write(
         File.join(export_dir, "sitemap.xml"),
@@ -333,24 +184,38 @@ module Site
 
     private
 
-    def render_blog_index_pages(export_dir)
-      pl_pages = total_blog_pages_for(Site::View::Context::BLOG_POSTS_PL)
-      en_pages = total_blog_pages_for(Site::View::Context::BLOG_POSTS_EN)
+    def copy_static_assets(root, export_dir)
+      FileUtils.mkdir_p File.join(export_dir, "assets")
+      FileUtils.cp_r File.join(root, "assets/images"), File.join(export_dir, "assets/images")
+      FileUtils.cp_r File.join(root, "assets/favicons/."), File.join(export_dir)
+      FileUtils.cp File.join(root, "assets/style.css"), File.join(export_dir, "assets/style.css")
+      FileUtils.cp File.join(root, "assets/manifest.json"), File.join(export_dir, "assets/manifest.json")
+      FileUtils.cp File.join(root, "assets/robots.txt"), File.join(export_dir, "robots.txt")
 
-      (1..pl_pages).each do |page|
+      FileUtils.cp File.join(root, "assets/.nojekyll"), File.join(export_dir, ".nojekyll")
+      FileUtils.cp File.join(root, "assets/CNAME"), File.join(export_dir, "CNAME")
+    end
+
+    def render_blog_index_pages(export_dir)
+      context = Site::Container["view.context"]
+
+      (1..context.blog_total_pages(language: "pl")).each do |page|
         path = page == 1 ? "blog.html" : "blog-#{page}.html"
-        render export_dir, path, blog_view
+        render export_dir, path, Site::Container["views.blog"]
       end
 
-      (1..en_pages).each do |page|
+      (1..context.blog_total_pages(language: "en")).each do |page|
         path = page == 1 ? "en/blog.html" : "en/blog-#{page}.html"
-        render export_dir, path, blog_en_view
+        render export_dir, path, Site::Container["views.en.blog"]
       end
     end
 
-    def total_blog_pages_for(posts)
-      pages = (posts.size.to_f / Site::View::Context::BLOG_POSTS_PER_PAGE).ceil
-      pages.positive? ? pages : 1
+    def export_dir_for(root)
+      File.expand_path(settings.export_dir, root)
+    end
+
+    def render_page(export_dir, path, view_key)
+      render export_dir, path, Site::Container[view_key]
     end
 
     def render(export_dir, path, view, **input)

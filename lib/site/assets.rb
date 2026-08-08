@@ -1,6 +1,6 @@
 # auto_register: false
 
-require "yaml"
+require "json"
 require "open-uri"
 require "uri"
 
@@ -32,7 +32,13 @@ module Site
       private
 
       def manifest
-        @manifest ||= YAML.load_file(manifest_path)
+        @manifest ||= parse_manifest
+      end
+
+      def parse_manifest
+        return {} unless File.file?(manifest_path)
+
+        JSON.parse(File.read(manifest_path))
       end
 
       def manifest_path

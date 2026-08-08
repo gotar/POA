@@ -18,6 +18,8 @@ group :development, :test do
   gem "foreman"
   gem "guard"
   gem "guard-shell"
-  gem "webrick"
+  gem "minitest"
   gem "rackup"
+  gem "rake"
+  gem "webrick"
 end

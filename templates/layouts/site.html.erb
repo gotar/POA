@@ -119,11 +119,12 @@
     <title><%= page_title %></title>
   </head>
   <body>
+    <a class="skip-link" href="#main-content">Przejdź do treści</a>
     <div class="scroll-progress-bar"></div>
-    <nav>
+    <nav aria-label="Główna nawigacja">
       <%= render "nav" %>
     </nav>
-    <main>
+    <main id="main-content" tabindex="-1">
       <%= yield %>
     </main>
     <button class="back-to-top" aria-label="Przewiń do góry">

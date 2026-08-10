@@ -119,11 +119,12 @@
     <title><%= page_title %></title>
   </head>
   <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
     <div class="scroll-progress-bar"></div>
-    <nav>
+    <nav aria-label="Primary navigation">
       <%= render "nav_en" %>
     </nav>
-    <main>
+    <main id="main-content" tabindex="-1">
       <%= yield %>
     </main>
     <button class="back-to-top" aria-label="Scroll to top">

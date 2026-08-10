@@ -7,6 +7,7 @@ module Site
       class Gdynia < View::Controller
         configure do |config|
           config.template = "gdynia_en"
+          config.layout = "site_en"
         end
       end
     end

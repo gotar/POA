@@ -390,7 +390,7 @@ echo "Site will be live at https://aikido-polska.eu/ in a few minutes"
 - **NIP:** 639-19-87-254
 - **Dojo-cho:** Sensei Oskar Szrajer 5 dan
 - **Phone:** +48 608-019-078
-- **Email:** oskarszrajer@gmail.com
+- **Email:** contact@aikido-polska.eu
 - **Facebook:** 
   - POA: https://www.facebook.com/aikidoorganization/
   - Sesshinkan Dojo: https://www.facebook.com/dojogdynia/

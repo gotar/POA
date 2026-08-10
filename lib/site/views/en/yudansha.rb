@@ -7,6 +7,7 @@ module Site
       class Yudansha < View::Controller
         configure do |config|
           config.template = "yudansha_en"
+          config.layout = "site_en"
         end
       end
     end

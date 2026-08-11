@@ -1,4 +1,5 @@
 require_relative "test_helper"
+require "open3"
 
 # Shared layouts appear on every page. Keep the keyboard route around their
 # repeated navigation explicit, localized, and protected from accidental removal.
@@ -11,6 +12,21 @@ class SharedLayoutAccessibilityTest < Minitest::Test
     "templates/layouts/site_en.html.erb" => {
       skip_text: "Skip to content",
       nav_label: "Primary navigation"
+    }
+  }.freeze
+
+  LANGUAGE_SWITCHERS = {
+    "index.html" => {
+      href: "/en/",
+      title: "English",
+      label: "Przełącz język na angielski",
+      text: "EN"
+    },
+    "en/index.html" => {
+      href: "/",
+      title: "Polski",
+      label: "Switch language to Polish",
+      text: "PL"
     }
   }.freeze
 
@@ -39,6 +55,25 @@ class SharedLayoutAccessibilityTest < Minitest::Test
     assert focus_rule, "expected a focus rule for .skip-link"
     assert_includes focus_rule[:rules], "outline: 3px solid #1f1f1f;"
     assert_includes focus_rule[:rules], "transform: translateY(0);"
+  end
+
+  def test_generated_language_switchers_have_localized_accessible_names
+    Dir.mktmpdir("poa-language-switcher-") do |export_dir|
+      output, status = Open3.capture2e(
+        { "EXPORT_DIR" => export_dir },
+        File.join(site_root, "bin/build"),
+        chdir: site_root.to_s
+      )
+
+      assert status.success?, "expected build to pass:\n#{output}"
+
+      LANGUAGE_SWITCHERS.each do |path, expectations|
+        html = File.read(File.join(export_dir, path))
+        expected_link = %(<a class="nav-link lang-switcher" href="#{expectations[:href]}" title="#{expectations[:title]}" aria-label="#{expectations[:label]}">#{expectations[:text]}</a>)
+
+        assert_includes html, expected_link, "#{path} must expose a localized language-switcher name"
+      end
+    end
   end
 
   def test_every_english_view_uses_the_english_layout

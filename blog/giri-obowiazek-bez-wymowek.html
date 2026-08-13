@@ -118,9 +118,9 @@
     <link rel="dns-prefetch" href="//fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preload" href="/assets/style.css?v=4e09cb93b5" as="style" />
+    <link rel="preload" href="/assets/style.css?v=bd32a67fb2" as="style" />
     <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="/assets/style.css?v=4e09cb93b5" />
+    <link rel="stylesheet" type="text/css" href="/assets/style.css?v=bd32a67fb2" />
     
     <title>Giri — obowiązek bez wymówek i odpowiedzialność w dojo | Blog | Polska Organizacja Aikido</title>
   </head>
@@ -134,12 +134,20 @@
     <span>Polska Organizacja Aikido</span>
   </a>
 
-  <input id="nav-toggle" type="checkbox" />
-  <label class="nav-toggle-label" for="nav-toggle">
-    <span></span>
-  </label>
+  <button
+    class="nav-toggle"
+    type="button"
+    hidden
+    aria-expanded="false"
+    aria-controls="primary-navigation"
+    aria-label="Otwórz menu nawigacyjne"
+    data-open-label="Otwórz menu nawigacyjne"
+    data-close-label="Zamknij menu nawigacyjne"
+  >
+    <span aria-hidden="true"></span>
+  </button>
 
-  <div class="nav-menu">
+  <div class="nav-menu" id="primary-navigation">
     <div class="dropdown">
       <input class="dropdown-toggle" id="dropdown-1" type="checkbox" />
       <label class="dropdown-label" for="dropdown-1">Dojo</label>
@@ -479,6 +487,6 @@
         <polyline points="18 15 12 9 6 15"></polyline>
       </svg>
     </button>
-    <script src="/assets/app.js?v=be2214590c"></script>
+    <script src="/assets/app.js?v=408a9bf3b2"></script>
   </body>
 </html>

@@ -130,19 +130,28 @@ nav .logo span {
   white-space: nowrap;
 }
 
-#nav-toggle {
+.nav-toggle {
   display: none;
-}
-
-.nav-toggle-label {
-  display: none;
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: #333;
   cursor: pointer;
   padding: 10px;
 }
 
-.nav-toggle-label span,
-.nav-toggle-label span::before,
-.nav-toggle-label span::after {
+.nav-toggle[hidden] {
+  display: none;
+}
+
+.nav-toggle:focus-visible {
+  outline: 3px solid #cd3333;
+  outline-offset: 2px;
+}
+
+.nav-toggle span,
+.nav-toggle span::before,
+.nav-toggle span::after {
   display: block;
   background: #333;
   height: 2px;
@@ -151,17 +160,17 @@ nav .logo span {
   transition: all 0.3s;
 }
 
-.nav-toggle-label span::before,
-.nav-toggle-label span::after {
+.nav-toggle span::before,
+.nav-toggle span::after {
   content: '';
   position: absolute;
 }
 
-.nav-toggle-label span::before {
+.nav-toggle span::before {
   top: -8px;
 }
 
-.nav-toggle-label span::after {
+.nav-toggle span::after {
   top: 8px;
 }
 
@@ -982,7 +991,7 @@ ul.inline li a:hover {
     display: none;
   }
 
-  .nav-toggle-label {
+  .nav-toggle {
     display: block;
     order: 2;
   }
@@ -995,7 +1004,7 @@ ul.inline li a:hover {
   }
 
   .nav-menu {
-    display: none;
+    display: flex;
     flex-direction: column;
     width: 100%;
     padding: 0 0 1rem 0;
@@ -1003,7 +1012,11 @@ ul.inline li a:hover {
     order: 10;
   }
 
-  #nav-toggle:checked~.nav-menu {
+  .nav-menu[data-mobile-menu-ready] {
+    display: none;
+  }
+
+  .nav-toggle[aria-expanded="true"]~.nav-menu[data-mobile-menu-ready] {
     display: flex;
   }
 

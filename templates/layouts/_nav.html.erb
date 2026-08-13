@@ -4,12 +4,20 @@
     <span>Polska Organizacja Aikido</span>
   </a>
 
-  <input id="nav-toggle" type="checkbox" />
-  <label class="nav-toggle-label" for="nav-toggle">
-    <span></span>
-  </label>
+  <button
+    class="nav-toggle"
+    type="button"
+    hidden
+    aria-expanded="false"
+    aria-controls="primary-navigation"
+    aria-label="Otwórz menu nawigacyjne"
+    data-open-label="Otwórz menu nawigacyjne"
+    data-close-label="Zamknij menu nawigacyjne"
+  >
+    <span aria-hidden="true"></span>
+  </button>
 
-  <div class="nav-menu">
+  <div class="nav-menu" id="primary-navigation">
     <div class="dropdown">
       <input class="dropdown-toggle" id="dropdown-1" type="checkbox" />
       <label class="dropdown-label" for="dropdown-1">Dojo</label>

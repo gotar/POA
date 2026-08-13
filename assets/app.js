@@ -219,6 +219,50 @@
     nav.style.transition = 'transform 0.3s ease';
   }
 
+  function initMobileNavigation() {
+    const toggle = document.querySelector('.nav-toggle');
+    if (!toggle) return;
+
+    const menu = document.getElementById(toggle.getAttribute('aria-controls'));
+    if (!menu) return;
+
+    menu.dataset.mobileMenuReady = 'true';
+    toggle.hidden = false;
+
+    const openLabel = toggle.dataset.openLabel;
+    const closeLabel = toggle.dataset.closeLabel;
+
+    function setExpanded(expanded, restoreFocus = false) {
+      toggle.setAttribute('aria-expanded', String(expanded));
+      toggle.setAttribute('aria-label', expanded ? closeLabel : openLabel);
+
+      if (restoreFocus) toggle.focus();
+    }
+
+    // Native buttons already support Enter and Space; do not rebuild that
+    // behavior with brittle custom keyboard handlers.
+    toggle.addEventListener('click', function() {
+      setExpanded(toggle.getAttribute('aria-expanded') !== 'true');
+    });
+
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        setExpanded(false, true);
+      }
+    });
+
+    function closeOnDesktop(event) {
+      if (!event.matches) setExpanded(false);
+    }
+
+    const mobileViewport = window.matchMedia('(max-width: 768px)');
+    if (mobileViewport.addEventListener) {
+      mobileViewport.addEventListener('change', closeOnDesktop);
+    } else {
+      mobileViewport.addListener(closeOnDesktop);
+    }
+  }
+
   function init() {
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', initAll);
@@ -235,6 +279,7 @@
     initInstagramWidget();
     initSmoothScroll();
     initHeaderAutoHide();
+    initMobileNavigation();
   }
 
   init();

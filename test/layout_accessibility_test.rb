@@ -43,6 +43,23 @@ class SharedLayoutAccessibilityTest < Minitest::Test
     }
   }.freeze
 
+  DROPDOWN_CONTROLS = {
+    "index.html" => [
+      { label: "Dojo", menu_id: "dropdown-1-menu" },
+      { label: "Blog", menu_id: "dropdown-2-menu" },
+      { label: "Aikido", menu_id: "dropdown-3-menu" },
+      { label: "Dla Trenujących", menu_id: "dropdown-4-menu" },
+      { label: "Linia Przekazu", menu_id: "dropdown-5-menu" }
+    ],
+    "en/index.html" => [
+      { label: "Dojo", menu_id: "dropdown-1-menu" },
+      { label: "Blog", menu_id: "dropdown-2-menu" },
+      { label: "Aikido", menu_id: "dropdown-3-menu" },
+      { label: "For Practitioners", menu_id: "dropdown-4-menu" },
+      { label: "Lineage", menu_id: "dropdown-5-menu" }
+    ]
+  }.freeze
+
   def test_shared_layouts_provide_localized_skip_link_and_landmarks
     LAYOUTS.each do |path, expectations|
       layout = File.read(site_root.join(path))
@@ -107,6 +124,17 @@ class SharedLayoutAccessibilityTest < Minitest::Test
         assert_includes html, expected_button, "#{path} must expose a semantic, localized mobile-menu control"
         assert_includes html, %(<div class="nav-menu" id="#{expectations[:menu_id]}">), "#{path} must expose the menu controlled by its mobile-menu button"
       end
+
+      DROPDOWN_CONTROLS.each do |path, controls|
+        html = File.read(File.join(export_dir, path))
+
+        controls.each do |control|
+          expected_button = /<button\s+class="dropdown-label"\s+type="button"\s+aria-expanded="false"\s+aria-controls="#{Regexp.escape(control[:menu_id])}"\s*>\s*#{Regexp.escape(control[:label])}\s*<\/button>/m
+
+          assert_match expected_button, html, "#{path} must expose #{control[:label].inspect} as a keyboard-operable dropdown control"
+          assert_includes html, %(<div class="dropdown-content" id="#{control[:menu_id]}">), "#{path} must expose the submenu controlled by #{control[:label].inspect}"
+        end
+      end
     end
   end
 
@@ -129,6 +157,23 @@ class SharedLayoutAccessibilityTest < Minitest::Test
     assert_includes css, ".nav-toggle[hidden] {"
     assert_includes css, ".nav-menu[data-mobile-menu-ready] {"
     assert_includes css, ".nav-toggle[aria-expanded=\"true\"]~.nav-menu[data-mobile-menu-ready] {"
+    assert_includes css, ".dropdown:not([data-dropdown-ready]) .dropdown-content {"
+  end
+
+  def test_dropdown_navigation_supports_keyboard_disclosure
+    css = File.read(site_root.join("assets/style.css"))
+    script = File.read(site_root.join("assets/app.js"))
+
+    assert_includes css, ".dropdown:focus-within .dropdown-content,"
+    assert_includes css, ".dropdown-label[aria-expanded=\"true\"] + .dropdown-content"
+    assert_includes css, ".dropdown-label:focus-visible {"
+
+    assert_includes script, "function initDropdownNavigation()"
+    assert_includes script, "dropdown.dataset.dropdownReady = 'true';"
+    assert_includes script, "toggle.addEventListener('click'"
+    assert_includes script, "dropdown.addEventListener('focusout'"
+    assert_includes script, "event.key !== 'Escape'"
+    assert_includes script, "setExpanded(activeDropdown.toggle, false);"
   end
 
   def test_every_english_view_uses_the_english_layout

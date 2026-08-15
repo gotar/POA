@@ -1,5 +1,6 @@
 require "uri"
 require "json"
+require "cgi"
 require "digest"
 require "dry/core/constants"
 require "dry/view/context"
@@ -268,6 +269,14 @@ module Site
         else
           normalized_page == 1 ? "/blog.html" : "/blog-#{normalized_page}.html"
         end
+      end
+
+      # The visible call to action stays concise; its accessible name names
+      # the destination article and is safe for an HTML attribute.
+      def read_more_aria_label(title)
+        prefix = current_path.to_s.start_with?("en/") ? "Read more" : "Czytaj więcej"
+
+        ::CGI.escapeHTML("#{prefix}: #{title}")
       end
 
       def blog_article_page?

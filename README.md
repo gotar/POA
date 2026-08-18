@@ -51,12 +51,23 @@ docker run --rm -v "$PWD:/app" -w /app poa-dev:local ruby test/scripts/extract_s
 
 ## Deploying the site
 
-Run `./bin/deploy` to deploy the site. This will:
-1. Build the site
-2. Commit the build changes
-3. Push the `build/` directory to the `gh-pages` branch
+GitHub Actions owns deployment. The generated `build/` directory is ignored
+and must not be committed. When a reviewed change is pushed to `master`, the
+`gh-pages.yml` workflow builds the site and publishes the generated files to
+the `gh-pages` branch. Pull requests run `build-check.yml` only.
 
-The site will be live at https://aikido-polska.eu/ within a few minutes.
+Do **not** run `./bin/deploy`, commit `build/`, or manually push a subtree to
+`gh-pages`; those are obsolete deployment paths.
+
+Before opening a pull request, run the containerized test suite and build shown
+above. After the change reaches `master`, verify the latest deployment and the
+live site:
+
+```sh
+gh run list --repo gotar/POA --workflow gh-pages.yml --branch master --limit 1
+gh run watch RUN_ID --repo gotar/POA --exit-status
+curl -fsS https://aikido-polska.eu/ | grep -F 'expected new text'
+```
 
 ## Structure
 
@@ -198,19 +209,6 @@ Key pages with custom SEO:
 
 8. **Build locally**
    - Run `./bin/build` and verify `build/` contains the new HTML files.
-
-## Deploy
-
-- `./bin/deploy` builds the site (in the `poa-dev:local` container when
-  available) and pushes `master` to GitHub. The `gh-pages.yml` workflow then
-  builds `build/` in CI and deploys it to the `gh-pages` branch.
-- The workflow runs only on pushes to `master`; `build-check.yml` verifies
-  that the site builds on pull requests.
-- After pushing, the site is available at https://aikido-polska.eu/ within a
-  few minutes.
-- The legacy flow (committing `build/` to `master` + `git subtree push` to
-  `gh-pages`) is obsolete — `build/` is gitignored and the Actions workflow
-  owns the gh-pages branch.
 
 ## Common SEO features
 

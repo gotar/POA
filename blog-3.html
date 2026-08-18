@@ -115,9 +115,9 @@
     <link rel="dns-prefetch" href="//fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preload" href="/assets/style.css?v=bd32a67fb2" as="style" />
+    <link rel="preload" href="/assets/style.css?v=ede161d57a" as="style" />
     <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="/assets/style.css?v=bd32a67fb2" />
+    <link rel="stylesheet" type="text/css" href="/assets/style.css?v=ede161d57a" />
     
     <title>Blog — strona 3 | Polska Organizacja Aikido</title>
   </head>
@@ -146,9 +146,13 @@
 
   <div class="nav-menu" id="primary-navigation">
     <div class="dropdown">
-      <input class="dropdown-toggle" id="dropdown-1" type="checkbox" />
-      <label class="dropdown-label" for="dropdown-1">Dojo</label>
-      <div class="dropdown-content">
+      <button
+        class="dropdown-label"
+        type="button"
+        aria-expanded="false"
+        aria-controls="dropdown-1-menu"
+      >Dojo</button>
+      <div class="dropdown-content" id="dropdown-1-menu">
         <a href="/gdynia.html">Gdynia</a>
         <a href="/treningi-aikido-gdynia.html">Treningi Aikido w Gdyni</a>
         <a href="/pierwszy-trening-aikido-gdynia.html">Pierwszy trening</a>
@@ -158,9 +162,13 @@
     </div>
 
     <div class="dropdown">
-      <input class="dropdown-toggle" id="dropdown-2" type="checkbox" />
-      <label class="dropdown-label" for="dropdown-2">Blog</label>
-      <div class="dropdown-content">
+      <button
+        class="dropdown-label"
+        type="button"
+        aria-expanded="false"
+        aria-controls="dropdown-2-menu"
+      >Blog</button>
+      <div class="dropdown-content" id="dropdown-2-menu">
         <a href="/blog.html">Wszystkie wpisy</a>
         <a href="/blog/aikido-dla-nastolatkow.html">Aikido dla nastolatków</a>
         <a href="/blog/czy-warto-cwiczyc-aikido.html">Czy warto ćwiczyć Aikido?</a>
@@ -169,9 +177,13 @@
     </div>
 
     <div class="dropdown">
-      <input class="dropdown-toggle" id="dropdown-3" type="checkbox" />
-      <label class="dropdown-label" for="dropdown-3">Aikido</label>
-      <div class="dropdown-content">
+      <button
+        class="dropdown-label"
+        type="button"
+        aria-expanded="false"
+        aria-controls="dropdown-3-menu"
+      >Aikido</button>
+      <div class="dropdown-content" id="dropdown-3-menu">
         <a href="/aikido/czym_jest.html">Czym jest Aikido?</a>
         <a href="/aikido/historia.html">Historia</a>
         <a href="/aikido/korzysci.html">Korzyści z treningu</a>
@@ -183,9 +195,13 @@
     </div>
 
     <div class="dropdown">
-      <input class="dropdown-toggle" id="dropdown-4" type="checkbox" />
-      <label class="dropdown-label" for="dropdown-4">Dla Trenujących</label>
-      <div class="dropdown-content">
+      <button
+        class="dropdown-label"
+        type="button"
+        aria-expanded="false"
+        aria-controls="dropdown-4-menu"
+      >Dla Trenujących</button>
+      <div class="dropdown-content" id="dropdown-4-menu">
         <a href="/aikido/dla_poczatkujacych.html">Dla Początkujących</a>
         <a href="/aikido/aiki_taiso.html">Aiki Taiso - Ćwiczenia</a>
         <a href="/aikido/reishiki.html">Reishiki - Etykieta</a>
@@ -195,9 +211,13 @@
     </div>
 
     <div class="dropdown">
-      <input class="dropdown-toggle" id="dropdown-5" type="checkbox" />
-      <label class="dropdown-label" for="dropdown-5">Linia Przekazu</label>
-      <div class="dropdown-content">
+      <button
+        class="dropdown-label"
+        type="button"
+        aria-expanded="false"
+        aria-controls="dropdown-5-menu"
+      >Linia Przekazu</button>
+      <div class="dropdown-content" id="dropdown-5-menu">
         <a href="/lineage.html">Linia przekazu</a>
         <a href="/yudansha.html">Yudansha - Czarne Pasy</a>
         <div class="dropdown-section">Mistrzowie</div>
@@ -235,70 +255,70 @@
           <div class="news-meta">11 kwietnia 2026</div>
           <h2><a href="/blog/5-zasad-kazdej-techniki.html">5 zasad każdej techniki</a></h2>
           <p>Praktyczny model techniki w Aikido: centrum, oś, timing, wybranie luzu i kuzushi oraz podzasady, które pozwalają im działać razem.</p>
-          <a class="news-read-more" href="/blog/5-zasad-kazdej-techniki.html">Czytaj więcej →</a>
+          <a class="news-read-more" href="/blog/5-zasad-kazdej-techniki.html" aria-label="Czytaj więcej: 5 zasad każdej techniki">Czytaj więcej →</a>
         </article>
       
         <article class="news-card">
           <div class="news-meta">4 kwietnia 2026</div>
           <h2><a href="/blog/misogi-oczyszczenie-przez-praktyke.html">Misogi (禊) — oczyszczenie przez praktykę</a></h2>
           <p>Dlaczego misogi w stylu Toyody porządkuje oddech, uwagę i intencję oraz pozostaje żywą praktyką w linii przekazu.</p>
-          <a class="news-read-more" href="/blog/misogi-oczyszczenie-przez-praktyke.html">Czytaj więcej →</a>
+          <a class="news-read-more" href="/blog/misogi-oczyszczenie-przez-praktyke.html" aria-label="Czytaj więcej: Misogi (禊) — oczyszczenie przez praktykę">Czytaj więcej →</a>
         </article>
       
         <article class="news-card">
           <div class="news-meta">2 kwietnia 2026</div>
           <h2><a href="/blog/aiki-harmonia-w-dzialaniu.html">Aiki (合気) — harmonia w działaniu, nie w deklaracji</a></h2>
           <p>Dlaczego Aiki w Aikido zaczyna się przed techniką i oznacza przejęcie timingu, dystansu oraz balansu bez siłowego zderzenia.</p>
-          <a class="news-read-more" href="/blog/aiki-harmonia-w-dzialaniu.html">Czytaj więcej →</a>
+          <a class="news-read-more" href="/blog/aiki-harmonia-w-dzialaniu.html" aria-label="Czytaj więcej: Aiki (合気) — harmonia w działaniu, nie w deklaracji">Czytaj więcej →</a>
         </article>
       
         <article class="news-card">
           <div class="news-meta">26 marca 2026</div>
           <h2><a href="/blog/ichi-go-ichi-e-kazde-spotkanie-zdarza-sie-tylko-raz.html">Ichi-go ichi-e (一期一会) — każde spotkanie zdarza się tylko raz</a></h2>
           <p>Dlaczego każda chwila treningu, korekta i spotkanie z partnerem są niepowtarzalne i wymagają pełnej obecności zamiast rutyny.</p>
-          <a class="news-read-more" href="/blog/ichi-go-ichi-e-kazde-spotkanie-zdarza-sie-tylko-raz.html">Czytaj więcej →</a>
+          <a class="news-read-more" href="/blog/ichi-go-ichi-e-kazde-spotkanie-zdarza-sie-tylko-raz.html" aria-label="Czytaj więcej: Ichi-go ichi-e (一期一会) — każde spotkanie zdarza się tylko raz">Czytaj więcej →</a>
         </article>
       
         <article class="news-card">
           <div class="news-meta">26 marca 2026</div>
           <h2><a href="/blog/hansei-uczciwa-autorefleksja-bez-wymowek.html">Hansei (反省) — uczciwa autorefleksja bez wymówek</a></h2>
           <p>Dlaczego bez uczciwego zobaczenia własnego błędu trening zamienia się w obronę ego zamiast realnej korekty.</p>
-          <a class="news-read-more" href="/blog/hansei-uczciwa-autorefleksja-bez-wymowek.html">Czytaj więcej →</a>
+          <a class="news-read-more" href="/blog/hansei-uczciwa-autorefleksja-bez-wymowek.html" aria-label="Czytaj więcej: Hansei (反省) — uczciwa autorefleksja bez wymówek">Czytaj więcej →</a>
         </article>
       
         <article class="news-card">
           <div class="news-meta">18 marca 2026</div>
           <h2><a href="/blog/jeden-nauczyciel-jeden-przekaz.html">Jeden nauczyciel, jeden przekaz</a></h2>
           <p>Dlaczego jeden spójny przekaz chroni naukę przed chaosem, a starszy uczeń najlepiej wspiera trening jako dobry uke.</p>
-          <a class="news-read-more" href="/blog/jeden-nauczyciel-jeden-przekaz.html">Czytaj więcej →</a>
+          <a class="news-read-more" href="/blog/jeden-nauczyciel-jeden-przekaz.html" aria-label="Czytaj więcej: Jeden nauczyciel, jeden przekaz">Czytaj więcej →</a>
         </article>
       
         <article class="news-card">
           <div class="news-meta">18 marca 2026</div>
           <h2><a href="/blog/shuhari-etapy-dojrzewania-w-treningu.html">Shuhari (守破離) — etapy dojrzewania w treningu</a></h2>
           <p>Jak wiernie przepracowana forma dojrzewa w zrozumienie i swobodę, zamiast rozpadać się w chaos lub ego.</p>
-          <a class="news-read-more" href="/blog/shuhari-etapy-dojrzewania-w-treningu.html">Czytaj więcej →</a>
+          <a class="news-read-more" href="/blog/shuhari-etapy-dojrzewania-w-treningu.html" aria-label="Czytaj więcej: Shuhari (守破離) — etapy dojrzewania w treningu">Czytaj więcej →</a>
         </article>
       
         <article class="news-card">
           <div class="news-meta">15 marca 2026</div>
           <h2><a href="/blog/shoshin-umysl-poczatkujacego.html">Shoshin (初心) — umysł początkującego</a></h2>
           <p>Dlaczego prawdziwy rozwój zaczyna się tam, gdzie doświadczenie nie zamienia się jeszcze w pychę i rutynę.</p>
-          <a class="news-read-more" href="/blog/shoshin-umysl-poczatkujacego.html">Czytaj więcej →</a>
+          <a class="news-read-more" href="/blog/shoshin-umysl-poczatkujacego.html" aria-label="Czytaj więcej: Shoshin (初心) — umysł początkującego">Czytaj więcej →</a>
         </article>
       
         <article class="news-card">
           <div class="news-meta">14 marca 2026</div>
           <h2><a href="/blog/fudoshin-niewzruszony-umysl.html">Fudōshin (不動心) — niewzruszony umysł</a></h2>
           <p>Jak zachować stabilność decyzji, oddechu i postawy wtedy, gdy presja najbardziej chce rozbić technikę.</p>
-          <a class="news-read-more" href="/blog/fudoshin-niewzruszony-umysl.html">Czytaj więcej →</a>
+          <a class="news-read-more" href="/blog/fudoshin-niewzruszony-umysl.html" aria-label="Czytaj więcej: Fudōshin (不動心) — niewzruszony umysł">Czytaj więcej →</a>
         </article>
       
         <article class="news-card">
           <div class="news-meta">7 marca 2026</div>
           <h2><a href="/blog/styl-aikido-fumio-toyody-technika-i-zen.html">Styl Aikido Fumio Toyody: technika i Zen jako jeden system</a></h2>
           <p>Jak w linii Toyody łączy się precyzję techniki, oddech i dyscyplinę Zen w jednej metodyce treningowej.</p>
-          <a class="news-read-more" href="/blog/styl-aikido-fumio-toyody-technika-i-zen.html">Czytaj więcej →</a>
+          <a class="news-read-more" href="/blog/styl-aikido-fumio-toyody-technika-i-zen.html" aria-label="Czytaj więcej: Styl Aikido Fumio Toyody: technika i Zen jako jeden system">Czytaj więcej →</a>
         </article>
       
     </div>
@@ -345,6 +365,6 @@
         <polyline points="18 15 12 9 6 15"></polyline>
       </svg>
     </button>
-    <script src="/assets/app.js?v=408a9bf3b2"></script>
+    <script src="/assets/app.js?v=1d57fef2ac"></script>
   </body>
 </html>

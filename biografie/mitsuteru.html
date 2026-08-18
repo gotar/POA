@@ -115,9 +115,9 @@
     <link rel="dns-prefetch" href="//fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preload" href="/assets/style.css?v=bd32a67fb2" as="style" />
+    <link rel="preload" href="/assets/style.css?v=ede161d57a" as="style" />
     <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="/assets/style.css?v=bd32a67fb2" />
+    <link rel="stylesheet" type="text/css" href="/assets/style.css?v=ede161d57a" />
     
     <title>Mitsuteru Ueshiba | Waka Sensei | Przyszly Doshu | Polska Organizacja Aikido</title>
   </head>
@@ -146,9 +146,13 @@
 
   <div class="nav-menu" id="primary-navigation">
     <div class="dropdown">
-      <input class="dropdown-toggle" id="dropdown-1" type="checkbox" />
-      <label class="dropdown-label" for="dropdown-1">Dojo</label>
-      <div class="dropdown-content">
+      <button
+        class="dropdown-label"
+        type="button"
+        aria-expanded="false"
+        aria-controls="dropdown-1-menu"
+      >Dojo</button>
+      <div class="dropdown-content" id="dropdown-1-menu">
         <a href="/gdynia.html">Gdynia</a>
         <a href="/treningi-aikido-gdynia.html">Treningi Aikido w Gdyni</a>
         <a href="/pierwszy-trening-aikido-gdynia.html">Pierwszy trening</a>
@@ -158,9 +162,13 @@
     </div>
 
     <div class="dropdown">
-      <input class="dropdown-toggle" id="dropdown-2" type="checkbox" />
-      <label class="dropdown-label" for="dropdown-2">Blog</label>
-      <div class="dropdown-content">
+      <button
+        class="dropdown-label"
+        type="button"
+        aria-expanded="false"
+        aria-controls="dropdown-2-menu"
+      >Blog</button>
+      <div class="dropdown-content" id="dropdown-2-menu">
         <a href="/blog.html">Wszystkie wpisy</a>
         <a href="/blog/aikido-dla-nastolatkow.html">Aikido dla nastolatków</a>
         <a href="/blog/czy-warto-cwiczyc-aikido.html">Czy warto ćwiczyć Aikido?</a>
@@ -169,9 +177,13 @@
     </div>
 
     <div class="dropdown">
-      <input class="dropdown-toggle" id="dropdown-3" type="checkbox" />
-      <label class="dropdown-label" for="dropdown-3">Aikido</label>
-      <div class="dropdown-content">
+      <button
+        class="dropdown-label"
+        type="button"
+        aria-expanded="false"
+        aria-controls="dropdown-3-menu"
+      >Aikido</button>
+      <div class="dropdown-content" id="dropdown-3-menu">
         <a href="/aikido/czym_jest.html">Czym jest Aikido?</a>
         <a href="/aikido/historia.html">Historia</a>
         <a href="/aikido/korzysci.html">Korzyści z treningu</a>
@@ -183,9 +195,13 @@
     </div>
 
     <div class="dropdown">
-      <input class="dropdown-toggle" id="dropdown-4" type="checkbox" />
-      <label class="dropdown-label" for="dropdown-4">Dla Trenujących</label>
-      <div class="dropdown-content">
+      <button
+        class="dropdown-label"
+        type="button"
+        aria-expanded="false"
+        aria-controls="dropdown-4-menu"
+      >Dla Trenujących</button>
+      <div class="dropdown-content" id="dropdown-4-menu">
         <a href="/aikido/dla_poczatkujacych.html">Dla Początkujących</a>
         <a href="/aikido/aiki_taiso.html">Aiki Taiso - Ćwiczenia</a>
         <a href="/aikido/reishiki.html">Reishiki - Etykieta</a>
@@ -195,9 +211,13 @@
     </div>
 
     <div class="dropdown">
-      <input class="dropdown-toggle" id="dropdown-5" type="checkbox" />
-      <label class="dropdown-label" for="dropdown-5">Linia Przekazu</label>
-      <div class="dropdown-content">
+      <button
+        class="dropdown-label"
+        type="button"
+        aria-expanded="false"
+        aria-controls="dropdown-5-menu"
+      >Linia Przekazu</button>
+      <div class="dropdown-content" id="dropdown-5-menu">
         <a href="/lineage.html">Linia przekazu</a>
         <a href="/yudansha.html">Yudansha - Czarne Pasy</a>
         <div class="dropdown-section">Mistrzowie</div>
@@ -287,6 +307,6 @@
         <polyline points="18 15 12 9 6 15"></polyline>
       </svg>
     </button>
-    <script src="/assets/app.js?v=408a9bf3b2"></script>
+    <script src="/assets/app.js?v=1d57fef2ac"></script>
   </body>
 </html>

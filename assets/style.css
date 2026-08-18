@@ -213,22 +213,28 @@ nav .logo span {
   position: relative;
 }
 
-.dropdown-toggle {
-  display: none;
-}
-
 .dropdown-label {
   display: block;
+  appearance: none;
+  border: 0;
+  background: transparent;
   padding: 0.75rem 1rem;
   cursor: pointer;
   color: #333;
+  font: inherit;
   font-weight: 500;
+  text-align: left;
   transition: color 0.2s;
-  pointer-events: none;
 }
 
 .dropdown-label:hover {
   color: #cd3333;
+}
+
+.dropdown-label:focus-visible {
+  color: #cd3333;
+  outline: 3px solid #cd3333;
+  outline-offset: 2px;
 }
 
 .dropdown-label::after {
@@ -259,7 +265,8 @@ nav .logo span {
 }
 
 .dropdown:hover .dropdown-content,
-.dropdown-toggle:checked~.dropdown-content {
+.dropdown:focus-within .dropdown-content,
+.dropdown-label[aria-expanded="true"] + .dropdown-content {
   display: block;
 }
 
@@ -1039,6 +1046,10 @@ ul.inline li a:hover {
     padding: 0;
     margin-left: 1rem;
     min-width: auto;
+  }
+
+  .dropdown:not([data-dropdown-ready]) .dropdown-content {
+    display: block;
   }
 
   .dropdown-content::before {

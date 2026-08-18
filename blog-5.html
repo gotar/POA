@@ -115,9 +115,9 @@
     <link rel="dns-prefetch" href="//fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preload" href="/assets/style.css?v=bd32a67fb2" as="style" />
+    <link rel="preload" href="/assets/style.css?v=ede161d57a" as="style" />
     <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="/assets/style.css?v=bd32a67fb2" />
+    <link rel="stylesheet" type="text/css" href="/assets/style.css?v=ede161d57a" />
     
     <title>Blog — strona 5 | Polska Organizacja Aikido</title>
   </head>
@@ -146,9 +146,13 @@
 
   <div class="nav-menu" id="primary-navigation">
     <div class="dropdown">
-      <input class="dropdown-toggle" id="dropdown-1" type="checkbox" />
-      <label class="dropdown-label" for="dropdown-1">Dojo</label>
-      <div class="dropdown-content">
+      <button
+        class="dropdown-label"
+        type="button"
+        aria-expanded="false"
+        aria-controls="dropdown-1-menu"
+      >Dojo</button>
+      <div class="dropdown-content" id="dropdown-1-menu">
         <a href="/gdynia.html">Gdynia</a>
         <a href="/treningi-aikido-gdynia.html">Treningi Aikido w Gdyni</a>
         <a href="/pierwszy-trening-aikido-gdynia.html">Pierwszy trening</a>
@@ -158,9 +162,13 @@
     </div>
 
     <div class="dropdown">
-      <input class="dropdown-toggle" id="dropdown-2" type="checkbox" />
-      <label class="dropdown-label" for="dropdown-2">Blog</label>
-      <div class="dropdown-content">
+      <button
+        class="dropdown-label"
+        type="button"
+        aria-expanded="false"
+        aria-controls="dropdown-2-menu"
+      >Blog</button>
+      <div class="dropdown-content" id="dropdown-2-menu">
         <a href="/blog.html">Wszystkie wpisy</a>
         <a href="/blog/aikido-dla-nastolatkow.html">Aikido dla nastolatków</a>
         <a href="/blog/czy-warto-cwiczyc-aikido.html">Czy warto ćwiczyć Aikido?</a>
@@ -169,9 +177,13 @@
     </div>
 
     <div class="dropdown">
-      <input class="dropdown-toggle" id="dropdown-3" type="checkbox" />
-      <label class="dropdown-label" for="dropdown-3">Aikido</label>
-      <div class="dropdown-content">
+      <button
+        class="dropdown-label"
+        type="button"
+        aria-expanded="false"
+        aria-controls="dropdown-3-menu"
+      >Aikido</button>
+      <div class="dropdown-content" id="dropdown-3-menu">
         <a href="/aikido/czym_jest.html">Czym jest Aikido?</a>
         <a href="/aikido/historia.html">Historia</a>
         <a href="/aikido/korzysci.html">Korzyści z treningu</a>
@@ -183,9 +195,13 @@
     </div>
 
     <div class="dropdown">
-      <input class="dropdown-toggle" id="dropdown-4" type="checkbox" />
-      <label class="dropdown-label" for="dropdown-4">Dla Trenujących</label>
-      <div class="dropdown-content">
+      <button
+        class="dropdown-label"
+        type="button"
+        aria-expanded="false"
+        aria-controls="dropdown-4-menu"
+      >Dla Trenujących</button>
+      <div class="dropdown-content" id="dropdown-4-menu">
         <a href="/aikido/dla_poczatkujacych.html">Dla Początkujących</a>
         <a href="/aikido/aiki_taiso.html">Aiki Taiso - Ćwiczenia</a>
         <a href="/aikido/reishiki.html">Reishiki - Etykieta</a>
@@ -195,9 +211,13 @@
     </div>
 
     <div class="dropdown">
-      <input class="dropdown-toggle" id="dropdown-5" type="checkbox" />
-      <label class="dropdown-label" for="dropdown-5">Linia Przekazu</label>
-      <div class="dropdown-content">
+      <button
+        class="dropdown-label"
+        type="button"
+        aria-expanded="false"
+        aria-controls="dropdown-5-menu"
+      >Linia Przekazu</button>
+      <div class="dropdown-content" id="dropdown-5-menu">
         <a href="/lineage.html">Linia przekazu</a>
         <a href="/yudansha.html">Yudansha - Czarne Pasy</a>
         <div class="dropdown-section">Mistrzowie</div>
@@ -235,35 +255,35 @@
           <div class="news-meta">23 lutego 2026</div>
           <h2><a href="/blog/mushin-umysl-bez-umyslu.html">Mushin (無心) — umysł bez umysłu</a></h2>
           <p>Stan pełnej obecności: bez napięcia, bez przywiązania, z jasnym działaniem.</p>
-          <a class="news-read-more" href="/blog/mushin-umysl-bez-umyslu.html">Czytaj więcej →</a>
+          <a class="news-read-more" href="/blog/mushin-umysl-bez-umyslu.html" aria-label="Czytaj więcej: Mushin (無心) — umysł bez umysłu">Czytaj więcej →</a>
         </article>
       
         <article class="news-card">
           <div class="news-meta">23 lutego 2026</div>
           <h2><a href="/blog/zenshin-pelne-zaangazowanie.html">Zenshin (前進) — pełne zaangażowanie</a></h2>
           <p>Konsekwentny ruch naprzód z całą uwagą i odpowiedzialnością za proces.</p>
-          <a class="news-read-more" href="/blog/zenshin-pelne-zaangazowanie.html">Czytaj więcej →</a>
+          <a class="news-read-more" href="/blog/zenshin-pelne-zaangazowanie.html" aria-label="Czytaj więcej: Zenshin (前進) — pełne zaangażowanie">Czytaj więcej →</a>
         </article>
       
         <article class="news-card">
           <div class="news-meta">23 lutego 2026</div>
           <h2><a href="/blog/omoiyari-uwazna-troska.html">Omoiyari (思いやり) — uważna troska</a></h2>
           <p>Empatia w praktyce: rozumienie potrzeb drugiej osoby zanim zostaną wypowiedziane.</p>
-          <a class="news-read-more" href="/blog/omoiyari-uwazna-troska.html">Czytaj więcej →</a>
+          <a class="news-read-more" href="/blog/omoiyari-uwazna-troska.html" aria-label="Czytaj więcej: Omoiyari (思いやり) — uważna troska">Czytaj więcej →</a>
         </article>
       
         <article class="news-card">
           <div class="news-meta">23 lutego 2026</div>
           <h2><a href="/blog/jiko-sekinin-odpowiedzialnosc-osobista.html">Jiko Sekinin (自己責任) — odpowiedzialność osobista</a></h2>
           <p>Branie odpowiedzialności za decyzje, błędy i konsekwencje bez szukania wymówek.</p>
-          <a class="news-read-more" href="/blog/jiko-sekinin-odpowiedzialnosc-osobista.html">Czytaj więcej →</a>
+          <a class="news-read-more" href="/blog/jiko-sekinin-odpowiedzialnosc-osobista.html" aria-label="Czytaj więcej: Jiko Sekinin (自己責任) — odpowiedzialność osobista">Czytaj więcej →</a>
         </article>
       
         <article class="news-card">
           <div class="news-meta">23 lutego 2026</div>
           <h2><a href="/blog/kuzushi-kontrolowana-nierownowaga.html">Kuzushi (崩し) — kontrolowana nierównowaga</a></h2>
           <p>W Aikido i poza matą: jak świadomie zmieniać układ sił, by otworzyć przestrzeń na transformację.</p>
-          <a class="news-read-more" href="/blog/kuzushi-kontrolowana-nierownowaga.html">Czytaj więcej →</a>
+          <a class="news-read-more" href="/blog/kuzushi-kontrolowana-nierownowaga.html" aria-label="Czytaj więcej: Kuzushi (崩し) — kontrolowana nierównowaga">Czytaj więcej →</a>
         </article>
       
     </div>
@@ -308,6 +328,6 @@
         <polyline points="18 15 12 9 6 15"></polyline>
       </svg>
     </button>
-    <script src="/assets/app.js?v=408a9bf3b2"></script>
+    <script src="/assets/app.js?v=1d57fef2ac"></script>
   </body>
 </html>

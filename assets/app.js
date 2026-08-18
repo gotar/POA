@@ -219,6 +219,58 @@
     nav.style.transition = 'transform 0.3s ease';
   }
 
+  function initDropdownNavigation() {
+    const dropdowns = Array.from(document.querySelectorAll('.dropdown')).map(dropdown => {
+      const toggle = dropdown.querySelector('.dropdown-label[aria-controls]');
+      const menu = toggle && document.getElementById(toggle.getAttribute('aria-controls'));
+
+      return toggle && menu ? { dropdown, toggle } : null;
+    }).filter(Boolean);
+
+    if (dropdowns.length === 0) return;
+
+    function setExpanded(toggle, expanded) {
+      toggle.setAttribute('aria-expanded', String(expanded));
+    }
+
+    function closeAll(except = null) {
+      dropdowns.forEach(({ toggle }) => {
+        if (toggle !== except) setExpanded(toggle, false);
+      });
+    }
+
+    dropdowns.forEach(({ dropdown, toggle }) => {
+      dropdown.dataset.dropdownReady = 'true';
+
+      toggle.addEventListener('click', function() {
+        const expanded = toggle.getAttribute('aria-expanded') !== 'true';
+        closeAll(toggle);
+        setExpanded(toggle, expanded);
+      });
+
+      dropdown.addEventListener('focusout', function(event) {
+        if (!dropdown.contains(event.relatedTarget)) setExpanded(toggle, false);
+      });
+    });
+
+    document.addEventListener('click', function(event) {
+      if (!event.target.closest('.dropdown')) closeAll();
+    });
+
+    document.addEventListener('keydown', function(event) {
+      if (event.key !== 'Escape') return;
+
+      const activeDropdown = dropdowns.find(({ dropdown, toggle }) =>
+        toggle.getAttribute('aria-expanded') === 'true' || dropdown.contains(document.activeElement)
+      );
+
+      if (!activeDropdown) return;
+
+      setExpanded(activeDropdown.toggle, false);
+      activeDropdown.toggle.focus();
+    });
+  }
+
   function initMobileNavigation() {
     const toggle = document.querySelector('.nav-toggle');
     if (!toggle) return;
@@ -279,6 +331,7 @@
     initInstagramWidget();
     initSmoothScroll();
     initHeaderAutoHide();
+    initDropdownNavigation();
     initMobileNavigation();
   }
 

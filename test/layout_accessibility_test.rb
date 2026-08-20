@@ -87,6 +87,16 @@ class SharedLayoutAccessibilityTest < Minitest::Test
     assert_includes focus_rule[:rules], "transform: translateY(0);"
   end
 
+  def test_skip_link_moves_keyboard_focus_to_main_content_before_smooth_scrolling
+    script = File.read(site_root.join("assets/app.js"))
+
+    assert_match(
+      /if \(targetId === '#main-content'\) \{\s+targetElement\.focus\(\{ preventScroll: true \}\);\s+\}\s+targetElement\.scrollIntoView\(\{\s+behavior: 'smooth'/m,
+      script,
+      "the intercepted skip link must move keyboard focus to main before scrolling"
+    )
+  end
+
   def test_generated_navigation_controls_have_localized_accessible_names
     Dir.mktmpdir("poa-navigation-controls-") do |export_dir|
       output, status = Open3.capture2e(

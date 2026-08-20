@@ -183,6 +183,9 @@
         const targetElement = document.querySelector(targetId);
         if (targetElement) {
           e.preventDefault();
+          if (targetId === '#main-content') {
+            targetElement.focus({ preventScroll: true });
+          }
           targetElement.scrollIntoView({
             behavior: 'smooth',
             block: 'start'

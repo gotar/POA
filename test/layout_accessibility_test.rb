@@ -15,6 +15,17 @@ class SharedLayoutAccessibilityTest < Minitest::Test
     }
   }.freeze
 
+  BACK_TO_TOP_BUTTONS = {
+    "templates/layouts/site.html.erb" => {
+      generated_path: "index.html",
+      label: "Przewiń do góry"
+    },
+    "templates/layouts/site_en.html.erb" => {
+      generated_path: "en/index.html",
+      label: "Scroll to top"
+    }
+  }.freeze
+
   LANGUAGE_SWITCHERS = {
     "index.html" => {
       href: "/en/",
@@ -69,6 +80,37 @@ class SharedLayoutAccessibilityTest < Minitest::Test
       assert_operator layout.index(skip_link), :<, layout.index("<nav"), "#{path} must place the skip link before repeated navigation"
       assert_includes layout, %(<nav aria-label="#{expectations[:nav_label]}">)
       assert_includes layout, '<main id="main-content" tabindex="-1">'
+    end
+  end
+
+  def test_back_to_top_button_hides_decorative_icon_from_screen_readers
+    back_to_top_svg = %(<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">)
+
+    BACK_TO_TOP_BUTTONS.each do |path, expectations|
+      layout = File.read(site_root.join(path))
+      button = %(<button class="back-to-top" aria-label="#{expectations[:label]}">)
+
+      assert_includes layout, button, "#{path} must expose a localized label on the back-to-top button"
+      assert_includes layout, back_to_top_svg, "#{path} must hide the decorative back-to-top icon from screen readers"
+      assert_operator layout.index(button), :<, layout.index(back_to_top_svg), "#{path} must keep the hidden icon inside the labeled button"
+    end
+
+    Dir.mktmpdir("poa-back-to-top-") do |export_dir|
+      output, status = Open3.capture2e(
+        { "EXPORT_DIR" => export_dir },
+        File.join(site_root, "bin/build"),
+        chdir: site_root.to_s
+      )
+
+      assert status.success?, "expected build to pass:\n#{output}"
+
+      BACK_TO_TOP_BUTTONS.each do |path, expectations|
+        html = File.read(File.join(export_dir, expectations[:generated_path]))
+        label = expectations[:label]
+
+        assert_includes html, %(<button class="back-to-top" aria-label="#{label}">), "#{expectations[:generated_path]} must render the localized back-to-top button"
+        assert_includes html, back_to_top_svg, "#{expectations[:generated_path]} must render the decorative back-to-top icon hidden from screen readers"
+      end
     end
   end
 

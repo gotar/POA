@@ -1,9 +1,11 @@
 name: Build and Deploy to GitHub Pages
 
+# Owner policy 2026-08-23: GitHub Actions is NOT part of the default flow.
+# Deploy runs ONLY on explicit manual dispatch (gh workflow run) or when the
+# owner explicitly asks for it. Default deploy path is local: build in the
+# poa-dev:local container and push build/ to the gh-pages branch (see
+# bin/deploy-local). Keep this file so the manual lane stays available.
 on:
-  push:
-    branches:
-      - master
   workflow_dispatch:
 
 permissions:

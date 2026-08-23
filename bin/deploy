@@ -1,21 +1,7 @@
 #!/usr/bin/env bash
-
+# OBSOLETE as a deploy tool. Owner policy 2026-08-23: deploys are local via
+# bin/deploy-local; GH Actions is dispatch-only, on explicit request.
 set -euo pipefail
-
-PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-
-cd "$PROJECT_ROOT"
-
-if command -v docker >/dev/null 2>&1 && docker image inspect poa-dev:local >/dev/null 2>&1; then
-  echo "Building site in poa-dev:local container..."
-  docker run --rm -v "$PWD:/app" -w /app poa-dev:local ./bin/build
-else
-  echo "poa-dev:local container not found — building with local bundle..."
-  bundle exec ./bin/build
-fi
-
-echo "Pushing master to origin (GitHub Actions deploys build/ to gh-pages)..."
-git push origin master
-
-echo "✅ Done — site will be live at https://aikido-polska.eu/ after the Actions run."
-echo "   Watch it: gh run watch --repo gotar/POA"
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+echo "bin/deploy is obsolete. Use: $DIR/deploy-local (local build + gh-pages push)."
+exit 1

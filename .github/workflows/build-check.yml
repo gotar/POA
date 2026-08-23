@@ -1,7 +1,8 @@
 name: Build check (PR)
 
+# Owner policy 2026-08-23: not part of the default flow. Manual dispatch only.
 on:
-  pull_request:
+  workflow_dispatch:
 
 permissions:
   contents: read

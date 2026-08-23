@@ -51,23 +51,26 @@ docker run --rm -v "$PWD:/app" -w /app poa-dev:local ruby test/scripts/extract_s
 
 ## Deploying the site
 
-GitHub Actions owns deployment. The generated `build/` directory is ignored
-and must not be committed. When a reviewed change is pushed to `master`, the
-`gh-pages.yml` workflow builds the site and publishes the generated files to
-the `gh-pages` branch. Pull requests run `build-check.yml` only.
+Owner policy 2026-08-23: deploys are LOCAL; GitHub Actions is dispatch-only and
+used only on explicit request as an extra tool — never the default path.
 
-Do **not** run `./bin/deploy`, commit `build/`, or manually push a subtree to
-`gh-pages`; those are obsolete deployment paths.
-
-Before opening a pull request, run the containerized test suite and build shown
-above. After the change reaches `master`, verify the latest deployment and the
-live site:
+The generated `build/` directory is ignored and must not be committed.
+After a reviewed change reaches `master`, deploy locally:
 
 ```sh
-gh run list --repo gotar/POA --workflow gh-pages.yml --branch master --limit 1
-gh run watch RUN_ID --repo gotar/POA --exit-status
+sg docker -c 'docker run --rm -v "$PWD:/app" -w /app poa-dev:local ./bin/test'
+bin/deploy-local
+```
+
+`bin/deploy-local` builds deterministically in `poa-dev:local` and pushes the
+generated `build/` to the `gh-pages` branch (same mechanics the old Actions job
+used, executed on this host). Then verify the live site:
+
+```sh
 curl -fsS https://aikido-polska.eu/ | grep -F 'expected new text'
 ```
+
+The old `bin/deploy` (push master only) is an obsolete stub kept as a pointer.
 
 ## Structure
 

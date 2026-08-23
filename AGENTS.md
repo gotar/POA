@@ -12,7 +12,7 @@ Polska Organizacja Aikido (POA) website — static site generator (Ruby 3.4 + dr
 1. **This repo is POA. NEVER Manarr.** Do not load the `manarr-project` skill, do not touch `/home/deck/Programowanie/Manarr`, do not create cards on the `manarr` board, and do not import Manarr deploy rules (Kamal, registry, SSH host) into this project — POA has no secrets, no Kamal, no Docker registry, no deploy host.
 2. **Slack channel binding:** `#programowanie-poa` (channel ID `C0BPP9EP43A`) is hard-assigned to this project (gateway profile route → profile `poa`). Every message in that channel concerns POA and POA only. A message that does not name a project explicitly is still POA when it arrives there.
 3. **Kanban-first:** every change (content, code, infra) starts with a card on board `poa`: `hermes kanban --board poa create …`. Trivial read-only work may skip cards.
-4. **Workflow:** card → dedicated worktree + feature branch → implementation → verification in the `poa-dev:local` container → independent reviewer GO/NO-GO → merge to `master` → GH Actions auto-deploy → verify live → cleanup + close card. Never edit the main checkout or someone else's worktree. **Fully automatic (owner policy 2026-08-21):** hard gates green (CI on exact head, tests, review evidence) = merge+deploy proceed WITHOUT owner sign-off; owner is contacted only to polish a spec after grill-me and for hard blockers (failed CI/deploy, data-loss risk, 3 failed fix attempts). Anything parked on "awaits owner approval" is a process bug — fix the process.
+4. **Workflow:** card → dedicated worktree + feature branch → implementation → verification in the `poa-dev:local` container → independent reviewer GO/NO-GO → merge to `master` → LOCAL deploy (`bin/deploy-local`: container build + push `build/` to `gh-pages`) → verify live → cleanup + close card. Never edit the main checkout or someone else's worktree. **GitHub Actions is NOT part of the default flow (owner policy 2026-08-23):** workflows are dispatch-only, run only when the owner explicitly asks for them as an extra tool; never block on or wait for an Actions run. **Fully automatic (owner policy 2026-08-21):** hard gates green (local build/tests, review evidence) = merge+deploy proceed WITHOUT owner sign-off; owner is contacted only to polish a spec after grill-me and for hard blockers (failed tests/deploy, data-loss risk, 3 failed fix attempts). Anything parked on "awaits owner approval" is a process bug — fix the process.
 5. **Load the `poa-project` skill first** — it holds the build commands, environment quirks (Docker-only builds on SteamOS), deploy verification and pitfalls.
 
 ## Build (Docker only)
@@ -27,13 +27,16 @@ sg docker -c 'docker run --rm -v "$PWD:/app" -w /app poa-dev:local ./bin/build'
 - `build/` is gitignored; `gh-pages` is generated in CI from a clean checkout. Verify builds by checking generated HTML in `build/`, not `git status`.
 - Rebuild the image after Gemfile changes: `sg docker -c 'docker build -f Dockerfile.dev -t poa-dev:local .'`
 - Local preview: `python3 -m http.server 8000` from `build/`.
-- CI (`gh-pages.yml`) builds on ubuntu-latest with ruby 3.4 — works without the container.
+- Local verification is THE gate. (`gh-pages.yml` can still build on ubuntu-latest with ruby 3.4, but only via manual dispatch on explicit owner request.)
 
 ## Deploy
 
-- Push to `master` triggers GH Actions (`gh-pages.yml`): build → deploy `build/` to `gh-pages`.
-- CI on PRs: `build-check.yml` (build gate).
-- Verify deploys via Actions Runs API (`GET /repos/gotar/POA/actions/runs?head_sha=<SHA>`) + `curl -fsS https://aikido-polska.eu/` (HTTP 200) + presence of the new content.
+- Owner policy 2026-08-23: deploys are LOCAL. After merging to `master`, run
+  `bin/deploy-local` (builds deterministically in `poa-dev:local`, pushes generated
+  `build/` to `gh-pages`). Verify with `curl -fsS https://aikido-polska.eu/`
+  (HTTP 200) + presence of the new content.
+- GitHub Actions (`gh-pages.yml`, `build-check.yml`) is dispatch-only — an extra
+  tool run ONLY on explicit owner request, never the default path.
 
 ## Content Facts
 

@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+# Local deploy path (owner policy 2026-08-23): GitHub Actions is not part of
+# the default flow. Build deterministically in poa-dev:local and push the
+# generated build/ to the gh-pages branch — same mechanics as the (now
+# dispatch-only) GH Actions deploy job, just run on this host.
+set -euo pipefail
+
+PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+cd "$PROJECT_ROOT"
+
+if command -v docker >/dev/null 2>&1 && docker image inspect poa-dev:local >/dev/null 2>&1; then
+  echo "Building site in poa-dev:local container..."
+  sg docker -c 'docker run --rm -v "$PWD:/app" -w /app poa-dev:local ./bin/build'
+else
+  echo "poa-dev:local container not found — building with local bundle..."
+  bundle exec ./bin/build
+fi
+
+echo "Pushing generated build/ to gh-pages..."
+tmpdir="$(mktemp -d)"
+cleanup() { git worktree remove "$tmpdir" --force >/dev/null 2>&1 || true; }
+trap cleanup EXIT
+
+git fetch origin gh-pages:refs/remotes/origin/gh-pages
+git worktree add "$tmpdir" refs/remotes/origin/gh-pages
+
+find "$tmpdir" -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
+cp -a ./build/. "$tmpdir/"
+
+cd "$tmpdir"
+git config user.name "gotar-deploy"
+git config user.email "deploy@users.noreply.github.com"
+git add -A
+
+if git diff --cached --quiet; then
+  echo "No changes to deploy"
+  exit 0
+fi
+
+git commit -m "Deploy GitHub Pages (local)"
+git push origin HEAD:gh-pages
+
+echo "✅ Deployed locally. Verify: curl -fsS https://aikido-polska.eu/ | grep -F 'expected new text'"

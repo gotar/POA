@@ -84,6 +84,9 @@ module Site
     BLOG_INDEX_META = ["0.8", "weekly"].freeze
     BLOG_INDEX_PAGE_META = ["0.6", "weekly"].freeze
 
+    # Pages that are rendered but must NOT appear in sitemap.xml.
+    EXCLUDED = ["/404.html"].freeze
+
     # Polish month names (nominative) => month number, for parsing the
     # human-readable dates stored in BLOG_POSTS_PL (e.g. "13 czerwca 2026").
     PL_MONTHS = {
@@ -94,7 +97,8 @@ module Site
 
     # pages: array of [path, view] pairs collected from Generate#render
     def call(pages)
-      entries = pages.map { |path, _view| entry_for(path) }
+      entries = pages.reject { |path, _view| excluded?(path) }
+                     .map { |path, _view| entry_for(path) }
       entries.sort_by! { |e| e[:loc] }
 
       body = entries.map { |e| url_xml(e) }.join("\n")
@@ -107,6 +111,11 @@ module Site
     end
 
     private
+
+    def excluded?(path)
+      url_path = path.empty? ? "/" : "/#{path}"
+      EXCLUDED.include?(url_path)
+    end
 
     def entry_for(path)
       url_path = if path.empty?

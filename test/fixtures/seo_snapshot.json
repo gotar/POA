@@ -1319,6 +1319,12 @@
       "dateModified": "2026-02-23"
     }
   },
+  "404.html": {
+    "title": "Nie znaleziono strony (404) | Polska Organizacja Aikido",
+    "description": "Strona nie istnieje. Przejdź do strony głównej, grafiku treningów Aikido w Gdyni lub kontaktu z Sesshinkan Dojo.",
+    "keywords": "aikido gdynia, sesshinkan dojo, polska organizacja aikido",
+    "schema": null
+  },
   "blog.html": {
     "title": "Blog | Polska Organizacja Aikido",
     "description": "Blog POA: relacje ze staży, komunikaty dojo, zapowiedzi wydarzeń i informacje dla ćwiczących Aikido.",

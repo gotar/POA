@@ -1306,6 +1306,33 @@ ul.inline li a:hover {
   color: #fff;
 }
 
+.error-page {
+  text-align: center;
+  padding: 3rem 1rem;
+}
+
+.error-page h1 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+}
+
+.error-page .lead {
+  font-size: 1.15rem;
+  color: #555;
+}
+
+.error-page-links {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem auto 0;
+  max-width: 22rem;
+  text-align: left;
+}
+
+.error-page-links li {
+  margin: 0.5rem 0;
+}
+
 @media (max-width: 768px) {
   .exercise-card {
     padding: 1.25rem;

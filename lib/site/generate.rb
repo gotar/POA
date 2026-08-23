@@ -159,6 +159,7 @@ PAGES = {
   "en/blog/omoiyari-considerate-compassion.html" => "views.en.blog.omoiyari",
   "en/blog/jiko-sekinin-personal-responsibility.html" => "views.en.blog.jiko_sekinin",
   "en/blog/kuzushi-controlled-imbalance.html" => "views.en.blog.kuzushi",
+  "404.html" => "views.not_found",
 }.freeze
     def call(root)
       export_dir = export_dir_for(root)

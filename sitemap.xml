@@ -112,13 +112,13 @@
   <loc>https://aikido-polska.eu/blog-2.html</loc>
   <priority>0.6</priority>
   <changefreq>weekly</changefreq>
-    <lastmod>2026-05-16</lastmod>
+    <lastmod>2026-05-18</lastmod>
 </url>
 <url>
   <loc>https://aikido-polska.eu/blog-3.html</loc>
   <priority>0.6</priority>
   <changefreq>weekly</changefreq>
-    <lastmod>2026-04-11</lastmod>
+    <lastmod>2026-04-16</lastmod>
 </url>
 <url>
   <loc>https://aikido-polska.eu/blog-4.html</loc>
@@ -136,7 +136,7 @@
   <loc>https://aikido-polska.eu/blog.html</loc>
   <priority>0.8</priority>
   <changefreq>weekly</changefreq>
-    <lastmod>2026-06-13</lastmod>
+    <lastmod>2026-08-24</lastmod>
 </url>
 <url>
   <loc>https://aikido-polska.eu/blog/5-zasad-kazdej-techniki.html</loc>
@@ -373,6 +373,12 @@
     <lastmod>2026-03-07</lastmod>
 </url>
 <url>
+  <loc>https://aikido-polska.eu/blog/tessen-miecz-bez-miecza-ktory-porzadkuje-ruch.html</loc>
+  <priority>0.7</priority>
+  <changefreq>monthly</changefreq>
+    <lastmod>2026-08-24</lastmod>
+</url>
+<url>
   <loc>https://aikido-polska.eu/blog/ukemi-bezpiecznie-upasc-zachowac-strukture-wrocic-do-dzialania.html</loc>
   <priority>0.7</priority>
   <changefreq>monthly</changefreq>
@@ -514,13 +520,13 @@
   <loc>https://aikido-polska.eu/en/blog-2.html</loc>
   <priority>0.6</priority>
   <changefreq>weekly</changefreq>
-    <lastmod>2026-05-16</lastmod>
+    <lastmod>2026-05-18</lastmod>
 </url>
 <url>
   <loc>https://aikido-polska.eu/en/blog-3.html</loc>
   <priority>0.6</priority>
   <changefreq>weekly</changefreq>
-    <lastmod>2026-04-11</lastmod>
+    <lastmod>2026-04-16</lastmod>
 </url>
 <url>
   <loc>https://aikido-polska.eu/en/blog-4.html</loc>
@@ -538,7 +544,7 @@
   <loc>https://aikido-polska.eu/en/blog.html</loc>
   <priority>0.8</priority>
   <changefreq>weekly</changefreq>
-    <lastmod>2026-06-13</lastmod>
+    <lastmod>2026-08-24</lastmod>
 </url>
 <url>
   <loc>https://aikido-polska.eu/en/blog/aiki-harmony-in-action.html</loc>
@@ -743,6 +749,12 @@
   <priority>0.7</priority>
   <changefreq>monthly</changefreq>
     <lastmod>2026-03-18</lastmod>
+</url>
+<url>
+  <loc>https://aikido-polska.eu/en/blog/tessen-the-sword-that-is-not-a-sword.html</loc>
+  <priority>0.7</priority>
+  <changefreq>monthly</changefreq>
+    <lastmod>2026-08-24</lastmod>
 </url>
 <url>
   <loc>https://aikido-polska.eu/en/blog/the-path-and-mastery.html</loc>

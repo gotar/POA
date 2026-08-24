@@ -132,6 +132,7 @@ module Site
       BLOG_POSTS_PER_PAGE = 10
 
       BLOG_POSTS_PL = [
+        { date: "24 sierpnia 2026", title: "Tessen (鉄扇) w aikido — miecz bez miecza, który porządkuje ruch", url: "/blog/tessen-miecz-bez-miecza-ktory-porzadkuje-ruch.html", summary: "Tessen nie jest osobnym systemem walki. Żelazny wachlarz z przekazu O-Sensei porządkuje to, co ćwiczymy bez narzędzi: krawędź, atemi, dystans i intencję — na macie i poza nią." },
         { date: "13 czerwca 2026", title: "Egzamin w budō — pokaz drogi, nie występ przed komisją", url: "/blog/egzamin-w-budo-pokaz-drogi-nie-wystep.html", summary: "Egzamin w budō nie tworzy jakości. Odsłania drogę, którą uczeń naprawdę przeszedł: regularność, korektę, oddech, kontakt, błędy i odpowiedzialność za dalszy trening." },
         { date: "11 czerwca 2026", title: "Ukemi (受け身) — jak bezpiecznie upadać i wracać do działania", url: "/blog/ukemi-bezpiecznie-upasc-zachowac-strukture-wrocic-do-dzialania.html", summary: "Ukemi to sztuka bezpiecznego padania: chronić ciało, zostać miękkim, ale zbudowanym, i wrócić do działania także poza dojo." },
         { date: "8 czerwca 2026", title: "Genkikai (元気会) — ciało, które wraca na miejsce", url: "/blog/genkikai-cialo-ktore-wraca-na-miejsce.html", summary: "O trzeciej praktyce systemu Ikedy: jak Genkikai uzupełnia aikido i Hojo, dając ciału metodę powrotu po intensywnym treningu." },
@@ -180,6 +181,7 @@ module Site
       ].freeze
 
       BLOG_POSTS_EN = [
+        { date: "August 24, 2026", title: "Tessen (鉄扇) in Aikido — the sword that is not a sword", url: "/en/blog/tessen-the-sword-that-is-not-a-sword.html", summary: "The tessen is not a separate fighting system. The iron fan from O-Sensei's transmission puts in order what we already train without tools: the edge, atemi, distance, and intent — on and off the mat." },
         { date: "June 13, 2026", title: "Exams in Budō — showing the road, not performing for the panel", url: "/en/blog/exams-in-budo-showing-the-road-not-performing.html", summary: "A budō exam does not create quality. It reveals the road already walked: regular practice, correction, breath, contact, mistakes, and responsibility for what comes next." },
         { date: "June 11, 2026", title: "Ukemi (受け身) — falling safely, keeping structure, returning to action", url: "/en/blog/ukemi-falling-safely-keeping-structure-returning-to-action.html", summary: "Ukemi is not a flashy roll. It is an essential Aikido skill: falling safely, staying soft but structured, and returning to action." },
         { date: "June 8, 2026", title: "Genkikai (元気会) — the body that returns to order", url: "/en/blog/genkikai-the-body-that-returns-to-order.html", summary: "On the third practice in Ikeda's system: how Genkikai completes Aikido and Hojo by giving the body a method of return after intense training." },
@@ -395,6 +397,7 @@ module Site
         "blog/yugen-glebia-ktorej-nie-da-sie-splaszczyc.html" => "en/blog/yugen-depth-that-cannot-be-flattened.html",
         "blog/egzamin-w-budo-pokaz-drogi-nie-wystep.html" => "en/blog/exams-in-budo-showing-the-road-not-performing.html",
         "blog/ukemi-bezpiecznie-upasc-zachowac-strukture-wrocic-do-dzialania.html" => "en/blog/ukemi-falling-safely-keeping-structure-returning-to-action.html",
+        "blog/tessen-miecz-bez-miecza-ktory-porzadkuje-ruch.html" => "en/blog/tessen-the-sword-that-is-not-a-sword.html",
         "blog/genkikai-cialo-ktore-wraca-na-miejsce.html" => "en/blog/genkikai-the-body-that-returns-to-order.html",
         "blog/inna-sciezka-na-ten-sam-szczyt.html" => "en/blog/another-path-to-the-same-summit.html",
         "blog/ikigai-sens-regularnej-praktyki.html" => "en/blog/ikigai-the-reason-to-return-to-practice.html",
@@ -472,6 +475,7 @@ module Site
         "en/blog/yugen-depth-that-cannot-be-flattened.html" => "blog/yugen-glebia-ktorej-nie-da-sie-splaszczyc.html",
         "en/blog/exams-in-budo-showing-the-road-not-performing.html" => "blog/egzamin-w-budo-pokaz-drogi-nie-wystep.html",
         "en/blog/ukemi-falling-safely-keeping-structure-returning-to-action.html" => "blog/ukemi-bezpiecznie-upasc-zachowac-strukture-wrocic-do-dzialania.html",
+        "en/blog/tessen-the-sword-that-is-not-a-sword.html" => "blog/tessen-miecz-bez-miecza-ktory-porzadkuje-ruch.html",
         "en/blog/genkikai-the-body-that-returns-to-order.html" => "blog/genkikai-cialo-ktore-wraca-na-miejsce.html",
         "en/blog/another-path-to-the-same-summit.html" => "blog/inna-sciezka-na-ten-sam-szczyt.html",
         "en/blog/ikigai-the-reason-to-return-to-practice.html" => "blog/ikigai-sens-regularnej-praktyki.html",

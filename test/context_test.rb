@@ -60,3 +60,53 @@ class ContextPageTitleTest < Minitest::Test
     assert_equal "Polska Organizacja Aikido", ctx.default_title_for_path("strona-ktorej-nie-ma.html")
   end
 end
+
+class ContextLangSwitcherHrefTest < Minitest::Test
+  def test_pl_page_with_mapping_links_to_en_sibling
+    ctx = make_context(current_path: "gdynia.html")
+
+    assert_equal "/en/gdynia.html", ctx.lang_switcher_href
+  end
+
+  def test_en_page_with_mapping_links_to_pl_sibling
+    ctx = make_context(current_path: "en/gdynia.html")
+
+    assert_equal "/gdynia.html", ctx.lang_switcher_href
+  end
+
+  def test_pl_blog_pagination_maps_to_en_pagination
+    ctx = make_context(current_path: "blog-2.html")
+
+    assert_equal "/en/blog-2.html", ctx.lang_switcher_href
+  end
+
+  def test_unmapped_page_falls_back_to_language_home
+    ctx = make_context(current_path: "404.html")
+
+    assert_equal "/en/", ctx.lang_switcher_href
+  end
+
+  def test_unmapped_en_page_falls_back_to_pl_home
+    ctx = make_context(current_path: "en/404.html")
+
+    assert_equal "/", ctx.lang_switcher_href
+  end
+
+  def test_nil_current_path_falls_back_to_en_home
+    ctx = make_context(current_path: nil)
+
+    assert_equal "/en/", ctx.lang_switcher_href
+  end
+
+  def test_en_home_page_without_trailing_slash_falls_back_to_pl_home
+    ctx = make_context(current_path: "en")
+
+    assert_equal "/", ctx.lang_switcher_href
+  end
+
+  def test_en_index_falls_back_to_pl_home
+    ctx = make_context(current_path: "en/index.html")
+
+    assert_equal "/", ctx.lang_switcher_href
+  end
+end

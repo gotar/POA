@@ -501,8 +501,26 @@ module Site
         path.start_with?("en/") ? "en" : "pl"
       end
 
+      # The EN home renders with current_path "en"/"en/index.html" (no
+      # trailing slash), which start_with?("en/") does not classify as EN.
+      def en_root_page?
+        %w[en en/index.html].include?(current_path.to_s)
+      end
+
       def alternate_lang
         current_lang == "pl" ? "en" : "pl"
+      end
+
+      # Nav language switcher: link to the sibling page in the other language
+      # when a mapping exists, otherwise fall back to that language's home.
+      # Unlike alternate_url (hreflang/SEO), this always returns a usable
+      # relative href so the switcher is never a dead or hidden link.
+      def lang_switcher_href
+        mapped = LANG_URL_MAP[current_path.to_s]
+        return "/#{mapped}" if mapped
+        return "/" if en_root_page?
+
+        current_lang == "pl" ? "/en/" : "/"
       end
 
       def alternate_url

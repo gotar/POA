@@ -67,6 +67,7 @@ PAGES = {
   "treningi-aikido-gdynia.html" => "views.training_gdynia",
   "pierwszy-trening-aikido-gdynia.html" => "views.first_training_gdynia",
   "aikido-dla-doroslych-gdynia.html" => "views.adults_gdynia",
+  "en/aikido-for-adults-gdynia.html" => "views.en.adults_gdynia",
   "faq.html" => "views.faq",
   "en/faq.html" => "views.en.faq",
   "blog/bushido-droga-wojownika.html" => "views.blog.bushido",

@@ -28,6 +28,7 @@ module Site
       "/treningi-aikido-gdynia.html"     => ["0.9", "monthly", "2026-04-20"],
       "/pierwszy-trening-aikido-gdynia.html" => ["0.9", "monthly", "2026-04-20"],
       "/aikido-dla-doroslych-gdynia.html" => ["0.9", "monthly", "2026-04-20"],
+      "/en/aikido-for-adults-gdynia.html" => ["0.9", "monthly", "2026-04-20"],
       "/en/gdynia.html"                  => ["0.9", "monthly", "2026-01-30"],
       "/kontakt.html"                    => ["0.9", "monthly", "2026-01-30"],
       "/en/contact.html"                 => ["0.9", "monthly", "2026-01-30"],

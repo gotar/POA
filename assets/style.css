@@ -1333,6 +1333,19 @@ ul.inline li a:hover {
   margin: 0.5rem 0;
 }
 
+.error-page hr {
+  border: none;
+  border-top: 1px solid #e0e0e0;
+  margin: 2.5rem auto;
+  max-width: 32rem;
+}
+
+.error-page section[lang="en"] h2 {
+  font-size: 1.6rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
 @media (max-width: 768px) {
   .exercise-card {
     padding: 1.25rem;

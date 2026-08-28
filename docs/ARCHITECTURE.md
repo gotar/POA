@@ -357,11 +357,18 @@ end
 
 ## Bin Scripts Reference
 
-The `bin/` directory contains executable scripts for common tasks:
+The `bin/` directory contains executable scripts for common tasks.
+
+**Operational rule for the SteamOS development host:** do not run Ruby or
+Bundler commands directly on the host. Run build/test/console/watch commands
+inside the `poa-dev:local` container via `sg docker -c '…'`. Direct `./bin/*`
+examples below describe script internals or commands that are safe only inside
+the container or another fully provisioned Ruby environment.
 
 ### `bin/setup` - Project Setup
 
-**Purpose**: Initialize project dependencies and configuration
+**Purpose**: Legacy/local-Ruby setup for environments that can install native
+gems. It is not the default setup path on the SteamOS host.
 
 ```ruby
 #!/usr/bin/env ruby
@@ -386,12 +393,17 @@ Dir.chdir(APP_ROOT) do
 end
 ```
 
-**What it does**:
+**What it does when run in a full Ruby environment**:
 1. Checks if gems are installed
 2. Runs `bundle install` if needed
 3. Creates `.env` from `.env-example` if missing
 
-**When to run**: Once after cloning, or after `Gemfile` changes
+**When to run**: Only outside the SteamOS Docker-only workflow. On this host,
+rebuild the dev image after `Gemfile` changes:
+
+```bash
+sg docker -c 'docker build -f Dockerfile.dev -t poa-dev:local .'
+```
 
 ---
 
@@ -427,11 +439,14 @@ end
 Site::Container.build
 ```
 
-**Usage**:
+**Usage on the SteamOS host**:
 ```bash
-./bin/build              # Clean build (wipes build/ first)
-./bin/build --no-clean   # Incremental build (faster)
+sg docker -c 'docker run --rm -v "$PWD:/app" -w /app poa-dev:local ./bin/build'
+sg docker -c 'docker run --rm -v "$PWD:/app" -w /app poa-dev:local ./bin/build --no-clean'
 ```
+
+Inside the container, the direct commands are still `./bin/build` and
+`./bin/build --no-clean`.
 
 **Options**:
 - `--clean` (default) - Delete `build/` before generating
@@ -456,9 +471,9 @@ require "pry"
 Pry.start
 ```
 
-**Usage**:
+**Usage on the SteamOS host**:
 ```bash
-./bin/console
+sg docker -c 'docker run --rm -it -v "$PWD:/app" -w /app poa-dev:local ./bin/console'
 ```
 
 **What you can do**:
@@ -488,7 +503,9 @@ context.canonical_url
 
 ### `bin/watch` - Development Server with Auto-Rebuild
 
-**Purpose**: Start local server + auto-rebuild on file changes
+**Purpose**: Start local server + auto-rebuild on file changes. Because it uses
+Bundler, Foreman, Guard, Rack, and Ruby, run it inside `poa-dev:local` on the
+SteamOS host.
 
 ```bash
 #!/bin/sh
@@ -508,13 +525,13 @@ foreman start -f Procfile.watch
 2. Runs initial build
 3. Starts Foreman with 2 processes (defined in `Procfile.watch`)
 
-**Usage**:
+**Usage on the SteamOS host**:
 ```bash
-./bin/watch
+sg docker -c 'docker run --rm -p 8000:8000 -v "$PWD:/app" -w /app poa-dev:local ./bin/watch'
 ```
 
 **Starts**:
-- **Guard process** (file watcher) - Watches `lib/`, `templates/`, `assets/`, triggers `./bin/build --no-clean` on changes
+- **Guard process** (file watcher) - Watches `lib/`, `templates/`, `assets/`, triggers `./bin/build --no-clean` inside the container on changes
 - **Web server** (Rack) - Serves `build/` on http://localhost:8000
 
 **Procfile.watch**:
@@ -564,7 +581,8 @@ run lambda { |env|
 - Extension-less URLs work (`/kontakt` serves `kontakt.html`)
 - Proper MIME types
 
-**When to use**: Active development with frequent changes
+**When to use**: Active development with frequent changes, inside the container
+or another fully provisioned Ruby environment.
 
 ---
 
@@ -807,10 +825,10 @@ sg docker -c 'docker run --rm -v "$PWD:/app" -w /app poa-dev:local ./bin/build'
 cd build && python -m http.server 8000
 ```
 
-**Option B: Auto-Rebuild** (recommended)
+**Option B: Auto-Rebuild**
 ```bash
-# Start watch mode
-./bin/watch
+# Start watch mode inside the dev container
+sg docker -c 'docker run --rm -p 8000:8000 -v "$PWD:/app" -w /app poa-dev:local ./bin/watch'
 
 # Edit files → auto-rebuilds → auto-refreshes
 # Server at http://localhost:8000
@@ -838,11 +856,11 @@ bin/deploy-local
 | **Build (clean)** | `sg docker -c 'docker run --rm -v "$PWD:/app" -w /app poa-dev:local ./bin/build'` |
 | **Build (incremental)** | `sg docker -c 'docker run --rm -v "$PWD:/app" -w /app poa-dev:local ./bin/build --no-clean'` |
 | **Tests** | `sg docker -c 'docker run --rm -v "$PWD:/app" -w /app poa-dev:local ./bin/test'` |
-| **Console (REPL)** | `./bin/console` |
-| **Dev server + watch** | `./bin/watch` |
+| **Console (REPL)** | `sg docker -c 'docker run --rm -it -v "$PWD:/app" -w /app poa-dev:local ./bin/console'` |
+| **Dev server + watch** | `sg docker -c 'docker run --rm -p 8000:8000 -v "$PWD:/app" -w /app poa-dev:local ./bin/watch'` |
 | **Deploy** | `bin/deploy-local` |
 | **Local server only** | `cd build && python -m http.server 8000` |
-| **Check container** | `./bin/console` → `Site::Container.keys` |
+| **Check container** | `sg docker -c 'docker run --rm -it -v "$PWD:/app" -w /app poa-dev:local ./bin/console'` → `Site::Container.keys` |
 
 ---
 
@@ -924,8 +942,12 @@ end
 
 **5. Rebuild and Test**
 ```bash
-./bin/build
-open build/treningi.html  # Linux: xdg-open
+sg docker -c 'docker run --rm -v "$PWD:/app" -w /app poa-dev:local ./bin/test'
+sg docker -c 'docker run --rm -v "$PWD:/app" -w /app poa-dev:local ./bin/build'
+python3 - <<'PY'
+from pathlib import Path
+assert Path('build/treningi.html').exists()
+PY
 ```
 
 ---

@@ -257,7 +257,7 @@ end
 | `page_keywords` | SEO meta keywords | Per-page defaults |
 | `canonical_url` | Canonical link tag | Prevents duplicate content |
 | `asset_path(path)` | Asset URL | Supports CDN |
-| `asset_path_with_version(path)` | Cache-busted asset | Adds `?v=timestamp` |
+| `asset_path_with_version(path)` | Cache-busted asset | Adds a content digest, e.g. `?v=e562dec06d` |
 | `site_name` | Site name from settings | "Polska Organizacja Aikido" |
 | `site_author` | Author from settings | "POA" |
 | `site_url` | Base URL from settings | "https://aikido-polska.eu" |
@@ -568,78 +568,29 @@ run lambda { |env|
 
 ---
 
-### `bin/deploy` - Deploy to GitHub Pages
+### `bin/deploy-local` - Deploy to GitHub Pages
 
-**Purpose**: Build, commit, and deploy to `gh-pages` branch
-
-```bash
-#!/bin/sh
-
-set -e
-
-echo "Building site..."
-export PATH="$HOME/.local/share/gem/ruby/3.4.0/bin:$PATH"
-bundle exec ./bin/build
-
-echo "Committing build changes..."
-git add build
-if git diff --cached --quiet; then
-  echo "No changes to deploy"
-  exit 0
-fi
-
-git commit -m "🚀 deploy: update site build"
-
-echo "Deploying to gh-pages..."
-if ! git subtree push --prefix build origin gh-pages; then
-  echo "Deployment failed. This usually means gh-pages has diverged."
-  echo "You can force update by running:"
-  echo "  git push origin :gh-pages"
-  echo "  git subtree push --prefix build origin gh-pages"
-  exit 1
-fi
-
-echo "✅ Deployment successful!"
-echo "Site will be live at https://aikido-polska.eu/ in a few minutes"
-```
+**Purpose**: Build the site locally and publish the generated `build/` tree to
+the `gh-pages` branch. This is the default deploy path since owner policy
+2026-08-23. GitHub Actions workflows are dispatch-only and are not part of the
+normal gate.
 
 **What it does**:
-1. Builds site (`bundle exec ./bin/build`)
-2. Stages `build/` directory
-3. Commits with deployment message
-4. Pushes `build/` subdirectory to `gh-pages` branch using `git subtree`
-5. GitHub Pages auto-deploys from `gh-pages`
+1. Builds site in `poa-dev:local` when the image exists.
+2. Checks out `origin/gh-pages` into a temporary worktree.
+3. Replaces that worktree contents with the freshly generated `build/` output.
+4. Commits only when the generated tree changed.
+5. Pushes the temporary worktree commit to `gh-pages`.
 
-**Usage**:
+**Usage after reviewed code reaches `master`**:
 ```bash
-./bin/deploy
+sg docker -c 'docker run --rm -v "$PWD:/app" -w /app poa-dev:local ./bin/test'
+bin/deploy-local
+curl -fsS https://aikido-polska.eu/ | grep -F 'expected new text'
 ```
 
-**Output**:
-```
-Building site...
-[build output]
-
-Committing build changes...
-[main 170d86c] 🚀 deploy: update site build
- 5 files changed, 150 insertions(+)
-
-Deploying to gh-pages...
-[git subtree push output]
-
-✅ Deployment successful!
-Site will be live at https://aikido-polska.eu/ in a few minutes
-```
-
-**Error Handling**:
-If `git subtree push` fails (usually due to diverged history):
-```bash
-# Script provides these recovery instructions:
-git push origin :gh-pages                          # Delete remote branch
-git subtree push --prefix build origin gh-pages    # Recreate from current build
-```
-
-**When to run**: After completing changes you want to publish
+**Do not use `bin/deploy` for publication.** It is an obsolete stub that exits
+with an instruction to use `bin/deploy-local`.
 
 ---
 
@@ -657,13 +608,13 @@ git subtree push --prefix build origin gh-pages    # Recreate from current build
 
 **Branch Strategy**:
 ```
-master (source code)
+master (source code only; build/ is gitignored)
   ↓
-  build/ directory (generated HTML)
+local deterministic build in poa-dev:local
   ↓
-  git subtree push
+temporary worktree of origin/gh-pages
   ↓
-gh-pages (deployment branch)
+commit generated static files to gh-pages
   ↓
 GitHub Pages (hosting)
   ↓
@@ -675,25 +626,12 @@ https://aikido-polska.eu/
 - `assets/.nojekyll` → Disable Jekyll processing on GitHub Pages
 - Both copied to `build/` root during build
 
-### How `git subtree` Works
+### How local deploy works
 
-**Normal Git**:
-```bash
-git push origin master   # Pushes entire repository
-```
-
-**Git Subtree**:
-```bash
-git subtree push --prefix build origin gh-pages
-```
-
-**What happens**:
-1. Git creates a **new commit history** containing only `build/` contents
-2. In this history, `build/index.html` becomes `/index.html`
-3. Pushes this synthetic history to `gh-pages` branch
-4. `gh-pages` branch contains ONLY site files (no source code)
-
-**Visualization**:
+`bin/deploy-local` does not commit `build/` to `master` and does not use the old
+subtree workflow. It treats `build/` as generated output, copies it into a clean
+temporary worktree for `gh-pages`, then commits and pushes only that deployment
+branch.
 
 **master branch**:
 ```
@@ -701,16 +639,13 @@ git subtree push --prefix build origin gh-pages
 ├── lib/
 ├── templates/
 ├── assets/
-└── build/           ← This becomes root of gh-pages
-    ├── index.html
-    ├── assets/
-    └── en/
+└── build/           ← generated locally, gitignored
 ```
 
-**gh-pages branch** (after subtree push):
+**gh-pages branch**:
 ```
 /
-├── index.html       ← build/index.html becomes /index.html
+├── index.html
 ├── assets/
 └── en/
 ```
@@ -721,66 +656,40 @@ git subtree push --prefix build origin gh-pages
 
 1. **Make changes** to source files (`lib/`, `templates/`, `assets/`)
 
-2. **Build locally**:
+2. **Build locally in the dev container**:
    ```bash
-   ./bin/build
+   sg docker -c 'docker run --rm -v "$PWD:/app" -w /app poa-dev:local ./bin/build'
    ```
 
-3. **Test locally**:
+3. **Test locally in the dev container**:
    ```bash
-   cd build
-   python -m http.server 8000
-   # Open http://localhost:8000
+   sg docker -c 'docker run --rm -v "$PWD:/app" -w /app poa-dev:local ./bin/test'
    ```
 
 4. **Commit source changes**:
    ```bash
-   git add lib/ templates/ assets/
+   git add lib/ templates/ assets/ docs/ test/
    git commit -m "✨ feat: add new page"
    ```
 
-5. **Commit build output**:
+5. **After review and merge to `master`, deploy locally**:
    ```bash
-   git add build/
-   git commit -m "🚀 deploy: update site build"
+   bin/deploy-local
+   curl -fsS https://aikido-polska.eu/ | grep -F 'expected new text'
    ```
 
-6. **Deploy**:
-   ```bash
-   ./bin/deploy
-   # OR manually:
-   git subtree push --prefix build origin gh-pages
-   ```
-
-7. **GitHub Pages** deploys automatically (2-5 minutes)
-
-**Important**: The `build/` directory is **committed to master**. This is intentional:
-- Enables `git subtree push`
-- Provides build history
-- Simplifies deployment
+**Important**: the `build/` directory is generated and gitignored. Verify its
+contents after a build; do not commit it to `master`.
 
 ### Troubleshooting Deployment
 
-#### Issue: Non-Fast-Forward Error
+#### Issue: Local deploy cannot update `gh-pages`
 
-**Error**:
-```
-! [rejected]        8d32105abc... -> gh-pages (non-fast-forward)
-error: failed to push some refs to 'origin'
-```
+**Cause**: the temporary deployment worktree could not fast-forward or push.
 
-**Cause**: `gh-pages` branch history diverged from `build/` history
-
-**Solution**:
-```bash
-# Delete remote gh-pages branch
-git push origin :gh-pages
-
-# Recreate from current build/
-git subtree push --prefix build origin gh-pages
-```
-
-**Prevention**: Always deploy from master, never commit directly to `gh-pages`
+**Solution**: inspect `bin/deploy-local` output, fetch `origin/gh-pages`, and
+resolve the deployment branch explicitly. Do not delete/recreate `gh-pages` as a
+routine fix; that was part of the obsolete subtree workflow.
 
 #### Issue: CNAME File Missing
 
@@ -790,9 +699,9 @@ git subtree push --prefix build origin gh-pages
 
 **Fix**:
 1. Ensure `assets/CNAME` contains: `aikido-polska.eu`
-2. Rebuild: `./bin/build`
-3. Check: `cat build/CNAME` should show domain
-4. Redeploy: `./bin/deploy`
+2. Rebuild in `poa-dev:local`.
+3. Check that `build/CNAME` contains the domain.
+4. Redeploy with `bin/deploy-local` after the reviewed change reaches `master`.
 
 #### Issue: 404 on Subpages
 
@@ -800,20 +709,18 @@ git subtree push --prefix build origin gh-pages
 
 **Causes**:
 1. File not generated during build
-2. File not committed to master
-3. Subtree push didn't include file
+2. File was not copied into the `gh-pages` worktree by local deploy
 
 **Fix**:
 ```bash
-# Check build output
-ls build/*.html
+# Check build output after a container build
+python3 - <<'PY'
+from pathlib import Path
+print('\n'.join(str(p) for p in Path('build').glob('*.html')))
+PY
 
-# Ensure build/ committed
-git add build/
-git commit -m "🚀 deploy: update build"
-
-# Redeploy
-./bin/deploy
+# Redeploy after merge
+bin/deploy-local
 ```
 
 #### Issue: Changes Not Appearing Live
@@ -822,29 +729,26 @@ git commit -m "🚀 deploy: update build"
 
 1. **Check local build**:
    ```bash
-   ./bin/build
-   grep "your change" build/index.html   # Should find it
+   sg docker -c 'docker run --rm -v "$PWD:/app" -w /app poa-dev:local ./bin/build'
+   python3 - <<'PY'
+from pathlib import Path
+assert 'your change' in Path('build/index.html').read_text()
+PY
    ```
 
-2. **Check master commit**:
-   ```bash
-   git log -1 --name-only build/
-   # Should show recent build/ changes
-   ```
-
-3. **Check gh-pages branch**:
+2. **Check gh-pages branch**:
    ```bash
    git fetch origin gh-pages
    git log origin/gh-pages -1
    # Should match recent deploy commit
    ```
 
-4. **Check GitHub Pages**:
+3. **Check GitHub Pages**:
    - Go to repository → Settings → Pages
    - Verify source: `gh-pages` branch, `/` (root)
    - Check last deployment time
 
-5. **Hard refresh browser**: Ctrl+Shift+R (Chrome/Firefox)
+4. **Hard refresh browser**: Ctrl+Shift+R (Chrome/Firefox)
 
 ### GitHub Pages Configuration
 
@@ -875,11 +779,14 @@ Value: gotar.github.io
 git clone https://github.com/gotar/POA.git
 cd POA
 
-# Install dependencies
-./bin/setup
+# Build the dev image once or after Gemfile changes
+sg docker -c 'docker build -f Dockerfile.dev -t poa-dev:local .'
 
 # Build site
-./bin/build
+sg docker -c 'docker run --rm -v "$PWD:/app" -w /app poa-dev:local ./bin/build'
+
+# Run tests
+sg docker -c 'docker run --rm -v "$PWD:/app" -w /app poa-dev:local ./bin/test'
 
 # Test locally
 cd build
@@ -894,7 +801,7 @@ python -m http.server 8000
 # Edit files in lib/, templates/, assets/
 
 # Rebuild
-./bin/build
+sg docker -c 'docker run --rm -v "$PWD:/app" -w /app poa-dev:local ./bin/build'
 
 # Test
 cd build && python -m http.server 8000
@@ -917,22 +824,8 @@ git add lib/ templates/ assets/
 git commit -m "✨ feat: add new feature"
 git push
 
-# Deploy
-./bin/deploy
-```
-
-**Alternative (manual)**:
-```bash
-# Build
-./bin/build
-
-# Commit build
-git add build/
-git commit -m "🚀 deploy: update build"
-git push
-
-# Deploy to gh-pages
-git subtree push --prefix build origin gh-pages
+# Deploy after review and merge
+bin/deploy-local
 ```
 
 ---
@@ -941,15 +834,15 @@ git subtree push --prefix build origin gh-pages
 
 | Task | Command |
 |------|---------|
-| **Setup** | `./bin/setup` |
-| **Build (clean)** | `./bin/build` |
-| **Build (incremental)** | `./bin/build --no-clean` |
+| **Setup** | `sg docker -c 'docker build -f Dockerfile.dev -t poa-dev:local .'` |
+| **Build (clean)** | `sg docker -c 'docker run --rm -v "$PWD:/app" -w /app poa-dev:local ./bin/build'` |
+| **Build (incremental)** | `sg docker -c 'docker run --rm -v "$PWD:/app" -w /app poa-dev:local ./bin/build --no-clean'` |
+| **Tests** | `sg docker -c 'docker run --rm -v "$PWD:/app" -w /app poa-dev:local ./bin/test'` |
 | **Console (REPL)** | `./bin/console` |
 | **Dev server + watch** | `./bin/watch` |
-| **Deploy** | `./bin/deploy` |
+| **Deploy** | `bin/deploy-local` |
 | **Local server only** | `cd build && python -m http.server 8000` |
 | **Check container** | `./bin/console` → `Site::Container.keys` |
-| **Force gh-pages reset** | `git push origin :gh-pages` then `./bin/deploy` |
 
 ---
 
@@ -1104,7 +997,7 @@ render export_dir, "biografie/toyoda.html", toyoda_view
 <link rel="stylesheet" href="<%= asset_path_with_version('/assets/style.css') %>">
 ```
 
-Output: `/assets/style.css?v=1705311900`
+Output: `/assets/style.css?v=e562dec06d`
 
 ### Pattern 4: SEO Meta Tags
 
@@ -1255,35 +1148,19 @@ Output: `/assets/style.css?v=1705311900`
 
 ## Testing Notes
 
-**Current state**: No tests (!) 
+The project has a Minitest suite, run through `bin/test` inside `poa-dev:local`.
+It covers assets, context helpers, generator smoke behavior, SEO snapshots,
+blog JSON-LD schema coverage, and deterministic builds.
 
-**What to test**:
-1. **View rendering**: Each view renders without errors
-2. **Context methods**: SEO helpers return correct values
-3. **Asset paths**: Cache-busting works
-4. **Build process**: Generates all expected files
+```bash
+sg docker -c 'docker run --rm -v "$PWD:/app" -w /app poa-dev:local ./bin/test'
+```
 
-**Testing strategy**:
-```ruby
-# Test view rendering
-RSpec.describe Site::Views::Home do
-  it "renders without errors" do
-    view = Site::Container["views.home"]
-    context = Site::Container["view.context"].new
-    result = view.(context: context)
-    
-    expect(result).to be_success
-    expect(result.value!).to include("<html")
-  end
-end
+The SEO snapshot fixture is `test/fixtures/seo_snapshot.json`. After a deliberate
+SEO data or page-set change, regenerate it with:
 
-# Test context methods
-RSpec.describe Site::View::Context do
-  it "generates canonical URLs" do
-    context = described_class.new(current_path: "kontakt.html")
-    expect(context.canonical_url).to eq("https://aikido-polska.eu/kontakt.html")
-  end
-end
+```bash
+sg docker -c 'docker run --rm -v "$PWD:/app" -w /app poa-dev:local ruby test/scripts/extract_seo.rb'
 ```
 
 ---
@@ -1291,7 +1168,7 @@ end
 ## Future Improvements
 
 ### Short-term
-- [ ] Add tests (view rendering, context methods)
+- [x] Add tests (view rendering, context methods, generator, SEO snapshot, determinism)
 - [ ] Extract hardcoded SEO to YAML files
 - [ ] Add development server (WEBrick + live reload)
 - [ ] Optimize asset pipeline (SASS, image compression)

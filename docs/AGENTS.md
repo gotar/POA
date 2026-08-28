@@ -1,9 +1,24 @@
 # POA Website Development - Session Knowledge Base
 
-**Last Updated:** January 14, 2026  
+**Last Updated:** August 28, 2026
 **Project:** Polska Organizacja Aikido (POA) Website  
 **Repository:** https://github.com/gotar/POA  
 **Live Site:** https://aikido-polska.eu/
+
+---
+
+## Current Operating Contract (authoritative)
+
+- SteamOS host builds run through Docker only. Use `poa-dev:local`; prefix Docker
+  commands on this host with `sg docker -c '…'`.
+- `build/` is generated output and is gitignored on `master`. Verify generated
+  HTML in `build/`; do not commit it to `master`.
+- The local gate is `bin/test` plus `bin/build` inside `poa-dev:local`.
+- Deploys are local after review and merge to `master`: run `bin/deploy-local`,
+  then verify `https://aikido-polska.eu/` with `curl` and expected content.
+- GitHub Actions workflows are dispatch-only and must not be used as the default
+  verification or deployment path.
+- `bin/deploy` is obsolete and exits with a pointer to `bin/deploy-local`.
 
 ---
 
@@ -40,12 +55,14 @@ POA/
 │   │   └── en/*.rb             # English view classes
 │   ├── generate.rb             # Build orchestration
 │   └── view/controller.rb      # Base view controller
-├── build/                      # Generated static site (committed)
+├── build/                      # Generated static site (gitignored)
 │   ├── index.html              # Polish pages
 │   └── en/                     # English pages
 ├── bin/
 │   ├── build                   # Build script
-│   └── deploy                  # Deploy to gh-pages script
+│   ├── test                    # Minitest suite runner
+│   ├── deploy                  # Obsolete deploy stub
+│   └── deploy-local            # Local gh-pages deploy script
 └── docs/
     └── instagram_strategy.md   # Instagram launch guide
 ```
@@ -254,61 +271,28 @@ POA/
 
 ---
 
-### 7. Deployment System Fixed ✅
+### 7. Current Local Deploy System ✅
 
-#### Issue Encountered
-- `gh-pages` branch had diverged from master's build history
-- `git subtree push` was failing with non-fast-forward error
+Owner policy 2026-08-23 changed the default deployment path. GitHub Actions is
+dispatch-only. The reviewed change lands on `master`, then `bin/deploy-local`
+builds deterministically in `poa-dev:local`, copies generated `build/` into a
+temporary `gh-pages` worktree, commits if the output changed, and pushes that
+branch.
 
-#### Solution
-1. Deleted remote gh-pages branch: `git push origin :gh-pages`
-2. Recreated from current build: `git subtree push --prefix build origin gh-pages`
+`build/` is not source state and is not committed to `master`. The old
+`bin/deploy` script is intentionally an obsolete stub.
 
-#### Improved Deploy Script (`bin/deploy`)
-**Old:** Just `git subtree push --prefix build origin gh-pages`
-
-**New:**
+**Required local gate before deploy:**
 ```bash
-#!/bin/sh
-set -e
-
-echo "Building site..."
-export PATH="$HOME/.local/share/gem/ruby/3.4.0/bin:$PATH"
-bundle exec ./bin/build
-
-echo "Committing build changes..."
-git add build
-if git diff --cached --quiet; then
-  echo "No changes to deploy"
-  exit 0
-fi
-
-git commit -m "🚀 deploy: update site build"
-
-echo "Deploying to gh-pages..."
-if ! git subtree push --prefix build origin gh-pages; then
-  echo "Deployment failed. This usually means gh-pages has diverged."
-  echo "You can force update by running:"
-  echo "  git push origin :gh-pages"
-  echo "  git subtree push --prefix build origin gh-pages"
-  exit 1
-fi
-
-echo "✅ Deployment successful!"
-echo "Site will be live at https://aikido-polska.eu/ in a few minutes"
+sg docker -c 'docker run --rm -v "$PWD:/app" -w /app poa-dev:local ./bin/test'
+sg docker -c 'docker run --rm -v "$PWD:/app" -w /app poa-dev:local ./bin/build'
 ```
 
-**Features:**
-- Automatic build before deploy
-- Auto-commits build changes
-- Error handling with helpful recovery instructions
-- Success confirmation
-
-#### Deployment Status
-- **Domain:** https://aikido-polska.eu/ (configured in `assets/CNAME`)
-- **Last Deploy:** January 14, 2026
-- **Master:** `170d86c`
-- **gh-pages:** `8d32105` (synced with master build)
+**Deploy after review and merge to `master`:**
+```bash
+bin/deploy-local
+curl -fsS https://aikido-polska.eu/ | grep -F 'expected new text'
+```
 
 ---
 
@@ -371,8 +355,8 @@ echo "Site will be live at https://aikido-polska.eu/ in a few minutes"
 ### Domain & Deployment
 - **Live URL:** https://aikido-polska.eu/ (NOT aikido-poa.pl)
 - **Configured in:** `assets/CNAME`
-- **Deployment:** GitHub Pages from `gh-pages` branch
-- **Build directory:** Committed to master, then pushed to gh-pages via `git subtree`
+- **Deployment:** GitHub Pages from `gh-pages` branch, updated by local `bin/deploy-local`
+- **Build directory:** Generated and gitignored on `master`; copied to `gh-pages` during local deploy
 
 ### Dojo Information
 
@@ -418,7 +402,7 @@ echo "Site will be live at https://aikido-polska.eu/ in a few minutes"
 ### Local Development
 ```bash
 # Start local server (from build directory)
-cd /home/gotar/Programowanie/POA/build
+cd /home/deck/Programowanie/POA/build
 python -m http.server 8000
 
 # Access at: http://localhost:8000
@@ -426,35 +410,21 @@ python -m http.server 8000
 
 ### Building
 ```bash
-cd /home/gotar/Programowanie/POA
-export PATH="$HOME/.local/share/gem/ruby/3.4.0/bin:$PATH"
-bundle exec ./bin/build
+cd /home/deck/Programowanie/POA
+sg docker -c 'docker run --rm -v "$PWD:/app" -w /app poa-dev:local ./bin/build'
+```
+
+### Testing
+```bash
+cd /home/deck/Programowanie/POA
+sg docker -c 'docker run --rm -v "$PWD:/app" -w /app poa-dev:local ./bin/test'
 ```
 
 ### Deployment
 ```bash
-cd /home/gotar/Programowanie/POA
-./bin/deploy
-```
-
-**OR manual deployment:**
-```bash
-# Build
-bundle exec ./bin/build
-
-# Commit build changes
-git add build
-git commit -m "🚀 deploy: update site build"
-git push
-
-# Deploy to gh-pages
-git subtree push --prefix build origin gh-pages
-```
-
-### If gh-pages diverges:
-```bash
-git push origin :gh-pages
-git subtree push --prefix build origin gh-pages
+cd /home/deck/Programowanie/POA
+bin/deploy-local
+curl -fsS https://aikido-polska.eu/ | grep -F 'expected new text'
 ```
 
 ---
@@ -475,8 +445,8 @@ git subtree push --prefix build origin gh-pages
 ## Git Workflow
 
 ### Branch Strategy
-- **master:** Source code + build directory
-- **gh-pages:** Deployment branch (auto-generated from build/)
+- **master:** Source code and documentation; `build/` is generated and gitignored
+- **gh-pages:** Deployment branch containing generated static site files
 
 ### Commit Message Convention
 - ✨ `feat:` New features
@@ -526,11 +496,10 @@ e5e31c3 - ✨ feat: expand Oskar Szrajer biography
 **Solution:** Verify template name matches config in view class
 
 ### Deployment Issues
-**Problem:** `git subtree push` fails with non-fast-forward  
-**Solution:** Delete and recreate gh-pages branch
+**Problem:** `bin/deploy-local` fails while updating `gh-pages`
+**Solution:** inspect the command output, fetch `origin/gh-pages`, and resolve the deployment branch explicitly. Do not delete/recreate `gh-pages` as a routine fix.
 ```bash
-git push origin :gh-pages
-git subtree push --prefix build origin gh-pages
+git fetch origin gh-pages
 ```
 
 ### Content Issues
@@ -579,9 +548,9 @@ git subtree push --prefix build origin gh-pages
    - Maintain Toyoda lineage emphasis
 
 4. **Deployment:**
-   - Always use `./bin/deploy` script (handles build + commit + push)
-   - If script fails, follow error message instructions
-   - GitHub Pages deploys automatically from `gh-pages` branch
+   - Always use `bin/deploy-local` after review and merge to `master`
+   - Keep `build/` out of commits to `master`
+   - Verify live content with `curl -fsS https://aikido-polska.eu/`
 
 ---
 

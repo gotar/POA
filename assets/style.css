@@ -130,6 +130,22 @@ nav .logo span {
   white-space: nowrap;
 }
 
+.poa-branding {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.1rem 1rem 0.9rem;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+}
+
+.poa-branding img {
+  width: min(720px, 92vw);
+  height: auto;
+  max-height: 96px;
+  display: block;
+}
+
 .nav-toggle {
   display: none;
   appearance: none;

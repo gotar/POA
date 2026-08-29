@@ -296,7 +296,7 @@ nav .logo img.poa-header-logo {
 
 .dropdown:hover .dropdown-content,
 .dropdown:focus-within .dropdown-content,
-.dropdown-label[aria-expanded="true"]+.dropdown-content {
+.dropdown-label[aria-expanded="true"] + .dropdown-content {
   display: block;
 }
 

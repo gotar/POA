@@ -130,15 +130,27 @@ nav .logo span {
   white-space: nowrap;
 }
 
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1px;
+  line-height: 1;
+}
+
 .poa-header-logo {
-  height: 36px;
+  height: 22px;
   width: auto;
-  margin-left: 0.5rem;
   display: block;
-  flex-shrink: 0;
 }
 
 @media only screen and (max-width: 1100px) {
+  .poa-header-logo {
+    height: 16px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
   .poa-header-logo {
     display: none;
   }

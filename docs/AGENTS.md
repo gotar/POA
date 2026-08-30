@@ -97,7 +97,7 @@ POA/
 #### Pages Translated (3 Core Pages)
 1. **Home:** `/en/index.html`
 2. **Contact:** `/en/contact.html`
-3. **What is Aikido:** `/en/aikido/what_is.html` (NOT YET REGISTERED IN BUILD - template exists but no view/build entry)
+3. **What is Aikido:** `/en/aikido/what_is.html`
 
 #### Language Switcher
 - Red bordered button in navigation

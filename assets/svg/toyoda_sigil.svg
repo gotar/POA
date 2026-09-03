@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"
+     aria-hidden="true" focusable="false" role="img"
+     aria-label="Sygnatura Toyody — 4 zasady (dekoracja)">
+  <rect x="4" y="4" width="40" height="40" rx="2" fill="none" stroke="#cd3333" stroke-width="1.5"/>
+  <line x1="4" y1="24" x2="44" y2="24" stroke="#1f1f1f" stroke-width="0.75"/>
+  <line x1="24" y1="4" x2="24" y2="44" stroke="#1f1f1f" stroke-width="0.75"/>
+  <circle cx="24" cy="24" r="4" fill="#cd3333"/>
+  <text x="12" y="16" font-size="10" fill="#333" font-family="sans-serif">1</text>
+  <text x="32" y="16" font-size="10" fill="#333" font-family="sans-serif">2</text>
+  <text x="12" y="38" font-size="10" fill="#333" font-family="sans-serif">3</text>
+  <text x="32" y="38" font-size="10" fill="#333" font-family="sans-serif">4</text>
+</svg>

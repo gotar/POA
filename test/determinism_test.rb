@@ -94,6 +94,11 @@ class DeterminismTest < Minitest::Test
     )
     expected.concat Dir.glob(File.join(root, "assets/favicons", "*")).map { |f| File.basename(f) }
     expected.concat %w[assets/style.css assets/app.js assets/manifest.json robots.txt .nojekyll CNAME]
+    expected.concat(
+      Dir.glob(File.join(root, "assets/svg", "*"))
+         .select { |f| File.file?(f) }
+         .map { |f| "assets/svg/#{f.sub(%r{\A#{Regexp.escape(File.join(root, "assets/svg"))}/}, "")}" }
+    )
 
     assert_equal expected.sort, actual.sort,
                  "build output diverged from snapshot page set or asset copy rules " \

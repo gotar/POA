@@ -2201,3 +2201,17 @@ ul.inline li a:hover {
     transition: none;
   }
 }
+
+.svg-decor {
+  display: flex;
+  justify-content: flex-start;
+  margin: 0.5rem 0 1.25rem;
+}
+
+.svg-decor img {
+  display: block;
+  width: 48px;
+  height: 48px;
+  max-width: 100%;
+  height: auto;
+}

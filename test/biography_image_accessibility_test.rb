@@ -56,7 +56,9 @@ class BiographyImageAccessibilityTest < Minitest::Test
           html = File.read(File.join(export_dir, path))
 
           images.each do |src, alt|
-            expected_image = %(<img src="#{src}" alt="#{alt}">)
+            # The localized alt text is the accessibility contract. `loading="lazy"`
+            # is a performance hint that may be added by a separate optimization.
+            expected_image = %(<img src="#{src}" alt="#{alt}")
             assert_includes html, expected_image, "#{path} must describe #{src} in its page language"
           end
         end

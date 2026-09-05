@@ -80,6 +80,7 @@
     if ('loading' in HTMLImageElement.prototype) {
       images.forEach(img => {
         img.setAttribute('loading', 'lazy');
+        img.setAttribute('decoding', 'async');
         img.classList.add('lazy-image');
         
         img.addEventListener('load', function() {
@@ -155,7 +156,7 @@
       const postHTML = `
         <div class="instagram-widget-image">
           <a href="${post.url}" target="_blank" rel="noopener noreferrer">
-            <img src="${post.img}" alt="Instagram post - ${post.caption}" loading="lazy">
+            <img src="${post.img}" alt="Instagram post - ${post.caption}" loading="lazy" decoding="async">
           </a>
         </div>
         <p class="instagram-widget-caption">${post.caption}</p>

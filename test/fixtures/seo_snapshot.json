@@ -588,6 +588,12 @@
       "dateModified": "2026-05-31"
     }
   },
+  "blog/uke-i-nage-relacja-ktora-uczy.html": {
+    "title": "Polska Organizacja Aikido",
+    "description": "Polska Organizacja Aikido",
+    "keywords": "Aikido, POA, Polska Organizacja Aikido, Polish Aikido Organization, Toyoda, Germanov",
+    "schema": null
+  },
   "blog/yugen-glebia-ktorej-nie-da-sie-splaszczyc.html": {
     "title": "Yūgen — głębia, której nie da się spłaszczyć do instrukcji | Blog",
     "description": "Yūgen w Aikido i budō: jak rozumieć głębię techniki, której nie widać w samej instrukcji — wyczucie czasu, dystans, intencję, ciszę i kontakt z partnerem.",
@@ -1127,6 +1133,12 @@
       "dateModified": "2026-06-11"
     }
   },
+  "en/blog/uke-and-nage-a-learning-relationship.html": {
+    "title": "Polska Organizacja Aikido",
+    "description": "Polska Organizacja Aikido",
+    "keywords": "Aikido, POA, Polska Organizacja Aikido, Polish Aikido Organization, Toyoda, Germanov",
+    "schema": null
+  },
   "en/blog/tessen-the-sword-that-is-not-a-sword.html": {
     "title": "Tessen in Aikido — the sword that is not a sword | Blog",
     "description": "The tessen (iron fan) in Aikido: what O-Sensei's transmission says, how to separate historical tessenjutsu from practice, and what the tool puts in order — edge, atemi, distance, and intent.",
@@ -1411,6 +1423,12 @@
     "title": "Blog — page 5 | Polish Aikido Organization",
     "description": "POA blog — older posts (page 5): archived articles, recaps, and practical dojo notes.",
     "keywords": "aikido blog archive, older posts, dojo articles, poa updates",
+    "schema": null
+  },
+  "en/blog/uke-i-nage-relacja-ktora-uczy.html": {
+    "title": "Polska Organizacja Aikido",
+    "description": "Polska Organizacja Aikido",
+    "keywords": "Aikido, POA, Polska Organizacja Aikido, Polish Aikido Organization, Toyoda, Germanov",
     "schema": null
   },
   "": {

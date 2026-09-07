@@ -979,6 +979,12 @@ ARTICLE_SCHEMA_DATA = {
     date_published: "2026-03-07",
     date_modified: "2026-03-07",
   },
+  "blog/uke-i-nage-relacja-ktora-uczy.html" => {
+    name: "Uke i nage — relacja, która uczy",
+    lang: "pl",
+    date_published: "2026-06-11",
+    date_modified: "2026-06-11",
+  },
   "en/blog/bushido-way-of-the-warrior.html" => {
     name: "Bushido — the warrior's way in dojo practice",
     lang: "en",
@@ -1062,6 +1068,12 @@ ARTICLE_SCHEMA_DATA = {
     lang: "en",
     date_published: "2026-03-07",
     date_modified: "2026-03-07",
+  },
+  "en/blog/uke-i-nage-relacja-ktora-uczy.html" => {
+    name: "Uke i nage — a learning relationship",
+    lang: "en",
+    date_published: "2026-06-11",
+    date_modified: "2026-06-11",
   },
 }.freeze
     end

@@ -1,6 +1,17 @@
 (function() {
   'use strict';
 
+  function getScrollBehavior() {
+    return typeof window.matchMedia === 'function' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      ? 'auto'
+      : 'smooth';
+  }
+
+  function getReducedMotionScrollOptions() {
+    return getScrollBehavior() === 'auto' ? { behavior: 'auto' } : {};
+  }
+
   function initScrollProgress() {
     const progressBar = document.querySelector('.scroll-progress-bar');
     if (!progressBar) return;
@@ -32,7 +43,7 @@
     function scrollToTop() {
       window.scrollTo({
         top: 0,
-        behavior: 'smooth'
+        behavior: getScrollBehavior()
       });
     }
 
@@ -189,7 +200,8 @@
           }
           targetElement.scrollIntoView({
             behavior: 'smooth',
-            block: 'start'
+            block: 'start',
+            ...getReducedMotionScrollOptions()
           });
         }
       });

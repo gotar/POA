@@ -2176,6 +2176,10 @@ ul.inline li a:hover {
 
 @media (prefers-reduced-motion: reduce) {
 
+  html {
+    scroll-behavior: auto;
+  }
+
   .fade-in-section,
   .fade-in-left,
   .fade-in-right {

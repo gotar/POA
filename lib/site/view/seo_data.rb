@@ -1075,6 +1075,12 @@ ARTICLE_SCHEMA_DATA = {
     date_published: "2026-06-11",
     date_modified: "2026-06-11",
   },
+  "en/blog/uke-and-nage-a-learning-relationship.html" => {
+    name: "Uke i nage — a learning relationship",
+    lang: "en",
+    date_published: "2026-06-11",
+    date_modified: "2026-06-11",
+  },
 }.freeze
     end
   end

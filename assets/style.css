@@ -406,6 +406,27 @@ table td {
   padding: 0.5rem 0.75rem;
 }
 
+table tr.past td {
+  color: #666;
+  background-color: #f0f0f0;
+}
+
+table tr.featured td {
+  font-weight: bold;
+}
+
+table tr.special td {
+  background-color: #fdf3e7;
+  border-left: 4px solid #cd3333;
+  font-weight: bold;
+}
+
+.table-legend {
+  font-size: 0.9rem;
+  color: #555;
+  margin-top: 0.5rem;
+}
+
 dl {
   display: flex;
   flex-wrap: wrap;

@@ -34,7 +34,9 @@ class SeasonalIntakeTest < Minitest::Test
           assert_match(/\A<p class="hero-description">/, paragraph, path)
           assert_includes paragraph, "Fumio Toyod", "#{path}: preserve lineage"
         else
-          assert_match(/<p class="lead">.*?<\/p>\s*#{Regexp.escape(paragraph)}/m, html, path)
+          lead = paragraphs.find { |candidate| candidate.start_with?('<p class="lead">') }
+          refute_nil lead, "#{path}: expected a lead paragraph"
+          assert_match(/#{Regexp.escape(lead)}\s*#{Regexp.escape(paragraph)}/m, html, path)
         end
       end
     end

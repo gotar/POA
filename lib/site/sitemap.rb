@@ -22,14 +22,14 @@ module Site
     # the hand-maintained assets/sitemap.xml so existing conventions hold.
     # Anything not listed falls back to DEFAULT_META.
     META = {
-      "/"                                => ["1.0", "weekly", "2026-03-06"],
-      "/en/"                             => ["0.9", "weekly", "2026-03-06"],
-      "/gdynia.html"                     => ["1.0", "monthly", "2026-01-30"],
+      "/"                                => ["1.0", "weekly", "2026-09-11"],
+      "/en/"                             => ["0.9", "weekly", "2026-09-11"],
+      "/gdynia.html"                     => ["1.0", "monthly", "2026-09-11"],
       "/treningi-aikido-gdynia.html"     => ["0.9", "monthly", "2026-04-20"],
-      "/pierwszy-trening-aikido-gdynia.html" => ["0.9", "monthly", "2026-04-20"],
+      "/pierwszy-trening-aikido-gdynia.html" => ["0.9", "monthly", "2026-09-11"],
       "/aikido-dla-doroslych-gdynia.html" => ["0.9", "monthly", "2026-04-20"],
       "/en/aikido-for-adults-gdynia.html" => ["0.9", "monthly", "2026-04-20"],
-      "/en/gdynia.html"                  => ["0.9", "monthly", "2026-01-30"],
+      "/en/gdynia.html"                  => ["0.9", "monthly", "2026-09-11"],
       "/kontakt.html"                    => ["0.9", "monthly", "2026-01-30"],
       "/en/contact.html"                 => ["0.9", "monthly", "2026-01-30"],
       "/aikido/czym_jest.html"           => ["0.8", "monthly", "2026-01-30"],

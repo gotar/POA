@@ -43,9 +43,17 @@ class SeasonalIntakeTest < Minitest::Test
   end
 
   def test_changed_pages_have_explicit_sitemap_lastmod
+    expected_lastmod = {
+      "/" => "2026-09-11",
+      "/en/" => "2026-09-11",
+      # Sesshinkan kanji paragraph + link block merged 2026-09-13 (PR #68).
+      "/gdynia.html" => "2026-09-13",
+      "/en/gdynia.html" => "2026-09-13",
+      "/pierwszy-trening-aikido-gdynia.html" => "2026-09-11"
+    }
     PAGES.each_key do |path|
       url = "/#{path}".sub(/index\.html\z/, "")
-      assert_equal "2026-09-11", Site::Sitemap::META.fetch(url).last, url
+      assert_equal expected_lastmod.fetch(url), Site::Sitemap::META.fetch(url).last, url
     end
     assert_equal "2026-04-20", Site::Sitemap::META.fetch("/treningi-aikido-gdynia.html").last
   end

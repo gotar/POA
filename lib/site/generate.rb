@@ -119,6 +119,7 @@ PAGES = {
   "blog/omoiyari-uwazna-troska.html" => "views.blog.omoiyari",
   "blog/jiko-sekinin-odpowiedzialnosc-osobista.html" => "views.blog.jiko_sekinin",
   "blog/kuzushi-kontrolowana-nierownowaga.html" => "views.blog.kuzushi",
+  "blog/mui-dzialanie-bez-wymuszania.html" => "views.blog.mui",
   "en/blog/bushido-way-of-the-warrior.html" => "views.en.blog.bushido",
   "en/blog/kaizen-continuous-improvement.html" => "views.en.blog.kaizen",
   "en/blog/gaman-endurance-and-composure.html" => "views.en.blog.gaman",

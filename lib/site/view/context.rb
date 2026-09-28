@@ -183,6 +183,7 @@ module Site
       ].freeze
 
       BLOG_POSTS_EN = [
+        { date: "September 28, 2026", title: "Mui (無為) — acting without forcing", url: "/en/blog/mui-acting-without-forcing.html", summary: "Mui shizen as the goal of training: naturalness without forcing, kuzushi as the effect of aiki — on the mat and in everyday life." },
         { date: "August 24, 2026", title: "Tessen (鉄扇) in Aikido — the sword that is not a sword", url: "/en/blog/tessen-the-sword-that-is-not-a-sword.html", summary: "The tessen is not a separate fighting system. The iron fan from O-Sensei's transmission puts in order what we already train without tools: the edge, atemi, distance, and intent — on and off the mat." },
         { date: "June 13, 2026", title: "Exams in Budō — showing the road, not performing for the panel", url: "/en/blog/exams-in-budo-showing-the-road-not-performing.html", summary: "A budō exam does not create quality. It reveals the road already walked: regular practice, correction, breath, contact, mistakes, and responsibility for what comes next." },
         { date: "June 11, 2026", title: "Ukemi (受け身) — falling safely, keeping structure, returning to action", url: "/en/blog/ukemi-falling-safely-keeping-structure-returning-to-action.html", summary: "Ukemi is not a flashy roll. It is an essential Aikido skill: falling safely, staying soft but structured, and returning to action." },
@@ -422,6 +423,7 @@ module Site
         "blog/omoiyari-uwazna-troska.html" => "en/blog/omoiyari-considerate-compassion.html",
         "blog/jiko-sekinin-odpowiedzialnosc-osobista.html" => "en/blog/jiko-sekinin-personal-responsibility.html",
         "blog/kuzushi-kontrolowana-nierownowaga.html" => "en/blog/kuzushi-controlled-imbalance.html",
+        "blog/mui-dzialanie-bez-wymuszania.html" => "en/blog/mui-acting-without-forcing.html",
         "blog/droga-i-mistrzostwo.html" => "en/blog/the-path-and-mastery.html",
         "en/" => "",
         "en/index.html" => "",
@@ -504,6 +506,7 @@ module Site
         "en/blog/omoiyari-considerate-compassion.html" => "blog/omoiyari-uwazna-troska.html",
         "en/blog/jiko-sekinin-personal-responsibility.html" => "blog/jiko-sekinin-odpowiedzialnosc-osobista.html",
         "en/blog/kuzushi-controlled-imbalance.html" => "blog/kuzushi-kontrolowana-nierownowaga.html",
+        "en/blog/mui-acting-without-forcing.html" => "blog/mui-dzialanie-bez-wymuszania.html",
         "en/blog/the-path-and-mastery.html" => "blog/droga-i-mistrzostwo.html",
       }.freeze
 

@@ -132,6 +132,7 @@ module Site
       BLOG_POSTS_PER_PAGE = 10
 
       BLOG_POSTS_PL = [
+        { date: "28 września 2026", title: "Mui (無為) — działanie bez wymuszania", url: "/blog/mui-dzialanie-bez-wymuszania.html", summary: "Mui shizen jako cel treningu: naturalność bez sztuczności, kuzushi jako skutek aiki — na macie i w codziennym życiu." },
         { date: "24 sierpnia 2026", title: "Tessen (鉄扇) w aikido — miecz bez miecza, który porządkuje ruch", url: "/blog/tessen-miecz-bez-miecza-ktory-porzadkuje-ruch.html", summary: "Tessen nie jest osobnym systemem walki. Żelazny wachlarz z przekazu O-Sensei porządkuje to, co ćwiczymy bez narzędzi: krawędź, atemi, dystans i intencję — na macie i poza nią." },
         { date: "13 czerwca 2026", title: "Egzamin w budō — pokaz drogi, nie występ przed komisją", url: "/blog/egzamin-w-budo-pokaz-drogi-nie-wystep.html", summary: "Egzamin w budō nie tworzy jakości. Odsłania drogę, którą uczeń naprawdę przeszedł: regularność, korektę, oddech, kontakt, błędy i odpowiedzialność za dalszy trening." },
         { date: "11 czerwca 2026", title: "Ukemi (受け身) — jak bezpiecznie upadać i wracać do działania", url: "/blog/ukemi-bezpiecznie-upasc-zachowac-strukture-wrocic-do-dzialania.html", summary: "Ukemi to sztuka bezpiecznego padania: chronić ciało, zostać miękkim, ale zbudowanym, i wrócić do działania także poza dojo." },

@@ -933,6 +933,10 @@ nav.pagination {
   background: linear-gradient(135deg, #21363d 0%, #3d6976 100%);
 }
 
+.concept-hero--mui {
+  background: linear-gradient(135deg, #2e3d33 0%, #5a7a63 100%);
+}
+
 .concept-hero--enso {
   background: linear-gradient(135deg, #1f1f1f 0%, #4b4b4b 100%);
 }

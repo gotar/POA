@@ -544,7 +544,7 @@
   <loc>https://aikido-polska.eu/en/blog-2.html</loc>
   <priority>0.6</priority>
   <changefreq>weekly</changefreq>
-    <lastmod>2026-05-22</lastmod>
+    <lastmod>2026-05-25</lastmod>
 </url>
 <url>
   <loc>https://aikido-polska.eu/en/blog-3.html</loc>
@@ -556,7 +556,7 @@
   <loc>https://aikido-polska.eu/en/blog-4.html</loc>
   <priority>0.6</priority>
   <changefreq>weekly</changefreq>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-03-15</lastmod>
 </url>
 <url>
   <loc>https://aikido-polska.eu/en/blog-5.html</loc>
@@ -568,7 +568,7 @@
   <loc>https://aikido-polska.eu/en/blog.html</loc>
   <priority>0.8</priority>
   <changefreq>weekly</changefreq>
-    <lastmod>2026-08-24</lastmod>
+    <lastmod>2026-09-28</lastmod>
 </url>
 <url>
   <loc>https://aikido-polska.eu/en/blog/aiki-harmony-in-action.html</loc>
@@ -719,6 +719,12 @@
   <priority>0.7</priority>
   <changefreq>monthly</changefreq>
     <lastmod>2026-05-22</lastmod>
+</url>
+<url>
+  <loc>https://aikido-polska.eu/en/blog/mui-acting-without-forcing.html</loc>
+  <priority>0.7</priority>
+  <changefreq>monthly</changefreq>
+    <lastmod>2026-09-28</lastmod>
 </url>
 <url>
   <loc>https://aikido-polska.eu/en/blog/mushin-no-mind.html</loc>

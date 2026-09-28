@@ -184,6 +184,7 @@ DEFAULT_TITLES = {
   "en/blog/omoiyari-considerate-compassion.html" => "Omoiyari — considerate compassion in partner work | Blog",
   "en/blog/jiko-sekinin-personal-responsibility.html" => "Jiko sekinin — personal responsibility in the dojo | Blog",
   "en/blog/kuzushi-controlled-imbalance.html" => "Kuzushi — controlled imbalance and technical guidance | Blog",
+  "en/blog/mui-acting-without-forcing.html" => "Mui — acting without forcing in Aikido practice | Blog",
 }.freeze
 
 DEFAULT_TITLES_PATTERNS = [
@@ -349,6 +350,7 @@ DEFAULT_DESCRIPTIONS = {
   "en/blog/omoiyari-considerate-compassion.html" => "Omoiyari in the dojo: considerate compassion, partner safety, and responsible intensity in everyday training.",
   "en/blog/jiko-sekinin-personal-responsibility.html" => "Jiko sekinin in Aikido: personal responsibility for preparation, attitude, and the quality of each repetition.",
   "en/blog/kuzushi-controlled-imbalance.html" => "Kuzushi explained through practice: controlled imbalance, timing, and direction to unlock effective technique.",
+  "en/blog/mui-acting-without-forcing.html" => "Mui and mui shizen in Aikido: naturalness without forcing, mushin versus kuzushi, and the principle of non-interference on the mat and beyond.",
 }.freeze
 
 DEFAULT_DESCRIPTIONS_PATTERNS = [
@@ -514,6 +516,7 @@ DEFAULT_KEYWORDS = {
   "en/blog/omoiyari-considerate-compassion.html" => "omoiyari aikido, considerate compassion, partner safety, cooperative training, dojo culture",
   "en/blog/jiko-sekinin-personal-responsibility.html" => "jiko sekinin aikido, personal responsibility, self-discipline, training ethics",
   "en/blog/kuzushi-controlled-imbalance.html" => "kuzushi aikido, controlled imbalance, timing, direction, partner guidance",
+  "en/blog/mui-acting-without-forcing.html" => "mui, mui shizen, wu-wei, mushin, kuzushi, aikido philosophy, acting without forcing",
 }.freeze
 
 DEFAULT_KEYWORDS_PATTERNS = [
@@ -1065,6 +1068,12 @@ ARTICLE_SCHEMA_DATA = {
     lang: "en",
     date_published: "2026-02-23",
     date_modified: "2026-02-23",
+  },
+  "en/blog/mui-acting-without-forcing.html" => {
+    name: "Mui — acting without forcing in Aikido and in life",
+    lang: "en",
+    date_published: "2026-09-28",
+    date_modified: "2026-09-28",
   },
   "en/blog/sesshin-deep-practice.html" => {
     name: "Sesshin — deep practice and Sesshinkan Dojo identity",

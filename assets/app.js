@@ -426,6 +426,361 @@
     });
   }
 
+  // UIUX-08: blog discovery. Progressive enhancement over the
+  // server-rendered index (which stays intact for no-JS): builds a
+  // search + category filter over the WHOLE catalog (embedded
+  // #blog-index JSON, every pagination page), syncs ?q=&cat= to the
+  // URL (reload/back/forward restore), announces the result count
+  // via aria-live, and renders cards with DOM APIs only (textContent
+  // everywhere, so user queries and metadata can never inject HTML).
+  // Only the results region re-renders, so the search input never
+  // loses focus while typing.
+  var BLOG_DISCOVERY_STRINGS = {
+    pl: {
+      sectionLabel: 'Wyszukiwanie i filtry bloga',
+      searchLabel: 'Szukaj wpisów',
+      searchPlaceholder: 'np. hakama, oddech, kuzushi…',
+      searchHelp: 'Wyszukiwarka przeszukuje tytuły i opisy wszystkich wpisów.',
+      categoryLabel: 'Filtruj po kategorii',
+      allCategories: 'Wszystkie',
+      reset: 'Wyczyść',
+      emptyTitle: 'Brak wyników.',
+      emptyHint: 'Zmień zapytanie albo wyczyść wyszukiwanie i filtry.',
+      readMore: 'Czytaj więcej →',
+      readMorePrefix: 'Czytaj więcej',
+      resultsCount: function(n) {
+        if (n === 1) return '1 wynik';
+        var mod10 = n % 10, mod100 = n % 100;
+        if (mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14)) return n + ' wyniki';
+        return n + ' wyników';
+      }
+    },
+    en: {
+      sectionLabel: 'Blog search and filters',
+      searchLabel: 'Search posts',
+      searchPlaceholder: 'e.g. hakama, breath, kuzushi…',
+      searchHelp: 'Search covers titles and summaries of all posts.',
+      categoryLabel: 'Filter by category',
+      allCategories: 'All',
+      reset: 'Clear',
+      emptyTitle: 'No results.',
+      emptyHint: 'Change your query or clear search and filters.',
+      readMore: 'Read more →',
+      readMorePrefix: 'Read more',
+      resultsCount: function(n) {
+        return n === 1 ? '1 result' : n + ' results';
+      }
+    }
+  };
+
+  // Case/diacritics folding for PL/EN. Mirrors the Ruby contract
+  // Context#blog_fold_text (pinned in test/blog_discovery_test.rb):
+  // lowercase, explicit PL mapping (ł has no NFD decomposition),
+  // then strip combining marks. No locale lowercasing surprises:
+  // toLowerCase is stable for the PL/EN alphabet.
+  function blogFoldText(value) {
+    var s = String(value == null ? '' : value).toLowerCase();
+    s = s.replace(/ą/g, 'a').replace(/ć/g, 'c').replace(/ę/g, 'e')
+      .replace(/ł/g, 'l').replace(/ń/g, 'n').replace(/ó/g, 'o')
+      .replace(/ś/g, 's').replace(/ź/g, 'z').replace(/ż/g, 'z');
+    if (typeof s.normalize === 'function') {
+      s = s.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    }
+    return s;
+  }
+
+  function initBlogDiscovery() {
+    var indexEl = document.getElementById('blog-index');
+    var article = indexEl && indexEl.closest('.article');
+    var serverList = article && article.querySelector('.news-list');
+    if (!indexEl || !article || !serverList) return;
+
+    var lang = indexEl.getAttribute('data-lang') === 'en' ? 'en' : 'pl';
+    var strings = BLOG_DISCOVERY_STRINGS[lang];
+
+    var catalog;
+    try {
+      catalog = JSON.parse(indexEl.textContent || '[]');
+    } catch (err) {
+      return;
+    }
+    if (!Array.isArray(catalog) || catalog.length === 0) return;
+
+    var pagination = article.querySelector('nav.pagination');
+    var startHere = article.querySelector('.blog-start-here');
+
+    // Build the discovery section before the server list.
+    var section = document.createElement('section');
+    section.className = 'blog-discovery';
+    section.setAttribute('aria-label', strings.sectionLabel);
+
+    var form = document.createElement('form');
+    form.className = 'blog-search-form';
+    form.setAttribute('role', 'search');
+    form.setAttribute('method', 'get');
+    form.setAttribute('action', window.location.pathname);
+
+    var label = document.createElement('label');
+    label.setAttribute('for', 'blog-search');
+    label.textContent = strings.searchLabel;
+
+    var input = document.createElement('input');
+    input.setAttribute('type', 'search');
+    input.setAttribute('id', 'blog-search');
+    input.setAttribute('name', 'q');
+    input.setAttribute('autocomplete', 'off');
+    input.setAttribute('placeholder', strings.searchPlaceholder);
+
+    var help = document.createElement('p');
+    help.className = 'blog-search-help';
+    help.textContent = strings.searchHelp;
+
+    form.appendChild(label);
+    form.appendChild(input);
+    form.appendChild(help);
+
+    var pillsWrap = document.createElement('div');
+    pillsWrap.className = 'blog-categories';
+    pillsWrap.setAttribute('role', 'group');
+    pillsWrap.setAttribute('aria-label', strings.categoryLabel);
+
+    // Category pills in first-appearance order (catalog order).
+    var seenCats = [];
+    catalog.forEach(function(post) {
+      if (post && post.category && seenCats.indexOf(post.category) === -1) {
+        seenCats.push(post.category);
+      }
+    });
+
+    function pillLabel(cat) {
+      if (cat === 'all') return strings.allCategories;
+      for (var i = 0; i < catalog.length; i++) {
+        if (catalog[i] && catalog[i].category === cat) return catalog[i].category_label || cat;
+      }
+      return cat;
+    }
+
+    var pillButtons = {};
+    ['all'].concat(seenCats).forEach(function(cat) {
+      var pill = document.createElement('button');
+      pill.setAttribute('type', 'button');
+      pill.className = 'blog-category-pill';
+      pill.setAttribute('data-cat', cat);
+      pill.setAttribute('aria-pressed', cat === 'all' ? 'true' : 'false');
+      pill.textContent = pillLabel(cat);
+      pill.addEventListener('click', function() {
+        applyState({ q: input.value, cat: cat }, 'push');
+        input.focus();
+      });
+      pillButtons[cat] = pill;
+      pillsWrap.appendChild(pill);
+    });
+
+    var statusWrap = document.createElement('div');
+    statusWrap.className = 'blog-discovery-status';
+
+    var count = document.createElement('p');
+    count.className = 'blog-result-count';
+    count.setAttribute('role', 'status');
+    count.setAttribute('aria-live', 'polite');
+
+    var reset = document.createElement('button');
+    reset.setAttribute('type', 'button');
+    reset.className = 'blog-reset';
+    reset.textContent = strings.reset;
+    reset.hidden = true;
+    reset.addEventListener('click', function() {
+      applyState({ q: '', cat: 'all' }, 'push');
+      input.focus();
+    });
+
+    statusWrap.appendChild(count);
+    statusWrap.appendChild(reset);
+
+    var results = document.createElement('div');
+    results.className = 'blog-results';
+    results.hidden = true;
+
+    var resultsList = document.createElement('div');
+    resultsList.className = 'news-list blog-results-list';
+
+    var empty = document.createElement('div');
+    empty.className = 'blog-empty';
+    empty.hidden = true;
+    var emptyTitle = document.createElement('p');
+    emptyTitle.className = 'blog-empty-title';
+    emptyTitle.textContent = strings.emptyTitle;
+    var emptyHint = document.createElement('p');
+    emptyHint.textContent = strings.emptyHint;
+    empty.appendChild(emptyTitle);
+    empty.appendChild(emptyHint);
+
+    results.appendChild(resultsList);
+    results.appendChild(empty);
+
+    section.appendChild(form);
+    section.appendChild(pillsWrap);
+    section.appendChild(statusWrap);
+    section.appendChild(results);
+    article.insertBefore(section, serverList);
+
+    function findPosts(q, cat) {
+      var folded = blogFoldText(q).replace(/^\s+|\s+$/g, '');
+      return catalog.filter(function(post) {
+        if (!post) return false;
+        if (cat && cat !== 'all' && String(post.category) !== cat) return false;
+        if (!folded) return true;
+        return blogFoldText(post.title + ' ' + post.summary).indexOf(folded) !== -1;
+      });
+    }
+
+    function buildCard(post) {
+      var card = document.createElement('article');
+      card.className = 'news-card';
+
+      var meta = document.createElement('div');
+      meta.className = 'news-meta';
+      meta.textContent = post.date || '';
+
+      var cat = document.createElement('p');
+      cat.className = 'news-category';
+      cat.textContent = post.category_label || '';
+
+      var heading = document.createElement('h2');
+      var titleLink = document.createElement('a');
+      titleLink.className = 'news-card-title';
+      titleLink.setAttribute('href', post.url);
+      titleLink.textContent = post.title;
+      heading.appendChild(titleLink);
+
+      var summary = document.createElement('p');
+      summary.textContent = post.summary || '';
+
+      var more = document.createElement('a');
+      more.className = 'news-read-more';
+      more.setAttribute('href', post.url);
+      more.setAttribute('aria-label', strings.readMorePrefix + ': ' + post.title);
+      more.textContent = strings.readMore;
+
+      card.appendChild(meta);
+      card.appendChild(cat);
+      card.appendChild(heading);
+      card.appendChild(summary);
+      card.appendChild(more);
+      return card;
+    }
+
+    function syncUrl(state, mode) {
+      var url;
+      try {
+        url = new URL(window.location.href);
+      } catch (err) {
+        return;
+      }
+      var q = String(state.q || '').replace(/^\s+|\s+$/g, '');
+      if (q) {
+        url.searchParams.set('q', q);
+      } else {
+        url.searchParams.delete('q');
+      }
+      if (state.cat && state.cat !== 'all') {
+        url.searchParams.set('cat', state.cat);
+      } else {
+        url.searchParams.delete('cat');
+      }
+      try {
+        if (mode === 'push') {
+          window.history.pushState({ blogDiscovery: true }, '', url);
+        } else {
+          window.history.replaceState({ blogDiscovery: true }, '', url);
+        }
+      } catch (err) { /* file:// or sandboxed preview: URL sync is best-effort */ }
+    }
+
+    function applyState(state, urlMode) {
+      var q = String(state.q == null ? '' : state.q);
+      var cat = state.cat && pillButtons[state.cat] ? state.cat : 'all';
+      var active = blogFoldText(q).replace(/^\s+|\s+$/g, '') !== '' || cat !== 'all';
+
+      // Never rewrite the input while the user is typing in it (that
+      // would drop the caret); sync it on popstate/init, reset and
+      // pill clicks originating outside the field.
+      if (input.value !== q && (urlMode === 'none' || document.activeElement !== input)) {
+        input.value = q;
+      }
+
+      Object.keys(pillButtons).forEach(function(key) {
+        pillButtons[key].setAttribute('aria-pressed', key === cat ? 'true' : 'false');
+      });
+
+      // Clear previous results (DOM nodes only, no HTML strings:
+      // user data stays text).
+      while (resultsList.firstChild) resultsList.removeChild(resultsList.firstChild);
+
+      if (!active) {
+        serverList.hidden = false;
+        if (pagination) pagination.hidden = false;
+        if (startHere) startHere.hidden = false;
+        results.hidden = true;
+        empty.hidden = true;
+        count.textContent = '';
+        reset.hidden = true;
+      } else {
+        var matches = findPosts(q, cat);
+        matches.forEach(function(post) {
+          resultsList.appendChild(buildCard(post));
+        });
+        serverList.hidden = true;
+        if (pagination) pagination.hidden = true;
+        if (startHere) startHere.hidden = true;
+        results.hidden = false;
+        empty.hidden = matches.length !== 0;
+        count.textContent = strings.resultsCount(matches.length);
+        reset.hidden = false;
+      }
+
+      if (urlMode === 'push' || urlMode === 'replace') syncUrl({ q: q, cat: cat }, urlMode);
+    }
+
+    var debounceTimer = null;
+    input.addEventListener('input', function() {
+      if (debounceTimer) window.clearTimeout(debounceTimer);
+      debounceTimer = window.setTimeout(function() {
+        applyState({ q: input.value, cat: currentCat() }, 'replace');
+      }, 120);
+    });
+
+    function currentCat() {
+      var pressed = pillsWrap.querySelector('[aria-pressed="true"]');
+      return pressed ? pressed.getAttribute('data-cat') : 'all';
+    }
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      applyState({ q: input.value, cat: currentCat() }, 'push');
+    });
+
+    window.addEventListener('popstate', function() {
+      var params;
+      try {
+        params = new URL(window.location.href).searchParams;
+      } catch (err) {
+        return;
+      }
+      applyState({ q: params.get('q') || '', cat: params.get('cat') || 'all' }, 'none');
+    });
+
+    // Restore filter state after reload or deep link (?q=&cat=).
+    try {
+      var initial = new URL(window.location.href).searchParams;
+      var initQ = initial.get('q') || '';
+      var initCat = initial.get('cat') || 'all';
+      if (initQ || (initCat && initCat !== 'all')) {
+        applyState({ q: initQ, cat: initCat }, 'none');
+      }
+    } catch (err) { /* URL parsing unavailable: leave the server view */ }
+  }
+
   function init() {
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', initAll);
@@ -445,6 +800,7 @@
     initDropdownNavigation();
     initMobileNavigation();
     initBlogToc();
+    initBlogDiscovery();
   }
 
   init();

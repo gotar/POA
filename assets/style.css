@@ -468,7 +468,7 @@ nav .logo img.poa-header-logo {
   }
 }
 
-.article a:not(.btn):not(.cta-button):not(.hero-btn):not(.news-read-more):not(.pagination-link):not(.quick-nav-item):not(.instagram-button),
+.article a:not(.btn):not(.cta-button):not(.hero-btn):not(.news-read-more):not(.pagination-link):not(.quick-nav-item):not(.instagram-button):not(.news-card-title),
 .article-inline-link {
   color: #b52828;
   text-decoration: underline;
@@ -477,13 +477,36 @@ nav .logo img.poa-header-logo {
   font-weight: 700;
 }
 
-.article a:not(.btn):not(.cta-button):not(.hero-btn):not(.news-read-more):not(.pagination-link):not(.quick-nav-item):not(.instagram-button):hover,
+.article a:not(.btn):not(.cta-button):not(.hero-btn):not(.news-read-more):not(.pagination-link):not(.quick-nav-item):not(.instagram-button):not(.news-card-title):hover,
 .article-inline-link:hover {
   color: #8f1d1d;
 }
 
-.article a:not(.btn):not(.cta-button):not(.hero-btn):not(.news-read-more):not(.pagination-link):not(.quick-nav-item):not(.instagram-button):focus-visible,
+.article a:not(.btn):not(.cta-button):not(.hero-btn):not(.news-read-more):not(.pagination-link):not(.quick-nav-item):not(.instagram-button):not(.news-card-title):focus-visible,
 .article-inline-link:focus-visible {
+  outline: 2px solid #cd3333;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* UIUX-08: calm blog card titles. Card headings are navigation, not
+   in-flow content links, so they stay dark and quiet; the underline
+   appears only on hover/focus as the non-color cue. The read-more
+   link below keeps the strong red treatment as the card action. */
+.article a.news-card-title {
+  color: #2b2b2b;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.article a.news-card-title:hover {
+  color: #2b2b2b;
+  text-decoration: underline;
+  text-decoration-thickness: 0.06em;
+  text-underline-offset: 0.14em;
+}
+
+.article a.news-card-title:focus-visible {
   outline: 2px solid #cd3333;
   outline-offset: 2px;
   border-radius: 2px;
@@ -1156,6 +1179,172 @@ nav.pagination {
   .pagination {
     row-gap: 0.8rem;
   }
+}
+
+/* UIUX-08: calm blog cards. No red bar, no shadow — a quiet neutral
+   frame; the title stays dark (see .news-card-title), the category
+   badge keeps its small red cue, the read-more link stays the card
+   action. Class names are unchanged (UIUX-07 contract). */
+.news-card {
+  border: 1px solid #e2e0db;
+  box-shadow: none;
+}
+
+.news-card h2 {
+  font-size: 1.125rem;
+  line-height: 1.45;
+}
+
+.news-card h2 a:hover {
+  color: #2b2b2b;
+}
+
+/* UIUX-08: hidden server blocks while client-side results show.
+   The hidden attribute alone loses against display:grid/flex. */
+.news-list[hidden],
+nav.pagination[hidden],
+.blog-start-here[hidden],
+.blog-results[hidden],
+.blog-empty[hidden] {
+  display: none;
+}
+
+/* UIUX-08: "start here" beginner path (server-rendered, no-JS
+   friendly): quiet panel with plain article links. */
+.blog-start-here {
+  border: 1px solid #e2e0db;
+  border-radius: 8px;
+  background: #faf9f7;
+  padding: 1rem 1.25rem;
+  margin: 1.25rem 0;
+}
+
+.blog-start-here h2 {
+  margin-top: 0;
+  font-size: 1.25rem;
+}
+
+.blog-start-here ul {
+  margin-bottom: 0;
+}
+
+/* UIUX-08: discovery panel (progressively enhanced: the whole
+   section is built by app.js, so no-JS keeps the plain index).
+   Standalone controls reach a 44px target; the search field keeps
+   16px text so mobile browsers do not zoom on focus. */
+.blog-discovery {
+  border: 1px solid #e2e0db;
+  border-radius: 8px;
+  background: #fff;
+  padding: 1rem 1.25rem;
+  margin: 1.25rem 0;
+}
+
+.blog-search-form label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+
+.blog-search-form input[type="search"] {
+  font: inherit;
+  font-size: 1rem;
+  width: 100%;
+  max-width: 28rem;
+  min-height: 44px;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #767676;
+  border-radius: 6px;
+  background: #fff;
+  color: #1f1f1f;
+}
+
+.blog-search-form input[type="search"]:focus-visible,
+.blog-category-pill:focus-visible,
+.blog-reset:focus-visible {
+  outline: 2px solid #cd3333;
+  outline-offset: 2px;
+}
+
+.blog-search-help {
+  font-size: 0.875rem;
+  color: #555;
+  margin: 0.35rem 0 0 0;
+}
+
+.blog-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.9rem;
+}
+
+.blog-category-pill {
+  font: inherit;
+  font-size: 0.9375rem;
+  min-height: 44px;
+  padding: 0.55rem 1rem;
+  border: 1px solid #767676;
+  border-radius: 999px;
+  background: #fff;
+  color: #1f1f1f;
+  cursor: pointer;
+}
+
+.blog-category-pill[aria-pressed="true"] {
+  background: #2b2b2b;
+  border-color: #2b2b2b;
+  color: #fff;
+  font-weight: 700;
+}
+
+.blog-discovery-status {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1rem;
+  margin-top: 0.9rem;
+}
+
+.blog-result-count {
+  font-weight: 700;
+  margin: 0;
+}
+
+.blog-result-count:empty {
+  display: none;
+}
+
+.blog-reset {
+  font: inherit;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  min-height: 44px;
+  padding: 0.55rem 1rem;
+  border: 1px solid #767676;
+  border-radius: 6px;
+  background: #fff;
+  color: #1f1f1f;
+  cursor: pointer;
+}
+
+.blog-results-list {
+  margin-top: 1rem;
+}
+
+.blog-empty {
+  border-top: 1px solid #e2e0db;
+  margin-top: 1rem;
+  padding-top: 1rem;
+}
+
+.blog-empty-title {
+  font-weight: 700;
+  margin: 0 0 0.25rem 0;
+}
+
+.blog-empty p {
+  margin: 0 0 0.25rem 0;
 }
 
 .concept-hero {

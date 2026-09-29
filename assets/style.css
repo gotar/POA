@@ -853,6 +853,69 @@ dd {
   margin: 0;
 }
 
+/* UIUX-10: contact quick actions (Call / Write / Directions) and the shared
+   first-visit start card. All tap targets are >= 44px (pointer + keyboard:
+   native anchors, no tabindex games). */
+.quick-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 1.5rem 0;
+}
+
+.quick-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  padding: 0.65rem 1.25rem;
+  border-radius: 4px;
+  border: 2px solid #cd3333;
+  background: #fff;
+  color: #b52828;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+
+.quick-action:hover {
+  background: #cd3333;
+  color: #fff;
+}
+
+.quick-action.primary {
+  background: #cd3333;
+  color: #fff;
+}
+
+.quick-action.primary:hover {
+  background: #a82828;
+}
+
+.quick-action:focus-visible {
+  outline: 3px solid #4a90e2;
+  outline-offset: 2px;
+}
+
+.quick-start {
+  background: #f8f8f8;
+  border-left: 4px solid #cd3333;
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem 0 2rem 0;
+}
+
+.quick-start-facts {
+  margin: 0 0 0.5rem 0;
+  padding-left: 1.25rem;
+  line-height: 1.7;
+}
+
+.quick-start .quick-actions {
+  margin: 1rem 0 0 0;
+}
+
 .schedule-table {
   margin: 1rem 0;
 }
@@ -2743,6 +2806,13 @@ ul.inline li a:hover {
 
   .instagram-widget,
   .instagram-widget-image img {
+    transition: none;
+  }
+
+  .quick-action,
+  .quick-action:hover,
+  .quick-action.primary,
+  .quick-action.primary:hover {
     transition: none;
   }
 }

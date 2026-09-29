@@ -192,7 +192,9 @@
         const targetId = this.getAttribute('href');
         if (targetId === '#') return;
         
-        const targetElement = document.querySelector(targetId);
+        // getElementById: ids like 7kyu are valid HTML but not valid
+        // CSS selectors, so querySelector would throw on grade links.
+        const targetElement = document.getElementById(targetId.slice(1));
         if (targetElement) {
           e.preventDefault();
           if (targetId === '#main-content') {
@@ -1016,6 +1018,69 @@
     } catch (err) { /* URL parsing unavailable: leave the server view */ }
   }
 
+  // UIUX-13: FAQ + kyu quick navigation. The anchors are
+  // server-rendered and the full content stays visible without JS, so
+  // this only enhances: keep the URL hash in sync (deep links and
+  // back/forward keep working), move keyboard focus to the jump
+  // target, and mark the currently visible section link with
+  // aria-current. Never hides content on failure.
+  function initFaqKyuNav() {
+    var navs = document.querySelectorAll('.faq-toc, .kyu-index');
+    if (navs.length === 0) return;
+
+    Array.prototype.forEach.call(navs, function(nav) {
+      Array.prototype.forEach.call(nav.querySelectorAll('a[href^="#"]'), function(link) {
+        link.addEventListener('click', function() {
+          var targetId = link.getAttribute('href');
+          if (!targetId || targetId === '#') return;
+          // getElementById: ids like 7kyu are valid HTML but not valid
+          // CSS selectors, so querySelector would throw on them.
+          var target = document.getElementById(targetId.slice(1));
+          if (!target) return;
+          try {
+            history.pushState(null, '', targetId);
+          } catch (err) { /* file:// or sandboxed preview: hash sync is best-effort */ }
+          if (typeof target.focus === 'function') {
+            target.focus({ preventScroll: true });
+          }
+        });
+      });
+    });
+
+    // Section spy: section-level links only (direct children), so the
+    // mark always lands on a pill with its own background, never on a
+    // plain nested question link.
+    var pairs = [];
+    Array.prototype.forEach.call(navs, function(nav) {
+      Array.prototype.forEach.call(
+        nav.querySelectorAll(':scope > ul > li > a[href^="#"]'),
+        function(link) {
+          var id = link.getAttribute('href');
+          if (!id || id === '#') return;
+          var target = document.getElementById(id.slice(1));
+          if (target) pairs.push({ link: link, target: target });
+        }
+      );
+    });
+    if (pairs.length === 0 || typeof IntersectionObserver !== 'function') return;
+
+    var current = null;
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (!entry.isIntersecting) return;
+        var found = null;
+        pairs.forEach(function(pair) {
+          if (pair.target === entry.target) found = pair;
+        });
+        if (!found || current === found.link) return;
+        if (current) current.removeAttribute('aria-current');
+        found.link.setAttribute('aria-current', 'true');
+        current = found.link;
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    pairs.forEach(function(pair) { observer.observe(pair.target); });
+  }
+
   function init() {
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', initAll);
@@ -1037,6 +1102,7 @@
     initBlogToc();
     initBlogDiscovery();
     initGlossarySearch();
+    initFaqKyuNav();
   }
 
   init();

@@ -97,6 +97,7 @@ nav {
   z-index: 100;
   position: sticky;
   top: 0;
+  transition: transform 0.3s ease;
 }
 
 .nav-container {
@@ -167,7 +168,11 @@ nav .logo img.poa-header-logo {
   background: transparent;
   color: #333;
   cursor: pointer;
+  min-width: 44px;
+  min-height: 44px;
   padding: 10px;
+  align-items: center;
+  justify-content: center;
 }
 
 .nav-toggle[hidden] {
@@ -279,6 +284,8 @@ nav .logo img.poa-header-logo {
   left: 0;
   background: white;
   min-width: 220px;
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
   border-radius: 4px;
   padding: 0.5rem 0;
@@ -294,9 +301,12 @@ nav .logo img.poa-header-logo {
   height: 10px;
 }
 
-.dropdown:hover .dropdown-content,
-.dropdown:focus-within .dropdown-content,
-.dropdown-label[aria-expanded="true"] + .dropdown-content {
+/* No-JS fallback: hover or keyboard focus reveals the submenu. */
+.dropdown:not([data-dropdown-ready]):hover .dropdown-content,
+.dropdown:not([data-dropdown-ready]):focus-within .dropdown-content,
+/* JS-active single source of truth: only aria-expanded="true" opens the menu,
+   so :hover/:focus-within can never override a closed toggle state. */
+.dropdown[data-dropdown-ready] .dropdown-label[aria-expanded="true"] + .dropdown-content {
   display: block;
 }
 
@@ -1092,7 +1102,7 @@ ul.inline li a:hover {
   }
 
   .nav-toggle {
-    display: block;
+    display: flex;
     order: 2;
   }
 
@@ -1118,6 +1128,10 @@ ul.inline li a:hover {
 
   .nav-toggle[aria-expanded="true"]~.nav-menu[data-mobile-menu-ready] {
     display: flex;
+    max-height: calc(100vh - 80px);
+    max-height: calc(100dvh - 80px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
   }
 
   .nav-link,
@@ -2218,6 +2232,10 @@ ul.inline li a:hover {
   }
 
   .skip-link {
+    transition: none;
+  }
+
+  nav {
     transition: none;
   }
 

@@ -216,8 +216,8 @@ class SharedLayoutAccessibilityTest < Minitest::Test
     css = File.read(site_root.join("assets/style.css"))
     script = File.read(site_root.join("assets/app.js"))
 
-    assert_includes css, ".dropdown:focus-within .dropdown-content,"
-    assert_includes css, ".dropdown-label[aria-expanded=\"true\"] + .dropdown-content"
+    assert_includes css, ".dropdown:not([data-dropdown-ready]):focus-within .dropdown-content,"
+    assert_includes css, ".dropdown[data-dropdown-ready] .dropdown-label[aria-expanded=\"true\"] + .dropdown-content"
     assert_includes css, ".dropdown-label:focus-visible {"
 
     assert_includes script, "function initDropdownNavigation()"
@@ -226,6 +226,132 @@ class SharedLayoutAccessibilityTest < Minitest::Test
     assert_includes script, "dropdown.addEventListener('focusout'"
     assert_includes script, "event.key !== 'Escape'"
     assert_includes script, "setExpanded(activeDropdown.toggle, false);"
+  end
+
+  def test_dropdown_visibility_has_single_source_of_truth
+    css = File.read(site_root.join("assets/style.css")).gsub(%r{/\*.*?\*/}m, "")
+
+    reveal_parts = []
+    css.scan(/([^{}]+)\{([^{}]*)\}/m) do |selector, declarations|
+      selector = selector.gsub(/\s+/, " ").strip
+      next unless declarations.match?(/display:\s*(block|flex|list-item|table|grid|inline\S*)/)
+
+      selector.split(",").each do |part|
+        part = part.strip
+        reveal_parts << part if part.end_with?(".dropdown-content")
+      end
+    end
+
+    refute_empty reveal_parts, "expected at least one rule that reveals .dropdown-content"
+
+    js_gated = reveal_parts.select do |part|
+      part.include?("[data-dropdown-ready]") && !part.include?(":not([data-dropdown-ready])")
+    end
+    refute_empty js_gated, "expected a JS-gated reveal rule for .dropdown-content"
+    js_gated.each do |part|
+      assert_includes part, 'aria-expanded="true"',
+        "#{part} is JS-gated and must require aria-expanded=true"
+    end
+
+    bare_overrides = reveal_parts.reject do |part|
+      part.include?("aria-expanded") || part.include?(":not([data-dropdown-ready])")
+    end
+    assert_empty bare_overrides,
+      ":hover/:focus-within must never override a closed JS toggle state: #{bare_overrides.join("; ")}"
+  end
+
+  def test_hamburger_meets_minimum_target_size
+    css = File.read(site_root.join("assets/style.css")).gsub(%r{/\*.*?\*/}m, "")
+
+    toggle_blocks = css.scan(/^\.nav-toggle \{([^{}]*)\}/m).flatten
+    refute_empty toggle_blocks, "expected a base .nav-toggle rule"
+
+    sizes = toggle_blocks.map do |rules|
+      [rules[/min-width:\s*(?<px>\d+)px/, :px]&.to_i, rules[/min-height:\s*(?<px>\d+)px/, :px]&.to_i]
+    end
+
+    assert sizes.any? { |(width, height)| !width.nil? && !height.nil? && width >= 44 && height >= 44 },
+      "expected .nav-toggle to guarantee a >=44x44 target, got #{sizes.inspect}"
+  end
+
+  def test_open_mobile_menu_scrolls_within_viewport
+    css = File.read(site_root.join("assets/style.css")).gsub(%r{/\*.*?\*/}m, "")
+
+    match = css.match(/\.nav-toggle\[aria-expanded="true"\]~\.nav-menu\[data-mobile-menu-ready\] \{(?<rules>[^{}]*)\}/m)
+    assert match, "expected an explicit show-rule for the open mobile menu"
+
+    assert_includes match[:rules], "overflow-y: auto;"
+    assert_match(/max-height:\s*calc\(100(d)?vh/, match[:rules])
+  end
+
+  def test_dropdown_state_resets_on_breakpoint_change
+    script = File.read(site_root.join("assets/app.js"))
+
+    assert_includes script, "window.matchMedia('(min-width: 769px)')"
+    assert_includes script, "resetDropdownsOnBreakpointChange"
+    assert_includes script, "addEventListener('change', resetDropdownsOnBreakpointChange)"
+  end
+
+  def test_escape_closes_one_layer_at_a_time
+    script = File.read(site_root.join("assets/app.js"))
+
+    assert_includes script, "const openDropdowns = dropdowns.filter"
+    assert_includes script, "setExpanded(activeDropdown.toggle, false);"
+    assert_includes script, "event.stopImmediatePropagation();"
+  end
+
+  def test_desktop_dropdown_menu_scrolls_within_viewport
+    css = File.read(site_root.join("assets/style.css")).gsub(%r{/\*.*?\*/}m, "")
+
+    menu_blocks = css.scan(/^\.dropdown-content \{([^{}]*)\}/m).flatten
+    refute_empty menu_blocks, "expected a base .dropdown-content rule"
+
+    assert menu_blocks.any? { |rules| rules.include?("max-height:") && rules.include?("overflow-y: auto;") },
+      "expected .dropdown-content to scroll a long submenu within the viewport"
+  end
+
+  def test_header_auto_hide_respects_reduced_motion
+    css = File.read(site_root.join("assets/style.css")).gsub(%r{/\*.*?\*/}m, "")
+
+    reduced_motion = css[/@media \(prefers-reduced-motion: reduce\) \{(?<block>.*)\}\s*\.svg-decor/m, :block]
+    assert reduced_motion, "expected a prefers-reduced-motion block"
+    assert_includes reduced_motion, "nav {"
+    assert_includes reduced_motion, "transition: none;"
+  end
+
+  def test_mobile_menu_closes_on_outside_tap_and_link_activation
+    script = File.read(site_root.join("assets/app.js"))
+
+    assert_includes script, "if (!event.target.closest('nav')) setExpanded(false);"
+    assert_includes script, "menu.addEventListener('click'"
+    assert_includes script, "if (event.target.closest('a')) setExpanded(false);"
+  end
+
+  def test_header_auto_hide_keeps_open_menu_and_focus_visible
+    script = File.read(site_root.join("assets/app.js"))
+
+    assert_includes script, "function menuOrFocusActive()"
+    assert_includes script, "nav.querySelector('.nav-toggle[aria-expanded=\"true\"]')"
+    assert_includes script, "nav.querySelector('.dropdown-label[aria-expanded=\"true\"]')"
+    assert_includes script, "nav.contains(document.activeElement)"
+  end
+
+  def test_mobile_menu_dismisses_on_outside_tap_and_link_activation
+    script = File.read(site_root.join("assets/app.js"))
+
+    assert_includes script, "menu.addEventListener('click'"
+    assert_includes script, "if (event.target.closest('a')) setExpanded(false);"
+    assert_includes script, "if (!event.target.closest('nav')) setExpanded(false);"
+  end
+
+  def test_header_hide_transition_lives_in_css_and_respects_reduced_motion
+    css = File.read(site_root.join("assets/style.css"))
+    script = File.read(site_root.join("assets/app.js"))
+
+    assert_includes css, "transition: transform 0.3s ease;"
+    refute_includes script, "nav.style.transition",
+      "the hide transition must be CSS-controlled so reduced-motion can override it"
+    assert_match(/@media \(prefers-reduced-motion: reduce\)[\s\S]*?nav \{\s*transition: none;\s*\}/m, css)
   end
 
   def test_every_english_view_uses_the_english_layout

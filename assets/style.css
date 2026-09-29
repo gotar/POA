@@ -105,7 +105,9 @@ main {
   transform: translateY(0);
 }
 
-nav {
+/* Only the top-level site header is sticky. In-content navigation must
+   stay in normal flow and must never cover header dropdowns. */
+body > nav {
   background-color: rgba(255, 255, 255, 0.95);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   z-index: 100;
@@ -483,7 +485,9 @@ nav .logo .logo-short {
   }
 }
 
-.article a:not(.btn):not(.cta-button):not(.hero-btn):not(.news-read-more):not(.pagination-link):not(.quick-nav-item):not(.instagram-button):not(.news-card-title):not(.quick-action),
+/* :where() makes component exclusions specificity-neutral: prose link
+   styles must not override pill/button colors in interactive states. */
+.article a:not(:where(.btn, .cta-button, .hero-btn, .news-read-more, .pagination-link, .quick-nav-item, .instagram-button, .news-card-title, .quick-action)),
 .article-inline-link {
   color: #b52828;
   text-decoration: underline;
@@ -492,12 +496,12 @@ nav .logo .logo-short {
   font-weight: 700;
 }
 
-.article a:not(.btn):not(.cta-button):not(.hero-btn):not(.news-read-more):not(.pagination-link):not(.quick-nav-item):not(.instagram-button):not(.news-card-title):not(.quick-action):hover,
+.article a:not(:where(.btn, .cta-button, .hero-btn, .news-read-more, .pagination-link, .quick-nav-item, .instagram-button, .news-card-title, .quick-action)):hover,
 .article-inline-link:hover {
   color: #8f1d1d;
 }
 
-.article a:not(.btn):not(.cta-button):not(.hero-btn):not(.news-read-more):not(.pagination-link):not(.quick-nav-item):not(.instagram-button):not(.news-card-title):not(.quick-action):focus-visible,
+.article a:not(:where(.btn, .cta-button, .hero-btn, .news-read-more, .pagination-link, .quick-nav-item, .instagram-button, .news-card-title, .quick-action)):focus-visible,
 .article-inline-link:focus-visible {
   outline: 2px solid #cd3333;
   outline-offset: 2px;
@@ -1786,15 +1790,23 @@ ul.inline li a {
   min-height: 44px;
   padding: 0.55rem 1rem;
   background: #f0f0f0;
+  color: #b52828;
+  border: 1px solid #b52828;
   border-radius: 20px;
   text-decoration: none;
   font-size: 0.875rem;
   transition: background 0.2s;
 }
 
-ul.inline li a:hover {
+ul.inline li a:hover,
+ul.inline li a:focus-visible {
   background: #cd3333;
   color: white;
+}
+
+ul.inline li a:focus-visible {
+  outline: 2px solid #333;
+  outline-offset: 3px;
 }
 
 @media only screen and (max-width: 768px) {

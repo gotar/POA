@@ -377,6 +377,55 @@
     }
   }
 
+  // UIUX-06: blog reader TOC. The TOC is a native <details> rendered
+  // server-side, so content and links work without JS. This only
+  // enhances: open the disclosure on desktop widths (closed on
+  // mobile), keep the URL hash in sync when smooth scrolling (so
+  // back/forward and deep links keep working), and move keyboard
+  // focus to the target heading. Never hides content on failure.
+  function initBlogToc() {
+    const tocLinks = document.querySelectorAll('.toc a[href^="#"]');
+    const tocDisclosure = document.querySelector('details.toc');
+    if (tocLinks.length === 0 || !tocDisclosure) return;
+
+    const desktopViewport = window.matchMedia('(min-width: 769px)');
+    let userToggled = false;
+    tocDisclosure.addEventListener('toggle', function() {
+      userToggled = true;
+    });
+
+    function applyDisclosureState() {
+      if (userToggled) return;
+      if (desktopViewport.matches) {
+        tocDisclosure.open = true;
+      } else {
+        tocDisclosure.open = false;
+      }
+    }
+    applyDisclosureState();
+    if (desktopViewport.addEventListener) {
+      desktopViewport.addEventListener('change', function() {
+        userToggled = false;
+        applyDisclosureState();
+      });
+    }
+
+    tocLinks.forEach(function(link) {
+      link.addEventListener('click', function() {
+        const targetId = link.getAttribute('href');
+        if (!targetId || targetId === '#') return;
+        const target = document.querySelector(targetId);
+        if (!target) return;
+        try {
+          history.pushState(null, '', targetId);
+        } catch (err) { /* file:// or sandboxed preview: hash sync is best-effort */ }
+        if (typeof target.focus === 'function') {
+          target.focus({ preventScroll: true });
+        }
+      });
+    });
+  }
+
   function init() {
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', initAll);
@@ -395,6 +444,7 @@
     initHeaderAutoHide();
     initDropdownNavigation();
     initMobileNavigation();
+    initBlogToc();
   }
 
   init();

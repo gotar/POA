@@ -15,6 +15,7 @@
       <% blog_posts_for_current_page.each do |post| %>
         <article class="news-card">
           <div class="news-meta"><%= post[:date] %></div>
+          <p class="news-category"><%= blog_category_label(post[:category], "pl") %></p>
           <h2><a href="<%= post[:url] %>"><%= post[:title] %></a></h2>
           <p><%= post[:summary] %></p>
           <a class="news-read-more" href="<%= post[:url] %>" aria-label="<%= read_more_aria_label(post[:title]) %>">Czytaj więcej →</a>

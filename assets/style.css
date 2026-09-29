@@ -489,6 +489,89 @@ nav .logo img.poa-header-logo {
   border-radius: 2px;
 }
 
+/* UIUX-06: blog reader — sticky header never covers a hash target. */
+.article h2[id],
+.article h3[id] {
+  scroll-margin-top: 96px;
+}
+
+/* UIUX-06: reader meta bar (author + read time). Stays >= 14px like
+   every other article metadata (UIUX-05 floor). */
+.article-reader-meta {
+  font-size: 0.875rem;
+  color: #555;
+  margin: 0 0 1.5rem 0;
+}
+
+.article-reader-author {
+  font-weight: 700;
+}
+
+/* UIUX-06: table of contents. Native <details> so the full article
+   stays readable with JS disabled or broken; app.js only opens the
+   disclosure on desktop widths. Lives inside the 68ch column, so it
+   never narrows the reading measure. */
+.toc {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fafafa;
+  padding: 0.75rem 1rem;
+  margin: 0 0 2rem 0;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.toc-summary {
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.toc-summary:focus-visible {
+  outline: 2px solid #cd3333;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.toc-nav {
+  margin-top: 0.5rem;
+}
+
+.toc-list {
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+.toc-item {
+  margin: 0.25rem 0;
+}
+
+.toc-item--h3 {
+  margin-left: 1.25rem;
+  font-size: 0.9375rem;
+}
+
+.toc-empty {
+  margin: 0.5rem 0 0 0;
+  color: #555;
+  font-size: 0.9375rem;
+}
+
+/* UIUX-06: reader footer — bottom of the article, discreet. */
+.article-reader-footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+  margin-top: 2.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid #ddd;
+  font-size: 1rem;
+}
+
+.article-reader-footer-first {
+  font-weight: 400;
+}
+
 blockquote {
   margin: 0 0 2em 0;
   padding-left: 2em;

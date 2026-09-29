@@ -341,6 +341,164 @@ module Site
           date_modified: entry.fetch(:date_modified, entry[:date_published])
         )
       end
+
+      # UIUX-06: shared blog reading template ("reader").
+      #
+      # One server-side hook applied from the layouts
+      # (blog_article_page? ? blog_reader(yield) : yield), so all PL/EN
+      # posts share metadata, TOC and footer without copying markup
+      # into every template. Pure string surgery on the rendered
+      # article HTML: deterministic (no clock, no random), and the
+      # content renders fully without JS (TOC is a native <details>,
+      # links are plain hash anchors; app.js only opens the disclosure
+      # on desktop and keeps the URL hash in sync with smooth scroll).
+      #
+      # Reading speed: 200 words/minute of silent adult reading of
+      # continuous prose, both languages. Counted from the visible
+      # article text WITHOUT the bibliography section ("Przypisy..."
+      # / "Notes and sources" / "References and sources" onward) and
+      # without markup. Minimum 1 minute.
+      BLOG_READING_WPM = 200
+
+      # Visible author. Must stay identical to the Article JSON-LD
+      # author.name emitted by #article_schema — pinned by
+      # test/blog_reader_test.rb. Never invent personal bylines.
+      BLOG_AUTHOR_NAME = "Polska Organizacja Aikido"
+
+      BLOG_SLUG_TRANSLITERATION = {
+        "ą" => "a", "ć" => "c", "ę" => "e", "ł" => "l", "ń" => "n",
+        "ó" => "o", "ś" => "s", "ź" => "z", "ż" => "z"
+      }.freeze
+
+      # Headings matching this (stripped) text open the bibliography:
+      # excluded from read time, kept in the TOC and the page.
+      BLOG_SOURCES_HEADING_PATTERN = /(\bprzypisy\b|notes and sources|references and sources)/i
+
+      # Main entry: wraps rendered article HTML with meta bar, TOC and
+      # footer. Returns the input untouched for non-article pages and
+      # for output that already went through the reader (double-wrap
+      # guard: layouts apply the hook once, but nesting must not
+      # duplicate meta/TOC/footer).
+      def blog_reader(raw_html)
+        html = raw_html.to_s
+        return html unless blog_article_page?
+        return html if html.include?('class="article-reader-footer"')
+
+        lang = current_lang
+        minutes = blog_reading_minutes(html)
+        rewritten, entries = blog_add_heading_ids(html, lang)
+
+        meta = blog_meta_html(minutes, lang)
+        toc = blog_toc_html(entries, lang)
+        with_head = blog_insert_after_news_meta(rewritten, "#{meta}\n#{toc}")
+        blog_insert_footer(with_head, blog_footer_html(lang))
+      end
+
+      # Minutes of reading for article HTML (sources section excluded).
+      def blog_reading_minutes(html)
+        text = html.to_s
+        if (m = text.match(/<h[23][^>]*>\s*(?:\bprzypisy\b|notes and sources|references and sources)/i))
+          text = text[0, m.begin(0)]
+        end
+        words = blog_strip_tags(text).scan(/[[:alnum:]]+/).size
+        [(words / BLOG_READING_WPM.to_f).ceil, 1].max
+      end
+
+      # Rewrites h2/h3 without an id to carry a stable unique id plus
+      # tabindex="-1" (keyboard focus on hash navigation). Existing ids
+      # are preserved. Returns [html, entries] where entries are
+      # {level:, id:, text:} in document order.
+      def blog_add_heading_ids(html, lang = current_lang)
+        used = Hash.new(0)
+        entries = []
+        rewritten = html.to_s.gsub(/<(h[23])([^>]*)>(.*?)<\/\1>/mi) do
+          tag = Regexp.last_match(1).downcase
+          attrs = Regexp.last_match(2).to_s
+          inner = Regexp.last_match(3).to_s
+          text = blog_strip_tags(inner).strip.gsub(/\s+/, " ")
+          existing = attrs[/\bid\s*=\s*"([^"]+)"/i, 1]
+          base = existing || blog_slugify(text) || (lang == "en" ? "section" : "sekcja")
+          id = base
+          id = "#{base}-#{used[base] + 1}" if used[base] > 0
+          used[base] += 1
+          used[id] += 1 unless id == base
+          entries << { level: tag, id: id, text: text }
+          %(<#{tag} id="#{CGI.escapeHTML(id)}" tabindex="-1">#{inner}</#{tag}>)
+        end
+        [rewritten, entries]
+      end
+
+      # ASCII slug for heading text (kanji/emoji collapse to the
+      # "sekcja"/"section" fallback with dedup suffixes). Nil when the
+      # heading carries no latin text at all.
+      def blog_slugify(text)
+        slug = text.to_s.downcase
+        BLOG_SLUG_TRANSLITERATION.each { |from, to| slug = slug.gsub(from, to) }
+        slug = slug.gsub(/[^a-z0-9]+/, "-").gsub(/\A-+|-+\z/, "").squeeze("-")
+        slug.empty? ? nil : slug
+      end
+
+      def blog_strip_tags(html)
+        text = html.to_s.gsub(/<(script|style)[^>]*>.*?<\/\1>/mi, " ")
+        text = text.gsub(/<[^>]+>/, " ")
+        CGI.unescapeHTML(text).gsub(/\s+/, " ").strip
+      end
+
+      def blog_meta_html(minutes, lang = current_lang)
+        time = lang == "en" ? "#{minutes} min read" : "#{minutes} min czytania"
+        <<~HTML.strip
+          <p class="article-reader-meta"><span class="article-reader-author">#{CGI.escapeHTML(BLOG_AUTHOR_NAME)}</span><span class="article-reader-sep" aria-hidden="true"> · </span><span class="article-reader-time">#{CGI.escapeHTML(time)}</span></p>
+        HTML
+      end
+
+      def blog_toc_html(entries, lang = current_lang)
+        heading = lang == "en" ? "Contents" : "Spis treści"
+        if entries.empty?
+          empty = lang == "en" ? "This article has no subsections." : "Ten artykuł nie ma podsekcji."
+          return %(<details class="toc"><summary class="toc-summary">#{heading}</summary><p class="toc-empty">#{empty}</p></details>)
+        end
+        items = entries.map do |entry|
+          %(<li class="toc-item toc-item--#{entry[:level]}"><a href="##{CGI.escapeHTML(entry[:id])}">#{CGI.escapeHTML(entry[:text])}</a></li>)
+        end
+        %(<details class="toc"><summary class="toc-summary">#{heading}</summary><nav class="toc-nav" aria-label="#{heading}"><ol class="toc-list">#{items.join}</ol></nav></details>)
+      end
+
+      def blog_footer_html(lang = current_lang)
+        if lang == "en"
+          back_href = "/en/blog.html"
+          back_label = "← Back to blog"
+          first_href = "/en/first-aikido-training-gdynia.html"
+          first_label = "First training — how to start"
+          nav_label = "Article footer"
+        else
+          back_href = "/blog.html"
+          back_label = "← Wróć do bloga"
+          first_href = "/pierwszy-trening-aikido-gdynia.html"
+          first_label = "Pierwszy trening — jak zacząć"
+          nav_label = "Stopka artykułu"
+        end
+        %(<nav class="article-reader-footer" aria-label="#{nav_label}"><a class="article-reader-footer-link" href="#{back_href}">#{back_label}</a><a class="article-reader-footer-link article-reader-footer-first" href="#{first_href}">#{first_label}</a></nav>)
+      end
+
+      # Meta+TOC go right after the visible date line every post has;
+      # falls back to prepending when the date line is absent.
+      def blog_insert_after_news_meta(html, snippet)
+        marker = html.match(/<p class="news-meta">.*?<\/p>/m)
+        return "#{snippet}\n#{html}" unless marker
+
+        html.sub(marker[0], "#{marker[0]}\n#{snippet}")
+      end
+
+      # Footer goes inside .article (before its closing div, i.e. the
+      # second-to-last </div>); appends when the shape is unexpected.
+      def blog_insert_footer(html, footer)
+        last = html.rindex("</div>")
+        inner = last ? html.rindex("</div>", last - 1) : nil
+        return "#{html}\n#{footer}" unless inner
+
+        html.dup.insert(inner, "#{footer}\n")
+      end
+
       LANG_URL_MAP = {
         "index.html" => "en/",
         "" => "en/",

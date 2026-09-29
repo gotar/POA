@@ -781,6 +781,241 @@
     } catch (err) { /* URL parsing unavailable: leave the server view */ }
   }
 
+  // UIUX-12: glossary search. Progressive enhancement over the
+  // server-rendered dictionary (which stays intact for no-JS): builds a
+  // search form into [data-glossary-search-mount], filters the existing
+  // table rows in place (no re-render, table semantics preserved),
+  // hides fully-filtered sections only while a query is active, syncs
+  // ?q= to the URL (reload/back/forward restore), announces the match
+  // count via aria-live without moving focus, and builds no HTML
+  // strings (textContent everywhere, the query is never echoed into
+  // the DOM, so unknown input cannot inject markup).
+  var GLOSSARY_SEARCH_STRINGS = {
+    pl: {
+      sectionLabel: 'Wyszukiwanie w słowniczku',
+      searchLabel: 'Szukaj terminów',
+      searchPlaceholder: 'np. ukemi, głowa, 合気道…',
+      searchHelp: 'Wyszukiwarka przeszukuje terminy i opisy we wszystkich kategoriach.',
+      reset: 'Wyczyść',
+      emptyTitle: 'Brak wyników.',
+      emptyHint: 'Zmień zapytanie albo wyczyść wyszukiwanie.',
+      resultsCount: function(n) {
+        if (n === 1) return '1 wynik';
+        var mod10 = n % 10, mod100 = n % 100;
+        if (mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14)) return n + ' wyniki';
+        return n + ' wyników';
+      }
+    },
+    en: {
+      sectionLabel: 'Glossary search',
+      searchLabel: 'Search terms',
+      searchPlaceholder: 'e.g. ukemi, head, 合気道…',
+      searchHelp: 'Search covers terms and descriptions in every category.',
+      reset: 'Clear',
+      emptyTitle: 'No results.',
+      emptyHint: 'Change your query or clear the search.',
+      resultsCount: function(n) {
+        return n === 1 ? '1 result' : n + ' results';
+      }
+    }
+  };
+
+  function initGlossarySearch() {
+    var mount = document.querySelector('[data-glossary-search-mount]');
+    if (!mount) return;
+    var content = mount.closest('.content');
+    var nav = content && content.querySelector('.glossary-categories');
+    if (!content || !nav) return;
+
+    var lang = document.documentElement.getAttribute('lang') === 'en' ? 'en' : 'pl';
+    var strings = GLOSSARY_SEARCH_STRINGS[lang];
+
+    // Pair each category anchor with its heading + section body.
+    var sections = [];
+    Array.prototype.forEach.call(nav.querySelectorAll('a[href^="#"]'), function(link) {
+      var id = link.getAttribute('href').slice(1);
+      var heading = id && content.querySelector('#' + id);
+      var body = heading && heading.nextElementSibling;
+      if (!heading || !body || !body.classList.contains('glossary-section')) return;
+      var rows = [];
+      Array.prototype.forEach.call(body.querySelectorAll('table tr'), function(row) {
+        rows.push({ el: row, haystack: blogFoldText(row.textContent || '') });
+      });
+      sections.push({ heading: heading, body: body, rows: rows });
+    });
+    if (sections.length === 0) return;
+
+    var section = document.createElement('section');
+    section.className = 'glossary-search';
+    section.setAttribute('aria-label', strings.sectionLabel);
+
+    var form = document.createElement('form');
+    form.className = 'glossary-search-form';
+    form.setAttribute('role', 'search');
+    form.setAttribute('method', 'get');
+    form.setAttribute('action', window.location.pathname);
+
+    var label = document.createElement('label');
+    label.setAttribute('for', 'glossary-search');
+    label.textContent = strings.searchLabel;
+
+    var input = document.createElement('input');
+    input.setAttribute('type', 'search');
+    input.setAttribute('id', 'glossary-search');
+    input.setAttribute('name', 'q');
+    input.setAttribute('autocomplete', 'off');
+    input.setAttribute('placeholder', strings.searchPlaceholder);
+
+    var help = document.createElement('p');
+    help.className = 'glossary-search-help';
+    help.textContent = strings.searchHelp;
+
+    form.appendChild(label);
+    form.appendChild(input);
+    form.appendChild(help);
+
+    var statusWrap = document.createElement('div');
+    statusWrap.className = 'glossary-search-status';
+
+    var count = document.createElement('p');
+    count.className = 'glossary-result-count';
+    count.setAttribute('role', 'status');
+    count.setAttribute('aria-live', 'polite');
+
+    var reset = document.createElement('button');
+    reset.setAttribute('type', 'button');
+    reset.className = 'glossary-reset';
+    reset.textContent = strings.reset;
+    reset.hidden = true;
+    reset.addEventListener('click', function() {
+      applyState('', 'push');
+      input.focus();
+    });
+
+    statusWrap.appendChild(count);
+    statusWrap.appendChild(reset);
+
+    var empty = document.createElement('div');
+    empty.className = 'glossary-empty';
+    empty.hidden = true;
+    var emptyTitle = document.createElement('p');
+    emptyTitle.className = 'glossary-empty-title';
+    emptyTitle.textContent = strings.emptyTitle;
+    var emptyHint = document.createElement('p');
+    emptyHint.textContent = strings.emptyHint;
+    empty.appendChild(emptyTitle);
+    empty.appendChild(emptyHint);
+
+    section.appendChild(form);
+    section.appendChild(statusWrap);
+    section.appendChild(empty);
+    mount.appendChild(section);
+
+    function syncUrl(q, mode) {
+      var url;
+      try {
+        url = new URL(window.location.href);
+      } catch (err) {
+        return;
+      }
+      var trimmed = String(q || '').replace(/^\s+|\s+$/g, '');
+      if (trimmed) {
+        url.searchParams.set('q', trimmed);
+      } else {
+        url.searchParams.delete('q');
+      }
+      try {
+        if (mode === 'push') {
+          window.history.pushState({ glossarySearch: true }, '', url);
+        } else {
+          window.history.replaceState({ glossarySearch: true }, '', url);
+        }
+      } catch (err) { /* file:// or sandboxed preview: URL sync is best-effort */ }
+    }
+
+    function applyState(q, urlMode) {
+      var raw = String(q == null ? '' : q);
+      var folded = blogFoldText(raw).replace(/^\s+|\s+$/g, '');
+      var active = folded !== '';
+
+      // Never rewrite the input while the user is typing in it (that
+      // would drop the caret); sync it on popstate/init and reset.
+      if (input.value !== raw && (urlMode === 'none' || document.activeElement !== input)) {
+        input.value = raw;
+      }
+
+      var matches = 0;
+      sections.forEach(function(sec) {
+        var visible = 0;
+        sec.rows.forEach(function(row) {
+          var show = !active || row.haystack.indexOf(folded) !== -1;
+          row.el.hidden = !show;
+          if (show) visible += 1;
+        });
+        // Empty sections hide only while a filter is active; the
+        // full dictionary (with headings and illustrations) returns
+        // untouched once the query is cleared.
+        var hideSection = active && visible === 0;
+        sec.heading.hidden = hideSection;
+        sec.body.hidden = hideSection;
+        matches += visible;
+      });
+
+      if (!active) {
+        count.textContent = '';
+        reset.hidden = true;
+        empty.hidden = true;
+      } else {
+        count.textContent = strings.resultsCount(matches);
+        reset.hidden = false;
+        empty.hidden = matches !== 0;
+      }
+
+      if (urlMode === 'push' || urlMode === 'replace') syncUrl(raw, urlMode);
+    }
+
+    // A category shortcut while a filter is active first clears the
+    // filter (synchronously, so the target section is visible again)
+    // and then lets the native anchor jump proceed. Focus stays where
+    // the user put it: no focus jump on filter changes.
+    Array.prototype.forEach.call(nav.querySelectorAll('a[href^="#"]'), function(link) {
+      link.addEventListener('click', function() {
+        if (blogFoldText(input.value).replace(/^\s+|\s+$/g, '') !== '') {
+          applyState('', 'replace');
+        }
+      });
+    });
+
+    var debounceTimer = null;
+    input.addEventListener('input', function() {
+      if (debounceTimer) window.clearTimeout(debounceTimer);
+      debounceTimer = window.setTimeout(function() {
+        applyState(input.value, 'replace');
+      }, 120);
+    });
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      applyState(input.value, 'push');
+    });
+
+    window.addEventListener('popstate', function() {
+      var params;
+      try {
+        params = new URL(window.location.href).searchParams;
+      } catch (err) {
+        return;
+      }
+      applyState(params.get('q') || '', 'none');
+    });
+
+    // Restore filter state after reload or deep link (?q=).
+    try {
+      var initial = new URL(window.location.href).searchParams.get('q') || '';
+      if (initial) applyState(initial, 'none');
+    } catch (err) { /* URL parsing unavailable: leave the server view */ }
+  }
+
   function init() {
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', initAll);
@@ -801,6 +1036,7 @@
     initMobileNavigation();
     initBlogToc();
     initBlogDiscovery();
+    initGlossarySearch();
   }
 
   init();

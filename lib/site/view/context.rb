@@ -254,6 +254,65 @@ module Site
         { date: "February 23, 2026", title: "Kuzushi (崩し) — controlled imbalance", url: "/en/blog/kuzushi-controlled-imbalance.html", category: :technique, summary: "On and off the mat: changing force relationships consciously to create room for transformation." }
       ].freeze
 
+      # UIUX-14: BAA seminar program 2026 as explicit data — the single
+      # source of truth for both language templates. Status is a static
+      # flag maintained with the data (past: true once the event ended);
+      # the build never consults a clock (no Time.now/Date.today), so
+      # output is deterministic. Order in the array is chronological;
+      # templates render upcoming (past: false) before the archive.
+      # The seam row (Makoto Ito, 25-27.09, nearest: true) is the
+      # highlighted "next" event; exactly one entry may carry nearest.
+      EVENTS_2026 = [
+        { date: "28.02 - 1.03", event: "BAA Kangeiko", location: "Bulgaria", instructor: "Germanov Shihan", past: true, nearest: false },
+        { date: "3-5.04", event: "Seminar in Basel", location: "Basel, Switzerland", instructor: "Quaranta Shihan & Germanov Shihan", past: true, nearest: false },
+        { date: "18.04", event: "BAA Seminar in Pleven", location: "Pleven, Bulgaria", instructor: "Germanov Shihan", past: true, nearest: false },
+        { date: "24-26.04", event: "BAA International Seminar", location: "Tokushinkan Dojo, Lake Geneva, WI, USA", instructor: "Germanov Shihan", past: true, nearest: false },
+        { date: "02.05", event: "BAA Seminar in Pazardzhik", location: "Pazardzhik, Bulgaria", instructor: "Germanov Shihan", past: true, nearest: false },
+        { date: "16.05", event: "BAA Seminar in Kostinbrod", location: "Kostinbrod, Bulgaria", instructor: "Germanov Shihan", past: true, nearest: false },
+        { date: "31.05 - 06.06", event: "BAA Summer Camp", location: "Ammouliani, Greece", instructor: "Quaranta Shihan & Germanov Shihan", past: true, nearest: false },
+        { date: "20-26.07", event: "BAA Kenshusey / Sesshin Program", location: "Bulgaria", instructor: "Germanov Shihan", past: true, nearest: false },
+        { date: "25-27.09", event: "BAA and Aikikai Aikido Academy Seminar", location: "Bulgaria", instructor: "Makoto Ito Shihan - 7 dan, Hombu Shihan", past: false, nearest: true },
+        { date: "02-04.10", event: "BAA / Tendokan International Seminar", location: "Zenshinkan Dojo, Worcester, MA, USA", instructor: "Germanov Shihan", past: false, nearest: false },
+        { date: "29-31.10", event: "BAA / Tendokan International Seminar", location: "Dizaj Martial Arts, Doha, Qatar", instructor: "Germanov Shihan", past: false, nearest: false },
+        { date: "09.12", event: "BAA Seminar in Elin Pelin", location: "Elin Pelin, Bulgaria", instructor: "Germanov Shihan", past: false, nearest: false }
+      ].freeze
+
+      # Static partition of the program. The optional argument exists so
+      # tests can exercise boundary shapes (all-past season, empty
+      # program) without touching the frozen production data.
+      def events_2026(list = EVENTS_2026)
+        list
+      end
+
+      def events_2026_upcoming(list = EVENTS_2026)
+        list.reject { |entry| entry[:past] }
+      end
+
+      def events_2026_archive(list = EVENTS_2026)
+        list.select { |entry| entry[:past] }
+      end
+
+      # Textual status for one program entry — never color-only.
+      def event_status_label(entry, language = current_lang)
+        if entry[:past]
+          language == "en" ? "Past" : "Minione"
+        elsif entry[:nearest]
+          language == "en" ? "Next" : "Najbliższe"
+        else
+          language == "en" ? "Upcoming" : "Nadchodzące"
+        end
+      end
+
+      def event_status_class(entry)
+        if entry[:past]
+          "status-past"
+        elsif entry[:nearest]
+          "status-next"
+        else
+          "status-upcoming"
+        end
+      end
+
       def canonical_url
         path = current_path || ""
         separator = path.empty? || path.start_with?("/") ? "" : "/"

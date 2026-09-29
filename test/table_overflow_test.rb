@@ -2,10 +2,14 @@ require_relative "test_helper"
 require "open3"
 require "tmpdir"
 
-# UIUX-03 (t_efffab57): wide tables (Mui, events 2026) pushed
+# UIUX-03 (t_efffab57): wide tables (Mui) pushed
 # documentElement.scrollWidth past innerWidth on 320/390px phones, and
 # contact cards overflowed at 320px. The fix wraps wide tables in a
 # keyboard-accessible inner scroller instead of masking the page.
+#
+# UIUX-14: the events 2026 page left this contract — its tables became
+# stacked cards on phones (td data-labels, see events2026_test.rb), so
+# no scroll region is needed there. Mui keeps the scroll wrapper.
 #
 # This test asserts behavior on built HTML, not mere selector presence:
 # the wrapper must actually enclose the table, carry keyboard access,
@@ -23,18 +27,6 @@ class TableOverflowTest < Minitest::Test
       label: "Scrollable table: mushin, mui and kuzushi — comparison",
       hint: "Scroll the table sideways to see all columns.",
       probe: "Mui (wu-wei)"
-    },
-    "wydarzenia/2026.html" => {
-      template: "templates/wydarzenia/2026.html.erb",
-      label: "Przewijana tabela: program seminariów BAA 2026",
-      hint: "Przesuń tabelę w bok, aby zobaczyć wszystkie kolumny.",
-      probe: "Germanov Shihan"
-    },
-    "en/events/2026.html" => {
-      template: "templates/wydarzenia_en.html.erb",
-      label: "Scrollable table: BAA 2026 seminar program",
-      hint: "Scroll the table sideways to see all columns.",
-      probe: "Germanov Shihan"
     }
   }.freeze
 
@@ -75,11 +67,6 @@ class TableOverflowTest < Minitest::Test
   end
 
   def test_wide_tables_keep_all_columns
-    html = File.read(File.join(built_pages, "wydarzenia/2026.html"))
-    %w[Data Wydarzenie Lokalizacja Instruktor].each do |header|
-      assert_includes html, "<th>#{header}</th>", "events table must keep its #{header} column"
-    end
-
     mui = File.read(File.join(built_pages, "blog/mui-dzialanie-bez-wymuszania.html"))
     assert_includes mui, "<th>Wymiar</th>"
     assert_includes mui, "kuzushi"

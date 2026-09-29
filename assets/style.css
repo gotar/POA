@@ -721,6 +721,115 @@ table tr.special td {
   margin: 0 0 0.25rem 0;
 }
 
+/* UIUX-14: events 2026 — upcoming section first, archive second.
+   Status is always textual (Najbliższe/Nadchodzące/Minione), never
+   color-only. Desktop keeps the full table; phones (<=768px) get
+   stacked cards fed by td data-labels, so no column is ever clipped
+   or pushed off a 320px viewport. */
+.events-index {
+  margin: 1rem 0 0;
+}
+
+.events-section {
+  margin-top: 2rem;
+}
+
+.events-empty {
+  background: #f7f7f7;
+  border-left: 4px solid #cd3333;
+  border-radius: 0 8px 8px 0;
+  padding: 0.75rem 1rem;
+}
+
+.status-badge {
+  display: inline-block;
+  white-space: nowrap;
+  font-size: 0.875rem;
+  font-weight: bold;
+  line-height: 1.4;
+  padding: 0.15rem 0.6rem;
+  border-radius: 20px;
+  border: 1px solid currentColor;
+}
+
+.status-next {
+  background-color: #cd3333;
+  border-color: #cd3333;
+  color: #fff;
+}
+
+.status-upcoming {
+  background-color: #f2f7f2;
+  color: #1d5c1d;
+}
+
+.status-past {
+  background-color: #fff;
+  color: #333;
+}
+
+table.events-table tr.event-next td {
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .events-table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  .events-table,
+  .events-table tbody,
+  .events-table tr,
+  .events-table td {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .events-table tbody tr {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .events-table tbody tr:nth-child(even) {
+    background: #fff;
+  }
+
+  .events-table tbody tr.past {
+    background: #f0f0f0;
+  }
+
+  .events-table tbody tr.special {
+    background: #fdf3e7;
+    border-left: 4px solid #cd3333;
+  }
+
+  .events-table td {
+    border: none;
+    min-width: 0;
+    overflow-wrap: anywhere;
+    padding: 0.25rem 0;
+  }
+
+  .events-table td::before {
+    content: attr(data-label);
+    display: block;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #555;
+  }
+}
+
 dl {
   display: flex;
   flex-wrap: wrap;

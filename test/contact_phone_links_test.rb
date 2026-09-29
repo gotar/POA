@@ -43,15 +43,18 @@ class ContactPhoneLinksTest < Minitest::Test
     EXPECTED.each do |relative, expected|
       html = File.read(site_root.join(relative).to_s)
       links = html.scan(TEL_LINK)
-      assert_equal 1, links.length, "#{relative}: expected exactly one tel: link"
+      refute_empty links, "#{relative}: expected at least one tel: link"
 
-      uri, text = links.first
-      assert_equal expected[:uri], uri, "#{relative}: tel: URI must be the full number"
-      assert_equal expected[:text], text.strip, "#{relative}: visible format must be preserved"
+      # The classic org-card link must keep its exact visible format; every
+      # tel: link on the page must carry full digits matching its visible text.
+      assert links.any? { |uri, text| uri == expected[:uri] && text.strip == expected[:text] },
+             "#{relative}: expected a tel: link showing #{expected[:text].inspect}"
 
-      uri_digits = uri.sub(/\A\+/, "").gsub(/\D/, "")
-      text_digits = text.gsub(/\D/, "")
-      assert_equal text_digits, uri_digits, "#{relative}: tel: digits must match visible digits"
+      links.each do |uri, text|
+        uri_digits = uri.sub(/\A\+/, "").gsub(/\D/, "")
+        text_digits = text.gsub(/\D/, "")
+        assert_equal text_digits, uri_digits, "#{relative}: tel: digits must match visible digits"
+      end
 
       assert_includes html, %(aria-label="#{expected[:label]}"), "#{relative}: localized aria-label"
       assert_includes html, %(title="#{expected[:label]}"), "#{relative}: localized title"

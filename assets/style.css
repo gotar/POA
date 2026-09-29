@@ -572,6 +572,43 @@ nav .logo img.poa-header-logo {
   font-weight: 400;
 }
 
+/* UIUX-07: category in the reader meta bar inherits the >= 14px floor. */
+.article-reader-category {
+  font-weight: 700;
+  color: #333;
+}
+
+/* UIUX-07: related posts sit below the reader footer (the footer keeps
+   exactly its two language-pinned links). Plain list, keyboard-focusable
+   links via the global focus-visible style. */
+.article-reader-related {
+  margin-top: 1.5rem;
+  font-size: 1rem;
+}
+
+.article-reader-related-heading {
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+}
+
+.article-reader-related ul {
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+.article-reader-related li {
+  margin: 0.25rem 0;
+}
+
+.article-reader-related-cat {
+  color: #666;
+  font-size: 0.875rem;
+}
+
+.article-reader-related-cat::before {
+  content: " — ";
+}
+
 blockquote {
   margin: 0 0 2em 0;
   padding-left: 2em;
@@ -1051,6 +1088,15 @@ dd {
   text-align: right;
   display: block;
   width: 100%;
+}
+
+/* UIUX-07: category badge on blog index cards. Plain text with a red
+   left cue echoing the card border; full label, no truncation. */
+.news-category {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #8a1f1f;
+  margin: 0.35rem 0 0 0;
 }
 
 .news-read-more {

@@ -53,8 +53,12 @@
   }
 
   function initFadeInAnimations() {
+    // UIUX-15: animowane były też nagłówki prozy i karty (content h2,
+    // principle-card, exercise-card, beginner-card, step) — chwilowo
+    // niewidoczne przy zrzucie. Dziś fade/slide tylko dla jawnych klas
+    // .fade-in-* w szablonach; proza zawsze widoczna, także bez JS.
     const animatedElements = document.querySelectorAll(
-      '.fade-in-section, .fade-in-left, .fade-in-right, .content h2, .principle-card, .exercise-card, .beginner-card, .step'
+      '.fade-in-section, .fade-in-left, .fade-in-right'
     );
     
     if (animatedElements.length === 0) return;
@@ -86,7 +90,9 @@
   }
 
   function initLazyLoading() {
-    const images = document.querySelectorAll('img:not([loading])');
+    // UIUX-15: logos/hero (fetchpriority="high") nigdy nie lazy-loadowane —
+    // krytyczne zasoby wczytują się od razu; lazy tylko poniżej fold.
+    const images = document.querySelectorAll('img:not([loading]):not([fetchpriority])');
     
     if ('loading' in HTMLImageElement.prototype) {
       images.forEach(img => {
@@ -213,6 +219,13 @@
   function initHeaderAutoHide() {
     const nav = document.querySelector('nav');
     if (!nav) return;
+
+    // UIUX-15: przy prefers-reduced-motion auto-hide jest wyłączony —
+    // nagłówek nigdy nie znika (bez „flash" ukrytego tekstu i bez animacji).
+    if (typeof window.matchMedia === 'function' &&
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return;
+    }
 
     let lastScrollTop = 0;
     const headerHeight = nav.offsetHeight;

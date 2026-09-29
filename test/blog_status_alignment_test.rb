@@ -1,11 +1,12 @@
 require_relative "test_helper"
 
 class BlogStatusAlignmentTest < Minitest::Test
-  def test_status_group_centers_and_wraps
+  def test_status_group_aligns_left_and_wraps
     css = File.read(site_root.join("assets/style.css"))
     status = css[/\.blog-discovery-status \{([^}]+)\}/m, 1]
     refute_nil status
-    assert_includes status, "justify-content: center"
+    assert_includes status, "justify-content: flex-start"
+    assert_includes status, "text-align: left"
     assert_includes status, "align-items: center"
     assert_includes status, "flex-wrap: wrap"
   end

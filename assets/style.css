@@ -1968,6 +1968,15 @@ ul.inline li a:hover {
     display: none;
   }
 
+  /* UIUX-16: regresja 820px (pasmo 769-1024): kaligrafia poa.svg (~205px)
+     + logo-short "POA" nie mieszczą się obok menu — lang-switcher
+     wystawał poza viewport (sw 863 przy 820). W tym paśmie tekst niesie
+     logo-short (jak na mobile ≤768), więc .logo-text jest zbędny.
+     Desktop >1024 i mobile ≤768 bez zmian. */
+  nav .logo .logo-text {
+    display: none;
+  }
+
   .nav-link,
   .dropdown-label {
     padding: 0.5rem 0.75rem;

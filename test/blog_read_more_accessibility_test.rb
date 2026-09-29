@@ -51,7 +51,7 @@ class BlogReadMoreAccessibilityTest < Minitest::Test
     refute_empty cards, "#{path} must contain blog cards"
 
     cards.each do |card|
-      heading = card.match(%r{<h2><a href="(?<href>[^"]+)">(?<title>.+?)</a></h2>}m)
+      heading = card.match(%r{<h2><a[^>]*href="(?<href>[^"]+)"[^>]*>(?<title>.+?)</a></h2>}m)
       read_more = card.match(%r{<a class="news-read-more" href="(?<href>[^"]+)" aria-label="(?<label>[^"]+)">(?<text>[^<]+)</a>})
 
       refute_nil heading, "#{path} must expose each card title and destination"

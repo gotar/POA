@@ -365,6 +365,45 @@ module Site
         JSON.generate(blog_index(language: language))
       end
 
+      # UIUX-08: blog discovery (client-side search over the whole
+      # catalog). The same matching contract runs in assets/app.js;
+      # this Ruby side pins the behavior in tests. Query matches
+      # title + summary, combined with an optional category key
+      # ("all"/nil/"" = no category filter). Matching is
+      # case-insensitive with PL/EN diacritics folding (ł has no NFD
+      # decomposition, so it folds via the transliteration table).
+      def blog_fold_text(text)
+        folded = text.to_s.downcase
+        BLOG_SLUG_TRANSLITERATION.each { |from, to| folded = folded.gsub(from, to) }
+        folded.unicode_normalize(:nfd).gsub(/\p{Mn}/, "")
+      end
+
+      def blog_search_matches?(entry, query, category = nil)
+        cat = category.to_s
+        cat = nil if cat.empty? || cat == "all"
+        return false if cat && entry[:category].to_s != cat
+
+        q = blog_fold_text(query.to_s).strip
+        return true if q.empty?
+
+        blog_fold_text("#{entry[:title]} #{entry[:summary]}").include?(q)
+      end
+
+      def blog_search_posts(query, category = nil, language: current_lang)
+        blog_posts(language: language).select do |entry|
+          blog_search_matches?(entry, query, category)
+        end
+      end
+
+      # JSON index for the <script type="application/json"> embed on
+      # blog index pages. Escapes <, > and & so post metadata can
+      # never break out of the script element (XSS-safe by
+      # construction); deterministic catalog order, no clock.
+      def blog_index_json_safe(language: current_lang)
+        blog_index_json(language: language)
+          .gsub("<", "\\u003c").gsub(">", "\\u003e").gsub("&", "\\u0026")
+      end
+
       # Server-rendered related block for the article reader. Empty
       # string when the path is unknown (no fabrication of links).
       def blog_related_html(language = current_lang, current_url = "/#{current_path.to_s.sub(%r{\A/+}, "")}", limit: BLOG_RELATED_LIMIT)

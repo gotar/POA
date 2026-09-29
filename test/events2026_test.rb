@@ -5,29 +5,23 @@ require_relative "test_helper"
 # The program is explicit data (EVENTS_2026 in context.rb) with static
 # past/nearest flags; the build never consults a clock, so ordering is
 # fixed and deterministic. Templates render an Upcoming section first
-# and an Archive second on the same URL, every row carries a textual
-# status badge (never color-only), and phones get stacked cards fed by
-# td data-labels instead of a clipped wide table.
+# and an Archive second on the same URL. Section headings provide status;
+# tables keep only four useful data columns, with neutral styling and
+# mobile cards fed by td data-labels instead of a clipped wide table.
 class Events2026Test < Minitest::Test
   PAGES = {
     ["views.event2026", "wydarzenia/2026.html", "pl"] => {
       upcoming_id: "nadchodzace",
       archive_id: "archiwum",
-      headers: %w[Data Wydarzenie Lokalizacja Instruktor Status],
-      labels: %w[Data Wydarzenie Lokalizacja Instruktor Status],
-      next_label: "Najbliższe",
-      upcoming_label: "Nadchodzące",
-      past_label: "Minione",
+      headers: %w[Data Wydarzenie Lokalizacja Instruktor],
+      labels: %w[Data Wydarzenie Lokalizacja Instruktor],
       empty_probe: "Aktualnie nie ma ogłoszonych nadchodzących wydarzeń."
     },
     ["views.en.event2026", "en/events/2026.html", "en"] => {
       upcoming_id: "upcoming",
       archive_id: "archive",
-      headers: %w[Date Event Location Instructor Status],
-      labels: %w[Date Event Location Instructor Status],
-      next_label: "Next",
-      upcoming_label: "Upcoming",
-      past_label: "Past",
+      headers: %w[Date Event Location Instructor],
+      labels: %w[Date Event Location Instructor],
       empty_probe: "There are currently no announced upcoming events."
     }
   }.freeze
@@ -93,22 +87,17 @@ class Events2026Test < Minitest::Test
     end
   end
 
-  def test_nearest_event_highlighted_first_with_textual_status_everywhere
+  def test_section_headings_replace_redundant_status_badges
     PAGES.each do |(key, path, _lang), exp|
       html = render_view(key, path)
-
-      next_rows = html.scan(%r{<tr class="special event-next">.*?</tr>}m)
-      assert_equal 1, next_rows.size, "#{path}: exactly one row is the highlighted next event"
-      assert_includes next_rows.first, "BAA and Aikikai Aikido Academy Seminar"
-      assert_includes next_rows.first, "Makoto Ito Shihan",
-        "#{path}: nearest row keeps its instructor"
-
-      assert_equal 1, html.scan(%(<span class="status-badge status-next">#{exp[:next_label]}</span>)).size,
-        "#{path}: the Next badge renders once, as text"
-      assert_equal 3, html.scan(%(<span class="status-badge status-upcoming">#{exp[:upcoming_label]}</span>)).size,
-        "#{path}: other upcoming rows carry a textual Upcoming status"
-      assert_equal 8, html.scan(%(<span class="status-badge status-past">#{exp[:past_label]}</span>)).size,
-        "#{path}: every archive row carries a textual Past status"
+      refute_includes html, '<th scope="col">Status</th>'
+      refute_includes html, 'data-label="Status"'
+      refute_includes html, 'status-badge'
+      refute_includes html, 'special event-next'
+      refute_match(/<p>[^<]*(?:etykiet|label)[^<]*<\/p>/, html,
+        "#{path}: remove explanations of labels that no longer exist")
+      assert_includes html, %(aria-labelledby="#{exp[:upcoming_id]}")
+      assert_includes html, %(aria-labelledby="#{exp[:archive_id]}")
     end
   end
 
@@ -124,7 +113,7 @@ class Events2026Test < Minitest::Test
       end
 
       cells = html.scan(%r{<td data-label="([^"]+)">}).flatten
-      assert_equal 12 * 5, cells.size, "#{path}: all 60 cells carry a data-label for card mode"
+      assert_equal 12 * 4, cells.size, "#{path}: all 48 cells carry a data-label for card mode"
       assert_equal exp[:labels].sort, cells.uniq.sort,
         "#{path}: data-labels must match the visible column headers, no guessing"
 
@@ -221,17 +210,14 @@ class Events2026Test < Minitest::Test
       "events data and helpers must be static for a deterministic build")
   end
 
-  def test_css_cards_badges_and_empty_state
+  def test_css_neutral_tables_cards_and_empty_state
     css = File.read(site_root.join("assets/style.css")).gsub(%r{/\*.*?\*/}m, "")
 
-    %w[status-next status-upcoming status-past].each do |cls|
-      rule = css.match(/\.#{cls} \{(?<rules>[^{}]*)\}/m)
-      assert rule, "expected a .#{cls} badge rule"
-      assert_match(/color:\s*#[0-9a-f]{3,6}/, rule[:rules], ".#{cls} sets an explicit text color")
-    end
-
-    assert_match(/table\.events-table tr\.event-next td\s*\{[^}]*font-weight:\s*bold/m, css,
-      "the nearest row is emphasized beyond its badge")
+    headers = css[/table\.events-table th \{([^}]+)\}/m, 1]
+    refute_nil headers, "neutral header colors must be scoped to events only"
+    assert_includes headers, "background-color: #f1f3f5"
+    assert_includes headers, "color: #333"
+    refute_includes css, "table.events-table tr.event-next td"
 
     assert_match(/\.events-empty \{(?<rules>[^{}]*)\}/m, css, "expected an .events-empty rule")
 
@@ -246,7 +232,7 @@ class Events2026Test < Minitest::Test
       "long locations wrap instead of pushing the card past 320px"
     assert_includes body, "min-width: 0;",
       "cells must not enforce a minimum wider than the phone"
-    assert_includes body, ".events-table tbody tr.past {",
-      "archive cards keep a distinct treatment without relying on grey text alone"
+    refute_includes body, ".events-table tbody tr.special {",
+      "cards must not reintroduce loud red nearest-event borders"
   end
 end

@@ -740,11 +740,9 @@ table tr.special td {
   margin: 0 0 0.25rem 0;
 }
 
-/* UIUX-14: events 2026 — upcoming section first, archive second.
-   Status is always textual (Najbliższe/Nadchodzące/Minione), never
-   color-only. Desktop keeps the full table; phones (<=768px) get
-   stacked cards fed by td data-labels, so no column is ever clipped
-   or pushed off a 320px viewport. */
+/* Events: section headings distinguish upcoming/archive without a
+   redundant status column. Neutral tables stay readable on desktop;
+   phones get stacked cards with explicit data-labels. */
 .events-index {
   margin: 1rem 0 0;
 }
@@ -760,35 +758,19 @@ table tr.special td {
   padding: 0.75rem 1rem;
 }
 
-.status-badge {
-  display: inline-block;
-  white-space: nowrap;
-  font-size: 0.875rem;
-  font-weight: bold;
-  line-height: 1.4;
-  padding: 0.15rem 0.6rem;
-  border-radius: 20px;
-  border: 1px solid currentColor;
-}
-
-.status-next {
-  background-color: #cd3333;
-  border-color: #cd3333;
-  color: #fff;
-}
-
-.status-upcoming {
-  background-color: #f2f7f2;
-  color: #1d5c1d;
-}
-
-.status-past {
-  background-color: #fff;
+table.events-table th {
+  background-color: #f1f3f5;
   color: #333;
+  border-bottom: 1px solid #d5d9dd;
 }
 
-table.events-table tr.event-next td {
-  font-weight: bold;
+table.events-table td {
+  color: #333;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.events-table tbody tr:nth-child(even) {
+  background-color: #fafafa;
 }
 
 @media (max-width: 768px) {
@@ -822,16 +804,7 @@ table.events-table tr.event-next td {
     background: #fff;
   }
 
-  .events-table tbody tr.past {
-    background: #f0f0f0;
-  }
-
-  .events-table tbody tr.special {
-    background: #fdf3e7;
-    border-left: 4px solid #cd3333;
-  }
-
-  .events-table td {
+  table.events-table td {
     border: none;
     min-width: 0;
     overflow-wrap: anywhere;

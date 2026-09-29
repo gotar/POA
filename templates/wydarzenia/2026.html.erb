@@ -36,7 +36,6 @@
       <% if upcoming.empty? %>
         <p class="events-empty">Aktualnie nie ma ogłoszonych nadchodzących wydarzeń. Zajrzyj do archiwum poniżej albo wróć później — nowe terminy pojawią się tutaj.</p>
       <% else %>
-        <p>Najbliższe wydarzenie oznaczono etykietą „Najbliższe”.</p>
         <table class="events-table">
           <thead>
             <tr>
@@ -44,17 +43,15 @@
               <th scope="col">Wydarzenie</th>
               <th scope="col">Lokalizacja</th>
               <th scope="col">Instruktor</th>
-              <th scope="col">Status</th>
             </tr>
           </thead>
           <tbody>
             <% upcoming.each do |entry| %>
-              <tr<%= ' class="special event-next"' if entry[:nearest] %>>
+              <tr>
                 <td data-label="Data"><%= entry[:date] %></td>
                 <td data-label="Wydarzenie"><%= entry[:event] %></td>
                 <td data-label="Lokalizacja"><%= entry[:location] %></td>
                 <td data-label="Instruktor"><%= entry[:instructor] %></td>
-                <td data-label="Status"><span class="status-badge <%= event_status_class(entry) %>"><%= event_status_label(entry, "pl") %></span></td>
               </tr>
             <% end %>
           </tbody>
@@ -64,7 +61,6 @@
 
     <section class="events-section" aria-labelledby="archiwum">
       <h2 id="archiwum" tabindex="-1">Archiwum</h2>
-      <p>Wydarzenia minione — każde z nich nosi etykietę „Minione”.</p>
       <table class="events-table">
         <thead>
           <tr>
@@ -72,17 +68,15 @@
             <th scope="col">Wydarzenie</th>
             <th scope="col">Lokalizacja</th>
             <th scope="col">Instruktor</th>
-            <th scope="col">Status</th>
           </tr>
         </thead>
         <tbody>
           <% events_2026_archive.each do |entry| %>
-            <tr class="past">
+            <tr>
               <td data-label="Data"><%= entry[:date] %></td>
               <td data-label="Wydarzenie"><%= entry[:event] %></td>
               <td data-label="Lokalizacja"><%= entry[:location] %></td>
               <td data-label="Instruktor"><%= entry[:instructor] %></td>
-              <td data-label="Status"><span class="status-badge <%= event_status_class(entry) %>"><%= event_status_label(entry, "pl") %></span></td>
             </tr>
           <% end %>
         </tbody>

@@ -2812,7 +2812,9 @@ ul.inline li a:hover {
   .quick-action,
   .quick-action:hover,
   .quick-action.primary,
-  .quick-action.primary:hover {
+  .quick-action.primary:hover,
+  .site-footer .footer-cta,
+  .site-footer .footer-cta:hover {
     transition: none;
   }
 }
@@ -2829,4 +2831,151 @@ ul.inline li a:hover {
   height: 48px;
   max-width: 100%;
   height: auto;
+}
+
+/* UIUX-11 (t_cb0aa45d): wspólna stopka (contentinfo landmark) renderowana z
+   layoutów — domyka długie strony tożsamością, kontaktem, następną akcją i
+   skrótami. Ciemny panel odcina się od jasnej treści; linki podkreślone,
+   focusowalne, >=4.5:1; CTA pierwszego treningu to target >=44px. Bez
+   dynamicznego roku (build deterministyczny — zero zegara); dane organizacji
+   w jednej linii + odsyłacz zamiast pełnego bloku KRS na każdym ekranie. */
+.site-footer {
+  background: #202020;
+  color: #ececec;
+  margin-top: 2rem;
+  padding: 2.5rem 1rem 1.25rem;
+}
+
+.site-footer a {
+  color: #d6d6d6;
+  text-decoration: underline;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.14em;
+  font-weight: 700;
+}
+
+.site-footer a:hover {
+  color: #ffffff;
+}
+
+.site-footer a:focus-visible {
+  outline: 3px solid #4a90e2;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Footer navs must not inherit the sticky white header treatment (generic
+   nav {} rule) nor the header auto-hide transform. */
+.site-footer nav {
+  position: static;
+  background: transparent;
+  box-shadow: none;
+  z-index: auto;
+  transition: none;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  /* overflow-safe tracks: min(220px, 100%) lets the grid collapse below 220px
+     (200% zoom/reflow) instead of forcing horizontal overflow */
+  grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+  gap: 2rem;
+}
+
+.footer-address,
+.footer-schedule,
+.footer-org-data {
+  overflow-wrap: break-word;
+}
+
+.footer-brand-name {
+  margin: 0 0 0.25rem;
+  color: #ffffff;
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.footer-brand-dojo {
+  margin: 0 0 0.75rem;
+  color: #e0a5a5;
+  font-weight: 700;
+}
+
+.footer-address {
+  font-style: normal;
+  margin: 0 0 0.75rem;
+}
+
+.footer-schedule {
+  margin: 0 0 1rem;
+}
+
+.footer-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-links li {
+  margin: 0.375rem 0;
+}
+
+.footer-heading {
+  margin: 0 0 0.5rem;
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.site-footer .footer-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0.65rem 1.1rem;
+  background: #cd3333;
+  color: #ffffff;
+  border-radius: 4px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.site-footer .footer-cta:hover {
+  background: #a82828;
+  color: #ffffff;
+}
+
+.site-footer .footer-cta:focus-visible {
+  outline: 3px solid #4a90e2;
+  outline-offset: 2px;
+}
+
+.footer-org-data {
+  margin: 1rem 0 0;
+  color: #c8c8c8;
+  font-size: 0.85rem;
+}
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 1.75rem auto 0;
+  padding-top: 1rem;
+  border-top: 1px solid #3a3a3a;
+}
+
+.footer-bottom p {
+  margin: 0;
+  color: #b8b8b8;
+  font-size: 0.85rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .footer-container {
+    gap: 1.5rem;
+  }
 }

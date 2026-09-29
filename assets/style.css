@@ -1049,6 +1049,18 @@ dd {
   margin-bottom: 1.5rem;
 }
 
+.first-training {
+  background: #f8f8f8;
+  border-left: 4px solid #cd3333;
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.first-training-actions {
+  justify-content: flex-start;
+  margin-top: 1rem;
+}
+
 .home-intro p {
   font-size: 1.1rem;
   line-height: 1.8;

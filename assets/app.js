@@ -215,9 +215,23 @@
     let lastScrollTop = 0;
     const headerHeight = nav.offsetHeight;
 
+    function menuOrFocusActive() {
+      return nav.querySelector('.nav-toggle[aria-expanded="true"]') !== null ||
+        nav.querySelector('.dropdown-label[aria-expanded="true"]') !== null ||
+        nav.contains(document.activeElement);
+    }
+
     function handleScroll() {
       const scrollTop = window.scrollY || document.documentElement.scrollTop;
-      
+
+      // Never auto-hide while a menu is open or focus sits inside the header:
+      // scrolling a long open menu must not hide it mid-interaction.
+      if (menuOrFocusActive()) {
+        nav.style.transform = 'translateY(0)';
+        lastScrollTop = scrollTop;
+        return;
+      }
+            
       if (scrollTop > headerHeight) {
         if (scrollTop > lastScrollTop) {
           nav.style.transform = 'translateY(-100%)';
@@ -232,7 +246,6 @@
     }
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    nav.style.transition = 'transform 0.3s ease';
   }
 
   function initDropdownNavigation() {
@@ -276,15 +289,37 @@
     document.addEventListener('keydown', function(event) {
       if (event.key !== 'Escape') return;
 
-      const activeDropdown = dropdowns.find(({ dropdown, toggle }) =>
-        toggle.getAttribute('aria-expanded') === 'true' || dropdown.contains(document.activeElement)
+      const openDropdowns = dropdowns.filter(({ toggle }) =>
+        toggle.getAttribute('aria-expanded') === 'true'
       );
 
-      if (!activeDropdown) return;
+      if (openDropdowns.length === 0) return;
 
+      // Close only the innermost layer: keep the outer mobile menu open so a
+      // second Escape can close it and return focus to the hamburger.
+      // (Only truly open menus count: mere focus inside a closed dropdown
+      // must not swallow the Escape meant for the mobile menu.)
+      const activeDropdown = openDropdowns.find(({ dropdown }) =>
+        dropdown.contains(document.activeElement)
+      ) || openDropdowns[0];
+
+      closeAll();
       setExpanded(activeDropdown.toggle, false);
       activeDropdown.toggle.focus();
+      event.stopImmediatePropagation();
     });
+
+    // A breakpoint change resets dropdown state so no stale open menu
+    // survives a mobile <-> desktop transition.
+    const desktopViewport = window.matchMedia('(min-width: 769px)');
+    function resetDropdownsOnBreakpointChange() {
+      closeAll();
+    }
+    if (desktopViewport.addEventListener) {
+      desktopViewport.addEventListener('change', resetDropdownsOnBreakpointChange);
+    } else {
+      desktopViewport.addListener(resetDropdownsOnBreakpointChange);
+    }
   }
 
   function initMobileNavigation() {
@@ -317,6 +352,17 @@
       if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
         setExpanded(false, true);
       }
+    });
+
+    // A tap outside the header closes the open mobile menu.
+    document.addEventListener('click', function(event) {
+      if (toggle.getAttribute('aria-expanded') !== 'true') return;
+      if (!event.target.closest('nav')) setExpanded(false);
+    });
+
+    // Activating a link inside the menu closes it (matters for same-page anchors).
+    menu.addEventListener('click', function(event) {
+      if (event.target.closest('a')) setExpanded(false);
     });
 
     function closeOnDesktop(event) {

@@ -1512,11 +1512,14 @@ nav.pagination[hidden],
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: flex-start;
   gap: 0.5rem 1rem;
   margin-top: 0.9rem;
+  text-align: left;
 }
 
-.blog-result-count {
+/* Component spacing must override the prose .content p margin. */
+.blog-discovery-status .blog-result-count {
   font-weight: 700;
   margin: 0;
 }

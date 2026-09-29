@@ -13,7 +13,7 @@ class KyuSixGuardTest < Minitest::Test
 
     assert_includes pl, '<li><a href="#6kyu">6 kyu</a></li>',
                     "PL kyu template must include 6kyu navigation link"
-    assert_includes pl, '<h2 id="6kyu">',
+    assert_includes pl, '<h2 id="6kyu"',
                     "PL kyu template must include 6kyu heading"
     assert_includes pl, "od zdobycia 7 kyu",
                     "6kyu must require prior 7 kyu"
@@ -31,7 +31,7 @@ class KyuSixGuardTest < Minitest::Test
 
     assert_includes en, '<li><a href="#6kyu">6 kyu</a></li>',
                     "EN kyu template must include 6 kyu link"
-    assert_includes en, '<h2 id="6kyu">',
+    assert_includes en, '<h2 id="6kyu"',
                     "EN kyu template must include 6kyu heading"
     assert_includes en, "since obtaining 7 kyu",
                     "6kyu must require prior 7 kyu"

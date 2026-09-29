@@ -5,15 +5,15 @@
 ]) %>
 <%= faq_schema([
   {
-    question: "Od jakiego wieku można zacząć trenować Aikido w Gdyni?",
+    question: "Od jakiego wieku można zacząć trenować Aikido?",
     answer: "W Sesshinkan Dojo Gdynia przyjmujemy osoby od około 12-13 roku życia. Nie ma górnej granicy wieku, a trening jest dostosowywany do możliwości ćwiczącego."
   },
   {
-    question: "Co zabrać na pierwszy trening Aikido?",
+    question: "Co powinienem zabrać na pierwsze zajęcia?",
     answer: "Na pierwszy trening wystarczy wygodne ubranie sportowe, ręcznik i woda. Keikogi nie jest wymagane na start."
   },
   {
-    question: "W jakie dni odbywają się treningi Aikido w Gdyni?",
+    question: "O której godzinie są zajęcia w Gdyni?",
     answer: "Treningi odbywają się w poniedziałki i piątki w godzinach 20:00-21:30."
   },
   {
@@ -36,20 +36,53 @@
       <a href="/kontakt.html">kontakt i grafik</a>, przejdź do odpowiedniej strony.
     </p>
 
-    <div class="faq-toc">
+    <nav class="faq-toc" id="spis-tresci" aria-label="Spis treści FAQ">
       <h2>Spis treści</h2>
       <ul>
-        <li><a href="#poczatkujacy">Dla początkujących</a></li>
-        <li><a href="#trening">Trening i zajęcia</a></li>
-        <li><a href="#gdynia">Aikido w Gdyni</a></li>
-        <li><a href="#techniczne">Pytania techniczne</a></li>
-        <li><a href="#organizacja">Organizacja i egzaminy</a></li>
+        <li><a href="#poczatkujacy">Dla początkujących</a>
+          <ul>
+            <li><a href="#p-czym-jest-aikido">Czym jest Aikido?</a></li>
+            <li><a href="#p-samoobrona">Czy Aikido to dobra szkoła samoobrony?</a></li>
+            <li><a href="#p-wiek">Od jakiego wieku można zacząć trenować Aikido?</a></li>
+            <li><a href="#p-sprawnosc">Czy muszę być sprawny fizycznie, żeby zacząć?</a></li>
+          </ul>
+        </li>
+        <li><a href="#trening">Trening i zajęcia</a>
+          <ul>
+            <li><a href="#p-jak-czesto-trenowac">Jak często powinienem trenować?</a></li>
+            <li><a href="#p-co-zabrac">Co powinienem zabrać na pierwsze zajęcia?</a></li>
+            <li><a href="#p-zawody-sparingi">Czy w Aikido są zawody sportowe lub sparingi?</a></li>
+            <li><a href="#p-jak-dlugo-nauka">Jak długo trwa nauka Aikido?</a></li>
+          </ul>
+        </li>
+        <li><a href="#gdynia">Aikido w Gdyni</a>
+          <ul>
+            <li><a href="#p-gdzie-treningi-gdynia">Gdzie odbywają się treningi Aikido w Gdyni?</a></li>
+            <li><a href="#p-godziny-zajec">O której godzinie są zajęcia w Gdyni?</a></li>
+            <li><a href="#p-ile-kosztuje">Ile kosztuje trening Aikido w Gdyni?</a></li>
+            <li><a href="#p-kto-prowadzi">Kto prowadzi zajęcia w Sesshinkan Dojo Gdynia?</a></li>
+          </ul>
+        </li>
+        <li><a href="#techniczne">Pytania techniczne</a>
+          <ul>
+            <li><a href="#p-kolorowe-pasy">Czy w Aikido są kolorowe pasy?</a></li>
+            <li><a href="#p-hakama">Co to jest hakama?</a></li>
+            <li><a href="#p-bron">Czy w Aikido używa się broni?</a></li>
+          </ul>
+        </li>
+        <li><a href="#organizacja">Organizacja i egzaminy</a>
+          <ul>
+            <li><a href="#p-egzaminy-stopnie">Jak wyglądają egzaminy na stopnie w Aikido?</a></li>
+            <li><a href="#p-co-to-poa">Co to jest POA - Polska Organizacja Aikido?</a></li>
+            <li><a href="#p-uznawanie-stopni">Czy moje stopnie będą uznawane za granicą?</a></li>
+          </ul>
+        </li>
       </ul>
-    </div>
+    </nav>
 
-    <h2 id="poczatkujacy">Dla początkujących</h2>
+    <h2 id="poczatkujacy" tabindex="-1">Dla początkujących</h2>
 
-    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+    <div class="faq-item" id="p-czym-jest-aikido" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" tabindex="-1">
       <h3 itemprop="name">Czym jest Aikido?</h3>
       <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
         <div itemprop="text">
@@ -63,7 +96,7 @@
       </div>
     </div>
 
-    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+    <div class="faq-item" id="p-samoobrona" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" tabindex="-1">
       <h3 itemprop="name">Czy Aikido to dobra szkoła samoobrony?</h3>
       <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
         <div itemprop="text">
@@ -77,7 +110,7 @@
       </div>
     </div>
 
-    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+    <div class="faq-item" id="p-wiek" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" tabindex="-1">
       <h3 itemprop="name">Od jakiego wieku można zacząć trenować Aikido?</h3>
       <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
         <div itemprop="text">
@@ -90,7 +123,7 @@
       </div>
     </div>
 
-    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+    <div class="faq-item" id="p-sprawnosc" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" tabindex="-1">
       <h3 itemprop="name">Czy muszę być sprawny fizycznie, żeby zacząć?</h3>
       <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
         <div itemprop="text">
@@ -104,9 +137,11 @@
       </div>
     </div>
 
-    <h2 id="trening">Trening i zajęcia</h2>
+    <p class="faq-back"><a href="#spis-tresci">↑ Spis treści</a></p>
 
-    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+    <h2 id="trening" tabindex="-1">Trening i zajęcia</h2>
+
+    <div class="faq-item" id="p-jak-czesto-trenowac" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" tabindex="-1">
       <h3 itemprop="name">Jak często powinienem trenować?</h3>
       <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
         <div itemprop="text">
@@ -120,7 +155,7 @@
       </div>
     </div>
 
-    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+    <div class="faq-item" id="p-co-zabrac" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" tabindex="-1">
       <h3 itemprop="name">Co powinienem zabrać na pierwsze zajęcia?</h3>
       <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
         <div itemprop="text">
@@ -138,7 +173,7 @@
       </div>
     </div>
 
-    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+    <div class="faq-item" id="p-zawody-sparingi" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" tabindex="-1">
       <h3 itemprop="name">Czy w Aikido są zawody sportowe lub sparingi?</h3>
       <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
         <div itemprop="text">
@@ -152,7 +187,7 @@
       </div>
     </div>
 
-    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+    <div class="faq-item" id="p-jak-dlugo-nauka" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" tabindex="-1">
       <h3 itemprop="name">Jak długo trwa nauka Aikido?</h3>
       <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
         <div itemprop="text">
@@ -166,9 +201,11 @@
       </div>
     </div>
 
-    <h2 id="gdynia">Aikido w Gdyni</h2>
+    <p class="faq-back"><a href="#spis-tresci">↑ Spis treści</a></p>
 
-    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+    <h2 id="gdynia" tabindex="-1">Aikido w Gdyni</h2>
+
+    <div class="faq-item" id="p-gdzie-treningi-gdynia" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" tabindex="-1">
       <h3 itemprop="name">Gdzie odbywają się treningi Aikido w Gdyni?</h3>
       <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
         <div itemprop="text">
@@ -182,7 +219,7 @@
       </div>
     </div>
 
-    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+    <div class="faq-item" id="p-godziny-zajec" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" tabindex="-1">
       <h3 itemprop="name">O której godzinie są zajęcia w Gdyni?</h3>
       <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
         <div itemprop="text">
@@ -200,7 +237,7 @@
       </div>
     </div>
 
-    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+    <div class="faq-item" id="p-ile-kosztuje" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" tabindex="-1">
       <h3 itemprop="name">Ile kosztuje trening Aikido w Gdyni?</h3>
       <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
         <div itemprop="text">
@@ -215,7 +252,7 @@
       </div>
     </div>
 
-    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+    <div class="faq-item" id="p-kto-prowadzi" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" tabindex="-1">
       <h3 itemprop="name">Kto prowadzi zajęcia w Sesshinkan Dojo Gdynia?</h3>
       <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
         <div itemprop="text">
@@ -229,9 +266,11 @@
       </div>
     </div>
 
-    <h2 id="techniczne">Pytania techniczne</h2>
+    <p class="faq-back"><a href="#spis-tresci">↑ Spis treści</a></p>
 
-    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+    <h2 id="techniczne" tabindex="-1">Pytania techniczne</h2>
+
+    <div class="faq-item" id="p-kolorowe-pasy" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" tabindex="-1">
       <h3 itemprop="name">Czy w Aikido są kolorowe pasy?</h3>
       <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
         <div itemprop="text">
@@ -245,7 +284,7 @@
       </div>
     </div>
 
-    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+    <div class="faq-item" id="p-hakama" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" tabindex="-1">
       <h3 itemprop="name">Co to jest hakama?</h3>
       <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
         <div itemprop="text">
@@ -259,7 +298,7 @@
       </div>
     </div>
 
-    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+    <div class="faq-item" id="p-bron" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" tabindex="-1">
       <h3 itemprop="name">Czy w Aikido używa się broni?</h3>
       <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
         <div itemprop="text">
@@ -279,9 +318,11 @@
       </div>
     </div>
 
-    <h2 id="organizacja">Organizacja i egzaminy</h2>
+    <p class="faq-back"><a href="#spis-tresci">↑ Spis treści</a></p>
 
-    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+    <h2 id="organizacja" tabindex="-1">Organizacja i egzaminy</h2>
+
+    <div class="faq-item" id="p-egzaminy-stopnie" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" tabindex="-1">
       <h3 itemprop="name">Jak wyglądają egzaminy na stopnie w Aikido?</h3>
       <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
         <div itemprop="text">
@@ -298,7 +339,7 @@
       </div>
     </div>
 
-    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+    <div class="faq-item" id="p-co-to-poa" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" tabindex="-1">
       <h3 itemprop="name">Co to jest POA - Polska Organizacja Aikido?</h3>
       <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
         <div itemprop="text">
@@ -313,7 +354,7 @@
       </div>
     </div>
 
-    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+    <div class="faq-item" id="p-uznawanie-stopni" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" tabindex="-1">
       <h3 itemprop="name">Czy moje stopnie będą uznawane za granicą?</h3>
       <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
         <div itemprop="text">
@@ -327,6 +368,8 @@
         </div>
       </div>
     </div>
+
+    <p class="faq-back"><a href="#spis-tresci">↑ Spis treści</a></p>
 
     <div class="cta-section">
       <h3>Nie znalazłeś odpowiedzi na swoje pytanie?</h3>

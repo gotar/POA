@@ -1623,8 +1623,10 @@ ul.inline li {
 }
 
 ul.inline li a {
-  display: inline-block;
-  padding: 0.25rem 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.55rem 1rem;
   background: #f0f0f0;
   border-radius: 20px;
   text-decoration: none;
@@ -3115,4 +3117,101 @@ ul.inline li a:hover {
   .footer-container {
     gap: 1.5rem;
   }
+}
+
+/* UIUX-13: FAQ + kyu quick navigation. Anchors are server-rendered so
+   every question and grade resolves without JS; app.js only syncs the
+   hash, moves focus, and marks the visible section. Wording, order and
+   technique content are unchanged. */
+.faq-toc {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fafafa;
+  padding: 0.75rem 1rem;
+  margin: 0 0 2rem 0;
+}
+
+.faq-toc > ul,
+.faq-toc > ul > li > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.faq-toc > ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+}
+
+.faq-toc > ul > li {
+  margin: 0.25rem 0;
+}
+
+.faq-toc > ul > li > a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.55rem 1rem;
+  border: 1px solid #767676;
+  border-radius: 999px;
+  background: #fff;
+  color: #1f1f1f;
+  font-size: 0.9375rem;
+  text-decoration: none;
+}
+
+.faq-toc > ul > li > a:hover {
+  border-color: #2b2b2b;
+}
+
+.faq-toc > ul > li > ul {
+  margin: 0.25rem 0 0.5rem 0.25rem;
+}
+
+.faq-toc > ul > li > ul a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.25rem 0.5rem 0.25rem 0;
+}
+
+.faq-toc a[aria-current="true"],
+.kyu-index a[aria-current="true"] {
+  background: #cd3333;
+  border-color: #cd3333;
+  color: #fff;
+}
+
+.faq-back,
+.kyu-back {
+  margin: 0 0 2rem 0;
+}
+
+.faq-back a,
+.kyu-back a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+/* UIUX-13: sticky header never covers a hash target on FAQ/kyu pages.
+   .article headings are covered by the UIUX-06 rule; kyu pages render
+   h2s directly under .content, and questions are focusable divs. */
+.content h2[id],
+.content h3[id],
+.faq-item[id] {
+  scroll-margin-top: 96px;
+}
+
+/* Programmatic focus targets (tabindex -1, unreachable by Tab) must
+   not paint a focus ring; the :target tint below locates the jump. */
+.faq-item[id]:focus,
+.content h2[tabindex="-1"]:focus {
+  outline: none;
+}
+
+.faq-item[id]:target {
+  border-left-color: #cd3333;
+  background: #fff4f4;
 }

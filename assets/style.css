@@ -60,7 +60,14 @@ a:hover {
   color: #cd3333;
 }
 
-li {
+/* UIUX-04: no global list reset. Content ul/ol keep native markers so
+   requirement and first-training lists stay scannable; only named
+   components opt out (site nav uses divs, not lists). */
+.nav-menu li,
+.dropdown-content li,
+ul.inline li,
+ul.error-page-links li,
+ul.yudansha-list li {
   list-style: none;
 }
 
@@ -345,6 +352,54 @@ nav .logo img.poa-header-logo {
   margin: 0 0 1.5rem 0;
 }
 
+/* UIUX-04: in-flow content links are recognizable without hover and never
+   by color alone: underline plus #b52828 (6.4:1 on white). :where() keeps
+   specificity at (0,1,1) so component links (pills, buttons, cards,
+   pagination) keep winning with their own rules. */
+.content :where(p, li, dd, td, blockquote) a {
+  color: #b52828;
+  text-decoration: underline;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.14em;
+  font-weight: 500;
+}
+
+.content :where(p, li, dd, td, blockquote) a:hover {
+  color: #8f1d1d;
+}
+
+.content :where(p, li, dd, td, blockquote) a:focus-visible {
+  outline: 2px solid #cd3333;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* UIUX-04: content lists keep native markers and rhythm. */
+.content ul {
+  list-style: disc outside;
+  padding-left: 1.5rem;
+  margin: 0 0 1.5rem 0;
+}
+
+.content ol {
+  list-style: decimal outside;
+  padding-left: 1.5rem;
+  margin: 0 0 1.5rem 0;
+}
+
+.content li {
+  margin: 0.375rem 0;
+  line-height: 1.7;
+}
+
+/* Component lists inside .content opt back out (higher specificity wins). */
+.content ul.inline,
+.content ul.error-page-links,
+.content ul.yudansha-list {
+  list-style: none;
+  padding-left: 0;
+}
+
 .content img {
   max-width: 100%;
   height: auto;
@@ -585,6 +640,14 @@ dd {
   border-radius: 4px;
   border-left: 3px solid #ff9800;
   color: #555;
+}
+
+/* UIUX-04: suspended-training notice. #595959 on white is 7.0:1
+   (the old inline #999 was 2.84:1, an axe color-contrast violation). */
+.status-suspended {
+  color: #595959;
+  font-style: italic;
+  margin: 0;
 }
 
 .schedule-table {
@@ -851,6 +914,12 @@ dd {
   color: #cd3333;
   font-weight: 600;
   text-decoration: none;
+  /* UIUX-04: standalone read-more links keep their plain look (the arrow
+     is the non-color cue) but grow to a 44px touch target: 24px line box
+     at 1rem/1.5 plus 2 x 0.625rem padding. */
+  display: inline-block;
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
 }
 
 .news-read-more:hover {

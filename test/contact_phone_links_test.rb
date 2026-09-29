@@ -52,7 +52,12 @@ class ContactPhoneLinksTest < Minitest::Test
 
       links.each do |uri, text|
         uri_digits = uri.sub(/\A\+/, "").gsub(/\D/, "")
-        text_digits = text.gsub(/\D/, "")
+        # Quick-actions carry inline decorative SVGs (aria-hidden); their path
+        # data contains digits a user never sees. Compare the RENDERED text
+        # (tags stripped), which is what the dialer consistency contract is
+        # about: visible digits must match the tel: URI digits.
+        visible_text = text.gsub(/<[^>]+>/, "").gsub(/\s+/, " ").strip
+        text_digits = visible_text.gsub(/\D/, "")
         assert_equal text_digits, uri_digits, "#{relative}: tel: digits must match visible digits"
       end
 

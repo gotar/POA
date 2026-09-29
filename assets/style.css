@@ -437,6 +437,32 @@ table tr.special td {
   margin-top: 0.5rem;
 }
 
+/* UIUX-03: horizontally scrollable table wrapper. Wide tables (Mui,
+   events) keep their columns and scroll inside the wrapper instead of
+   pushing the whole page. Never mask with body overflow-x: hidden. */
+.table-scroll {
+  overflow-x: auto;
+  max-width: 100%;
+  -webkit-overflow-scrolling: touch;
+  margin: 1.5rem 0;
+  border-radius: 8px;
+}
+
+.table-scroll:focus-visible {
+  outline: 2px solid #cd3333;
+  outline-offset: 2px;
+}
+
+.table-scroll > table {
+  width: 100%;
+}
+
+.table-scroll-hint {
+  font-size: 0.85rem;
+  color: #555;
+  margin: 0 0 0.25rem 0;
+}
+
 dl {
   display: flex;
   flex-wrap: wrap;
@@ -472,7 +498,7 @@ dd {
 
 .contact-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
   gap: 2rem;
   margin: 2rem 0;
 }
@@ -484,6 +510,8 @@ dd {
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
   border-left: 4px solid #cd3333;
   transition: transform 0.2s, box-shadow 0.2s;
+  min-width: 0;
+  overflow-wrap: break-word;
 }
 
 .contact-card:hover {
@@ -515,6 +543,7 @@ dd {
   background: #f8f8f8;
   border-radius: 4px;
   transition: background 0.2s;
+  min-width: 0;
 }
 
 .contact-info-item:hover {
@@ -528,6 +557,8 @@ dd {
   text-underline-offset: 0.14em;
   font-weight: 500;
   transition: color 0.2s;
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .contact-info-item a:hover {
@@ -608,6 +639,8 @@ dd {
   margin: 0;
   color: #333;
   width: auto;
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .half {
@@ -1222,6 +1255,11 @@ ul.inline li a:hover {
   .contact-cards {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+  }
+
+  .contact-card {
+    min-width: 0;
+    padding: 1.5rem 1.25rem;
   }
 
   .half {

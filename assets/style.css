@@ -163,6 +163,20 @@ nav .logo img.poa-header-logo {
   display: block;
 }
 
+/* UIUX-15: krótki podpis „POA" obok znaku na tablet/mobile (pełna nazwa
+   ukryta ≤1024px) — mieści się w 320px obok 44px controls. */
+nav .logo .logo-short {
+  display: none;
+}
+
+@media only screen and (max-width: 1024px) {
+  nav .logo .logo-short {
+    display: inline;
+    font-weight: 700;
+    color: #333;
+  }
+}
+
 @media only screen and (max-width: 1100px) {
   .poa-header-logo {
     height: 8px;
@@ -206,7 +220,8 @@ nav .logo img.poa-header-logo {
   height: 2px;
   width: 24px;
   position: relative;
-  transition: all 0.3s;
+  /* UIUX-15: tylko transform się zmienia — bez transition: all */
+  transition: transform 0.3s ease;
 }
 
 .nav-toggle span::before,
@@ -468,7 +483,7 @@ nav .logo img.poa-header-logo {
   }
 }
 
-.article a:not(.btn):not(.cta-button):not(.hero-btn):not(.news-read-more):not(.pagination-link):not(.quick-nav-item):not(.instagram-button):not(.news-card-title),
+.article a:not(.btn):not(.cta-button):not(.hero-btn):not(.news-read-more):not(.pagination-link):not(.quick-nav-item):not(.instagram-button):not(.news-card-title):not(.quick-action),
 .article-inline-link {
   color: #b52828;
   text-decoration: underline;
@@ -477,12 +492,12 @@ nav .logo img.poa-header-logo {
   font-weight: 700;
 }
 
-.article a:not(.btn):not(.cta-button):not(.hero-btn):not(.news-read-more):not(.pagination-link):not(.quick-nav-item):not(.instagram-button):not(.news-card-title):hover,
+.article a:not(.btn):not(.cta-button):not(.hero-btn):not(.news-read-more):not(.pagination-link):not(.quick-nav-item):not(.instagram-button):not(.news-card-title):not(.quick-action):hover,
 .article-inline-link:hover {
   color: #8f1d1d;
 }
 
-.article a:not(.btn):not(.cta-button):not(.hero-btn):not(.news-read-more):not(.pagination-link):not(.quick-nav-item):not(.instagram-button):not(.news-card-title):focus-visible,
+.article a:not(.btn):not(.cta-button):not(.hero-btn):not(.news-read-more):not(.pagination-link):not(.quick-nav-item):not(.instagram-button):not(.news-card-title):not(.quick-action):focus-visible,
 .article-inline-link:focus-visible {
   outline: 2px solid #cd3333;
   outline-offset: 2px;
@@ -736,8 +751,8 @@ table tr.special td {
 
 .events-empty {
   background: #f7f7f7;
-  border-left: 4px solid #cd3333;
-  border-radius: 0 8px 8px 0;
+  border: 1px solid #ececec;
+  border-radius: 8px;
   padding: 0.75rem 1rem;
 }
 
@@ -875,7 +890,7 @@ dd {
   padding: 2rem;
   border-radius: 8px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-  border-left: 4px solid #cd3333;
+  border: 1px solid #ececec;
   transition: transform 0.2s, box-shadow 0.2s;
   min-width: 0;
   overflow-wrap: break-word;
@@ -937,6 +952,28 @@ dd {
   flex-shrink: 0;
 }
 
+/* UIUX-15: spójne lekkie ikony SVG (stroke currentColor) zamiast emoji.
+   Dekoracyjne przy tekście — aria-hidden w HTML, kolor = czerwony akcent. */
+svg.icon {
+  display: inline-block;
+  flex-shrink: 0;
+  vertical-align: -0.18em;
+}
+
+.contact-icon svg.icon {
+  width: 22px;
+  height: 22px;
+  color: #cd3333;
+}
+
+h3 svg.icon,
+h4 svg.icon {
+  width: 18px;
+  height: 18px;
+  margin-right: 0.4rem;
+  color: #cd3333;
+}
+
 .instructor-info {
   margin: 1.5rem 0 0.5rem 0;
   padding: 1rem;
@@ -985,7 +1022,13 @@ dd {
   color: #b52828;
   font-weight: 700;
   text-decoration: none;
-  transition: background 0.2s, color 0.2s;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.quick-action svg.icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
 }
 
 .quick-action:hover {
@@ -1009,7 +1052,7 @@ dd {
 
 .quick-start {
   background: #f8f8f8;
-  border-left: 4px solid #cd3333;
+  border: 1px solid #ececec;
   border-radius: 8px;
   padding: 1.25rem 1.5rem;
   margin: 1.5rem 0 2rem 0;
@@ -1115,8 +1158,9 @@ dd {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.55);
-  backdrop-filter: blur(2px);
+  /* UIUX-15: lżejsza przyciemka, bez rozmycia — hero ma pozostać
+     czytelnym, autentycznym zdjęciem, nie ciemną plamą. */
+  background: rgba(0, 0, 0, 0.35);
 }
 
 .hero-content {
@@ -1180,11 +1224,11 @@ dd {
   display: block;
   padding: 1.5rem;
   background: white;
+  border: 1px solid #ececec;
   border-radius: 8px;
   text-decoration: none;
   color: #333;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  border-left: 4px solid #cd3333;
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
@@ -1197,6 +1241,12 @@ dd {
 .quick-nav-icon {
   font-size: 2rem;
   margin-bottom: 0.5rem;
+}
+
+.quick-nav-icon svg.icon {
+  width: 30px;
+  height: 30px;
+  color: #cd3333;
 }
 
 .quick-nav-title {
@@ -1223,7 +1273,7 @@ dd {
 
 .first-training {
   background: #f8f8f8;
-  border-left: 4px solid #cd3333;
+  border: 1px solid #ececec;
   border-radius: 8px;
   padding: 1.5rem;
 }
@@ -1269,7 +1319,6 @@ dd {
   padding: 1.25rem;
   background: #fff;
   border: 1px solid #ececec;
-  border-left: 4px solid #cd3333;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
@@ -1945,7 +1994,6 @@ ul.inline li a:hover {
 .principle-card {
   background: #fff;
   border: 1px solid #e0e0e0;
-  border-left: 4px solid #cd3333;
   border-radius: 8px;
   padding: 1.5rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -1976,10 +2024,10 @@ ul.inline li a:hover {
   margin-top: 1rem;
   padding: 0.75rem;
   background: #f8f8f8;
-  border-radius: 4px;
+  border: 1px solid #ececec;
+  border-radius: 8px;
   font-style: normal;
   font-size: 0.95rem;
-  border-left: 3px solid #cd3333;
 }
 
 @media (max-width: 768px) {
@@ -2039,10 +2087,10 @@ ul.inline li a:hover {
 
 .practice-guidelines {
   background: #f8f8f8;
-  border-left: 4px solid #cd3333;
+  border: 1px solid #ececec;
   padding: 1.5rem;
   margin: 2rem 0;
-  border-radius: 4px;
+  border-radius: 8px;
 }
 
 .practice-guidelines ul {
@@ -2179,8 +2227,8 @@ ul.inline li a:hover {
   padding: 0.75rem 1rem;
   margin: 0.5rem 0;
   background: #f8f8f8;
-  border-left: 4px solid #cd3333;
-  border-radius: 4px;
+  border: 1px solid #ececec;
+  border-radius: 8px;
   transition: background 0.2s ease, transform 0.2s ease;
 }
 
@@ -2219,9 +2267,9 @@ ul.inline li a:hover {
 
 .beginner-card {
   background: #f8f8f8;
-  border-left: 4px solid #cd3333;
+  border: 1px solid #ececec;
   padding: 1.5rem;
-  border-radius: 4px;
+  border-radius: 8px;
 }
 
 .beginner-card h3 {
@@ -2407,7 +2455,7 @@ ul.inline li a:hover {
   border-radius: 4px;
   text-decoration: none;
   font-weight: 700;
-  transition: all 0.2s ease;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .cta-button.primary {
@@ -2436,7 +2484,6 @@ ul.inline li a:hover {
   background: linear-gradient(135deg, #f8f8f8 0%, #e8e8e8 100%);
   padding: 1.5rem;
   border-radius: 8px;
-  border-left: 4px solid #cd3333;
   margin-bottom: 2rem;
 }
 
@@ -2460,9 +2507,9 @@ ul.inline li a:hover {
   gap: 1.25rem;
   padding: 1.5rem;
   background: #fff;
+  border: 1px solid #ececec;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  border-left: 4px solid #cd3333;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -2589,7 +2636,7 @@ ul.inline li a:hover {
   opacity: 0;
   visibility: hidden;
   transform: translateY(10px);
-  transition: all 0.3s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease, background-color 0.2s ease, box-shadow 0.2s ease;
   box-shadow: 0 4px 12px rgba(205, 51, 51, 0.3);
   z-index: 9999;
 }
@@ -2644,19 +2691,23 @@ ul.inline li a:hover {
   transform: translateX(0);
 }
 
-.lazy-image {
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
+/* UIUX-15: fade obrazów tylko bez reduced-motion; domyślnie obraz jest
+   widoczny (noJS/failingJS nigdy nie chowa treści). */
+@media (prefers-reduced-motion: no-preference) {
+  .lazy-image {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
 
-.lazy-image.loaded {
-  opacity: 1;
-}
+  .lazy-image.loaded {
+    opacity: 1;
+  }
 
-.lazy-image-placeholder {
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-  background-size: 200% 100%;
-  animation: shimmer 1.5s infinite;
+  .lazy-image-placeholder {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
 }
 
 @keyframes shimmer {
@@ -2686,7 +2737,7 @@ ul.inline li a:hover {
   text-decoration: none;
   font-weight: 700;
   font-size: 1.1rem;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0 4px 15px rgba(253, 29, 29, 0.3);
 }
 
@@ -2785,7 +2836,7 @@ ul.inline li a:hover {
   border-radius: 4px;
   text-decoration: none;
   font-weight: 700;
-  transition: all 0.2s ease;
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .instagram-widget-follow:hover {
@@ -3028,6 +3079,15 @@ ul.inline li a:hover {
     scroll-behavior: auto;
   }
 
+  /* UIUX-15: reduced-motion = zero ruchu, treść natychmiast widoczna.
+     Auto-hide nagłówka wyłączany też w JS (initHeaderAutoHide) — tu pas
+     bezpieczeństwa na transformy i hover. */
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
   .fade-in-section,
   .fade-in-left,
   .fade-in-right {
@@ -3048,7 +3108,25 @@ ul.inline li a:hover {
     transition: none;
   }
 
+  nav .nav-container,
+  nav .nav-menu,
+  nav .logo,
+  nav .nav-toggle {
+    transform: none !important;
+  }
+
+  .hero-btn:hover,
+  .quick-nav-item:hover,
+  .cta-button:hover,
+  .instagram-button:hover,
+  .back-to-top:hover,
+  .news-card:hover,
+  .step:hover {
+    transform: none;
+  }
+
   .lazy-image {
+    opacity: 1;
     transition: none;
   }
 

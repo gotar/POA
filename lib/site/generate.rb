@@ -120,6 +120,7 @@ PAGES = {
   "blog/jiko-sekinin-odpowiedzialnosc-osobista.html" => "views.blog.jiko_sekinin",
   "blog/kuzushi-kontrolowana-nierownowaga.html" => "views.blog.kuzushi",
   "blog/mui-dzialanie-bez-wymuszania.html" => "views.blog.mui",
+  "blog/awase-dostrojenie-zamiast-silowania.html" => "views.blog.awase",
   "en/blog/bushido-way-of-the-warrior.html" => "views.en.blog.bushido",
   "en/blog/kaizen-continuous-improvement.html" => "views.en.blog.kaizen",
   "en/blog/gaman-endurance-and-composure.html" => "views.en.blog.gaman",
@@ -168,6 +169,7 @@ PAGES = {
   "en/blog/jiko-sekinin-personal-responsibility.html" => "views.en.blog.jiko_sekinin",
   "en/blog/kuzushi-controlled-imbalance.html" => "views.en.blog.kuzushi",
   "en/blog/mui-acting-without-forcing.html" => "views.en.blog.mui",
+  "en/blog/awase-tuning-instead-of-forcing.html" => "views.en.blog.awase",
   "404.html" => "views.not_found",
 }.freeze
     def call(root)

@@ -153,6 +153,7 @@ module Site
       BLOG_BEGINNER_CATEGORY = :first_training
 
       BLOG_POSTS_PL = [
+        { date: "8 października 2026", title: "Awase (合わせ) — dostrojenie zamiast siłowania", url: "/blog/awase-dostrojenie-zamiast-silowania.html", category: :technique, summary: "Chwyt, który nie chce puścić, i krok, który zabiera z linii ataku. O awase jako aktywnym dostrojeniu na macie, w broni i w zwykłej rozmowie." },
         { date: "28 września 2026", title: "Mui (無為) — działanie bez wymuszania", url: "/blog/mui-dzialanie-bez-wymuszania.html", category: :philosophy, summary: "Mui shizen jako cel treningu: naturalność bez sztuczności, kuzushi jako skutek aiki — na macie i w codziennym życiu." },
         { date: "24 sierpnia 2026", title: "Tessen (鉄扇) w aikido — miecz bez miecza, który porządkuje ruch", url: "/blog/tessen-miecz-bez-miecza-ktory-porzadkuje-ruch.html", category: :technique, summary: "Tessen nie jest osobnym systemem walki. Żelazny wachlarz z przekazu O-Sensei porządkuje to, co ćwiczymy bez narzędzi: krawędź, atemi, dystans i intencję — na macie i poza nią." },
         { date: "13 czerwca 2026", title: "Egzamin w budō — pokaz drogi, nie występ przed komisją", url: "/blog/egzamin-w-budo-pokaz-drogi-nie-wystep.html", category: :dojo_life, summary: "Egzamin w budō nie tworzy jakości. Odsłania drogę, którą uczeń naprawdę przeszedł: regularność, korektę, oddech, kontakt, błędy i odpowiedzialność za dalszy trening." },
@@ -204,6 +205,7 @@ module Site
       ].freeze
 
       BLOG_POSTS_EN = [
+        { date: "October 8, 2026", title: "Awase (合わせ) — tuning instead of forcing", url: "/en/blog/awase-tuning-instead-of-forcing.html", category: :technique, summary: "The grip that will not let go, and the step that takes you off the line. On awase as active tuning on the mat, in weapons work, and in an ordinary conversation." },
         { date: "September 28, 2026", title: "Mui (無為) — acting without forcing", url: "/en/blog/mui-acting-without-forcing.html", category: :philosophy, summary: "Mui shizen as the goal of training: naturalness without forcing, kuzushi as the effect of aiki — on the mat and in everyday life." },
         { date: "August 24, 2026", title: "Tessen (鉄扇) in Aikido — the sword that is not a sword", url: "/en/blog/tessen-the-sword-that-is-not-a-sword.html", category: :technique, summary: "The tessen is not a separate fighting system. The iron fan from O-Sensei's transmission puts in order what we already train without tools: the edge, atemi, distance, and intent — on and off the mat." },
         { date: "June 13, 2026", title: "Exams in Budō — showing the road, not performing for the panel", url: "/en/blog/exams-in-budo-showing-the-road-not-performing.html", category: :dojo_life, summary: "A budō exam does not create quality. It reveals the road already walked: regular practice, correction, breath, contact, mistakes, and responsibility for what comes next." },
@@ -804,6 +806,7 @@ module Site
         "blog/jiko-sekinin-odpowiedzialnosc-osobista.html" => "en/blog/jiko-sekinin-personal-responsibility.html",
         "blog/kuzushi-kontrolowana-nierownowaga.html" => "en/blog/kuzushi-controlled-imbalance.html",
         "blog/mui-dzialanie-bez-wymuszania.html" => "en/blog/mui-acting-without-forcing.html",
+        "blog/awase-dostrojenie-zamiast-silowania.html" => "en/blog/awase-tuning-instead-of-forcing.html",
         "blog/droga-i-mistrzostwo.html" => "en/blog/the-path-and-mastery.html",
         "en/" => "",
         "en/index.html" => "",
@@ -887,6 +890,7 @@ module Site
         "en/blog/jiko-sekinin-personal-responsibility.html" => "blog/jiko-sekinin-odpowiedzialnosc-osobista.html",
         "en/blog/kuzushi-controlled-imbalance.html" => "blog/kuzushi-kontrolowana-nierownowaga.html",
         "en/blog/mui-acting-without-forcing.html" => "blog/mui-dzialanie-bez-wymuszania.html",
+        "en/blog/awase-tuning-instead-of-forcing.html" => "blog/awase-dostrojenie-zamiast-silowania.html",
         "en/blog/the-path-and-mastery.html" => "blog/droga-i-mistrzostwo.html",
       }.freeze
 

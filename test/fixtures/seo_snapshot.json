@@ -875,6 +875,17 @@
       "dateModified": "2026-09-28"
     }
   },
+  "blog/awase-dostrojenie-zamiast-silowania.html": {
+    "title": "Awase (合わせ) — dostrojenie zamiast siłowania | Blog",
+    "description": "Awase to aktywne dostrojenie do partnera zamiast siłowania. O katate-dori, ćwiczeniach ken awase i jo awase, słowach Saito i o tym, co odróżnia dostrojenie od biernego podążania.",
+    "keywords": "awase,合わせ, aikido, katate-dori, ken awase, jo awase, Morihiro Saito, musubi, ma-ai, blending",
+    "schema": {
+      "headline": "Awase w aikido — dostrojenie zamiast siłowania",
+      "inLanguage": "pl-PL",
+      "datePublished": "2026-10-08",
+      "dateModified": "2026-10-08"
+    }
+  },
   "en/blog/bushido-way-of-the-warrior.html": {
     "title": "Bushido — the warrior's way in dojo practice | Blog",
     "description": "Bushido in practical Aikido training: discipline, accountability, and dojo ethics that shape durable martial skills.",
@@ -1401,6 +1412,17 @@
       "inLanguage": "en-US",
       "datePublished": "2026-09-28",
       "dateModified": "2026-09-28"
+    }
+  },
+  "en/blog/awase-tuning-instead-of-forcing.html": {
+    "title": "Awase (合わせ) — tuning instead of forcing | Blog",
+    "description": "Awase means actively tuning to your partner instead of forcing. On katate-dori, ken awase and jo awase, Saito's words, and what separates tuning from passive following.",
+    "keywords": "awase, aikido, katate-dori, ken awase, jo awase, Morihiro Saito, musubi, ma-ai, blending",
+    "schema": {
+      "headline": "Awase in Aikido — tuning instead of forcing",
+      "inLanguage": "en-US",
+      "datePublished": "2026-10-08",
+      "dateModified": "2026-10-08"
     }
   },
   "404.html": {

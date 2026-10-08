@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Build with provenance: prints the exact HEAD and the build exit code, so a
+# reviewer can tie the log to a commit. Run from the repo root (host side).
+set -uo pipefail
+cd "$(dirname "${BASH_SOURCE[0]}")/.."
+echo "HEAD=$(git rev-parse HEAD)"
+echo "DIRTY_FILES=$(git status --porcelain | wc -l)"
+sg docker -c 'docker run --rm -v "$PWD:/app" -w /app poa-dev:local ./bin/build'
+rc=$?
+echo "BUILD_EXIT=$rc"
+exit "$rc"

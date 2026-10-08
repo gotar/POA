@@ -1247,3 +1247,7 @@ sg docker -c 'docker run --rm -v "$PWD:/app" -w /app poa-dev:local ruby test/scr
 6. Understand context (`lib/site/view/context.rb`)
 
 **The "magic"** is in dry-system's auto-registration - Ruby classes in `lib/site/` become injectable components automatically.
+
+## Szablony artykułów
+
+Nagłówek `h1` i wstęp artykułu leżą wewnątrz `<div class="article">`, a nie obok niego. Szerokość kolumny czytania pochodzi wyłącznie z tego wrappera. Test: `test/article_heading_alignment_test.rb`.

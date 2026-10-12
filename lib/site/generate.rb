@@ -121,6 +121,7 @@ PAGES = {
   "blog/kuzushi-kontrolowana-nierownowaga.html" => "views.blog.kuzushi",
   "blog/mui-dzialanie-bez-wymuszania.html" => "views.blog.mui",
   "blog/kakugo-wejsc-w-calosci-albo-wcale.html" => "views.blog.kakugo",
+  "blog/heijoshin-zwykly-umysl-w-dniu-proby.html" => "views.blog.heijoshin",
   "blog/awase-dostrojenie-zamiast-silowania.html" => "views.blog.awase",
   "en/blog/bushido-way-of-the-warrior.html" => "views.en.blog.bushido",
   "en/blog/kaizen-continuous-improvement.html" => "views.en.blog.kaizen",
@@ -171,6 +172,7 @@ PAGES = {
   "en/blog/kuzushi-controlled-imbalance.html" => "views.en.blog.kuzushi",
   "en/blog/mui-acting-without-forcing.html" => "views.en.blog.mui",
   "en/blog/kakugo-enter-whole-or-not-at-all.html" => "views.en.blog.kakugo",
+  "en/blog/heijoshin-an-ordinary-mind-under-pressure.html" => "views.en.blog.heijoshin",
   "en/blog/awase-tuning-instead-of-forcing.html" => "views.en.blog.awase",
   "404.html" => "views.not_found",
 }.freeze

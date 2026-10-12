@@ -29,7 +29,7 @@ Samodzielny PR na `origin/master=0046cdfa9717828d66b7ce8dfa121b57c51a7693`. Nie 
    - Wpis `平常心-1`, `びょうじょうしん`: everyday feelings; usual feelings.
    - JMdict. Artykuł unika wyprowadzania teorii z izolowanych odczytań znaków (`hira`, `tsune`, `kokoro` nie są romanizacją całego wyrazu).
 
-## Tekst pierwotny w wskazanym przekładzie: Mumonkan, przypadek 19
+## Tekst pierwotny we wskazanym przekładzie: Mumonkan, przypadek 19
 
 Strona wydawcy: https://www.bdkamerica.org/product/three-chan-classics/
 

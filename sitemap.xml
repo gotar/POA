@@ -112,7 +112,7 @@
   <loc>https://aikido-polska.eu/blog-2.html</loc>
   <priority>0.6</priority>
   <changefreq>weekly</changefreq>
-    <lastmod>2026-05-30</lastmod>
+    <lastmod>2026-05-31</lastmod>
 </url>
 <url>
   <loc>https://aikido-polska.eu/blog-3.html</loc>
@@ -136,7 +136,7 @@
   <loc>https://aikido-polska.eu/blog.html</loc>
   <priority>0.8</priority>
   <changefreq>weekly</changefreq>
-    <lastmod>2026-10-08</lastmod>
+    <lastmod>2026-10-12</lastmod>
 </url>
 <url>
   <loc>https://aikido-polska.eu/blog/5-zasad-kazdej-techniki.html</loc>
@@ -287,6 +287,12 @@
   <priority>0.7</priority>
   <changefreq>monthly</changefreq>
     <lastmod>2026-02-23</lastmod>
+</url>
+<url>
+  <loc>https://aikido-polska.eu/blog/kakugo-wejsc-w-calosci-albo-wcale.html</loc>
+  <priority>0.7</priority>
+  <changefreq>monthly</changefreq>
+    <lastmod>2026-10-12</lastmod>
 </url>
 <url>
   <loc>https://aikido-polska.eu/blog/kintsugi-zlota-naprawa.html</loc>
@@ -550,7 +556,7 @@
   <loc>https://aikido-polska.eu/en/blog-2.html</loc>
   <priority>0.6</priority>
   <changefreq>weekly</changefreq>
-    <lastmod>2026-05-30</lastmod>
+    <lastmod>2026-05-31</lastmod>
 </url>
 <url>
   <loc>https://aikido-polska.eu/en/blog-3.html</loc>
@@ -574,7 +580,7 @@
   <loc>https://aikido-polska.eu/en/blog.html</loc>
   <priority>0.8</priority>
   <changefreq>weekly</changefreq>
-    <lastmod>2026-10-08</lastmod>
+    <lastmod>2026-10-12</lastmod>
 </url>
 <url>
   <loc>https://aikido-polska.eu/en/blog/aiki-harmony-in-action.html</loc>
@@ -701,6 +707,12 @@
   <priority>0.7</priority>
   <changefreq>monthly</changefreq>
     <lastmod>2026-02-23</lastmod>
+</url>
+<url>
+  <loc>https://aikido-polska.eu/en/blog/kakugo-enter-whole-or-not-at-all.html</loc>
+  <priority>0.7</priority>
+  <changefreq>monthly</changefreq>
+    <lastmod>2026-10-12</lastmod>
 </url>
 <url>
   <loc>https://aikido-polska.eu/en/blog/kintsugi-golden-repair.html</loc>

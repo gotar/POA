@@ -4,8 +4,8 @@ require "site/sitemap"
 
 class SeasonalIntakeTest < Minitest::Test
   PAGES = {
-    "index.html" => ["nowy sezon", "przez cały rok", "hero-actions"],
-    "en/index.html" => ["new season", "throughout the year", "hero-actions"],
+    "index.html" => ["Nowy sezon", "Nabór w Polskiej Organizacji Aikido trwa przez cały rok", "hero-actions"],
+    "en/index.html" => ["new season", "The Polish Aikido Organization welcomes new practitioners throughout the year", "hero-actions"],
     "gdynia.html" => ["Nowy sezon", "przez cały rok", "dojo-highlights"],
     "en/gdynia.html" => ["new season", "throughout the year", "dojo-highlights"],
     "pierwszy-trening-aikido-gdynia.html" => ["Nowy sezon", "przez cały rok", "<h2>"]

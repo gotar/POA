@@ -26,7 +26,7 @@ class TwoDojoDiscoveryTest < Minitest::Test
     assert_includes en, "Krzysztof Seget"
     assert_includes en, "724 940 651"
     assert_includes en, "Słowackiego 48"
-    assert_includes en, "5:30–7:30 PM"
+    assert_includes en, "17:30–19:30"
     assert_includes pl, "tel:+48724940651"
     assert_includes pl, "https://www.google.com/maps/dir/?api=1&amp;destination="
   end

@@ -74,7 +74,7 @@ class SiteFooterTest < Minitest::Test
     ].each do |href|
       assert_includes footer, %(href="#{href}"), "PL footer must link #{href}"
     end
-    assert_includes footer, "Bezpłatny pierwszy trening — jak zacząć",
+    assert_includes footer, "Bezpłatny trening w Gdyni — jak zacząć",
       "PL footer must close with the free-first-training CTA"
     assert_includes footer, "pełne dane organizacji",
       "PL footer must point to the full organization data page"
@@ -122,7 +122,7 @@ class SiteFooterTest < Minitest::Test
     ].each do |href|
       assert_includes footer, %(href="#{href}"), "EN footer must link #{href}"
     end
-    assert_includes footer, "Free first class — how to start"
+    assert_includes footer, "Free class in Gdynia — how to start"
     assert_includes footer, "full organization details"
     assert_includes footer, 'aria-label="Call: +48 608-019-078"'
     refute_match(/©\s*\d{4}/, footer, "EN footer must not render a dynamic copyright year")

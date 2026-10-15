@@ -64,14 +64,14 @@ class ContactFirstStepsTest < Minitest::Test
 
   def test_contact_separates_raciborz_training_venue_from_organization_office
     pl = read(CONTACT_PL)
-    assert_includes pl, "Wznowione treningi"
+    assert_includes pl, "Dojo Racibórz — treningi"
     assert_includes pl, 'href="/raciborz.html"'
     assert_includes pl, "Juliusza Słowackiego 48"
     assert_includes pl, "Słowackiego 50/22"
     refute_includes pl, "zajęcia zawieszone"
 
     en = read(CONTACT_EN)
-    assert_includes en, "Resumed classes"
+    assert_includes en, "Racibórz Dojo — training"
     assert_includes en, 'href="/en/raciborz.html"'
     assert_includes en, "Juliusza Słowackiego 48"
     assert_includes en, "Słowackiego 50/22"
@@ -97,7 +97,11 @@ class ContactFirstStepsTest < Minitest::Test
   def test_start_card_on_gdynia_training_first_class_pages
     START_PAGES.each do |relative, expected|
       html = read(relative)
-      card = html[/<aside class="quick-start".*?<\/aside>/m]
+      card = if relative.include?("pierwszy_trening") || relative.include?("first_aikido_training")
+               html[/<section class="quick-start".*?<\/section>/m]
+             else
+               html[/<aside class="quick-start".*?<\/aside>/m]
+             end
       refute_nil card, "#{relative}: concise start card must exist right after the lead"
       assert_includes card, expected[:schedule], "#{relative}: start card must state training hours"
       assert_includes card, "Grudzi", "#{relative}: start card must state the dojo address"

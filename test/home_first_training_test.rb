@@ -39,9 +39,9 @@ class HomeFirstTrainingTest < Minitest::Test
     assert_includes en_template, "Polish Aikido Organization — Gdynia and Racibórz"
     assert_includes pl_template, 'href="/raciborz.html"'
     assert_includes en_template, 'href="/en/raciborz.html"'
-    # Lineage and year-round intake describe the whole organization, not one city.
-    assert_match(/Cała organizacja podąża za linią Shihana Fumio Toyody\. Nowy sezon to dobry moment na start\. Nabór w Polskiej Organizacji Aikido trwa przez cały rok/m, pl_template)
-    assert_match(/whole organization follows Shihan Fumio Toyoda's lineage\. A new season is a good time to start\. The Polish Aikido Organization welcomes new practitioners throughout the year/m, en_template)
+    # Lineage and year-round intake are stated for the whole organization, not one city.
+    assert_match(/Podążamy za linią nauczania Shihana Fumio Toyody\. Nowy sezon to dobry moment na start\. Nabór w Polskiej Organizacji Aikido trwa przez cały rok/m, pl_template)
+    assert_match(/We follow the teaching line of Shihan Fumio Toyoda\. A new season is a good time to start\. The Polish Aikido Organization welcomes new practitioners throughout the year/m, en_template)
     assert_includes pl_template, "Fumio Toyod"
     assert_includes en_template, "Fumio Toyod"
   end

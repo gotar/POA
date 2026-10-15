@@ -729,6 +729,8 @@ module Site
         "index.html" => "en/",
         "" => "en/",
         "kontakt.html" => "en/contact.html",
+        "raciborz.html" => "en/raciborz.html",
+        "en/raciborz.html" => "raciborz.html",
         "aikido/czym_jest.html" => "en/aikido/what_is.html",
         "aikido/historia.html" => "en/aikido/history.html",
         "aikido/korzysci.html" => "en/aikido/benefits.html",

@@ -34,12 +34,14 @@ class HomeFirstTrainingTest < Minitest::Test
     assert_includes en_template, 'href="/en/gdynia.html"'
   end
 
-  def test_hero_keeps_seasonal_intake_and_lineage_contract
-    # SeasonalIntakeTest owns the full contract; pin the strings here so a
-    # future hero rewrite cannot silently drop them.
-    assert_match(/<p class="hero-description">.*Nowy sezon.*przez cały rok.*<\/p>/m, pl_template)
+  def test_organization_first_home_discovery_and_gdynia_intake_are_scoped
+    assert_includes pl_template, "Polska Organizacja Aikido — Gdynia i Racibórz"
+    assert_includes en_template, "Polish Aikido Organization — Gdynia and Racibórz"
+    assert_includes pl_template, 'href="/raciborz.html"'
+    assert_includes en_template, 'href="/en/raciborz.html"'
+    assert_match(/Gdynia.{0,80}(Nowy sezon|sezon)|Nowy sezon.{0,80}Gdynia/m, pl_template)
+    assert_match(/Gdynia.{0,80}(new season|season)|new season.{0,80}Gdynia/m, en_template)
     assert_includes pl_template, "Fumio Toyod"
-    assert_match(/<p class="hero-description">.*new season.*throughout the year.*<\/p>/m, en_template)
     assert_includes en_template, "Fumio Toyod"
   end
 

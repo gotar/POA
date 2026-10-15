@@ -69,25 +69,13 @@ class ContentLinksListsAccessibilityTest < Minitest::Test
       "focus must be an outline, not just a color shift"
   end
 
-  def test_suspended_training_notice_meets_contrast_in_both_languages
-    {
-      "templates/kontakt.html.erb" => "Zajęcia zawieszone",
-      "templates/contact_en.html.erb" => "Classes suspended"
-    }.each do |template, text|
-      html = File.read(site_root.join(template))
-      assert_includes html, 'class="status-suspended"',
-        "#{template} must use the shared notice class"
-      assert_includes html, text, "#{template} must keep its localized notice text"
-      refute_includes html, "#999",
-        "#{template} must not keep the 2.84:1 inline #999"
+  def test_contact_pages_no_longer_claim_raciborz_training_is_suspended
+    ["templates/kontakt.html.erb", "templates/contact_en.html.erb"].each do |template|
+      html = File.read(site_root.join(template)).downcase
+      refute_includes html, "class=\"status-suspended\""
+      refute_includes html, "classes suspended"
+      refute_includes html, "zajęcia zawieszone"
     end
-
-    blocks = declarations_for(".status-suspended")
-    refute_empty blocks, "expected a .status-suspended rule"
-    color = blocks.first[/(?<![0-9a-f])#(?<hex>[0-9a-f]{6})/i, :hex]
-    refute_nil color, ".status-suspended must set an explicit text color"
-    assert_operator contrast_ratio(color, "ffffff"), :>=, MIN_CONTRAST,
-      "notice ##{color} on white must reach #{MIN_CONTRAST}:1, got #{contrast_ratio(color, "ffffff").round(2)}:1"
   end
 
   def test_read_more_links_meet_touch_target_size

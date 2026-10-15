@@ -60,7 +60,7 @@ class SiteFooterTest < Minitest::Test
     assert_includes html, "ul. Komandora Podporucznika Jana Grudzińskiego 1"
     assert_includes html, "81-103 Gdynia"
     assert_includes html, "poniedziałek i piątek 20:00–21:30"
-    assert_includes html, "Pierwszy trening bezpłatny (wiek min. 12–13 lat)"
+    assert_includes html, "Pierwszy trening w Gdyni bezpłatny (młodzież od 12–13 lat)"
   end
 
   def test_pl_footer_cta_and_shortcuts_resolve_to_rendered_pages
@@ -68,7 +68,7 @@ class SiteFooterTest < Minitest::Test
     footer = html[/<footer class="site-footer">.*<\/footer>/m]
 
     %w[
-      /gdynia.html /treningi-aikido-gdynia.html /pierwszy-trening-aikido-gdynia.html
+      /gdynia.html /raciborz.html /treningi-aikido-gdynia.html /pierwszy-trening-aikido-gdynia.html
       /blog.html /aikido/dla_poczatkujacych.html /wymagania_egzaminacyjne/kyu.html
       /wymagania_egzaminacyjne/dan.html /slowniczek.html /faq.html /kontakt.html
     ].each do |href|
@@ -113,10 +113,10 @@ class SiteFooterTest < Minitest::Test
     assert_includes footer, "Polish Aikido Organization"
     assert_includes footer, "Sesshinkan Dojo — Gdynia"
     assert_includes footer, "Monday and Friday 8:00 PM–9:30 PM"
-    assert_includes footer, "First class free (minimum age 12–13)"
+    assert_includes footer, "First class in Gdynia is free (youth from age 12–13)"
 
     %w[
-      /en/gdynia.html /en/aikido-training-gdynia.html /en/first-aikido-training-gdynia.html
+      /en/gdynia.html /en/raciborz.html /en/aikido-training-gdynia.html /en/first-aikido-training-gdynia.html
       /en/blog.html /en/aikido/beginners.html /en/requirements/kyu.html
       /en/requirements/dan.html /en/glossary.html /en/faq.html /en/contact.html
     ].each do |href|

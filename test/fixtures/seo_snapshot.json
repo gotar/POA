@@ -1,8 +1,8 @@
 {
   "index.html": {
-    "title": "Treningi Aikido w Gdyni | Aikido dla początkujących | Sesshinkan Dojo POA",
-    "description": "Treningi Aikido w Gdyni i Trójmieście dla początkujących oraz zaawansowanych. Sesshinkan Dojo Gdynia: wieczorne zajęcia dla dorosłych, pierwszy trening gratis, tradycyjna linia Shihan Fumio Toyody.",
-    "keywords": "aikido gdynia, treningi aikido w gdyni, aikido dla początkujących gdynia, aikido trójmiasto, sztuki walki gdynia dorośli, dojo gdynia, sesshinkan dojo gdynia, poa, oskar szrajer, samoobrona gdynia",
+    "title": "Polska Organizacja Aikido | Dojo Gdynia i Racibórz",
+    "description": "Polska Organizacja Aikido prowadzi dojo w Gdyni i Raciborzu. Sprawdź grafik, miejsca treningów i kontakt w obu miastach.",
+    "keywords": "aikido gdynia, treningi aikido w gdyni, aikido racibórz, treningi aikido racibórz, dojo racibórz, aikido dla początkujących gdynia, aikido trójmiasto, dojo gdynia, poa",
     "schema": null
   },
   "en/index.html": {
@@ -12,15 +12,27 @@
     "schema": null
   },
   "kontakt.html": {
-    "title": "Kontakt i grafik treningów Aikido | Gdynia | Sesshinkan Dojo",
-    "description": "Kontakt, grafik i lokalizacja treningów Aikido w Gdyni. Sprawdź adres dojo, telefon, e-mail, godziny zajęć, dojazd oraz informacje o pierwszym treningu w Sesshinkan Dojo Gdynia.",
-    "keywords": "kontakt aikido gdynia, grafik aikido gdynia, sesshinkan dojo gdynia, treningi aikido gdynia, pierwszy trening aikido gdynia, telefon dojo, adres dojo gdynia",
+    "title": "Kontakt i treningi Aikido w Gdyni i Raciborzu | POA",
+    "description": "Kontakt z Polską Organizacją Aikido i informacje o treningach w dojo w Gdyni oraz Raciborzu.",
+    "keywords": "kontakt Aikido Gdynia, kontakt Aikido Racibórz, treningi aikido Gdynia, treningi aikido Racibórz, dojo Racibórz, Sesshinkan Dojo Gdynia",
     "schema": null
   },
   "en/contact.html": {
-    "title": "Contact | Aikido Gdynia | Sesshinkan Dojo - Training Schedule",
-    "description": "Contact Polish Aikido Organization and Sesshinkan Dojo Gdynia. Address, phone, email, training schedule, and organization details.",
-    "keywords": "contact Polish Aikido Organization, Sesshinkan Dojo Gdynia, Aikido contact, training schedule, phone",
+    "title": "Contact | Gdynia and Racibórz dojos | POA",
+    "description": "Contact the Polish Aikido Organization and find information about its Gdynia and Racibórz dojos.",
+    "keywords": "Aikido contact Gdynia, Aikido contact Racibórz, Aikido training Gdynia, Aikido training Racibórz, Racibórz dojo, Sesshinkan Dojo Gdynia",
+    "schema": null
+  },
+  "raciborz.html": {
+    "title": "Aikido w Raciborzu | Treningi POA",
+    "description": "Treningi Aikido i Jujutsu w Raciborzu dla młodzieży i dorosłych.",
+    "keywords": "Aikido Racibórz, treningi Aikido Racibórz, Jujutsu Racibórz, samoobrona Racibórz, dojo Racibórz, Krzysztof Seget",
+    "schema": null
+  },
+  "en/raciborz.html": {
+    "title": "Aikido in Racibórz | POA training",
+    "description": "Aikido and Jujutsu classes for youth and adults in Racibórz.",
+    "keywords": "Aikido Racibórz, Aikido classes Racibórz, Jujutsu Racibórz, self-defence Racibórz, Racibórz dojo, Krzysztof Seget",
     "schema": null
   },
   "en/aikido/what_is.html": {
@@ -1514,9 +1526,9 @@
     "schema": null
   },
   "": {
-    "title": "Treningi Aikido w Gdyni | Aikido dla początkujących | Sesshinkan Dojo POA",
-    "description": "Treningi Aikido w Gdyni i Trójmieście dla początkujących oraz zaawansowanych. Sesshinkan Dojo Gdynia: wieczorne zajęcia dla dorosłych, pierwszy trening gratis, tradycyjna linia Shihan Fumio Toyody.",
-    "keywords": "aikido gdynia, treningi aikido w gdyni, aikido dla początkujących gdynia, aikido trójmiasto, sztuki walki gdynia dorośli, dojo gdynia, sesshinkan dojo gdynia, poa, oskar szrajer, samoobrona gdynia",
+    "title": "Polska Organizacja Aikido | Dojo Gdynia i Racibórz",
+    "description": "Polska Organizacja Aikido prowadzi dojo w Gdyni i Raciborzu. Sprawdź grafik, miejsca treningów i kontakt w obu miastach.",
+    "keywords": "aikido gdynia, treningi aikido w gdyni, aikido racibórz, treningi aikido racibórz, dojo racibórz, aikido dla początkujących gdynia, aikido trójmiasto, dojo gdynia, poa",
     "schema": null
   }
 }

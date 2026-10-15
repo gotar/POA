@@ -4,7 +4,7 @@ require "site/sitemap"
 
 class SeasonalIntakeTest < Minitest::Test
   PAGES = {
-    "index.html" => ["Nowy sezon", "przez cały rok", "hero-actions"],
+    "index.html" => ["nowy sezon", "przez cały rok", "hero-actions"],
     "en/index.html" => ["new season", "throughout the year", "hero-actions"],
     "gdynia.html" => ["Nowy sezon", "przez cały rok", "dojo-highlights"],
     "en/gdynia.html" => ["new season", "throughout the year", "dojo-highlights"],

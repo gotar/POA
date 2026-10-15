@@ -62,14 +62,20 @@ class ContactFirstStepsTest < Minitest::Test
     end
   end
 
-  def test_contact_raciborz_is_seat_not_training_hall
+  def test_contact_separates_raciborz_training_venue_from_organization_office
     pl = read(CONTACT_PL)
-    assert_includes pl, "siedziba", "PL contact must label Raciborz as the seat"
-    assert_includes pl, "zajęcia zawieszone", "PL contact must keep the Raciborz class-suspended status"
+    assert_includes pl, "Wznowione treningi"
+    assert_includes pl, 'href="/raciborz.html"'
+    assert_includes pl, "Juliusza Słowackiego 48"
+    assert_includes pl, "Słowackiego 50/22"
+    refute_includes pl, "zajęcia zawieszone"
 
     en = read(CONTACT_EN)
-    assert_includes en, "headquarters", "EN contact must label Raciborz as the headquarters"
-    assert_includes en, "suspended", "EN contact must keep the Raciborz class-suspended status"
+    assert_includes en, "Resumed classes"
+    assert_includes en, 'href="/en/raciborz.html"'
+    assert_includes en, "Juliusza Słowackiego 48"
+    assert_includes en, "Słowackiego 50/22"
+    refute_includes en.downcase, "classes suspended"
   end
 
   def test_contact_lead_is_short_not_a_link_farm

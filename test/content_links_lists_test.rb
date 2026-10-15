@@ -1,8 +1,9 @@
 require_relative "test_helper"
 
 # UIUX-04: in-flow links must be recognizable without hover and never by
-# color alone; content lists must keep native markers; the suspended-training
-# notice must meet 4.5:1; standalone read-more links must be touch-sized.
+# color alone; content lists must keep native markers; the contact pages must
+# not claim suspended Racibórz training; standalone read-more links must be
+# touch-sized.
 class ContentLinksListsAccessibilityTest < Minitest::Test
   LINK_CONTEXTS = %w[p li dd td blockquote].freeze
   MIN_CONTRAST = 4.5

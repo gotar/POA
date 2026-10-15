@@ -28,6 +28,13 @@ class DojoFactsConsistencyTest < Minitest::Test
   # "od 20:00 do 21:30" in prose, "8:00 PM–9:30 PM" in English).
   PL_RANGES = [%w[20:00 21:30], %w[17:30 19:30]].freeze
   EN_RANGES = [%w[8:00 9:30], %w[17:30 19:30]].freeze
+  # Only the contact pages also list the organization office, which shares the
+  # Racibórz street with the training venue.
+  CONTACT_PAGES = %w[kontakt.html en/contact.html].freeze
+  GDYNIA_DIRECTIONS = "54.5441767,18.5432137".freeze
+  RACIBORZ_DIRECTIONS_FRAGMENT = "Szkolno-Przedszkolny".freeze
+  GDYNIA_INSTRUCTOR = "Oskar Szrajer".freeze
+  RACIBORZ_INSTRUCTOR = "Krzysztof Seget".freeze
 
   def setup
     @output = Dir.mktmpdir("poa-dojo-facts-")
@@ -79,10 +86,28 @@ class DojoFactsConsistencyTest < Minitest::Test
   end
 
   def assert_only_known_phone_links(content, required, label)
-    links = content.scan(/tel:[^"'\s]+/).map { |href| href.gsub(/\D/, "") }.uniq
-    refute_empty links, "#{label}: no phone links found"
-    assert_empty links - KNOWN_PHONES, "#{label}: unexpected phone link format: #{(links - KNOWN_PHONES).inspect}"
-    assert_includes links, required, "#{label}: missing the dojo's own phone link"
+    targets = content.scan(/tel:[^"'\s]+/).uniq
+    refute_empty targets, "#{label}: no phone links found"
+    malformed = targets.reject { |href| href.match?(/\Atel:\+\d{9,15}\z/) }
+    assert_empty malformed, "#{label}: malformed telephone target(s): #{malformed.inspect}"
+    digits = targets.map { |href| href.gsub(/\D/, "") }.uniq
+    assert_empty digits - KNOWN_PHONES, "#{label}: unknown phone number: #{(digits - KNOWN_PHONES).inspect}"
+    assert_includes digits, required, "#{label}: missing the dojo's own phone link"
+  end
+
+  # Every Google directions link must point at one of the two canonical
+  # destinations, and the dojo's own destination must be present.
+  def assert_directions(content, required, label)
+    targets = content.scan(/maps\/dir\/\?[^"']*destination=([^"'&]+)/).flatten
+                .map { |value| value.tr("+", " ").gsub("%2C", ",") }.uniq
+    refute_empty targets, "#{label}: no directions link found"
+    unknown = targets.reject { |value| canonical_destination?(value) }
+    assert_empty unknown, "#{label}: unknown directions destination(s): #{unknown.inspect}"
+    assert(targets.any? { |value| value.include?(required) }, "#{label}: missing directions for #{required}")
+  end
+
+  def canonical_destination?(value)
+    value.include?(GDYNIA_DIRECTIONS) || value.include?(RACIBORZ_DIRECTIONS_FRAGMENT)
   end
 
   def assert_gdynia_facts(content, label, english: false)
@@ -93,13 +118,18 @@ class DojoFactsConsistencyTest < Minitest::Test
     assert_only_known_schedules(content, allowed, required, label)
     assert_street_numbers(content, "Grudzińskiego", ["1"], "1", label)
     assert_only_known_phone_links(content, GDYNIA_PHONE, label)
+    assert_directions(content, GDYNIA_DIRECTIONS, label)
+    assert_includes content, "Sensei #{GDYNIA_INSTRUCTOR}", "#{label}: missing the Gdynia instructor"
   end
 
-  def assert_raciborz_facts(content, label, english: false)
+  def assert_raciborz_facts(content, label, english: false, contact_page: false)
     allowed = (PL_RANGES + EN_RANGES).uniq
+    street_numbers = contact_page ? %w[48 50] : %w[48]
     assert_only_known_schedules(content, allowed, %w[17:30 19:30], label)
-    assert_street_numbers(content, "Słowackiego", %w[48 50], "48", label)
+    assert_street_numbers(content, "Słowackiego", street_numbers, "48", label)
     assert_only_known_phone_links(content, RACIBORZ_PHONE, label)
+    assert_directions(content, RACIBORZ_DIRECTIONS_FRAGMENT, label)
+    assert_includes content, "Sensei #{RACIBORZ_INSTRUCTOR}", "#{label}: missing the Racibórz instructor"
   end
 
   def test_gdynia_facts_are_consistent_across_pages_and_footer
@@ -110,8 +140,10 @@ class DojoFactsConsistencyTest < Minitest::Test
   end
 
   def test_raciborz_facts_are_consistent_across_pages_and_footer
-    RACIBORZ_PAGES.each { |path| assert_raciborz_facts(page(path), path) }
-    RACIBORZ_EN_PAGES.each { |path| assert_raciborz_facts(page(path), path, english: true) }
+    RACIBORZ_PAGES.each { |path| assert_raciborz_facts(page(path), path, contact_page: CONTACT_PAGES.include?(path)) }
+    RACIBORZ_EN_PAGES.each do |path|
+      assert_raciborz_facts(page(path), path, english: true, contact_page: CONTACT_PAGES.include?(path))
+    end
     assert_raciborz_facts(footer_of("index.html"), "footer index.html")
     assert_raciborz_facts(footer_of("en/index.html"), "footer en/index.html")
   end

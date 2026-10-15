@@ -925,6 +925,11 @@
     <lastmod>2026-01-30</lastmod>
 </url>
 <url>
+  <loc>https://aikido-polska.eu/en/raciborz.html</loc>
+  <priority>0.6</priority>
+  <changefreq>monthly</changefreq>
+</url>
+<url>
   <loc>https://aikido-polska.eu/en/requirements/dan.html</loc>
   <priority>0.6</priority>
   <changefreq>monthly</changefreq>
@@ -971,6 +976,11 @@
   <priority>0.9</priority>
   <changefreq>monthly</changefreq>
     <lastmod>2026-09-11</lastmod>
+</url>
+<url>
+  <loc>https://aikido-polska.eu/raciborz.html</loc>
+  <priority>0.6</priority>
+  <changefreq>monthly</changefreq>
 </url>
 <url>
   <loc>https://aikido-polska.eu/slowniczek.html</loc>

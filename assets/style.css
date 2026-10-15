@@ -968,14 +968,6 @@ h4 svg.icon {
   color: #555;
 }
 
-/* UIUX-04: suspended-training notice. #595959 on white is 7.0:1
-   (the old inline #999 was 2.84:1, an axe color-contrast violation). */
-.status-suspended {
-  color: #595959;
-  font-style: italic;
-  margin: 0;
-}
-
 /* UIUX-10: contact quick actions (Call / Write / Directions) and the shared
    first-visit start card. All tap targets are >= 44px (pointer + keyboard:
    native anchors, no tabindex games). */

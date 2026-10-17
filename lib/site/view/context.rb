@@ -153,6 +153,7 @@ module Site
       BLOG_BEGINNER_CATEGORY = :first_training
 
       BLOG_POSTS_PL = [
+        { date: "12 października 2026", title: "Yutori (ゆとり) — zostaw miejsce na korektę", url: "/blog/yutori-zostaw-miejsce-na-korekte.html", category: :practice, summary: "Zapas czasu, przestrzeni i uwagi w pracy z partnerem. Jak zostawić miejsce na korektę bez utożsamiania spokoju z łatwym treningiem." },
         { date: "12 października 2026", title: "Kakugo (覚悟) — zdecydowanie bez brawury", url: "/blog/kakugo-wejsc-w-calosci-albo-wcale.html", category: :practice, summary: "Gotowość na trudność i odpowiedzialne działanie: czym jest kakugo i dlaczego pełne zaangażowanie nie oznacza pełnej siły ani rezygnacji z uważności." },
         { date: "8 października 2026", title: "Awase (合わせ) — dostrojenie zamiast siłowania", url: "/blog/awase-dostrojenie-zamiast-silowania.html", category: :technique, summary: "Chwyt, który nie chce puścić, i krok, który zabiera z linii ataku. O awase jako aktywnym dostrojeniu na macie, w broni i w zwykłej rozmowie." },
         { date: "28 września 2026", title: "Mui (無為) — działanie bez wymuszania", url: "/blog/mui-dzialanie-bez-wymuszania.html", category: :philosophy, summary: "Mui shizen jako cel treningu: naturalność bez sztuczności, kuzushi jako skutek aiki — na macie i w codziennym życiu." },
@@ -206,6 +207,7 @@ module Site
       ].freeze
 
       BLOG_POSTS_EN = [
+        { date: "October 12, 2026", title: "Yutori (ゆとり) — room to adjust", url: "/en/blog/yutori-room-to-adjust.html", category: :practice, summary: "A margin of time, space and attention in partner practice. Leave room to adjust without confusing a quiet pace with an easy task." },
         { date: "October 12, 2026", title: "Kakugo (覚悟) — resolve without recklessness", url: "/en/blog/kakugo-enter-whole-or-not-at-all.html", category: :practice, summary: "Readiness for difficulty and responsible action: what kakugo means, and why full commitment is not maximum force or a reason to stop paying attention." },
         { date: "October 8, 2026", title: "Awase (合わせ) — tuning instead of forcing", url: "/en/blog/awase-tuning-instead-of-forcing.html", category: :technique, summary: "The grip that will not let go, and the step that takes you off the line. On awase as active tuning on the mat, in weapons work, and in an ordinary conversation." },
         { date: "September 28, 2026", title: "Mui (無為) — acting without forcing", url: "/en/blog/mui-acting-without-forcing.html", category: :philosophy, summary: "Mui shizen as the goal of training: naturalness without forcing, kuzushi as the effect of aiki — on the mat and in everyday life." },
@@ -810,6 +812,7 @@ module Site
         "blog/jiko-sekinin-odpowiedzialnosc-osobista.html" => "en/blog/jiko-sekinin-personal-responsibility.html",
         "blog/kuzushi-kontrolowana-nierownowaga.html" => "en/blog/kuzushi-controlled-imbalance.html",
         "blog/mui-dzialanie-bez-wymuszania.html" => "en/blog/mui-acting-without-forcing.html",
+        "blog/yutori-zostaw-miejsce-na-korekte.html" => "en/blog/yutori-room-to-adjust.html",
         "blog/kakugo-wejsc-w-calosci-albo-wcale.html" => "en/blog/kakugo-enter-whole-or-not-at-all.html",
         "blog/awase-dostrojenie-zamiast-silowania.html" => "en/blog/awase-tuning-instead-of-forcing.html",
         "blog/droga-i-mistrzostwo.html" => "en/blog/the-path-and-mastery.html",
@@ -895,6 +898,7 @@ module Site
         "en/blog/jiko-sekinin-personal-responsibility.html" => "blog/jiko-sekinin-odpowiedzialnosc-osobista.html",
         "en/blog/kuzushi-controlled-imbalance.html" => "blog/kuzushi-kontrolowana-nierownowaga.html",
         "en/blog/mui-acting-without-forcing.html" => "blog/mui-dzialanie-bez-wymuszania.html",
+        "en/blog/yutori-room-to-adjust.html" => "blog/yutori-zostaw-miejsce-na-korekte.html",
         "en/blog/kakugo-enter-whole-or-not-at-all.html" => "blog/kakugo-wejsc-w-calosci-albo-wcale.html",
         "en/blog/awase-tuning-instead-of-forcing.html" => "blog/awase-dostrojenie-zamiast-silowania.html",
         "en/blog/the-path-and-mastery.html" => "blog/droga-i-mistrzostwo.html",

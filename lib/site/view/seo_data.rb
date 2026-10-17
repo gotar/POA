@@ -138,6 +138,7 @@ DEFAULT_TITLES = {
   "blog/jiko-sekinin-odpowiedzialnosc-osobista.html" => "Jiko sekinin — odpowiedzialność osobista w dojo | Blog",
   "blog/kuzushi-kontrolowana-nierownowaga.html" => "Kuzushi — kontrolowana nierównowaga i prowadzenie techniki | Blog",
   "blog/mui-dzialanie-bez-wymuszania.html" => "Mui (無為) — działanie bez wymuszania | Blog",
+  "blog/yutori-zostaw-miejsce-na-korekte.html" => "Yutori (ゆとり) — zostaw miejsce na korektę | Blog",
   "blog/kakugo-wejsc-w-calosci-albo-wcale.html" => "Kakugo (覚悟) — zdecydowanie bez brawury | Blog",
   "blog/awase-dostrojenie-zamiast-silowania.html" => "Awase (合わせ) — dostrojenie zamiast siłowania | Blog",
   "en/blog.html" => "Blog | Polish Aikido Organization",
@@ -189,6 +190,7 @@ DEFAULT_TITLES = {
   "en/blog/jiko-sekinin-personal-responsibility.html" => "Jiko sekinin — personal responsibility in the dojo | Blog",
   "en/blog/kuzushi-controlled-imbalance.html" => "Kuzushi — controlled imbalance and technical guidance | Blog",
   "en/blog/mui-acting-without-forcing.html" => "Mui — acting without forcing in Aikido practice | Blog",
+  "en/blog/yutori-room-to-adjust.html" => "Yutori (ゆとり) — room to adjust | Blog",
   "en/blog/kakugo-enter-whole-or-not-at-all.html" => "Kakugo (覚悟) — resolve without recklessness | Blog",
   "en/blog/awase-tuning-instead-of-forcing.html" => "Awase (合わせ) — tuning instead of forcing | Blog",
 }.freeze
@@ -312,6 +314,7 @@ DEFAULT_DESCRIPTIONS = {
   "blog/jiko-sekinin-odpowiedzialnosc-osobista.html" => "Jiko sekinin w Aikido: odpowiedzialność za własny rozwój, przygotowanie, higienę techniki i postawę na treningu.",
   "blog/kuzushi-kontrolowana-nierownowaga.html" => "Kuzushi od podstaw do zastosowania: kontrolowana nierównowaga, timing i kierunek, które otwierają skuteczną technikę.",
   "blog/mui-dzialanie-bez-wymuszania.html" => "Mui i mui shizen w aikido: naturalność bez wymuszania, mushin kontra kuzushi i zasada nieingerencji na macie oraz poza nią.",
+  "blog/yutori-zostaw-miejsce-na-korekte.html" => "Yutori (ゆとり) w aikido: zapas czasu, przestrzeni i uwagi. Znaczenie słowa i praktyka, która zostawia obojgu partnerom miejsce na korektę.",
   "blog/kakugo-wejsc-w-calosci-albo-wcale.html" => "Kakugo (覚悟): gotowość na trudność i zdecydowanie w aikido. Znaczenie słowa, kontekst Hagakure i zaangażowanie bez brawury, z troską o partnera.",
   "blog/awase-dostrojenie-zamiast-silowania.html" => "Awase to aktywne dostrojenie do partnera zamiast siłowania. O katate-dori, ćwiczeniach ken awase i jo awase, słowach Saito i o tym, co odróżnia dostrojenie od biernego podążania.",
   "en/blog.html" => "POA blog: seminar recaps, dojo updates, event announcements, and practical notes for Aikido practitioners.",
@@ -362,6 +365,7 @@ DEFAULT_DESCRIPTIONS = {
   "en/blog/jiko-sekinin-personal-responsibility.html" => "Jiko sekinin in Aikido: personal responsibility for preparation, attitude, and the quality of each repetition.",
   "en/blog/kuzushi-controlled-imbalance.html" => "Kuzushi explained through practice: controlled imbalance, timing, and direction to unlock effective technique.",
   "en/blog/mui-acting-without-forcing.html" => "Mui and mui shizen in Aikido: naturalness without forcing, mushin versus kuzushi, and the principle of non-interference on the mat and beyond.",
+  "en/blog/yutori-room-to-adjust.html" => "Yutori (ゆとり) in Aikido: a margin of time, space and attention. Explore the word's meaning and practice that leaves both partners room to adjust.",
   "en/blog/kakugo-enter-whole-or-not-at-all.html" => "Kakugo (覚悟): readiness and resolve in Aikido. Explore the word's meanings, Hagakure's historical context and commitment without recklessness.",
   "en/blog/awase-tuning-instead-of-forcing.html" => "Awase means actively tuning to your partner instead of forcing. On katate-dori, ken awase and jo awase, Saito's words, and what separates tuning from passive following.",
 }.freeze
@@ -484,6 +488,7 @@ DEFAULT_KEYWORDS = {
   "blog/jiko-sekinin-odpowiedzialnosc-osobista.html" => "jiko sekinin aikido, odpowiedzialnosc osobista, samodyscyplina, etyka treningu",
   "blog/kuzushi-kontrolowana-nierownowaga.html" => "kuzushi aikido, kontrolowana nierownowaga, balans, timing, prowadzenie partnera",
   "blog/mui-dzialanie-bez-wymuszania.html" => "mui, mui shizen, wu-wei, mushin, kuzushi, aikido filozofia, dzialanie bez wymuszania",
+  "blog/yutori-zostaw-miejsce-na-korekte.html" => "yutori, yutori znaczenie, aikido, budo, korekta, margines, maai, praca z partnerem, tempo treningu",
   "blog/kakugo-wejsc-w-calosci-albo-wcale.html" => "kakugo, kakugo znaczenie, aikido, budo, gotowość, zdecydowanie, bezpieczeństwo w dojo, trening aikido, hagakure",
   "blog/awase-dostrojenie-zamiast-silowania.html" => "awase,合わせ, aikido, katate-dori, ken awase, jo awase, Morihiro Saito, musubi, ma-ai, blending",
   "en/blog.html" => "aikido blog, poa updates, dojo announcements, seminar recap, sesshinkan",
@@ -534,6 +539,7 @@ DEFAULT_KEYWORDS = {
   "en/blog/jiko-sekinin-personal-responsibility.html" => "jiko sekinin aikido, personal responsibility, self-discipline, training ethics",
   "en/blog/kuzushi-controlled-imbalance.html" => "kuzushi aikido, controlled imbalance, timing, direction, partner guidance",
   "en/blog/mui-acting-without-forcing.html" => "mui, mui shizen, wu-wei, mushin, kuzushi, aikido philosophy, acting without forcing",
+  "en/blog/yutori-room-to-adjust.html" => "yutori, yutori meaning, aikido, budo, adjustment, margin, maai, partner practice, training pace",
   "en/blog/kakugo-enter-whole-or-not-at-all.html" => "kakugo, kakugo meaning, aikido, budo, mental readiness, resolve, dojo safety, aikido training, hagakure",
   "en/blog/awase-tuning-instead-of-forcing.html" => "awase, aikido, katate-dori, ken awase, jo awase, Morihiro Saito, musubi, ma-ai, blending",
 }.freeze
@@ -998,6 +1004,12 @@ ARTICLE_SCHEMA_DATA = {
     date_published: "2026-09-28",
     date_modified: "2026-09-28",
   },
+  "blog/yutori-zostaw-miejsce-na-korekte.html" => {
+    name: "Yutori (ゆとり) — zostaw miejsce na korektę",
+    lang: "pl",
+    date_published: "2026-10-12",
+    date_modified: "2026-10-12",
+  },
   "blog/kakugo-wejsc-w-calosci-albo-wcale.html" => {
     name: "Kakugo (覚悟) — zdecydowanie bez brawury",
     lang: "pl",
@@ -1105,6 +1117,12 @@ ARTICLE_SCHEMA_DATA = {
     lang: "en",
     date_published: "2026-09-28",
     date_modified: "2026-09-28",
+  },
+  "en/blog/yutori-room-to-adjust.html" => {
+    name: "Yutori (ゆとり) — room to adjust",
+    lang: "en",
+    date_published: "2026-10-12",
+    date_modified: "2026-10-12",
   },
   "en/blog/kakugo-enter-whole-or-not-at-all.html" => {
     name: "Kakugo (覚悟) — resolve without recklessness",

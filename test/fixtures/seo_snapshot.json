@@ -898,6 +898,17 @@
       "dateModified": "2026-10-12"
     }
   },
+  "blog/heijoshin-zwykly-umysl-w-dniu-proby.html": {
+    "title": "Heijōshin (平常心) — zwykły umysł w dniu próby | Blog",
+    "description": "Heijōshin (平常心) w aikido: codzienna praktyka w dniu próby. Znaczenia słowa, kontekst zen i przygotowanie do egzaminu bez obietnic braku tremy.",
+    "keywords": "heijoshin, heijōshin, byōjōshin, 平常心, aikido, budo, zwykły umysł, trema, egzamin aikido, mumonkan",
+    "schema": {
+      "headline": "Heijōshin (平常心) — zwykły umysł w dniu próby",
+      "inLanguage": "pl-PL",
+      "datePublished": "2026-10-12",
+      "dateModified": "2026-10-12"
+    }
+  },
   "blog/awase-dostrojenie-zamiast-silowania.html": {
     "title": "Awase (合わせ) — dostrojenie zamiast siłowania | Blog",
     "description": "Awase to aktywne dostrojenie do partnera zamiast siłowania. O katate-dori, ćwiczeniach ken awase i jo awase, słowach Saito i o tym, co odróżnia dostrojenie od biernego podążania.",
@@ -1448,6 +1459,17 @@
       "dateModified": "2026-10-12"
     }
   },
+  "en/blog/heijoshin-an-ordinary-mind-under-pressure.html": {
+    "title": "Heijōshin (平常心) — an ordinary mind under pressure | Blog",
+    "description": "Heijōshin (平常心) in Aikido: everyday practice under pressure. Explore its meanings, Zen context and grading preparation without promising freedom from nerves.",
+    "keywords": "heijoshin, heijōshin, byōjōshin, 平常心, aikido, budo, ordinary mind, grading nerves, mumonkan",
+    "schema": {
+      "headline": "Heijōshin (平常心) — an ordinary mind under pressure",
+      "inLanguage": "en-US",
+      "datePublished": "2026-10-12",
+      "dateModified": "2026-10-12"
+    }
+  },
   "en/blog/awase-tuning-instead-of-forcing.html": {
     "title": "Awase (合わせ) — tuning instead of forcing | Blog",
     "description": "Awase means actively tuning to your partner instead of forcing. On katate-dori, ken awase and jo awase, Saito's words, and what separates tuning from passive following.",
@@ -1495,6 +1517,12 @@
     "keywords": "blog aikido archiwum, starsze wpisy poa, artykuly dojo, aikido gdynia",
     "schema": null
   },
+  "blog-6.html": {
+    "title": "Blog — strona 6 | Polska Organizacja Aikido",
+    "description": "Blog POA — starsze wpisy (strona 6): archiwalne artykuły, relacje i komentarze treningowe.",
+    "keywords": "blog aikido archiwum, starsze wpisy poa, artykuly dojo, aikido gdynia",
+    "schema": null
+  },
   "en/blog.html": {
     "title": "Blog | Polish Aikido Organization",
     "description": "POA blog: seminar recaps, dojo updates, event announcements, and practical notes for Aikido practitioners.",
@@ -1522,6 +1550,12 @@
   "en/blog-5.html": {
     "title": "Blog — page 5 | Polish Aikido Organization",
     "description": "POA blog — older posts (page 5): archived articles, recaps, and practical dojo notes.",
+    "keywords": "aikido blog archive, older posts, dojo articles, poa updates",
+    "schema": null
+  },
+  "en/blog-6.html": {
+    "title": "Blog — page 6 | Polish Aikido Organization",
+    "description": "POA blog — older posts (page 6): archived articles, recaps, and practical dojo notes.",
     "keywords": "aikido blog archive, older posts, dojo articles, poa updates",
     "schema": null
   },

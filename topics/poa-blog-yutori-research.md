@@ -51,6 +51,8 @@ Te materiały są standardem dydaktycznym projektu, nie badaniem urazowości. Ar
 - Scena z maty oraz kalendarz są ilustracjami autora. Zastosowanie pojęcia do treningu to jawna interpretacja dydaktyczna.
 - Nie obiecujemy bezpieczeństwa, leczenia stresu ani rozwiązania wszystkich problemów przez dyscyplinę.
 
+Review/publication date: 2026-10-17. The preparation date 2026-10-12 above is historical and remains unchanged.
+
 ## Gate PR
 
 Regeneracja pełnego SEO snapshotu (dwie ścieżki artykułu oraz automatycznie dodana szósta strona indeksu PL/EN, stare wpisy bez zmian). Docker `bin/test` i `bin/build`, kontrola lokalnych linków/cytowań, lang-switch, metadanych, schema i sitemap. Niezależne review PL/EN, dowodowe z własnym pobraniem źródeł oraz integracyjne. Dopiero po zamknięciu uwag PR ma być oznaczony ready. **Nie scalać i nie wdrażać.**

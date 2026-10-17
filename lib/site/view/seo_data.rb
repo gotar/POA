@@ -1007,8 +1007,8 @@ ARTICLE_SCHEMA_DATA = {
   "blog/yutori-zostaw-miejsce-na-korekte.html" => {
     name: "Yutori (ゆとり) — zostaw miejsce na korektę",
     lang: "pl",
-    date_published: "2026-10-12",
-    date_modified: "2026-10-12",
+    date_published: "2026-10-17",
+    date_modified: "2026-10-17",
   },
   "blog/kakugo-wejsc-w-calosci-albo-wcale.html" => {
     name: "Kakugo (覚悟) — zdecydowanie bez brawury",
@@ -1121,8 +1121,8 @@ ARTICLE_SCHEMA_DATA = {
   "en/blog/yutori-room-to-adjust.html" => {
     name: "Yutori (ゆとり) — room to adjust",
     lang: "en",
-    date_published: "2026-10-12",
-    date_modified: "2026-10-12",
+    date_published: "2026-10-17",
+    date_modified: "2026-10-17",
   },
   "en/blog/kakugo-enter-whole-or-not-at-all.html" => {
     name: "Kakugo (覚悟) — resolve without recklessness",

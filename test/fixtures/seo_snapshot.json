@@ -1,8 +1,8 @@
 {
   "index.html": {
-    "title": "Treningi Aikido w Gdyni | Aikido dla początkujących | Sesshinkan Dojo POA",
-    "description": "Treningi Aikido w Gdyni i Trójmieście dla początkujących oraz zaawansowanych. Sesshinkan Dojo Gdynia: wieczorne zajęcia dla dorosłych, pierwszy trening gratis, tradycyjna linia Shihan Fumio Toyody.",
-    "keywords": "aikido gdynia, treningi aikido w gdyni, aikido dla początkujących gdynia, aikido trójmiasto, sztuki walki gdynia dorośli, dojo gdynia, sesshinkan dojo gdynia, poa, oskar szrajer, samoobrona gdynia",
+    "title": "Polska Organizacja Aikido | Dojo Gdynia i Racibórz",
+    "description": "Polska Organizacja Aikido prowadzi dojo w Gdyni i Raciborzu. Sprawdź grafik, miejsca treningów i kontakt w obu miastach.",
+    "keywords": "aikido gdynia, treningi aikido w gdyni, aikido racibórz, treningi aikido racibórz, dojo racibórz, aikido dla początkujących gdynia, aikido trójmiasto, dojo gdynia, poa",
     "schema": null
   },
   "en/index.html": {
@@ -12,15 +12,27 @@
     "schema": null
   },
   "kontakt.html": {
-    "title": "Kontakt i grafik treningów Aikido | Gdynia | Sesshinkan Dojo",
-    "description": "Kontakt, grafik i lokalizacja treningów Aikido w Gdyni. Sprawdź adres dojo, telefon, e-mail, godziny zajęć, dojazd oraz informacje o pierwszym treningu w Sesshinkan Dojo Gdynia.",
-    "keywords": "kontakt aikido gdynia, grafik aikido gdynia, sesshinkan dojo gdynia, treningi aikido gdynia, pierwszy trening aikido gdynia, telefon dojo, adres dojo gdynia",
+    "title": "Kontakt i treningi Aikido w Gdyni i Raciborzu | POA",
+    "description": "Kontakt z Polską Organizacją Aikido i informacje o treningach w dojo w Gdyni oraz Raciborzu.",
+    "keywords": "kontakt Aikido Gdynia, kontakt Aikido Racibórz, treningi aikido Gdynia, treningi aikido Racibórz, dojo Racibórz, Sesshinkan Dojo Gdynia",
     "schema": null
   },
   "en/contact.html": {
-    "title": "Contact | Aikido Gdynia | Sesshinkan Dojo - Training Schedule",
-    "description": "Contact Polish Aikido Organization and Sesshinkan Dojo Gdynia. Address, phone, email, training schedule, and organization details.",
-    "keywords": "contact Polish Aikido Organization, Sesshinkan Dojo Gdynia, Aikido contact, training schedule, phone",
+    "title": "Contact | Gdynia and Racibórz dojos | POA",
+    "description": "Contact the Polish Aikido Organization and find information about its Gdynia and Racibórz dojos.",
+    "keywords": "Aikido contact Gdynia, Aikido contact Racibórz, Aikido training Gdynia, Aikido training Racibórz, Racibórz dojo, Sesshinkan Dojo Gdynia",
+    "schema": null
+  },
+  "raciborz.html": {
+    "title": "Aikido w Raciborzu | Treningi POA",
+    "description": "Treningi Aikido i Jujutsu w Raciborzu dla młodzieży i dorosłych.",
+    "keywords": "Aikido Racibórz, treningi Aikido Racibórz, Jujutsu Racibórz, samoobrona Racibórz, dojo Racibórz, Krzysztof Seget",
+    "schema": null
+  },
+  "en/raciborz.html": {
+    "title": "Aikido in Racibórz | POA training",
+    "description": "Aikido and Jujutsu classes for youth and adults in Racibórz.",
+    "keywords": "Aikido Racibórz, Aikido classes Racibórz, Jujutsu Racibórz, self-defence Racibórz, Racibórz dojo, Krzysztof Seget",
     "schema": null
   },
   "en/aikido/what_is.html": {
@@ -84,9 +96,9 @@
     "schema": null
   },
   "biografie/szrajer.html": {
-    "title": "Oskar Szrajer | 5 Dan | Lider POA Gdynia",
-    "description": "Sensei Oskar Szrajer - 5 dan, obecny lider POA i instruktor w Gdyni.",
-    "keywords": "oskar szrajer, poa, 5 dan, instruktor, biografia",
+    "title": "Oskar Szrajer | 5 Dan | Lider Polskiej Organizacji Aikido",
+    "description": "Sensei Oskar Szrajer - 5 dan i lider Polskiej Organizacji Aikido; prowadzi treningi w Sesshinkan Dojo w Gdyni.",
+    "keywords": "oskar szrajer, poa, 5 dan, lider organizacji, instruktor Gdynia, biografia",
     "schema": null
   },
   "biografie/ostrowski.html": {
@@ -132,9 +144,9 @@
     "schema": null
   },
   "en/biographies/szrajer.html": {
-    "title": "Oskar Szrajer | 5th Dan | POA Head Gdynia",
-    "description": "Sensei Oskar Szrajer - 5th dan, current head of Polish Aikido Organization. Leading POA's development and training in Gdynia.",
-    "keywords": "Oskar Szrajer, 5th dan, POA head, Gdynia Aikido, current instructor, Sesshinkan Dojo, Polish teacher",
+    "title": "Oskar Szrajer | 5th Dan | Polish Aikido Organization Leader",
+    "description": "Sensei Oskar Szrajer - 5th dan and head of Polish Aikido Organization; teaches at Sesshinkan Dojo in Gdynia.",
+    "keywords": "Oskar Szrajer, 5th dan, Polish Aikido Organization leader, Gdynia instructor, Sesshinkan Dojo, Polish teacher",
     "schema": null
   },
   "en/biographies/ostrowski.html": {
@@ -216,9 +228,9 @@
     "schema": null
   },
   "aikido/dla_poczatkujacych.html": {
-    "title": "Aikido dla początkujących Gdynia | Pierwszy trening | Sesshinkan Dojo",
-    "description": "Aikido dla początkujących w Gdyni: jak wyglądają zajęcia dla dorosłych, co zabrać na pierwszy trening, czego się spodziewać i jak zacząć w Sesshinkan Dojo.",
-    "keywords": "aikido dla początkujących gdynia, pierwszy trening aikido gdynia, podstawy aikido, dojo gdynia, trening aikido dorośli gdynia, aikido gdynia dla dorosłych",
+    "title": "Aikido dla początkujących | Gdynia i Racibórz | POA",
+    "description": "Poradnik Aikido dla początkujących: co zabrać, etykieta i stopnie w POA oraz informacje o dojo w Gdyni i Raciborzu.",
+    "keywords": "aikido dla początkujących, pierwszy trening aikido, podstawy aikido, etykieta dojo, stopnie aikido",
     "schema": null
   },
   "en/aikido/history.html": {
@@ -258,8 +270,8 @@
     "schema": null
   },
   "en/aikido/beginners.html": {
-    "title": "Aikido for Beginners | First Class | Sesshinkan Dojo",
-    "description": "Complete guide for Aikido beginners: what to expect, how to prepare, training structure, basic techniques, and etiquette for your first classes.",
+    "title": "Aikido for Beginners | Gdynia and Racibórz | POA",
+    "description": "Aikido beginner guide: preparation, etiquette and ranks, with dojo information for Gdynia and Racibórz.",
     "keywords": "Aikido for beginners, first Aikido class, martial arts beginners, Aikido basics, dojo etiquette, starting Aikido, beginner guide",
     "schema": null
   },
@@ -306,9 +318,9 @@
     "schema": null
   },
   "pierwszy-trening-aikido-gdynia.html": {
-    "title": "Pierwszy trening Aikido Gdynia | Co zabrać i jak zacząć | Sesshinkan Dojo",
-    "description": "Pierwszy trening Aikido w Gdyni krok po kroku: co zabrać, jak wygląda wejście na matę, czy można zacząć bez doświadczenia i jak przygotować się do zajęć.",
-    "keywords": "pierwszy trening aikido gdynia, jak zacząć aikido gdynia, co zabrać na aikido, aikido dla początkujących gdynia, trening próbny aikido gdynia",
+    "title": "Pierwszy trening Aikido | Gdynia i Racibórz | POA",
+    "description": "Pierwszy trening Aikido w Gdyni i Raciborzu: co zabrać, etykieta, przebieg zajęć i praktyczne informacje dla obu dojo POA.",
+    "keywords": "pierwszy trening aikido, Gdynia, Racibórz, co zabrać na aikido, etykieta dojo, stopnie aikido, poradnik dla początkujących",
     "schema": null
   },
   "aikido-dla-doroslych-gdynia.html": {
@@ -330,20 +342,20 @@
     "schema": null
   },
   "en/first-aikido-training-gdynia.html": {
-    "title": "First Aikido Training in Gdynia | What to Bring and How to Start | Sesshinkan Dojo",
-    "description": "First Aikido class in Gdynia step by step: what to bring, what stepping onto the mat looks like, whether you can start with no experience and how to prepare.",
-    "keywords": "first Aikido class Gdynia, how to start Aikido Gdynia, what to bring to Aikido, Aikido for beginners Gdynia, trial Aikido class Gdynia",
+    "title": "First Aikido Training | Gdynia and Racibórz | POA",
+    "description": "First Aikido class in Gdynia and Racibórz: what to bring, etiquette, class outline and practical information for both POA dojos.",
+    "keywords": "first Aikido class, Gdynia, Racibórz, what to bring, Aikido beginners, dojo etiquette, training guide",
     "schema": null
   },
   "faq.html": {
-    "title": "FAQ Aikido Gdynia | Pytania o treningi i pierwszy trening | POA",
-    "description": "FAQ o Aikido w Gdyni: odpowiedzi o pierwszym treningu, kosztach, stroju, grafiku, lokalizacji dojo i rozpoczęciu zajęć w Sesshinkan Dojo.",
-    "keywords": "faq aikido gdynia, pytania o aikido, pierwszy trening aikido gdynia, ile kosztuje aikido gdynia, strój na aikido, grafik aikido gdynia",
+    "title": "FAQ o Aikido | Gdynia i Racibórz | POA",
+    "description": "FAQ Polskiej Organizacji Aikido: odpowiedzi o treningu, początkujących, etykiecie i stopniach oraz informacje o dojo w Gdyni i Raciborzu.",
+    "keywords": "faq aikido, pytania o aikido, pierwszy trening aikido, strój na aikido, stopnie aikido, dojo POA",
     "schema": null
   },
   "en/faq.html": {
-    "title": "FAQ | Frequently Asked Questions | Aikido POA",
-    "description": "FAQ | Frequently Asked Questions | Aikido POA | Polska Organizacja Aikido",
+    "title": "Aikido FAQ | Gdynia and Racibórz | POA",
+    "description": "Aikido FAQ about training, beginners, etiquette and ranks, with local dojo information for Gdynia and Racibórz.",
     "keywords": "Aikido, POA, Polska Organizacja Aikido, Polish Aikido Organization, Toyoda, Germanov",
     "schema": null
   },
@@ -873,6 +885,17 @@
       "inLanguage": "pl-PL",
       "datePublished": "2026-09-28",
       "dateModified": "2026-09-28"
+    }
+  },
+  "blog/yutori-zostaw-miejsce-na-korekte.html": {
+    "title": "Yutori (ゆとり) — zostaw miejsce na korektę | Blog",
+    "description": "Yutori (ゆとり) w aikido: zapas czasu, przestrzeni i uwagi. Znaczenie słowa i praktyka, która zostawia obojgu partnerom miejsce na korektę.",
+    "keywords": "yutori, yutori znaczenie, aikido, budo, korekta, margines, maai, praca z partnerem, tempo treningu",
+    "schema": {
+      "headline": "Yutori (ゆとり) — zostaw miejsce na korektę",
+      "inLanguage": "pl-PL",
+      "datePublished": "2026-10-17",
+      "dateModified": "2026-10-17"
     }
   },
   "blog/kakugo-wejsc-w-calosci-albo-wcale.html": {
@@ -1436,6 +1459,17 @@
       "dateModified": "2026-09-28"
     }
   },
+  "en/blog/yutori-room-to-adjust.html": {
+    "title": "Yutori (ゆとり) — room to adjust | Blog",
+    "description": "Yutori (ゆとり) in Aikido: a margin of time, space and attention. Explore the word's meaning and practice that leaves both partners room to adjust.",
+    "keywords": "yutori, yutori meaning, aikido, budo, adjustment, margin, maai, partner practice, training pace",
+    "schema": {
+      "headline": "Yutori (ゆとり) — room to adjust",
+      "inLanguage": "en-US",
+      "datePublished": "2026-10-17",
+      "dateModified": "2026-10-17"
+    }
+  },
   "en/blog/kakugo-enter-whole-or-not-at-all.html": {
     "title": "Kakugo (覚悟) — resolve without recklessness | Blog",
     "description": "Kakugo (覚悟): readiness and resolve in Aikido. Explore the word's meanings, Hagakure's historical context and commitment without recklessness.",
@@ -1548,9 +1582,9 @@
     "schema": null
   },
   "": {
-    "title": "Treningi Aikido w Gdyni | Aikido dla początkujących | Sesshinkan Dojo POA",
-    "description": "Treningi Aikido w Gdyni i Trójmieście dla początkujących oraz zaawansowanych. Sesshinkan Dojo Gdynia: wieczorne zajęcia dla dorosłych, pierwszy trening gratis, tradycyjna linia Shihan Fumio Toyody.",
-    "keywords": "aikido gdynia, treningi aikido w gdyni, aikido dla początkujących gdynia, aikido trójmiasto, sztuki walki gdynia dorośli, dojo gdynia, sesshinkan dojo gdynia, poa, oskar szrajer, samoobrona gdynia",
+    "title": "Polska Organizacja Aikido | Dojo Gdynia i Racibórz",
+    "description": "Polska Organizacja Aikido prowadzi dojo w Gdyni i Raciborzu. Sprawdź grafik, miejsca treningów i kontakt w obu miastach.",
+    "keywords": "aikido gdynia, treningi aikido w gdyni, aikido racibórz, treningi aikido racibórz, dojo racibórz, aikido dla początkujących gdynia, aikido trójmiasto, dojo gdynia, poa",
     "schema": null
   }
 }

@@ -153,6 +153,7 @@ module Site
       BLOG_BEGINNER_CATEGORY = :first_training
 
       BLOG_POSTS_PL = [
+        { date: "17 października 2026", title: "Yutori (ゆとり) — zostaw miejsce na korektę", url: "/blog/yutori-zostaw-miejsce-na-korekte.html", category: :practice, summary: "Zapas czasu, przestrzeni i uwagi w pracy z partnerem. Jak zostawić miejsce na korektę bez utożsamiania spokoju z łatwym treningiem." },
         { date: "12 października 2026", title: "Kakugo (覚悟) — zdecydowanie bez brawury", url: "/blog/kakugo-wejsc-w-calosci-albo-wcale.html", category: :practice, summary: "Gotowość na trudność i odpowiedzialne działanie: czym jest kakugo i dlaczego pełne zaangażowanie nie oznacza pełnej siły ani rezygnacji z uważności." },
         { date: "12 października 2026", title: "Heijōshin (平常心) — zwykły umysł w dniu próby", url: "/blog/heijoshin-zwykly-umysl-w-dniu-proby.html", category: :practice, summary: "Codzienna praktyka w ważnym dniu: znaczenia heijōshin, kontekst zwykłego umysłu w zen i odpowiedzialna praca z tremą na egzaminie." },
         { date: "8 października 2026", title: "Awase (合わせ) — dostrojenie zamiast siłowania", url: "/blog/awase-dostrojenie-zamiast-silowania.html", category: :technique, summary: "Chwyt, który nie chce puścić, i krok, który zabiera z linii ataku. O awase jako aktywnym dostrojeniu na macie, w broni i w zwykłej rozmowie." },
@@ -207,6 +208,7 @@ module Site
       ].freeze
 
       BLOG_POSTS_EN = [
+        { date: "October 17, 2026", title: "Yutori (ゆとり) — room to adjust", url: "/en/blog/yutori-room-to-adjust.html", category: :practice, summary: "A margin of time, space and attention in partner practice. Leave room to adjust without confusing a measured pace with an easy task." },
         { date: "October 12, 2026", title: "Kakugo (覚悟) — resolve without recklessness", url: "/en/blog/kakugo-enter-whole-or-not-at-all.html", category: :practice, summary: "Readiness for difficulty and responsible action: what kakugo means, and why full commitment is not maximum force or a reason to stop paying attention." },
         { date: "October 12, 2026", title: "Heijōshin (平常心) — an ordinary mind under pressure", url: "/en/blog/heijoshin-an-ordinary-mind-under-pressure.html", category: :practice, summary: "Everyday practice on an important day: the meanings of heijōshin, the Zen context of ordinary mind and responsible preparation for grading nerves." },
         { date: "October 8, 2026", title: "Awase (合わせ) — tuning instead of forcing", url: "/en/blog/awase-tuning-instead-of-forcing.html", category: :technique, summary: "The grip that will not let go, and the step that takes you off the line. On awase as active tuning on the mat, in weapons work, and in an ordinary conversation." },
@@ -731,6 +733,8 @@ module Site
         "index.html" => "en/",
         "" => "en/",
         "kontakt.html" => "en/contact.html",
+        "raciborz.html" => "en/raciborz.html",
+        "en/raciborz.html" => "raciborz.html",
         "aikido/czym_jest.html" => "en/aikido/what_is.html",
         "aikido/historia.html" => "en/aikido/history.html",
         "aikido/korzysci.html" => "en/aikido/benefits.html",
@@ -810,6 +814,7 @@ module Site
         "blog/jiko-sekinin-odpowiedzialnosc-osobista.html" => "en/blog/jiko-sekinin-personal-responsibility.html",
         "blog/kuzushi-kontrolowana-nierownowaga.html" => "en/blog/kuzushi-controlled-imbalance.html",
         "blog/mui-dzialanie-bez-wymuszania.html" => "en/blog/mui-acting-without-forcing.html",
+        "blog/yutori-zostaw-miejsce-na-korekte.html" => "en/blog/yutori-room-to-adjust.html",
         "blog/kakugo-wejsc-w-calosci-albo-wcale.html" => "en/blog/kakugo-enter-whole-or-not-at-all.html",
         "blog/heijoshin-zwykly-umysl-w-dniu-proby.html" => "en/blog/heijoshin-an-ordinary-mind-under-pressure.html",
         "blog/awase-dostrojenie-zamiast-silowania.html" => "en/blog/awase-tuning-instead-of-forcing.html",
@@ -896,6 +901,7 @@ module Site
         "en/blog/jiko-sekinin-personal-responsibility.html" => "blog/jiko-sekinin-odpowiedzialnosc-osobista.html",
         "en/blog/kuzushi-controlled-imbalance.html" => "blog/kuzushi-kontrolowana-nierownowaga.html",
         "en/blog/mui-acting-without-forcing.html" => "blog/mui-dzialanie-bez-wymuszania.html",
+        "en/blog/yutori-room-to-adjust.html" => "blog/yutori-zostaw-miejsce-na-korekte.html",
         "en/blog/kakugo-enter-whole-or-not-at-all.html" => "blog/kakugo-wejsc-w-calosci-albo-wcale.html",
         "en/blog/heijoshin-an-ordinary-mind-under-pressure.html" => "blog/heijoshin-zwykly-umysl-w-dniu-proby.html",
         "en/blog/awase-tuning-instead-of-forcing.html" => "blog/awase-dostrojenie-zamiast-silowania.html",

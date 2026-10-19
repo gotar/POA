@@ -68,8 +68,12 @@ Nie twierdzimy, że sam spokój lub codzienność jest wystarczającym warunkiem
 
 Nowa oś eseju: napięcie między codziennym opanowaniem a buddyjskim byōjōshin; zwykła praktyka jako podłoże, nie autopilot ani wytwarzanie specjalnego „spokojnego siebie”. Case 19 prowadzi argument przez pytania o dążenie, poznanie i niewiedzę oraz komentarz Wumena o dalszych trzydziestu latach nauki. Nie jest to „po prostu nie próbuj”. Przykłady z pracy w parze, korekty nauczyciela, błędu w pracy i naprawy relacji domowej rozwijają odpowiedzialną, sytuacyjną uwagę. Bliscy i współpracownicy nie są uke; spokój nie oznacza uległości ani akceptacji krzywdy. Przykłady są ilustracjami autora, nie autobiografią ani kliniczną metodą.
 
-Tytuły robocze: PL „Heijōshin (平常心) — zwyczajność bez autopilota”; EN “Heijōshin (平常心) — ordinary, not automatic”. Data widoczna w szablonach pozostaje 12 października 2026 jako data przygotowania; 19 października to data przeglądu, nie publikacji. Wcześniejsza notatka przygotowania 12Oct zachowana powyżej.
+Tytuły po rewizji: PL „Heijōshin (平常心) — zwyczajność bez autopilota”; EN “Heijōshin (平常心) — ordinary, not automatic”. Przygotowanie szkicu: 12 października 2026; przegląd krytyczny: 19 października. Po osobnym poleceniu właściciela publikacja jest przygotowana na 19 października 2026 — tę datę mają obie wersje tekstu, katalogi i dane Article. Wcześniejsza historia przygotowania pozostaje zachowana.
 
-## Gate PR
+## Gate PR — historyczny zakres przed zgodą na publikację
 
-Pełny SEO snapshot: dwa nowe adresy artykułu oraz automatycznie dodana szósta strona indeksu PL/EN, wszystkie dotychczasowe wpisy bez zmian. Docker testy/build, weryfikacja wygenerowanych odnośników/SEO/schema/hreflang/sitemap. Niezależne recenzje PL/EN, źródeł z własnymi pobraniami i integracji. **PR pozostaje otwarty: nie scalać, nie wdrażać.**
+Pełny SEO snapshot: dwa nowe adresy artykułu oraz automatycznie dodana szósta strona indeksu PL/EN, wszystkie dotychczasowe wpisy bez zmian. Docker testy/build, weryfikacja wygenerowanych odnośników/SEO/schema/hreflang/sitemap. Niezależne recenzje PL/EN, źródeł z własnymi pobraniami i integracji. Ówczesny zakres: **PR otwarty, bez merge i deployu**.
+
+## Zgoda na publikację — 2026-10-19
+
+Po końcowym GO właściciel polecił opublikować wpis. To osobne polecenie znosi wcześniejszą granicę PR-only: po weryfikacji dat i pełnych bramkach lokalnych należy scalić PR #106, wdrożyć przez `bin/deploy-local` i potwierdzić obie wersje na żywo. GitHub Actions nie jest częścią tego wydania.

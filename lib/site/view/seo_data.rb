@@ -1025,8 +1025,8 @@ ARTICLE_SCHEMA_DATA = {
   "blog/heijoshin-zwykly-umysl-w-dniu-proby.html" => {
     name: "Heijōshin (平常心) — zwyczajność bez autopilota",
     lang: "pl",
-    date_published: "2026-10-12",
-    date_modified: "2026-10-12",
+    date_published: "2026-10-19",
+    date_modified: "2026-10-19",
   },
   "blog/awase-dostrojenie-zamiast-silowania.html" => {
     name: "Awase w aikido — dostrojenie zamiast siłowania",
@@ -1145,8 +1145,8 @@ ARTICLE_SCHEMA_DATA = {
   "en/blog/heijoshin-an-ordinary-mind-under-pressure.html" => {
     name: "Heijōshin (平常心) — ordinary, not automatic",
     lang: "en",
-    date_published: "2026-10-12",
-    date_modified: "2026-10-12",
+    date_published: "2026-10-19",
+    date_modified: "2026-10-19",
   },
   "en/blog/awase-tuning-instead-of-forcing.html" => {
     name: "Awase in Aikido — tuning instead of forcing",

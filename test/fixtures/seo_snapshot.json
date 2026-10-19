@@ -909,6 +909,17 @@
       "dateModified": "2026-10-12"
     }
   },
+  "blog/heijoshin-zwykly-umysl-w-dniu-proby.html": {
+    "title": "Heijōshin (平常心) — zwyczajność bez autopilota | Blog",
+    "description": "Zwykły umysł nie oznacza automatycznego powtarzania nawyków. O heijōshin, dialogu zen i uważnej odpowiedzi na macie, w pracy i w rodzinie.",
+    "keywords": "heijoshin, heijōshin, byōjōshin, 平常心, aikido, budo, zwykły umysł, nawyk, uważność, odpowiedzialność, mumonkan",
+    "schema": {
+      "headline": "Heijōshin (平常心) — zwyczajność bez autopilota",
+      "inLanguage": "pl-PL",
+      "datePublished": "2026-10-19",
+      "dateModified": "2026-10-19"
+    }
+  },
   "blog/awase-dostrojenie-zamiast-silowania.html": {
     "title": "Awase (合わせ) — dostrojenie zamiast siłowania | Blog",
     "description": "Awase to aktywne dostrojenie do partnera zamiast siłowania. O katate-dori, ćwiczeniach ken awase i jo awase, słowach Saito i o tym, co odróżnia dostrojenie od biernego podążania.",
@@ -1468,6 +1479,17 @@
       "inLanguage": "en-US",
       "datePublished": "2026-10-12",
       "dateModified": "2026-10-12"
+    }
+  },
+  "en/blog/heijoshin-an-ordinary-mind-under-pressure.html": {
+    "title": "Heijōshin (平常心) — ordinary, not automatic | Blog",
+    "description": "Heijōshin and the ordinary mind in Zen: responding with attention rather than habit, in Aikido practice, at work and at home.",
+    "keywords": "heijoshin, heijōshin, byōjōshin, 平常心, aikido, budo, ordinary mind, habit, attention, responsibility, mumonkan",
+    "schema": {
+      "headline": "Heijōshin (平常心) — ordinary, not automatic",
+      "inLanguage": "en-US",
+      "datePublished": "2026-10-19",
+      "dateModified": "2026-10-19"
     }
   },
   "en/blog/awase-tuning-instead-of-forcing.html": {

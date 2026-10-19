@@ -140,7 +140,7 @@ DEFAULT_TITLES = {
   "blog/mui-dzialanie-bez-wymuszania.html" => "Mui (無為) — działanie bez wymuszania | Blog",
   "blog/yutori-zostaw-miejsce-na-korekte.html" => "Yutori (ゆとり) — zostaw miejsce na korektę | Blog",
   "blog/kakugo-wejsc-w-calosci-albo-wcale.html" => "Kakugo (覚悟) — zdecydowanie bez brawury | Blog",
-  "blog/heijoshin-zwykly-umysl-w-dniu-proby.html" => "Heijōshin (平常心) — zwykły umysł w dniu próby | Blog",
+  "blog/heijoshin-zwykly-umysl-w-dniu-proby.html" => "Heijōshin (平常心) — zwyczajność bez autopilota | Blog",
   "blog/awase-dostrojenie-zamiast-silowania.html" => "Awase (合わせ) — dostrojenie zamiast siłowania | Blog",
   "en/blog.html" => "Blog | Polish Aikido Organization",
   "en/blog/bushido-way-of-the-warrior.html" => "Bushido — the warrior's way in dojo practice | Blog",
@@ -193,7 +193,7 @@ DEFAULT_TITLES = {
   "en/blog/mui-acting-without-forcing.html" => "Mui — acting without forcing in Aikido practice | Blog",
   "en/blog/yutori-room-to-adjust.html" => "Yutori (ゆとり) — room to adjust | Blog",
   "en/blog/kakugo-enter-whole-or-not-at-all.html" => "Kakugo (覚悟) — resolve without recklessness | Blog",
-  "en/blog/heijoshin-an-ordinary-mind-under-pressure.html" => "Heijōshin (平常心) — an ordinary mind under pressure | Blog",
+  "en/blog/heijoshin-an-ordinary-mind-under-pressure.html" => "Heijōshin (平常心) — ordinary, not automatic | Blog",
   "en/blog/awase-tuning-instead-of-forcing.html" => "Awase (合わせ) — tuning instead of forcing | Blog",
 }.freeze
 
@@ -318,7 +318,7 @@ DEFAULT_DESCRIPTIONS = {
   "blog/mui-dzialanie-bez-wymuszania.html" => "Mui i mui shizen w aikido: naturalność bez wymuszania, mushin kontra kuzushi i zasada nieingerencji na macie oraz poza nią.",
   "blog/yutori-zostaw-miejsce-na-korekte.html" => "Yutori (ゆとり) w aikido: zapas czasu, przestrzeni i uwagi. Znaczenie słowa i praktyka, która zostawia obojgu partnerom miejsce na korektę.",
   "blog/kakugo-wejsc-w-calosci-albo-wcale.html" => "Kakugo (覚悟): gotowość na trudność i zdecydowanie w aikido. Znaczenie słowa, kontekst Hagakure i zaangażowanie bez brawury, z troską o partnera.",
-  "blog/heijoshin-zwykly-umysl-w-dniu-proby.html" => "Heijōshin (平常心) w aikido: codzienna praktyka w dniu próby. Znaczenia słowa, kontekst zen i przygotowanie do egzaminu bez obietnic braku tremy.",
+  "blog/heijoshin-zwykly-umysl-w-dniu-proby.html" => "Zwykły umysł nie oznacza automatycznego powtarzania nawyków. O heijōshin, dialogu zen i uważnej odpowiedzi na macie, w pracy i w rodzinie.",
   "blog/awase-dostrojenie-zamiast-silowania.html" => "Awase to aktywne dostrojenie do partnera zamiast siłowania. O katate-dori, ćwiczeniach ken awase i jo awase, słowach Saito i o tym, co odróżnia dostrojenie od biernego podążania.",
   "en/blog.html" => "POA blog: seminar recaps, dojo updates, event announcements, and practical notes for Aikido practitioners.",
   "en/blog/bushido-way-of-the-warrior.html" => "Bushido in practical Aikido training: discipline, accountability, and dojo ethics that shape durable martial skills.",
@@ -370,7 +370,7 @@ DEFAULT_DESCRIPTIONS = {
   "en/blog/mui-acting-without-forcing.html" => "Mui and mui shizen in Aikido: naturalness without forcing, mushin versus kuzushi, and the principle of non-interference on the mat and beyond.",
   "en/blog/yutori-room-to-adjust.html" => "Yutori (ゆとり) in Aikido: a margin of time, space and attention. Explore the word's meaning and practice that leaves both partners room to adjust.",
   "en/blog/kakugo-enter-whole-or-not-at-all.html" => "Kakugo (覚悟): readiness and resolve in Aikido. Explore the word's meanings, Hagakure's historical context and commitment without recklessness.",
-  "en/blog/heijoshin-an-ordinary-mind-under-pressure.html" => "Heijōshin (平常心) in Aikido: everyday practice under pressure. Explore its meanings, Zen context and grading preparation without promising freedom from nerves.",
+  "en/blog/heijoshin-an-ordinary-mind-under-pressure.html" => "Heijōshin and the ordinary mind in Zen: responding with attention rather than habit, in Aikido practice, at work and at home.",
   "en/blog/awase-tuning-instead-of-forcing.html" => "Awase means actively tuning to your partner instead of forcing. On katate-dori, ken awase and jo awase, Saito's words, and what separates tuning from passive following.",
 }.freeze
 
@@ -494,7 +494,7 @@ DEFAULT_KEYWORDS = {
   "blog/mui-dzialanie-bez-wymuszania.html" => "mui, mui shizen, wu-wei, mushin, kuzushi, aikido filozofia, dzialanie bez wymuszania",
   "blog/yutori-zostaw-miejsce-na-korekte.html" => "yutori, yutori znaczenie, aikido, budo, korekta, margines, maai, praca z partnerem, tempo treningu",
   "blog/kakugo-wejsc-w-calosci-albo-wcale.html" => "kakugo, kakugo znaczenie, aikido, budo, gotowość, zdecydowanie, bezpieczeństwo w dojo, trening aikido, hagakure",
-  "blog/heijoshin-zwykly-umysl-w-dniu-proby.html" => "heijoshin, heijōshin, byōjōshin, 平常心, aikido, budo, zwykły umysł, trema, egzamin aikido, mumonkan",
+  "blog/heijoshin-zwykly-umysl-w-dniu-proby.html" => "heijoshin, heijōshin, byōjōshin, 平常心, aikido, budo, zwykły umysł, nawyk, uważność, odpowiedzialność, mumonkan",
   "blog/awase-dostrojenie-zamiast-silowania.html" => "awase,合わせ, aikido, katate-dori, ken awase, jo awase, Morihiro Saito, musubi, ma-ai, blending",
   "en/blog.html" => "aikido blog, poa updates, dojo announcements, seminar recap, sesshinkan",
   "en/blog/bushido-way-of-the-warrior.html" => "bushido aikido, warrior way, dojo ethics, training discipline, budo principles",
@@ -546,7 +546,7 @@ DEFAULT_KEYWORDS = {
   "en/blog/mui-acting-without-forcing.html" => "mui, mui shizen, wu-wei, mushin, kuzushi, aikido philosophy, acting without forcing",
   "en/blog/yutori-room-to-adjust.html" => "yutori, yutori meaning, aikido, budo, adjustment, margin, maai, partner practice, training pace",
   "en/blog/kakugo-enter-whole-or-not-at-all.html" => "kakugo, kakugo meaning, aikido, budo, mental readiness, resolve, dojo safety, aikido training, hagakure",
-  "en/blog/heijoshin-an-ordinary-mind-under-pressure.html" => "heijoshin, heijōshin, byōjōshin, 平常心, aikido, budo, ordinary mind, grading nerves, mumonkan",
+  "en/blog/heijoshin-an-ordinary-mind-under-pressure.html" => "heijoshin, heijōshin, byōjōshin, 平常心, aikido, budo, ordinary mind, habit, attention, responsibility, mumonkan",
   "en/blog/awase-tuning-instead-of-forcing.html" => "awase, aikido, katate-dori, ken awase, jo awase, Morihiro Saito, musubi, ma-ai, blending",
 }.freeze
 
@@ -1023,7 +1023,7 @@ ARTICLE_SCHEMA_DATA = {
     date_modified: "2026-10-12",
   },
   "blog/heijoshin-zwykly-umysl-w-dniu-proby.html" => {
-    name: "Heijōshin (平常心) — zwykły umysł w dniu próby",
+    name: "Heijōshin (平常心) — zwyczajność bez autopilota",
     lang: "pl",
     date_published: "2026-10-12",
     date_modified: "2026-10-12",
@@ -1143,7 +1143,7 @@ ARTICLE_SCHEMA_DATA = {
     date_modified: "2026-10-12",
   },
   "en/blog/heijoshin-an-ordinary-mind-under-pressure.html" => {
-    name: "Heijōshin (平常心) — an ordinary mind under pressure",
+    name: "Heijōshin (平常心) — ordinary, not automatic",
     lang: "en",
     date_published: "2026-10-12",
     date_modified: "2026-10-12",

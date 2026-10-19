@@ -64,6 +64,12 @@ Nie twierdzimy, że sam spokój lub codzienność jest wystarczającym warunkiem
 - Krótkie pokazanie zadania przed grupą i zmiana poleceń są propozycją do uzgodnienia z nauczycielem, nie wykazaną metodą leczenia lęku ani zgodą na nieuzgodnione ataki.
 - Przykłady egzaminu/prezentacji są ilustracjami autora. Notatki, próba i wsparcie nie są „maską”. Hasło filozoficzne nie zastępuje odpowiedniej pomocy przy utrwalonym lęku.
 
+## Rewizja krytyczna 2026-10-19
+
+Nowa oś eseju: napięcie między codziennym opanowaniem a buddyjskim byōjōshin; zwykła praktyka jako podłoże, nie autopilot ani wytwarzanie specjalnego „spokojnego siebie”. Case 19 prowadzi argument przez pytania o dążenie, poznanie i niewiedzę oraz komentarz Wumena o dalszych trzydziestu latach nauki. Nie jest to „po prostu nie próbuj”. Przykłady z pracy w parze, korekty nauczyciela, błędu w pracy i naprawy relacji domowej rozwijają odpowiedzialną, sytuacyjną uwagę. Bliscy i współpracownicy nie są uke; spokój nie oznacza uległości ani akceptacji krzywdy. Przykłady są ilustracjami autora, nie autobiografią ani kliniczną metodą.
+
+Tytuły robocze: PL „Heijōshin (平常心) — zwyczajność bez autopilota”; EN “Heijōshin (平常心) — ordinary, not automatic”. Data widoczna w szablonach pozostaje 12 października 2026 jako data przygotowania; 19 października to data przeglądu, nie publikacji. Wcześniejsza notatka przygotowania 12Oct zachowana powyżej.
+
 ## Gate PR
 
 Pełny SEO snapshot: dwa nowe adresy artykułu oraz automatycznie dodana szósta strona indeksu PL/EN, wszystkie dotychczasowe wpisy bez zmian. Docker testy/build, weryfikacja wygenerowanych odnośników/SEO/schema/hreflang/sitemap. Niezależne recenzje PL/EN, źródeł z własnymi pobraniami i integracji. **PR pozostaje otwarty: nie scalać, nie wdrażać.**

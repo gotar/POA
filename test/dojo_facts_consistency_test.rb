@@ -32,7 +32,7 @@ class DojoFactsConsistencyTest < Minitest::Test
   # Racibórz street with the training venue.
   CONTACT_PAGES = %w[kontakt.html en/contact.html].freeze
   GDYNIA_DIRECTIONS = "54.5441767,18.5432137".freeze
-  RACIBORZ_DIRECTIONS_FRAGMENT = "Szkolno-Przedszkolny".freeze
+  RACIBORZ_DIRECTIONS_FRAGMENT = "50.0863227,18.2069599".freeze
   GDYNIA_INSTRUCTOR = "Oskar Szrajer".freeze
   RACIBORZ_INSTRUCTOR = "Krzysztof Seget".freeze
 

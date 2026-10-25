@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 # Local deploy path (owner policy 2026-08-23): GitHub Actions is not part of
-# the default flow. Build deterministically in poa-dev:local and push the
-# generated build/ to the gh-pages branch — same mechanics as the (now
-# dispatch-only) GH Actions deploy job, just run on this host.
+# the default flow. Build in poa-dev:local, push build/ to gh-pages, then poll
+# the live site until the new stylesheet version appears (Pages + CDN lag 1-3 min).
 set -euo pipefail
 
 PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
@@ -15,6 +14,9 @@ else
   echo "poa-dev:local container not found — building with local bundle..."
   bundle exec ./bin/build
 fi
+
+# Expected stylesheet version, read from the fresh build before we leave the tree.
+EXPECTED="$(grep -o 'assets/style.css?v=[0-9a-f]*' "$PROJECT_ROOT/build/index.html" | head -1 | sed 's/.*v=//' || true)"
 
 echo "Pushing generated build/ to gh-pages..."
 tmpdir="$(mktemp -d)"
@@ -39,5 +41,22 @@ fi
 
 git commit -m "Deploy GitHub Pages (local)"
 git push origin HEAD:gh-pages
+echo "✅ Pushed to gh-pages."
 
-echo "✅ Deployed locally. Verify: curl -fsS https://aikido-polska.eu/ | grep -F 'expected new text'"
+# Verify live: poll until the new stylesheet version is served.
+VERIFY_URL="${DEPLOY_VERIFY_URL:-https://aikido-polska.eu/}"
+TIMEOUT="${DEPLOY_VERIFY_TIMEOUT:-300}"
+if [ -z "$EXPECTED" ]; then
+  echo "⚠️  No stylesheet version in build/index.html — skipping live verification."
+  exit 0
+fi
+deadline=$(( $(date +%s) + TIMEOUT ))
+until curl -fsS "$VERIFY_URL?cb=$(date +%s)" -o /tmp/deploy-verify.html 2>/dev/null \
+      && grep -q "style.css?v=$EXPECTED" /tmp/deploy-verify.html; do
+  if [ "$(date +%s)" -ge "$deadline" ]; then
+    echo "❌ Not live after ${TIMEOUT}s: expected style.css?v=$EXPECTED on $VERIFY_URL" >&2
+    exit 1
+  fi
+  sleep 15
+done
+echo "✅ Live: style.css?v=$EXPECTED on $VERIFY_URL"

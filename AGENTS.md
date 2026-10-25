@@ -45,3 +45,4 @@ sg docker -c 'docker run --rm -v "$PWD:/app" -w /app poa-dev:local ./bin/build'
 - New page checklist: templates (PL+EN) → views (PL+EN) → registration in `lib/site/generate.rb` → navigation (`_nav.html.erb`/`_nav_en.html.erb`) → SEO defaults in `lib/site/view/context.rb` → build → commit. Sitemap is generated automatically by the build (`lib/site/sitemap.rb`, fed by every path rendered in `Generate#render`) — no manual `sitemap.xml` editing; `assets/sitemap.xml` does not exist.
 - CSS: single `assets/style.css`, mobile-first (breakpoint 768px), BEM-like. After CSS changes bump the cache-buster version in URLs (content MD5 handles this automatically).
 - Full project knowledge base: `docs/AGENTS.md`, `docs/ARCHITECTURE.md`.
+- Article templates: H1 and preamble live inside `<div class="article">` (see `docs/ARCHITECTURE.md`, "Szablony artykułów").

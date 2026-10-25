@@ -34,12 +34,15 @@ class HomeFirstTrainingTest < Minitest::Test
     assert_includes en_template, 'href="/en/gdynia.html"'
   end
 
-  def test_hero_keeps_seasonal_intake_and_lineage_contract
-    # SeasonalIntakeTest owns the full contract; pin the strings here so a
-    # future hero rewrite cannot silently drop them.
-    assert_match(/<p class="hero-description">.*Nowy sezon.*przez cały rok.*<\/p>/m, pl_template)
+  def test_organization_first_home_discovery_and_org_wide_lineage_intake
+    assert_includes pl_template, "Polska Organizacja Aikido — Gdynia i Racibórz"
+    assert_includes en_template, "Polish Aikido Organization — Gdynia and Racibórz"
+    assert_includes pl_template, 'href="/raciborz.html"'
+    assert_includes en_template, 'href="/en/raciborz.html"'
+    # Lineage and year-round intake are stated for the whole organization, not one city.
+    assert_match(/Podążamy za linią nauczania Shihana Fumio Toyody\. Nowy sezon to dobry moment na start\. Nabór w Polskiej Organizacji Aikido trwa przez cały rok/m, pl_template)
+    assert_match(/We follow the teaching line of Shihan Fumio Toyoda\. A new season is a good time to start\. The Polish Aikido Organization welcomes new practitioners throughout the year/m, en_template)
     assert_includes pl_template, "Fumio Toyod"
-    assert_match(/<p class="hero-description">.*new season.*throughout the year.*<\/p>/m, en_template)
     assert_includes en_template, "Fumio Toyod"
   end
 

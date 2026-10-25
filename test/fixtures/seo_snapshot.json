@@ -655,6 +655,17 @@
       "dateModified": "2026-08-24"
     }
   },
+  "blog/atemi-uderzenie-ktore-ma-nie-dojsc.html": {
+    "title": "Atemi (当て身) — uderzenie, które ma nie dojść | Blog",
+    "description": "Atemi w aikido: czym jest uderzenie w budo, jak działa kuzushi, timing i ma-ai, przykłady w ikkyo, shihonage, iriminage i kotegaeshi oraz metodyka treningu w linii Toyody.",
+    "keywords": "atemi aikido, uderzenia w aikido, kuzushi, irimi, ma-ai, timing aikido, budo, aikido dla początkujących, egzamin aikido",
+    "schema": {
+      "headline": "Atemi (当て身) — uderzenie, które ma nie dojść",
+      "inLanguage": "pl-PL",
+      "datePublished": "2026-10-24",
+      "dateModified": "2026-10-24"
+    }
+  },
   "blog/genkikai-cialo-ktore-wraca-na-miejsce.html": {
     "title": "Genkikai — ciało, które wraca na miejsce | Blog",
     "description": "Genkikai w systemie Masatomiego Ikedy: trzecia praktyka Sanshinkai, która daje ciału metodę powrotu po intensywnym treningu aikido i Hojo.",
@@ -1181,6 +1192,17 @@
       "inLanguage": "en-US",
       "datePublished": "2026-08-24",
       "dateModified": "2026-08-24"
+    }
+  },
+  "en/blog/atemi-the-strike-that-is-not-meant-to-land.html": {
+    "title": "Atemi (当て身) — the strike that is not meant to land | Blog",
+    "description": "Atemi in Aikido: what a strike means in budo, how kuzushi, timing, and ma-ai work, examples in ikkyo, shihonage, iriminage, and kotegaeshi, and training method in the Toyoda lineage.",
+    "keywords": "atemi aikido, striking in aikido, kuzushi, irimi, ma-ai, aikido timing, budo training, aikido beginners, martial arts striking",
+    "schema": {
+      "headline": "Atemi (当て身) — the strike that is not meant to land",
+      "inLanguage": "en-US",
+      "datePublished": "2026-10-24",
+      "dateModified": "2026-10-24"
     }
   },
   "en/blog/genkikai-the-body-that-returns-to-order.html": {

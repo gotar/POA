@@ -153,6 +153,7 @@ module Site
       BLOG_BEGINNER_CATEGORY = :first_training
 
       BLOG_POSTS_PL = [
+        { date: "24 października 2026", title: "Atemi (当て身) — uderzenie, które ma nie dojść", url: "/blog/atemi-uderzenie-ktore-ma-nie-dojsc.html", category: :technique, summary: "Atemi nie jest boksem na macie. Jest narzędziem kuzushi: przechwytuje uwagę, łamie równowagę i chroni obie strony — a zasada „uderz, żeby nie musieć uderzyć” działa także poza dojo." },
         { date: "28 września 2026", title: "Mui (無為) — działanie bez wymuszania", url: "/blog/mui-dzialanie-bez-wymuszania.html", category: :philosophy, summary: "Mui shizen jako cel treningu: naturalność bez sztuczności, kuzushi jako skutek aiki — na macie i w codziennym życiu." },
         { date: "24 sierpnia 2026", title: "Tessen (鉄扇) w aikido — miecz bez miecza, który porządkuje ruch", url: "/blog/tessen-miecz-bez-miecza-ktory-porzadkuje-ruch.html", category: :technique, summary: "Tessen nie jest osobnym systemem walki. Żelazny wachlarz z przekazu O-Sensei porządkuje to, co ćwiczymy bez narzędzi: krawędź, atemi, dystans i intencję — na macie i poza nią." },
         { date: "13 czerwca 2026", title: "Egzamin w budō — pokaz drogi, nie występ przed komisją", url: "/blog/egzamin-w-budo-pokaz-drogi-nie-wystep.html", category: :dojo_life, summary: "Egzamin w budō nie tworzy jakości. Odsłania drogę, którą uczeń naprawdę przeszedł: regularność, korektę, oddech, kontakt, błędy i odpowiedzialność za dalszy trening." },
@@ -204,6 +205,7 @@ module Site
       ].freeze
 
       BLOG_POSTS_EN = [
+        { date: "October 24, 2026", title: "Atemi (当て身) — the strike that is not meant to land", url: "/en/blog/atemi-the-strike-that-is-not-meant-to-land.html", category: :technique, summary: "Atemi is not boxing on the mat. It is a kuzushi tool: it captures attention, breaks balance, and protects both sides — and the rule “strike so that you do not have to strike” works off the mat as well." },
         { date: "September 28, 2026", title: "Mui (無為) — acting without forcing", url: "/en/blog/mui-acting-without-forcing.html", category: :philosophy, summary: "Mui shizen as the goal of training: naturalness without forcing, kuzushi as the effect of aiki — on the mat and in everyday life." },
         { date: "August 24, 2026", title: "Tessen (鉄扇) in Aikido — the sword that is not a sword", url: "/en/blog/tessen-the-sword-that-is-not-a-sword.html", category: :technique, summary: "The tessen is not a separate fighting system. The iron fan from O-Sensei's transmission puts in order what we already train without tools: the edge, atemi, distance, and intent — on and off the mat." },
         { date: "June 13, 2026", title: "Exams in Budō — showing the road, not performing for the panel", url: "/en/blog/exams-in-budo-showing-the-road-not-performing.html", category: :dojo_life, summary: "A budō exam does not create quality. It reveals the road already walked: regular practice, correction, breath, contact, mistakes, and responsibility for what comes next." },
@@ -804,6 +806,7 @@ module Site
         "blog/jiko-sekinin-odpowiedzialnosc-osobista.html" => "en/blog/jiko-sekinin-personal-responsibility.html",
         "blog/kuzushi-kontrolowana-nierownowaga.html" => "en/blog/kuzushi-controlled-imbalance.html",
         "blog/mui-dzialanie-bez-wymuszania.html" => "en/blog/mui-acting-without-forcing.html",
+        "blog/atemi-uderzenie-ktore-ma-nie-dojsc.html" => "en/blog/atemi-the-strike-that-is-not-meant-to-land.html",
         "blog/droga-i-mistrzostwo.html" => "en/blog/the-path-and-mastery.html",
         "en/" => "",
         "en/index.html" => "",
@@ -887,6 +890,7 @@ module Site
         "en/blog/jiko-sekinin-personal-responsibility.html" => "blog/jiko-sekinin-odpowiedzialnosc-osobista.html",
         "en/blog/kuzushi-controlled-imbalance.html" => "blog/kuzushi-kontrolowana-nierownowaga.html",
         "en/blog/mui-acting-without-forcing.html" => "blog/mui-dzialanie-bez-wymuszania.html",
+        "en/blog/atemi-the-strike-that-is-not-meant-to-land.html" => "blog/atemi-uderzenie-ktore-ma-nie-dojsc.html",
         "en/blog/the-path-and-mastery.html" => "blog/droga-i-mistrzostwo.html",
       }.freeze
 

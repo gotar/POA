@@ -136,6 +136,7 @@ DEFAULT_TITLES = {
   "blog/jiko-sekinin-odpowiedzialnosc-osobista.html" => "Jiko sekinin — odpowiedzialność osobista w dojo | Blog",
   "blog/kuzushi-kontrolowana-nierownowaga.html" => "Kuzushi — kontrolowana nierównowaga i prowadzenie techniki | Blog",
   "blog/mui-dzialanie-bez-wymuszania.html" => "Mui (無為) — działanie bez wymuszania | Blog",
+  "blog/atemi-uderzenie-ktore-ma-nie-dojsc.html" => "Atemi (当て身) — uderzenie, które ma nie dojść | Blog",
   "en/blog.html" => "Blog | Polish Aikido Organization",
   "en/blog/bushido-way-of-the-warrior.html" => "Bushido — the warrior's way in dojo practice | Blog",
   "en/blog/kaizen-continuous-improvement.html" => "Kaizen — continuous improvement in Aikido training | Blog",
@@ -185,6 +186,7 @@ DEFAULT_TITLES = {
   "en/blog/jiko-sekinin-personal-responsibility.html" => "Jiko sekinin — personal responsibility in the dojo | Blog",
   "en/blog/kuzushi-controlled-imbalance.html" => "Kuzushi — controlled imbalance and technical guidance | Blog",
   "en/blog/mui-acting-without-forcing.html" => "Mui — acting without forcing in Aikido practice | Blog",
+  "en/blog/atemi-the-strike-that-is-not-meant-to-land.html" => "Atemi (当て身) — the strike that is not meant to land | Blog",
 }.freeze
 
 DEFAULT_TITLES_PATTERNS = [
@@ -303,6 +305,7 @@ DEFAULT_DESCRIPTIONS = {
   "blog/jiko-sekinin-odpowiedzialnosc-osobista.html" => "Jiko sekinin w Aikido: odpowiedzialność za własny rozwój, przygotowanie, higienę techniki i postawę na treningu.",
   "blog/kuzushi-kontrolowana-nierownowaga.html" => "Kuzushi od podstaw do zastosowania: kontrolowana nierównowaga, timing i kierunek, które otwierają skuteczną technikę.",
   "blog/mui-dzialanie-bez-wymuszania.html" => "Mui i mui shizen w aikido: naturalność bez wymuszania, mushin kontra kuzushi i zasada nieingerencji na macie oraz poza nią.",
+  "blog/atemi-uderzenie-ktore-ma-nie-dojsc.html" => "Atemi w aikido: czym jest uderzenie w budo, jak działa kuzushi, timing i ma-ai, przykłady w ikkyo, shihonage, iriminage i kotegaeshi oraz metodyka treningu w linii Toyody.",
   "en/blog.html" => "POA blog: seminar recaps, dojo updates, event announcements, and practical notes for Aikido practitioners.",
   "en/blog/bushido-way-of-the-warrior.html" => "Bushido in practical Aikido training: discipline, accountability, and dojo ethics that shape durable martial skills.",
   "en/blog/kaizen-continuous-improvement.html" => "Kaizen applied to Aikido: steady incremental improvement that compounds into reliable technical and mental progress.",
@@ -351,6 +354,7 @@ DEFAULT_DESCRIPTIONS = {
   "en/blog/jiko-sekinin-personal-responsibility.html" => "Jiko sekinin in Aikido: personal responsibility for preparation, attitude, and the quality of each repetition.",
   "en/blog/kuzushi-controlled-imbalance.html" => "Kuzushi explained through practice: controlled imbalance, timing, and direction to unlock effective technique.",
   "en/blog/mui-acting-without-forcing.html" => "Mui and mui shizen in Aikido: naturalness without forcing, mushin versus kuzushi, and the principle of non-interference on the mat and beyond.",
+  "en/blog/atemi-the-strike-that-is-not-meant-to-land.html" => "Atemi in Aikido: what a strike means in budo, how kuzushi, timing, and ma-ai work, examples in ikkyo, shihonage, iriminage, and kotegaeshi, and training method in the Toyoda lineage.",
 }.freeze
 
 DEFAULT_DESCRIPTIONS_PATTERNS = [
@@ -469,6 +473,7 @@ DEFAULT_KEYWORDS = {
   "blog/jiko-sekinin-odpowiedzialnosc-osobista.html" => "jiko sekinin aikido, odpowiedzialnosc osobista, samodyscyplina, etyka treningu",
   "blog/kuzushi-kontrolowana-nierownowaga.html" => "kuzushi aikido, kontrolowana nierownowaga, balans, timing, prowadzenie partnera",
   "blog/mui-dzialanie-bez-wymuszania.html" => "mui, mui shizen, wu-wei, mushin, kuzushi, aikido filozofia, dzialanie bez wymuszania",
+  "blog/atemi-uderzenie-ktore-ma-nie-dojsc.html" => "atemi aikido, uderzenia w aikido, kuzushi, irimi, ma-ai, timing aikido, budo, aikido dla początkujących, egzamin aikido",
   "en/blog.html" => "aikido blog, poa updates, dojo announcements, seminar recap, sesshinkan",
   "en/blog/bushido-way-of-the-warrior.html" => "bushido aikido, warrior way, dojo ethics, training discipline, budo principles",
   "en/blog/kaizen-continuous-improvement.html" => "kaizen aikido, continuous improvement, training habits, technical progression, dojo growth",
@@ -517,6 +522,7 @@ DEFAULT_KEYWORDS = {
   "en/blog/jiko-sekinin-personal-responsibility.html" => "jiko sekinin aikido, personal responsibility, self-discipline, training ethics",
   "en/blog/kuzushi-controlled-imbalance.html" => "kuzushi aikido, controlled imbalance, timing, direction, partner guidance",
   "en/blog/mui-acting-without-forcing.html" => "mui, mui shizen, wu-wei, mushin, kuzushi, aikido philosophy, acting without forcing",
+  "en/blog/atemi-the-strike-that-is-not-meant-to-land.html" => "atemi aikido, striking in aikido, kuzushi, irimi, ma-ai, aikido timing, budo training, aikido beginners, martial arts striking",
 }.freeze
 
 DEFAULT_KEYWORDS_PATTERNS = [
@@ -979,6 +985,12 @@ ARTICLE_SCHEMA_DATA = {
     date_published: "2026-09-28",
     date_modified: "2026-09-28",
   },
+  "blog/atemi-uderzenie-ktore-ma-nie-dojsc.html" => {
+    name: "Atemi (当て身) — uderzenie, które ma nie dojść",
+    lang: "pl",
+    date_published: "2026-10-24",
+    date_modified: "2026-10-24",
+  },
   "blog/sesshin-gleboka-praktyka.html" => {
     name: "Sesshin — głęboka praktyka i tożsamość Sesshinkan Dojo",
     lang: "pl",
@@ -1074,6 +1086,12 @@ ARTICLE_SCHEMA_DATA = {
     lang: "en",
     date_published: "2026-09-28",
     date_modified: "2026-09-28",
+  },
+  "en/blog/atemi-the-strike-that-is-not-meant-to-land.html" => {
+    name: "Atemi (当て身) — the strike that is not meant to land",
+    lang: "en",
+    date_published: "2026-10-24",
+    date_modified: "2026-10-24",
   },
   "en/blog/sesshin-deep-practice.html" => {
     name: "Sesshin — deep practice and Sesshinkan Dojo identity",

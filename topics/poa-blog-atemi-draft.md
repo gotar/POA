@@ -65,6 +65,26 @@ Uczciwie trzeba dodać ramkę historyczną: O-Sensei w wywiadzie z 1957 roku odr
 
 Z timingiem wiąże się dystans (ma-ai). Atemi jest instrumentem jego strojenia: zmusza partnera do reakcji dokładnie tam, gdzie chce nage. Bez atemi uke stoi stabilnie i "przepycha" technikę siłą. Z atemi musi się ruszyć — a ruchomy człowiek ma równowagę do zabrania.
 
+### Atemi zaczyna się przed ruchem: stan umysłu
+
+Tu dochodzimy do warstwy, której nie widać na zdjęciach. Ciało uderza tylko dlatego, że umysł już zdecydował. Partner czuje decyzję wcześniej niż ruch — po oddechu, po oczach, po tym, czy wejście jest całe, czy połowiczne. Każdy doświadczony ćwiczący zna to uczucie: uke "ucieka", zanim technika ruszyła. Nie zareagował na rękę. Zareagował na zamiar.
+
+To jest seme — presja zdecydowanego umysłu. Nie groźba, nie mina, nie napinanie mięśni. Przeciwnie: ciało rozluźnione, uwaga skupiona, decyzja podjęta. Taki stan czyta się natychmiast, także poza matą. Człowiek, który wszedł do pokoju z podjętą decyzją, zmienia przebieg zebrania, zanim otworzył usta. Człowiek niezdecydowany może mówić głośno i długo — nikt nie drgnie.
+
+W technice wahanie widać jak na dłoni. Ręka idzie, ale biodra zostają. Wzrok sprawdza, czy "można". Oddech staje. Partner dostaje sprzeczne sygnały i robi to, co ciało robi ze sprzecznością: sztywnieje albo przepycha. Wtedy nage dokłada siły do wahania i powstaje dokładnie to siłowanie, przed którym atemi miało chronić. Błąd nie leży w ręce. Leży pół sekundy wcześniej, w głowie, która nie wybrała.
+
+Dlatego w starym nauczaniu cięcie zaczynało się od decyzji (kime), a decyzja od spokoju (fudoshin — niewzruszony umysł). Kolejność jest sztywna: najpierw spokój, potem decyzja, potem ruch. Odwrócona kolejność — ruch, a potem nadzieja, że decyzja sama dojdzie — daje puste atemi: gest, na który nikt nie reaguje, bo nie ma w nim nikogo.
+
+Zanshin, czujność po technice, to ta sama jakość rozciągnięta w czasie. Uwaga nie gaśnie w momencie "udało się". Zostaje na partnerze, na dystansie, na wyjściu. Umysł, który po sukcesie od razu świętuje, zaprasza kontrę — na macie i w życiu. Ile projektów padło nie na przeszkodzie, tylko na rozluźnieniu po pierwszym zwycięstwie?
+
+W życiu atemi umysłu wygląda tak samo jak na macie. Decyzja przecina wahanie: zmiana pracy, zakończenie relacji, trudna prawda powiedziana wprost. Odwlekana decyzja nie jest neutralna — kosztuje codziennie po trochu, jak partner, który stoi w miejscu i "przepycha" technikę samą bezwładnością. Czyste cięcie bywa tańsze niż miesiące tępych ruchów. I tak jak na macie liczy się proporcja: zdecydowany umysł to nie brutalny umysł. To cały umysł. "Nie" powiedziane spokojnie, z podjętą decyzją, nie rani tak jak "nie" wykrzyczane po trzech miesiącach ustępowania.
+
+Uwaga to też atemi. Tam, gdzie idzie uwaga, tam idzie sytuacja. Nauczyciel, który naprawdę patrzy na ucznia w momencie korekty, nie musi podnosić głosu. Rodzic, który odkłada telefon, zanim powie "słucham", wykonuje wejście. Obecność jest uderzeniem, które nie dotyka — a działa.
+
+Jest i ostrzeżenie, bo narzędzie jest ostre. Zdecydowany umysł bez etyki zamienia się w zastraszanie: presję służącą dominacji, nie porządkowi. Różnica leży nie w sile sygnału, tylko w jego celu. Masakatsu agatsu wraca tu jak refren: prawdziwe zwycięstwo to zwycięstwo nad własną potrzebą dominacji. Atemi umysłu ma robić miejsce — partnerowi do reakcji, sprawie do rozwiązania — a nie robić z partnera publiczność własnej siły.
+
+Kto ćwiczy atemi tylko ręką, dostaje gest. Kto ćwiczy decyzją, dostaje narzędzie na całe życie.
+
 ### Cztery techniki, cztery lekcje atemi
 
 Teoria staje się ciałem w konkretnych technikach. Cztery filary wystarczą, żeby zobaczyć cały mechanizm:
@@ -182,6 +202,26 @@ Atemi without timing is arm-waving. The old terminology names three moments: res
 Honesty requires a historical box: O-Sensei, in a 1957 interview, dismissed these categories as too low for his level. They are a teaching aid, not dogma — for learning the sense of the moment, not for filing reality into drawers.
 
 Timing connects to distance (ma-ai). Atemi is the instrument for tuning it: it forces the partner to react exactly where nage wants. Without atemi, uke stands stable and "pushes through" the technique by force. With atemi, they must move — and a moving person has balance worth taking.
+
+### Atemi begins before movement: the state of mind
+
+Here we reach the layer invisible in photographs. The body strikes only because the mind has already decided. The partner feels the decision before the movement — in the breath, in the eyes, in whether the entry is whole or half. Every experienced practitioner knows the feeling: uke "escapes" before the technique has started. They did not react to the hand. They reacted to the intent.
+
+That is seme — the pressure of a decided mind. Not a threat, not a grimace, not tensed muscles. The opposite: body relaxed, attention gathered, decision made. Such a state reads instantly, off the mat as well. A person who enters a room with a decision made changes the meeting before opening their mouth. An undecided person may talk loudly and at length — nobody moves.
+
+In technique, hesitation is visible like print. The hand goes, but the hips stay. The eyes check whether it is "allowed". The breath stops. The partner receives contradictory signals and does what a body does with contradiction: stiffens or pushes through. Then nage adds force to hesitation, producing exactly the wrestling atemi was supposed to prevent. The fault is not in the hand. It lies half a second earlier, in the head that never chose.
+
+That is why in the old teaching the cut began with decision (kime), and decision with calm (fudoshin — the immovable mind). The order is strict: first calm, then decision, then movement. The reversed order — movement, then hoping the decision catches up — gives empty atemi: a gesture nobody responds to, because there is nobody in it.
+
+Zanshin, awareness after technique, is the same quality stretched in time. Attention does not die at "it worked". It stays on the partner, on the distance, on the exit. A mind that celebrates right after success invites the counter — on the mat and in life. How many projects died not on an obstacle but on relaxation after the first win?
+
+In life, atemi of the mind looks the same as on the mat. Decision cuts hesitation: changing jobs, ending a relationship, an uncomfortable truth said plainly. A postponed decision is not neutral — it charges daily, like a partner who stands still and "pushes through" your technique by sheer inertia. A clean cut is often cheaper than months of blunt movements. And as on the mat, proportion counts: a decided mind is not a brutal mind. It is a whole mind. A "no" said calmly, with the decision made, wounds less than a "no" screamed after three months of yielding.
+
+Attention is atemi too. Where attention goes, the situation follows. A teacher who truly looks at the student at the moment of correction does not need to raise their voice. A parent who puts the phone down before saying "I'm listening" performs an entry. Presence is a strike that never touches — and works.
+
+There is a warning, because the tool is sharp. A decided mind without ethics becomes intimidation: pressure serving domination, not order. The difference lies not in signal strength but in its purpose. Masakatsu agatsu returns here like a refrain: true victory is victory over your own need to dominate. Atemi of the mind should make room — for the partner to respond, for the matter to resolve — not make the partner an audience for your own force.
+
+Whoever trains atemi only with the hand gets a gesture. Whoever trains it with decision gets a tool for life.
 
 ### Four techniques, four lessons of atemi
 

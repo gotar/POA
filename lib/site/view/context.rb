@@ -153,6 +153,7 @@ module Site
       BLOG_BEGINNER_CATEGORY = :first_training
 
       BLOG_POSTS_PL = [
+        { date: "31 października 2026", title: "Kokyu (呼吸) — najpierw wydech", url: "/blog/kokyu-najpierw-wydech.html", category: :technique, summary: "Kokyu to nie technika oddychania, tylko porządek: wydech opuszcza ciężar, hara prowadzi ruch, pauza rodzi decyzję. O oddechu na macie, w zen i w zwykłym dniu." },
         { date: "24 października 2026", title: "Atemi (当て身) — uderzenie, które ma nie dojść", url: "/blog/atemi-uderzenie-ktore-ma-nie-dojsc.html", category: :technique, summary: "Atemi nie jest boksem na macie. Jest narzędziem kuzushi: przechwytuje uwagę, łamie równowagę i chroni obie strony — a zasada „uderz, żeby nie musieć uderzyć” działa także poza dojo." },
         { date: "19 października 2026", title: "Heijōshin (平常心) — zwyczajność bez autopilota", url: "/blog/heijoshin-zwykly-umysl-w-dniu-proby.html", category: :practice, summary: "Zwykły umysł nie oznacza automatycznego powtarzania nawyków. O heijōshin, dialogu zen i uważnej odpowiedzi na macie, w pracy i w rodzinie." },
         { date: "17 października 2026", title: "Yutori (ゆとり) — zostaw miejsce na korektę", url: "/blog/yutori-zostaw-miejsce-na-korekte.html", category: :practice, summary: "Zapas czasu, przestrzeni i uwagi w pracy z partnerem. Jak zostawić miejsce na korektę bez utożsamiania spokoju z łatwym treningiem." },
@@ -209,6 +210,7 @@ module Site
       ].freeze
 
       BLOG_POSTS_EN = [
+        { date: "October 31, 2026", title: "Kokyu (呼吸) — exhale first", url: "/en/blog/kokyu-exhale-first.html", category: :technique, summary: "Kokyu is not a breathing technique but an order: the exhale drops the weight, the hara leads the movement, the pause bears the decision. On breath on the mat, in Zen, and on an ordinary day." },
         { date: "October 24, 2026", title: "Atemi (当て身) — the strike that is not meant to land", url: "/en/blog/atemi-the-strike-that-is-not-meant-to-land.html", category: :technique, summary: "Atemi is not boxing on the mat. It is a kuzushi tool: it captures attention, breaks balance, and protects both sides — and the rule “strike so that you do not have to strike” works off the mat as well." },
         { date: "October 19, 2026", title: "Heijōshin (平常心) — ordinary, not automatic", url: "/en/blog/heijoshin-an-ordinary-mind-under-pressure.html", category: :practice, summary: "Heijōshin and the ordinary mind in Zen: responding with attention rather than habit, in Aikido practice, at work and at home." },
         { date: "October 17, 2026", title: "Yutori (ゆとり) — room to adjust", url: "/en/blog/yutori-room-to-adjust.html", category: :practice, summary: "A margin of time, space and attention in partner practice. Leave room to adjust without confusing a measured pace with an easy task." },
@@ -817,6 +819,7 @@ module Site
         "blog/kuzushi-kontrolowana-nierownowaga.html" => "en/blog/kuzushi-controlled-imbalance.html",
         "blog/mui-dzialanie-bez-wymuszania.html" => "en/blog/mui-acting-without-forcing.html",
         "blog/atemi-uderzenie-ktore-ma-nie-dojsc.html" => "en/blog/atemi-the-strike-that-is-not-meant-to-land.html",
+        "blog/kokyu-najpierw-wydech.html" => "en/blog/kokyu-exhale-first.html",
         "blog/yutori-zostaw-miejsce-na-korekte.html" => "en/blog/yutori-room-to-adjust.html",
         "blog/kakugo-wejsc-w-calosci-albo-wcale.html" => "en/blog/kakugo-enter-whole-or-not-at-all.html",
         "blog/heijoshin-zwykly-umysl-w-dniu-proby.html" => "en/blog/heijoshin-an-ordinary-mind-under-pressure.html",
@@ -905,6 +908,7 @@ module Site
         "en/blog/kuzushi-controlled-imbalance.html" => "blog/kuzushi-kontrolowana-nierownowaga.html",
         "en/blog/mui-acting-without-forcing.html" => "blog/mui-dzialanie-bez-wymuszania.html",
         "en/blog/atemi-the-strike-that-is-not-meant-to-land.html" => "blog/atemi-uderzenie-ktore-ma-nie-dojsc.html",
+        "en/blog/kokyu-exhale-first.html" => "blog/kokyu-najpierw-wydech.html",
         "en/blog/yutori-room-to-adjust.html" => "blog/yutori-zostaw-miejsce-na-korekte.html",
         "en/blog/kakugo-enter-whole-or-not-at-all.html" => "blog/kakugo-wejsc-w-calosci-albo-wcale.html",
         "en/blog/heijoshin-an-ordinary-mind-under-pressure.html" => "blog/heijoshin-zwykly-umysl-w-dniu-proby.html",

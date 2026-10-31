@@ -678,6 +678,17 @@
       "dateModified": "2026-10-24"
     }
   },
+  "blog/kokyu-najpierw-wydech.html": {
+    "title": "Kokyu (呼吸) — najpierw wydech | Blog",
+    "description": "Kokyu w aikido: siła oddechu z hara, kokyu-ho i kokyu-nage, oddech w zen i zazen oraz protokół oddechu pod presją poza matą.",
+    "keywords": "kokyu aikido, siła oddechu, hara, kokyu-ho, kokyu-nage, oddech w budo, zen a aikido, tanden, stres a oddech",
+    "schema": {
+      "headline": "Kokyu (呼吸) — najpierw wydech",
+      "inLanguage": "pl-PL",
+      "datePublished": "2026-10-31",
+      "dateModified": "2026-10-31"
+    }
+  },
   "blog/genkikai-cialo-ktore-wraca-na-miejsce.html": {
     "title": "Genkikai — ciało, które wraca na miejsce | Blog",
     "description": "Genkikai w systemie Masatomiego Ikedy: trzecia praktyka Sanshinkai, która daje ciału metodę powrotu po intensywnym treningu aikido i Hojo.",
@@ -1259,6 +1270,17 @@
       "inLanguage": "en-US",
       "datePublished": "2026-10-24",
       "dateModified": "2026-10-24"
+    }
+  },
+  "en/blog/kokyu-exhale-first.html": {
+    "title": "Kokyu (呼吸) — exhale first | Blog",
+    "description": "Kokyu in Aikido: breath power from the hara, kokyu-ho and kokyu-nage, breath in Zen and zazen, and a breathing protocol for pressure off the mat.",
+    "keywords": "kokyu aikido, breath power, hara, kokyu-ho, kokyu-nage, breathing in budo, zen and aikido, tanden, stress and breathing",
+    "schema": {
+      "headline": "Kokyu (呼吸) — exhale first",
+      "inLanguage": "en-US",
+      "datePublished": "2026-10-31",
+      "dateModified": "2026-10-31"
     }
   },
   "en/blog/genkikai-the-body-that-returns-to-order.html": {

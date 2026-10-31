@@ -112,19 +112,19 @@
   <loc>https://aikido-polska.eu/blog-2.html</loc>
   <priority>0.6</priority>
   <changefreq>weekly</changefreq>
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-06-11</lastmod>
 </url>
 <url>
   <loc>https://aikido-polska.eu/blog-3.html</loc>
   <priority>0.6</priority>
   <changefreq>weekly</changefreq>
-    <lastmod>2026-05-01</lastmod>
+    <lastmod>2026-05-09</lastmod>
 </url>
 <url>
   <loc>https://aikido-polska.eu/blog-4.html</loc>
   <priority>0.6</priority>
   <changefreq>weekly</changefreq>
-    <lastmod>2026-04-02</lastmod>
+    <lastmod>2026-04-04</lastmod>
 </url>
 <url>
   <loc>https://aikido-polska.eu/blog-5.html</loc>
@@ -142,7 +142,7 @@
   <loc>https://aikido-polska.eu/blog.html</loc>
   <priority>0.8</priority>
   <changefreq>weekly</changefreq>
-    <lastmod>2026-10-24</lastmod>
+    <lastmod>2026-10-31</lastmod>
 </url>
 <url>
   <loc>https://aikido-polska.eu/blog/5-zasad-kazdej-techniki.html</loc>
@@ -317,6 +317,12 @@
   <priority>0.7</priority>
   <changefreq>monthly</changefreq>
     <lastmod>2026-02-23</lastmod>
+</url>
+<url>
+  <loc>https://aikido-polska.eu/blog/kokyu-najpierw-wydech.html</loc>
+  <priority>0.7</priority>
+  <changefreq>monthly</changefreq>
+    <lastmod>2026-10-31</lastmod>
 </url>
 <url>
   <loc>https://aikido-polska.eu/blog/kuzushi-kontrolowana-nierownowaga.html</loc>
@@ -580,19 +586,19 @@
   <loc>https://aikido-polska.eu/en/blog-2.html</loc>
   <priority>0.6</priority>
   <changefreq>weekly</changefreq>
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-06-11</lastmod>
 </url>
 <url>
   <loc>https://aikido-polska.eu/en/blog-3.html</loc>
   <priority>0.6</priority>
   <changefreq>weekly</changefreq>
-    <lastmod>2026-05-01</lastmod>
+    <lastmod>2026-05-09</lastmod>
 </url>
 <url>
   <loc>https://aikido-polska.eu/en/blog-4.html</loc>
   <priority>0.6</priority>
   <changefreq>weekly</changefreq>
-    <lastmod>2026-04-02</lastmod>
+    <lastmod>2026-04-04</lastmod>
 </url>
 <url>
   <loc>https://aikido-polska.eu/en/blog-5.html</loc>
@@ -610,7 +616,7 @@
   <loc>https://aikido-polska.eu/en/blog.html</loc>
   <priority>0.8</priority>
   <changefreq>weekly</changefreq>
-    <lastmod>2026-10-24</lastmod>
+    <lastmod>2026-10-31</lastmod>
 </url>
 <url>
   <loc>https://aikido-polska.eu/en/blog/aiki-harmony-in-action.html</loc>
@@ -761,6 +767,12 @@
   <priority>0.7</priority>
   <changefreq>monthly</changefreq>
     <lastmod>2026-02-23</lastmod>
+</url>
+<url>
+  <loc>https://aikido-polska.eu/en/blog/kokyu-exhale-first.html</loc>
+  <priority>0.7</priority>
+  <changefreq>monthly</changefreq>
+    <lastmod>2026-10-31</lastmod>
 </url>
 <url>
   <loc>https://aikido-polska.eu/en/blog/kuzushi-controlled-imbalance.html</loc>

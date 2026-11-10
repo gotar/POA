@@ -38,6 +38,7 @@ Metoda: 4 równoległe wątki (historia / technika / filozofia+mity / linia Toyo
 9. **Irimi / tenkan / kuzushi (definicje robocze).** *"Irimi (入り身, putting in the body) describes entering straight into a technique, as opposed to the more indirect entrance … called tenkan"*; *"Tenkan (転換…) is a 180-degree pivot to one's rear, on the lead foot"*; kuzushi = *"getting an opponent into a position where his stability, and hence ability to regain compromised balance, is destroyed"* — zniszczenie stabilności, nie samo zachwianie. (en.wikipedia.org/wiki/Aikido_concepts)
 10. **Błąd początkujących.** *"Beginners tend to stand too close (unaware of the attack) or too far (too afraid of the attack)."* (aikidocenterla.com/blog/764)
 11. **Pułapka zmiany broni.** Nawyki z jednej broni przenoszone na inną: ręka „szuka" dłuższej broni, pchnięcie za płytkie po zmianie (trening jo po naginacie, tanken po juken). (koryu.com/library/dskoss2)
+12. **Hyōshi + awase: rytm, na którym stoi ma-ai.** Hyōshi (拍子) to takt/rytm starcia, nie sama szybkość; Ledyard (AikiWeb): czas i przestrzeń są w walce wymienne (więcej przestrzeni = więcej czasu), a do tego dochodzi czas względny — rytm mój wobec rytmu przeciwnika. Awase to ten względny rytm w treningu podstawowym: fale „w fazie" (współpraca, czytelna energia uke, połączenie do kulminacji). W realnym starciu technika działa dopiero, gdy przełamie rytm przeciwnika — wytrącenie „z fazy", najczęściej atemi na pół taktu, nie pełny takt (partner w rytmie dopisze własną odpowiedź i zostanie w fazie). Model POA (pięć zasad) stawia timing (hyōshi) jako jedną z 5 zasad, a awase — obok oddechu i czytania intencji — jako narzędzie „wybrania luzu", czyli tego, co pozwala piątce pojawić się w ruchu. (aikiweb.com/columns/gledyard/2005_05; aikido-polska.eu/en/blog/five-principles-behind-every-technique.html)
 
 ## 4. Zen, dystans mentalny, mity
 
@@ -72,6 +73,7 @@ Metoda: 4 równoległe wątki (historia / technika / filozofia+mity / linia Toyo
 10. **Urazy początkujących.** Barki, szyja, obojczyki, głowa — ukemi pod presją czasu; błędne koło: strach → ten sam błąd → chroniczność; najwyższe ryzyko: sporadyczni przed skokiem objętości (egzamin/seminarium). (aikifreak.wordpress.com/2026/10/05/safety-first)
 11. **Zasada Russek.** Urazy przy niedopasowaniu prędkości/siły ataku i techniki lub nagłej zmianie; uczyć od ~3/10 prędkości i siły, najpierw kontrola, potem szybkość. (webspace.clarkson.edu/~lrussek — RussekAikidoInjuries.pdf)
 12. **Wzorzec BAB (do przepisania dla POA).** Kontrolowane ukemi, maty bez szczelin, techniki na głowę/szyję dla zaawansowanych, protokół wstrząśnienia (stop + lekarz + raport). (bab.org.uk — Concussion & Strangulation Safety Guidelines)
+13. **Ma-ai a pięć zasad POA (rozstrzygnięcie redakcyjne).** Wewnętrzny model POA (centrum, oś, timing, wybranie luzu, kuzushi) stawia ma-ai obok zejścia z linii, irimi/tenkan, kąta ciała, awase, oddechu, spojrzenia i zanshin — jako warunek wykonania, nie szóstą zasadę. Artykuł ma tę hierarchię powtórzyć, żeby nie rozmywać modelu: ma-ai + linia wejścia pozwalają złapać moment (hyōshi) i zbudować bezpieczne kuzushi; awase + kontakt pozwalają naprawdę wybrać luz. (aikido-polska.eu/en/blog/five-principles-behind-every-technique.html)
 
 ## 6. Tezy pod artykuł (6)
 
@@ -84,7 +86,7 @@ Metoda: 4 równoległe wątki (historia / technika / filozofia+mity / linia Toyo
 
 ## 7. Proponowana struktura artykułu
 
-Otwarcie (scena z maty: jeden za blisko, drugi za daleko — ta sama para, dwa błędy) → kanji (dopasowany przedział, wo toru / wo tumeru) → historia (Yagyū 1632 → kendo: toma/issoku-ittō/chikama → Draeger → Furuya: 4 ujęcia) → technika (3 dystanse Yoshinkan, asymetria, broń dokłada krok, sen × ma-ai, irimi/tenkan zmieniają dystans, kuzushi w chika-no-ma, błędy) → zen (kokoro-no-maai z podpisem dydaktyki, Takuan bez naciągania, mushin/zanshin, sekcja mitów: aura/no-touch/metry) → Sesshinkan (metodyka białych pasów jako propozycja POA, ćwiczenie dłoń-w-dłoń, jo jako linijka, bezpieczeństwo: kolizje + zasada 3/10) → poza matą (Hall z ostrożnością, protokół rozmowy/konfliktu) → zamknięcie (masakatsu agatsu: panowanie nad sobą zaczyna się od trzymania dystansu).
+Otwarcie (scena z maty: jeden za blisko, drugi za daleko — ta sama para, dwa błędy) → kanji (dopasowany przedział, wo toru / wo tumeru) → historia (Yagyū 1632 → kendo: toma/issoku-ittō/chikama → Draeger → Furuya: 4 ujęcia) → technika (3 dystanse Yoshinkan, asymetria, broń dokłada krok, sen × ma-ai, hyōshi, awase w fazie / z fazy, irimi/tenkan zmieniają dystans, kuzushi w chika-no-ma, błędy) → zen (kokoro-no-maai z podpisem dydaktyki, Takuan bez naciągania, mushin/zanshin, sekcja mitów: aura/no-touch/metry) → Sesshinkan (metodyka białych pasów jako propozycja POA, ćwiczenie dłoń-w-dłoń, jo jako linijka, bezpieczeństwo: kolizje + zasada 3/10) → poza matą (Hall z ostrożnością, protokół rozmowy/konfliktu) → zamknięcie (masakatsu agatsu: panowanie nad sobą zaczyna się od trzymania dystansu).
 
 Proponowany tytuł PL: „Ma-ai (間合い) — dystans, który decyduje".
 Proponowany tytuł EN: „Ma-ai (間合い) — the distance that decides".
@@ -118,6 +120,8 @@ Proponowany tytuł EN: „Ma-ai (間合い) — the distance that decides".
 - https://remoteaikidodojo.com/index.php/2022/08/10/aikido-is-90-atemi-revisited
 - https://mindbodyaikido.com/what-is-ki-is-it-fake/
 - https://thomas.mangin.com/aikido/en/teaching/03-teaching-maai-effectively.md
+- http://www.aikiweb.com/columns/gledyard/2005_05.html
+- https://aikido-polska.eu/en/blog/five-principles-behind-every-technique.html
 - https://aaa-aikido.com/fumio-toyoda-shihan/
 - https://en.wikipedia.org/wiki/Fumio_Toyoda
 - https://omlc.org/aikido/promotion/index.html

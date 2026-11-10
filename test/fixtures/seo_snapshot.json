@@ -689,6 +689,17 @@
       "dateModified": "2026-10-31"
     }
   },
+  "blog/ma-ai-dystans-ktory-decyduje.html": {
+    "title": "Ma-ai (間合い) — dystans, który decyduje | Blog",
+    "description": "Ma-ai w aikido: dopasowany przedział zamiast metrów, trzy dystanse, broń jako linijka, sen i timing, przedział mentalny oraz metodyka dystansu w linii Toyody.",
+    "keywords": "ma-ai, maai, dystans w aikido, issoku itto, toma chikama, sen no sen, kokoro no maai, broń a dystans, budo",
+    "schema": {
+      "headline": "Ma-ai (間合い) — dystans, który decyduje",
+      "inLanguage": "pl-PL",
+      "datePublished": "2026-11-10",
+      "dateModified": "2026-11-10"
+    }
+  },
   "blog/genkikai-cialo-ktore-wraca-na-miejsce.html": {
     "title": "Genkikai — ciało, które wraca na miejsce | Blog",
     "description": "Genkikai w systemie Masatomiego Ikedy: trzecia praktyka Sanshinkai, która daje ciału metodę powrotu po intensywnym treningu aikido i Hojo.",
@@ -1281,6 +1292,17 @@
       "inLanguage": "en-US",
       "datePublished": "2026-10-31",
       "dateModified": "2026-10-31"
+    }
+  },
+  "en/blog/ma-ai-the-distance-that-decides.html": {
+    "title": "Ma-ai (間合い) — the distance that decides | Blog",
+    "description": "Ma-ai in Aikido: a fitted interval instead of metres, three distances, weapons as the ruler, sen and timing, the mental interval, and distance method in the Toyoda lineage.",
+    "keywords": "ma-ai, maai, aikido distance, issoku itto, toma chikama, sen no sen, kokoro no maai, weapons and distance, budo",
+    "schema": {
+      "headline": "Ma-ai (間合い) — the distance that decides",
+      "inLanguage": "en-US",
+      "datePublished": "2026-11-10",
+      "dateModified": "2026-11-10"
     }
   },
   "en/blog/genkikai-the-body-that-returns-to-order.html": {

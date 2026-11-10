@@ -2,7 +2,7 @@ require_relative "test_helper"
 require "open3"
 
 class ContactTwoDojosTest < Minitest::Test
-  RACIBORZ_DIRECTIONS = "https://www.google.com/maps/dir/?api=1&amp;destination=Zesp%C3%B3%C5%82+Szkolno-Przedszkolny+Nr+6%2C+ul.+Juliusza+S%C5%82owackiego+48%2C+Racib%C3%B3rz".freeze
+  RACIBORZ_DIRECTIONS = "https://www.google.com/maps/dir/?api=1&amp;destination=50.0863227%2C18.2069599".freeze
 
   def setup
     @output = Dir.mktmpdir("poa-contact-two-dojos-")

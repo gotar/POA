@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Export with: rsvg-convert assets/images/poa-share.svg -o assets/images/social/poa-share.png
+     Uses the existing POA mark; raster PNG is the published social-preview asset.
+     Text uses Noto Sans. This export is a maintenance step, not part of the site build. -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1200" height="630" viewBox="0 0 1200 630">
+  <title>Polska Organizacja Aikido</title>
+  <desc>POA mark and organisation name on a white background with red accents.</desc>
+  <rect width="1200" height="630" fill="#ffffff"/>
+  <rect x="72" y="70" width="80" height="6" fill="#cd3333"/>
+  <image x="76" y="172" width="260" height="260" xlink:href="toyoda.svg"/>
+  <g fill="#1f1f1f" font-family="Noto Sans, sans-serif">
+    <text x="400" y="245" font-size="46" font-weight="600">Polska Organizacja</text>
+    <text x="396" y="338" font-size="84" font-weight="700">Aikido</text>
+    <text x="402" y="405" font-size="28" letter-spacing="3" fill="#555555">AIKIDO · BUDŌ</text>
+    <text x="72" y="562" font-size="28" fill="#555555">aikido-polska.eu</text>
+  </g>
+  <rect y="618" width="1200" height="12" fill="#cd3333"/>
+</svg>

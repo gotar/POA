@@ -40,7 +40,7 @@ class BlogSchemaCoverageTest < Minitest::Test
     when "blog/jeden-nauczyciel-jeden-przekaz.html", "en/blog/one-teacher-one-transmission.html"
       "images/blog/one-teacher-one-transmission-featured.jpeg"
     else
-      "images/toyoda.svg"
+      "images/social/poa-share.png"
     end
   end
 

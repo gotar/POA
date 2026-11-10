@@ -508,6 +508,22 @@ module Site
         (path.start_with?("blog/") || path.start_with?("en/blog/")) && !path.match?(%r{\A(?:en/)?blog(?:-\d+)?\.html\z})
       end
 
+      # Social crawlers need raster images; dimensions describe the actual files.
+      SOCIAL_IMAGE_METADATA = {
+        "images/social/poa-share.png" => {
+          type: "image/png", width: 1200, height: 630,
+          alt: { "pl" => "Polska Organizacja Aikido — Aikido i Budō", "en" => "Polska Organizacja Aikido — Aikido and Budō" }.freeze
+        }.freeze,
+        "images/blog/enso-featured.png" => {
+          type: "image/png", width: 1200, height: 686,
+          alt: { "pl" => "Ensō — krąg tuszu", "en" => "Ensō — an ink circle" }.freeze
+        }.freeze,
+        "images/blog/one-teacher-one-transmission-featured.jpeg" => {
+          type: "image/jpeg", width: 1200, height: 630,
+          alt: { "pl" => "Jeden nauczyciel, jeden przekaz — grafika wpisu", "en" => "One teacher, one transmission — article image" }.freeze
+        }.freeze
+      }.freeze
+
       def social_image_for_path(path)
         case path.to_s
         when "blog/enso-krag-obecnosci.html", "en/blog/enso-circle-of-presence.html"
@@ -515,8 +531,17 @@ module Site
         when "blog/jeden-nauczyciel-jeden-przekaz.html", "en/blog/one-teacher-one-transmission.html"
           "images/blog/one-teacher-one-transmission-featured.jpeg"
         else
-          "images/toyoda.svg"
+          "images/social/poa-share.png"
         end
+      end
+
+      def page_social_image_metadata
+        SOCIAL_IMAGE_METADATA.fetch(social_image_for_path(current_path))
+      end
+
+      def page_social_image_alt
+        language = en_root_page? ? "en" : current_lang
+        page_social_image_metadata.fetch(:alt).fetch(language)
       end
 
       def page_social_image_url
